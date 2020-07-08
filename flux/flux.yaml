@@ -7,8 +7,8 @@ metadata:
 spec:
   releaseName: flux
   chart:
-    repository: https://charts.fluxcd.io
-    path: flux
+    repository: https://charts.fluxcd.io/
+    name: flux
   values:
     git:
       url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
