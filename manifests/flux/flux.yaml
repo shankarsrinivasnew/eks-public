@@ -17,6 +17,7 @@ spec:
       readonly: true
     registry:
       disableScanning: true
+    manifestGeneration: true
     env:
       secretName: flux-git-auth
     extraEnvs:
