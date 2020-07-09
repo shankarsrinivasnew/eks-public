@@ -5,7 +5,7 @@ metadata:
   name: kustomize-plugins
   namespace: flux
 data:
-  v1/AWSTransformer/AWSTransformer.yaml: |
+  AWSTransformer: |
     #!/bin/bash
 
     # Ignore script name
