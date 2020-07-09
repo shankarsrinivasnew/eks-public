@@ -37,6 +37,7 @@ spec:
       - name: kustomize-plugins
         configMap:
           name: kustomize-plugins
+          defaultMode: 777
           items:
             - key: AWSTransformer
               path: v1/awstransformer/AWSTransformer
