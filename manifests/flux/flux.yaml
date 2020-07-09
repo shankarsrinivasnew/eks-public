@@ -32,7 +32,7 @@ spec:
     extraVolumes:
       - name: kustomize-plugins
         configMap:
-          - name: kustomize-plugins
-            items:
-              - key: AWSTransformer
-                path: v1/AWSTransformer/AWSTransformer
+          name: kustomize-plugins
+          items:
+            - key: AWSTransformer
+              path: v1/AWSTransformer/AWSTransformer
