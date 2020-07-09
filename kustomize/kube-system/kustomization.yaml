@@ -1,0 +1,4 @@
+resources:
+  - aws-auth.yaml
+transformers:
+  - awsTransformer.yaml
