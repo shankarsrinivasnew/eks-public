@@ -1,0 +1,68 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: jenkins
+spec:
+  releaseName: jenkins
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: jenkins
+    version: 2.3.0
+  values:
+    master:
+      image: jenkins/jenkins
+      tag: lts-alpine
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: alb
+          alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/target-type: ip
+          alb.ingress.kubernetes.io/inbound-cidrs: 10.0.0.0/8
+          external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
+      resources:
+        limits:
+          cpu: 500m
+      # Environment variables that get added to the init container (useful for e.g. http_proxy)
+      initContainerEnv:
+        - name: http_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: https_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: http_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: no_proxy
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local
+      containerEnv:
+        - name: http_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: https_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: no_proxy
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local,jenkins-agent
+    agent:
+      image: jenkins/inbound-agent
+      tag: 4.3-4
+      componentName: jenkins-agent
+      resources:
+        limits:
+          memory: 1Gi
+      envVars:
+        - name: http_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: https_proxy
+          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+        - name: no_proxy
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local,jenkins,jenkins-agent
+      yamlTemplate: |-
+        apiVersion: v1
+        kind: Pod
+        spec:
+          securityContext:
+            fsGroup: 1337
+    serviceAccountAgent:
+      create: true
+      name: jenkins-agent
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rax/jenkins
