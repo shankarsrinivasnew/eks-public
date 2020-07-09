@@ -1,9 +1,7 @@
----
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: jenkins
-  namespace: jenkins
 spec:
   releaseName: jenkins
   chart:
