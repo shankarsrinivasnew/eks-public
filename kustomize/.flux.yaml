@@ -1,4 +1,10 @@
 version: 1
 commandUpdated:
   generators:
-    - command: kustomize build .
+    - command: |
+        for dir in ./*/
+        do
+          dir=${dir%*/}
+          dir=${dir##*/}
+          kustomize build $dir
+        done
