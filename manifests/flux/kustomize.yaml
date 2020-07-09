@@ -13,6 +13,19 @@ data:
 
     # Get AWS properties
     AWS_ACCOUNT=$(wget -O - -Y off http://169.254.169.254/latest/dynamic/instance-identity/document | sed -nE 's/.*"accountId"\s*:\s*"(.*)".*/\1/p')
+    DNS_ZONE=dev.aws.uk.tsb
+
+    case $AWS_ACCOUNT in
+      273312704578)
+        DNS_ZONE=nonprod.aws.uk.tsb
+        ;;
+      045223552195)
+        DNS_ZONE=pre.aws.uk.tsb
+        ;;
+      407929326957)
+        DNS_ZONE=pro.aws.uk.tsb
+        ;;
+    esac
 
     # Update manifest
-    sed "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g" $1
+    sed "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g;s/{{ DNS_ZONE }}/$DNS_ZONE/g" $1
