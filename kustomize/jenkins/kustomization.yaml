@@ -1,5 +1,6 @@
 resources:
   - namespace.yaml
   - jenkins.yaml
+namespace: jenkins
 transformers:
-  - awsTransformer.yaml
+  - ../awsTransformer.yaml

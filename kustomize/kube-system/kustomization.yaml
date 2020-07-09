@@ -1,4 +1,5 @@
 resources:
   - aws-auth.yaml
+namespace: kube-system
 transformers:
-  - awsTransformer.yaml
+  - ../awsTransformer.yaml
