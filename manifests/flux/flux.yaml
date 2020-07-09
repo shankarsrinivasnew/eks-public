@@ -39,4 +39,4 @@ spec:
           name: kustomize-plugins
           items:
             - key: AWSTransformer
-              path: v1/AWSTransformer/AWSTransformer
+              path: v1/awstransformer/AWSTransformer
