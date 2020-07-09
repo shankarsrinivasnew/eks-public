@@ -15,6 +15,7 @@ spec:
       url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
       branch: nonprod
       readonly: true
+      path: manifests,kustomize
     registry:
       disableScanning: true
     manifestGeneration: true
