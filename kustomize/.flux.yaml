@@ -6,5 +6,5 @@ commandUpdated:
         do
           dir=${dir%*/}
           dir=${dir##*/}
-          kustomize build $dir
+          kustomize build --enable_alpha_plugins $dir
         done
