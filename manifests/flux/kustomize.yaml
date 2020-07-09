@@ -17,7 +17,7 @@ data:
 
     case $AWS_ACCOUNT in
       273312704578)
-        DNS_ZONE=nonprod.aws.uk.tsb
+        DNS_ZONE=uat.aws.uk.tsb
         ;;
       045223552195)
         DNS_ZONE=pre.aws.uk.tsb
