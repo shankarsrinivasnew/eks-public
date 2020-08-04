@@ -27,18 +27,16 @@ spec:
       # Environment variables that get added to the init container (useful for e.g. http_proxy)
       initContainerEnv:
         - name: http_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: https_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
-        - name: http_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local
       containerEnv:
         - name: http_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: https_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local,jenkins-agent
     agent:
@@ -50,9 +48,9 @@ spec:
           memory: 1Gi
       envVars:
         - name: http_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: https_proxy
-          value: http://proxy-access.eu-west-2.aws.uk.tsb:3128
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local,jenkins,jenkins-agent
       yamlTemplate: |-

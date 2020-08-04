@@ -5,12 +5,12 @@ metadata:
   name: aws-auth
 data:
   mapRoles: |
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/InstanceRole-_wdmzjc
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-eks-node-role
       username: system:node:{{EC2PrivateDNSName}}
       groups:
         - system:bootstrappers
         - system:nodes
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_tsbsme_non_prod_admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ IAM_ADMIN_ROLE_NAME }}
       username: admin
       groups:
         - system:masters
