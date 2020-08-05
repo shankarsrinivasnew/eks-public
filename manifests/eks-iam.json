@@ -1,0 +1,55 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AttachVolume",
+        "ec2:CreateSnapshot",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:DeleteVolume",
+        "ec2:DescribeInstances",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DetachVolume"
+      ],
+      "Resource": "*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "kms:Encrypt",
+            "kms:Decrypt",
+            "kms:ReEncrypt*",
+            "kms:GenerateDataKey*",
+            "kms:DescribeKey"
+        ],
+        "Resource": "arn:aws:kms:eu-west-2:273312704578:alias/ebs-internal"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "kms:CreateGrant",
+            "kms:ListGrants",
+            "kms:RevokeGrant"
+        ],
+        "Resource": "arn:aws:kms:eu-west-2:273312704578:alias/ebs-internal",
+        "Condition": {
+            "Bool": {
+                "kms:GrantIsForAWSResource": true
+            }
+        }
+    },
+    {
+      "Action": [
+          "sts:AssumeRole"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
