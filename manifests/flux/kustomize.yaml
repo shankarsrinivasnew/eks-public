@@ -16,24 +16,28 @@ data:
     DNS_ZONE=dev.aws.uk.tsb
     IAM_ADMIN_ROLE_NAME=tsb-aws-administrator
     GIT_BRANCH=dev
+    CLUSTER_NAME=dev-eks
 
     case $AWS_ACCOUNT in
       273312704578)
         DNS_ZONE=nonprod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_non_prod_admin
         GIT_BRANCH=nonprod
+        CLUSTER_NAME=nonprod-eks
         ;;
       045223552195)
         DNS_ZONE=preprod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_staging_admin
         GIT_BRANCH=preprod
+        CLUSTER_NAME=preprod-eks
         ;;
       407929326957)
         DNS_ZONE=prod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_prod_admin
         GIT_BRANCH=master
+        CLUSTER_NAME=prod-eks
         ;;
     esac
 
     # Update manifest
-    sed "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g;s/{{ DNS_ZONE }}/$DNS_ZONE/g;s/{{ IAM_ADMIN_ROLE_NAME }}/$IAM_ADMIN_ROLE_NAME/g;s/{{ GIT_BRANCH }}/$GIT_BRANCH/g" $1
+    sed "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g;s/{{ DNS_ZONE }}/$DNS_ZONE/g;s/{{ IAM_ADMIN_ROLE_NAME }}/$IAM_ADMIN_ROLE_NAME/g;s/{{ GIT_BRANCH }}/$GIT_BRANCH/g;s/{{ CLUSTER_NAME }}/$CLUSTER_NAME/g" $1

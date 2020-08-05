@@ -1,5 +1,6 @@
 resources:
   - aws-auth.yaml
+  - alb-ingress-controller.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
