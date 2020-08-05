@@ -1,6 +1,5 @@
 git:
   url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
-  branch: nonprod
   readonly: true
   path: manifests,kustomize
 registry:
@@ -16,7 +15,7 @@ extraEnvs:
   - name: https_proxy
     value: http://eu-west-2.proxy.aws.uk.tsb:3128
   - name: no_proxy
-    value: localhost,127.0.0.1,169.254.169.254,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local
+    value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,s3.amazonaws.com,.s3.eu-west-2.amazonaws.com,.internal
   - name: KUSTOMIZE_PLUGIN_HOME
     value: /var/lib/kustomize/plugins
 extraVolumeMounts:

@@ -1,0 +1,5 @@
+resources:
+  - flux.yaml
+namespace: flux
+transformers:
+  - awsTransformer.yaml

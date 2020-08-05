@@ -14,12 +14,14 @@ kubectl patch -n kube-system -p '{ "spec": {"template":{ "spec": { "containers":
 ```
 4. Apply EBS manifest
 ```
-kubectl apply -f manifests/ebs.yaml
+kubectl apply -f manifests/kube-system/ebs.yaml
 ```
 5. Install Flux and the Helm Operator using Helm
 ```
-kubectl create namespace flux
+kubectl apply -f manifests/flux/namespace.yaml
+kubectl apply -f manifests/flux/kustomize.yaml
+kubectl -n flux create secret generic flux-git-auth --from-literal GIT_AUTHKEY=<GitHub authentication token> --from-literal GIT_AUTHUSER=<GitHub user>
 helm repo add fluxcd https://charts.fluxcd.io
-helm install flux fluxcd/flux --namespace flux --values helm/flux.yaml
+helm install flux fluxcd/flux --namespace flux --values helm/flux.yaml --set git.branch=<dev|nonprod|preprod|master>
 helm install helm-operator fluxcd/helm-operator -namespace flux --values helm/helm.yaml
-```
+``
