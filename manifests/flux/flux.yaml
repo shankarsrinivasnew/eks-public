@@ -19,6 +19,8 @@ spec:
     registry:
       disableScanning: true
     manifestGeneration: true
+    syncGarbageCollection:
+      enabled: true
     env:
       secretName: flux-git-auth
     extraEnvs:
