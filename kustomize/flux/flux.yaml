@@ -13,7 +13,7 @@ spec:
   values:
     git:
       url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
-      branch: {{ GIT_BRANCH }}
+      branch: "{{ GIT_BRANCH }}"
       readonly: true
       path: manifests,kustomize
     registry:
