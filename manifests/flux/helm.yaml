@@ -1,25 +1,12 @@
----
-apiVersion: helm.fluxcd.io/v1
-kind: HelmRelease
-metadata:
-  name: helm-operator
-  namespace: flux
-spec:
-  releaseName: helm-operator
-  chart:
-    repository: https://charts.fluxcd.io
-    name: helm-operator
-    version: 1.1.0
-  values:
-    git:
-      ssh:
-        secretName: flux-git-deploy
-    helm:
-      versions: v3
-    extraEnvs:
-      - name: http_proxy
-        value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      - name: https_proxy
-        value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      - name: no_proxy
-        value: localhost,127.0.0.1,169.254.169.254,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local
+git:
+  ssh:
+    secretName: flux-git-deploy
+helm:
+  versions: v3
+extraEnvs:
+  - name: http_proxy
+    value: http://eu-west-2.proxy.aws.uk.tsb:3128
+  - name: https_proxy
+    value: http://eu-west-2.proxy.aws.uk.tsb:3128
+  - name: no_proxy
+    value: localhost,127.0.0.1,169.254.169.254,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,.cluster.local
