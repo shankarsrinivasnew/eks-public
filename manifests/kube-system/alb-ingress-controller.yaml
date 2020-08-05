@@ -68,7 +68,7 @@ spec:
             #   value: SECRETVALUE
           # Repository location of the ALB Ingress Controller.
           envFrom:
-            configMapRef:
-              name: proxy-environment-variables
+            - configMapRef:
+                name: proxy-environment-variables
           image: docker.io/amazon/aws-alb-ingress-controller:v1.1.8
       serviceAccountName: alb-ingress-controller
