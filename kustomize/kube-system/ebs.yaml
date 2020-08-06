@@ -426,10 +426,10 @@ parameters:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: flux
-  namespace: flux
+  name: ebs-csi-controller
+  namespace: kube-system
 spec:
-  selector: app.kubernetes.io/name == 'alb-ingress-controller'
+  selector: app.kubernetes.io/name == 'aws-ebs-csi-driver'
   types:
     - Egress
   egress:

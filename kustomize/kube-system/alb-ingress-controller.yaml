@@ -77,8 +77,8 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: flux
-  namespace: flux
+  name: alb-ingress-controller
+  namespace: kube-system
 spec:
   selector: app.kubernetes.io/name == 'alb-ingress-controller'
   types:
