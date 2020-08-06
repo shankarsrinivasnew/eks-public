@@ -435,7 +435,7 @@ spec:
   egress:
     - metadata:
         annotations:
-          from: alb-ingress-controller
+          from: ebs-csi-controller
           to: metadata
       action: Allow
       protocol: TCP
