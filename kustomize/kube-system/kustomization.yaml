@@ -1,6 +1,8 @@
 resources:
   - aws-auth.yaml
   - alb-ingress-controller.yaml
+  - alb-rbac-role.yaml
+  - ebs.yaml
   - external-dns.yaml
 namespace: kube-system
 transformers:
