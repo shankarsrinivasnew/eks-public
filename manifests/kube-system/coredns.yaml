@@ -13,49 +13,51 @@ spec:
     - metadata:
         annotations:
           from: all
-          to: dns
+          to: coredns
       action: Allow
       protocol: TCP
       source:
         selector: all()
+        namespaceSelector: all()
       destination:
         ports:
           - 53
     - metadata:
         annotations:
           from: all
-          to: dns
+          to: coredns
       action: Allow
       protocol: UDP
       source:
         selector: all()
+        namespaceSelector: all()
       destination:
         ports:
           - 53
   egress:
     - metadata:
         annotations:
-          from: dns
+          from: coredns
           to: dns
       action: Allow
       protocol: TCP
       destination:
         nets:
-          - 10.161.160.2/32
-          - 10.161.192.2/32
-          - 10.161.224.2/32
+          - 10.161.128.2/32
+          - 10.162.128.2/32
+          - 10.163.128.2/32
         ports:
           - 53
     - metadata:
         annotations:
-          from: dns
+          from: coredns
           to: dns
       action: Allow
       protocol: UDP
       destination:
         nets:
-          - 10.161.160.2/32
-          - 10.161.192.2/32
-          - 10.161.224.2/32
+          - 10.161.128.2/32
+          - 10.162.128.2/32
+          - 10.163.128.2/32
         ports:
           - 53
