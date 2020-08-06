@@ -60,4 +60,6 @@ metadata:
     app.kubernetes.io/name: alb-ingress-controller
   name: alb-ingress-controller
   namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/alb
 ...
