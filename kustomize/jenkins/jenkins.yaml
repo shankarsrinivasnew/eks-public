@@ -145,6 +145,7 @@ spec:
                                 command: |-
                                   curl https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip -o packer.zip
                                   unzip packer.zip
+                                toolHome: "."
                   - name: "terraform"
                     properties:
                       - installSource:
@@ -153,6 +154,7 @@ spec:
                                 command: |-
                                   curl https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
+                                toolHome: "."
       jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
@@ -185,6 +187,8 @@ spec:
           kind: Pod
           spec:
             serviceAccountName: jenkins-terraform
+            securityContext:
+              fsGroup: 1337
       packer:
         podName: packer
         componentName: jenkins-packer
@@ -193,3 +197,5 @@ spec:
           kind: Pod
           spec:
             serviceAccountName: jenkins-packer
+            securityContext:
+              fsGroup: 1337
