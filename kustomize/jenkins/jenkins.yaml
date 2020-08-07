@@ -155,6 +155,7 @@ spec:
                                   unzip terraform.zip
       jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
+      slaveJenkinsTunnel: http://jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
       image: jenkins/inbound-agent
       tag: 4.3-4
