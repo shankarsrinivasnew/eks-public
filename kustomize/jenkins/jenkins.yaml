@@ -68,17 +68,37 @@ spec:
       JCasC:
         configScripts:
           github: |-
-            jenkins:
+            unclassified:
               gitHubPluginConfig:
                 hookUrl: http://jenkins.{{ DNS_ZONE }}
                 configs:
                   - name: "GitHub"
                     credentialsId: "github"
                     manageHooks: true
-          jenkins: |-
-            jenkins:
+          jenkinsUrl: |-
+            unclassified:
               location:
                 url: http://jenkins.{{ DNS_ZONE }}
+          libraries: |-
+            unclassified:
+              globalLibraries:
+                - name: "rax-jenkins-shared-library"
+                  defaultVersion: "develop"
+                  retriever:
+                    modernSCM:
+                      scm:
+                        github:
+                          credentialsId: "github-job"
+                          repoOwner: "TSB-Bank"
+                          repository: "rax-jenkins-shared-library"
+                          traits:
+                            - gitHubBranchDiscovery:
+                                strategyId: 1
+                            - gitHubPullRequestDiscovery:
+                                strategyId: 1
+                            - gitHubForkDiscovery:
+                                strategyId: 1
+                                trust: "gitHubTrustPermissions"
           proxy: |-
             jenkins:
               proxy:
