@@ -70,7 +70,7 @@ spec:
           github: |-
             unclassified:
               gitHubPluginConfig:
-                hookUrl: http://jenkins.{{ DNS_ZONE }}
+                hookUrl: "http://jenkins.{{ DNS_ZONE }}"
                 configs:
                   - name: "GitHub"
                     credentialsId: "github"
@@ -78,7 +78,7 @@ spec:
           jenkins-url: |-
             unclassified:
               location:
-                url: http://jenkins.{{ DNS_ZONE }}
+                url: "http://jenkins.{{ DNS_ZONE }}"
           libraries: |-
             unclassified:
               globalLibraries:
