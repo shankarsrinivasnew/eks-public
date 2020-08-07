@@ -93,9 +93,6 @@ spec:
         spec:
           securityContext:
             fsGroup: 1337
-    serviceAccountAgent:
-      create: true
-      name: jenkins-agent
     additionalAgents:
       terraform:
         podName: terraform 
