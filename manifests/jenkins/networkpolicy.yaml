@@ -1,0 +1,68 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-master
+  namespace: jenkins
+spec:
+  selector: app.kubernetes.io/component == 'jenkins-master'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: lb
+          to: jenkins-master
+      action: Allow
+      protocol: TCP
+      source:
+        nets:
+          - 10.161.0.0/16
+          - 10.162.0.0/16
+          - 10.163.0.0/16
+      destination:
+        ports:
+          - 8080
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      source:
+        selector: has(jenkins/jenkins-jenkins-agent)
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      destination:
+        selector: has(jenkins/jenkins-jenkins-agent)
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent
+  namespace: jenkins
+spec:
+  selector: has(jenkins/jenkins-jenkins-agent)
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      source:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      destination:
+        selector: app.kubernetes.io/component == 'jenkins-master'
