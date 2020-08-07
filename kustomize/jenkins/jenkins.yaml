@@ -153,7 +153,7 @@ spec:
                                 command: |-
                                   curl https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
-      url: http://jenkins.{{ DNS_ZONE }}
+      jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
     agent:
       image: jenkins/inbound-agent
