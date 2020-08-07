@@ -70,7 +70,7 @@ spec:
           github: |-
             unclassified:
               gitHubPluginConfig:
-                hookUrl: "http://jenkins.{{ DNS_ZONE }}"
+                hookUrl: "http://jenkins.{{ DNS_ZONE }}/github-webhook/"
                 configs:
                   - name: "GitHub"
                     credentialsId: "github"
@@ -78,23 +78,24 @@ spec:
           libraries: |-
             unclassified:
               globalLibraries:
-                - name: "rax-jenkins-shared-library"
-                  defaultVersion: "develop"
-                  retriever:
-                    modernSCM:
-                      scm:
-                        github:
-                          credentialsId: "github-job"
-                          repoOwner: "TSB-Bank"
-                          repository: "rax-jenkins-shared-library"
-                          traits:
-                            - gitHubBranchDiscovery:
-                                strategyId: 1
-                            - gitHubPullRequestDiscovery:
-                                strategyId: 1
-                            - gitHubForkDiscovery:
-                                strategyId: 1
-                                trust: "gitHubTrustPermissions"
+                libraries:
+                  - name: "rax-jenkins-shared-library"
+                    defaultVersion: "develop"
+                    retriever:
+                      modernSCM:
+                        scm:
+                          github:
+                            credentialsId: "github-job"
+                            repoOwner: "TSB-Bank"
+                            repository: "rax-jenkins-shared-library"
+                            traits:
+                              - gitHubBranchDiscovery:
+                                  strategyId: 1
+                              - gitHubPullRequestDiscovery:
+                                  strategyId: 1
+                              - gitHubForkDiscovery:
+                                  strategyId: 1
+                                  trust: "gitHubTrustPermissions"
           proxy: |-
             jenkins:
               proxy:
