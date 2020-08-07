@@ -102,6 +102,57 @@ spec:
                 name: "eu-west-2.proxy.aws.uk.tsb"
                 port: 3128
                 noProxyHost: "localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,s3.amazonaws.com,.s3.eu-west-2.amazonaws.com,.internal,.cluster.local"
+          tools: |-
+            tool:
+              customTool:
+                installations:
+                  - name: "pip"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                                  python get-pip.py
+                                toolHome: "/home/jenkins/.local/bin"
+                  - name: "ansible"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                                  python get-pip.py
+                                  /home/jenkins/.local/bin/pip install --user ansible
+                                toolHome: "/home/jenkins/.local/bin"
+                  - name: "aws"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                                  python get-pip.py
+                                  curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscli.zip
+                                  unzip awscli.zip
+                                  /home/jenkins/.local/bin/pip install botocore boto3
+                                toolHome: "aws/dist"
+                  - name: "packer"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip -o packer.zip
+                                  unzip packer.zip
+                  - name: "terraform"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform.zip
+                                  unzip terraform.zip
       url: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
     agent:
