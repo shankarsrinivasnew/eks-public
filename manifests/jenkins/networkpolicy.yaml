@@ -41,7 +41,7 @@ spec:
       destination:
         serviceAccounts:
           selector: role == 'jenkins-agent'
-          
+
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -69,3 +69,18 @@ spec:
       action: Allow
       destination:
         selector: app.kubernetes.io/component == 'jenkins-master'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.0.0/16
+          - 10.162.0.0/16
+          - 10.163.0.0/16
+        ports:
+          - 22
+          - 5985
+          - 5986
