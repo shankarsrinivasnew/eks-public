@@ -207,6 +207,9 @@ spec:
               key: access_key
               name: aws-secret
               optional: true
+        envFrom:
+          - configMapRef:
+              name: proxy-environment-variables
         image: amazon/aws-ebs-csi-driver:v0.5.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
@@ -234,6 +237,9 @@ spec:
         env:
         - name: ADDRESS
           value: /var/lib/csi/sockets/pluginproxy/csi.sock
+        envFrom:
+          - configMapRef:
+              name: proxy-environment-variables
         image: quay.io/k8scsi/csi-provisioner:v1.3.0
         name: csi-provisioner
         volumeMounts:
@@ -247,6 +253,9 @@ spec:
         env:
         - name: ADDRESS
           value: /var/lib/csi/sockets/pluginproxy/csi.sock
+        envFrom:
+          - configMapRef:
+              name: proxy-environment-variables
         image: quay.io/k8scsi/csi-attacher:v1.2.0
         name: csi-attacher
         volumeMounts:
@@ -306,6 +315,9 @@ spec:
         env:
         - name: CSI_ENDPOINT
           value: unix:/csi/csi.sock
+        envFrom:
+          - configMapRef:
+              name: proxy-environment-variables
         image: amazon/aws-ebs-csi-driver:v0.5.0
         livenessProbe:
           failureThreshold: 5
@@ -339,6 +351,9 @@ spec:
           value: /csi/csi.sock
         - name: DRIVER_REG_SOCK_PATH
           value: /var/lib/kubelet/plugins/ebs.csi.aws.com/csi.sock
+        envFrom:
+          - configMapRef:
+              name: proxy-environment-variables
         image: quay.io/k8scsi/csi-node-driver-registrar:v1.1.0
         lifecycle:
           preStop:
