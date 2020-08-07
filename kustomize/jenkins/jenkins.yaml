@@ -75,7 +75,7 @@ spec:
                   - name: "GitHub"
                     credentialsId: "github"
                     manageHooks: true
-          jenkinsUrl: |-
+          jenkins-url: |-
             unclassified:
               location:
                 url: http://jenkins.{{ DNS_ZONE }}
