@@ -56,7 +56,7 @@ spec:
         - envinject:2.3.0
         - extra-tool-installers:0.5
         - git-parameter:0.9.12
-        - github-pullrequest:0.2.8
+        - github-branch-source:2.8.3
         - http_request:1.8.26
         - job-dsl:1.77
         - matrix-auth:2.6.2
