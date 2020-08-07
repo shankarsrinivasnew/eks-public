@@ -30,7 +30,8 @@ spec:
           to: jenkins-master
       action: Allow
       source:
-        selector: has(jenkins/jenkins-jenkins-agent)
+        serviceAccounts:
+          selector: role == 'jenkins-agent'
   egress:
     - metadata:
         annotations:
@@ -38,7 +39,8 @@ spec:
           to: jenkins-agent
       action: Allow
       destination:
-        selector: has(jenkins/jenkins-jenkins-agent)
+        serviceAccounts:
+          selector: role == 'jenkins-agent'
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -46,7 +48,7 @@ metadata:
   name: jenkins-agent
   namespace: jenkins
 spec:
-  selector: has(jenkins/jenkins-jenkins-agent)
+  serviceAccountSelector: role == 'jenkins-agent'
   types:
     - Ingress
     - Egress
