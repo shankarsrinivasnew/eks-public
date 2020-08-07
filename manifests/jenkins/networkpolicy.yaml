@@ -41,6 +41,7 @@ spec:
       destination:
         serviceAccounts:
           selector: role == 'jenkins-agent'
+          
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
