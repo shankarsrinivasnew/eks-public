@@ -39,6 +39,32 @@ spec:
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.eu-west-2.compute.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,s3.amazonaws.com,.s3.eu-west-2.amazonaws.com,.internal
+      installPlugins:
+        - kubernetes:1.26.4
+        - workflow-job:2.39
+        - workflow-aggregator:2.6
+        - credentials-binding:1.23
+        - git:4.3.0
+        - configuration-as-code:1.43
+        - ansicolor:0.7.2
+        - pipeline-aws:1.42
+        - authorize-project:1.30
+        - aws-global-configuration:1.5
+        - command-launcher:1.4
+        - custom-tools-plugin:0.7
+        - docker-plugin:1.2.0 
+        - envinject:2.3.0
+        - extra-tool-installers:0.5
+        - git-parameter:0.9.12
+        - github-pullrequest:0.2.8
+        - http_request:1.8.26
+        - job-dsl:1.77
+        - matrix-auth:2.6.2
+        - jdk-tool:1.4
+        - pipeline-utility-steps:2.6.1
+        - pipeline-github:2.7
+        - scm-filter-branch-pr:0.5.1
+        - ws-cleanup:0.38
     agent:
       image: jenkins/inbound-agent
       tag: 4.3-4
@@ -64,3 +90,12 @@ spec:
       name: jenkins-agent
       annotations:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rax/jenkins
+    additionalAgents:
+      terraform:
+        yamlTemplate: |-
+          spec:
+            serviceAccountName: jenkins-terraform
+      packer:
+        yamlTemplate: |-
+          spec:
+            serviceAccountName: jenkins-packer
