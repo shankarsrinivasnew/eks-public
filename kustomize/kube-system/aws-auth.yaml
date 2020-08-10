@@ -5,7 +5,7 @@ metadata:
   name: aws-auth
 data:
   mapRoles: |
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-node-role
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ CLUSTER_NAME }}-node-role
       username: system:node:{{EC2PrivateDNSName}}
       groups:
         - system:bootstrappers
