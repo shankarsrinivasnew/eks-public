@@ -57,3 +57,15 @@ spec:
         namespaceSelector: projectcalico.org/name == 'kube-system'
         ports:
           - 53
+    - metadata:
+        annotations:
+          from: all
+          to: s3
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 52.95.150.0/24
+          - 52.95.148.0/23
+        ports:
+          - 443
