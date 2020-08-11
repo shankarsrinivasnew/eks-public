@@ -67,9 +67,21 @@ spec:
       action: Allow
       destination:
         selector: app.kubernetes.io/component == 'jenkins-master'
+
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent-packer
+  namespace: jenkins
+spec:
+  serviceAccountSelector: role == 'jenkins-agent' && component == 'packer'
+  types:
+    - Egress
+  egress:
     - metadata:
         annotations:
-          from: jenkins-agent
+          from: jenkins-agent-packer
           to: vpc
       action: Allow
       protocol: TCP
