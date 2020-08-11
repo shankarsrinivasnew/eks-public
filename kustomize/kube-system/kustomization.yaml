@@ -1,5 +1,6 @@
 resources:
   - aws-auth.yaml
+  - default-calico-policy.yaml
   - coredns-networkpolicy.yaml
   - alb-ingress-controller.yaml
   - alb-rbac-role.yaml
