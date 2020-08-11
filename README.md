@@ -2,19 +2,25 @@
 Configuration for shared EKS clusters
 
 ## Deployment
-1. Ensure that EKS is deployed witht the IAM policy `eks-iam.json` applied.
-2. Apply proxy manifest (https://aws.amazon.com/premiumsupport/knowledge-center/eks-http-proxy-configuration-automation/)
+1. Apply proxy manifest (https://aws.amazon.com/premiumsupport/knowledge-center/eks-http-proxy-configuration-automation/)
 ```
 kubectl apply -f manifests/kube-system/proxy-environment-variables.yaml
 ```
-3. Patch daemon sets
+2. Patch daemon sets
 ```
 kubectl patch -n kube-system -p '{ "spec": {"template": { "spec": { "containers": [ { "name": "aws-node", "envFrom": [ { "configMapRef": {"name": "proxy-environment-variables"} } ] } ] } } } }' daemonset aws-node
 kubectl patch -n kube-system -p '{ "spec": {"template":{ "spec": { "containers": [ { "name": "kube-proxy", "envFrom": [ { "configMapRef": {"name": "proxy-environment-variables"} } ] } ] } } } }' daemonset kube-proxy
 ```
+3. Apply Calico manifest
+```
+kubectl apply -f manifests/kube-system/calico.yaml
+```
 4. Apply EBS manifest
 ```
-kubectl apply -f manifests/kube-system/ebs.yaml
+AWS_ACCOUNT=<AWS account number>
+sed -i -e "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g" kustomize/kube-system/ebs.yaml
+kubectl apply -f kustomize/kube-system/ebs.yaml
+sed -i -e "s/$AWS_ACCOUNT/{{ AWS_ACCOUNT }}/g" kustomize/kube-system/ebs.yaml
 ```
 5. Install Flux and the Helm Operator using Helm
 ```
