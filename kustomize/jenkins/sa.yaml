@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins-agent
+  namespace: jenkins
+  labels:
+    role: jenkins-agent
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins-terraform
+  namespace: jenkins
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-terraform
+  labels:
+    role: jenkins-agent
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins-packer
+  namespace: jenkins
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-packer
+  labels:
+    role: jenkins-agent

@@ -1,0 +1,45 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: flux
+  namespace: flux
+spec:
+  releaseName: flux
+  chart:
+    repository: https://charts.fluxcd.io
+    name: flux
+    version: 1.3.0
+  values:
+    git:
+      url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
+      branch: "{{ GIT_BRANCH }}"
+      readonly: true
+      path: manifests,kustomize
+    registry:
+      disableScanning: true
+    manifestGeneration: true
+    syncGarbageCollection:
+      enabled: true
+    env:
+      secretName: flux-git-auth
+    extraEnvs:
+      - name: http_proxy
+        value: http://eu-west-2.proxy.aws.uk.tsb:3128
+      - name: https_proxy
+        value: http://eu-west-2.proxy.aws.uk.tsb:3128
+      - name: no_proxy
+        value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local
+      - name: KUSTOMIZE_PLUGIN_HOME
+        value: /var/lib/kustomize/plugins
+    extraVolumeMounts:
+      - name: kustomize-plugins
+        mountPath: /var/lib/kustomize/plugins
+    extraVolumes:
+      - name: kustomize-plugins
+        configMap:
+          name: kustomize-plugins
+          defaultMode: 0777
+          items:
+            - key: AWSTransformer
+              path: v1/awstransformer/AWSTransformer

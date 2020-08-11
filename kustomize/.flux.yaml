@@ -1,0 +1,11 @@
+version: 1
+commandUpdated:
+  generators:
+    - command: |
+        for dir in ./*/
+        do
+          echo ---
+          dir=${dir%*/}
+          dir=${dir##*/}
+          kustomize build --enable_alpha_plugins $dir
+        done
