@@ -18,7 +18,7 @@ spec:
       protocol: TCP
       source:
         nets:
-          - "{{ VPC }}"
+          - "{{ VPC_CIDR }}"
       destination:
         ports:
           - 8080
@@ -75,7 +75,7 @@ spec:
       protocol: TCP
       destination:
         nets:
-          - "{{ VPC }}"
+          - "{{ VPC_CIDR }}"
         ports:
           - 22
           - 5985
