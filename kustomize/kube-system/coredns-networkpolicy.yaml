@@ -43,7 +43,7 @@ spec:
       protocol: TCP
       destination:
         nets:
-          - "{{ DNS }}/32"
+          - "{{ DNS_SERVER }}/32"
         ports:
           - 53
     - metadata:
@@ -54,6 +54,6 @@ spec:
       protocol: UDP
       destination:
         nets:
-          - "{{ DNS }}/32"
+          - "{{ DNS_SERVER }}/32"
         ports:
           - 53
