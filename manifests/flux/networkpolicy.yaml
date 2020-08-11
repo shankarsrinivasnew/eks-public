@@ -1,0 +1,22 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: flux
+  namespace: flux
+spec:
+  selector: app == 'flux'
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: flux
+          to: metadata
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 169.254.169.254/32
+        ports:
+          - 80

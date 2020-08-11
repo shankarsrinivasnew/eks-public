@@ -1,0 +1,71 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkPolicy
+metadata:
+  name: default-policy
+spec:
+  selector: all()
+  applyOnForward: true
+  types:
+    - Ingress
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: all
+          to: proxy
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 172.17.0.0/24
+        ports:
+          - 3128
+    - metadata:
+        annotations:
+          from: all
+          to: local
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.0.0/16
+          - 10.162.0.0/16
+          - 10.163.0.0/16
+        ports:
+          - 80
+          - 443
+    - metadata:
+        annotations:
+          from: all
+          to: dns
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: k8s-app == 'kube-dns'
+        namespaceSelector: projectcalico.org/name == 'kube-system'
+        ports:
+          - 53
+    - metadata:
+        annotations:
+          from: all
+          to: dns
+      action: Allow
+      protocol: UDP
+      destination:
+        selector: k8s-app == 'kube-dns'
+        namespaceSelector: projectcalico.org/name == 'kube-system'
+        ports:
+          - 53
+    - metadata:
+        annotations:
+          from: all
+          to: s3
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 52.95.150.0/24
+          - 52.95.148.0/23
+        ports:
+          - 443
