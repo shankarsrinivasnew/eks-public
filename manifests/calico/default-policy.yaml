@@ -29,9 +29,7 @@ spec:
       protocol: TCP
       destination:
         nets:
-          - 10.161.0.0/16
-          - 10.162.0.0/16
-          - 10.163.0.0/16
+          - "{{ VPC_CIDR }}"
         ports:
           - 80
           - 443
