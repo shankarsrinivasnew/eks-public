@@ -176,6 +176,7 @@ spec:
         apiVersion: v1
         kind: Pod
         spec:
+          serviceAccountName: jenkins-agent
           securityContext:
             fsGroup: 1337
     additionalAgents:
