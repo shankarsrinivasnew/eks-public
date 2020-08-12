@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cb-{{ ENV }}
+  name: cb-{{ GIT_BRANCH }}
