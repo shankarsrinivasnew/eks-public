@@ -202,11 +202,12 @@ spec:
               fsGroup: 1337
       cb:
         podName: cb
-        namespace: cb-nonprod
         componentName: tsb-cb
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
+          metadata:
+            namespace: cb
           spec:
             serviceAccountName: tsb-cb
             securityContext:
