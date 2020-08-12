@@ -2,4 +2,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cb
+  name: cb-{{ AWS_ENVIRONMENT }}
