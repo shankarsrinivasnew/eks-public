@@ -13,7 +13,7 @@ data:
 
     # Get AWS properties
     AWS_ACCOUNT=$(wget -O - -Y off http://169.254.169.254/latest/dynamic/instance-identity/document | sed -nE 's/.*"accountId"\s*:\s*"(.*)".*/\1/p')
-    ENV=dev
+    AWS_ENVIRONMENT=dev
     DNS_ZONE=dev.aws.uk.tsb
     IAM_ADMIN_ROLE_NAME=tsb-aws-administrator
     GIT_BRANCH=dev
@@ -32,7 +32,7 @@ data:
 
     case $AWS_ACCOUNT in
       273312704578)
-        ENV=nonprod
+        AWS_ENVIRONMENT=nonprod
         DNS_ZONE=nonprod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_non_prod_admin
         GIT_BRANCH=nonprod
@@ -50,7 +50,7 @@ data:
         CORE_SUBNET_C_CIDR=10.161.224.0/19
         ;;
       045223552195)
-        ENV=preprod
+        AWS_ENVIRONMENT=preprod
         DNS_ZONE=preprod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_staging_admin
         GIT_BRANCH=preprod
@@ -68,7 +68,7 @@ data:
         CORE_SUBNET_C_CIDR=10.162.224.0/19
         ;;
       407929326957)
-        ENV=prod
+        AWS_ENVIRONMENT=prod
         DNS_ZONE=prod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_prod_admin
         GIT_BRANCH=master
@@ -88,4 +88,4 @@ data:
     esac
 
     # Update manifest
-    sed "s~{{ AWS_ACCOUNT }}~$AWS_ACCOUNT~g;s~{{ ENV }}~$ENV~g;s~{{ DNS_ZONE }}~$DNS_ZONE~g;s~{{ IAM_ADMIN_ROLE_NAME }}~$IAM_ADMIN_ROLE_NAME~g;s~{{ GIT_BRANCH }}~$GIT_BRANCH~g;s~{{ CLUSTER_NAME }}~$CLUSTER_NAME~g;s~{{ VPC_CIDR }}~$VPC_CIDR~g;s~{{ ACCESS_SUBNET_A_CIDR }}~$ACCESS_SUBNET_A_CIDR~g;s~{{ ACCESS_SUBNET_B_CIDR }}~$ACCESS_SUBNET_B_CIDR~g;s~{{ ACCESS_SUBNET_C_CIDR }}~$ACCESS_SUBNET_C_CIDR~g;s~{{ DATA_SUBNET_A_CIDR }}~$DATA_SUBNET_A_CIDR~g;s~{{ DATA_SUBNET_B_CIDR }}~$DATA_SUBNET_B_CIDR~g;s~{{ DATA_SUBNET_C }}~$DATA_SUBNET_C_CIDR~g;s~{{ CORE_SUBNET_A_CIDR }}~$CORE_SUBNET_A_CIDR~g;s~{{ CORE_SUBNET_B_CIDR }}~$CORE_SUBNET_B_CIDR~g;s~{{ CORE_SUBNET_C_CIDR }}~$CORE_SUBNET_C_CIDR~g;s~{{ DNS_SERVER }}~$DNS_SERVER~g" $1
+    sed "s~{{ AWS_ACCOUNT }}~$AWS_ACCOUNT~g;s~{{ AWS_ENVIRONMENT }}~$AWS_ENVIRONMENT~g;s~{{ DNS_ZONE }}~$DNS_ZONE~g;s~{{ IAM_ADMIN_ROLE_NAME }}~$IAM_ADMIN_ROLE_NAME~g;s~{{ GIT_BRANCH }}~$GIT_BRANCH~g;s~{{ CLUSTER_NAME }}~$CLUSTER_NAME~g;s~{{ VPC_CIDR }}~$VPC_CIDR~g;s~{{ ACCESS_SUBNET_A_CIDR }}~$ACCESS_SUBNET_A_CIDR~g;s~{{ ACCESS_SUBNET_B_CIDR }}~$ACCESS_SUBNET_B_CIDR~g;s~{{ ACCESS_SUBNET_C_CIDR }}~$ACCESS_SUBNET_C_CIDR~g;s~{{ DATA_SUBNET_A_CIDR }}~$DATA_SUBNET_A_CIDR~g;s~{{ DATA_SUBNET_B_CIDR }}~$DATA_SUBNET_B_CIDR~g;s~{{ DATA_SUBNET_C }}~$DATA_SUBNET_C_CIDR~g;s~{{ CORE_SUBNET_A_CIDR }}~$CORE_SUBNET_A_CIDR~g;s~{{ CORE_SUBNET_B_CIDR }}~$CORE_SUBNET_B_CIDR~g;s~{{ CORE_SUBNET_C_CIDR }}~$CORE_SUBNET_C_CIDR~g;s~{{ DNS_SERVER }}~$DNS_SERVER~g" $1
