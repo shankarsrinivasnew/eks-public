@@ -3,7 +3,7 @@ apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
   name: jenkins-agent
-  namespace: jenkins
+  namespace: cb
 spec:
   serviceAccountSelector: role == 'jenkins-agent'
   types:
