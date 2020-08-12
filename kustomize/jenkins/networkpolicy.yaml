@@ -28,9 +28,9 @@ spec:
           to: jenkins-master
       action: Allow
       source:
+        namespaceSelector: all()
         serviceAccounts:
           selector: role == 'jenkins-agent'
-          namespaceSelector: all()
   egress:
     - metadata:
         annotations:
@@ -38,9 +38,9 @@ spec:
           to: jenkins-agent
       action: Allow
       destination:
+        namespaceSelector: all()
         serviceAccounts:
           selector: role == 'jenkins-agent'
-          namespaceSelector: all()
 
 ---
 apiVersion: crd.projectcalico.org/v1
