@@ -30,6 +30,7 @@ spec:
       source:
         serviceAccounts:
           selector: role == 'jenkins-agent'
+          namespaceSelector: all()
   egress:
     - metadata:
         annotations:
@@ -39,6 +40,7 @@ spec:
       destination:
         serviceAccounts:
           selector: role == 'jenkins-agent'
+          namespaceSelector: all()
 
 ---
 apiVersion: crd.projectcalico.org/v1
