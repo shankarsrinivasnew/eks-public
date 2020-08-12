@@ -206,6 +206,8 @@ spec:
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
+          metadata:
+            namespace: cb-nonprod
           spec:
             serviceAccountName: tsb-cb
             securityContext:
