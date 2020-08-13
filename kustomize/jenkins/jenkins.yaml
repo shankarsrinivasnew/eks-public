@@ -155,6 +155,10 @@ spec:
                                   curl https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
                                 toolHome: "."
+          ansicolor: |-
+            unclassified:
+              ansiColorBuildWrapper:
+                globalColorMapName: "xterm"
       jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
