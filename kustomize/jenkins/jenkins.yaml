@@ -203,6 +203,9 @@ spec:
       cb:
         podName: cb
         componentName: tsb-cb
+        containerEnv:
+          - name: plugin_cache_dir
+            value: ../custom-plugins
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
