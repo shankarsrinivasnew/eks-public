@@ -54,7 +54,7 @@ spec:
         - custom-tools-plugin:0.7
         - docker-plugin:1.2.0 
         - envinject:2.3.0
-        - extra-tool-installers:0.5
+        - extra-tool-installers:1.0
         - git-parameter:0.9.12
         - github-branch-source:2.8.3
         - http_request:1.8.26
