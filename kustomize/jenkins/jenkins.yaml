@@ -152,7 +152,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform.zip
+                                  curl https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
                                 toolHome: "."
           ansicolor: |-
