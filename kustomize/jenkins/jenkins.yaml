@@ -66,6 +66,8 @@ spec:
         - pipeline-github:2.7
         - scm-filter-branch-pr:0.5.1
         - ws-cleanup:0.38
+        - authorize-project:1.3.0
+        - role-strategy:3.0
       JCasC:
         configScripts:
           github: |-
@@ -160,6 +162,54 @@ spec:
             unclassified:
               ansiColorBuildWrapper:
                 globalColorMapName: "xterm"
+          authorisation: |-
+            jenkins:
+              authorizationStrategy:
+                roleBased:
+                  roles:
+                    global:
+                      - assignments:
+                          - "admin"
+                        name: "admin"
+                        pattern: ".*"
+                        permissions:
+                          - "Job/Move"
+                          - "Job/Build"
+                          - "Lockable Resources/View"
+                          - "Credentials/Delete"
+                          - "Credentials/ManageDomains"
+                          - "Lockable Resources/Unlock"
+                          - "View/Create"
+                          - "Agent/Configure"
+                          - "Job/Read"
+                          - "Credentials/Update"
+                          - "Agent/Create"
+                          - "Job/ExtendedRead"
+                          - "Overall/SystemRead"
+                          - "Job/Delete"
+                          - "Agent/Build"
+                          - "View/Configure"
+                          - "Lockable Resources/Reserve"
+                          - "Agent/Provision"
+                          - "SCM/Tag"
+                          - "Job/Create"
+                          - "Job/Discover"
+                          - "Agent/ExtendedRead"
+                          - "Credentials/View"
+                          - "Agent/Connect"
+                          - "Agent/Delete"
+                          - "Run/Replay"
+                          - "Agent/Disconnect"
+                          - "Run/Delete"
+                          - "Job/Cancel"
+                          - "Overall/Read"
+                          - "Run/Update"
+                          - "Credentials/Create"
+                          - "Overall/Administer"
+                          - "View/Delete"
+                          - "Job/Configure"
+                          - "Job/Workspace"
+                          - "View/Read"
       jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
