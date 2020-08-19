@@ -15,6 +15,11 @@ data:
       groups:
         - system:masters
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/cb-admin
+      username: cb-admin
+      groups:
+        - cb-view-kube-system
+        - cb-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/tsb-cb
       username: tsb-cb
       groups:
         - cb-view-kube-system
