@@ -1,0 +1,7 @@
+resources:
+  - namespace.yaml
+  - sa.yaml
+  - networkpolicy.yaml
+namespace: cb
+transformers:
+  - awsTransformer.yaml

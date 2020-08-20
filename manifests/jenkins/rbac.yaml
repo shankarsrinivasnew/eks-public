@@ -1,0 +1,48 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: jenkins-schedule-agents
+  labels:
+    role: jenkins-master
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/exec
+      - pods/log
+      - persistentvolumeclaims
+      - events
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/exec
+      - persistentvolumeclaims
+    verbs:
+      - create
+      - delete
+      - deletecollections
+      - patch
+      - update
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: jenkins-schedule-agents
+  labels:
+    role: jenkins-master
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: jenkins-schedule-agents
+subjects:
+  - kind: ServiceAccount
+    name: jenkins
+    namespace: jenkins

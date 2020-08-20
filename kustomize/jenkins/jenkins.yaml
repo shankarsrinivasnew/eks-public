@@ -31,18 +31,19 @@ spec:
         - name: https_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
-          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       containerEnv:
         - name: http_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: https_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
-          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       installPlugins:
         - kubernetes:1.26.4
         - workflow-job:2.39
         - workflow-aggregator:2.6
+        - workflow-durable-task-step:2.35
         - credentials-binding:1.23
         - git:4.3.0
         - configuration-as-code:1.43
@@ -54,7 +55,7 @@ spec:
         - custom-tools-plugin:0.7
         - docker-plugin:1.2.0 
         - envinject:2.3.0
-        - extra-tool-installers:0.5
+        - extra-tool-installers:1.0
         - git-parameter:0.9.12
         - github-branch-source:2.8.3
         - http_request:1.8.26
@@ -65,6 +66,8 @@ spec:
         - pipeline-github:2.7
         - scm-filter-branch-pr:0.5.1
         - ws-cleanup:0.38
+        - authorize-project:1.3.0
+        - role-strategy:3.0
       JCasC:
         configScripts:
           github: |-
@@ -101,7 +104,7 @@ spec:
               proxy:
                 name: "eu-west-2.proxy.aws.uk.tsb"
                 port: 3128
-                noProxyHost: "localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local"
+                noProxyHost: "localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb"
           tools: |-
             tool:
               customTool:
@@ -152,9 +155,61 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform.zip
+                                  curl https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
                                 toolHome: "."
+          ansicolor: |-
+            unclassified:
+              ansiColorBuildWrapper:
+                globalColorMapName: "xterm"
+          authorisation: |-
+            jenkins:
+              authorizationStrategy:
+                roleBased:
+                  roles:
+                    global:
+                      - assignments:
+                          - "admin"
+                        name: "admin"
+                        pattern: ".*"
+                        permissions:
+                          - "Job/Move"
+                          - "Job/Build"
+                          - "Lockable Resources/View"
+                          - "Credentials/Delete"
+                          - "Credentials/ManageDomains"
+                          - "Lockable Resources/Unlock"
+                          - "View/Create"
+                          - "Agent/Configure"
+                          - "Job/Read"
+                          - "Credentials/Update"
+                          - "Agent/Create"
+                          - "Job/ExtendedRead"
+                          - "Overall/SystemRead"
+                          - "Job/Delete"
+                          - "Agent/Build"
+                          - "View/Configure"
+                          - "Lockable Resources/Reserve"
+                          - "Agent/Provision"
+                          - "SCM/Tag"
+                          - "Job/Create"
+                          - "Job/Discover"
+                          - "Agent/ExtendedRead"
+                          - "Credentials/View"
+                          - "Agent/Connect"
+                          - "Agent/Delete"
+                          - "Run/Replay"
+                          - "Agent/Disconnect"
+                          - "Run/Delete"
+                          - "Job/Cancel"
+                          - "Overall/Read"
+                          - "Run/Update"
+                          - "Credentials/Create"
+                          - "Overall/Administer"
+                          - "View/Delete"
+                          - "Job/Configure"
+                          - "Job/Workspace"
+                          - "View/Read"
       jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
@@ -171,7 +226,7 @@ spec:
         - name: https_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
-          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       yamlTemplate: |-
         apiVersion: v1
         kind: Pod
@@ -198,5 +253,24 @@ spec:
           kind: Pod
           spec:
             serviceAccountName: jenkins-packer
+            securityContext:
+              fsGroup: 1337
+      cb:
+        podName: cb
+        componentName: tsb-cb
+        envVars:
+          - name: http_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: https_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: no_proxy
+            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            namespace: cb
+          spec:
+            serviceAccountName: tsb-cb
             securityContext:
               fsGroup: 1337

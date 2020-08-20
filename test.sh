@@ -1,18 +1,4 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kustomize-plugins
-  namespace: flux
-data:
-  AWSTransformer: |
-    #!/bin/bash
-
-    # Ignore script name
-    shift
-
-    # Get AWS properties
-    AWS_ACCOUNT=$(wget -O - -Y off http://169.254.169.254/latest/dynamic/instance-identity/document | sed -nE 's/.*"accountId"\s*:\s*"(.*)".*/\1/p')
+AWS_ACCOUNT=273312704578
     AWS_ENVIRONMENT=dev
     DNS_ZONE=dev.aws.uk.tsb
     IAM_ADMIN_ROLE_NAME=tsb-aws-administrator
