@@ -34,6 +34,30 @@ spec:
       destination:
         ports:
           - 53
+    - metadata:
+        annotations:
+          from: vpc
+          to: coredns
+      action: Allow
+      protocol: TCP
+      source:
+        nets:
+          - 0.0.0.0/0
+      destination:
+        ports:
+          - 53
+    - metadata:
+        annotations:
+          from: vpc
+          to: coredns
+      action: Allow
+      protocol: UDP
+      source:
+        nets:
+          - 0.0.0.0/0
+      destination:
+        ports:
+          - 53
   egress:
     - metadata:
         annotations:
