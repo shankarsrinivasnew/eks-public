@@ -42,7 +42,9 @@ spec:
       protocol: TCP
       source:
         nets:
-          - 0.0.0.0/0
+          - "{{ CORE_SUBNET_A_CIDR }}"
+          - "{{ CORE_SUBNET_B_CIDR }}"
+          - "{{ CORE_SUBNET_C_CIDR }}"
       destination:
         ports:
           - 53
@@ -54,7 +56,9 @@ spec:
       protocol: UDP
       source:
         nets:
-          - 0.0.0.0/0
+          - "{{ CORE_SUBNET_A_CIDR }}"
+          - "{{ CORE_SUBNET_B_CIDR }}"
+          - "{{ CORE_SUBNET_C_CIDR }}"
       destination:
         ports:
           - 53
