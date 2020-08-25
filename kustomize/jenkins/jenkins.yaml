@@ -310,7 +310,7 @@ spec:
               envVars:
               - envVar:
                   key: "JENKINS_URL"
-                  value: value: "http://jenkins.jenkins.svc.cluster.local:8080"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
             volumes:
             - secretVolume:
                 mountPath: "/home/jenkins/.aws"
