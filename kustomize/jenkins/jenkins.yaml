@@ -213,85 +213,22 @@ spec:
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
-      image: jenkins/inbound-agent
-      tag: 4.3-4
-      componentName: jenkins-agent
-      resources:
-        limits:
-          memory: 1Gi
-      envVars:
-        - name: http_proxy
-          value: http://eu-west-2.proxy.aws.uk.tsb:3128
-        - name: https_proxy
-          value: http://eu-west-2.proxy.aws.uk.tsb:3128
-        - name: no_proxy
-          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
-      yamlTemplate: |-
-        apiVersion: v1
-        kind: Pod
-        spec:
-          serviceAccountName: jenkins-agent
-          securityContext:
-            fsGroup: 1337
-    additionalAgents:
-      terraform:
-        podName: terraform 
-        componentName: jenkins-terraform
-        yamlTemplate: |-
-          apiVersion: v1
-          kind: Pod
-          spec:
-            serviceAccountName: jenkins-terraform
-            securityContext:
-              fsGroup: 1337
-      packer:
-        podName: packer
-        componentName: jenkins-packer
-        yamlTemplate: |-
-          apiVersion: v1
-          kind: Pod
-          spec:
-            serviceAccountName: jenkins-packer
-            securityContext:
-              fsGroup: 1337
-      cb:
-        podName: cb
-        componentName: tsb-cb
-        envVars:
-          - name: http_proxy
-            value: http://eu-west-2.proxy.aws.uk.tsb:3128
-          - name: https_proxy
-            value: http://eu-west-2.proxy.aws.uk.tsb:3128
-          - name: no_proxy
-            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
-        yamlTemplate: |-
-          apiVersion: v1
-          kind: Pod
-          metadata:
+      podTemplates:
+        jnlp-cob: |
+          - name: jnlp-cob
+            label: tsb-cb
             namespace: cb
-          spec:
-            serviceAccountName: tsb-cb
-            securityContext:
-              fsGroup: 1337
-      cb-app:
-        podName: jnlp-cob
-        componentName: tsb-cb
-        envVars:
-          - name: http_proxy
-            value: http://eu-west-2.proxy.aws.uk.tsb:3128
-          - name: https_proxy
-            value: http://eu-west-2.proxy.aws.uk.tsb:3128
-          - name: no_proxy
-            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
-        yamlTemplate: |-
-          apiVersion: v1
-          kind: Pod
-          metadata:
-            namespace: cb
-          spec:
-            serviceAccountName: tsb-cb
-            securityContext:
-              fsGroup: 1337
+            serviceAccount: tsb-cb
+            imagePullSecrets:
+              - name: "artifactory-user-docker"
+            hostNetwork: false
+            envVars:
+              - name: http_proxy
+                value: http://eu-west-2.proxy.aws.uk.tsb:3128
+              - name: https_proxy
+                value: http://eu-west-2.proxy.aws.uk.tsb:3128
+              - name: no_proxy
+                value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
@@ -373,11 +310,7 @@ spec:
               envVars:
               - envVar:
                   key: "JENKINS_URL"
-                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
-            hostNetwork: false
-            imagePullSecrets:
-              - name: "artifactory-user-docker"
-            namespace: "cb"
+                  value: value: "http://jenkins.jenkins.svc.cluster.local:8080"
             volumes:
             - secretVolume:
                 mountPath: "/home/jenkins/.aws"
@@ -391,3 +324,63 @@ spec:
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
                 mountPath: "/var/run/docker.sock"
+      image: jenkins/inbound-agent
+      tag: 4.3-4
+      componentName: jenkins-agent
+      resources:
+        limits:
+          memory: 1Gi
+      envVars:
+        - name: http_proxy
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
+        - name: https_proxy
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
+        - name: no_proxy
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+      yamlTemplate: |-
+        apiVersion: v1
+        kind: Pod
+        spec:
+          serviceAccountName: jenkins-agent
+          securityContext:
+            fsGroup: 1337
+    additionalAgents:
+      terraform:
+        podName: terraform 
+        componentName: jenkins-terraform
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          spec:
+            serviceAccountName: jenkins-terraform
+            securityContext:
+              fsGroup: 1337
+      packer:
+        podName: packer
+        componentName: jenkins-packer
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          spec:
+            serviceAccountName: jenkins-packer
+            securityContext:
+              fsGroup: 1337
+      cb:
+        podName: cb
+        componentName: tsb-cb
+        envVars:
+          - name: http_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: https_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: no_proxy
+            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            namespace: cb
+          spec:
+            serviceAccountName: tsb-cb
+            securityContext:
+              fsGroup: 1337
