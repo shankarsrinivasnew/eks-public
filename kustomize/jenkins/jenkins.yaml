@@ -377,9 +377,7 @@ spec:
             hostNetwork: false
             imagePullSecrets:
               - name: "artifactory-user-docker"
-            label: "jnlp-cob"
-            name: "jnlp-cob"
-            namespace: "tsb-cicd"
+            namespace: "cb"
             volumes:
             - secretVolume:
                 mountPath: "/home/jenkins/.aws"
