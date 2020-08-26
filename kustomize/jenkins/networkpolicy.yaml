@@ -90,6 +90,8 @@ spec:
       destination:
         nets:
           - "{{ VPC_CIDR }}"
+          - 10.161.48.0/20
+          - 172.17.0.0/24
         ports:
           - 22
           - 5985
