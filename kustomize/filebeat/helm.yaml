@@ -20,12 +20,13 @@ spec:
           - type: kubernetes
             templates:
             - config:
-                - type: docker
+                - type: container
                   tags: ["kubernetes"]
                   fields:
                     env_id: "{{ AWS_ENVIRONMENT }}"
                     cluster_id: "{{ CLUSTER_NAME }}"
                   containers.ids:
+                    - "${data.kubernetes.container.id}"
         processors:
           - add_kubernetes_metadata:
               in_cluster: true
