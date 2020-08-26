@@ -213,6 +213,120 @@ spec:
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
+      podTemplates:
+        jnlp-cob: |
+          - name: jnlp-cob
+            label: tsb-cb
+            namespace: cb
+            serviceAccount: tsb-cb
+            imagePullSecrets:
+              - name: "artifactory-user-docker"
+            hostNetwork: false
+            envVars:
+              - envVar:
+                  key: http_proxy
+                  value: http://eu-west-2.proxy.aws.uk.tsb:3128
+              - envVar:
+                  key: https_proxy
+                  value: http://eu-west-2.proxy.aws.uk.tsb:3128
+              - envVar:
+                  key: no_proxy
+                  value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+            containers:
+            - name: "jnlp"
+              args: "^${computer.jnlpmac} ^${computer.name}"
+              envVars:
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              - envVar:
+                  key: "AWS_PROFILE"
+                  value: "pre"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:pre-1.11"
+              workingDir: "/home/jenkins/agent"
+              livenessProbe:
+                failureThreshold: 0
+                initialDelaySeconds: 0
+                periodSeconds: 0
+                successThreshold: 0
+                timeoutSeconds: 0
+            - name: "gradle"
+              args: "cat"
+              command: "/bin/sh -c"
+              envVars:
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:1.0"
+              livenessProbe:
+                failureThreshold: 0
+                initialDelaySeconds: 0
+                periodSeconds: 0
+                successThreshold: 0
+                timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent"
+            - name: "maven"
+              args: "cat"
+              command: "/bin/sh -c"
+              envVars:
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/maven:1.1"
+              livenessProbe:
+                  failureThreshold: 0
+                  initialDelaySeconds: 0
+                  periodSeconds: 0
+                  successThreshold: 0
+                  timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent"
+            - name: "dind"
+              args: "cat"
+              command: "/bin/sh -c"
+              envVars:
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              image: "docker:stable-dind"
+              livenessProbe:
+                  failureThreshold: 0
+                  initialDelaySeconds: 0
+                  periodSeconds: 0
+                  successThreshold: 0
+                  timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent"
+            - name: "python"
+              args: "cat"
+              command: "/bin/sh -c"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/python:1.0"
+              livenessProbe:
+                failureThreshold: 0
+                initialDelaySeconds: 0
+                periodSeconds: 0
+                successThreshold: 0
+                timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent"
+              envVars:
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+            volumes:
+            - secretVolume:
+                mountPath: "/home/jenkins/.aws"
+                secretName: "aws-cb-pre-config2"
+            - secretVolume:
+                mountPath: "/home/jenkins/.kube"
+                secretName: "k8s-pre-config"
+            - emptyDirVolume:
+                memory: true
+                mountPath: "/home/jenkins/.aws/cli"
+            - hostPathVolume:
+                hostPath: "/var/run/docker.sock"
+                mountPath: "/var/run/docker.sock"
       image: jenkins/inbound-agent
       tag: 4.3-4
       componentName: jenkins-agent
