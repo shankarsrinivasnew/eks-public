@@ -11,26 +11,26 @@ spec:
     name: filebeat
     version: 7.9.0
   values:
-  # Allows you to add any config files in /usr/share/filebeat
-  # such as filebeat.yml
-  filebeatConfig:
-    filebeat.yml: |
-      filebeat.autodiscover:
-        providers:
-        - type: kubernetes
-          templates:
-          - config:
-              - type: docker
-                tags: ["kubernetes"]
-                fields:
-                  env_id: "{{ AWS_ENVIRONMENT }}"
-                  cluster_id: "{{ CLUSTER_NAME }}"
-                containers.ids:
-      processors:
-        - add_kubernetes_metadata:
-            in_cluster: true
-      output.elasticsearch:
-        hosts: 'elasticsearch-cluster.mgmt.internal:443'
+    # Allows you to add any config files in /usr/share/filebeat
+    # such as filebeat.yml
+    filebeatConfig:
+      filebeat.yml: |
+        filebeat.autodiscover:
+          providers:
+          - type: kubernetes
+            templates:
+            - config:
+                - type: docker
+                  tags: ["kubernetes"]
+                  fields:
+                    env_id: "{{ AWS_ENVIRONMENT }}"
+                    cluster_id: "{{ CLUSTER_NAME }}"
+                  containers.ids:
+        processors:
+          - add_kubernetes_metadata:
+              in_cluster: true
+        output.elasticsearch:
+          hosts: 'elasticsearch-cluster.mgmt.internal:443'
     helm:
       versions: v3
     extraEnvs:
