@@ -1,0 +1,6 @@
+resources:
+  - namespace.yaml
+  - helm.yaml
+namespace: logging
+transformers:
+  - awsTransformer.yaml
