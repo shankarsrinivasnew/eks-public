@@ -1,6 +1,7 @@
 resources:
   - namespace.yaml
   - helm.yaml
+  - cb-sa-role.yaml
 namespace: logging
 transformers:
   - awsTransformer.yaml
