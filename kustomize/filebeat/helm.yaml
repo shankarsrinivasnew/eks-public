@@ -47,7 +47,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: elastic-credentials
-            key: username
+            key: user
       - name: ELASTIC_PASSWORD
         valueFrom:
           secretKeyRef:
