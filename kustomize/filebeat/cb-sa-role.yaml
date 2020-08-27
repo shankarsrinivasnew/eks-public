@@ -21,5 +21,6 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: tsb-cb
+  namespace: cb
 - kind: Group
   name: cb-admin
