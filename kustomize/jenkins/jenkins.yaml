@@ -67,6 +67,7 @@ spec:
         - scm-filter-branch-pr:0.5.1
         - ws-cleanup:0.38
         - role-strategy:3.0
+        - slackNotifier:2.41
       JCasC:
         configScripts:
           github: |-
