@@ -38,3 +38,15 @@ spec:
           - "{{ VPC_CIDR }}"
         ports:
           - 9042
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: mgmt
+        action: Allow
+        protocol: TCP
+        destination:
+          nets:
+            - 10.161.48.0/20
+          ports:
+            - 443
+            - 80

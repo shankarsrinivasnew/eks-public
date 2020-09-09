@@ -41,18 +41,6 @@ spec:
         namespaceSelector: all()
         serviceAccounts:
           selector: role == 'jenkins-agent'
-    - metadata:
-        annotations:
-          from: jenkins-master
-          to: mgmt
-        action: Allow
-        protocol: TCP
-        destination:
-          nets:
-            - 10.161.48.0/20
-          ports:
-            - 443
-            - 80
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -80,18 +68,6 @@ spec:
       action: Allow
       destination:
         selector: app.kubernetes.io/component == 'jenkins-master'
-    - metadata:
-        annotations:
-          from: jenkins-agent
-          to: mgmt
-        action: Allow
-        protocol: TCP
-        destination:
-          nets:
-            - 10.161.48.0/20
-          ports:
-            - 443
-            - 80
 
 ---
 apiVersion: crd.projectcalico.org/v1
