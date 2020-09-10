@@ -41,10 +41,8 @@ spec:
       action: Allow
       protocol: TCP
       source:
-        nets:
-          - "{{ CORE_SUBNET_A_CIDR }}"
-          - "{{ CORE_SUBNET_B_CIDR }}"
-          - "{{ CORE_SUBNET_C_CIDR }}"
+        selector: vpc == 'local' && layer == 'core'
+        namespaceSelector: global()
       destination:
         ports:
           - 53
@@ -55,10 +53,8 @@ spec:
       action: Allow
       protocol: UDP
       source:
-        nets:
-          - "{{ CORE_SUBNET_A_CIDR }}"
-          - "{{ CORE_SUBNET_B_CIDR }}"
-          - "{{ CORE_SUBNET_C_CIDR }}"
+        selector: vpc == 'local' && layer == 'core'
+        namespaceSelector: global()
       destination:
         ports:
           - 53
