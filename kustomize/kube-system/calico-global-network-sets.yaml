@@ -2,7 +2,7 @@
 apiVersion: crd.projectcalico.org/v1
 kind: GlobalNetworkSet
 metadata:
-  name: vpc
+  name: vpc-local
   labels:
     vpc: local
     layer: all
@@ -13,7 +13,7 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: GlobalNetworkSet
 metadata:
-  name: vpc-core
+  name: vpc-access
   labels:
     vpc: local
     layer: access
@@ -26,7 +26,7 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: GlobalNetworkSet
 metadata:
-  name: vpc-core
+  name: vpc-data
   labels:
     vpc: local
     layer: data
