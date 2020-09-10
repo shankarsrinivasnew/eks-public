@@ -1,0 +1,50 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc
+  labels:
+    vpc: local
+    layer: all
+spec:
+  nets:
+    - "{{ VPC_CIDR }}"
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-core
+  labels:
+    vpc: local
+    layer: access
+spec:
+  nets:
+    - "{{ ACCESS_SUBNET_A_CIDR }}"
+    - "{{ ACCESS_SUBNET_B_CIDR }}"
+    - "{{ ACCESS_SUBNET_C_CIDR }}"
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-core
+  labels:
+    vpc: local
+    layer: data
+spec:
+  nets:
+    - "{{ DATA_SUBNET_A_CIDR }}"
+    - "{{ DATA_SUBNET_B_CIDR }}"
+    - "{{ DATA_SUBNET_C_CIDR }}"
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-core
+  labels:
+    vpc: local
+    layer: core
+spec:
+  nets:
+    - "{{ CORE_SUBNET_A_CIDR }}"
+    - "{{ CORE_SUBNET_B_CIDR }}"
+    - "{{ CORE_SUBNET_C_CIDR }}"

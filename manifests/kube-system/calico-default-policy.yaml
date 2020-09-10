@@ -28,8 +28,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        nets:
-          - "{{ VPC_CIDR }}"
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 80
           - 443
