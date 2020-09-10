@@ -17,8 +17,8 @@ spec:
       action: Allow
       protocol: TCP
       source:
-        nets:
-          - "{{ VPC_CIDR }}"
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
       destination:
         ports:
           - 8080
@@ -68,7 +68,6 @@ spec:
       action: Allow
       destination:
         selector: app.kubernetes.io/component == 'jenkins-master'
-
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -87,8 +86,9 @@ spec:
       action: Allow
       protocol: TCP
       destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
         nets:
-          - "{{ VPC_CIDR }}"
           - 10.161.48.0/20
           - 172.17.0.0/24
         ports:
