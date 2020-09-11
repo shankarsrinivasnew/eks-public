@@ -92,21 +92,10 @@ spec:
           - 22
           - 5985
           - 5986
----
-apiVersion: crd.projectcalico.org/v1
-kind: NetworkPolicy
-metadata:
-  name: jenkins-agent-packer
-  namespace: jenkins
-spec:
-  serviceAccountSelector: role == 'jenkins-agent' && component == 'packer'
-  types:
-    - Egress
-  egress:
     - metadata:
         annotations:
           from: jenkins-agent-packer
-          to: vpc
+          to: proxy
       action: Allow
       protocol: TCP
       destination:
