@@ -217,10 +217,11 @@ spec:
       podTemplates:
         cbinit: |
           - name: cbinit
+            nodeUsageMode: NORMAL
             runAsUser: 0
             label: jenkins-tsb-cb
             namespace: cb
-            serviceAccount: jenkins-agent
+            serviceAccount: tsb-cb
             hostNetwork: false
             envVars:
               - envVar:
