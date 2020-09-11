@@ -258,10 +258,10 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              volumes:
-                - secretVolume: jenkins-truststore
-                    mountPath: /var/jenkins_truststore/truststore.jks
-                    secretName: jenkins-truststore
+            volumes:
+            - secretVolume: jenkins-truststore
+                mountPath: "/var/jenkins_truststore/truststore.jks"
+                secretName: "jenkins-truststore"
               image: "jenkins/inbound-agent"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
