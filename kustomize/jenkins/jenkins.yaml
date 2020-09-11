@@ -222,8 +222,6 @@ spec:
             serviceAccount: tsb-cb
             securityContext:
               fsGroup: 1337
-            imagePullSecrets:
-              - name: "artifactory-user-docker"
             hostNetwork: false
             envVars:
               - envVar:
