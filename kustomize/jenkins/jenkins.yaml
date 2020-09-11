@@ -284,8 +284,8 @@ spec:
               workingDir: "/home/jenkins/agent"
             volumes:
             - secretVolume: "jenkins-truststore"
-                mountPath: "/var/jenkins_truststore/truststore.jks"
-                secretName: "jenkins-truststore"
+              mountPath: "/var/jenkins_truststore/truststore.jks"
+              secretName: "jenkins-truststore"
 
         jnlp-cob: |
           - name: jnlp-cob
