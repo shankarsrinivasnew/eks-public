@@ -1,0 +1,16 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-nonprod-vpc
+  namespace: prometheus
+spec:
+  podSelector:
+    matchLabels: {}
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.161.128.0/17
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.161.128.0/17

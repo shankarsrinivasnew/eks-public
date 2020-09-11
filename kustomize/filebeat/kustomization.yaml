@@ -1,7 +1,7 @@
 resources:
   - namespace.yaml
-  - sa.yaml
-  - jenkins.yaml
-namespace: jenkins
+  - helm.yaml
+  - cb-sa-role.yaml
+namespace: logging
 transformers:
   - awsTransformer.yaml
