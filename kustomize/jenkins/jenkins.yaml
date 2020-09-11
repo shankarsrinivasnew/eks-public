@@ -219,7 +219,7 @@ spec:
           - name: cbinit
             label: jenkins-tsb-cb
             namespace: cb
-            serviceAccount: tsb-cb
+            serviceAccount: jenkins-agent
             hostNetwork: false
             envVars:
               - envVar:
