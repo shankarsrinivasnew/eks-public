@@ -217,6 +217,7 @@ spec:
       podTemplates:
         cbinit: |
           - name: cbinit
+            runAsUser: 0
             label: jenkins-tsb-cb
             namespace: cb
             serviceAccount: jenkins-agent
