@@ -220,8 +220,6 @@ spec:
             label: jenkins-tsb-cb
             namespace: cb
             serviceAccount: tsb-cb
-            securityContext:
-              fsGroup: 1337
             hostNetwork: false
             envVars:
               - envVar:
