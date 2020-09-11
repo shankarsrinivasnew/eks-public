@@ -217,9 +217,11 @@ spec:
       podTemplates:
         cbinit: |
           - name: cbinit
-            label: tsb-cb
+            label: jenkins-tsb-cb
             namespace: cb
             serviceAccount: tsb-cb
+            securityContext:
+              fsGroup: 1337
             imagePullSecrets:
               - name: "artifactory-user-docker"
             hostNetwork: false
