@@ -223,7 +223,16 @@ spec:
             namespace: cb
             serviceAccount: tsb-cb
             hostNetwork: false
-            envVars:
+            yaml: |-
+              apiVersion: v1
+              kind: Pod
+              metadata:
+                namespace: cb
+              spec:
+                serviceAccountName: tsb-cb
+                securityContext:
+                  runAsUser: 0
+                  fsGroup: 1337
               - envVar:
                   key: http_proxy
                   value: http://eu-west-2.proxy.aws.uk.tsb:3128
