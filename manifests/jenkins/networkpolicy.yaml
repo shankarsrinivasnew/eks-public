@@ -88,8 +88,18 @@ spec:
       destination:
         selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
+        ports:
+          - 22
+          - 5985
+          - 5986
+    - metadata:
+        annotations:
+          from: jenkins-agent-packer
+          to: proxy
+      action: Allow
+      protocol: TCP
+      destination:
         nets:
-          - 10.161.48.0/20
           - 172.17.0.0/24
         ports:
           - 22
