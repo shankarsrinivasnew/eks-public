@@ -443,12 +443,3 @@ spec:
               fsGroup: 1337
     persistence:
       enabled: true
-      # existingClaim: jenkins-home
-      volumes:
-        - name: jenkins-home-new
-          persistentVolumeClaim:
-            claimName: jenkins-home
-      mounts:
-        - name: jenkins-home-new
-          mountPath: /var/jenkins_home_new
-          readOnly: false
