@@ -282,10 +282,10 @@ spec:
                   timeoutSeconds: 0
               ttyEnabled: true
               workingDir: "/home/jenkins/agent"
-            volumes:
-            - secretVolume: "jenkins-truststore"
-              mountPath: "/var/jenkins_truststore/truststore.jks"
-              secretName: "jenkins-truststore"
+          volumes:
+          - secretVolume: "jenkins-truststore"
+              mountPath: '/var/jenkins_truststore/truststore.jks'
+              secretName: 'jenkins-truststore
 
         jnlp-cob: |
           - name: jnlp-cob
