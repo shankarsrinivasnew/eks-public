@@ -222,6 +222,10 @@ spec:
             label: jenkins-tsb-cb
             namespace: cb
             serviceAccount: tsb-cb
+            volumes:
+            - secretVolume: "jenkins-truststore"
+                mountPath: '/var/jenkins_truststore/truststore.jks'
+                secretName: 'jenkins-truststore"
             hostNetwork: false
             yaml: |-
               apiVersion: v1
@@ -282,10 +286,6 @@ spec:
                   timeoutSeconds: 0
               ttyEnabled: true
               workingDir: "/home/jenkins/agent"
-          volumes:
-          - secretVolume: "jenkins-truststore"
-              mountPath: '/var/jenkins_truststore/truststore.jks'
-              secretName: 'jenkins-truststore
 
         jnlp-cob: |
           - name: jnlp-cob
