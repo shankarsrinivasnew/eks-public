@@ -8,84 +8,93 @@ data:
   AWSTransformer: |
     #!/bin/bash
 
+    function increment_ipv4 {
+      local ip_base=$1
+      local incr_amount=$2
+      local -a ip_components
+      local ip_regex="([0-9]+).([0-9]+).([0-9]+).([0-9]+)"
+      [[ $ip_base =~ $ip_regex ]]
+      ip_components=("${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}" "${BASH_REMATCH[3]}" "${BASH_REMATCH[4]}")
+      ip_dec=0
+      local comp
+      for comp in "${ip_components[@]}"; do
+        ip_dec=$((ip_dec<<8))
+        ip_dec=$((ip_dec + $comp))
+      done
+
+      ip_dec=$((ip_dec + $incr_amount))
+
+      ip_components=()
+      local i
+      for ((i=0; i < 4; i++)); do
+        comp=$((ip_dec & 0xFF))
+        ip_components+=($comp)
+        ip_dec=$((ip_dec>>8))
+      done
+      echo "${ip_components[3]}.${ip_components[2]}.${ip_components[1]}.${ip_components[0]}"
+    }
+
+    # Install utilities
+    /sbin/apk add jq python py-pip > /dev/null
+    pip install awscli > /dev/null
+
     # Ignore script name
     shift
 
     # Get AWS properties
-    AWS_ACCOUNT=$(wget -O - -Y off http://169.254.169.254/latest/dynamic/instance-identity/document | sed -nE 's/.*"accountId"\s*:\s*"(.*)".*/\1/p')
+    export AWS_DEFAULT_REGION=eu-west-2
+    AWS_ACCOUNT=$(wget -O - -Y off http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.accountId')
     AWS_ENVIRONMENT=dev
-    DNS_ZONE=dev.aws.uk.tsb
     IAM_ADMIN_ROLE_NAME=tsb-aws-administrator
     GIT_BRANCH=dev
-    CLUSTER_NAME=dev-eks
-    VPC_CIDR=10.161.64.0/18
-    DNS_SERVER=10.161.64.2
-    ACCESS_SUBNET_A_CIDR=10.161.64.0/23
-    ACCESS_SUBNET_B_CIDR=10.161.66.0/23
-    ACCESS_SUBNET_C_CIDR=10.161.68.0/23
-    DATA_SUBNET_A_CIDR=10.161.72.0/23
-    DATA_SUBNET_B_CIDR=10.161.74.0/23
-    DATA_SUBNET_C_CIDR=10.161.76.0/23
-    CORE_SUBNET_A_CIDR=10.161.80.0/20
-    CORE_SUBNET_B_CIDR=10.161.96.0/20
-    CORE_SUBNET_C_CIDR=10.161.112.0/20
 
     case $AWS_ACCOUNT in
       273312704578)
         AWS_ENVIRONMENT=nonprod
-        DNS_ZONE=nonprod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_non_prod_admin
         GIT_BRANCH=nonprod
-        CLUSTER_NAME=nonprod-eks
-        VPC_CIDR=10.161.128.0/17
-        DNS_SERVER=10.161.128.2
-        ACCESS_SUBNET_A_CIDR=10.161.128.0/22
-        ACCESS_SUBNET_B_CIDR=10.161.132.0/22
-        ACCESS_SUBNET_C_CIDR=10.161.136.0/22
-        DATA_SUBNET_A_CIDR=10.161.144.0/22
-        DATA_SUBNET_B_CIDR=10.161.148.0/22
-        DATA_SUBNET_C_CIDR=10.161.152.0/22
-        CORE_SUBNET_A_CIDR=10.161.160.0/19
-        CORE_SUBNET_B_CIDR=10.161.192.0/19
-        CORE_SUBNET_C_CIDR=10.161.224.0/19
         ;;
       045223552195)
         AWS_ENVIRONMENT=preprod
-        DNS_ZONE=preprod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_staging_admin
         GIT_BRANCH=preprod
-        CLUSTER_NAME=preprod-eks
-        VPC_CIDR=10.162.128.0/17
-        DNS_SERVER=10.162.128.2
-        ACCESS_SUBNET_A_CIDR=10.162.128.0/22
-        ACCESS_SUBNET_B_CIDR=10.162.132.0/22
-        ACCESS_SUBNET_C_CIDR=10.162.136.0/22
-        DATA_SUBNET_A_CIDR=10.162.144.0/22
-        DATA_SUBNET_B_CIDR=10.162.148.0/22
-        DATA_SUBNET_C_CIDR=10.162.152.0/22
-        CORE_SUBNET_A_CIDR=10.162.160.0/19
-        CORE_SUBNET_B_CIDR=10.162.192.0/19
-        CORE_SUBNET_C_CIDR=10.162.224.0/19
         ;;
       407929326957)
         AWS_ENVIRONMENT=prod
-        DNS_ZONE=prod.aws.uk.tsb
         IAM_ADMIN_ROLE_NAME=rl_tsbsme_prod_admin
         GIT_BRANCH=master
-        CLUSTER_NAME=prod-eks
-        VPC_CIDR=10.163.128.0/17
-        DNS_SERVER=10.163.128.2
-        ACCESS_SUBNET_A_CIDR=10.163.128.0/22
-        ACCESS_SUBNET_B_CIDR=10.163.132.0/22
-        ACCESS_SUBNET_C_CIDR=10.163.136.0/22
-        DATA_SUBNET_A_CIDR=10.163.144.0/22
-        DATA_SUBNET_B_CIDR=10.163.148.0/22
-        DATA_SUBNET_C_CIDR=10.163.152.0/22
-        CORE_SUBNET_A_CIDR=10.163.160.0/19
-        CORE_SUBNET_B_CIDR=10.163.192.0/19
-        CORE_SUBNET_C_CIDR=10.163.224.0/19
         ;;
     esac
 
+    CLUSTER_NAME="$AWS_ENVIRONMENT-eks"
+    DNS_ZONE="$AWS_ENVIRONMENT.aws.uk.tsb"
+
+    # Get VPC CIDR
+    VPC=$(aws ec2 describe-vpcs --query "Vpcs[?Tags[?Key == 'Project' && Value == 'shared']]" | jq '.[0]')
+    VPC_ID=$(echo $VPC | jq -r '.VpcId')
+    VPC_CIDR=$(echo $VPC | jq -r '.CidrBlock')
+
+    # Get subnet CIDRs
+    SUBNETS=$(aws ec2 describe-subnets --query "Subnets[?VpcId == '$VPC_ID']" | jq)
+    ACCESS_SUBNET_A_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "access" and .AvailabilityZone == "eu-west-2a").CidrBlock')
+    ACCESS_SUBNET_B_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "access" and .AvailabilityZone == "eu-west-2b").CidrBlock')
+    ACCESS_SUBNET_C_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "access" and .AvailabilityZone == "eu-west-2c").CidrBlock')
+    DATA_SUBNET_A_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "data" and .AvailabilityZone == "eu-west-2a").CidrBlock')
+    DATA_SUBNET_B_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "data" and .AvailabilityZone == "eu-west-2b").CidrBlock')
+    DATA_SUBNET_C_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "data" and .AvailabilityZone == "eu-west-2c").CidrBlock')
+    CORE_SUBNET_A_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "core" and .AvailabilityZone == "eu-west-2a").CidrBlock')
+    CORE_SUBNET_B_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "core" and .AvailabilityZone == "eu-west-2b").CidrBlock')
+    CORE_SUBNET_C_CIDR=$(echo $SUBNETS | jq -r '.[] | select(.Tags[].Key == "Layer" and .Tags[].Value == "core" and .AvailabilityZone == "eu-west-2c").CidrBlock')
+
+    # Get DNS server
+    IFS='/' read -ra VPC_NET <<< $VPC_CIDR
+    DNS_SERVER=$(increment_ipv4 $VPC_NET[1] 2)
+
+    # Get EFS file system ID
+    EFS_ID=$(aws efs describe-file-systems --query "FileSystems[?Tags[?Key == 'Project' && Value == 'shared']] | @[?Tags[?Key == 'Purpose' && Value == 'EFSEKS']].FileSystemId" --output text)
+
+    # Get access point IDs
+    EFS_JENKINS_HOME_ID=$(aws efs describe-access-points --file-system-id $EFS_ID --query "AccessPoints[?Tags[?Key == 'Purpose' && Value == 'EFSEKSJenkinsHome']].AccessPointId" --output text)
+
     # Update manifest
-    sed "s~{{ AWS_ACCOUNT }}~$AWS_ACCOUNT~g;s~{{ AWS_ENVIRONMENT }}~$AWS_ENVIRONMENT~g;s~{{ DNS_ZONE }}~$DNS_ZONE~g;s~{{ IAM_ADMIN_ROLE_NAME }}~$IAM_ADMIN_ROLE_NAME~g;s~{{ GIT_BRANCH }}~$GIT_BRANCH~g;s~{{ CLUSTER_NAME }}~$CLUSTER_NAME~g;s~{{ VPC_CIDR }}~$VPC_CIDR~g;s~{{ ACCESS_SUBNET_A_CIDR }}~$ACCESS_SUBNET_A_CIDR~g;s~{{ ACCESS_SUBNET_B_CIDR }}~$ACCESS_SUBNET_B_CIDR~g;s~{{ ACCESS_SUBNET_C_CIDR }}~$ACCESS_SUBNET_C_CIDR~g;s~{{ DATA_SUBNET_A_CIDR }}~$DATA_SUBNET_A_CIDR~g;s~{{ DATA_SUBNET_B_CIDR }}~$DATA_SUBNET_B_CIDR~g;s~{{ DATA_SUBNET_C_CIDR }}~$DATA_SUBNET_C_CIDR~g;s~{{ CORE_SUBNET_A_CIDR }}~$CORE_SUBNET_A_CIDR~g;s~{{ CORE_SUBNET_B_CIDR }}~$CORE_SUBNET_B_CIDR~g;s~{{ CORE_SUBNET_C_CIDR }}~$CORE_SUBNET_C_CIDR~g;s~{{ DNS_SERVER }}~$DNS_SERVER~g" $1
+    sed "s~{{ AWS_ACCOUNT }}~$AWS_ACCOUNT~g;s~{{ AWS_ENVIRONMENT }}~$AWS_ENVIRONMENT~g;s~{{ DNS_ZONE }}~$DNS_ZONE~g;s~{{ IAM_ADMIN_ROLE_NAME }}~$IAM_ADMIN_ROLE_NAME~g;s~{{ GIT_BRANCH }}~$GIT_BRANCH~g;s~{{ CLUSTER_NAME }}~$CLUSTER_NAME~g;s~{{ VPC_CIDR }}~$VPC_CIDR~g;s~{{ ACCESS_SUBNET_A_CIDR }}~$ACCESS_SUBNET_A_CIDR~g;s~{{ ACCESS_SUBNET_B_CIDR }}~$ACCESS_SUBNET_B_CIDR~g;s~{{ ACCESS_SUBNET_C_CIDR }}~$ACCESS_SUBNET_C_CIDR~g;s~{{ DATA_SUBNET_A_CIDR }}~$DATA_SUBNET_A_CIDR~g;s~{{ DATA_SUBNET_B_CIDR }}~$DATA_SUBNET_B_CIDR~g;s~{{ DATA_SUBNET_C_CIDR }}~$DATA_SUBNET_C_CIDR~g;s~{{ CORE_SUBNET_A_CIDR }}~$CORE_SUBNET_A_CIDR~g;s~{{ CORE_SUBNET_B_CIDR }}~$CORE_SUBNET_B_CIDR~g;s~{{ CORE_SUBNET_C_CIDR }}~$CORE_SUBNET_C_CIDR~g;s~{{ DNS_SERVER }}~$DNS_SERVER~g;s~{{ EFS_ID }}~$EFS_ID~g;s~{{ EFS_JENKINS_HOME_ID }}~$EFS_JENKINS_HOME_ID~g" $1
