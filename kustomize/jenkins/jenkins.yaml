@@ -226,6 +226,9 @@ spec:
             - secretVolume:
                 mountPath: /var/jenkins_truststore/truststore.jks
                 secretName: jenkins-truststore
+            - hostPathVolume:
+                hostPath: "/var/run/docker.sock"
+                mountPath: "/var/run/docker.sock"
             hostNetwork: false
             yaml: |-
               apiVersion: v1
