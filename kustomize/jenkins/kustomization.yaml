@@ -1,6 +1,7 @@
 resources:
   - namespace.yaml
   - sa.yaml
+  - storage.yaml
   - jenkins.yaml
 namespace: jenkins
 transformers:

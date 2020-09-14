@@ -31,7 +31,7 @@ spec:
           - add_kubernetes_metadata:
               in_cluster: true
         output.elasticsearch:
-          hosts: ['elasticsearch-temp.mgmt.aws.uk.tsb:9200']
+          hosts: ['https://elasticsearch-temp.mgmt.aws.uk.tsb:9200']
           user: "${ELASTIC_USER}"
           password: "${ELASTIC_PASSWORD}"
     helm:
@@ -53,3 +53,8 @@ spec:
           secretKeyRef:
             name: elastic-credentials
             key: password
+      - name: ELASTIC_CERT
+        valueFrom:
+          secretKeyRef:
+            name: elastic-credentials
+            key: cert
