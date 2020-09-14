@@ -35,7 +35,7 @@ data:
     }
 
     # Install utilities
-    apk update
+    apk update > /dev/null
     apk add aws-cli jq > /dev/null
 
     # Ignore script name
