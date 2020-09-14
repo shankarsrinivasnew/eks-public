@@ -519,3 +519,4 @@ spec:
                 effect: NoSchedule
     persistence:
       enabled: true
+      existingClaim: jenkins-home

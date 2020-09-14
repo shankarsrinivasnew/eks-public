@@ -28,6 +28,6 @@ kubectl apply -f manifests/flux/namespace.yaml
 kubectl apply -f manifests/flux/kustomize.yaml
 kubectl -n flux create secret generic flux-git-auth --from-literal GIT_AUTHKEY=<GitHub authentication token> --from-literal GIT_AUTHUSER=<GitHub user>
 helm repo add fluxcd https://charts.fluxcd.io
-helm install flux fluxcd/flux --namespace flux --values helm/flux.yaml --set git.branch=<dev|nonprod|preprod|master>
-helm install helm-operator fluxcd/helm-operator --namespace flux --values helm/helm.yaml
-``
+helm install flux fluxcd/flux --namespace flux --values helm/flux.yaml --version 1.5.0 --set git.branch=<dev|nonprod|preprod|master>
+helm install helm-operator fluxcd/helm-operator --namespace flux --values helm/helm.yaml --version 1.2.0
+```
