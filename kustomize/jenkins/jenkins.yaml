@@ -17,7 +17,7 @@ spec:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
         - key: role
-          operator: Equals
+          operator: Equal
           value: mgmt
           effect: NoSchedule
       ingress:
@@ -245,7 +245,7 @@ spec:
             fsGroup: 1337
           tolerations:
             - key: role
-              operator: Equals
+              operator: Equal
               value: mgmt
               effect: NoSchedule
       podTemplates:
@@ -274,7 +274,7 @@ spec:
                   fsGroup: 1337
                 tolerations:
                   - key: role
-                    operator: Equals
+                    operator: Equal
                     value: mgmt
                     effect: NoSchedule
             envVars:
@@ -347,7 +347,7 @@ spec:
                   fsGroup: 1337
                 tolerations:
                   - key: role
-                    operator: Equals
+                    operator: Equal
                     value: mgmt
                     effect: NoSchedule
             envVars:
@@ -468,7 +468,7 @@ spec:
               fsGroup: 1337
             tolerations:
               - key: role
-                operator: Equals
+                operator: Equal
                 value: mgmt
                 effect: NoSchedule
       packer:
@@ -483,7 +483,7 @@ spec:
               fsGroup: 1337
             tolerations:
               - key: role
-                operator: Equals
+                operator: Equal
                 value: mgmt
                 effect: NoSchedule
       cb:
@@ -508,7 +508,7 @@ spec:
               fsGroup: 1337
             tolerations:
               - key: role
-                operator: Equals
+                operator: Equal
                 value: mgmt
                 effect: NoSchedule
     persistence:
