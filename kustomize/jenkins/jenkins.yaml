@@ -13,6 +13,13 @@ spec:
     master:
       image: jenkins/jenkins
       tag: lts-alpine
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equals
+          value: mgmt
+          effect: NoSchedule
       ingress:
         enabled: true
         annotations:
@@ -214,6 +221,33 @@ spec:
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
+      image: jenkins/inbound-agent
+      tag: 4.3-4
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      componentName: jenkins-agent
+      resources:
+        limits:
+          memory: 1Gi
+      envVars:
+        - name: http_proxy
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
+        - name: https_proxy
+          value: http://eu-west-2.proxy.aws.uk.tsb:3128
+        - name: no_proxy
+          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+      yamlTemplate: |-
+        apiVersion: v1
+        kind: Pod
+        spec:
+          serviceAccountName: jenkins-agent
+          securityContext:
+            fsGroup: 1337
+          tolerations:
+            - key: role
+              operator: Equals
+              value: mgmt
+              effect: NoSchedule
       podTemplates:
         cbinit: |
           - name: cbinit
@@ -222,6 +256,7 @@ spec:
             label: jenkins-tsb-cb
             namespace: cb
             serviceAccount: tsb-cb
+            nodeSelector: taints.eks.aws.uk.tsb/role=mgmt
             volumes:
             - secretVolume:
                 mountPath: /var/jenkins_truststore/truststore.jks
@@ -237,6 +272,11 @@ spec:
                 securityContext:
                   runAsUser: 0
                   fsGroup: 1337
+                tolerations:
+                  - key: role
+                    operator: Equals
+                    value: mgmt
+                    effect: NoSchedule
             envVars:
             - envVar:
                 key: http_proxy
@@ -286,15 +326,30 @@ spec:
                   timeoutSeconds: 0
               ttyEnabled: true
               workingDir: "/home/jenkins/agent"
-
         jnlp-cob: |
           - name: jnlp-cob
             label: tsb-cb
             namespace: cb
             serviceAccount: tsb-cb
+            nodeSelector: taints.eks.aws.uk.tsb/role=mgmt
             imagePullSecrets:
               - name: "artifactory-user-docker"
             hostNetwork: false
+            yaml: |-
+              apiVersion: v1
+              kind: Pod
+              metadata:
+                namespace: cb
+              spec:
+                serviceAccountName: tsb-cb
+                securityContext:
+                  runAsUser: 0
+                  fsGroup: 1337
+                tolerations:
+                  - key: role
+                    operator: Equals
+                    value: mgmt
+                    effect: NoSchedule
             envVars:
               - envVar:
                   key: http_proxy
@@ -400,26 +455,6 @@ spec:
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
                 mountPath: "/var/run/docker.sock"
-      image: jenkins/inbound-agent
-      tag: 4.3-4
-      componentName: jenkins-agent
-      resources:
-        limits:
-          memory: 1Gi
-      envVars:
-        - name: http_proxy
-          value: http://eu-west-2.proxy.aws.uk.tsb:3128
-        - name: https_proxy
-          value: http://eu-west-2.proxy.aws.uk.tsb:3128
-        - name: no_proxy
-          value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
-      yamlTemplate: |-
-        apiVersion: v1
-        kind: Pod
-        spec:
-          serviceAccountName: jenkins-agent
-          securityContext:
-            fsGroup: 1337
     additionalAgents:
       terraform:
         podName: terraform 
@@ -431,6 +466,11 @@ spec:
             serviceAccountName: jenkins-terraform
             securityContext:
               fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equals
+                value: mgmt
+                effect: NoSchedule
       packer:
         podName: packer
         componentName: jenkins-packer
@@ -441,6 +481,11 @@ spec:
             serviceAccountName: jenkins-packer
             securityContext:
               fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equals
+                value: mgmt
+                effect: NoSchedule
       cb:
         podName: cb
         componentName: tsb-cb
@@ -461,5 +506,10 @@ spec:
             securityContext:
               runAsUser: 0
               fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equals
+                value: mgmt
+                effect: NoSchedule
     persistence:
       enabled: true
