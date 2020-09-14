@@ -223,9 +223,9 @@ spec:
             namespace: cb
             serviceAccount: tsb-cb
             volumes:
-            - secretVolume: "jenkins-truststore"
-                mountPath: '/var/jenkins_truststore/truststore.jks'
-                secretName: 'jenkins-truststore"
+            - secretVolume: jenkins-truststore
+                mountPath: /var/jenkins_truststore/truststore.jks
+                secretName: jenkins-truststore
             hostNetwork: false
             yaml: |-
               apiVersion: v1
