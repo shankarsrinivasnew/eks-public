@@ -35,8 +35,8 @@ data:
     }
 
     # Install utilities
-    /sbin/apk add jq python py-pip > /dev/null
-    pip install awscli > /dev/null
+    apk update > /dev/null
+    apk add aws-cli jq > /dev/null
 
     # Ignore script name
     shift
