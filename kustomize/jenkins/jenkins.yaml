@@ -459,12 +459,12 @@ spec:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
             volumes:
-            - secretVolume:
-                mountPath: "/home/jenkins/.aws"
-                secretName: "aws-cb-pre-config2"
-            - secretVolume:
-                mountPath: "/home/jenkins/.kube"
-                secretName: "k8s-pre-config"
+            # - secretVolume:
+            #     mountPath: "/home/jenkins/.aws"
+            #     secretName: "aws-cb-config"
+            # - secretVolume:
+            #     mountPath: "/home/jenkins/.kube"
+            #     secretName: "k8s-config"
             - emptyDirVolume:
                 memory: true
                 mountPath: "/home/jenkins/.aws/cli"
