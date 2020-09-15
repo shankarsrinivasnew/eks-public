@@ -261,6 +261,9 @@ spec:
             - secretVolume:
                 mountPath: /var/jenkins_truststore/truststore.jks
                 secretName: jenkins-truststore
+            - secretVolume:
+                mountPath: /etc/docker/certs.d/docker.artifactory.mgmt.aws.uk.tsb
+                secretName: ca.crt
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
                 mountPath: "/var/run/docker.sock"
@@ -516,3 +519,4 @@ spec:
                 effect: NoSchedule
     persistence:
       enabled: true
+      existingClaim: jenkins-home
