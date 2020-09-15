@@ -55,7 +55,6 @@ spec:
         - workflow-durable-task-step:2.36
         - credentials-binding:1.23
         - git:4.4.2
-        - git-parameter:0.9.13
         - configuration-as-code:1.43
         - ansicolor:0.7.2
         - pipeline-aws:1.42
@@ -66,7 +65,7 @@ spec:
         - docker-plugin:1.2.0 
         - envinject:2.3.0
         - extra-tool-installers:1.0
-        - git-parameter:0.9.12
+        - git-parameter:0.9.13
         - github-branch-source:2.9.0
         - http_request:1.8.26
         - job-dsl:1.77
