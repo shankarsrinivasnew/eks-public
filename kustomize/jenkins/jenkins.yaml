@@ -25,9 +25,11 @@ spec:
         annotations:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22"
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
+        hostName: jenkins.{{ DNS_ZONE }}
       resources:
         limits:
           cpu: 500m
@@ -262,7 +264,7 @@ spec:
                 mountPath: /var/jenkins_truststore/truststore.jks
                 secretName: jenkins-truststore
             - secretVolume:
-                mountPath: /etc/docker/certs.d/docker.artifactory.mgmt.aws.uk.tsb
+                mountPath: /etc/docker/certs.d/docker.artifactory.mgmt.aws.uk.tsb/ca.crt
                 secretName: ca.crt
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
