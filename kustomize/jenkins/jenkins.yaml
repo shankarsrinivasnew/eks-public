@@ -89,7 +89,7 @@ spec:
           github: |-
             unclassified:
               gitHubPluginConfig:
-                hookUrl: "http://jenkins.{{ DNS_ZONE }}/github-webhook/"
+                hookUrl: "https://jenkins.{{ DNS_ZONE }}/github-webhook/"
                 configs:
                   - name: "GitHub"
                     credentialsId: "github"
@@ -226,7 +226,7 @@ spec:
                           - "Job/Configure"
                           - "Job/Workspace"
                           - "View/Read"
-      jenkinsUrl: http://jenkins.{{ DNS_ZONE }}
+      jenkinsUrl: https://jenkins.{{ DNS_ZONE }}
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
@@ -458,12 +458,12 @@ spec:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
             volumes:
-            - secretVolume:
-                mountPath: "/home/jenkins/.aws"
-                secretName: "aws-cb-pre-config2"
-            - secretVolume:
-                mountPath: "/home/jenkins/.kube"
-                secretName: "k8s-pre-config"
+            # - secretVolume:
+            #     mountPath: "/home/jenkins/.aws"
+            #     secretName: "aws-cb-config"
+            # - secretVolume:
+            #     mountPath: "/home/jenkins/.kube"
+            #     secretName: "k8s-config"
             - emptyDirVolume:
                 memory: true
                 mountPath: "/home/jenkins/.aws/cli"
