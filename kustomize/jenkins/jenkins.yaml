@@ -262,7 +262,7 @@ spec:
                 mountPath: /var/jenkins_truststore/truststore.jks
                 secretName: jenkins-truststore
             - secretVolume:
-                mountPath: /etc/docker/certs.d/docker.artifactory.mgmt.aws.uk.tsb/ca.crt
+                mountPath: /etc/docker/certs.d/docker.artifactory.mgmt.aws.uk.tsb
                 secretName: ca.crt
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
