@@ -49,12 +49,13 @@ spec:
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       installPlugins:
-        - kubernetes:1.26.4
-        - workflow-job:2.39
+        - kubernetes:1.27.1
+        - workflow-job:2.40
         - workflow-aggregator:2.6
-        - workflow-durable-task-step:2.35
+        - workflow-durable-task-step:2.36
         - credentials-binding:1.23
-        - git:4.3.0
+        - git:4.4.2
+        - git-parameter:0.9.13
         - configuration-as-code:1.43
         - ansicolor:0.7.2
         - pipeline-aws:1.42
@@ -66,7 +67,7 @@ spec:
         - envinject:2.3.0
         - extra-tool-installers:1.0
         - git-parameter:0.9.12
-        - github-branch-source:2.8.3
+        - github-branch-source:2.9.0
         - http_request:1.8.26
         - job-dsl:1.77
         - matrix-auth:2.6.2
@@ -76,7 +77,14 @@ spec:
         - scm-filter-branch-pr:0.5.1
         - ws-cleanup:0.38
         - role-strategy:3.0
-        - slack:2.41
+        - slack:2.42
+        - artifactory:3.8.1
+        - build-timeout:1.20
+        - build-timestamp:1.0.3
+        - dashboard-view:2.13
+        - ghprb:1.42.1
+        - jira:3.1.1
+        - sonar:2.12
       JCasC:
         configScripts:
           github: |-
