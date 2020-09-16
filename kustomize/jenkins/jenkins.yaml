@@ -348,7 +348,7 @@ spec:
             serviceAccount: tsb-cb
             nodeSelector: taints.eks.aws.uk.tsb/role=mgmt
             imagePullSecrets:
-              - name: "artifactory-user-docker"
+              - name: "artifactory-credentials"
             hostNetwork: false
             yaml: |-
               apiVersion: v1
