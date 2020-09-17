@@ -385,7 +385,7 @@ spec:
               - envVar:
                   key: "AWS_PROFILE"
                   value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:53-9df0ffd"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:23-5d55233"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -400,7 +400,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:53-9df0ffd"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:26-75ce577"
               livenessProbe:
                 failureThreshold: 0
                 initialDelaySeconds: 0
@@ -416,7 +416,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/maven:53-9df0ffd"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/maven:23-5d55233"
               livenessProbe:
                   failureThreshold: 0
                   initialDelaySeconds: 0
@@ -444,7 +444,7 @@ spec:
             - name: "python"
               args: "cat"
               command: "/bin/sh -c"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/python:53-9df0ffd"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/python:24-5d55233"
               livenessProbe:
                 failureThreshold: 0
                 initialDelaySeconds: 0
