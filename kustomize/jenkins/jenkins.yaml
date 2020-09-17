@@ -520,6 +520,7 @@ spec:
             serviceAccountName: tsb-cb
             securityContext:
               fsGroup: 1337
+              runAsUser: 0
             tolerations:
               - key: role
                 operator: Equal
