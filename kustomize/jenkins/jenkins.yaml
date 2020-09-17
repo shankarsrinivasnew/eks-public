@@ -382,9 +382,9 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              - envVar:
-                  key: "AWS_PROFILE"
-                  value: "pre"
+              # - envVar:
+              #     key: "AWS_PROFILE"
+              #     value: "pre"
               image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
