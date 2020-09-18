@@ -210,7 +210,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: amazon/aws-ebs-csi-driver:v0.5.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/amazon/aws-ebs-csi-driver:v0.5.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 5
@@ -240,7 +240,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: quay.io/k8scsi/csi-provisioner:v1.3.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/csi-provisioner:v1.3.0
         name: csi-provisioner
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -256,14 +256,14 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: quay.io/k8scsi/csi-attacher:v1.2.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/csi-attacher:v1.2.0
         name: csi-attacher
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
           name: socket-dir
       - args:
         - --csi-address=/csi/csi.sock
-        image: quay.io/k8scsi/livenessprobe:v1.1.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/livenessprobe:v1.1.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi
@@ -318,7 +318,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: amazon/aws-ebs-csi-driver:v0.5.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/amazon/aws-ebs-csi-driver:v0.5.0
         livenessProbe:
           failureThreshold: 5
           httpGet:
@@ -354,7 +354,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: quay.io/k8scsi/csi-node-driver-registrar:v1.1.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/csi-node-driver-registrar:v1.1.0
         lifecycle:
           preStop:
             exec:
@@ -370,7 +370,7 @@ spec:
           name: registration-dir
       - args:
         - --csi-address=/csi/csi.sock
-        image: quay.io/k8scsi/livenessprobe:v1.1.0
+        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/livenessprobe:v1.1.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi

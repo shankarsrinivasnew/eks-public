@@ -11,7 +11,7 @@ spec:
     version: 2.6.4
   values:
     master:
-      image: jenkins/jenkins
+      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
       tag: lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
@@ -230,7 +230,7 @@ spec:
       slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
-      image: jenkins/inbound-agent
+      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
       tag: 4.3-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
@@ -317,7 +317,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "jenkins/inbound-agent"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -332,7 +332,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker:stable-dind"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/docker:stable-dind"
               livenessProbe:
                   failureThreshold: 0
                   initialDelaySeconds: 0
@@ -432,7 +432,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker:stable-dind"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/docker:stable-dind"
               livenessProbe:
                   failureThreshold: 0
                   initialDelaySeconds: 0
@@ -521,6 +521,7 @@ spec:
             securityContext:
               #runAsUser: 0
               fsGroup: 1337
+              runAsUser: 0
             tolerations:
               - key: role
                 operator: Equal
