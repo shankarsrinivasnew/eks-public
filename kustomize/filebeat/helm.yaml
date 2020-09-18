@@ -18,16 +18,18 @@ spec:
       filebeat.yml: |
         filebeat.autodiscover:
           providers:
-          - type: kubernetes
-            templates:
-            - config:
-                - type: container
-                  tags: ["kubernetes"]
-                  fields:
-                    env_id: "{{ AWS_ENVIRONMENT }}"
-                    cluster_id: "{{ CLUSTER_NAME }}"
-                  containers.ids:
-                    - "${data.kubernetes.container.id}"
+            - type: kubernetes
+              templates:
+                - config:
+                    - type: container
+                      paths:
+                        - /var/lib/docker/containers/*-${data.kubernetes.container.id}.log
+                      tags: ["kubernetes"]
+                      fields:
+                        env_id: "{{ AWS_ENVIRONMENT }}"
+                        cluster_id: "{{ CLUSTER_NAME }}"
+                      containers.ids:
+                        - "${data.kubernetes.container.id}"
         processors:
           - add_kubernetes_metadata:
               in_cluster: true
