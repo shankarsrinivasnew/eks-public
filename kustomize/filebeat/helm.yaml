@@ -13,6 +13,7 @@ spec:
   values:
     # Allows you to add any config files in /usr/share/filebeat
     # such as filebeat.yml
+    image: docker.artifactory.mgmt.aws.uk.tsb/elastic-docker-remote/beats/filebeat
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
