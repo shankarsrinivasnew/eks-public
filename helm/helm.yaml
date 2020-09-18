@@ -1,3 +1,5 @@
+image:
+  repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/helm-operator
 git:
   ssh:
     secretName: flux-git-deploy

@@ -71,7 +71,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: proxy-environment-variables
-          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.8
+          image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/amazon/aws-alb-ingress-controller:v1.1.8
       serviceAccountName: alb-ingress-controller
 ---
 apiVersion: crd.projectcalico.org/v1
