@@ -31,10 +31,9 @@ spec:
         processors:
           - add_kubernetes_metadata:
               in_cluster: true
-        output.elasticsearch:
-          hosts: ['https://elasticsearch-temp.mgmt.aws.uk.tsb:9200']
-          user: "${ELASTIC_USER}"
-          password: "${ELASTIC_PASSWORD}"
+        output.logstash:
+          hosts: ["logstash.{{ AWS_ENVIRONMENT }}.internal:5050"]
+          ttl: 60s
     helm:
       versions: v3
     extraEnvs:
