@@ -1,3 +1,5 @@
+image:
+  repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/flux
 git:
   url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
   readonly: true
