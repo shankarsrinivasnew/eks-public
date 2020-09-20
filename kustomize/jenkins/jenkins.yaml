@@ -398,6 +398,9 @@ spec:
               command: "/bin/sh -c"
               envVars:
               - envVar:
+                  key: "GRADLE_OPTS"
+                  value: "-Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb:3128 -Dhttp.proxyPort=3128 -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb:3128 -Dhttps.proxyPort=3128"
+              - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
               image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:11-6c5cc13"
@@ -413,6 +416,9 @@ spec:
               args: "cat"
               command: "/bin/sh -c"
               envVars:
+              - envVar:
+                  key: "MAVEN_OPTS"
+                  value: "-Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb:3128 -Dhttp.proxyPort=3128 -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb:3128 -Dhttps.proxyPort=3128"
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
