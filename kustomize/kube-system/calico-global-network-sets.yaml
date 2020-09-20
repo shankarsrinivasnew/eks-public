@@ -48,3 +48,53 @@ spec:
     - "{{ CORE_SUBNET_A_CIDR }}"
     - "{{ CORE_SUBNET_B_CIDR }}"
     - "{{ CORE_SUBNET_C_CIDR }}"
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-mgmt
+  labels:
+    vpc: mgmt
+    layer: all
+spec:
+  nets:
+    - 10.161.48.0/20
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-mgmt-access
+  labels:
+    vpc: mgmt
+    layer: access
+spec:
+  nets:
+    - 10.161.48.0/26
+    - 10.161.48.64/26
+    - 10.161.48.128/26
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-mgmt-data
+  labels:
+    vpc: mgmt
+    layer: data
+spec:
+  nets:
+    - 10.161.49.0/24
+    - 10.161.50.0/24
+    - 10.161.51.0/24
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-mgmt-core
+  labels:
+    vpc: mgmt
+    layer: core
+spec:
+  nets:
+    - 10.161.52.0/22
+    - 10.161.56.0/22
+    - 10.161.60.0/22
