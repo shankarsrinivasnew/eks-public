@@ -1,0 +1,22 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: filebeat
+  namespace: logging
+spec:
+  selector: app == 'tsb-filebeat-filebeat'
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: filebeat
+          to: logstash
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'data'
+        namespaceSelector: global()
+        ports:
+          - 5050
