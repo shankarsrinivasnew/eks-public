@@ -57,7 +57,6 @@ metadata:
   name: cb-application
   namespace: cb
 spec:
-  serviceAccountSelector: role == 'tsb-cb'
   types:
     - Egress
   egress:
@@ -66,6 +65,10 @@ spec:
           from: cb-application
           to: vpc
       action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cb
       protocol: TCP
       destination:
         nets:
