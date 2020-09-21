@@ -19,20 +19,23 @@ spec:
         filebeat.autodiscover:
           providers:
             - type: kubernetes
-              templates:
-                - config:
-                    - type: container
-                      paths:
-                        - /var/lib/docker/containers/*-${data.kubernetes.container.id}.log
-                      tags: ["kubernetes"]
-                      fields:
-                        env_id: "{{ AWS_ENVIRONMENT }}"
-                        cluster_id: "{{ CLUSTER_NAME }}"
-                      containers.ids:
-                        - "${data.kubernetes.container.id}"
+              node: ${NODE_NAME}
+              hints.enabled: true
+              hints.default_config:
+                type: container
+                paths:
+                  - /var/lib/docker/containers/*${data.kubernetes.container.id}.log
+                tags: ["kubernetes"]
+                fields:
+                  env_id: "{{ AWS_ENVIRONMENT }}"
+                  cluster_id: "{{ CLUSTER_NAME }}"
+                containers.ids:
+                  - "${data.kubernetes.container.id}"
         processors:
           - add_kubernetes_metadata:
               in_cluster: true
+          - add_cloud_metadata:
+          - add_host_metadata:
         output.logstash:
           hosts: ["logstash.{{ AWS_ENVIRONMENT }}.internal:5050"]
           ttl: 60s
