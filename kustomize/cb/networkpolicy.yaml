@@ -74,5 +74,5 @@ spec:
         nets:
           - "{{ VPC_CIDR }}"
         ports:
-          - 9092
+          - 9042
           - 7790
