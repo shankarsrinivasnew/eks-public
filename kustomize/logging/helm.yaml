@@ -24,7 +24,7 @@ spec:
               hints.default_config:
                 type: container
                 paths:
-                  - /var/lib/docker/containers/*${data.kubernetes.container.id}.log
+                  - /var/lib/docker/containers/*${data.kubernetes.container.id}/*.log
                 tags: ["kubernetes"]
                 fields:
                   env_id: "{{ AWS_ENVIRONMENT }}"
