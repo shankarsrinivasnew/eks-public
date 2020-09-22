@@ -98,3 +98,14 @@ spec:
     - 10.161.52.0/22
     - 10.161.56.0/22
     - 10.161.60.0/22
+---
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkSet
+metadata:
+  name: vpc-proxy
+  labels:
+    vpc: proxy
+    layer: all
+spec:
+  nets:
+    - 172.17.0.0/24
