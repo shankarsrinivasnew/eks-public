@@ -99,9 +99,7 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        nets:
-          - 172.17.0.0/24
+        selector: vpc == 'proxy' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 22
-          - 5985
-          - 5986
