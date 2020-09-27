@@ -67,8 +67,8 @@ prometheus:
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
     ##
     thanos:
-      image: quay.io/thanos/thanos:v0.14.0
-      version: v0.14.0
+      image: quay.io/thanos/thanos:v0.15.0
+      version: v0.15.0
       objectStorageConfig:
         name: thanos-s3-config
         key: object-store.yaml
