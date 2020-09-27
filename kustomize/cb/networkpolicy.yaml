@@ -69,6 +69,7 @@ spec:
         serviceAccounts:
           names:
             - tsb-cb
+            - default
       protocol: TCP
       destination:
         nets:
