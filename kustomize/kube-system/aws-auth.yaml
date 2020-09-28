@@ -24,3 +24,8 @@ data:
       groups:
         - cb-view-kube-system
         - cb-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_kubernetes
+      username: tsb-cb
+      groups:
+        - cb-view-kube-system
+        - cb-admin

@@ -1,4 +1,4 @@
-## helm upgrade --install nonprod prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml
+## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml
 namespaceOverride: "prometheus"
 
 ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
@@ -15,7 +15,10 @@ grafana:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: grafana.nonprod.aws.uk.tsb
+      external-dns.alpha.kubernetes.io/hostname: grafana.prod.aws.uk.tsb
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:407929326957:certificate/6b3b2442-cb1d-4b12-8d93-696603630bbe
     path: /*
   sidecar:
     datasources:
@@ -62,7 +65,7 @@ prometheus:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: prometheus.nonprod.aws.uk.tsb
+      external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
     paths:
       - /*
 
