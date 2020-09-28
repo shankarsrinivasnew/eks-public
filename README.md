@@ -15,19 +15,15 @@ kubectl patch -n kube-system -p '{ "spec": {"template":{ "spec": { "containers":
 ```
 kubectl apply -f manifests/kube-system/calico.yaml
 ```
-4. Apply EBS manifest
+4. Install Flux and the Helm Operator using Helm
 ```
 AWS_ACCOUNT=<AWS account number>
-sed -i -e "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g" kustomize/kube-system/ebs.yaml
-kubectl apply -f kustomize/kube-system/ebs.yaml
-sed -i -e "s/$AWS_ACCOUNT/{{ AWS_ACCOUNT }}/g" kustomize/kube-system/ebs.yaml
-```
-5. Install Flux and the Helm Operator using Helm
-```
+sed -i -e "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g" helm/flux.yaml.yaml
 kubectl apply -f manifests/flux/namespace.yaml
 kubectl apply -f manifests/flux/kustomize.yaml
 kubectl -n flux create secret generic flux-git-auth --from-literal GIT_AUTHKEY=<GitHub authentication token> --from-literal GIT_AUTHUSER=<GitHub user>
 helm repo add fluxcd https://charts.fluxcd.io
 helm install flux fluxcd/flux --namespace flux --values helm/flux.yaml --version 1.5.0 --set git.branch=<dev|nonprod|preprod|master>
 helm install helm-operator fluxcd/helm-operator --namespace flux --values helm/helm.yaml --version 1.2.0
+sed -i -e "s/$AWS_ACCOUNT/{{ AWS_ACCOUNT }}/g" helm/flux.yaml.yaml
 ```
