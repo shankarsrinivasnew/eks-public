@@ -50,3 +50,34 @@ spec:
         ports:
           - 443
           - 80
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cb-application
+  namespace: cb
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: cb-application
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cb
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+        ports:
+          - 9042
+          - 9142
+          - 9092
+          - 7790
+          - 2181
+          - 7788
