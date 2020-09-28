@@ -409,6 +409,9 @@ spec:
             - secretVolume:
                 mountPath: "/home/jenkins/cacert"
                 secretName: "cacert-truststore"
+            - hostPathVolume:
+                hostPath: "/var/run/docker.sock"
+                mountPath: "/var/run/docker.sock"
         jnlp-cob: |
           - name: jnlp-cob
             label: tsb-cb
