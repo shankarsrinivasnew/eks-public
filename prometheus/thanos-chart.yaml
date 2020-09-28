@@ -1,7 +1,7 @@
 ## helm upgrade --install thanos banzaicloud-stable/thanos -f thanos-chart.yaml
 image:
   repository: quay.io/thanos/thanos
-  tag: v0.14.0
+  tag: v0.15.0
 
 objstoreSecretOverride: thanos-s3-config
 

@@ -1,10 +1,12 @@
-## helm upgrade nonprod stable/prometheus-operator -f prom-operator-chart.yaml
+## helm upgrade --install preprod prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml
 namespaceOverride: "prometheus"
 
 ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
 ##
 grafana:
   enabled: true
+  persistence: 
+    enabled: true
   ingress:
     enabled: true
     annotations:
@@ -13,18 +15,32 @@ grafana:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: grafana.nonprod.aws.uk.tsb
+      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/healthcheck-port: '80'
+      external-dns.alpha.kubernetes.io/hostname: grafana.preprod.aws.uk.tsb
     path: /*
+  sidecar:
+    datasources:
+      defaultDatasourceEnabled: false
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Thanos
+        type: prometheus
+        url: http://thanos-query-http.prometheus:10902 #Thanos must be deployed first for this to work.
+        access: proxy
+        isDefault: true
 
 prometheusOperator:
   enabled: true
-  resources: {}
-  # limits:
-  #   cpu: 200m
-  #   memory: 200Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 100Mi
+  resources:
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 50m
+      memory: 50Mi
 
   # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
   # because control-plane managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
@@ -39,7 +55,7 @@ prometheus:
     create: true
     name: prometheus-sa
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::273312704578:role/eks/prometheus-thanos-s3
+      eks.amazonaws.com/role-arn: arn:aws:iam::045223552195:role/eks/prometheus-thanos-s3
   ingress:
     enabled: true
     annotations:
@@ -48,7 +64,7 @@ prometheus:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: prometheus.nonprod.aws.uk.tsb
+      external-dns.alpha.kubernetes.io/hostname: prometheus.preprod.aws.uk.tsb
     paths:
       - /*
 
@@ -67,8 +83,8 @@ prometheus:
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
     ##
     thanos:
-      image: quay.io/thanos/thanos:v0.14.0
-      version: v0.14.0
+      image: quay.io/thanos/thanos:v0.15.0
+      version: v0.15.0
       objectStorageConfig:
         name: thanos-s3-config
         key: object-store.yaml
