@@ -9,8 +9,8 @@ spec:
   egress:
   - to:
     - ipBlock:
-        cidr: 10.163.128.0/17
+        cidr: 10.162.128.0/17
   ingress:
   - from:
     - ipBlock:
-        cidr: 10.163.128.0/17
+        cidr: 10.162.128.0/17
