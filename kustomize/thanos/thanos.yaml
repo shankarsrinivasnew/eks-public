@@ -2,9 +2,9 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: prometheus
+  name: thanos
 spec:
-  releaseName: preprod
+  releaseName: thanos
   chart:
     repository: https://kubernetes-charts.banzaicloud.com
     name: thanos
