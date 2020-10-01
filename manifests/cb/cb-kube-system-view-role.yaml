@@ -26,3 +26,4 @@ subjects:
   name: cb-view-kube-system
 - kind: ServiceAccount
   name: tsb-cb
+  namespace: cb
