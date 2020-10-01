@@ -1,4 +1,4 @@
-## helm upgrade --install prod prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml
+## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml
 namespaceOverride: "prometheus"
 
 ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
