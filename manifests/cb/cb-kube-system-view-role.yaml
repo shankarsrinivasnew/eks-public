@@ -24,3 +24,5 @@ roleRef:
 subjects:
 - kind: Group
   name: cb-view-kube-system
+- kind: ServiceAccount
+  name: tsb-cb
