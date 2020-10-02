@@ -607,8 +607,8 @@ spec:
                 value: mgmt
                 effect: NoSchedule
       jnlp-root:
-        podName: cb
-        componentName: tsb-cb
+        podName: jnlp-root
+        componentName: jnlp-root
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
