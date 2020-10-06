@@ -81,3 +81,36 @@ spec:
           - 7790
           - 2181
           - 7788
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cb-inter-namespace
+  namespace: cb
+spec:
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: cb-namespace
+          to: cb-namespace
+      action: Allow
+      source:
+        namespaceSelector: projectcalico.org/name == 'cb'
+        ports:
+          - 8080
+          - 8443
+  egress:
+    - metadata:
+        annotations:
+          from: cb-namespace
+          to: cb-namespace
+      action: Allow
+      protocol: TCP
+      destination:
+        namespaceSelector: projectcalico.org/name == 'cb'
+        ports:
+          - 8080
+          - 8443
