@@ -99,9 +99,6 @@ spec:
       action: Allow
       source:
         namespaceSelector: projectcalico.org/name == 'cb'
-        ports:
-          - 8080
-          - 8443
   egress:
     - metadata:
         annotations:
@@ -111,6 +108,3 @@ spec:
       protocol: TCP
       destination:
         namespaceSelector: projectcalico.org/name == 'cb'
-        ports:
-          - 8080
-          - 8443
