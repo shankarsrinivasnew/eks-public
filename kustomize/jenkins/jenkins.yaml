@@ -13,7 +13,8 @@ spec:
     serviceAccount:
       create: true
       name: jenkins-master
-      annotations: eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/jenkins-backups
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/jenkins-backups
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
       tag: lts-alpine
