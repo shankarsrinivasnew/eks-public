@@ -115,6 +115,7 @@ metadata:
   name: cb-nginx-ingress
   namespace: cb
 spec:
+  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
   types:
     - Ingress
   ingress:
