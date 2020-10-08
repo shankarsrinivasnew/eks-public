@@ -34,8 +34,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        nets:
-          - "{{ VPC_CIDR }}"
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 9042
     - metadata:
@@ -45,8 +45,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        nets:
-          - 10.161.48.0/20
+        selector: vpc == 'mgmt' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 443
           - 80
@@ -72,8 +72,8 @@ spec:
             - default
       protocol: TCP
       destination:
-        nets:
-          - "{{ VPC_CIDR }}"
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 9042
           - 9142
@@ -108,3 +108,21 @@ spec:
       protocol: TCP
       destination:
         namespaceSelector: projectcalico.org/name == 'cb'
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cb-nginx-ingress
+  namespace: cb
+spec:
+  types:
+    - Ingress
+  ingress:
+    - metadata:
+      annotations:
+        from: access
+        to: nginx
+      action: Allow
+      source:
+        selector: vpc == 'local' && layer == 'access'
+        namespaceSelector: global()
