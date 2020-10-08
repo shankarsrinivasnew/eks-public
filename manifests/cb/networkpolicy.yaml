@@ -121,9 +121,9 @@ spec:
   ingress:
     - metadata:
       annotations:
-        from: access
+        from: vpc
         to: nginx
       action: Allow
       source:
-        selector: vpc == 'local' && layer == 'access'
+        selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
