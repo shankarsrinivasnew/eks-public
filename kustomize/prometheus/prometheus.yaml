@@ -26,6 +26,8 @@ spec:
           alb.ingress.kubernetes.io/backend-protocol: HTTP
           alb.ingress.kubernetes.io/healthcheck-port: '80'
           external-dns.alpha.kubernetes.io/hostname: grafana.preprod.aws.uk.tsb
+          alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+          alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:045223552195:certificate/9d7c8d33-c627-4190-9d08-90ecf7d71a43
         path: /*
       sidecar:
         datasources:
