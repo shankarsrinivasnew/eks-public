@@ -71,8 +71,6 @@ prometheus:
       external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
     paths:
       - /*
-    # hosts: 
-    #   - prometheus.prod.aws.uk.tsb
 
   ## Settings affecting prometheusSpec
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
