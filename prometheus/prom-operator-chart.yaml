@@ -21,10 +21,10 @@ grafana:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: grafana.prod.aws.uk.tsb
+      external-dns.alpha.kubernetes.io/hostname: grafana.nonprod.aws.uk.tsb
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
       alb.ingress.kubernetes.io/backend-protocol: HTTP
-      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:407929326957:certificate/6b3b2442-cb1d-4b12-8d93-696603630bbe
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:273312704578:certificate/302154c7-1c1a-46e2-aa71-1f1a5bdcc45c
     path: /*
   sidecar:
     datasources:
@@ -71,7 +71,7 @@ prometheus:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
+      external-dns.alpha.kubernetes.io/hostname: prometheus.nonprod.aws.uk.tsb
     paths:
       - /*
 
