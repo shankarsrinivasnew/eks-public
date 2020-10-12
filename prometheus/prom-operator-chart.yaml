@@ -7,6 +7,7 @@ grafana:
   enabled: true
   persistence: 
     enabled: true
+  envFromSecret: grafana-mysql-credentials
   ingress:
     enabled: true
     annotations:
@@ -65,9 +66,13 @@ prometheus:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
+      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
       external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
     paths:
       - /*
+    # hosts: 
+    #   - prometheus.prod.aws.uk.tsb
 
   ## Settings affecting prometheusSpec
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
