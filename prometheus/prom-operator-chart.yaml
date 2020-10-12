@@ -7,6 +7,12 @@ grafana:
   enabled: true
   persistence: 
     enabled: true
+  # env:
+  #   - name: GF_DATABASE_TYPE
+  #     value: mysql
+  #   - name: GF_DATABASE_ENDPOINT
+  #     value: grafana-nonprod-grafana-db.ccsfxlfnvjs5.eu-west-2.rds.amazonaws.com
+  envFromSecret: grafana-mysql-credentials
   ingress:
     enabled: true
     annotations:
