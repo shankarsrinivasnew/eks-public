@@ -7,6 +7,7 @@ grafana:
   enabled: true
   persistence: 
     enabled: true
+  envFromSecret: grafana-mysql-credentials ## Configure RDS Backend. Ensure Secret named grafana-mysql-credentials is created prior to runninng this.
   ingress:
     enabled: true
     annotations:
@@ -65,6 +66,8 @@ prometheus:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
+      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
       external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
     paths:
       - /*
