@@ -3,7 +3,7 @@ apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
   name: jenkins-agent
-  namespace: sco
+  namespace: cob
 spec:
   serviceAccountSelector: role == 'jenkins-agent'
   types:
@@ -54,21 +54,21 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: sco-application
-  namespace: sco
+  name: cob-application
+  namespace: cob
 spec:
   types:
     - Egress
   egress:
     - metadata:
         annotations:
-          from: sco-application
+          from: cob-application
           to: vpc
       action: Allow
       source:
         serviceAccounts:
           names:
-            - tsb-sco
+            - tsb-cob
             - default
       protocol: TCP
       destination:
@@ -85,8 +85,8 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: sco-inter-namespace
-  namespace: sco
+  name: cob-inter-namespace
+  namespace: cob
 spec:
   types:
     - Ingress
@@ -94,26 +94,26 @@ spec:
   ingress:
     - metadata:
         annotations:
-          from: sco-namespace
-          to: sco-namespace
+          from: cob-namespace
+          to: cob-namespace
       action: Allow
       source:
-        namespaceSelector: projectcalico.org/name == 'sco'
+        namespaceSelector: projectcalico.org/name == 'cob'
   egress:
     - metadata:
         annotations:
-          from: sco-namespace
-          to: sco-namespace
+          from: cob-namespace
+          to: cob-namespace
       action: Allow
       protocol: TCP
       destination:
-        namespaceSelector: projectcalico.org/name == 'sco'
+        namespaceSelector: projectcalico.org/name == 'cob'
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: sco-nginx-ingress
-  namespace: sco
+  name: cob-nginx-ingress
+  namespace: cob
 spec:
   serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
   types:

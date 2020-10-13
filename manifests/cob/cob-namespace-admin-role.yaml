@@ -2,8 +2,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: sco-admin-role
-  namespace: sco
+  name: cob-admin-role
+  namespace: cob
 rules:
   - apiGroups: ["*"]
     resources: ["*"]
@@ -12,14 +12,14 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: sco-admin-binding
-  namespace: sco
+  name: cob-admin-binding
+  namespace: cob
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: sco-admin-role
+  name: cob-admin-role
 subjects:
 - kind: ServiceAccount
-  name: tsb-sco
+  name: tsb-cob
 - kind: Group
-  name: sco-admin
+  name: cob-admin
