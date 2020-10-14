@@ -5,8 +5,6 @@ namespaceOverride: "prometheus"
 ##
 grafana:
   enabled: true
-  persistence: 
-    enabled: true
   envFromSecret: grafana-mysql-credentials ## Configure RDS Backend. Ensure Secret named grafana-mysql-credentials is created prior to runninng this.
   ingress:
     enabled: true
