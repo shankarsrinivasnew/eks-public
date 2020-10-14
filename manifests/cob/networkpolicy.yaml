@@ -1,0 +1,129 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent
+  namespace: cob
+spec:
+  serviceAccountSelector: role == 'jenkins-agent'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      source:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      destination:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9042
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: mgmt
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'mgmt' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 443
+          - 80
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cob-application
+  namespace: cob
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: cob-application
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cob
+            - default
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9042
+          - 9142
+          - 9092
+          - 7790
+          - 2181
+          - 7788
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cob-inter-namespace
+  namespace: cob
+spec:
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: cob-namespace
+          to: cob-namespace
+      action: Allow
+      source:
+        namespaceSelector: projectcalico.org/name == 'cob'
+  egress:
+    - metadata:
+        annotations:
+          from: cob-namespace
+          to: cob-namespace
+      action: Allow
+      protocol: TCP
+      destination:
+        namespaceSelector: projectcalico.org/name == 'cob'
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cob-nginx-ingress
+  namespace: cob
+spec:
+  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  types:
+    - Ingress
+  ingress:
+    - metadata:
+      annotations:
+        from: vpc
+        to: nginx
+      action: Allow
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
