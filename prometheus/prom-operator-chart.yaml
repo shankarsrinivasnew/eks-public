@@ -49,6 +49,19 @@ prometheusOperator:
   ##
   hostNetwork: false
 
+## Component scraping the kube controller manager
+##
+kubeControllerManager:
+  enabled: false
+## Component scraping kube scheduler
+##
+kubeScheduler:
+  enabled: false
+## Component scraping kube proxy
+##
+kubeProxy:
+  enabled: false
+
 ## Deploy a Prometheus instance
 ##
 prometheus:
@@ -76,6 +89,68 @@ prometheus:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+    additionalScrapeConfigs:
+      - job_name: prometheus
+        static_configs:
+          - targets:
+            - localhost:9090
+      - job_name: kakfa-node-exporter
+        static_configs:
+          - targets:
+            - kafka-0.hdf.prod.aws.uk.tsb:9100
+            - kafka-1.hdf.prod.aws.uk.tsb:9100
+            - kafka-2.hdf.prod.aws.uk.tsb:9100
+            - kafka-3.hdf.prod.aws.uk.tsb:9100
+            - kafka-4.hdf.prod.aws.uk.tsb:9100
+            - kafka-5.hdf.prod.aws.uk.tsb:9100
+      - job_name: scylla-node-exporter
+        static_configs:
+          - targets:
+            - ip-10-163-148-232.eu-west-2.compute.internal:9180
+            - ip-10-163-155-7.eu-west-2.compute.internal:9180
+            - ip-10-163-144-194.eu-west-2.compute.internal:9180
+      
+      # - job_name: blackbox-exporter-prod
+      #   scrape_interval: 1m
+      #   metrics_path: /probe
+      #   params:
+      #     module: [http_2xx]
+      #   static_configs:
+      #     - targets:
+      #       - ranger.hdf.prod.aws.uk.tsb:6182
+      #       - ranger-00.hdf.prod.aws.uk.tsb:6182
+      #       - ranger-01.hdf.prod.aws.uk.tsb:6182
+      #       - ranger-02.hdf.prod.aws.uk.tsb:6182
+      #       - ambari.hdf.prod.aws.uk.tsb:8443
+      # - job_name: 'Scylla Exporter - PROD'
+      #   proxy_url: http://eu-west-2.proxy.aws.uk.tsb:3128
+      #   ec2_sd_configs:
+      #     - region: eu-west-2
+      #       role_arn: arn:aws:iam::407929326957:role/eks/prometheus-thanos-s3
+      #       port: 9180
+      #   relabel_configs:
+      #       # Use the instance ID as the instance label
+      #     - source_labels: [__meta_ec2_private_ip]
+      #       target_label: privateip
+      #     - source_labels: [__meta_ec2_instance_id]
+      #       target_label: instanceid
+      #     - source_labels: [__meta_ec2_tag_description]
+      #       target_label: description
+      #     - source_labels: [__meta_ec2_tag_Name]
+      #       target_label: instance
+      #     - source_labels: [__meta_ec2_tag_environment]
+      #       target_label: environment
+      #     - source_labels: [__meta_ec2_tag_project]
+      #       target_label: project
+      #     - source_labels: [__meta_ec2_instance_state]
+      #       target_label: status
+      #     - source_labels: [__meta_ec2_tag_subsystem]
+      #       target_label: subsystem
+      #       regex: scylladb
+      #       action: keep
+      #     - source_labels: [__meta_ec2_tag_subsystem]
+      #       target_label: subsystem
+
     ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
     ## prometheus resource to be created with selectors based on values in the helm deployment,
     ## which will also match the servicemonitors created
