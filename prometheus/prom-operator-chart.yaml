@@ -78,8 +78,9 @@ prometheus:
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
       alb.ingress.kubernetes.io/backend-protocol: HTTP
-      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
       external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:407929326957:certificate/44ce6501-b708-4420-b4f9-9cc2961697aa
     paths:
       - /*
 
