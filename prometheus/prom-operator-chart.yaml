@@ -101,6 +101,23 @@ prometheus:
         static_configs:
           - targets:
             - localhost:9090
+      - job_name: alertmanager
+        static_configs:
+          - targets:
+            - localhost:9093
+      - job_name: jmx-hdf-exporter
+        static_configs:
+          - targets:
+            - controller.hdf.prod.aws.uk.tsb:9110
+            - service-0.hdf.prod.aws.uk.tsb:9110
+            - service-1.hdf.prod.aws.uk.tsb:9110
+            - service-2.hdf.prod.aws.uk.tsb:9110
+            - kafka-0.hdf.prod.aws.uk.tsb:9110
+            - kafka-1.hdf.prod.aws.uk.tsb:9110
+            - kafka-2.hdf.prod.aws.uk.tsb:9110
+            - kafka-3.hdf.prod.aws.uk.tsb:9110
+            - kafka-4.hdf.prod.aws.uk.tsb:9110
+            - kafka-5.hdf.prod.aws.uk.tsb:9110
       - job_name: hdf-controller-node-exporter
         static_configs:
           - targets:
@@ -132,47 +149,15 @@ prometheus:
             - ip-10-163-148-232.eu-west-2.compute.internal:9180
             - ip-10-163-155-7.eu-west-2.compute.internal:9180
             - ip-10-163-144-194.eu-west-2.compute.internal:9180
-      
-      # - job_name: blackbox-exporter-prod
-      #   scrape_interval: 1m
-      #   metrics_path: /probe
-      #   params:
-      #     module: [http_2xx]
-      #   static_configs:
-      #     - targets:
-      #       - ranger.hdf.prod.aws.uk.tsb:6182
-      #       - ranger-00.hdf.prod.aws.uk.tsb:6182
-      #       - ranger-01.hdf.prod.aws.uk.tsb:6182
-      #       - ranger-02.hdf.prod.aws.uk.tsb:6182
-      #       - ambari.hdf.prod.aws.uk.tsb:8443
-      # - job_name: 'Scylla Exporter - PROD'
-      #   proxy_url: http://eu-west-2.proxy.aws.uk.tsb:3128
-      #   ec2_sd_configs:
-      #     - region: eu-west-2
-      #       role_arn: arn:aws:iam::407929326957:role/eks/prometheus-thanos-s3
-      #       port: 9180
-      #   relabel_configs:
-      #       # Use the instance ID as the instance label
-      #     - source_labels: [__meta_ec2_private_ip]
-      #       target_label: privateip
-      #     - source_labels: [__meta_ec2_instance_id]
-      #       target_label: instanceid
-      #     - source_labels: [__meta_ec2_tag_description]
-      #       target_label: description
-      #     - source_labels: [__meta_ec2_tag_Name]
-      #       target_label: instance
-      #     - source_labels: [__meta_ec2_tag_environment]
-      #       target_label: environment
-      #     - source_labels: [__meta_ec2_tag_project]
-      #       target_label: project
-      #     - source_labels: [__meta_ec2_instance_state]
-      #       target_label: status
-      #     - source_labels: [__meta_ec2_tag_subsystem]
-      #       target_label: subsystem
-      #       regex: scylladb
-      #       action: keep
-      #     - source_labels: [__meta_ec2_tag_subsystem]
-      #       target_label: subsystem
+      - job_name: consul-node-exporter
+        static_configs:
+          - targets:
+            - ip-10-163-236-45.eu-west-2.compute.internal:9100
+            - ip-10-163-164-21.eu-west-2.compute.internal:9100
+            - ip-10-163-203-221.eu-west-2.compute.internal:9100
+            - ip-10-163-227-130.eu-west-2.compute.internal:9100
+            - ip-10-163-191-88.eu-west-2.compute.internal:9100
+            - ip-10-163-211-243.eu-west-2.compute.internal:9100
 
     ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
     ## prometheus resource to be created with selectors based on values in the helm deployment,
@@ -190,3 +175,25 @@ prometheus:
       objectStorageConfig:
         name: thanos-s3-config
         key: object-store.yaml
+
+## Configuration for alertmanager
+##
+alertmanager:
+  config:
+    global:
+      resolve_timeout: 5m
+    receivers:
+      - name: "sns-forwarder-cbalerts"
+        webhook_configs:
+        - url: "http://localhost:9087/alert/arn:aws:sns:eu-west-2:407929326957:CB-alerts"
+    route:
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1m
+      receiver: 'sns-forwarder-cbalerts'
+      routes:
+        - match:
+            namespace: cb
+          receiver: sns-forwarder-cbalerts
+          continue: true
