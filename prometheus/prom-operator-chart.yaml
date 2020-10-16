@@ -6,10 +6,10 @@ namespaceOverride: "prometheus"
 grafana:
   enabled: true
   envFromSecret: grafana-mysql-credentials ## Configure RDS Backend. Ensure Secret named grafana-mysql-credentials is created prior to runninng this.
-  env:
-    http_proxy: http://eu-west-2.proxy.aws.uk.tsb:3128
-    https_proxy: http://eu-west-2.proxy.aws.uk.tsb:3128
-    no_proxy: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+  # env:
+  #   http_proxy: http://eu-west-2.proxy.aws.uk.tsb:3128
+  #   https_proxy: http://eu-west-2.proxy.aws.uk.tsb:3128
+  #   no_proxy: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
   ingress:
     enabled: true
     annotations:
@@ -35,8 +35,10 @@ grafana:
         url: http://thanos-query-http.prometheus:10902 #Thanos must be deployed first for this to work.
         access: proxy
         isDefault: true
-  plugins: 
-    - "grafana-piechart-panel"
+  # plugins: 
+  #   - "grafana-piechart-panel"
+  #   - "camptocamp-prometheus-alertmanager-datasource"
+  #   - "praj-ams-datasource"
 
 prometheusOperator:
   enabled: true
@@ -99,6 +101,16 @@ prometheus:
         static_configs:
           - targets:
             - localhost:9090
+      - job_name: hdf-controller-node-exporter
+        static_configs:
+          - targets:
+            - controller.hdf.prod.aws.uk.tsb:9100
+      - job_name: hdf-service-node-exporter
+        static_configs:
+          - targets:
+            - service-0.hdf.prod.aws.uk.tsb:9100
+            - service-1.hdf.prod.aws.uk.tsb:9100
+            - service-2.hdf.prod.aws.uk.tsb:9100
       - job_name: kakfa-node-exporter
         static_configs:
           - targets:
@@ -109,6 +121,12 @@ prometheus:
             - kafka-4.hdf.prod.aws.uk.tsb:9100
             - kafka-5.hdf.prod.aws.uk.tsb:9100
       - job_name: scylla-node-exporter
+        static_configs:
+          - targets:
+            - ip-10-163-148-232.eu-west-2.compute.internal:9100
+            - ip-10-163-155-7.eu-west-2.compute.internal:9100
+            - ip-10-163-144-194.eu-west-2.compute.internal:9100
+      - job_name: scylla-default-metrics-exporter
         static_configs:
           - targets:
             - ip-10-163-148-232.eu-west-2.compute.internal:9180
