@@ -35,7 +35,7 @@ grafana:
         url: http://thanos-query-http.prometheus:10902 #Thanos must be deployed first for this to work.
         access: proxy
         isDefault: true
-  # plugins: 
+  # plugins:
   #   - "grafana-piechart-panel"
   #   - "camptocamp-prometheus-alertmanager-datasource"
   #   - "praj-ams-datasource"
@@ -72,7 +72,7 @@ kubeProxy:
 ##
 prometheus:
   enabled: true
-  serviceAccount: 
+  serviceAccount:
     create: true
     name: prometheus-sa
     annotations:
@@ -185,7 +185,7 @@ alertmanager:
     receivers:
       - name: "sns-forwarder-cbalerts"
         webhook_configs:
-        - url: "http://localhost:9087/alert/arn:aws:sns:eu-west-2:407929326957:CB-alerts"
+        - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
     route:
       group_by: ['alertname']
       group_wait: 30s
