@@ -23,3 +23,6 @@ subjects:
   name: tsb-cb
 - kind: Group
   name: cb-admin
+- kind: ServiceAccount
+  name: jenkins-terraform
+  namespace: jenkins
