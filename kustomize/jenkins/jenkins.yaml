@@ -267,7 +267,7 @@ spec:
           - name: cbinit
             nodeUsageMode: NORMAL
             runAsUser: 0
-            label: jenkins-tsb-cb
+            label: jenkins-tsb-cb-init
             namespace: cb
             serviceAccount: tsb-cb
             nodeSelector: taints.eks.aws.uk.tsb/role=mgmt
