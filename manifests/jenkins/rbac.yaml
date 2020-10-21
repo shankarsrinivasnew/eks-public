@@ -44,5 +44,5 @@ roleRef:
   name: jenkins-schedule-agents
 subjects:
   - kind: ServiceAccount
-    name: jenkins-master
+    name: jenkins
     namespace: jenkins
