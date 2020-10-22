@@ -169,6 +169,11 @@ prometheus:
     ## which will also match the PrometheusRule resources created
     ##
     ruleSelectorNilUsesHelmValues: false
+    #ruleSelector:
+    #   matchLabels:
+    #     app: kube-prometheus-stack
+    #     release: prod
+
     ## Thanos configuration allows configuring various aspects of a Prometheus server in a Thanos environment.
     ## This section is experimental, it may change significantly without deprecation notice in any release.
     ## This is experimental and may change significantly without backward compatibility in any release.
@@ -184,20 +189,20 @@ prometheus:
 ## Configuration for alertmanager
 ##
 alertmanager:
-  env:
-    - name: http_proxy
-      value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-    - name: https_proxy
-      value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-    - name: no_proxy
-      value: "localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb"
   config:
     global:
       resolve_timeout: 5m
+    inhibit_rules:
+      - source_match:
+          severity: 'critical'
+        target_match:
+          severity: 'warning'
+        equal: ['alertname', 'dev', 'instance']
     receivers:
       - name: "sns-forwarder-cbalerts"
         webhook_configs:
         - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
+          send_resolved: true
       - name: 'cb-slack-notifications'
         slack_configs:
         - channel: '#cb_monitoring_alerting'
@@ -227,7 +232,7 @@ alertmanager:
             {{ end }}
           send_resolved: true
           http_config:
-            proxy_url: "http://proxy_access.eu-west-2.aws.uk.tsb:3128"
+            proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
     route:
       group_by: ['alertname']
       group_wait: 30s
@@ -237,10 +242,11 @@ alertmanager:
       routes:
         - match:
             namespace: cb
+            environment: prod
           receiver: sns-forwarder-cbalerts
           continue: true
-      routes:
         - match:
             namespace: cb
+            environment: prod
           receiver: cb-slack-notifications
           continue: true
