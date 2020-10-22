@@ -199,13 +199,14 @@ alertmanager:
           severity: 'warning'
         equal: ['alertname', 'dev', 'instance']
     receivers:
+      - name: "null"
       - name: "sns-forwarder-cbalerts"
         webhook_configs:
         - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
           send_resolved: true
       - name: 'cb-slack-notifications'
         slack_configs:
-        - channel: '#cb_monitoring_alerting'
+        - channel: '#cb_alert_notifications'
           api_url: 'https://hooks.slack.com/services/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'
           icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
           title: |-
@@ -238,15 +239,13 @@ alertmanager:
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 1m
-      receiver: 'sns-forwarder-cbalerts'
+      receiver: "null"
       routes:
         - match:
             namespace: cb
-            environment: prod
           receiver: sns-forwarder-cbalerts
           continue: true
         - match:
             namespace: cb
-            environment: prod
           receiver: cb-slack-notifications
           continue: true
