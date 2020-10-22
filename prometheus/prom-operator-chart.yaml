@@ -77,6 +77,8 @@ prometheus:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+    retention: 6h
+    disableCompaction: true
     storageSpec:
       volumeClaimTemplate:
         spec:
