@@ -76,7 +76,7 @@ prometheus:
     create: true
     name: prometheus-sa
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::273312704578:role/eks/prometheus-thanos-s3
+      eks.amazonaws.com/role-arn: arn:aws:iam::407929326957:role/eks/prometheus-thanos-s3
   ingress:
     enabled: true
     annotations:
@@ -96,6 +96,21 @@ prometheus:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+    retention: 6h
+    disableCompaction: true
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          volumeName: prometheus-data #ENSURE PV created before running this.
+          accessModes:
+            - ReadWriteMany
+          storageClassName: efs-sc
+          resources:
+            requests:
+              storage: 20Gi
+          selector:
+            matchLabels:
+              prometheus: "data"
     additionalScrapeConfigs:
       - job_name: prometheus
         static_configs:
