@@ -6,7 +6,7 @@ namespaceOverride: "prometheus"
 grafana:
   enabled: true
   persistence: 
-    enabled: true
+    enabled: false
   envFromSecret: grafana-mysql-credentials ## Configure RDS Backend. Ensure Secret named grafana-mysql-credentials is created prior to runninng this.
   ingress:
     enabled: true
@@ -66,7 +66,10 @@ prometheus:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
+      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
       external-dns.alpha.kubernetes.io/hostname: prometheus.nonprod.aws.uk.tsb
+      alb.ingress.kubernetes.io/certificate-arn: 	arn:aws:acm:eu-west-2:273312704578:certificate/5954abf5-0f9d-45c4-a99c-600254ba30ce
     paths:
       - /*
 
@@ -74,6 +77,19 @@ prometheus:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          volumeName: prometheus-data #ENSURE PV created before running this.
+          accessModes:
+            - ReadWriteMany
+          storageClassName: efs-sc
+          resources:
+            requests:
+              storage: 10Gi
+          selector:
+            matchLabels:
+              prometheus: "data"
     ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
     ## prometheus resource to be created with selectors based on values in the helm deployment,
     ## which will also match the servicemonitors created
