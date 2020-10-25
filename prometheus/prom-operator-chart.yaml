@@ -96,12 +96,24 @@ prometheus:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+    containers:
+      - name: prometheus
+        env:
+          - name: http_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: https_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: no_proxy
+            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+    podMetadata:
+      annotations:
+        iam.amazonaws.com/role: arn:aws:iam::407929326957:role/eks/prometheus-thanos-s3
     retention: 6h
     disableCompaction: true
     storageSpec:
       volumeClaimTemplate:
         spec:
-          volumeName: prometheus-data #ENSURE PV created before running this.
+          volumeName: prometheus-data #ENSURE PV created before running this ref: storage.yaml
           accessModes:
             - ReadWriteMany
           storageClassName: efs-sc
@@ -120,6 +132,29 @@ prometheus:
         static_configs:
           - targets:
             - localhost:9093
+      - job_name: ec2-dynamic-discovery
+        ec2_sd_configs:
+          - region: eu-west-2
+            port: 9100
+        relabel_configs:
+          - source_labels: [__meta_ec2_private_ip]
+            target_label: privateip
+          - source_labels: [__meta_ec2_instance_id]
+            target_label: instanceid
+          - source_labels: [__meta_ec2_tag_ManagedBy]
+            target_label: managedby
+          - source_labels: [__meta_ec2_tag_Name]
+            target_label: instance
+          - source_labels: [__meta_ec2_tag_Environment]
+            target_label: environment
+          - source_labels: [__meta_ec2_availability_zone]
+            target_label: availabilityzone
+          - source_labels: [__meta_ec2_instance_state]
+            target_label: status
+          - source_labels: [__meta_ec2_instance_type]
+            target_label: instancetype
+          - source_labels: [__meta_ec2_tag_subsystem]
+            target_label: subsystem
       - job_name: jmx-hdf-exporter
         static_configs:
           - targets:
