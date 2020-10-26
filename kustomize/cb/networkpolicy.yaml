@@ -46,7 +46,6 @@ spec:
       protocol: TCP
       destination:
         nets:
-          - "{{ VPC_CIDR }}"
           - 10.161.48.0/20
         ports:
           - 443
@@ -82,3 +81,30 @@ spec:
           - 7790
           - 2181
           - 7788
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cb-sa-policy
+  namespace: cb
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: cb-sa
+          to: mgmt
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cb
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.48.0/20
+        ports:
+          - 80
+          - 443
