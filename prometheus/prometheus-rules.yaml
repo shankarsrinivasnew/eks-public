@@ -21,7 +21,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: '{{ $labels.deployment }} of job {{ $labels.job }} (Environment: {{$labels.environment }}) has less than 3 pods for more than 1 min. Value:{{ $value }}'
+                description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
                 summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
 
     ###########################################CB_APP_DOWN_CRITICAL##########################################################
@@ -41,8 +41,9 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: '{{ $labels.deployment }} of job {{ $labels.job }} (Environment: {{$labels.environment }}) has no pods running. Value:{{ $value }}'
+                description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
                 summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+
 
   tsb-cb-responsetime-alerts-rules:
     groups:
@@ -65,7 +66,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} response time is more than 1s for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} response time is more than 1s for last 5 mins. Value: {{ $value }}'
                 summary: Green alert for reponse time reached for Application {{ $labels.job }}
 
         -   alert: CB_app_auth_response_time_yellow_alert_prod
@@ -81,7 +82,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} response time is more than 1.5s for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} response time is more than 1.5s for last 5 mins. Value: {{ $value }}'
                 summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
 
         -   alert: CB_app_auth_response_time_red_alert_prod
@@ -97,7 +98,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} response time is more than 2s for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} response time is more than 2s for last 5 mins. Value: {{ $value }}'
                 summary: Red alert for reponse time reached for Application {{ $labels.job }}
 
   tsb-cb-up-alerts-rules:
@@ -122,7 +123,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
         -   alert: CB_authentication_verify_up_yellow_alert_prod
@@ -138,7 +139,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
         -   alert: CB_authentication_verify_up_red_alert_prod
@@ -154,7 +155,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
         -   alert: CB_authentication_verify_up_critical_alert_prod
@@ -170,7 +171,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
     ###########################################CB_AUTH_ENROL##########################################################
@@ -191,7 +192,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
         -   alert: CB_authentication_enrol_up_yellow_alert_prod
@@ -207,7 +208,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
         -   alert: CB_authentication_enrol_up_red_alert_prod
@@ -223,7 +224,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
         -   alert: CB_authentication_enrol_up_critical_alert_prod
@@ -239,7 +240,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} Environment {{ $labels.environment }} is at peak rate of 3364 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 3364 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
     ###########################################CB_CDC_CUSTOMER_DATA##########################################################
@@ -260,7 +261,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_cdc_customer_data_up_yellow_alert_prod
@@ -276,7 +277,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 30 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 30 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_cdc_customer_data_up_red_alert_prod
@@ -292,7 +293,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 300 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 300 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_cdc_customer_data_up_critical_alert_prod
@@ -308,7 +309,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 300 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 300 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
 
     ###########################################CB_ENRICH_SUB_TOPOLOGY###########################################################
@@ -329,7 +330,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_enrich_up_yellow_alert_prod
@@ -345,7 +346,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_enrich_up_red_alert_prod
@@ -361,7 +362,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_enrich_up_critical_alert_prod
@@ -377,7 +378,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
 
     ###########################################CB_FULFILL_SUB_TOPOLOGY###########################################################
@@ -398,7 +399,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_fulfill_up_yellow_alert_prod
@@ -414,7 +415,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_fulfill_up_red_alert_prod
@@ -430,7 +431,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_fulfill_up_critical_alert_prod
@@ -446,7 +447,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
 
     ###########################################CB_HMAC_GENERATION_TOPOLOGY###########################################################
@@ -467,7 +468,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_hmac_generation_topology_up_yellow_alert_prod
@@ -483,7 +484,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_hmac_generation_topology_up_red_alert_prod
@@ -499,7 +500,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_hmac_generation_topology_up_critical_alert_prod
@@ -515,7 +516,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 3364 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 3364 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
 
     ###########################################CB_LIVE_PERSON_ADAPTER###########################################################
@@ -536,7 +537,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_lp_adapter_up_yellow_alert_prod
@@ -552,7 +553,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_lp_adapter_up_red_alert_prod
@@ -568,7 +569,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_lp_adapter_up_critical_alert_prod
@@ -584,7 +585,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
 
     ###########################################CB_NATURAL_LANGUAGE_PROCESS_HANDLER###########################################################
@@ -605,7 +606,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_nlp_handler_up_yellow_alert_prod
@@ -621,7 +622,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_nlp_handler_up_red_alert_prod
@@ -637,7 +638,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_nlp_handler_up_critical_alert_prod
@@ -653,7 +654,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
 
     ###########################################CB_SPRING_CLOUD_API_GW_VERIFY###########################################################
@@ -674,7 +675,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         -   alert: CB_spring_api_gateway_verify_up_yellow_alert_prod
@@ -690,7 +691,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         -   alert: CB_spring_api_gateway_verify_up_red_alert_prod
@@ -706,7 +707,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         -   alert: CB_spring_api_gateway_verify_up_critical_alert_prod
@@ -722,7 +723,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 150 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
     ###########################################CB_SPRING_CLOUD_API_GW_ENROL###########################################################
@@ -743,7 +744,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         -   alert: CB_spring_api_gateway_enrol_up_yellow_alert_prod
@@ -759,7 +760,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         -   alert: CB_spring_api_gateway_enrol_up_red_alert_prod
@@ -775,7 +776,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         -   alert: CB_spring_api_gateway_enrol_up_critical_alert_prod
@@ -791,7 +792,7 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} Environment {{ $labels.environment }} is at peak rate of 3364 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 3364 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
     ###########################################CB_ADS_CUSTOMER_LOOKUP_TOPOLOGY###########################################################
@@ -812,7 +813,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                 summary: Green rate reached for Application {{ $labels.job }}
 
         -   alert: CB_ads_customer_lookup_up_yellow_alert_prod
@@ -828,7 +829,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 30 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 30 in 1 min. Value: {{ $value }}'
                 summary: Yellow rate reached for Application {{ $labels.job }}
 
         -   alert: CB_ads_customer_lookup_up_red_alert_prod
@@ -844,7 +845,7 @@ additionalPrometheusRulesMap:
                 severity: WARNING
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} has reached peak rate of 300 in 1 min. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} has reached peak rate of 300 in 1 min. Value: {{ $value }}'
                 summary: Red rate reached for Application {{ $labels.job }}
 
         -   alert: CB_ads_customer_lookup_up_critical_alert_prod
@@ -860,5 +861,5 @@ additionalPrometheusRulesMap:
                 severity: CRITICAL
                 type: 8x5
             annotations:
-                description: 'Application {{ $labels.job }} Environment {{ $labels.environment }} is at peak rate of 300 for last 5 mins. Value: {{ $value }}'
+                description: 'Application {{ $labels.job }} is at peak rate of 300 for last 5 mins. Value: {{ $value }}'
                 summary: Critical Alert for Application {{ $labels.job }}
