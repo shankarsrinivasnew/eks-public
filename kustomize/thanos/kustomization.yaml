@@ -1,0 +1,5 @@
+resources:
+  - thanos.yaml
+namespace: prometheus
+transformers:
+  - awsTransformer.yaml

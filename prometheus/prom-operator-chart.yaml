@@ -16,10 +16,10 @@ grafana:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
       alb.ingress.kubernetes.io/success-codes: 200,301,302
-      external-dns.alpha.kubernetes.io/hostname: grafana.nonprod.aws.uk.tsb
+      external-dns.alpha.kubernetes.io/hostname: grafana.preprod.aws.uk.tsb
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
       alb.ingress.kubernetes.io/backend-protocol: HTTP
-      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:273312704578:certificate/302154c7-1c1a-46e2-aa71-1f1a5bdcc45c
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:045223552195:certificate/9d7c8d33-c627-4190-9d08-90ecf7d71a43
     path: /*
   sidecar:
     datasources:
@@ -57,7 +57,7 @@ prometheus:
     create: true
     name: prometheus-sa
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::273312704578:role/eks/prometheus-thanos-s3
+      eks.amazonaws.com/role-arn: arn:aws:iam::045223552195:role/eks/prometheus-thanos-s3
   ingress:
     enabled: true
     annotations:
@@ -68,8 +68,8 @@ prometheus:
       alb.ingress.kubernetes.io/success-codes: 200,301,302
       alb.ingress.kubernetes.io/backend-protocol: HTTP
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
-      external-dns.alpha.kubernetes.io/hostname: prometheus.nonprod.aws.uk.tsb
-      alb.ingress.kubernetes.io/certificate-arn: 	arn:aws:acm:eu-west-2:273312704578:certificate/5954abf5-0f9d-45c4-a99c-600254ba30ce
+      external-dns.alpha.kubernetes.io/hostname: prometheus.preprod.aws.uk.tsb
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:045223552195:certificate/5671477d-7912-4e5c-89f9-a29cde1e51cd
     paths:
       - /*
 
@@ -77,8 +77,6 @@ prometheus:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
-    retention: 6h
-    disableCompaction: true
     storageSpec:
       volumeClaimTemplate:
         spec:
@@ -92,6 +90,8 @@ prometheus:
           selector:
             matchLabels:
               prometheus: "data"
+    retention: 6h
+    disableCompaction: true
     ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
     ## prometheus resource to be created with selectors based on values in the helm deployment,
     ## which will also match the servicemonitors created

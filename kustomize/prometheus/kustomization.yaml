@@ -1,0 +1,6 @@
+resources:
+  - namespace.yaml
+  - prometheus.yaml
+namespace: prometheus
+transformers:
+  - awsTransformer.yaml
