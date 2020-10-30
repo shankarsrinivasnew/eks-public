@@ -3,7 +3,7 @@ apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
   name: jenkins-agent
-  namespace: cb
+  namespace: cob
 spec:
   serviceAccountSelector: role == 'jenkins-agent'
   types:
@@ -34,8 +34,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        nets:
-          - "{{ VPC_CIDR }}"
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 9042
     - metadata:
@@ -45,8 +45,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        nets:
-          - 10.161.48.0/20
+        selector: vpc == 'mgmt' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 443
           - 80
@@ -54,26 +54,26 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: cb-application
-  namespace: cb
+  name: cob-application
+  namespace: cob
 spec:
   types:
     - Egress
   egress:
     - metadata:
         annotations:
-          from: cb-application
+          from: cob-application
           to: vpc
       action: Allow
       source:
         serviceAccounts:
           names:
-            - tsb-cb
+            - tsb-cob
             - default
       protocol: TCP
       destination:
-        nets:
-          - "{{ VPC_CIDR }}"
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
         ports:
           - 9042
           - 9142
@@ -85,26 +85,45 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: cb-sa-policy
-  namespace: cb
+  name: cob-inter-namespace
+  namespace: cob
 spec:
   types:
+    - Ingress
     - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: cob-namespace
+          to: cob-namespace
+      action: Allow
+      source:
+        namespaceSelector: projectcalico.org/name == 'cob'
   egress:
     - metadata:
         annotations:
-          from: cb-sa
-          to: mgmt
+          from: cob-namespace
+          to: cob-namespace
       action: Allow
-      source:
-        serviceAccounts:
-          names:
-            - tsb-cb
-            - default
       protocol: TCP
       destination:
-        nets:
-          - 10.161.48.0/20
-        ports:
-          - 80
-          - 443
+        namespaceSelector: projectcalico.org/name == 'cob'
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cob-nginx-ingress
+  namespace: cob
+spec:
+  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  types:
+    - Ingress
+  ingress:
+    - metadata:
+      annotations:
+        from: vpc
+        to: nginx
+      action: Allow
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()

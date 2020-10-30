@@ -1,5 +1,6 @@
 resources:
+  - namespace.yaml
   - sa.yaml
-namespace: cb
+namespace: cob
 transformers:
   - awsTransformer.yaml
