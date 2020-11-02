@@ -1,5 +1,5 @@
 resources:
-  - sa.yaml
-namespace: cb
+  - thanos.yaml
+namespace: prometheus
 transformers:
   - awsTransformer.yaml

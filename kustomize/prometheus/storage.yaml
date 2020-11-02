@@ -8,7 +8,7 @@ metadata:
     prometheus: "data"
 spec:
   capacity:
-    storage: 10Gi
+    storage: 20Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
@@ -16,4 +16,4 @@ spec:
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: "fs-ad89c25c::fsap-0fab4612e0f364d3e"
+    volumeHandle: "{{ EFS_ID }}::{{ EFS_PROMETHEUS_ID }}"

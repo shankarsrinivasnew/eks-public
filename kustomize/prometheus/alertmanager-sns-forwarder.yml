@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager-sns-forwarder
+  namespace: prometheus
+  labels:
+    app: alertmanager-sns-forwarder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alertmanager-sns-forwarder
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: alertmanager-sns-forwarder
+    spec:
+      serviceAccountName: am-sns-forwarder
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 65534
+      containers:
+      - name: alertmanager-sns-forwarder
+        image: datareply/alertmanager-sns-forwarder:latest
+        imagePullPolicy: Always
+        # You can also specify arguments
+        args: ["--addr=:9087", "--debug", "--arn-prefix=arn:aws:sns:eu-west-2:{{ AWS_ACCOUNT }}:"]
+        env:
+          - name: AWS_REGION
+            value: "eu-west-2"
+          - name: AWS_STS_REGIONAL_ENDPOINTS
+            value: "regional"
+          - name: http_proxy
+            value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+          - name: https_proxy
+            value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+          - name: no_proxy
+            value: "localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb"
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: 0.5
+          requests:
+            cpu: 0.2
+            memory: 0.5Gi
+        ports:
+          - containerPort: 9087
+            name: webhook-port
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: webhook-port
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: webhook-port
+          initialDelaySeconds: 10
+          timeoutSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager-sns-forwarder-svc
+  namespace: prometheus
+  labels:
+    app:  alertmanager-sns-forwarder
+spec:
+  ports:
+    - port: 9087
+      name: webhook-port
+      targetPort: 9087
+  selector:
+      app: alertmanager-sns-forwarder
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: am-sns-forwarder
+  namespace: prometheus
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/am-sns-forwarder-role
