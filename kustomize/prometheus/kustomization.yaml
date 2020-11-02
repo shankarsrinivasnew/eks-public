@@ -1,6 +1,8 @@
 resources:
-  - namespace.yaml
+  - alertmanager-sns-forwarder.yaml
+  - networkpolicy.yaml
   - prometheus.yaml
+  - storage.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml

@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: cb-view-role
+  name: cob-view-role
   namespace: kube-system
 rules:
 - apiGroups: [""]
@@ -15,15 +15,15 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: cb-view-binding
+  name: cob-view-binding
   namespace: kube-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: cb-view-role
+  name: cob-view-role
 subjects:
 - kind: Group
-  name: cb-view-kube-system
+  name: cob-view-kube-system
 - kind: ServiceAccount
-  name: tsb-cb
-  namespace: cb
+  name: tsb-cob
+  namespace: cob
