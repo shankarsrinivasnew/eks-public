@@ -31,7 +31,7 @@ spec:
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
-          external-dns.alpha.kubernetes.io/hostname: grafana.prod.aws.uk.tsb
+          external-dns.alpha.kubernetes.io/hostname: grafana.{{ DNS_ZONE }}
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/backend-protocol: HTTP
         path: /*
@@ -99,7 +99,7 @@ spec:
           alb.ingress.kubernetes.io/success-codes: 200,301,302
           alb.ingress.kubernetes.io/backend-protocol: HTTP
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
-          external-dns.alpha.kubernetes.io/hostname: prometheus.prod.aws.uk.tsb
+          external-dns.alpha.kubernetes.io/hostname: prometheus.{{ DNS_ZONE }}
         paths:
           - /*
 
@@ -222,59 +222,6 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
-          - job_name: jmx-hdf-exporter
-            static_configs:
-              - targets:
-                - controller.hdf.prod.aws.uk.tsb:9110
-                - service-0.hdf.prod.aws.uk.tsb:9110
-                - service-1.hdf.prod.aws.uk.tsb:9110
-                - service-2.hdf.prod.aws.uk.tsb:9110
-                - kafka-0.hdf.prod.aws.uk.tsb:9110
-                - kafka-1.hdf.prod.aws.uk.tsb:9110
-                - kafka-2.hdf.prod.aws.uk.tsb:9110
-                - kafka-3.hdf.prod.aws.uk.tsb:9110
-                - kafka-4.hdf.prod.aws.uk.tsb:9110
-                - kafka-5.hdf.prod.aws.uk.tsb:9110
-          - job_name: hdf-controller-node-exporter
-            static_configs:
-              - targets:
-                - controller.hdf.prod.aws.uk.tsb:9100
-          - job_name: hdf-service-node-exporter
-            static_configs:
-              - targets:
-                - service-0.hdf.prod.aws.uk.tsb:9100
-                - service-1.hdf.prod.aws.uk.tsb:9100
-                - service-2.hdf.prod.aws.uk.tsb:9100
-          - job_name: kakfa-node-exporter
-            static_configs:
-              - targets:
-                - kafka-0.hdf.prod.aws.uk.tsb:9100
-                - kafka-1.hdf.prod.aws.uk.tsb:9100
-                - kafka-2.hdf.prod.aws.uk.tsb:9100
-                - kafka-3.hdf.prod.aws.uk.tsb:9100
-                - kafka-4.hdf.prod.aws.uk.tsb:9100
-                - kafka-5.hdf.prod.aws.uk.tsb:9100
-          - job_name: scylla-node-exporter
-            static_configs:
-              - targets:
-                - ip-10-163-148-232.eu-west-2.compute.internal:9100
-                - ip-10-163-155-7.eu-west-2.compute.internal:9100
-                - ip-10-163-144-194.eu-west-2.compute.internal:9100
-          - job_name: scylla-default-metrics-exporter
-            static_configs:
-              - targets:
-                - ip-10-163-148-232.eu-west-2.compute.internal:9180
-                - ip-10-163-155-7.eu-west-2.compute.internal:9180
-                - ip-10-163-144-194.eu-west-2.compute.internal:9180
-          - job_name: consul-node-exporter
-            static_configs:
-              - targets:
-                - ip-10-163-236-45.eu-west-2.compute.internal:9100
-                - ip-10-163-164-21.eu-west-2.compute.internal:9100
-                - ip-10-163-203-221.eu-west-2.compute.internal:9100
-                - ip-10-163-227-130.eu-west-2.compute.internal:9100
-                - ip-10-163-191-88.eu-west-2.compute.internal:9100
-                - ip-10-163-211-243.eu-west-2.compute.internal:9100
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
@@ -368,15 +315,15 @@ spec:
 
         ###########################################CB_APP_DOWN_WARNING##########################################################
             rules:
-            -   record: cb_app_down_warning_prod
+            -   record: cb_app_down_warning_{{ AWS_ENVIRONMENT }}
                 expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cb-ads-customer-lookup-topology|tsb-cb-authentication-api|tsb-cb-cdc-customer-data|tsb-cb-enrich|tsb-cb-fulfill|tsb-cb-hmac-generation-topology|tsb-cb-nlp-handler|tsb-cb-spring-api-gateway",namespace="cb"})
 
-            -   alert: CB_app_down_warning_alert_prod
-                expr: (cb_app_down_warning_prod) < 3
+            -   alert: CB_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: WARNING
                     platform: AWS
@@ -389,14 +336,14 @@ spec:
 
         ###########################################CB_APP_DOWN_CRITICAL##########################################################
 
-            -   record: cb_app_down_critical_prod
+            -   record: cb_app_down_critical_{{ AWS_ENVIRONMENT }}
                 expr: (kube_deployment_status_replicas_available{deployment=~".*tsb-cb.*",namespace="cb"})
 
-            -   alert: CB_app_down_critical_alert_prod
-                expr: (cb_app_down_critical_prod) < 1
+            -   alert: CB_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -413,15 +360,15 @@ spec:
         -   name: CB_APP_RESPONSE_TIME
 
             rules:
-            -   record: cb_app_auth_response_time_prod
+            -   record: cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}
                 expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cb",uri=~".*enrol.*|.*verify.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cb",uri=~".*enrol.*|.*verify.*"}[5m]))
 
-            -   alert: CB_app_auth_response_time_green_alert_prod
-                expr: (cb_app_auth_response_time_prod) > 1
+            -   alert: CB_app_auth_response_time_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 1
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -432,12 +379,12 @@ spec:
                     description: 'Application {{ $labels.job }} response time is more than 1s for last 5 mins. Value: {{ $value }}'
                     summary: Green alert for reponse time reached for Application {{ $labels.job }}
 
-            -   alert: CB_app_auth_response_time_yellow_alert_prod
-                expr: (cb_app_auth_response_time_prod) > 1.5
+            -   alert: CB_app_auth_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 1.5
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -448,12 +395,12 @@ spec:
                     description: 'Application {{ $labels.job }} response time is more than 1.5s for last 5 mins. Value: {{ $value }}'
                     summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
 
-            -   alert: CB_app_auth_response_time_red_alert_prod
-                expr: (cb_app_auth_response_time_prod) > 2
+            -   alert: CB_app_auth_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 2
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -470,15 +417,15 @@ spec:
 
         ###########################################CB_AUTH_VERIFY##########################################################
             rules:
-            -   record: cb_authentication_verify_up_prod
+            -   record: cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*verify.*"}[5m]))*60)
 
-            -   alert: CB_authentication_verify_up_green_alert_prod
-                expr: (cb_authentication_verify_up_prod) > 7
+            -   alert: CB_authentication_verify_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 7
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -489,12 +436,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
-            -   alert: CB_authentication_verify_up_yellow_alert_prod
-                expr: (cb_authentication_verify_up_prod) > 15
+            -   alert: CB_authentication_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -505,12 +452,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
-            -   alert: CB_authentication_verify_up_red_alert_prod
-                expr: (cb_authentication_verify_up_prod) > 150
+            -   alert: CB_authentication_verify_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -521,12 +468,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
-            -   alert: CB_authentication_verify_up_critical_alert_prod
-                expr: (cb_authentication_verify_up_prod) > 150
+            -   alert: CB_authentication_verify_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -539,15 +486,15 @@ spec:
 
         ###########################################CB_AUTH_ENROL##########################################################
 
-            -   record: cb_authentication_enrol_up_prod
+            -   record: cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*enrol.*"}[5m]))*60)
 
-            -   alert: CB_authentication_enrol_up_green_alert_prod
-                expr: (cb_authentication_enrol_up_prod) > 900
+            -   alert: CB_authentication_enrol_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 900
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -558,12 +505,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
-            -   alert: CB_authentication_enrol_up_yellow_alert_prod
-                expr: (cb_authentication_enrol_up_prod) > 1320
+            -   alert: CB_authentication_enrol_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 1320
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -574,12 +521,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
-            -   alert: CB_authentication_enrol_up_red_alert_prod
-                expr: (cb_authentication_enrol_up_prod) > 3364
+            -   alert: CB_authentication_enrol_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 3364
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -590,12 +537,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
-            -   alert: CB_authentication_enrol_up_critical_alert_prod
-                expr: (cb_authentication_enrol_up_prod) > 3364
+            -   alert: CB_authentication_enrol_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 3364
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -608,15 +555,15 @@ spec:
 
         ###########################################CB_CDC_CUSTOMER_DATA##########################################################
 
-            -   record: cb_cdc_customer_data_up_prod
+            -   record: cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (processHmacsStream_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb"})*60)
 
-            -   alert: CB_cdc_customer_data_up_green_alert_prod
-                expr: (cb_cdc_customer_data_up_prod) > 15
+            -   alert: CB_cdc_customer_data_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -627,12 +574,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_cdc_customer_data_up_yellow_alert_prod
-                expr: (cb_cdc_customer_data_up_prod) > 30
+            -   alert: CB_cdc_customer_data_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 30
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -643,12 +590,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 30 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_cdc_customer_data_up_red_alert_prod
-                expr: (cb_cdc_customer_data_up_prod) > 300
+            -   alert: CB_cdc_customer_data_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 300
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -659,12 +606,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 300 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_cdc_customer_data_up_critical_alert_prod
-                expr: (cb_cdc_customer_data_up_prod) > 300
+            -   alert: CB_cdc_customer_data_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 300
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -677,15 +624,15 @@ spec:
 
         ###########################################CB_ENRICH_SUB_TOPOLOGY###########################################################
 
-            -   record: cb_enrich_up_prod
+            -   record: cb_enrich_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb",job="tsb-cb-enrich"})*60)
 
-            -   alert: CB_enrich_up_green_alert_prod
-                expr: (cb_enrich_up_prod) > 7
+            -   alert: CB_enrich_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 7
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -696,12 +643,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_enrich_up_yellow_alert_prod
-                expr: (cb_enrich_up_prod) > 15
+            -   alert: CB_enrich_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -712,12 +659,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_enrich_up_red_alert_prod
-                expr: (cb_enrich_up_prod) > 150
+            -   alert: CB_enrich_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -728,12 +675,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_enrich_up_critical_alert_prod
-                expr: (cb_enrich_up_prod) > 150
+            -   alert: CB_enrich_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -746,15 +693,15 @@ spec:
 
         ###########################################CB_FULFILL_SUB_TOPOLOGY###########################################################
 
-            -   record: cb_fulfill_up_prod
+            -   record: cb_fulfill_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb",job="tsb-cb-fulfill"})*60)
 
-            -   alert: CB_fulfill_up_green_alert_prod
-                expr: (cb_fulfill_up_prod) > 7
+            -   alert: CB_fulfill_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 7
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -765,12 +712,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_fulfill_up_yellow_alert_prod
-                expr: (cb_fulfill_up_prod) > 15
+            -   alert: CB_fulfill_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -781,12 +728,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_fulfill_up_red_alert_prod
-                expr: (cb_fulfill_up_prod) > 150
+            -   alert: CB_fulfill_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -797,12 +744,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_fulfill_up_critical_alert_prod
-                expr: (cb_fulfill_up_prod) > 150
+            -   alert: CB_fulfill_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -815,15 +762,15 @@ spec:
 
         ###########################################CB_HMAC_GENERATION_TOPOLOGY###########################################################
 
-            -   record: cb_hmac_generation_topology_up_prod
+            -   record: cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (processHmacGenerationRequest_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb"})*60)
 
-            -   alert: CB_hmac_generation_topology_up_green_alert_prod
-                expr: (cb_hmac_generation_topology_up_prod) > 900
+            -   alert: CB_hmac_generation_topology_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 900
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -834,12 +781,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_hmac_generation_topology_up_yellow_alert_prod
-                expr: (cb_hmac_generation_topology_up_prod) > 1320
+            -   alert: CB_hmac_generation_topology_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 1320
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -850,12 +797,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_hmac_generation_topology_up_red_alert_prod
-                expr: (cb_hmac_generation_topology_up_prod) > 3364
+            -   alert: CB_hmac_generation_topology_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 3364
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -866,12 +813,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_hmac_generation_topology_up_critical_alert_prod
-                expr: (cb_hmac_generation_topology_up_prod) > 3364
+            -   alert: CB_hmac_generation_topology_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 3364
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -884,15 +831,15 @@ spec:
 
         ###########################################CB_LIVE_PERSON_ADAPTER###########################################################
 
-            -   record: cb_lp_adapter_up_prod
+            -   record: cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (rate(lp_adapter_rdkafka_topic_partition_msgs {namespace="cb"}[5m]))*60)
 
-            -   alert: CB_lp_adapter_up_green_alert_prod
-                expr: (cb_lp_adapter_up_prod) > 7
+            -   alert: CB_lp_adapter_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 7
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -903,12 +850,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_lp_adapter_up_yellow_alert_prod
-                expr: (cb_lp_adapter_up_prod) > 15
+            -   alert: CB_lp_adapter_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -919,12 +866,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_lp_adapter_up_red_alert_prod
-                expr: (cb_lp_adapter_up_prod) > 150
+            -   alert: CB_lp_adapter_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -935,12 +882,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_lp_adapter_up_critical_alert_prod
-                expr: (cb_lp_adapter_up_prod) > 150
+            -   alert: CB_lp_adapter_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -953,15 +900,15 @@ spec:
 
         ###########################################CB_NATURAL_LANGUAGE_PROCESS_HANDLER###########################################################
 
-            -   record: cb_nlp_handler_up_prod
+            -   record: cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (rate(spring_kafka_listener_seconds_count {namespace="cb"}[5m]))*60)
 
-            -   alert: CB_nlp_handler_up_green_alert_prod
-                expr: (cb_nlp_handler_up_prod) > 7
+            -   alert: CB_nlp_handler_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 7
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -972,12 +919,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_nlp_handler_up_yellow_alert_prod
-                expr: (cb_nlp_handler_up_prod) > 15
+            -   alert: CB_nlp_handler_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -988,12 +935,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_nlp_handler_up_red_alert_prod
-                expr: (cb_nlp_handler_up_prod) > 150
+            -   alert: CB_nlp_handler_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -1004,12 +951,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_nlp_handler_up_critical_alert_prod
-                expr: (cb_nlp_handler_up_prod) > 150
+            -   alert: CB_nlp_handler_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -1022,15 +969,15 @@ spec:
 
         ###########################################CB_SPRING_CLOUD_API_GW_VERIFY###########################################################
 
-            -   record: cb_spring_api_gateway_verify_up_prod
+            -   record: cb_spring_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace="cb", routeId=~".*verify.*"}[5m]))*60)
 
-            -   alert: CB_spring_api_gateway_verify_up_green_alert_prod
-                expr: (cb_spring_api_gateway_verify_up_prod) > 7
+            -   alert: CB_spring_api_gateway_verify_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 7
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -1041,12 +988,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 7 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
-            -   alert: CB_spring_api_gateway_verify_up_yellow_alert_prod
-                expr: (cb_spring_api_gateway_verify_up_prod) > 15
+            -   alert: CB_spring_api_gateway_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -1057,12 +1004,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
-            -   alert: CB_spring_api_gateway_verify_up_red_alert_prod
-                expr: (cb_spring_api_gateway_verify_up_prod) > 150
+            -   alert: CB_spring_api_gateway_verify_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -1073,12 +1020,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 150 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
-            -   alert: CB_spring_api_gateway_verify_up_critical_alert_prod
-                expr: (cb_spring_api_gateway_verify_up_prod) > 150
+            -   alert: CB_spring_api_gateway_verify_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 150
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -1091,15 +1038,15 @@ spec:
 
         ###########################################CB_SPRING_CLOUD_API_GW_ENROL###########################################################
 
-            -   record: cb_spring_api_gateway_enrol_up_prod
+            -   record: cb_spring_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace="cb", routeId=~".*enrol.*"}[5m]))*60)
 
-            -   alert: CB_spring_api_gateway_enrol_up_green_alert_prod
-                expr: (cb_spring_api_gateway_enrol_up_prod) > 900
+            -   alert: CB_spring_api_gateway_enrol_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 900
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -1110,12 +1057,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 900 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
-            -   alert: CB_spring_api_gateway_enrol_up_yellow_alert_prod
-                expr: (cb_spring_api_gateway_enrol_up_prod) > 1320
+            -   alert: CB_spring_api_gateway_enrol_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 1320
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -1126,12 +1073,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 1320 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
-            -   alert: CB_spring_api_gateway_enrol_up_red_alert_prod
-                expr: (cb_spring_api_gateway_enrol_up_prod) > 3364
+            -   alert: CB_spring_api_gateway_enrol_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 3364
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -1142,12 +1089,12 @@ spec:
                     description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 3364 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
-            -   alert: CB_spring_api_gateway_enrol_up_critical_alert_prod
-                expr: (cb_spring_api_gateway_enrol_up_prod) > 3364
+            -   alert: CB_spring_api_gateway_enrol_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_spring_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 3364
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
@@ -1160,15 +1107,15 @@ spec:
 
         ###########################################CB_ADS_CUSTOMER_LOOKUP_TOPOLOGY###########################################################
 
-            -   record: cb_ads_customer_lookup_up_prod
+            -   record: cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}
                 expr: (sum by (job, namespace) (tsb_cb_ads_customer_lookup_topology_consumer_fetch_manager_metrics_records_consumed_rate or processCustomerLookupByUserId_applicationId_consumer_fetch_manager_metrics_records_consumed_rate)*60)
 
-            -   alert: CB_ads_customer_lookup_up_green_alert_prod
-                expr: (cb_ads_customer_lookup_up_prod) > 15
+            -   alert: CB_ads_customer_lookup_up_green_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 15
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: GREEN
                     platform: AWS
@@ -1179,12 +1126,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 15 in 1 min. Value: {{ $value }}'
                     summary: Green rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_ads_customer_lookup_up_yellow_alert_prod
-                expr: (cb_ads_customer_lookup_up_prod) > 30
+            -   alert: CB_ads_customer_lookup_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 30
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: YELLOW
                     platform: AWS
@@ -1195,12 +1142,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 30 in 1 min. Value: {{ $value }}'
                     summary: Yellow rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_ads_customer_lookup_up_red_alert_prod
-                expr: (cb_ads_customer_lookup_up_prod) > 300
+            -   alert: CB_ads_customer_lookup_up_red_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 300
                 for: 1m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: RED
                     platform: AWS
@@ -1211,12 +1158,12 @@ spec:
                     description: 'Application {{ $labels.job }} has reached peak rate of 300 in 1 min. Value: {{ $value }}'
                     summary: Red rate reached for Application {{ $labels.job }}
 
-            -   alert: CB_ads_customer_lookup_up_critical_alert_prod
-                expr: (cb_ads_customer_lookup_up_prod) > 300
+            -   alert: CB_ads_customer_lookup_up_critical_alert_{{ AWS_ENVIRONMENT }}
+                expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 300
                 for: 5m
                 labels:
                     action: NO LLAMAR A GUARDIA
-                    environment: prod
+                    environment: "{{ AWS_ENVIRONMENT }}"
                     group: INFRA
                     level: CRITICAL
                     platform: AWS
