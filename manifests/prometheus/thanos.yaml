@@ -3,6 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: thanos
+  namespace: prometheus
 spec:
   releaseName: thanos
   chart:
