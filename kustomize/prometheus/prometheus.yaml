@@ -52,6 +52,30 @@ spec:
       #   - "camptocamp-prometheus-alertmanager-datasource"
       #   - "praj-ams-datasource"
 
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+        - name: 'default'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
+        - name: 'tsb-cop-dashboard'
+          orgId: 1
+          folder: 'tsb-cop'
+          type: file
+          disableDeletion: true
+          editable: false
+          options:
+            path: /var/lib/grafana/dashboards/tsb-cop-dashboard
+
+    dashboardsConfigMaps:
+      tsb-cop-dashboard: tsb-cop-cm
+
     prometheusOperator:
       enabled: true
       resources:
