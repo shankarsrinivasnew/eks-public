@@ -51,7 +51,6 @@ spec:
       #   - "grafana-piechart-panel"
       #   - "camptocamp-prometheus-alertmanager-datasource"
       #   - "praj-ams-datasource"
-
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
