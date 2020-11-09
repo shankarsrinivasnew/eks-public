@@ -22249,8 +22249,8 @@ data:
             "allValue": null,
             "current": {
               "selected": false,
-              "text": "prod",
-              "value": "prod"
+              "text": "preprod",
+              "value": "preprod"
             },
             "datasource": "Thanos",
             "definition": "label_values(up{},environment)",
