@@ -11,7 +11,7 @@ syncGarbageCollection:
   enabled: true
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/flux
+    eks.amazonaws.com/role-arn: arn:aws:iam::273312704578:role/eks/flux
 env:
   secretName: flux-git-auth
 extraEnvs:
