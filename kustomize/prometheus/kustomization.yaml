@@ -1,6 +1,5 @@
 resources:
   - alertmanager-sns-forwarder.yaml
-  - cop-grafana-dashboard.yaml
   - networkpolicy.yaml
   - prometheus.yaml
   - storage.yaml
