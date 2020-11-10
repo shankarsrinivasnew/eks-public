@@ -73,14 +73,22 @@ spec:
             editable: false
             options:
               path: /var/lib/grafana/dashboards/cop-dashboard-jvm
-          - name: 'cop-dashboard-scylla'
+          - name: 'cop-dashboard-scylla-00'
             orgId: 1
             folder: 'TSB-COP'
             type: file
             disableDeletion: true
             editable: false
             options:
-              path: /var/lib/grafana/dashboards/cop-dashboard-scylla
+              path: /var/lib/grafana/dashboards/cop-dashboard-scylla-00
+          - name: 'cop-dashboard-scylla-01'
+            orgId: 1
+            folder: 'TSB-COP'
+            type: file
+            disableDeletion: true
+            editable: false
+            options:
+              path: /var/lib/grafana/dashboards/cop-dashboard-scylla-01
           - name: 'cop-dashboard-kafka'
             orgId: 1
             folder: 'TSB-COP'
@@ -100,7 +108,8 @@ spec:
 
       dashboardsConfigMaps:
         cop-dashboard-jvm: cop-jvm-cm
-        cop-dashboard-scylla: cop-scylla-cm
+        cop-dashboard-scylla-00: cop-scylla00-cm
+        cop-dashboard-scylla-01: cop-scylla01-cm
         cop-dashboard-kafka: cop-kafka-cm
         cop-dashboard-consul-vault: cop-consul-vault-cm
 
