@@ -2,7 +2,11 @@ resources:
   - alertmanager-sns-forwarder.yaml
   - prometheus.yaml
   - storage.yaml
-  - dashboards/cop
+  - dashboards/cop/cop-grafana-jvm.yaml
+  - dashboards/cop/cop-grafana-kafka.yaml
+  - dashboards/cop/cop-grafana-scylla00.yaml
+  - dashboards/cop/cop-grafana-scylla01.yaml
+  - dashboards/cop/cop-grafana-consul-vault.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
