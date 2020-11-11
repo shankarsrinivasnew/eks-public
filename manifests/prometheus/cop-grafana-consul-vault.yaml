@@ -2128,7 +2128,7 @@ data:
             "options": [],
             "query": "label_values(project)",
             "refresh": 2,
-            "regex": "/TSB-COP",
+            "regex": "/TSB-COP/",
             "skipUrlSync": false,
             "sort": 0,
             "tagValuesQuery": "",
