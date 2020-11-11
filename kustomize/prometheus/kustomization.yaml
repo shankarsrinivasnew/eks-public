@@ -2,7 +2,7 @@ resources:
   - alertmanager-sns-forwarder.yaml
   - prometheus.yaml
   - storage.yaml
-  - dashboards/cop/*.yaml
+  - dashboards/cop
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
