@@ -99,7 +99,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "count(up{job=\"scylla-node-exporter\"})",
+              "expr": "count(up{job=\"ec2-discover-node-exporter\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -194,7 +194,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "count(scrape_samples_scraped{job=\"scylla-node-exporter\"}==0) OR vector(0)",
+              "expr": "count(scrape_samples_scraped{job=\"ec2-discover-node-exporter\"}==0) OR vector(0)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -291,7 +291,7 @@ data:
           "targets": [
             {
               "annotations": false,
-              "expr": "count(scylla_node_operation_mode{job=~\"scylla-node-exporter\"}==1) +  count(scylla_node_operation_mode{job=~\"scylla-node-exporter\"}==2)OR vector(0)",
+              "expr": "count(scylla_node_operation_mode{job=~\"ec2-discover-node-exporter\"}==1) +  count(scylla_node_operation_mode{job=~\"ec2-discover-node-exporter\"}==2)OR vector(0)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -390,7 +390,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "count(scylla_node_operation_mode{job=~\"scylla-node-exporter\"}>3)OR vector(0)",
+              "expr": "count(scylla_node_operation_mode{job=~\"ec2-discover-node-exporter\"}>3)OR vector(0)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -472,7 +472,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(scylla_reactor_utilization{job=~\"scylla-default-metrics-exporter\"}) by (instance)",
+              "expr": "avg(scylla_reactor_utilization{job=~\"ec2-discover-scylla-default\"}) by (instance)",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -870,7 +870,7 @@ data:
           ],
           "targets": [
             {
-              "expr": "0*scylla_scylladb_current_version{job=~\"scylla-default-metrics-exporter\"} + on (instance) group_left() scylla_node_operation_mode{job=~\"scylla-default-metrics-exporter\"}",
+              "expr": "0*scylla_scylladb_current_version{job=~\"ec2-discover-scylla-default\"} + on (instance) group_left() scylla_node_operation_mode{job=~\"ec2-discover-scylla-default\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -939,7 +939,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(node_filesystem_size_bytes{job=~\"scylla-node-exporter\"}) by (instance) - sum(node_filesystem_avail_bytes{job=~\"scylla-node-exporter\"}) by (instance)",
+              "expr": "sum(node_filesystem_size_bytes{job=~\"ec2-discover-node-exporter\"}) by (instance) - sum(node_filesystem_avail_bytes{job=~\"ec2-discover-node-exporter\"}) by (instance)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -1049,7 +1049,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(irate(scylla_transport_requests_served{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance) + $func(irate(scylla_thrift_served{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_transport_requests_served{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance) + $func(irate(scylla_thrift_served{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -1206,7 +1206,7 @@ data:
           "targets": [
             {
               "annotations": true,
-              "expr": "job=\"scylla-node-exporter\"",
+              "expr": "job=\"ec2-discover-node-exporter\"",
               "format": "table",
               "hide": true,
               "interval": "",
@@ -1307,7 +1307,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "100 - avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", job=\"scylla-node-exporter\"}[1m]) * 100)",
+              "expr": "100 - avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", job=\"ec2-discover-node-exporter\"}[1m]) * 100)",
               "hide": false,
               "interval": "",
               "legendFormat": "{{instance}} Total CPU Used",
@@ -1407,7 +1407,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(scylla_reactor_utilization{job=~\"scylla-default-metrics-exporter\"}) by (instance)",
+              "expr": "$func(scylla_reactor_utilization{job=~\"ec2-discover-scylla-default\"}) by (instance)",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -1544,7 +1544,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "100-(node_memory_MemFree_bytes{job=~\"scylla-node-exporter\"}/(node_memory_MemTotal_bytes{job=~\"scylla-node-exporter\"})*100)",
+              "expr": "100-(node_memory_MemFree_bytes{job=~\"ec2-discover-node-exporter\"}/(node_memory_MemTotal_bytes{job=~\"ec2-discover-node-exporter\"})*100)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -1647,7 +1647,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "100-((node_memory_SwapFree_bytes{job=~\"scylla-node-exporter\"}) / (node_memory_SwapTotal_bytes{job=~\"scylla-node-exporter\"})) * 100",
+              "expr": "100-((node_memory_SwapFree_bytes{job=~\"ec2-discover-node-exporter\"}) / (node_memory_SwapTotal_bytes{job=~\"ec2-discover-node-exporter\"})) * 100",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -1783,7 +1783,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "1 - node_filesystem_free_bytes{job=~\"scylla-node-exporter\",mountpoint=~\"/var/lib/scylla|/var/lib/scylla/commitlog\"} / node_filesystem_size_bytes{job=~\"scylla-node-exporter\",mountpoint=~\"/var/lib/scylla|/var/lib/scylla/commitlog\"}",
+              "expr": "1 - node_filesystem_free_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=~\"/var/lib/scylla|/var/lib/scylla/commitlog\"} / node_filesystem_size_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=~\"/var/lib/scylla|/var/lib/scylla/commitlog\"}",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1889,7 +1889,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_filesystem_size_bytes{job=~\"scylla-node-exporter\",mountpoint=~\"/var/lib/scylla\"} - node_filesystem_free_bytes{job=~\"scylla-node-exporter\",mountpoint=~\"/var/lib/scylla\"}",
+              "expr": "node_filesystem_size_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=~\"/var/lib/scylla\"} - node_filesystem_free_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=~\"/var/lib/scylla\"}",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -1901,7 +1901,7 @@ data:
               "step": 1
             },
             {
-              "expr": "node_filesystem_size_bytes{job=~\"scylla-node-exporter\",mountpoint=~\"/var/lib/scylla\"}",
+              "expr": "node_filesystem_size_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=~\"/var/lib/scylla\"}",
               "format": "time_series",
               "hide": false,
               "interval": "",
@@ -2034,7 +2034,7 @@ data:
           "strokeWidth": 1,
           "targets": [
             {
-              "expr": "sum(node_filesystem_avail_bytes{job=~\"scylla-node-exporter\",mountpoint=\"/var/lib/scylla\"})",
+              "expr": "sum(node_filesystem_avail_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=\"/var/lib/scylla\"})",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -2045,7 +2045,7 @@ data:
               "step": 7200
             },
             {
-              "expr": "(sum(node_filesystem_size_bytes{job=~\"scylla-node-exporter\",mountpoint=\"/var/lib/scylla\"})-sum(node_filesystem_avail_bytes{job=~\"scylla-node-exporter\",mountpoint=\"/var/lib/scylla\"}))",
+              "expr": "(sum(node_filesystem_size_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=\"/var/lib/scylla\"})-sum(node_filesystem_avail_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=\"/var/lib/scylla\"}))",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -2115,7 +2115,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(node_filesystem_size_bytes{fstype=\"xfs\",job=~\"scylla-node-exporter\"}) by (instance,mountpoint) - sum(node_filesystem_avail_bytes{fstype=\"xfs\",job=~\"scylla-node-exporter\"}) by (instance,mountpoint)",
+              "expr": "sum(node_filesystem_size_bytes{fstype=\"xfs\",job=~\"ec2-discover-node-exporter\"}) by (instance,mountpoint) - sum(node_filesystem_avail_bytes{fstype=\"xfs\",job=~\"ec2-discover-node-exporter\"}) by (instance,mountpoint)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2125,7 +2125,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(node_filesystem_size{job=~\"scylla-node-exporter\"}) by (name,mountpoint) - sum(node_filesystem_avail{job=~\"scylla-node-exporter\"}) by (name)",
+              "expr": "sum(node_filesystem_size{job=~\"ec2-discover-node-exporter\"}) by (name,mountpoint) - sum(node_filesystem_avail{job=~\"ec2-discover-node-exporter\"}) by (name)",
               "format": "time_series",
               "hide": true,
               "interval": "",
@@ -2232,7 +2232,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_writes_completed_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_writes_completed_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2242,7 +2242,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_disk_writes_completed{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_writes_completed{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2348,7 +2348,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_written_bytes_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_written_bytes_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2358,7 +2358,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_disk_bytes_written{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_bytes_written{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2464,7 +2464,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_reads_completed_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_reads_completed_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2473,7 +2473,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_disk_reads_completed{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_reads_completed{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2578,7 +2578,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_read_bytes_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_read_bytes_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2587,7 +2587,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_disk_bytes_read{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_disk_bytes_read{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2725,7 +2725,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_network_receive_packets_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_receive_packets_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2735,7 +2735,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_network_receive_packets{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_receive_packets{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2841,7 +2841,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_network_transmit_packets_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_transmit_packets_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2851,7 +2851,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_network_transmit_packets{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_transmit_packets{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2957,7 +2957,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_network_receive_bytes_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_receive_bytes_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2967,7 +2967,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_network_receive_bytes{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_receive_bytes{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3073,7 +3073,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_network_transmit_bytes_total{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_transmit_bytes_total{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3083,7 +3083,7 @@ data:
               "step": 1
             },
             {
-              "expr": "sum(irate(node_network_transmit_bytes{job=~\"scylla-node-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(node_network_transmit_bytes{job=~\"ec2-discover-node-exporter\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3225,7 +3225,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(rate(scylla_storage_proxy_coordinator_write_latency_count{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(rate(scylla_storage_proxy_coordinator_write_latency_count{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3332,7 +3332,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(rate(scylla_storage_proxy_coordinator_write_latency_sum{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)/($func(rate(scylla_storage_proxy_coordinator_write_latency_count{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance) + 1)",
+              "expr": "$func(rate(scylla_storage_proxy_coordinator_write_latency_sum{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)/($func(rate(scylla_storage_proxy_coordinator_write_latency_count{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance) + 1)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3439,7 +3439,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.95, sum(rate(scylla_storage_proxy_coordinator_write_latency_bucket{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance, le))",
+              "expr": "histogram_quantile(0.95, sum(rate(scylla_storage_proxy_coordinator_write_latency_bucket{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance, le))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3547,7 +3547,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.99, sum(rate(scylla_storage_proxy_coordinator_write_latency_bucket{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance, le))",
+              "expr": "histogram_quantile(0.99, sum(rate(scylla_storage_proxy_coordinator_write_latency_bucket{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance, le))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3655,7 +3655,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(rate(scylla_storage_proxy_coordinator_read_latency_count{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(rate(scylla_storage_proxy_coordinator_read_latency_count{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3762,7 +3762,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(rate(scylla_storage_proxy_coordinator_read_latency_sum{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)/($func(rate(scylla_storage_proxy_coordinator_read_latency_count{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance) + 1)",
+              "expr": "$func(rate(scylla_storage_proxy_coordinator_read_latency_sum{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)/($func(rate(scylla_storage_proxy_coordinator_read_latency_count{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance) + 1)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3869,7 +3869,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.95, sum(rate(scylla_storage_proxy_coordinator_read_latency_bucket{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance, le))",
+              "expr": "histogram_quantile(0.95, sum(rate(scylla_storage_proxy_coordinator_read_latency_bucket{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance, le))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -3977,7 +3977,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.99, sum(rate(scylla_storage_proxy_coordinator_read_latency_bucket{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance, le))",
+              "expr": "histogram_quantile(0.99, sum(rate(scylla_storage_proxy_coordinator_read_latency_bucket{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance, le))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4152,7 +4152,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(irate(scylla_cache_row_hits{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cache_row_hits{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4260,7 +4260,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(irate(scylla_cache_row_misses{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cache_row_misses{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4366,7 +4366,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(delta(scylla_storage_proxy_coordinator_write_timeouts{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(delta(scylla_storage_proxy_coordinator_write_timeouts{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4473,7 +4473,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "$func(delta(scylla_storage_proxy_coordinator_read_timeouts{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "$func(delta(scylla_storage_proxy_coordinator_read_timeouts{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4624,7 +4624,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(scylla_cache_bytes_total{job=~\"scylla-default-metrics-exporter\"})",
+              "expr": "sum(scylla_cache_bytes_total{job=~\"ec2-discover-scylla-default\"})",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -4714,7 +4714,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(scylla_cache_bytes_used{job=~\"scylla-default-metrics-exporter\"})/sum(scylla_cache_bytes_total{job=~\"scylla-default-metrics-exporter\"})*100",
+              "expr": "sum(scylla_cache_bytes_used{job=~\"ec2-discover-scylla-default\"})/sum(scylla_cache_bytes_total{job=~\"ec2-discover-scylla-default\"})*100",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -4790,7 +4790,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_row_hits{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_row_hits{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4798,7 +4798,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum(rate(scylla_cache_partition_hits{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_partition_hits{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -4915,7 +4915,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_active_reads{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_active_reads{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -5005,7 +5005,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_partition_merges{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_partition_merges{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "instant": true,
               "interval": "",
@@ -5079,7 +5079,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_row_misses{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_row_misses{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5087,7 +5087,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum(rate(scylla_cache_partition_misses{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_partition_misses{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5202,7 +5202,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_row_evictions{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_row_evictions{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5210,7 +5210,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum(rate(scylla_cache_partition_evictions{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_partition_evictions{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5311,7 +5311,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_row_insertions{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_row_insertions{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5319,7 +5319,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum(rate(scylla_cache_partition_insertions{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_partition_insertions{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5427,7 +5427,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(scylla_cache_row_removals{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_row_removals{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5435,7 +5435,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum(rate(scylla_cache_partition_removals{job=~\"scylla-default-metrics-exporter\"}[2m]))",
+              "expr": "sum(rate(scylla_cache_partition_removals{job=~\"ec2-discover-scylla-default\"}[2m]))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5575,7 +5575,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_inserts{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(scylla_cql_inserts{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -5684,7 +5684,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_reads{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5792,7 +5792,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_deletes{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(scylla_cql_deletes{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -5900,7 +5900,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_updates{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(scylla_cql_updates{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -6007,7 +6007,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(scylla_transport_current_connections{job=~\"scylla-default-metrics-exporter\"}) by (instance)",
+              "expr": "sum(scylla_transport_current_connections{job=~\"ec2-discover-scylla-default\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -6114,7 +6114,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_batches{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(scylla_cql_batches{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -6221,7 +6221,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_statements_in_batches{job=~\"scylla-default-metrics-exporter\"}[5m])) by (instance)",
+              "expr": "sum(irate(scylla_cql_statements_in_batches{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -6332,14 +6332,14 @@ data:
             "allValue": null,
             "current": {},
             "datasource": "Thanos",
-            "definition": "label_values(up{job=~\"scylla-node-exporter\",instance=~\".*9100\"},instance)",
+            "definition": "label_values(up{job=~\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"},instance)",
             "hide": 0,
             "includeAll": false,
             "label": "Node",
             "multi": false,
             "name": "node",
             "options": [],
-            "query": "label_values(up{job=~\"scylla-node-exporter\",instance=~\".*9100\"},instance)",
+            "query": "label_values(up{job=~\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"},instance)",
             "refresh": 2,
             "regex": "",
             "skipUrlSync": false,
