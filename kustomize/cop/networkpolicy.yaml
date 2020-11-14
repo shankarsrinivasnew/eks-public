@@ -70,6 +70,7 @@ spec:
           names:
             - tsb-cop
             - default
+            - cop-sink-connector
       protocol: TCP
       destination:
         nets:
