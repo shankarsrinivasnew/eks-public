@@ -285,6 +285,22 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
+          - job_name: 'blackbox'
+            metrics_path: /probe
+            params:
+              module: [http_2xx]
+            static_configs:
+              - targets:
+                - https://kibana.mgmt.aws.uk.tsb/
+                - https://elasticsearch.mgmt.aws.uk.tsb/
+                - https://jenkins.dev.aws.uk.tsb/
+            relabel_configs:
+              - source_labels: [__address__]
+                target_label: __param_target
+              - source_labels: [__param_target]
+                target_label: instance
+              - target_label: __address__
+                replacement: localhost:9115
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
