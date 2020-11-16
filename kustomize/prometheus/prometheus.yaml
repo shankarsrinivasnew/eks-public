@@ -29,7 +29,7 @@ spec:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
           alb.ingress.kubernetes.io/target-type: ip
-          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20"
+          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
           external-dns.alpha.kubernetes.io/hostname: grafana.{{ DNS_ZONE }}
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
@@ -156,7 +156,7 @@ spec:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
           alb.ingress.kubernetes.io/target-type: ip
-          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20"
+          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
           alb.ingress.kubernetes.io/backend-protocol: HTTP
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
