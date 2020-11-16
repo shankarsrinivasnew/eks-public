@@ -291,9 +291,9 @@ spec:
               module: [http_2xx]
             static_configs:
               - targets:
-                - https://kibana.mgmt.aws.uk.tsb/
-                - https://elasticsearch.mgmt.aws.uk.tsb/
-                - https://jenkins.dev.aws.uk.tsb/
+                - https://jenkins.{{ DNS_ZONE }}
+                - https://grafana.{{ DNS_ZONE }}
+                - https://prometheus.{{ DNS_ZONE }}
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
