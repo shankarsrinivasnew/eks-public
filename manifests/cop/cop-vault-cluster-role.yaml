@@ -14,6 +14,9 @@ subjects:
 - kind: ServiceAccount
   name: tsb-cop
   namespace: cop
+- kind: ServiceAccount
+  name: cop-sink-connector
+  namespace: cop
 ---
 apiVersion: v1
 kind: ServiceAccount
