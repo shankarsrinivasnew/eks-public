@@ -300,7 +300,7 @@ spec:
               - source_labels: [__param_target]
                 target_label: instance
               - target_label: __address__
-                replacement: localhost:9115
+                replacement: http://blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115/
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
