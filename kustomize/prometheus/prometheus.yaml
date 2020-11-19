@@ -394,12 +394,10 @@ spec:
           routes:
             - match:
                 namespace: cb
-                environment: prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
                 namespace: cb
-                environment: prod
               receiver: cb-slack-notifications
               continue: true
     additionalPrometheusRulesMap:
@@ -422,7 +420,6 @@ spec:
                     level: WARNING
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -443,7 +440,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -469,7 +465,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -486,7 +481,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -503,7 +497,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -529,7 +522,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -546,7 +538,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -563,7 +554,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -580,8 +570,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -603,7 +591,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -620,7 +607,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -637,7 +623,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -675,7 +660,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -692,7 +676,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -709,7 +692,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -726,7 +708,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -748,7 +729,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -765,7 +745,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -782,7 +761,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -799,7 +777,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -821,7 +798,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -838,7 +814,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -855,7 +830,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -872,7 +846,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -894,7 +867,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -927,7 +899,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -965,7 +936,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -982,7 +952,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -999,7 +968,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1016,7 +984,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -1038,7 +1005,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1055,7 +1021,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1072,7 +1037,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1089,7 +1053,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -1111,7 +1074,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1128,7 +1090,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1145,7 +1106,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1162,7 +1122,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -1184,7 +1143,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1201,7 +1159,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1218,7 +1175,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1235,7 +1191,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
@@ -1257,7 +1212,6 @@ spec:
                     level: GREEN
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1274,7 +1228,6 @@ spec:
                     level: YELLOW
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1291,7 +1244,6 @@ spec:
                     level: RED
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: WARNING
                     type: 8x5
                 annotations:
@@ -1308,7 +1260,6 @@ spec:
                     level: CRITICAL
                     platform: AWS
                     namespace: cb
-                    environment: prod
                     severity: CRITICAL
                     type: 8x5
                 annotations:
