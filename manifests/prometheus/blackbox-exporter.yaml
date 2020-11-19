@@ -1,0 +1,52 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: blackbox-exporter
+  namespace: prometheus
+spec:
+  releaseName: blackbox-exporter
+  chart:
+    repository: https://prometheus-community.github.io/helm-charts
+    name: prometheus-blackbox-exporter
+    version: 4.10.0
+  values:
+    config:
+      modules:
+        http_2xx:
+          prober: http
+          timeout: 5s
+          http:
+            valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+            no_follow_redirects: false
+            preferred_ip_protocol: "ip4"
+        http_2xx_cacert:
+          prober: http
+          timeout: 5s
+          http:
+            method: GET
+            no_follow_redirects: false
+            fail_if_ssl: false
+            preferred_ip_protocol: ip4
+            tls_config:
+              ca_file: /etc/secrets/ca/bs-ca-chain.crt
+            valid_status_codes: []  # Defaults to 2xx
+        http_4xx_cacert:
+          prober: http
+          timeout: 5s
+          http:
+            method: GET
+            no_follow_redirects: false
+            fail_if_ssl: false
+            preferred_ip_protocol: ip4
+            tls_config:
+              ca_file: /etc/secrets/ca/bs-ca-chain.crt
+            valid_status_codes: [403]  # Defaults to 4xx
+
+
+    extraConfigmapMounts:
+       - name: bs-ca-chain
+         mountPath: /etc/secrets/ca/
+         configMap: bs-ca-chain-configmap
+         readOnly: true
+         defaultMode: 420
