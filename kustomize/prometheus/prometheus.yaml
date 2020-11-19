@@ -288,7 +288,7 @@ spec:
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
-              module: [http_2xx]
+              module: [http_2xx_cacert]
             static_configs:
               - targets:
                 - https://jenkins.{{ DNS_ZONE }}
