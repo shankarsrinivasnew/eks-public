@@ -399,10 +399,12 @@ spec:
           routes:
             - match:
                 namespace: cb
+                environment: prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
                 namespace: cb
+                environment: prod
               receiver: cb-slack-notifications
               continue: true
     additionalPrometheusRulesMap:
