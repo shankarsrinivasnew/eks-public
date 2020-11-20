@@ -314,6 +314,11 @@ spec:
                 target_label: instance
               - target_label: __address__
                 replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
+          - job_name: consul-exporter
+            metrics_path: /metrics
+            static_configs:
+              - targets:
+                - consul-exporter-prometheus-consul-exporter:9107
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
