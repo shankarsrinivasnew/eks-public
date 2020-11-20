@@ -323,7 +323,7 @@ spec:
             metrics_path: '/metrics'
             honor_labels: true
             static_configs:
-            - targets: ['localhost:1234']
+            - targets: ['localhost:9106']
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
