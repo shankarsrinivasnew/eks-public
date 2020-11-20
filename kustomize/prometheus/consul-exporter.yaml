@@ -1,0 +1,24 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: consul-exporter
+  namespace: prometheus
+spec:
+  releaseName: consul-exporter
+  chart:
+    repository: https://prometheus-community.github.io/helm-charts
+    name: prometheus-consul-exporter
+    version: 0.2.0
+  values:
+    consulServer: https://consul.{{ DNS_ZONE }}
+    options:
+      consul.timeout: 10s
+      consul.ca-file: /etc/bscachain/bs-ca-chain.crt
+    extraVolumes:
+      - name: bscachain
+        configMap:
+          name: bs-ca-chain-configmap
+    extraVolumeMounts:
+      - name: bscachain
+        mountPath: /etc/bscachain/
