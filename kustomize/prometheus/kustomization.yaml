@@ -1,0 +1,8 @@
+resources:
+  - alertmanager-sns-forwarder.yaml
+  - prometheus.yaml
+  - storage.yaml
+  - consul-exporter.yaml
+namespace: prometheus
+transformers:
+  - awsTransformer.yaml

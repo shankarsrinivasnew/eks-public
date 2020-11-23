@@ -1,0 +1,97 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus
+  namespace: prometheus
+spec:
+  selector: app == 'prometheus'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: vpc
+          to: prometheus
+      action: Allow
+      protocol: TCP
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+      destination:
+        ports:
+          - 9090
+  egress:
+    - metadata:
+        annotations:
+          from: prometheus
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: grafana
+  namespace: prometheus
+spec:
+  selector: app.kubernetes.io/name == 'grafana'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: vpc
+          to: prometheus
+      action: Allow
+      protocol: TCP
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+      destination:
+        ports:
+          - 3000
+  egress:
+    - metadata:
+        annotations:
+          from: grafana
+          to: rds
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'data'
+        namespaceSelector: global()
+        ports:
+          - 3306
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: namespace
+  namespace: prometheus
+spec:
+  selector: all()
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: namespace
+          to: namespace
+      action: Allow
+      source:
+        selector: all()
+  egress:
+    - metadata:
+        annotations:
+          from: namespace
+          to: namespace
+      action: Allow
+      destination:
+        selector: all()

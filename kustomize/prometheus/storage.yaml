@@ -16,4 +16,4 @@ spec:
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: "fs-276b34d6::fsap-09a534cf4ea1ab5a6"
+    volumeHandle: "{{ EFS_ID }}::{{ EFS_PROMETHEUS_ID }}"

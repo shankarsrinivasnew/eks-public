@@ -1,0 +1,42 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: thanos
+  namespace: prometheus
+spec:
+  releaseName: thanos
+  chart:
+    repository: https://kubernetes-charts.banzaicloud.com
+    name: thanos
+    version: 0.3.28
+  values:
+    ## helm upgrade --install thanos banzaicloud-stable/thanos -f thanos-chart.yaml
+    image:
+      repository: quay.io/thanos/thanos
+      tag: v0.15.0
+
+    objstoreSecretOverride: thanos-s3-config
+
+    store:
+      serviceAccount: prometheus-sa
+      metrics:
+        serviceMonitor:
+          enabled: true
+    sidecar:
+      serviceAccount: prometheus-sa
+      metrics:
+        serviceMonitor:
+          enabled: true
+    query:
+      serviceAccount: prometheus-sa
+      metrics:
+        serviceMonitor:
+          enabled: true
+    compact:
+      serviceAccount: prometheus-sa
+      metrics:
+        serviceMonitor:
+          enabled: true
+    bucket:
+      serviceAccount: prometheus-sa

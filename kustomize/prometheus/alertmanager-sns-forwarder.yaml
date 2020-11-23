@@ -30,7 +30,7 @@ spec:
         image: datareply/alertmanager-sns-forwarder:latest
         imagePullPolicy: Always
         # You can also specify arguments
-        args: ["--addr=:9087", "--debug", "--arn-prefix=arn:aws:sns:eu-west-2:407929326957:"]
+        args: ["--addr=:9087", "--debug", "--arn-prefix=arn:aws:sns:eu-west-2:{{ AWS_ACCOUNT }}:"]
         env:
           - name: AWS_REGION
             value: "eu-west-2"
@@ -87,4 +87,4 @@ metadata:
   name: am-sns-forwarder
   namespace: prometheus
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::407929326957:role/eks/am-sns-forwarder-role
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/am-sns-forwarder-role

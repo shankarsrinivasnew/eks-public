@@ -1,7 +1,6 @@
 resources:
   - sa.yaml
-  - storage.yaml
-  - jenkins.yaml
-namespace: jenkins
+  - networkpolicy.yaml
+namespace: cop
 transformers:
   - awsTransformer.yaml

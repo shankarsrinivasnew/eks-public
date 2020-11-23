@@ -85,6 +85,33 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
+  name: cb-sa-policy
+  namespace: cb
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: cb-sa
+          to: mgmt
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cb
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.48.0/20
+        ports:
+          - 80
+          - 443
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
   name: cb-inter-namespace
   namespace: cb
 spec:
@@ -127,3 +154,23 @@ spec:
       source:
         selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-ingress
+  namespace: cb
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector: 
+        matchLabels:
+          app: prometheus
+    ports:
+    - port: 8080
+      protocol: TCP
+    - port: 3000
+      protocol: TCP

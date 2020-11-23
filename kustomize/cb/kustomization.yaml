@@ -1,5 +1,4 @@
 resources:
-  - namespace.yaml
   - sa.yaml
 namespace: cb
 transformers:
