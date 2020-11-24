@@ -17,7 +17,9 @@ command:
 
 serviceAccount:
   create: false
-  name: prometheus-sa
+  name: prometheus-thanos-s3
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::045223552195:role/eks/prometheus-thanos-s3
 
 # Configuration is rendered with `tpl` function, therefore you can use any Helm variables and/or templates here
 config: |-
