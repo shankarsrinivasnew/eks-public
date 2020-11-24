@@ -16,7 +16,8 @@ command:
   - '/config/config.yml'
 
 aws:
-  role: prometheus-thanos-s3
+  region: eu-west-2
+  role: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/prometheus-thanos-s3
 
 serviceAccount:
   create: false
