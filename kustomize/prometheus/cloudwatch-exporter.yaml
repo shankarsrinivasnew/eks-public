@@ -15,13 +15,28 @@ command:
   - '9106'
   - '/config/config.yml'
 
+serviceAccount:
+  # Specifies whether a ServiceAccount should be created
+  create: false
+  # The name of the ServiceAccount to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: prometheus-sa
+#   # annotations:
+#   # Will add the provided map to the annotations for the created serviceAccount
+#   # e.g.
+#   # annotations:
+#   #   eks.amazonaws.com/role-arn: arn:aws:iam::045223552195:role/eks/prometheus-thanos-s3
+
 aws:
   region: eu-west-2
-  role: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/prometheus-thanos-s3
+  role: arn:aws:iam::045223552195:role/eks/prometheus-thanos-s3
 
-serviceAccount:
-  create: false
-  name: prometheus-thanos-s3
+  # secret:
+  #   name: prometheus-cloudwatch-exporter-secret
+  #   includesSessionToken: false
+
+  # aws_access_key_id: 
+  # aws_secret_access_key: 
 
 # Configuration is rendered with `tpl` function, therefore you can use any Helm variables and/or templates here
 config: |-
