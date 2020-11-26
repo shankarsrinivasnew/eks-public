@@ -319,6 +319,12 @@ spec:
             static_configs:
               - targets:
                 - consul-exporter-prometheus-consul-exporter:9107
+          - job_name: cloudwatch-exporter
+            metrics_path: '/metrics'
+            honor_labels: true
+            static_configs:
+            - targets: 
+              - cloudwatch-exporter-prometheus-cloudwatch-exporter:9106
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
