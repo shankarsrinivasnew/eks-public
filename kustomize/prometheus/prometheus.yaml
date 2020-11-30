@@ -293,9 +293,6 @@ spec:
               - targets:
                 - https://grafana.{{ DNS_ZONE }}
                 - https://prometheus.{{ DNS_ZONE }}
-                - https://kibana.{{ DNS_ZONE }}
-                - https://elasticsearch.{{ DNS_ZONE }}
-                - https://artifactory.{{ DNS_ZONE }}
                 - https://ambari.hdf.{{ DNS_ZONE }}
             relabel_configs:
               - source_labels: [__address__]
