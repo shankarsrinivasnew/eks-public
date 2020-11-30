@@ -293,6 +293,9 @@ spec:
               - targets:
                 - https://grafana.{{ DNS_ZONE }}
                 - https://prometheus.{{ DNS_ZONE }}
+                - https://ambari.hdf.{{ DNS_ZONE }}
+                - https://consul.{{ DNS_ZONE }}
+                - https://vault.{{ DNS_ZONE }}
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
