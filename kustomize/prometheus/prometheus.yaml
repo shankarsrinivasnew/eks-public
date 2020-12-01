@@ -369,6 +369,7 @@ spec:
         #      severity: 'warning'
         #    equal: ['alertname', 'dev', 'instance']
         receivers:
+          - name: "null"
           - name: rax-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/preprod-rax-alertmanager"
@@ -431,7 +432,7 @@ spec:
         - name: BLACKBOX_ENDPOINT_MONITORING_RULES
           rules:
           - alert: probe_http_4xx_status_code
-            expr: (probe_http_status_code{job="blackbox_4xx"}) == 403
+            expr: (probe_http_status_code{job="blackbox_4xx"}) != 403
             for: 1m
             labels:
               severity: low
@@ -440,7 +441,7 @@ spec:
               summary: "Endpoint {{ $labels.instance }} healthy"
 
           - alert: probe_http_2xx_status_code
-            expr: (probe_http_status_code{job="blackbox"}) == 200
+            expr: (probe_http_status_code{job="blackbox"}) != 200
             for: 1m
             labels:
               severity: low
