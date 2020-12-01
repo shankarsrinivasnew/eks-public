@@ -369,6 +369,10 @@ spec:
         #      severity: 'warning'
         #    equal: ['alertname', 'dev', 'instance']
         receivers:
+          - name: rax-monitoring-email
+            webhook_configs:
+            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/preprod-rax-alertmanager"
+              send_resolved: true
           - name: "sns-forwarder-cbalerts"
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
@@ -416,27 +420,33 @@ spec:
                 environment: prod
               receiver: cb-slack-notifications
               continue: true
+            - match:
+                monitoring: endpoints
+              receiver: rax-monitoring-email
+              continue: true
 
     additionalPrometheusRulesMap:
       rackspace-rules:
         groups:
         - name: BLACKBOX_ENDPOINT_MONITORING_RULES
           rules:
-          - record: probe_http_4xx_status_code
+          - alert: probe_http_4xx_status_code
             expr: (probe_http_status_code{job="blackbox_4xx"}) == 403
             for: 1m
             labels:
               severity: low
+              monitoring: endpoints
             annotations:
-              summary: "Endpoint healthy"
+              summary: "Endpoint {{ $labels.instance }} healthy"
 
-          - record: probe_http_2xx_status_code
+          - alert: probe_http_2xx_status_code
             expr: (probe_http_status_code{job="blackbox"}) == 200
             for: 1m
             labels:
               severity: low
+              monitoring: endpoints
             annotations:
-              summary: "Endpoint healthy"
+              summary: "Endpoint {{ $labels.instance }} healthy"
 
       tsb-cb-down-alerts-rules:
         groups:
