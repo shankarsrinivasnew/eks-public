@@ -418,16 +418,6 @@ spec:
               continue: true
 
     additionalPrometheusRulesMap:
-      rackspace-rules:
-        groups:
-        -   name: BLACKBOX_ENDPOINT_MONITORING_RULES
-            rules:
-            -   record: probe_http_4xx_status_code
-                expr: (probe_http_status_code{job="blackbox_4xx"}) == 403
-
-            -   record: probe_http_2xx_status_code
-                expr: (probe_http_status_code{job="blackbox"}) == 200
-
       tsb-cb-down-alerts-rules:
         groups:
         -   name: CB_APPS_DOWN_STATE
