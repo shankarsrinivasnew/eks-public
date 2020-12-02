@@ -8,7 +8,7 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: CLOUDWATCH_MONITORING_rules
+  - name: MIDDLEWARE_MONITORING_RULES
     rules:
     -   alert: scylla_db_node_count
         expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"}) < 3
