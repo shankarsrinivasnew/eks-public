@@ -1,0 +1,89 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cb-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: CB_APPS_DOWN_STATE
+      ###########################################CB_APP_DOWN_WARNING##########################################################
+    rules:
+    - record: cb_app_down_warning_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cb-ads-customer-lookup-topology|tsb-cb-authentication-api|tsb-cb-cdc-customer-data|tsb-cb-enrich|tsb-cb-fulfill|tsb-cb-hmac-generation-topology|tsb-cb-nlp-handler|tsb-cb-spring-api-gateway",namespace="cb"})
+
+    - alert: CB_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3
+      for: 1m
+      labels:
+        action: NO LLAMAR A GUARDIA
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: WARNING
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
+        summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
+
+    ###########################################CB_APP_DOWN_CRITICAL##########################################################
+    - record: cb_app_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment=~".*tsb-cb.*",namespace="cb"})
+
+    - alert: CB_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+      labels:
+        action: NO LLAMAR A GUARDIA
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: cb
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+
+
+    ###########################################CB_PUSH_APP_DOWN_WARNING##########################################################
+    - record: cb_push_app_down_warning_{{ AWS_ENVIRONMENT }}
+      expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-cb.*",namespace="cb"})
+
+    - alert: CB_push_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_push_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3
+      labels:
+        action: NO LLAMAR A GUARDIA
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: WARNING
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
+        summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
+
+    ###########################################CB_PUSH_APP_DOWN_CRITICAL##########################################################
+    - record: cb_push_app_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-cb.*",namespace="cb"})
+
+    - alert: CB_push_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_push_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+      labels:
+        action: NO LLAMAR A GUARDIA
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: cb
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+        summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running

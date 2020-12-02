@@ -3,6 +3,10 @@ resources:
   - prometheus.yaml
   - storage.yaml
   - consul-exporter.yaml
+  - prometheusrule-cb-down.yaml
+  - prometheusrule-cb-up.yaml
+  - prometheusrule-cb-responsetime.yaml
+  - prometheusrule-rax-endpoints.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
