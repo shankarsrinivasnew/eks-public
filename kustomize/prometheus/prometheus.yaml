@@ -393,7 +393,7 @@ spec:
                 {{- end }}
               text: >-
                 {{ range .Alerts -}}
-                *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.environment }}` - `{{ .Labels.severity }}`{{ end }}
+                *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
                 {{ end }}
               send_resolved: true
               http_config:
@@ -437,12 +437,12 @@ spec:
           routes:
             - match:
                 namespace: cb
-                environment: prod
+                environment: preprod|prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
                 namespace: cb
-                environment: prod
+                environment: preprod|prod
               receiver: cb-slack-notifications
               continue: true
             - match:
