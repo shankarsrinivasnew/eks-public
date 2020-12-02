@@ -15,7 +15,7 @@ spec:
       for: 1m
       labels:
         severity: high
-        environment: {{ AWS_ENVIRONMENT }}
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: endpoints
         rackspace: "true"
       annotations:
@@ -25,7 +25,7 @@ spec:
       for: 1m
       labels:
         severity: high
-        environment: {{ AWS_ENVIRONMENT }}
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: endpoints
         rackspace: "true"
       annotations:

@@ -19,7 +19,7 @@ spec:
       for: 5m
       labels:
         action: NO LLAMAR A GUARDIA
-        environment: {{ AWS_ENVIRONMENT }}
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: GREEN
         platform: AWS
@@ -35,7 +35,7 @@ spec:
       for: 5m
       labels:
         action: NO LLAMAR A GUARDIA
-        environment: {{ AWS_ENVIRONMENT }}
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: YELLOW
         platform: AWS
@@ -51,7 +51,7 @@ spec:
       for: 5m
       labels:
         action: NO LLAMAR A GUARDIA
-        environment: {{ AWS_ENVIRONMENT }}
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: RED
         platform: AWS
