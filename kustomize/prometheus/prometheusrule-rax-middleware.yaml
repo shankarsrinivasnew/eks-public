@@ -1,0 +1,55 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: rax-cw-middleware-monitoring
+  namespace: prometheus
+spec:
+  groups:
+  - name: MIDDLEWARE_MONITORING_RULES
+    rules:
+    -   alert: scylla_db_node_count
+        expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"}) < 3
+        for: 15m
+        labels:
+          severity: HIGH
+          environment: "{{ AWS_ENVIRONMENT }}"
+          monitoring: middleware
+          rackspace: "true"
+        annotations:
+            summary: Critical Alert, Application {{ $labels.instance }} has been running on less than 3 nodes for the last 15mins.
+
+    -   alert: kafka_broker_count
+        expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
+        for: 15m
+        labels:
+          severity: HIGH
+          environment: "{{ AWS_ENVIRONMENT }}"
+          monitoring: middleware
+          rackspace: "true"
+        annotations:
+            summary: Critical Alert, Application {{ $labels.job }} has been running on less than 3 brokers for the last 15mins.
+
+    -   alert: kafka_failed_fetch_request_rate
+        expr: rate(sum(kafka_server_brokertopicmetrics_meanrate{job="ec2-discover-hdf-jmx",name="FailedFetchRequestsPerSec",topic!=""})by (topic) / 10) > 5
+        for: 15m
+        labels:
+          severity: HIGH
+          environment: "{{ AWS_ENVIRONMENT }}"
+          monitoring: middleware
+          rackspace: "true"
+        annotations:
+          summary: Critical Alert, Application {{ $labels.job }} failed request rate is greater than 5%
+    
+    -   alert: jvm_heap_size
+        expr: rate(sum(jvm_memory_max_bytes{application=~"$application", instance=~"$instance", area="heap"}) / 10) > 95
+        for: 15m
+        labels:
+          severity: HIGH
+          environment: "{{ AWS_ENVIRONMENT }}"
+          monitoring: middleware
+          rackspace: "true"
+        annotations:
+          summary: Critical Alert, Application {{ $labels.job }} jvm heap size is over 95%
