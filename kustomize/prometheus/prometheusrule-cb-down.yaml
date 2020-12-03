@@ -19,7 +19,7 @@ spec:
       for: 1m
       labels:
           action: NO LLAMAR A GUARDIA
-          environment: {{ AWS_ENVIRONMENT }}
+          environment: "{{ AWS_ENVIRONMENT }}"
           group: INFRA
           level: WARNING
           platform: AWS
@@ -37,7 +37,7 @@ spec:
       expr: (cb_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
       labels:
           action: NO LLAMAR A GUARDIA
-          environment: {{ AWS_ENVIRONMENT }}
+          environment: "{{ AWS_ENVIRONMENT }}"
           group: INFRA
           level: CRITICAL
           platform: AWS
@@ -55,7 +55,7 @@ spec:
       expr: (cb_push_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3
       labels:
           action: NO LLAMAR A GUARDIA
-          environment: {{ AWS_ENVIRONMENT }}
+          environment: "{{ AWS_ENVIRONMENT }}"
           group: INFRA
           level: WARNING
           platform: AWS
@@ -74,7 +74,7 @@ spec:
       expr: (cb_push_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
       labels:
           action: NO LLAMAR A GUARDIA
-          environment: {{ AWS_ENVIRONMENT }}
+          environment: "{{ AWS_ENVIRONMENT }}"
           group: INFRA
           level: CRITICAL
           platform: AWS
@@ -92,7 +92,7 @@ spec:
       expr: (cb_nginx_controller_down_critical_{{ AWS_ENVIRONMENT }}) < 1
       labels:
          action: NO LLAMAR A GUARDIA
-         environment: {{ AWS_ENVIRONMENT }}
+         environment: "{{ AWS_ENVIRONMENT }}"
          group: INFRA
          level: CRITICAL
          platform: AWS
