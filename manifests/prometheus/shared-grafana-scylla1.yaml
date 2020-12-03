@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cop-scylla00-cm
+  name: shared-scylla1-cm
   namespace: prometheus
 data:
-  Scylla00.json: |
+  Scylla1.json: |
     {
       "annotations": {
         "list": [
@@ -23,8 +23,8 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 33,
-      "iteration": 1605025838485,
+      "id": 40,
+      "iteration": 1606995876020,
       "links": [],
       "panels": [
         {
@@ -99,7 +99,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "count(up{job=\"ec2-discover-node-exporter\"})",
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -459,7 +459,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -542,7 +542,7 @@ data:
           },
           "fontSize": "100%",
           "gridPos": {
-            "h": 6,
+            "h": 12,
             "w": 8,
             "x": 16,
             "y": 0
@@ -928,7 +928,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1036,7 +1036,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1098,129 +1098,6 @@ data:
             "align": false,
             "alignLevel": null
           }
-        },
-        {
-          "class": "alert_table",
-          "columns": [],
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fontSize": "100%",
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 16,
-            "y": 6
-          },
-          "id": 10,
-          "links": [],
-          "pageSize": null,
-          "scroll": true,
-          "showHeader": true,
-          "sort": {
-            "col": 0,
-            "desc": true
-          },
-          "span": 4,
-          "styles": [
-            {
-              "alias": "Time",
-              "align": "auto",
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "link": true,
-              "linkTooltip": "Jump to the see the node",
-              "linkUrl": "/d/detailed-[[dash_version]]/detailed?refresh=30s&orgId=1&var-by=instance&var-node=${__cell_4}&from=${__cell_0}",
-              "pattern": "Time",
-              "type": "date"
-            },
-            {
-              "align": "auto",
-              "class": "hidden_column",
-              "pattern": "severity",
-              "type": "hidden"
-            },
-            {
-              "align": "auto",
-              "class": "hidden_column",
-              "pattern": "alertname",
-              "type": "hidden"
-            },
-            {
-              "align": "auto",
-              "class": "hidden_column",
-              "pattern": "cluster",
-              "type": "hidden"
-            },
-            {
-              "align": "auto",
-              "class": "hidden_column",
-              "pattern": "monitor",
-              "type": "hidden"
-            },
-            {
-              "align": "auto",
-              "class": "hidden_column",
-              "pattern": "summary",
-              "type": "hidden"
-            },
-            {
-              "alias": "Instance",
-              "align": "auto",
-              "colorMode": null,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "decimals": 2,
-              "link": true,
-              "linkTooltip": "Jump to the see the node",
-              "linkUrl": "/d/detailed-[[dash_version]]/detailed?refresh=30s&orgId=1&var-by=instance&var-node=${__cell}",
-              "mappingType": 1,
-              "pattern": "instance",
-              "thresholds": [],
-              "type": "string",
-              "unit": "short"
-            },
-            {
-              "alias": "",
-              "align": "auto",
-              "colorMode": null,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "decimals": 2,
-              "pattern": "/.*/",
-              "thresholds": [],
-              "type": "number",
-              "unit": "short"
-            }
-          ],
-          "targets": [
-            {
-              "annotations": true,
-              "expr": "job=\"ec2-discover-node-exporter\"",
-              "format": "table",
-              "hide": true,
-              "interval": "",
-              "intervalFactor": 1,
-              "labelSelector": "*",
-              "legendFormat": "{{description}}",
-              "refId": "A",
-              "target": "Query",
-              "type": "table"
-            }
-          ],
-          "title": "Active Alerts",
-          "transform": "table",
-          "type": "table-old"
         },
         {
           "class": "text_panel",
@@ -1297,7 +1174,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1397,7 +1274,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1534,7 +1411,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1637,7 +1514,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1773,7 +1650,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1878,7 +1755,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1986,52 +1863,51 @@ data:
           "type": "text"
         },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
           "cacheTimeout": null,
-          "class": "pie_chart_panel",
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
           "datasource": "default",
-          "editable": true,
-          "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
             },
             "overrides": []
           },
-          "fontSize": "80%",
-          "format": "bytes",
           "gridPos": {
             "h": 12,
             "w": 6,
             "x": 0,
             "y": 58
           },
-          "height": "250px",
           "id": 209,
           "interval": null,
-          "isNew": true,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "legendType": "On graph",
           "links": [],
           "maxDataPoints": 3,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "pieType": "pie",
-          "span": 2,
-          "strokeWidth": 1,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "7.2.1",
           "targets": [
             {
               "expr": "sum(node_filesystem_avail_bytes{job=~\"ec2-discover-node-exporter\",mountpoint=\"/var/lib/scylla\"})",
@@ -2055,9 +1931,10 @@ data:
               "step": 7200
             }
           ],
+          "timeFrom": null,
+          "timeShift": null,
           "title": "Total Storage",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
+          "type": "gauge"
         },
         {
           "aliasColors": {},
@@ -2104,7 +1981,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2221,7 +2098,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2337,7 +2214,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2453,7 +2330,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2567,7 +2444,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2714,7 +2591,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2830,7 +2707,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2946,7 +2823,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3062,7 +2939,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3212,7 +3089,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3319,7 +3196,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3426,7 +3303,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3534,7 +3411,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3642,7 +3519,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3749,7 +3626,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3856,7 +3733,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3964,7 +3841,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4139,7 +4016,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4247,7 +4124,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4355,7 +4232,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4462,7 +4339,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4780,7 +4657,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5069,7 +4946,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5192,7 +5069,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5301,7 +5178,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5417,7 +5294,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5562,7 +5439,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5671,7 +5548,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5779,7 +5656,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5887,7 +5764,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5996,7 +5873,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 1,
           "points": false,
           "renderer": "flot",
@@ -6103,7 +5980,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 1,
           "points": false,
           "renderer": "flot",
@@ -6210,7 +6087,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 1,
           "points": false,
           "renderer": "flot",
@@ -6330,7 +6207,11 @@ data:
           },
           {
             "allValue": null,
-            "current": {},
+            "current": {
+              "selected": true,
+              "text": "shared-preprod-scylla-db-3",
+              "value": "shared-preprod-scylla-db-3"
+            },
             "datasource": "Thanos",
             "definition": "label_values(up{job=~\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"},instance)",
             "hide": 0,
@@ -6352,8 +6233,13 @@ data:
           }
         ]
       },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
       "timezone": "browser",
-      "title": "Scylla COP - Part1",
-      "uid": "SNhPehSGk1",
-      "version": 2
+      "title": "Scylla - Part1",
+      "uid": "SNhPehSGk12",
+      "version": 4
     }

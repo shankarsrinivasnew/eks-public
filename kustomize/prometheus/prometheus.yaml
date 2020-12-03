@@ -57,61 +57,126 @@ spec:
         dashboardproviders.yaml:
           apiVersion: 1
           providers:
-          - name: 'default'
-            orgId: 1
-            folder: ''
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/default
-          - name: 'cop-dashboard-jvm'
-            orgId: 1
-            folder: 'TSB-COP'
-            type: file
-            disableDeletion: true
-            editable: false
-            options:
-              path: /var/lib/grafana/dashboards/cop-dashboard-jvm
-          - name: 'cop-dashboard-scylla-00'
-            orgId: 1
-            folder: 'TSB-COP'
-            type: file
-            disableDeletion: true
-            editable: false
-            options:
-              path: /var/lib/grafana/dashboards/cop-dashboard-scylla-00
-          - name: 'cop-dashboard-scylla-01'
-            orgId: 1
-            folder: 'TSB-COP'
-            type: file
-            disableDeletion: true
-            editable: false
-            options:
-              path: /var/lib/grafana/dashboards/cop-dashboard-scylla-01
-          - name: 'cop-dashboard-kafka'
-            orgId: 1
-            folder: 'TSB-COP'
-            type: file
-            disableDeletion: true
-            editable: false
-            options:
-              path: /var/lib/grafana/dashboards/cop-dashboard-kafka
-          - name: 'cop-dashboard-consul-vault'
-            orgId: 1
-            folder: 'TSB-COP'
-            type: file
-            disableDeletion: true
-            editable: false
-            options:
-              path: /var/lib/grafana/dashboards/cop-dashboard-consul-vault
+            - name: 'default'
+              orgId: 1
+              folder: ''
+              type: file
+              disableDeletion: false
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/default
+            - name: 'shared-grafana-jvm'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-jvm
+            - name: 'shared-grafana-scylla1'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-scylla1
+            - name: 'shared-grafana-scylla2'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-scylla2
+            - name: 'shared-grafana-kafka'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-kafka
+            - name: 'shared-grafana-consul-vault'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-consul-vault
+            - name: 'shared-grafana-consul'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-consul
+            - name: 'shared-grafana-ec2nodes'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-ec2nodes
+            - name: 'shared-grafana-kubepod-apps'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-kubepod-apps
+            - name: 'shared-grafana-kubepodoverview'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-kubepodoverview
+            - name: 'shared-grafana-kubeprometheus'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-kubeprometheus
+            - name: 'shared-grafana-kubestatefulsets'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-kubestatefulsets
+            - name: 'shared-grafana-rax-endpoints'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-rax-endpoints
 
       dashboardsConfigMaps:
-        cop-dashboard-jvm: cop-jvm-cm
-        cop-dashboard-scylla-00: cop-scylla00-cm
-        cop-dashboard-scylla-01: cop-scylla01-cm
-        cop-dashboard-kafka: cop-kafka-cm
-        cop-dashboard-consul-vault: cop-consul-vault-cm
+        shared-grafana-jvm: shared-jvm-cm
+        shared-grafana-scylla1: shared-scylla1-cm
+        shared-grafana-scylla2: shared-scylla2-cm
+        shared-grafana-kafka: shared-kafka-cm
+        shared-grafana-consul-vault: shared-consul-vault-cm
+        shared-grafana-consul: shared-consul-cm
+        shared-grafana-ec2nodes: shared-ec2nodes-cm
+        shared-grafana-kubepod-apps: shared-kubepod-apps-cm
+        shared-grafana-kubepodoverview: shared-kubepodoverview-cm
+        shared-grafana-kubeprometheus: shared-kubeprometheus-cm
+        shared-grafana-kubestatefulsets: shared-kubestatefulsets-cm
+        shared-grafana-rax-endpoints: shared-rax-endpoints-cm
+
+
 
     prometheusOperator:
       enabled: true
