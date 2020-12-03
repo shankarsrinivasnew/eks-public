@@ -49,7 +49,7 @@ spec:
           summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
     ###########################################CB_PUSH_APP_DOWN_WARNING##########################################################
     - record: cb_push_app_down_warning_{{ AWS_ENVIRONMENT }}
-        expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-cb.*",namespace="cb"})
+      expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-cb.*",namespace="cb"})
 
     - alert: CB_push_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
       expr: (cb_push_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3
