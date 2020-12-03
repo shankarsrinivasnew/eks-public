@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cop-consul-vault-cm
+  name: shared-consul-vault-cm
   namespace: prometheus
 data:
   Consul-Vault.json: |
@@ -24,8 +24,8 @@ data:
       "editable": true,
       "gnetId": 3297,
       "graphTooltip": 0,
-      "id": 98,
-      "iteration": 1604907389254,
+      "id": 38,
+      "iteration": 1606995093162,
       "links": [],
       "panels": [
         {
@@ -111,7 +111,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"system|irq|softirq|iowait\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"system|irq|softirq|iowait\"}[5m])) * 100)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -119,7 +119,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "(avg by (instance) (irate(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged\"}[5m])) * 100)",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "B"
@@ -207,7 +207,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"user\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"user\"}[5m])) * 100)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -215,7 +215,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "(avg by (instance) (irate(wmi_cpu_time_total{instance=\"$instance\",mode=~\"user\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(wmi_cpu_time_total{instance=\"$server\",mode=~\"user\"}[5m])) * 100)",
               "format": "time_series",
               "instant": false,
               "intervalFactor": 1,
@@ -304,7 +304,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"idle\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"idle\"}[5m])) * 100)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -312,7 +312,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "(avg by (instance) (irate(wmi_cpu_time_total{instance=\"$instance\",mode=~\"idle\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(wmi_cpu_time_total{instance=\"$server\",mode=~\"idle\"}[5m])) * 100)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -400,14 +400,14 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "count(count(node_cpu_seconds_total{instance=\"$instance\"}) by (cpu))",
+              "expr": "count(count(node_cpu_seconds_total{instance=\"$server\"}) by (cpu))",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
               "refId": "A"
             },
             {
-              "expr": "count(count(wmi_cpu_time_total{instance=\"$instance\"}) by (cpu))",
+              "expr": "count(count(wmi_cpu_time_total{instance=\"$server\"}) by (cpu))",
               "format": "time_series",
               "hide": false,
               "instant": true,
@@ -429,26 +429,28 @@ data:
           "valueName": "current"
         },
         {
-          "aliasColors": {
-            "Idle": "#6ed0e0",
-            "Iowait": "#6ed0e0"
-          },
-          "breakPoint": "50%",
           "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
           "datasource": null,
-          "decimals": 2,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
             },
             "overrides": []
           },
-          "fontSize": "80%",
-          "format": "short",
           "gridPos": {
             "h": 7,
             "w": 4,
@@ -457,21 +459,24 @@ data:
           },
           "id": 44,
           "interval": null,
-          "legend": {
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "values": true
-          },
-          "legendType": "Under graph",
           "links": [],
           "maxDataPoints": 3,
-          "nullPointMode": "connected",
-          "pieType": "donut",
-          "strokeWidth": "1",
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "7.2.1",
           "targets": [
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"system|irq|softirq|iowait\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"system|irq|softirq|iowait\"}[5m])) * 100)",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -479,7 +484,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"user\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"user\"}[5m])) * 100)",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -487,7 +492,7 @@ data:
               "refId": "B"
             },
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"idle\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"idle\"}[5m])) * 100)",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -495,7 +500,7 @@ data:
               "refId": "C"
             },
             {
-              "expr": "sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged\"})/sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
+              "expr": "sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged\"})/sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -503,7 +508,7 @@ data:
               "refId": "D"
             },
             {
-              "expr": "sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"user\"})/sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
+              "expr": "sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"user\"})/sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -511,7 +516,7 @@ data:
               "refId": "E"
             },
             {
-              "expr": "sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"idle\"})/sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
+              "expr": "sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"idle\"})/sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -519,9 +524,10 @@ data:
               "refId": "F"
             }
           ],
+          "timeFrom": null,
+          "timeShift": null,
           "title": "Current CPU Utilization",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
+          "type": "gauge"
         },
         {
           "aliasColors": {
@@ -571,7 +577,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -581,14 +587,14 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"system|irq|softirq|iowait\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"system|irq|softirq|iowait\"}[5m])) * 100)",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "System",
               "refId": "A"
             },
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"user\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"user\"}[5m])) * 100)",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -596,7 +602,7 @@ data:
               "refId": "B"
             },
             {
-              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"idle\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"idle\"}[5m])) * 100)",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -604,7 +610,7 @@ data:
               "refId": "C"
             },
             {
-              "expr": "sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged\"})/sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
+              "expr": "sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged\"})/sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -612,7 +618,7 @@ data:
               "refId": "D"
             },
             {
-              "expr": "sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"user\"})/sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
+              "expr": "sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"user\"})/sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -620,14 +626,14 @@ data:
               "refId": "E"
             },
             {
-              "expr": "sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"idle\"})/sum(wmi_cpu_time_total{instance=\"$instance\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
+              "expr": "sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"idle\"})/sum(wmi_cpu_time_total{instance=\"$server\",mode=~\"dpc|interrupt|privileged|user|idle\"})*100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Idle",
               "refId": "F"
             },
             {
-              "expr": "(avg by (instance) (1 - irate(node_cpu_seconds_total{instance=\"$instance\",mode=~\"idle\"}[5m])) * 100)",
+              "expr": "(avg by (instance) (1 - irate(node_cpu_seconds_total{instance=\"$server\",mode=~\"idle\"}[5m])) * 100)",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Total Used",
@@ -757,14 +763,14 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "node_memory_MemTotal_bytes{instance=\"$instance\"}",
+              "expr": "node_memory_MemTotal_bytes{instance=\"$server\"}",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
               "refId": "A"
             },
             {
-              "expr": "wmi_cs_physical_memory_bytes{instance=\"$instance\"}",
+              "expr": "wmi_cs_physical_memory_bytes{instance=\"$server\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "B"
@@ -851,14 +857,14 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "(((node_memory_MemFree_bytes{instance=\"$instance\"}) + (node_memory_Cached_bytes{instance=\"$instance\"})) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(((node_memory_MemFree_bytes{instance=\"$server\"}) + (node_memory_Cached_bytes{instance=\"$server\"})) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
               "refId": "A"
             },
             {
-              "expr": "(wmi_memory_available_bytes{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_available_bytes{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "B"
@@ -945,7 +951,7 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "((node_memory_Cached_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_Cached_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "hide": false,
               "instant": true,
@@ -953,7 +959,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "(wmi_memory_cache_bytes{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_cache_bytes{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -1041,14 +1047,14 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "((node_memory_SwapTotal_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_SwapTotal_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
               "refId": "A"
             },
             {
-              "expr": "(wmi_memory_swap_pages_written_total{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_swap_pages_written_total{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "B"
@@ -1135,14 +1141,14 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "((node_memory_MemTotal_bytes{instance=\"$instance\"} - node_memory_MemFree_bytes{instance=\"$instance\"} - node_memory_Cached_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_MemTotal_bytes{instance=\"$server\"} - node_memory_MemFree_bytes{instance=\"$server\"} - node_memory_Cached_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
               "refId": "A"
             },
             {
-              "expr": "((wmi_cs_physical_memory_bytes{instance=\"$instance\"} - wmi_memory_available_bytes{instance=\"$instance\"} - wmi_memory_cache_bytes{instance=\"$instance\"} - wmi_memory_swap_pages_written_total {instance=\"$instance\"}) / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((wmi_cs_physical_memory_bytes{instance=\"$server\"} - wmi_memory_available_bytes{instance=\"$server\"} - wmi_memory_cache_bytes{instance=\"$server\"} - wmi_memory_swap_pages_written_total {instance=\"$server\"}) / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "refId": "B"
@@ -1162,28 +1168,28 @@ data:
           "valueName": "current"
         },
         {
-          "aliasColors": {
-            "Available": "#fce2de",
-            "Cached": "#962d82",
-            "Swap": "#e24d42",
-            "Used": "#82b5d8"
-          },
-          "breakPoint": "50%",
           "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
           "datasource": null,
-          "decimals": 2,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
             },
             "overrides": []
           },
-          "fontSize": "80%",
-          "format": "short",
           "gridPos": {
             "h": 7,
             "w": 4,
@@ -1192,23 +1198,23 @@ data:
           },
           "id": 71,
           "interval": null,
-          "legend": {
-            "header": "",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Under graph",
           "links": [],
           "maxDataPoints": 3,
-          "nullPointMode": "connected",
-          "pieType": "donut",
-          "strokeWidth": 1,
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "7.2.1",
           "targets": [
             {
-              "expr": "(((node_memory_MemFree_bytes{instance=\"$instance\"}) + (node_memory_Cached_bytes{instance=\"$instance\"})) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(((node_memory_MemFree_bytes{instance=\"$server\"}) + (node_memory_Cached_bytes{instance=\"$server\"})) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1216,7 +1222,7 @@ data:
               "refId": "A"
             },
             {
-              "expr": "((node_memory_MemTotal_bytes{instance=\"$instance\"} - node_memory_MemFree_bytes{instance=\"$instance\"} - node_memory_Cached_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_MemTotal_bytes{instance=\"$server\"} - node_memory_MemFree_bytes{instance=\"$server\"} - node_memory_Cached_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1224,7 +1230,7 @@ data:
               "refId": "B"
             },
             {
-              "expr": "((node_memory_Cached_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_Cached_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1232,7 +1238,7 @@ data:
               "refId": "D"
             },
             {
-              "expr": "((node_memory_SwapTotal_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_SwapTotal_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1240,7 +1246,7 @@ data:
               "refId": "C"
             },
             {
-              "expr": "(wmi_memory_available_bytes{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_available_bytes{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1248,7 +1254,7 @@ data:
               "refId": "E"
             },
             {
-              "expr": "((wmi_cs_physical_memory_bytes{instance=\"$instance\"} - wmi_memory_available_bytes{instance=\"$instance\"} - wmi_memory_cache_bytes{instance=\"$instance\"} - wmi_memory_swap_pages_written_total {instance=\"$instance\"}) / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((wmi_cs_physical_memory_bytes{instance=\"$server\"} - wmi_memory_available_bytes{instance=\"$server\"} - wmi_memory_cache_bytes{instance=\"$server\"} - wmi_memory_swap_pages_written_total {instance=\"$server\"}) / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1256,7 +1262,7 @@ data:
               "refId": "F"
             },
             {
-              "expr": "((wmi_memory_cache_bytes{instance=\"$instance\"}) / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((wmi_memory_cache_bytes{instance=\"$server\"}) / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1264,7 +1270,7 @@ data:
               "refId": "G"
             },
             {
-              "expr": "(wmi_memory_swap_pages_written_total{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_swap_pages_written_total{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "instant": true,
               "intervalFactor": 1,
@@ -1273,8 +1279,7 @@ data:
             }
           ],
           "title": "Current Memory Utilization",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
+          "type": "gauge"
         },
         {
           "aliasColors": {
@@ -1324,7 +1329,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1334,56 +1339,56 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(((node_memory_MemFree_bytes{instance=\"$instance\"}) + (node_memory_Cached_bytes{instance=\"$instance\"})) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(((node_memory_MemFree_bytes{instance=\"$server\"}) + (node_memory_Cached_bytes{instance=\"$server\"})) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Available Memory",
               "refId": "A"
             },
             {
-              "expr": "((node_memory_MemTotal_bytes{instance=\"$instance\"} - node_memory_MemFree_bytes{instance=\"$instance\"} - node_memory_Cached_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_MemTotal_bytes{instance=\"$server\"} - node_memory_MemFree_bytes{instance=\"$server\"} - node_memory_Cached_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Used Memory",
               "refId": "B"
             },
             {
-              "expr": "((node_memory_Cached_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_Cached_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Cached Memory",
               "refId": "C"
             },
             {
-              "expr": "((node_memory_SwapTotal_bytes{instance=\"$instance\"}) / (node_memory_MemTotal_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((node_memory_SwapTotal_bytes{instance=\"$server\"}) / (node_memory_MemTotal_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Swap Memory",
               "refId": "D"
             },
             {
-              "expr": "(wmi_memory_available_bytes{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_available_bytes{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Available Memory",
               "refId": "E"
             },
             {
-              "expr": "((wmi_cs_physical_memory_bytes{instance=\"$instance\"} - wmi_memory_available_bytes{instance=\"$instance\"} - wmi_memory_cache_bytes{instance=\"$instance\"} - wmi_memory_swap_pages_written_total {instance=\"$instance\"}) / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((wmi_cs_physical_memory_bytes{instance=\"$server\"} - wmi_memory_available_bytes{instance=\"$server\"} - wmi_memory_cache_bytes{instance=\"$server\"} - wmi_memory_swap_pages_written_total {instance=\"$server\"}) / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Used Memory",
               "refId": "F"
             },
             {
-              "expr": "((wmi_memory_cache_bytes{instance=\"$instance\"}) / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "((wmi_memory_cache_bytes{instance=\"$server\"}) / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Cached Memory",
               "refId": "G"
             },
             {
-              "expr": "(wmi_memory_swap_pages_written_total{instance=\"$instance\"} / (wmi_cs_physical_memory_bytes{instance=\"$instance\"})) * 100",
+              "expr": "(wmi_memory_swap_pages_written_total{instance=\"$server\"} / (wmi_cs_physical_memory_bytes{instance=\"$server\"})) * 100",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -1490,8 +1495,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1501,7 +1509,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "1 - node_filesystem_free_bytes{instance=~\"$instance\"} / node_filesystem_size_bytes{instance=\"$instance\"}",
+              "expr": "1 - node_filesystem_free_bytes{instance=~\"$server\"} / node_filesystem_size_bytes{instance=\"$server\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -1509,7 +1517,7 @@ data:
               "refId": "E"
             },
             {
-              "expr": "1 - wmi_logical_disk_free_bytes{instance=~\"$instance\", volume !~\"HarddiskVolume.+\"}  / wmi_logical_disk_size_bytes{instance=~\"$instance\", volume !~\"HarddiskVolume.+\"} ",
+              "expr": "1 - wmi_logical_disk_free_bytes{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}  / wmi_logical_disk_size_bytes{instance=~\"$server\", volume !~\"HarddiskVolume.+\"} ",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{volume}}",
@@ -1600,8 +1608,11 @@ data:
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1619,28 +1630,28 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_read_bytes_total{instance=~\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_disk_read_bytes_total{instance=~\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Read bytes",
               "refId": "A"
             },
             {
-              "expr": "sum(irate(node_disk_written_bytes_total{instance=~\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_disk_written_bytes_total{instance=~\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Write bytes",
               "refId": "B"
             },
             {
-              "expr": "sum(irate(wmi_logical_disk_read_bytes_total{instance=~\"$instance\", volume !~\"HarddiskVolume.+\"}[5m]))",
+              "expr": "sum(irate(wmi_logical_disk_read_bytes_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Read bytes",
               "refId": "C"
             },
             {
-              "expr": "sum(irate(wmi_logical_disk_write_bytes_total{instance=~\"$instance\", volume !~\"HarddiskVolume.+\"}[5m]))",
+              "expr": "sum(irate(wmi_logical_disk_write_bytes_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Write bytes",
@@ -1731,8 +1742,11 @@ data:
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1762,7 +1776,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_reads_completed_total{instance=~\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_disk_reads_completed_total{instance=~\"$server\"}[5m]))",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
@@ -1770,14 +1784,14 @@ data:
               "refId": "B"
             },
             {
-              "expr": "sum(irate(node_disk_writes_completed_total{instance=~\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_disk_writes_completed_total{instance=~\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Write ops",
               "refId": "D"
             },
             {
-              "expr": "irate(wmi_logical_disk_split_ios_total{instance=~\"$instance\", volume !~\"HarddiskVolume.+\"}[5m])",
+              "expr": "irate(wmi_logical_disk_split_ios_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[5m])",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "I/O ops",
@@ -1865,8 +1879,11 @@ data:
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1885,28 +1902,28 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_disk_read_time_seconds_total{instance=\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_disk_read_time_seconds_total{instance=\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Read time",
               "refId": "A"
             },
             {
-              "expr": "sum(irate(node_disk_write_time_seconds_total{instance=\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_disk_write_time_seconds_total{instance=\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Write time",
               "refId": "B"
             },
             {
-              "expr": "sum(irate(wmi_logical_disk_read_seconds_total{instance=\"$instance\"}[5m]))",
+              "expr": "sum(irate(wmi_logical_disk_read_seconds_total{instance=\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Read time",
               "refId": "C"
             },
             {
-              "expr": "sum(irate(wmi_logical_disk_write_seconds_total{instance=\"$instance\"}[5m]))",
+              "expr": "sum(irate(wmi_logical_disk_write_seconds_total{instance=\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Write time",
@@ -2015,8 +2032,11 @@ data:
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
           "percentage": false,
-          "pluginVersion": "7.2.0",
+          "pluginVersion": "7.2.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2031,7 +2051,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(node_network_receive_bytes_total{instance=\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_network_receive_bytes_total{instance=\"$server\"}[5m]))",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 4,
@@ -2041,21 +2061,21 @@ data:
               "target": ""
             },
             {
-              "expr": "sum(irate(node_network_transmit_bytes_total{instance=~\"$instance\"}[5m]))",
+              "expr": "sum(irate(node_network_transmit_bytes_total{instance=~\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Traffic Out",
               "refId": "B"
             },
             {
-              "expr": "sum(irate(wmi_net_bytes_received_total{instance=\"$instance\"}[5m]))",
+              "expr": "sum(irate(wmi_net_bytes_received_total{instance=\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Traffic In",
               "refId": "C"
             },
             {
-              "expr": "sum(irate(wmi_net_bytes_sent_total{instance=~\"$instance\"}[5m]))",
+              "expr": "sum(irate(wmi_net_bytes_sent_total{instance=~\"$server\"}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Traffic Out",
@@ -2112,95 +2132,19 @@ data:
       "templating": {
         "list": [
           {
-            "allValue": null,
-            "current": {
-              "selected": false,
-              "text": "All",
-              "value": "$__all"
-            },
-            "datasource": "Thanos",
-            "definition": "label_values(project)",
-            "hide": 0,
-            "includeAll": true,
-            "label": "Project",
-            "multi": true,
-            "name": "project",
-            "options": [],
-            "query": "label_values(project)",
-            "refresh": 2,
-            "regex": "/TSB-COP/",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "isNone": true,
-              "selected": false,
-              "text": "None",
-              "value": ""
-            },
-            "datasource": "Thanos",
-            "definition": "label_values(up{},subsystem)",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Subsystem",
-            "multi": false,
-            "name": "subsystem",
-            "options": [],
-            "query": "label_values(up{},subsystem)",
-            "refresh": 2,
-            "regex": "/consul|vault/",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "selected": false,
-              "text": "preprod",
-              "value": "preprod"
-            },
-            "datasource": "Thanos",
-            "definition": "label_values(up{},environment)",
-            "hide": 0,
-            "includeAll": false,
-            "label": null,
-            "multi": false,
-            "name": "environment",
-            "options": [],
-            "query": "label_values(up{},environment)",
-            "refresh": 2,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          },
-          {
             "allValue": "",
+            "current": {
+              "selected": false
+            },
             "datasource": "Thanos",
-            "definition": "label_values(up{environment=~\"$environment\"},instance)",
+            "definition": "label_values(up{job=\"ec2-discover-node-exporter\",instance=~\".*vault-consul.*\"},instance)",
             "hide": 0,
             "includeAll": false,
             "label": null,
             "multi": false,
-            "name": "instance",
+            "name": "server",
             "options": [],
-            "query": "label_values(up{environment=~\"$environment\"},instance)",
+            "query": "label_values(up{job=\"ec2-discover-node-exporter\",instance=~\".*vault-consul.*\"},instance)",
             "refresh": 2,
             "regex": "",
             "skipUrlSync": false,
@@ -2210,38 +2154,42 @@ data:
             "tagsQuery": "management",
             "type": "query",
             "useTags": false
-          },
-          {
-            "allValue": null,
-            "current": {
-              "isNone": true,
-              "selected": false,
-              "text": "None",
-              "value": ""
-            },
-            "datasource": "Thanos",
-            "definition": "label_values(up{environment=~\"$environment\"},name)",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Name",
-            "multi": false,
-            "name": "name",
-            "options": [],
-            "query": "label_values(up{environment=~\"$environment\"},name)",
-            "refresh": 2,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
           }
         ]
       },
+      "time": {
+        "from": "now-3h",
+        "to": "now-1m"
+      },
+      "timepicker": {
+        "nowDelay": "1m",
+        "refresh_intervals": [
+          "5s",
+          "10s",
+          "30s",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "1h",
+          "2h",
+          "1d",
+          "2d"
+        ],
+        "time_options": [
+          "5m",
+          "15m",
+          "1h",
+          "6h",
+          "12h",
+          "24h",
+          "2d",
+          "7d",
+          "30d"
+        ]
+      },
       "timezone": "browser",
-      "title": "Consul-Vault CB",
-      "uid": "d5lde2IMz",
-      "version": 5
+      "title": "Consul-Vault",
+      "uid": "Lg4peDTMz",
+      "version": 3
     }
