@@ -19,32 +19,32 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Critical Alert, Application {{ $labels.instance }} has been running on less than 3 nodes for the last 15mins.
+        summary: Application {{ $labels.instance }} has less than 3 nodes.
 
-    - alert: kafka_broker_count
-      expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
-      for: 15m
-      labels:
-        severity: HIGH
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-      annotations:
-        summary: Critical Alert, Application {{ $labels.job }} has been running on less than 3 brokers for the last 15mins.
+    # - alert: kafka_broker_count
+    #   expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
+    #   for: 15m
+    #   labels:
+    #     severity: HIGH
+    #     environment: preprod
+    #     monitoring: middleware
+    #     rackspace: "true"
+    #   annotations:
+    #     summary: Critical Alert, Application {{ $labels.job }} has been running on less than 3 brokers for the last 15mins.
 
-    - alert: kafka_failed_fetch_request_rate
-      expr: sum(kafka_server_brokertopicmetrics_meanrate{job="ec2-discover-hdf-jmx",name="FailedFetchRequestsPerSec",topic!=""})by (topic) / 10 > 5
-      for: 15m
-      labels:
-        severity: HIGH
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-      annotations:
-        summary: Critical Alert, Application {{ $labels.job }} failed request rate is greater than 5%
+    # - alert: kafka_failed_fetch_request_rate
+    #   expr: sum(kafka_server_brokertopicmetrics_meanrate{job="ec2-discover-hdf-jmx",name="FailedFetchRequestsPerSec",topic!=""})by (topic) / 10 > 5
+    #   for: 15m
+    #   labels:
+    #     severity: HIGH
+    #     environment: "{{ AWS_ENVIRONMENT }}"
+    #     monitoring: middleware
+    #     rackspace: "true"
+    #   annotations:
+    #     summary: Critical Alert, Application {{ $labels.job }} failed request rate is greater than 5%
     
     - alert: jvm_heap_size
-      expr: sum(jvm_memory_max_bytes{application=~"$application", instance=~"$instance", area="heap"}) / 10 > 95
+      expr: (jvm_memory_used_bytes{area="heap"} / jvm_memory_max_bytes{area="heap"}) * 100 > 95
       for: 15m
       labels:
         severity: HIGH
