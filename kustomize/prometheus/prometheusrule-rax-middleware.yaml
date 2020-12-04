@@ -52,4 +52,4 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Critical Alert, Application {{ $labels.job }} jvm heap size is over 95%
+        summary: Application {{ $labels.application }} jvm heap size is over 95%
