@@ -470,7 +470,7 @@ spec:
           - name: 'cb-slack-notifications'
             slack_configs:
             - channel: '#cb_alert_notifications'
-              api_url: 'https://hooks.slack.com/services/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'
+              api_url: 'https://hooks.slack.com/services/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'
               icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
               title: |-
                 [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
