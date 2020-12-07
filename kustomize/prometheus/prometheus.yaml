@@ -439,6 +439,12 @@ spec:
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/preprod-rax-alertmanager"
               send_resolved: true
+          - name: testing_cb_alerts
+            webhook_configs:
+            - url: "https://6110c870192937e6faf8a2057606ef1a.m.pipedream.net"
+              send_resolved: true
+              http_config:
+                proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
           - name: rax-monitoring-slack
             slack_configs:
             - channel: '#tsb-monitoring-alerts'
@@ -502,13 +508,17 @@ spec:
           routes:
             - match:
                 namespace: cb
-                environment: preprod|prod
+                #environment: preprod|prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
                 namespace: cb
-                environment: preprod|prod
+                #environment: preprod|prod
               receiver: cb-slack-notifications
+              continue: true
+            - match:
+                namespace: cb
+              receiver: testing_cb_alerts
               continue: true
             - match:
                 rackspace: "true"
