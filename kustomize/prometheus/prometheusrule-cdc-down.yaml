@@ -1,0 +1,95 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cdc-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: CDC_SUBSCRIPTION_Alerts
+      
+    rules:
+    - record: datastore_state
+      expr: (datastore_state)
+
+    - alert: datastore_state
+      expr: (datastore_state{subscription="RZRKP"}) < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Data of CDC_Subscription {{ $labels.subscription }} is not available. Value:{{ $value }}'
+        summary: Data of CDC_Subscription {{ $labels.subscription }} is not available
+
+    - alert: datastore_state
+      expr: (datastore_state{subscription="RZRLO"}) < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Data of CDC_Subscription {{ $labels.subscription }} is not available. Value:{{ $value }}'
+        summary: Data of CDC_Subscription {{ $labels.subscription }} is not available
+
+    - alert: datastore_state
+      expr: (datastore_state{subscription="RORKP"}) < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Data of CDC_Subscription {{ $labels.subscription }} is not available. Value:{{ $value }}'
+        summary: Data of CDC_Subscription {{ $labels.subscription }} is not available
+
+  
+    - alert: datastore_state
+      expr: datastore_state{state="Mirror Continuous", subscription="RZRKP"} < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'State of {{ $labels.subscription }} is not Mirror Continuous. Value:{{ $value }}'
+        summary: State of {{ $labels.subscription }} is not Mirror Continuous
+
+    - alert: datastore_state
+      expr: datastore_state{state="Mirror Continuous", subscription="RZRLO"} < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'State of {{ $labels.subscription }} is not Mirror Continuous. Value:{{ $value }}'
+        summary: State of {{ $labels.subscription }} is not Mirror Continuous
+
+    - alert: datastore_state
+      expr: datastore_state{state="Mirror Continuous", subscription="RORKP"} < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'State of {{ $labels.subscription }} is not Mirror Continuous. Value:{{ $value }}'
+        summary: State of {{ $labels.subscription }} is not Mirror Continuous
+
