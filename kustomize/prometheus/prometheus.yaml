@@ -511,7 +511,8 @@ spec:
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
-                environment: preprod
+                environment: preprod|prod
+                application: cdc
               receiver: sns-forwarder-cdcalerts
               continue: true
             - match:
