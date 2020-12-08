@@ -13,6 +13,8 @@ spec:
   values:
     ## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml -f prometheus-rules.yaml
     namespaceOverride: "prometheus"
+    defaultRules:
+      create: false
 
     ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
     ##
@@ -434,17 +436,11 @@ spec:
         #      severity: 'warning'
         #    equal: ['alertname', 'dev', 'instance']
         receivers:
-          - name: "null"
+          #- name: "null"
           - name: rax-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/preprod-rax-alertmanager"
               send_resolved: true
-          - name: cb_alerts_test
-            webhook_configs:
-            - url: "https://hooks.slack.com/services/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"
-              send_resolved: true
-              http_config:
-                proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
           - name: testing_cb_alerts
             webhook_configs:
             - url: "https://6110c870192937e6faf8a2057606ef1a.m.pipedream.net"
@@ -455,6 +451,30 @@ spec:
             slack_configs:
             - channel: '#tsb-monitoring-alerts'
               api_url: 'https://hooks.slack.com/services/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'
+              icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
+              title: |-
+              [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.instance }}
+              {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
+                {{" "}}(
+                {{- with .CommonLabels.Remove .GroupLabels.Names }}
+                  {{- range $index, $label := .SortedPairs -}}
+                    {{ if $index }}, {{ end }}
+                    {{- $label.Name }}="{{ $label.Value -}}"
+                  {{- end }}
+                {{- end -}}
+                )
+              {{- end }}
+              text: >-
+              {{ range .Alerts -}}
+              *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+              {{ end }}
+              send_resolved: true
+              http_config:
+                proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+          - name: cb_alerts_test
+            slack_configs:
+            - channel: '#cb_alerts_test'
+              api_url: 'https://hooks.slack.com/services/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'
               icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
               title: |-
                 [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.instance }}
@@ -510,15 +530,17 @@ spec:
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 1m
-          receiver: "null"
+          receiver: "cb_alerts_test"
           routes:
             - match:
                 namespace: cb
+                group: INFRA
                 #environment: preprod|prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
                 namespace: cb
+                group: INFRA
                 #environment: preprod|prod
               receiver: cb-slack-notifications
               continue: true
@@ -526,10 +548,6 @@ spec:
                 namespace: cb
               receiver: testing_cb_alerts
               continue: true
-            - match:
-                namespace: cb
-              receiver: cb_alerts_test
-              continue: true  
             - match:
                 rackspace: "true"
               receiver: rax-monitoring-email
