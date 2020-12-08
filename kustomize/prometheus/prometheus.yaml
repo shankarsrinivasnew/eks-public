@@ -13,6 +13,8 @@ spec:
   values:
     ## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml -f prometheus-rules.yaml
     namespaceOverride: "prometheus"
+    defaultRules:
+      create: false
 
     ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
     ##
@@ -434,7 +436,7 @@ spec:
         #      severity: 'warning'
         #    equal: ['alertname', 'dev', 'instance']
         receivers:
-          - name: "null"
+          #- name: "null"
           - name: rax-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/preprod-rax-alertmanager"
@@ -528,25 +530,23 @@ spec:
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 1m
-          receiver: "null"
+          receiver: "cb_alerts_test"
           routes:
             - match:
                 namespace: cb
+                group: INFRA
                 #environment: preprod|prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
                 namespace: cb
+                group: INFRA
                 #environment: preprod|prod
               receiver: cb-slack-notifications
               continue: true
             - match:
                 namespace: cb
               receiver: testing_cb_alerts
-              continue: true
-            - match:
-                namespace: cb
-              receiver: cb_alerts_test
               continue: true
             - match:
                 rackspace: "true"
