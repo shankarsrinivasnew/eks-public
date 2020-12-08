@@ -1,0 +1,13 @@
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-admission-webhook-access
+  namespace: prometheus
+spec:
+  podSelector:
+    matchLabels:
+      "app": "prometheus-operator"
+  ingress:
+    - from: []
+      ports:
+        - port: 8443
