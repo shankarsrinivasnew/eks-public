@@ -104,7 +104,7 @@ spec:
               globalLibraries:
                 libraries:
                   - name: "rax-jenkins-shared-library"
-                    defaultVersion: "develop"
+                    defaultVersion: "v1.0"
                     retriever:
                       modernSCM:
                         scm:

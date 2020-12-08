@@ -250,7 +250,7 @@ spec:
           annotations:
             iam.amazonaws.com/role: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/prometheus-thanos-s3
         retention: 2h
-        disableCompaction: true
+        disableCompaction: false
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -417,8 +417,8 @@ spec:
         ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
         ##
         thanos:
-          image: quay.io/thanos/thanos:v0.15.0
-          version: v0.15.0
+          image: quay.io/thanos/thanos:v0.17.2
+          version: v0.17.2
           objectStorageConfig:
             name: thanos-s3-config
             key: object-store.yaml
