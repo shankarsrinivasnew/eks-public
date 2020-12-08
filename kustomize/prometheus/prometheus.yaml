@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://prometheus-community.github.io/helm-charts
     name: kube-prometheus-stack
-    version: 12.0.1
+    version: 12.7.0
   values:
     ## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml -f prometheus-rules.yaml
     namespaceOverride: "prometheus"
@@ -249,7 +249,7 @@ spec:
         podMetadata:
           annotations:
             iam.amazonaws.com/role: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/prometheus-thanos-s3
-        retention: 6h
+        retention: 2h
         disableCompaction: true
         storageSpec:
           volumeClaimTemplate:
