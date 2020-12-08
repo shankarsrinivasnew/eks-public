@@ -1,0 +1,96 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cdc-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: CDC_Alerts
+      
+    rules:
+    - record: datastore_state
+      expr: (datastore_state)
+
+    - alert: CDC_Subscription_RZRKP_Status
+      expr: (datastore_state{subscription="RZRKP"}) < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        application: cdc
+      annotations:
+        Description: '***Data of CDC_Subscription {{ $labels.subscription }} is not available. Value:{{ $value }}'
+        Summary: Alert CDC- {{ $labels.subscription }} is not available
+
+    - alert: CDC_Subscription_RZRLO_Status
+      expr: (datastore_state{subscription="RZRLO"}) < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        application: cdc
+      annotations:
+        Description: '***Data of CDC_Subscription {{ $labels.subscription }} is not available. Value:{{ $value }}'
+        Summary: Alert CDC- {{ $labels.subscription }} is not available
+
+    - alert: CDC_Subscription_RORKP_Status
+      expr: (datastore_state{subscription="RORKP"}) < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        application: cdc
+      annotations:
+        Description: '***Data of CDC_Subscription {{ $labels.subscription }} is not available. Value:{{ $value }}'
+        Summary: Alert CDC- {{ $labels.subscription }} is not available
+
+    
+    - alert: CDC_Subscription_RZRKP_State
+      expr: datastore_state{state="Mirror Continuous", subscription="RZRKP"} < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        application: cdc
+      annotations:
+        Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. Value:{{ $value }}'
+        Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
+
+    - alert: CDC_Subscription_RZRLO_State
+      expr: datastore_state{state="Mirror Continuous", subscription="RZRLO"} < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        application: cdc
+      annotations:
+        Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. Value:{{ $value }}'
+        Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
+
+    - alert: CDC_Subscription_RORKP_State
+      expr: datastore_state{state="Mirror Continuous", subscription="RORKP"} < 1
+      for: 2m
+      labels:
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        application: cdc
+      annotations:
+        Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. Value:{{ $value }}'
+        Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
+
+    
