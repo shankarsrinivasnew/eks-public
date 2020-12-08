@@ -237,6 +237,9 @@ spec:
       ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
       ##
       prometheusSpec:
+        image:
+          repository: quay.io/prometheus/prometheus
+          tag: v2.23.0
         containers:
           - name: prometheus
             env:
