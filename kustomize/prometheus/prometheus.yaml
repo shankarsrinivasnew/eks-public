@@ -504,7 +504,7 @@ spec:
               send_resolved: true
           - name: "sns-forwarder-cdcalerts"
             webhook_configs:
-            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/tsb-pre-CDCalerts"
+            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/tsb-CDCalerts"
               send_resolved: true
           - name: 'cb-slack-notifications'
             slack_configs:
