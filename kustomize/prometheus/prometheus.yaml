@@ -9,10 +9,12 @@ spec:
   chart:
     repository: https://prometheus-community.github.io/helm-charts
     name: kube-prometheus-stack
-    version: 12.0.1
+    version: 12.7.0
   values:
     ## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml -f prometheus-rules.yaml
     namespaceOverride: "prometheus"
+    defaultRules:
+      create: false
 
     ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
     ##
@@ -235,6 +237,9 @@ spec:
       ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
       ##
       prometheusSpec:
+        image:
+          repository: quay.io/prometheus/prometheus
+          tag: v2.23.0
         containers:
           - name: prometheus
             env:
@@ -247,8 +252,8 @@ spec:
         podMetadata:
           annotations:
             iam.amazonaws.com/role: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/prometheus-thanos-s3
-        retention: 6h
-        disableCompaction: true
+        retention: 2h
+        disableCompaction: false
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -415,8 +420,8 @@ spec:
         ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
         ##
         thanos:
-          image: quay.io/thanos/thanos:v0.15.0
-          version: v0.15.0
+          image: quay.io/thanos/thanos:v0.17.2
+          version: v0.17.2
           objectStorageConfig:
             name: thanos-s3-config
             key: object-store.yaml
@@ -434,11 +439,17 @@ spec:
         #      severity: 'warning'
         #    equal: ['alertname', 'dev', 'instance']
         receivers:
-          - name: "null"
+          #- name: "null"
           - name: rax-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/preprod-rax-alertmanager"
               send_resolved: true
+          - name: testing_cb_alerts
+            webhook_configs:
+            - url: "https://6110c870192937e6faf8a2057606ef1a.m.pipedream.net"
+              send_resolved: true
+              http_config:
+                proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
           - name: rax-monitoring-slack
             slack_configs:
             - channel: '#tsb-monitoring-alerts'
@@ -463,9 +474,37 @@ spec:
               send_resolved: true
               http_config:
                 proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+          - name: cb_alerts_test
+            slack_configs:
+            - channel: '#cb_alerts_test'
+              api_url: 'https://hooks.slack.com/services/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'
+              icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
+              title: |-
+                [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.instance }}
+                {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
+                  {{" "}}(
+                  {{- with .CommonLabels.Remove .GroupLabels.Names }}
+                    {{- range $index, $label := .SortedPairs -}}
+                      {{ if $index }}, {{ end }}
+                      {{- $label.Name }}="{{ $label.Value -}}"
+                    {{- end }}
+                  {{- end -}}
+                  )
+                {{- end }}
+              text: >-
+                {{ range .Alerts -}}
+                *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+                {{ end }}
+              send_resolved: true
+              http_config:
+                proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
           - name: "sns-forwarder-cbalerts"
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
+              send_resolved: true
+          - name: "sns-forwarder-cdcalerts"
+            webhook_configs:
+            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/tsb-CDCalerts"
               send_resolved: true
           - name: 'cb-slack-notifications'
             slack_configs:
@@ -493,22 +532,34 @@ spec:
               http_config:
                 proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
 
+
         route:
           group_by: ['...']
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 1m
-          receiver: "null"
+          receiver: "cb_alerts_test"
           routes:
             - match:
                 namespace: cb
-                environment: preprod|prod
+                group: INFRA
+                #environment: preprod|prod
               receiver: sns-forwarder-cbalerts
               continue: true
             - match:
-                namespace: cb
                 environment: preprod|prod
+                application: cdc
+              receiver: sns-forwarder-cdcalerts
+              continue: true
+            - match:
+                namespace: cb
+                group: INFRA
+                #environment: preprod|prod
               receiver: cb-slack-notifications
+              continue: true
+            - match:
+                namespace: cb
+              receiver: testing_cb_alerts
               continue: true
             - match:
                 rackspace: "true"
