@@ -54,7 +54,7 @@ spec:
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
-        group: INF
+        group: INFRA
         level: WARNING
         platform: AWS
         namespace: cb
