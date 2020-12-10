@@ -510,7 +510,7 @@ spec:
                 environment: preprod|prod
               receiver: sns-forwarder-cbalerts
               continue: true
-            - match:
+            - match_re:
                 environment: preprod|prod
                 application: cdc
               receiver: sns-forwarder-cdcalerts
