@@ -551,11 +551,13 @@ spec:
                 environment: preprod|prod
               receiver: cb-slack-notifications
               continue: true
-            - match:
+            - match_re:
                 rackspace: "true"
+                environment: preprod|prod
               receiver: rax-monitoring-email
               continue: true
-            - match:
+            - match_re:
                 rackspace: "true"
+                environment: preprod|prod
               receiver: rax-monitoring-slack
               continue: true
