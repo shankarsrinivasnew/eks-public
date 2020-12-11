@@ -363,7 +363,6 @@ spec:
               - targets:
                 - https://grafana.{{ DNS_ZONE }}
                 - https://prometheus.{{ DNS_ZONE }}
-                - https://ambari.hdf.{{ DNS_ZONE }}
                 - https://consul.{{ DNS_ZONE }}
                 - https://vault.{{ DNS_ZONE }}
             relabel_configs:
@@ -551,11 +550,13 @@ spec:
                 environment: preprod|prod
               receiver: cb-slack-notifications
               continue: true
-            - match:
+            - match_re:
                 rackspace: "true"
+                environment: preprod|prod
               receiver: rax-monitoring-email
               continue: true
-            - match:
+            - match_re:
                 rackspace: "true"
+                environment: preprod|prod
               receiver: rax-monitoring-slack
               continue: true
