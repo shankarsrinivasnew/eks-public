@@ -20,6 +20,13 @@ spec:
 
     store:
       serviceAccount: prometheus-sa
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
       metrics:
         serviceMonitor:
           enabled: true
@@ -30,13 +37,34 @@ spec:
           enabled: true
     query:
       serviceAccount: prometheus-sa
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
       metrics:
         serviceMonitor:
           enabled: true
     compact:
       serviceAccount: prometheus-sa
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
       metrics:
         serviceMonitor:
           enabled: true
     bucket:
       serviceAccount: prometheus-sa
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
