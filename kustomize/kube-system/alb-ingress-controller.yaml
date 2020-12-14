@@ -21,6 +21,13 @@ spec:
       labels:
         app.kubernetes.io/name: alb-ingress-controller
     spec:
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
       containers:
         - name: alb-ingress-controller
           args:

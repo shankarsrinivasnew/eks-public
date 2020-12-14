@@ -13,6 +13,13 @@ spec:
   values:
     image:
       repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/flux
+    nodeSelector:
+      taints.eks.aws.uk.tsb/role: mgmt
+    tolerations:
+      - key: role
+        operator: Equal
+        value: mgmt
+        effect: NoSchedule
     git:
       url: https://$(GIT_AUTHUSER):$(GIT_AUTHKEY)@github.com/TSB-Bank/eks-config
       branch: "{{ GIT_BRANCH }}"
