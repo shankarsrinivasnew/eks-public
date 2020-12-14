@@ -182,6 +182,13 @@ spec:
 
     prometheusOperator:
       enabled: true
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
       resources:
         limits:
           cpu: 200m
@@ -189,6 +196,15 @@ spec:
         requests:
           cpu: 50m
           memory: 50Mi
+      admissionWebhooks:
+        patch:
+          nodeSelector:
+            taints.eks.aws.uk.tsb/role: mgmt
+          tolerations:
+            - key: role
+              operator: Equal
+              value: mgmt
+              effect: NoSchedule
 
       # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
       # because control-plane managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
@@ -237,6 +253,13 @@ spec:
       ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
       ##
       prometheusSpec:
+        nodeSelector:
+          taints.eks.aws.uk.tsb/role: mgmt
+        tolerations:
+          - key: role
+            operator: Equal
+            value: mgmt
+            effect: NoSchedule
         image:
           repository: quay.io/prometheus/prometheus
           tag: v2.23.0
@@ -254,6 +277,9 @@ spec:
             iam.amazonaws.com/role: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/prometheus-thanos-s3
         retention: 2h
         disableCompaction: false
+        resources:
+          requests:
+            memory: 1Gi
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -427,6 +453,17 @@ spec:
 
     ## Configuration for alertmanager
     ##
+    alertmanagerSpec:
+      resources:
+        requests:
+          memory: 50Mi
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
     alertmanager:
       config:
         global:
@@ -524,8 +561,6 @@ spec:
               send_resolved: true
               http_config:
                 proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-
-
         route:
           group_by: ['...']
           group_wait: 30s
