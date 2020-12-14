@@ -101,6 +101,12 @@ spec:
           mountPath: /tmp
       nodeSelector:
         kubernetes.io/os: linux
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
 ---
 apiVersion: v1
 kind: Service

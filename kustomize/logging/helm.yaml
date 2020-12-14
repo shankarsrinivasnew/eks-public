@@ -14,6 +14,11 @@ spec:
     # Allows you to add any config files in /usr/share/filebeat
     # such as filebeat.yml
     image: docker.artifactory.mgmt.aws.uk.tsb/elastic-docker-remote/beats/filebeat
+    tolerations:
+      - key: role
+        operator: Equal
+        value: mgmt
+        effect: NoSchedule
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
