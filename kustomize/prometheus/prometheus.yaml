@@ -453,18 +453,18 @@ spec:
 
     ## Configuration for alertmanager
     ##
-    alertmanagerSpec:
-      resources:
-        requests:
-          memory: 50Mi
-      nodeSelector:
-        taints.eks.aws.uk.tsb/role: mgmt
-      tolerations:
-        - key: role
-          operator: Equal
-          value: mgmt
-          effect: NoSchedule
     alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            memory: 50Mi
+        nodeSelector:
+          taints.eks.aws.uk.tsb/role: mgmt
+        tolerations:
+          - key: role
+            operator: Equal
+            value: mgmt
+            effect: NoSchedule
       config:
         global:
           resolve_timeout: 5m
