@@ -59,6 +59,13 @@ spec:
       #   iam.amazonaws.com/role: arn:aws:iam::ACCOUNT-ID:role/IAM-SERVICE-ROLE-NAME
     spec:
       serviceAccountName: external-dns
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
       containers:
       - name: external-dns
         image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/bitnami/external-dns:0.7.1
