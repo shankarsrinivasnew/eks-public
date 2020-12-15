@@ -53,3 +53,25 @@ spec:
         rackspace: "true"
       annotations:
         summary: Application {{ $labels.application }} jvm heap size is over 95%
+
+    - alert: consul_up
+      expr: consul_up < 1
+      for: 15m
+      labels:
+        severity: HIGH
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: middleware
+        rackspace: "true"
+      annotations:
+        summary: Application {{ $labels.application }} is down
+        
+    - alert: consul_raft_leader
+      expr: consul_raft_leader < 1
+      for: 15m
+      labels:
+        severity: HIGH
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: middleware
+        rackspace: "true"
+      annotations:
+        summary: Application {{ $labels.application }} is down
