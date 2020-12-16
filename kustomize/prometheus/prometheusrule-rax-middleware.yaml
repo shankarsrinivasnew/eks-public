@@ -19,7 +19,7 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Application {{ $labels.instance }} has less than 3 nodes.
+        summary: Application {{ $labels.instance }} in {{ $labels.environment }} has less than 3 nodes.
 
     # - alert: kafka_broker_count
     #   expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
@@ -52,7 +52,7 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Application {{ $labels.service }} jvm heap size is over 95%
+        summary: Application {{ $labels.service }} in {{ $labels.environment }} jvm heap size is over 95%
 
     - alert: consul_up
       expr: consul_up < 1
@@ -63,7 +63,7 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Application {{ $labels.service_name }} is down
+        summary: Application {{ $labels.service_name }} in {{ $labels.environment }} is down
         
     - alert: consul_raft_leader
       expr: consul_raft_leader < 1
@@ -74,7 +74,7 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Application {{ $labels.service_name }} raft leader is down
+        summary: Application {{ $labels.service_name }} in {{ $labels.environment }} raft leader is down
 
     - alert: members_in_cluster
       expr: consul_serf_lan_members < 6 
@@ -85,7 +85,7 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Application {{ $labels.service_name }} has less than 6 nodes
+        summary: Application {{ $labels.service_name }} in {{ $labels.environment }} has less than 6 nodes
 
     - alert: unhealthy_consul_service
       expr: sum by (service_name, status, node) (consul_health_service_status{status!="passing"}) > 0
@@ -96,7 +96,7 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: consul service {{ $labels.service_name }} is unhealthy
+        summary: consul service {{ $labels.service_name }} in {{ $labels.environment }} is unhealthy
 
     - alert: unhealthy_node
       expr: consul_health_node_status{status!='passing'} > 0
@@ -107,4 +107,4 @@ spec:
         monitoring: middleware
         rackspace: "true"
       annotations:
-        summary: Consul node {{ $labels.node }} is unhealthy
+        summary: Consul node {{ $labels.node }} in {{ $labels.environment }} is unhealthy
