@@ -148,6 +148,7 @@ spec:
                                   curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
                                   python get-pip.py
                                   /home/jenkins/.local/bin/pip install --user ansible
+                                  /home/jenkins/.local/bin/pip install --user pywinrm
                                 toolHome: "/home/jenkins/.local/bin"
                   - name: "aws"
                     properties:
