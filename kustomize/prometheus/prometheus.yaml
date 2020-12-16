@@ -611,10 +611,11 @@ spec:
                 environment: preprod|prod
               receiver: cb-slack-notifications
               continue: true
-            - match:
+            - match_re:
                 namespace: cb
                 group: INFRA
                 environment: preprod
+                severity: WARNING|CRITICAL
               receiver: cb-slack-notifications-new
               continue: true
             - match_re:
