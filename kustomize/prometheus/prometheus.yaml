@@ -564,7 +564,7 @@ spec:
           - name: 'cb-slack-notifications-new'
             slack_configs:
             - channel: '#cb_alerts_pre_prod'
-              api_url: 'https://hooks.slack.com/services/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'
+              api_url: 'https://hooks.slack.com/services/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'
               icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
               title: |-
                 [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
@@ -589,7 +589,7 @@ spec:
           - name: 'cb-critical-slack-notifications'
             slack_configs:
             - channel: '#cb_alerts_critical_prod'
-              api_url: 'https://hooks.slack.com/services/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'
+              api_url: 'https://hooks.slack.com/services/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'
               icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
               title: |-
                 [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
@@ -614,7 +614,7 @@ spec:
           - name: 'cb-warning-slack-notifications'
             slack_configs:
             - channel: '#cb_alerts_warning_prod'
-              api_url: 'https://hooks.slack.com/services/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'
+              api_url: 'https://hooks.slack.com/services/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'
               icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
               title: |-
                 [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
