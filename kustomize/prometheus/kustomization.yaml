@@ -8,6 +8,7 @@ resources:
   - prometheusrule-cb-responsetime.yaml
   - prometheusrule-rax-endpoints.yaml
   - prometheusrule-cdc-alerts.yaml
+  - prometheusrule-rax-middleware.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
