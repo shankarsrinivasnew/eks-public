@@ -1,5 +1,0 @@
-resources:
-  - sa.yaml
-namespace: ods
-transformers:
-  - awsTransformer.yaml
