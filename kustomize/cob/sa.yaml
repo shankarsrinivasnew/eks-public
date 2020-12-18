@@ -9,3 +9,13 @@ metadata:
   labels:
     role: jenkins-agent
     component: cob
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cob-sink-connector
+  namespace: cob
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/cob-sink-connector
+  labels:
+    component: cop
