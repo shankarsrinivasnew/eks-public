@@ -11,15 +11,16 @@ spec:
   - name: MIDDLEWARE_MONITORING_RULES
     rules:
     - alert: scylla_db_node_count
-      expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"}) < 3
+      expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"} == 1) < 3
       for: 15m
       labels:
         severity: HIGH
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.instance }}"
       annotations:
-        summary: Application {{ $labels.instance }} in {{ $labels.environment }} has less than 3 nodes.
+        summary: Scylla in {{ $labels.environment }} has less than 3 nodes.
 
     - alert: kafka_broker_count
       expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
@@ -29,6 +30,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.instance }}"
       annotations:
         summary: Critical Alert{{ $labels.job }}, Kafka has been running on less than 3 brokers for the last 15mins.
     
