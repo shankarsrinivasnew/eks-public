@@ -684,11 +684,13 @@ spec:
               receiver: cb-warning-slack-notifications
               continue: true
             - match_re:
+                severity: CRITICAL
                 rackspace: "true"
                 environment: preprod|prod
               receiver: rax-monitoring-email
               continue: true
             - match_re:
+                severity: CRITICAL
                 rackspace: "true"
                 environment: preprod|prod
               receiver: rax-monitoring-slack
