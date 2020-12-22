@@ -5,7 +5,7 @@ metadata:
   name: shared-scylla2-cm
   namespace: prometheus
 data:
-  Scylla2.json: |
+  scylla2.json: |
     {
       "annotations": {
         "list": [
@@ -24,7 +24,7 @@ data:
       "gnetId": null,
       "graphTooltip": 0,
       "id": 41,
-      "iteration": 1606997342727,
+      "iteration": 1608604983204,
       "links": [],
       "panels": [
         {
@@ -133,13 +133,13 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "floor(100 *sum(irate(scylla_query_processor_statements_prepared{job=~\"ec2-discover-scylla-default\"}[5m])) /(sum(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m])) + sum(irate(scylla_cql_inserts{job=~\"ec2-discover-scylla-default\"}[5m])) + sum(irate(scylla_cql_updates{job=~\"ec2-discover-scylla-default\"}[5m])) + sum(irate(scylla_cql_deletes{job=~\"ec2-discover-scylla-default\"}[5m])))) OR vector(0)",
+              "expr": "floor(100 *sum(irate(scylla_query_processor_statements_prepared{job=~\"ec2-discover-scylla-default\"}[5m])) /(sum(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m])) + $func(irate(scylla_cql_inserts{job=~\"ec2-discover-scylla-default\"}[5m])) + $func(irate(scylla_cql_updates{job=~\"ec2-discover-scylla-default\"}[5m])) + $func(irate(scylla_cql_deletes{job=~\"ec2-discover-scylla-default\"}[5m])))) OR vector(0)",
               "format": "time_series",
               "hide": false,
               "instant": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "aaa",
+              "legendFormat": "",
               "refId": "A"
             }
           ],
@@ -216,12 +216,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_query_processor_statements_prepared{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_query_processor_statements_prepared{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
+              "legendFormat": "{{instancename}}",
               "refId": "A"
             }
           ],
@@ -338,13 +338,13 @@ data:
           "tableColumn": "",
           "targets": [
             {
-              "expr": "100 * (sum(irate(scylla_cql_unpaged_select_queries{job=~\"ec2-discover-scylla-default\"}[5m]))/sum(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m]))) OR vector(0)",
+              "expr": "100 * ($func(irate(scylla_cql_unpaged_select_queries{job=~\"ec2-discover-scylla-default\"}[5m]))/$func(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m]))) OR vector(0)",
               "format": "time_series",
               "hide": false,
               "instant": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "aaa",
+              "legendFormat": "",
               "refId": "A"
             }
           ],
@@ -421,12 +421,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_unpaged_select_queries{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cql_unpaged_select_queries{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
+              "legendFormat": "{{instancename}}",
               "refId": "A"
             }
           ],
@@ -548,7 +548,7 @@ data:
               "hide": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "aaa",
+              "legendFormat": "",
               "refId": "A"
             }
           ],
@@ -625,12 +625,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance) - sum(irate(scylla_storage_proxy_coordinator_reads_local_node{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance) + sum(irate(scylla_cql_inserts{job=~\"ec2-discover-scylla-default\"}[5m]) + irate(scylla_cql_updates{job=~\"ec2-discover-scylla-default\"}[5m]) + irate(scylla_cql_deletes{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance) - sum(irate(scylla_storage_proxy_coordinator_total_write_attempts_local_node{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)\n",
+              "expr": "$func(irate(scylla_cql_reads{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename) - $func(irate(scylla_storage_proxy_coordinator_reads_local_node{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename) + $func(irate(scylla_cql_inserts{job=~\"ec2-discover-scylla-default\"}[5m]) + irate(scylla_cql_updates{job=~\"ec2-discover-scylla-default\"}[5m]) + irate(scylla_cql_deletes{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename) - $func(irate(scylla_storage_proxy_coordinator_total_write_attempts_local_node{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)\n",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "",
+              "legendFormat": "{{instancename}}",
               "refId": "A"
             }
           ],
@@ -830,12 +830,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_reverse_queries{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cql_reverse_queries{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
+              "legendFormat": "{{instancename}}",
               "refId": "A"
             }
           ],
@@ -1032,12 +1032,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_filtered_read_requests{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cql_filtered_read_requests{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
+              "legendFormat": "{{instancename}}",
               "refId": "A"
             }
           ],
@@ -1235,29 +1235,29 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(scylla_cql_filtered_rows_read_total{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cql_filtered_rows_read_total{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "rows read {{instance}}",
+              "legendFormat": "rows read {{instancename}}",
               "refId": "A"
             },
             {
-              "expr": "sum(irate(scylla_cql_filtered_rows_matched_total{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cql_filtered_rows_matched_total{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "rows matched {{instance}}",
+              "legendFormat": "rows matched {{instancename}}",
               "refId": "B"
             },
             {
-              "expr": "sum(irate(scylla_cql_filtered_rows_dropped_total{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(irate(scylla_cql_filtered_rows_dropped_total{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "rows dropped {{instance}}",
+              "legendFormat": "rows dropped {{instancename}}",
               "refId": "C"
             }
           ],
@@ -1457,12 +1457,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(delta(scylla_query_processor_queries{job=~\"ec2-discover-scylla-default\"}[5m])) by (instance)",
+              "expr": "$func(delta(scylla_query_processor_queries{job=~\"ec2-discover-scylla-default\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "",
+              "legendFormat": "{{ instancename }}",
               "refId": "A"
             }
           ],
@@ -1662,12 +1662,12 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(delta(scylla_query_processor_queries{job=~\"ec2-discover-scylla-default\",consistency_level=\"ALL\"}[5m])) by (instance)",
+              "expr": "$func(delta(scylla_query_processor_queries{job=~\"ec2-discover-scylla-default\",consistency_level=\"ALL\"}[5m])) by (instancename)",
               "format": "time_series",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "",
+              "legendFormat": "{{ instancename }}",
               "refId": "A"
             }
           ],
@@ -4906,7 +4906,7 @@ data:
             "allValue": null,
             "class": "aggregation_function",
             "current": {
-              "selected": false,
+              "selected": true,
               "text": "avg",
               "value": "avg"
             },
@@ -4955,10 +4955,9 @@ data:
           {
             "allValue": null,
             "current": {
-              "isNone": true,
               "selected": false,
-              "text": "None",
-              "value": ""
+              "text": "shared-preprod-scylla-db-3",
+              "value": "shared-preprod-scylla-db-3"
             },
             "datasource": "Thanos",
             "definition": "label_values(up{job=~\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"},instance)",
@@ -4989,5 +4988,5 @@ data:
       "timezone": "browser",
       "title": "Scylla  - Part2",
       "uid": "SNhPehSGk31",
-      "version": 1
+      "version": 2
     }

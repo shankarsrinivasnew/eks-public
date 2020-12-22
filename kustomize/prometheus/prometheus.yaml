@@ -14,7 +14,32 @@ spec:
     ## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml -f prometheus-rules.yaml
     namespaceOverride: "prometheus"
     defaultRules:
-      create: false
+      create: true
+      rules:
+        alertmanager: true
+        etcd: true
+        general: true
+        k8s: true
+        kubeApiserver: true
+        kubeApiserverAvailability: true
+        kubeApiserverError: true
+        kubeApiserverSlos: true
+        kubelet: true
+        kubePrometheusGeneral: true
+        kubePrometheusNodeAlerting: true
+        kubePrometheusNodeRecording: true
+        kubernetesAbsent: true
+        kubernetesApps: true
+        kubernetesResources: true
+        kubernetesStorage: true
+        kubernetesSystem: true
+        kubeScheduler: true
+        kubeStateMetrics: true
+        network: true
+        node: true
+        prometheus: true
+        prometheusOperator: true
+        time: true
 
     ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
     ##
@@ -504,30 +529,6 @@ spec:
               send_resolved: true
               http_config:
                 proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-          # - name: cb_alerts_test
-          #   slack_configs:
-          #   - channel: '#cb_alerts_test'
-          #     api_url: 'https://hooks.slack.com/services/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'
-          #     icon_url: 'https://github.com/prometheus/docs/raw/master/static/prometheus_logo.png'
-          #     title: |-
-          #       [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.instance }}
-          #       {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
-          #         {{" "}}(
-          #         {{- with .CommonLabels.Remove .GroupLabels.Names }}
-          #           {{- range $index, $label := .SortedPairs -}}
-          #             {{ if $index }}, {{ end }}
-          #             {{- $label.Name }}="{{ $label.Value -}}"
-          #           {{- end }}
-          #         {{- end -}}
-          #         )
-          #       {{- end }}
-          #     text: >-
-          #       {{ range .Alerts -}}
-          #       *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-          #       {{ end }}
-          #     send_resolved: true
-          #     http_config:
-          #       proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
           - name: "sns-forwarder-cbalerts"
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
