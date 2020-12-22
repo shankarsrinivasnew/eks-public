@@ -33,28 +33,6 @@ spec:
         hostname: "{{ $labels.instance }}"
       annotations:
         summary: Critical Alert{{ $labels.job }}, Kafka has been running on less than 3 brokers for the last 15mins.
-    
-    - alert: kafka_leader_count
-      expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
-      for: 15m
-      labels:
-        severity: HIGH
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-      annotations:
-        summary: Critical Alert {{ $labels.job }}, Kafka leader count is less than 3
-
-    - alert: kafka_open_file_descriptor_count
-      expr: count(java_lang_operatingsystem_openfiledescriptorcount{job="ec2-discover-hdf-jmx"}) < 3
-      for: 15m
-      labels:
-        severity: HIGH
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-      annotations:
-        summary: Critical Alert {{ $labels.job }}, Kafka open file descriptor is less than 3
 
     # - alert: kafka_failed_fetch_request_rate
     #   expr: sum(kafka_server_brokertopicmetrics_meanrate{job="ec2-discover-hdf-jmx",name="FailedFetchRequestsPerSec",topic!=""})by (topic) * 100 > 5
@@ -68,15 +46,16 @@ spec:
     #     summary: Critical Alert, Application {{ $labels.job }} failed request rate is greater than 5%
     
     - alert: jvm_heap_size
-      expr: (jvm_memory_used_bytes{area="heap"} / jvm_memory_max_bytes{area="heap"}) * 100 > 95
+      expr: (avg(jvm_memory_used_bytes{area="heap"} / jvm_memory_max_bytes{area="heap"}) by (instance)) * 100 > 95
       for: 15m
       labels:
         severity: HIGH
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.pod }}"
       annotations:
-        summary: Application {{ $labels.service }} in {{ $labels.environment }} jvm heap size is over 95%
+        summary: Application {{ $labels.service }} in {{ $labels.environment }} jvm heap size is over 95% for 15mins
 
     - alert: consul_up
       expr: consul_up < 1
@@ -86,6 +65,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.instance }}"
       annotations:
         summary: Application {{ $labels.service_name }} in {{ $labels.environment }} is down
         
@@ -97,6 +77,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.instance }}"
       annotations:
         summary: Application {{ $labels.service_name }} in {{ $labels.environment }} raft leader is down
 
@@ -112,13 +93,14 @@ spec:
         summary: Application {{ $labels.service_name }} in {{ $labels.environment }} has less than 6 nodes
 
     - alert: unhealthy_consul_service
-      expr: sum by (service_name, status, node) (consul_health_service_status{status!="passing"}) > 0
+      expr: (consul_health_service_status{status="passing"}) < 1
       for: 15m
       labels:
         severity: HIGH
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.instance }}"
       annotations:
         summary: consul service {{ $labels.service_name }} in {{ $labels.environment }} is unhealthy
 
@@ -130,5 +112,6 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: middleware
         rackspace: "true"
+        hostname: "{{ $labels.instance }}"
       annotations:
         summary: Consul node {{ $labels.node }} in {{ $labels.environment }} is unhealthy
