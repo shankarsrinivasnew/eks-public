@@ -15,7 +15,7 @@ spec:
       for: 10m
       labels:
         severity: HIGH
-        environment: preprod
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: node_down
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
@@ -28,7 +28,7 @@ spec:
       for: 15m
       labels:
         severity: HIGH
-        environment: preprod
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: node_cpu_utilization
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
@@ -41,7 +41,7 @@ spec:
       for: 10m
       labels:
         severity: HIGH
-        environment: preprod
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: node_memory_utilization
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
@@ -54,7 +54,7 @@ spec:
       for: 15m
       labels:
         severity: HIGH
-        environment: preprod
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: node_disk_utilization
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
@@ -67,7 +67,7 @@ spec:
       for: 10m
       labels:
         severity: HIGH
-        environment: preprod
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: node_process_near_FD_limits
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
