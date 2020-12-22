@@ -5,7 +5,7 @@ metadata:
   name: shared-scylla1-cm
   namespace: prometheus
 data:
-  Scylla1.json: |
+  scylla1.json: |
     {
       "annotations": {
         "list": [
