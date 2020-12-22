@@ -14,7 +14,32 @@ spec:
     ## helm upgrade --install <env> prometheus-community/kube-prometheus-stack -f prom-operator-chart.yaml -f prometheus-rules.yaml
     namespaceOverride: "prometheus"
     defaultRules:
-      create: false
+      create: true
+      rules:
+        alertmanager: true
+        etcd: true
+        general: true
+        k8s: true
+        kubeApiserver: true
+        kubeApiserverAvailability: true
+        kubeApiserverError: true
+        kubeApiserverSlos: true
+        kubelet: true
+        kubePrometheusGeneral: true
+        kubePrometheusNodeAlerting: true
+        kubePrometheusNodeRecording: true
+        kubernetesAbsent: true
+        kubernetesApps: true
+        kubernetesResources: true
+        kubernetesStorage: true
+        kubernetesSystem: true
+        kubeScheduler: true
+        kubeStateMetrics: true
+        network: true
+        node: true
+        prometheus: true
+        prometheusOperator: true
+        time: true
 
     ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
     ##
