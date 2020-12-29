@@ -1,16 +1,16 @@
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
-metadata:
-  labels:
-    app: kube-prometheus-stack
-    release: prometheus
-  name: cb-up-alerts
-  namespace: prometheus
-spec:
-  groups:
+  apiVersion: monitoring.coreos.com/v1
+  kind: PrometheusRule
+  metadata:
+    labels:
+      app: kube-prometheus-stack
+      release: prometheus
+    name: cb-up-alerts
+    namespace: prometheus
+  spec:
+    groups:
     - name: CB_APPS_UP_STATE
-    ###########################################CB_AUTH_VERIFY##########################################################
       rules:
+    ###########################################CB_AUTH_VERIFY##########################################################
       - record: cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}
         expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*verify.*"}[5m]))*60)
       - alert: CB_authentication_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
@@ -337,9 +337,9 @@ spec:
           namespace: cb
           severity: WARNING
           type: 8x5
-          annotations:
-            description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-            summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
+        annotations:
+          description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
+          summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
     ###########################################CB_ADS_CUSTOMER_LOOKUP_TOPOLOGY###########################################################
       - record: cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}
         expr: (sum by (job, namespace) (tsb_cb_ads_customer_lookup_topology_consumer_fetch_manager_metrics_records_consumed_rate or processCustomerLookupByUserId_applicationId_consumer_fetch_manager_metrics_records_consumed_rate)*60)
@@ -372,4 +372,4 @@ spec:
           type: 8x5
         annotations:
           description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}
+          summary: Red rate reached for Application {{ $labels.job }}  
