@@ -37,7 +37,7 @@ spec:
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
         limits:
-          cpu: 500m
+          cpu: 1
       # Environment variables that get added to the init container (useful for e.g. http_proxy)
       initContainerEnv:
         - name: http_proxy
