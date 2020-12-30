@@ -1,0 +1,5 @@
+resources:
+  - sa.yaml
+namespace: sco
+transformers:
+  - awsTransformer.yaml

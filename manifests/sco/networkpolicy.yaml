@@ -1,0 +1,129 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent
+  namespace: sco
+spec:
+  serviceAccountSelector: role == 'jenkins-agent'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      source:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      destination:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9042
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: mgmt
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'mgmt' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 443
+          - 80
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sco-application
+  namespace: sco
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: sco-application
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-sco
+            - default
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9042
+          - 9142
+          - 9092
+          - 7790
+          - 2181
+          - 7788
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sco-inter-namespace
+  namespace: sco
+spec:
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: sco-namespace
+          to: sco-namespace
+      action: Allow
+      source:
+        namespaceSelector: projectcalico.org/name == 'sco'
+  egress:
+    - metadata:
+        annotations:
+          from: sco-namespace
+          to: sco-namespace
+      action: Allow
+      protocol: TCP
+      destination:
+        namespaceSelector: projectcalico.org/name == 'sco'
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sco-nginx-ingress
+  namespace: sco
+spec:
+  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  types:
+    - Ingress
+  ingress:
+    - metadata:
+      annotations:
+        from: vpc
+        to: nginx
+      action: Allow
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
