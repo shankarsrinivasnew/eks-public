@@ -1,375 +1,375 @@
-  apiVersion: monitoring.coreos.com/v1
-  kind: PrometheusRule
-  metadata:
-    labels:
-      app: kube-prometheus-stack
-      release: prometheus
-    name: cb-up-alerts
-    namespace: prometheus
-  spec:
-    groups:
-    - name: CB_APPS_UP_STATE
-      rules:
-    ###########################################CB_AUTH_VERIFY##########################################################
-      - record: cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*verify.*"}[5m]))*60)
-      - alert: CB_authentication_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 450
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 450 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}            
-      - alert: CB_authentication_verify_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 450
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 450 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
-    ###########################################CB_AUTH_ENROL##########################################################
-      - record: cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*enrol.*"}[5m]))*60)
-      - alert: CB_authentication_enrol_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}            
-      - alert: CB_authentication_enrol_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
-    ###########################################CB_CDC_CUSTOMER_DATA##########################################################
-      - record: cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (processHmacsStream_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb"})*60)
-      - alert: CB_cdc_customer_data_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }}            
-      - alert: CB_cdc_customer_data_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}  
-    ###########################################CB_ENRICH_SUB_TOPOLOGY###########################################################
-      - record: cb_enrich_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb",job="tsb-cb-enrich"})*60)
-      - alert: CB_enrich_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }}            
-      - alert: CB_enrich_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}
-    ###########################################CB_FULFILL_SUB_TOPOLOGY###########################################################
-      - record: cb_fulfill_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb",job="tsb-cb-fulfill"})*60)
-      - alert: CB_fulfill_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }}
-      - alert: CB_fulfill_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}  
-    ###########################################CB_HMAC_GENERATION_TOPOLOGY###########################################################
-      - record: cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (processHmacGenerationRequest_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb"})*60)
-      - alert: CB_hmac_generation_topology_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }}            
-      - alert: CB_hmac_generation_topology_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}  
-    ###########################################CB_LIVE_PERSON_ADAPTER###########################################################
-      - record: cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (rate(lp_adapter_rdkafka_topic_partition_msgs {namespace="cb"}[5m]))*60)
-      - alert: CB_lp_adapter_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }} 
-      - alert: CB_lp_adapter_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}
-    ###########################################CB_NATURAL_LANGUAGE_PROCESS_HANDLER###########################################################
-      - record: cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (rate(spring_kafka_listener_seconds_count {namespace="cb"}[5m]))*60)
-      - alert: CB_nlp_handler_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }}            
-      - alert: CB_nlp_handler_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 1840
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}  
-    ###########################################CB_AUTH_API_GW_VERIFY###########################################################
-      - record: cb_auth_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace="cb", routeId=~".*verify.*"}[5m]))*60)
-      - alert: CB_auth_api_gateway_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_auth_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 450
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 450 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}  
-      - alert: CB_auth_api_gateway_verify_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_auth_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 450
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 450 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
-    ###########################################CB_AUTH_API_GW_ENROL###########################################################
-      - record: cb_auth_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace="cb", routeId=~".*enrol.*"}[5m]))*60)
-      - alert: CB_auth_api_gateway_enrol_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_auth_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}} 
-      - alert: CB_auth_api_gateway_enrol_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_auth_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
-    ###########################################CB_ADS_CUSTOMER_LOOKUP_TOPOLOGY###########################################################
-      - record: cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}
-        expr: (sum by (job, namespace) (tsb_cb_ads_customer_lookup_topology_consumer_fetch_manager_metrics_records_consumed_rate or processCustomerLookupByUserId_applicationId_consumer_fetch_manager_metrics_records_consumed_rate)*60)
-      - alert: CB_ads_customer_lookup_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 1m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: YELLOW
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-          summary: Yellow rate reached for Application {{ $labels.job }}            
-      - alert: CB_ads_customer_lookup_up_red_alert_{{ AWS_ENVIRONMENT }}
-        expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 3300
-        for: 5m
-        labels:
-          action: Closely monitor
-          environment: "{{ AWS_ENVIRONMENT }}"
-          group: INFRA
-          level: RED
-          platform: AWS
-          namespace: cb
-          severity: WARNING
-          type: 8x5
-        annotations:
-          description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-          summary: Red rate reached for Application {{ $labels.job }}  
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cb-up-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: CB_APPS_UP_STATE
+    rules:
+###########################################CB_AUTH_VERIFY##########################################################
+    - record: cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*verify.*"}[5m]))*60)
+    - alert: CB_authentication_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 450
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 450 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}            
+    - alert: CB_authentication_verify_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_authentication_verify_up_{{ AWS_ENVIRONMENT }}) > 450
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 450 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
+  ###########################################CB_AUTH_ENROL##########################################################
+    - record: cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cb",uri=~".*enrol.*"}[5m]))*60)
+    - alert: CB_authentication_enrol_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}            
+    - alert: CB_authentication_enrol_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_authentication_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
+  ###########################################CB_CDC_CUSTOMER_DATA##########################################################
+    - record: cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (processHmacsStream_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb"})*60)
+    - alert: CB_cdc_customer_data_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }}            
+    - alert: CB_cdc_customer_data_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_cdc_customer_data_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}  
+  ###########################################CB_ENRICH_SUB_TOPOLOGY###########################################################
+    - record: cb_enrich_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb",job="tsb-cb-enrich"})*60)
+    - alert: CB_enrich_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }}            
+    - alert: CB_enrich_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_enrich_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}
+  ###########################################CB_FULFILL_SUB_TOPOLOGY###########################################################
+    - record: cb_fulfill_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb",job="tsb-cb-fulfill"})*60)
+    - alert: CB_fulfill_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }}
+    - alert: CB_fulfill_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_fulfill_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}  
+  ###########################################CB_HMAC_GENERATION_TOPOLOGY###########################################################
+    - record: cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (processHmacGenerationRequest_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace="cb"})*60)
+    - alert: CB_hmac_generation_topology_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }}            
+    - alert: CB_hmac_generation_topology_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_hmac_generation_topology_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}  
+  ###########################################CB_LIVE_PERSON_ADAPTER###########################################################
+    - record: cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (rate(lp_adapter_rdkafka_topic_partition_msgs {namespace="cb"}[5m]))*60)
+    - alert: CB_lp_adapter_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} 
+    - alert: CB_lp_adapter_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_lp_adapter_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}
+  ###########################################CB_NATURAL_LANGUAGE_PROCESS_HANDLER###########################################################
+    - record: cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (rate(spring_kafka_listener_seconds_count {namespace="cb"}[5m]))*60)
+    - alert: CB_nlp_handler_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }}            
+    - alert: CB_nlp_handler_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_nlp_handler_up_{{ AWS_ENVIRONMENT }}) > 1840
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}  
+  ###########################################CB_AUTH_API_GW_VERIFY###########################################################
+    - record: cb_auth_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace="cb", routeId=~".*verify.*"}[5m]))*60)
+    - alert: CB_auth_api_gateway_verify_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_auth_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 450
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 450 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}  
+    - alert: CB_auth_api_gateway_verify_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_auth_api_gateway_verify_up_{{ AWS_ENVIRONMENT }}) > 450
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 450 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
+  ###########################################CB_AUTH_API_GW_ENROL###########################################################
+    - record: cb_auth_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace="cb", routeId=~".*enrol.*"}[5m]))*60)
+    - alert: CB_auth_api_gateway_enrol_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_auth_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}} 
+    - alert: CB_auth_api_gateway_enrol_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_auth_api_gateway_enrol_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
+  ###########################################CB_ADS_CUSTOMER_LOOKUP_TOPOLOGY###########################################################
+    - record: cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (tsb_cb_ads_customer_lookup_topology_consumer_fetch_manager_metrics_records_consumed_rate or processCustomerLookupByUserId_applicationId_consumer_fetch_manager_metrics_records_consumed_rate)*60)
+    - alert: CB_ads_customer_lookup_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }}            
+    - alert: CB_ads_customer_lookup_up_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cb_ads_customer_lookup_up_{{ AWS_ENVIRONMENT }}) > 3300
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cb
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }}  
