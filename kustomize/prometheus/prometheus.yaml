@@ -664,6 +664,7 @@ spec:
                 namespace: cb
                 group: INFRA
                 environment: prod
+                severity: CRITICAL
               receiver: sns-forwarder-cbcriticalalerts
               continue: true
             - match_re:
