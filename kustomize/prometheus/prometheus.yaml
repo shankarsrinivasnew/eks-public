@@ -493,12 +493,17 @@ spec:
       config:
         global:
           resolve_timeout: 5m
-        #inhibit_rules:
-        #  - source_match:
-        #      severity: 'critical'
-        #    target_match:
-        #      severity: 'warning'
-        #    equal: ['alertname', 'dev', 'instance']
+        inhibit_rules:
+          - source_match:
+              severity: 'CRITICAL'
+            target_match:
+              severity: 'WARNING'
+            equal: ['deployment']
+          - source_match:
+              severity: 'CRITICAL'
+            target_match:
+              severity: 'WARNING'
+            equal: ['statefulset']
         receivers:
           - name: "null"
           - name: rax-monitoring-email
@@ -536,6 +541,10 @@ spec:
           - name: "sns-forwarder-cdcalerts"
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/tsb-CDCalerts"
+              send_resolved: true
+          - name: "sns-forwarder-cbcriticalalerts"
+            webhook_configs:
+            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/cb-criticalalerts"
               send_resolved: true
           - name: 'cb-slack-notifications'
             slack_configs:
@@ -650,6 +659,13 @@ spec:
                 group: INFRA
                 environment: preprod|prod
               receiver: sns-forwarder-cbalerts
+              continue: true
+            - match:
+                namespace: cb
+                group: INFRA
+                environment: prod
+                severity: CRITICAL
+              receiver: sns-forwarder-cbcriticalalerts
               continue: true
             - match_re:
                 environment: preprod|prod
