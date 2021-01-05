@@ -534,10 +534,10 @@ spec:
               send_resolved: true
               http_config:
                 proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-          - name: "sns-forwarder-cbalerts"
-            webhook_configs:
-            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
-              send_resolved: true
+          #- name: "sns-forwarder-cbalerts"
+          #  webhook_configs:
+          #  - url: "http://alertmanager-sns-forwarder-svc:9087/alert/CB-alerts"
+          #    send_resolved: true
           - name: "sns-forwarder-cdcalerts"
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/tsb-CDCalerts"
@@ -654,12 +654,12 @@ spec:
           repeat_interval: 1m
           receiver: "null"
           routes:
-            - match_re:
-                namespace: cb
-                group: INFRA
-                environment: preprod|prod
-              receiver: sns-forwarder-cbalerts
-              continue: true
+            #- match_re:
+            #    namespace: cb
+            #    group: INFRA
+            #    environment: preprod|prod
+            #  receiver: sns-forwarder-cbalerts
+            #  continue: true
             - match:
                 namespace: cb
                 group: INFRA
