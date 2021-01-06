@@ -1,0 +1,28 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sca-admin-role
+  namespace: sca
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sca-admin-binding
+  namespace: sca
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sca-admin-role
+subjects:
+  - kind: ServiceAccount
+    name: tsb-sca
+  - kind: Group
+    name: sca-admin
+  - kind: ServiceAccount
+    name: jenkins-terraform
+    namespace: jenkins

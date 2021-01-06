@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tsb-sca
+  namespace: sca
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/tsb-sca
+  labels:
+    role: jenkins-agent
+    component: sca
