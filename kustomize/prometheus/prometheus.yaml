@@ -642,7 +642,7 @@ spec:
               send_resolved: true
               http_config:
                 proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-          
+
         route:
           group_by: ['...']
           group_wait: 30s
@@ -650,24 +650,32 @@ spec:
           repeat_interval: 1m
           receiver: "null"
           routes:
-            - match:
-                namespace: cb
-                group: INFRA
-                environment: prod
-                severity: CRITICAL
-              receiver: sns-forwarder-cbcriticalalerts
-              continue: true
+            #- match_re:
+            #    namespace: cb
+            #    group: INFRA
+            #    environment: preprod|prod
+            #  receiver: sns-forwarder-cbalerts
+            #  continue: true
+            # TCP-2553
+            # - match:
+            #     namespace: cb
+            #     group: INFRA
+            #     environment: prod
+            #     severity: CRITICAL
+            #   receiver: sns-forwarder-cbcriticalalerts
+            #   continue: true
             - match_re:
                 environment: preprod|prod
                 application: cdc
               receiver: sns-forwarder-cdcalerts
               continue: true
-            - match:
-                namespace: cb
-                group: INFRA
-                environment: prod
-              receiver: cb-slack-notifications
-              continue: true
+            #TCP-2553
+            # - match:
+            #     namespace: cb
+            #     group: INFRA
+            #     environment: prod
+            #   receiver: cb-slack-notifications
+            #   continue: true
             - match_re:
                 namespace: cb
                 group: INFRA
@@ -675,20 +683,21 @@ spec:
                 severity: WARNING|CRITICAL
               receiver: cb-slack-notifications-new
               continue: true
-            - match:
-                namespace: cb
-                group: INFRA
-                environment: prod
-                severity: CRITICAL
-              receiver: cb-critical-slack-notifications
-              continue: true
-            - match:
-                namespace: cb
-                group: INFRA
-                environment: prod
-                severity: WARNING
-              receiver: cb-warning-slack-notifications
-              continue: true
+            #TCP-2553
+            # - match:
+            #     namespace: cb
+            #     group: INFRA
+            #     environment: prod
+            #     severity: CRITICAL
+            #   receiver: cb-critical-slack-notifications
+            #   continue: true
+            # - match:
+            #     namespace: cb
+            #     group: INFRA
+            #     environment: prod
+            #     severity: WARNING
+            #   receiver: cb-warning-slack-notifications
+            #   continue: true
             - match_re:
                 severity: CRITICAL
                 rackspace: "true"
