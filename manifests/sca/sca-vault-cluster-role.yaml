@@ -2,21 +2,21 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-    name: vault-cb-binding
+  name: sca-vault-cb-binding
 roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: system:auth-delegator
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
 subjects:
-- kind: ServiceAccount
-  name: vault-cb
-  namespace: cb
-- kind: ServiceAccount
-  name: tsb-cb
-  namespace: cb
+  - kind: ServiceAccount
+    name: vault-sca
+    namespace: sca
+  - kind: ServiceAccount
+    name: tsb-sca
+    namespace: sca
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-    name: vault-cb
-    namespace: cb
+  name: vault-sca
+  namespace: sca
