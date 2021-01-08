@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.fluxcd.io
     name: flux
-    version: 1.5.0
+    version: 1.6.0
   values:
     image:
       repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/flux
@@ -28,6 +28,8 @@ spec:
     registry:
       disableScanning: true
     manifestGeneration: true
+    sync:
+      timeout: 5m
     syncGarbageCollection:
       enabled: true
     serviceAccount:
