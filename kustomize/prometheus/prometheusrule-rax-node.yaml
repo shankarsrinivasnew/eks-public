@@ -19,6 +19,7 @@ spec:
         monitoring: node_down
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         summary: "Node {{ $labels.instance }} is DOWN(not in running state for longer than 10minutes)"
   - name: NODE_HIGH_CPU_UTILIZATION
@@ -32,6 +33,7 @@ spec:
         monitoring: node_cpu_utilization
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         summary: "CPU Utilization for Instance {{ $labels.instance }} is above 90% used for 15minutes"
   - name: NODE_HIGH_MEMORY_UTILIZATION
@@ -45,6 +47,7 @@ spec:
         monitoring: node_memory_utilization
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         summary: "RAM Utilization for Instance {{ $labels.instance }} is above 95% used for 15minutes"
   - name: NODE_HIGH_DISK_UTILIZATION
@@ -58,6 +61,7 @@ spec:
         monitoring: node_disk_utilization
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         summary: "Disk Utilization for Instance {{ $labels.instance }} is above 90% used for 15minutes"
   - name: NODE_FILE_DISCRIPTOR_LIMIT
@@ -71,5 +75,6 @@ spec:
         monitoring: node_process_near_FD_limits
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         summary: "Process Near File Discriptor Limits for Instance {{ $labels.instance }} is above 80% used for 10minutes"
