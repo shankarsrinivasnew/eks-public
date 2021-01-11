@@ -19,3 +19,43 @@ metadata:
     eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/cob-sink-connector
   labels:
     component: cob
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-tsb-onboarding-identity-onfido-download-asset
+  namespace: cob
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/sa-tsb-onboarding-identity-onfido-download-asset
+  labels:
+    component: cob
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-tsb-onboarding-product-data-upload 
+  namespace: cob
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/sa-tsb-onboarding-product-data-upload
+  labels:
+    component: cob
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-tsb-onboarding-email-sender
+  namespace: cob
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/sa-tsb-onboarding-email-sender
+  labels:
+    component: cob
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-tsb-onboarding-otp-sender
+  namespace: cob
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/sa-tsb-onboarding-otp-sender
+  labels:
+    component: cob
