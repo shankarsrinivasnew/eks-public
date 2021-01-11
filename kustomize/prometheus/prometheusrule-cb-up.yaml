@@ -25,6 +25,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 450 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}            
@@ -40,6 +41,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 450 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
@@ -58,6 +60,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}            
@@ -73,6 +76,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
@@ -91,6 +95,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
@@ -106,6 +111,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}  
@@ -124,6 +130,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
@@ -139,6 +146,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
@@ -157,6 +165,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}
@@ -172,6 +181,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}  
@@ -190,6 +200,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
@@ -205,6 +216,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}  
@@ -223,6 +235,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} 
@@ -238,6 +251,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
@@ -256,6 +270,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
@@ -271,6 +286,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}  
@@ -289,6 +305,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 450 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}  
@@ -304,6 +321,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 450 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
@@ -322,6 +340,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}} 
@@ -337,6 +356,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
@@ -355,6 +375,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
@@ -370,6 +391,7 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
+        tsbci: AWS_CONV_BANK
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}  

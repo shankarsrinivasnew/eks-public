@@ -18,6 +18,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: endpoints
         rackspace: "true"
+        tsbci: AWS_ELZ
       annotations:
         summary: "Endpoint {{ $labels.instance }} unhealthy"
     - alert: probe_http_4xx_status_code
@@ -28,5 +29,6 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: endpoints
         rackspace: "true"
+        tsbci: AWS_ELZ
       annotations:
         summary: "Endpoint {{ $labels.instance }} unhealthy"
