@@ -217,10 +217,10 @@ spec:
       resources:
         limits:
           cpu: 200m
-          memory: 200Mi
+          memory: 400Mi
         requests:
           cpu: 50m
-          memory: 50Mi
+          memory: 100Mi
       admissionWebhooks:
         patch:
           nodeSelector:
