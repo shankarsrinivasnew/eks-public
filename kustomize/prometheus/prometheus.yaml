@@ -480,7 +480,6 @@ spec:
     ##
     alertmanager:
       alertmanagerSpec:
-        secrets: servicenow-secret
         resources:
           requests:
             memory: 50Mi
@@ -507,22 +506,6 @@ spec:
             equal: ['statefulset']
         receivers:
           - name: "null"
-          - name: itom-dev-servicenow
-            webhook_configs:
-            - url: "https://tsbbankdev1.service-now.com/api/itsbb/alertmanager"
-              send_resolved: true
-              http_config:
-                basic_auth:
-                  username: 'prometheus_user'
-                  password_file: /etc/alertmanager/secrets/servicenow_pw.txt
-          - name: itom-test-servicenow
-            webhook_configs:
-            - url: "https://tsbbanktest1.service-now.com//api/itsbb/alertmanager"
-              send_resolved: true
-                            http_config:
-                basic_auth:
-                  username: 'prometheus_user'
-                  password_file: /etc/alertmanager/secrets/servicenow_pw.txt
           - name: rax-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/{{ AWS_ENVIRONMENT }}-rax-alertmanager"
