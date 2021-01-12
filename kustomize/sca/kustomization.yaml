@@ -1,0 +1,6 @@
+resources:
+  - sa.yaml
+  - networkpolicy.yaml
+namespace: sca
+transformers:
+  - awsTransformer.yaml
