@@ -8,7 +8,7 @@ spec:
   chart:
     repository: https://charts.jenkins.io
     name: jenkins
-    version: 2.6.4
+    version: 3.0.14
   values:
     serviceAccount:
       create: true
@@ -90,6 +90,10 @@ spec:
         - jira:3.1.1
         - sonar:2.12
       JCasC:
+        securityRealm: |-
+          local:
+            allowsSignup: false
+            enableCaptcha: false
         configScripts:
           github: |-
             unclassified:
