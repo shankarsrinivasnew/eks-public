@@ -1,0 +1,104 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: new-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: KUBE_NODE_ERROR
+    rules:
+    - alert: KUBE_NODE_ERROR
+      expr: (kubelet_node_config_error > 0)
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: prod
+        monitoring: node_errors
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: true
+      annotations:
+        summary: "Following Kubernetes node has errors {{ $labels.instance }}"
+  - name: SCYLLA_READ
+    rules:
+    - alert: SCYLLA_READ
+      expr: (sum(rate(scylla_storage_proxy_coordinator_read_unavailable[60s])) by (cluster, instance) / sum(rate(scylla_storage_proxy_coordinator_write_unavailable[60s])) by (cluster, instance) /  sum(rate(scylla_storage_proxy_coordinator_range_unavailable[60s])) by (cluster, instance) != 0 )
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: prod
+        monitoring: scylla_read
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Following Scyla instance {{ $labels.instance }} Operation unavailable, read, write operations are unavailable"
+
+  - name: ACTIVE_CONTROLLERS
+    rules:
+    - alert: ACTIVE_CONTROLLERS
+      expr: (sum(rate(scylla_storage_proxy_coordinator_write_unavailable[60s])) by (cluster, instance))
+      for: 5m
+      labels:
+        severity: CRITICAL
+        environment: prod
+        monitoring: active_controllers
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "The number of active controllers in {{ $labels.instance }} is not 1. If value is 0 then Kafka is down"
+
+  - name: KAFKA-ZOOKEEEPER
+    rules:
+    - alert: KAFKA-ZOOKEEEPER
+      expr: (kafka_server_sessionexpirelistener_zookeeperdisconnects_total != 0)
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: prod
+        monitoring: kafka-zookeeper
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Kafka server {{ $labels.instance }} unable to connect zookeeper. Zookeeper is down"
+
+  - name: LOGSTASH-SERVICE
+    rules:
+    - alert: LOGSTASH-SERVICE
+      expr: (node_systemd_unit_state{instance=~".*logstash.*",name="logstash.service",state="failed"} != 0)
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: prod
+        monitoring: logstash-service
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Logstash service failed {{ $labels.instance }}"       
+
+  - name: CONSUL-SERVICE
+    rules:
+    - alert: CONSUL-SERVICE
+      expr: (consul_health_service_status{status="critical"} >0)
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: prod
+        monitoring: consul-service
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Consul Service is in critical state {{ $labels.instance }}"   
