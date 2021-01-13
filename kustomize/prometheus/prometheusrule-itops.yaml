@@ -20,7 +20,7 @@ spec:
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
-        itopsbridge: true
+        itopsbridge: "true"
       annotations:
         summary: "Following Kubernetes node has errors {{ $labels.instance }}"
   - name: SCYLLA_READ
