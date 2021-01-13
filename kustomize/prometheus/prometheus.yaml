@@ -745,5 +745,6 @@ spec:
               continue: true
             - match_re:
                 itopsbridge: "true"
+                environment: prod
               receiver: itops-monitoring-email
               continue: true
