@@ -480,7 +480,7 @@ spec:
     ##
     alertmanager:
       alertmanagerSpec:
-        secrets: servicenow-secret
+        secrets: ['servicenow-secret']
         resources:
           requests:
             memory: 50Mi
