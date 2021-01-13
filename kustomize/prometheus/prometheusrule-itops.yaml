@@ -38,7 +38,6 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "Following Scyla instance {{ $labels.instance }} Operation unavailable, read, write operations are unavailable"
-
   - name: ACTIVE_CONTROLLERS
     rules:
     - alert: ACTIVE_CONTROLLERS
@@ -54,7 +53,6 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "The number of active controllers in {{ $labels.instance }} is not 1. If value is 0 then Kafka is down"
-
   - name: KAFKA-ZOOKEEEPER
     rules:
     - alert: KAFKA-ZOOKEEEPER
@@ -70,7 +68,6 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "Kafka server {{ $labels.instance }} unable to connect zookeeper. Zookeeper is down"
-
   - name: LOGSTASH-SERVICE
     rules:
     - alert: LOGSTASH-SERVICE
@@ -86,7 +83,6 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "Logstash service failed {{ $labels.instance }}"       
-
   - name: CONSUL-SERVICE
     rules:
     - alert: CONSUL-SERVICE
