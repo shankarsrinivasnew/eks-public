@@ -166,7 +166,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
-        environment: "{{ AWS_ !ENVIRONMENT }}"
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: prometheus-endpoint
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
@@ -181,7 +181,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
-        environment: "{{ AWS_ !ENVIRONMENT }}"
+        environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: vault-endpoint
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
