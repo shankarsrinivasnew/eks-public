@@ -12,7 +12,7 @@ spec:
     rules:
     - alert: KUBE_NODE_ERROR
       expr: (kubelet_node_config_error !=0)
-      for: 15m
+      for: 10m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -27,7 +27,7 @@ spec:
     rules:
     - alert: SCYLLA_READ
       expr: (sum(rate(scylla_storage_proxy_coordinator_read_unavailable[60s])) by (cluster, instance) + sum(rate(scylla_storage_proxy_coordinator_write_unavailable[60s])) by (cluster, instance) + sum(rate(scylla_storage_proxy_coordinator_range_unavailable[60s])) by (cluster, instance) != 0 )
-      for: 15m
+      for: 10m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -42,7 +42,7 @@ spec:
     rules:
     - alert: ACTIVE_CONTROLLERS
       expr: (sum(rate(scylla_storage_proxy_coordinator_write_unavailable[60s])) by (cluster, instance)!= 0)
-      for: 5m
+      for: 10m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -57,7 +57,7 @@ spec:
     rules:
     - alert: KAFKA-ZOOKEEEPER
       expr: (kafka_server_sessionexpirelistener_zookeeperdisconnects_total != 0)
-      for: 15m
+      for: 10m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -72,7 +72,7 @@ spec:
     rules:
     - alert: LOGSTASH-SERVICE
       expr: (node_systemd_unit_state{instance=~".*logstash.*",name="logstash.service",state="failed"} != 0)
-      for: 15m
+      for: 10m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -85,16 +85,108 @@ spec:
         summary: "Logstash service failed {{ $labels.instance }}"       
   - name: CONSUL-SERVICE
     rules:
-    - alert: CONSUL-SERVICE
-      expr: (consul_health_service_status{status="critical"} !=0)
-      for: 15m
+    - alert: CONSUL-SERVICE-AGENT
+      expr: (consul_health_node_status{status="critical"} == 1)
+      for: 10m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: consul-service
         rackspace: "true"
+        hostname: "{{ $labels.node }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        title: Consul agent is down
+        description: Consul agent is not healthy on {{ $labels.node }}.
+  - name: CONSUL-SERVICE-LEADER   
+    rules:     
+    - alert: consul_raft_leader
+      expr: consul_raft_leader < 1
+      for: 10m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: logstash-service
+        rackspace: "true"
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
         itopsbridge: "true"
       annotations:
-        summary: "Consul Service is in critical state {{ $labels.instance }}"   
+        summary: Application {{ $labels.service_name }} in {{ $labels.environment }} raft leader is down
+  - name: CONSUL-ENDPOINT
+    rules:
+    - alert: consul_probe_http_2xx
+      expr: (probe_http_status_code{instance="https://consul.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200
+      for: 10m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: consul-endpoint
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Consul Endpoint {{ $labels.instance }} unhealthy"
+  - name: GRAFANA-ENDPOINT
+    rules:
+    - alert: grafana_probe_http_2xx
+      expr: (probe_http_status_code{instance="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200
+      for: 10m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: grafana-endpoint
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Grafana Endpoint {{ $labels.instance }} unhealthy"
+  - name: JENKINS-ENDPOINT
+    rules:
+    - alert: jenkins_probe_http_4xx
+      expr: probe_http_status_code{instance="https://jenkins.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox_4xx"} !=401
+      for: 10m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: jenkins-endpoint
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Jenkins Endpoint {{ $labels.instance }} unhealthy"
+  - name: PROMETHEUS-ENDPOINT
+    rules:
+    - alert: prometheus_probe_http_2xx
+      expr: (probe_http_status_code{instance="https://prometheus.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"})!=200
+      for: 10m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: prometheus-endpoint
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Prometheus Endpoint {{ $labels.instance }} unhealthy"
+  - name: VAULT-ENDPOINT
+    rules:
+    - alert: vault_probe_http_2xx
+      expr: (probe_http_status_code{instance="https://vault.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"})!=200
+      for: 10m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: vault-endpoint
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Vault Endpoint {{ $labels.instance }} unhealthy"
+
