@@ -96,6 +96,6 @@ spec:
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
         itopsbridge: "true"
-        annotations:
+      annotations:
         title: Consul agent is down
         description: Consul agent is not healthy on {{ $labels.node }}.
