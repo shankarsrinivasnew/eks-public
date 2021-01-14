@@ -90,6 +90,17 @@ spec:
         - jira:3.1.1
         - sonar:2.12
       JCasC:
+        securityRealm: |-
+          local:
+            allowsSignup: false
+            users:
+              - id: "${ADMIN_USER}"
+                password: "${ADMIN_PASSWORD}"
+              - id: "${ADMIN_USER}-BLAH"
+                password: "lala"
+        authorizationStrategy: |-
+          loggedInUsersCanDoAnything:
+            allowAnonymousRead: false
         configScripts:
           github: |-
             unclassified:
