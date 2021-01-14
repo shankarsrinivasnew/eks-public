@@ -99,3 +99,30 @@ spec:
       annotations:
         title: Consul agent is down
         description: Consul agent is not healthy on {{ $labels.node }}.
+    - alert: consul_raft_leader
+      expr: consul_raft_leader < 1
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: logstash-service
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: Application {{ $labels.service_name }} in {{ $labels.environment }} raft leader is down
+    - alert: probe_http_2xx
+      expr: (probe_http_status_code{instance="https://consul.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200
+      for: 1m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: consul-endpoint
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+        itopsbridge: "true"
+      annotations:
+        summary: "Consul Endpoint {{ $labels.instance }} unhealthy"
+
