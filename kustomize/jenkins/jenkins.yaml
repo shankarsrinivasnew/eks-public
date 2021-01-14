@@ -96,8 +96,6 @@ spec:
             users:
               - id: "${ADMIN_USER}"
                 password: "${ADMIN_PASSWORD}"
-              - id: "${ADMIN_USER}-BLAH"
-                password: "lala"
         authorizationStrategy: |-
           loggedInUsersCanDoAnything:
             allowAnonymousRead: false
