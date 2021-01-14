@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://helm.elastic.co
     name: filebeat
-    version: 7.9.0
+    version: 7.10.1
   values:
     # Allows you to add any config files in /usr/share/filebeat
     # such as filebeat.yml
