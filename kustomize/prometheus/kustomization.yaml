@@ -10,6 +10,7 @@ resources:
   - prometheusrule-cdc-alerts.yaml
   - prometheusrule-rax-middleware.yaml
   - prometheusrule-rax-node.yaml
+  - prometheusrule-itops.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml

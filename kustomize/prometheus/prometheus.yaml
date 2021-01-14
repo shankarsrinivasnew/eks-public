@@ -529,6 +529,10 @@ spec:
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/{{ AWS_ENVIRONMENT }}-rax-alertmanager"
               send_resolved: true
+          - name: itops-monitoring-email
+            webhook_configs:
+            - url: "http://alertmanager-sns-forwarder-svc:9087/alert/{{ AWS_ENVIRONMENT }}-itops-alertmanager"
+              send_resolved: true
           - name: rax-monitoring-slack
             slack_configs:
             - channel: '#tsb-monitoring-alerts'
@@ -738,4 +742,9 @@ spec:
                 severity: CRITICAL|WARNING
                 environment: preprod|prod
               receiver: itom-test-servicenow
+              continue: true
+            - match_re:
+                itopsbridge: "true"
+                environment: prod
+              receiver: itops-monitoring-email
               continue: true
