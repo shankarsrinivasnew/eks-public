@@ -73,19 +73,6 @@ spec:
       annotations:
         summary: Application {{ $labels.service_name }} in {{ $labels.environment }} is down
 
-    - alert: consul_raft_leader
-      expr: consul_raft_leader < 1
-      for: 15m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: Application {{ $labels.service_name }} in {{ $labels.environment }} raft leader is down
-
     - alert: members_in_cluster
       expr: consul_serf_lan_members < 6 
       for: 15m
