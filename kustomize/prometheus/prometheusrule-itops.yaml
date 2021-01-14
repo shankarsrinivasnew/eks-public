@@ -93,7 +93,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: consul-service
         rackspace: "true"
-        hostname: "{{ $labels.instance }}"
+        hostname: "{{ $labels.node }}"
         tsbci: AWS_ELZ
         itopsbridge: "true"
       annotations:
