@@ -144,21 +144,6 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "Grafana Endpoint {{ $labels.instance }} unhealthy"
-  - name: JENKINS-ENDPOINT
-    rules:
-    - alert: jenkins_probe_http_4xx
-      expr: probe_http_status_code{instance="https://jenkins.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox_4xx"} !=403
-      for: 10m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: jenkins-endpoint
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-        itopsbridge: "true"
-      annotations:
-        summary: "Jenkins Endpoint {{ $labels.instance }} unhealthy"
   - name: PROMETHEUS-ENDPOINT
     rules:
     - alert: prometheus_probe_http_2xx
