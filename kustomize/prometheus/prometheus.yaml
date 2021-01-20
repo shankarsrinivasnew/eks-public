@@ -56,7 +56,7 @@ spec:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
           alb.ingress.kubernetes.io/target-type: ip
-          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32,10.184.128.0/20,10.185.128.0/20,10.186.80.0/22,10.186.84.0/22"
+          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32,10.184.128.0/19,10.185.128.0/19,10.186.80.0/22,10.186.84.0/22"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
           external-dns.alpha.kubernetes.io/hostname: grafana.{{ DNS_ZONE }}
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
@@ -533,6 +533,10 @@ spec:
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/{{ AWS_ENVIRONMENT }}-itops-alertmanager"
               send_resolved: true
+          - name: cmos-event-management
+            webhook_configs:
+            - url: "https://webhook.cmos-eventmanagement.com:9443/probe/webhook"
+              send_resolved: true
           - name: rax-monitoring-slack
             slack_configs:
             - channel: '#tsb-monitoring-alerts'
@@ -670,7 +674,7 @@ spec:
           group_by: ['alertname']
           group_wait: 30s
           group_interval: 5m
-          repeat_interval: 1m
+          repeat_interval: 30m
           receiver: "null"
           routes:
             #- match_re:
@@ -747,4 +751,9 @@ spec:
                 itopsbridge: "true"
                 environment: prod
               receiver: itops-monitoring-email
+              continue: true
+            - match_re:
+                environment: preprod|prod
+                application: cdc
+              receiver: cmos-event-management
               continue: true
