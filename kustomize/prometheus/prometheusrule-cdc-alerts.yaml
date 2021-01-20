@@ -27,17 +27,4 @@ spec:
       annotations:
         Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. State:{{ $labels.state }} and Status:{{ $labels.status }}'
         Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
-
-    - alert: CDC_Subscription_Availability
-      expr: count(datastore_state) < 3
-      for: 1m
-      labels:
-        environment: "{{ AWS_ENVIRONMENT }}"
-        level: CRITICAL
-        platform: AWS
-        severity: CRITICAL
-        application: cdc
-        tsbci: INFOSPHERE_CDC
-      annotations:
-        Description: '***One or more subscriptions is/are not available. Value: {{ $value }} Value:2 means one subcription is missing, Value:1 means 2 subscriptions are missing and Value:0 means all 3 subscriptions are missing'
-        Summary: Alert CDC- One or more subscriptions is/are not available
+        
