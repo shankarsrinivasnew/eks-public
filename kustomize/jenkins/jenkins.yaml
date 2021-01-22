@@ -96,7 +96,7 @@ spec:
             users:
               - id: "${ADMIN_USER}"
                 password: "${ADMIN_PASSWORD}"
-        authorizationStrategy: null
+        authorizationStrategy: {}
         configScripts:
           github: |-
             unclassified:
