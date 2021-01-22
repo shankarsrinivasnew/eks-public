@@ -49,3 +49,9 @@ data:
       groups:
         - sca-view-kube-system
         - sca-admin
+
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/sco-ro
+      username: sco-ro
+      groups:
+        - sco-view-kube-system
+        - sco-admin

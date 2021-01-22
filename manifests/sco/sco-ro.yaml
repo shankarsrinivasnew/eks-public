@@ -1,0 +1,27 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sco-ro
+  namespace: sco
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs:
+    - get
+    - list
+    - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sco-ro-binding
+  namespace: sco
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sco-ro
+subjects:
+- kind: ServiceAccount
+  name: tsb-sco
+  namespace: sco
