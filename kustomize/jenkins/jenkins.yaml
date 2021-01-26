@@ -143,7 +143,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                                  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
                                   python get-pip.py
                                 toolHome: "/home/jenkins/.local/bin"
                   - name: "ansible"
@@ -152,7 +152,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                                  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
                                   python get-pip.py
                                   /home/jenkins/.local/bin/pip install --user ansible
                                   /home/jenkins/.local/bin/pip install --user pywinrm
@@ -163,7 +163,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                                  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
                                   python get-pip.py
                                   curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscli.zip
                                   unzip awscli.zip
