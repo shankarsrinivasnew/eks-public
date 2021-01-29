@@ -24,8 +24,6 @@ roleRef:
 subjects:
 - kind: Group
   name: cb-view-kube-system
-- kind: Group
-  name: cb-read-only
 - kind: ServiceAccount
   name: tsb-cb
   namespace: cb
