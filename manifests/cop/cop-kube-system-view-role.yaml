@@ -21,8 +21,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: cop-view-role
-- kind: Group
-  name: cop-read-only
 subjects:
 - kind: Group
   name: cop-view-kube-system
