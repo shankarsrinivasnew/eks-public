@@ -54,3 +54,5 @@ data:
       groups:
         - sca-view-kube-system
         - sca-admin
+        - sco-view-kube-system
+        - sco-admin
