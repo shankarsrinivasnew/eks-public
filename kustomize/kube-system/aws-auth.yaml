@@ -56,3 +56,15 @@ data:
         - sca-admin
         - sco-view-kube-system
         - sco-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cb-dev-eks
+      username: tsb-cb-dev
+      groups:
+        - cb-read-only
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop-dev-eks
+      username: tsb-cop-dev
+      groups:
+        - cop-read-only
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cob-dev-eks
+      username: tsb-cob-dev
+      groups:
+        - cob-read-only
