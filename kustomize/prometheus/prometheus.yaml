@@ -756,11 +756,11 @@ spec:
               receiver: itom-test-servicenow
               continue: true
             - match_re:
-                itopsbridge: "true"
                 environment: prod
               receiver: itom-prod-servicenow
               continue: true
             - match_re:
+                itopsbridge: "true"
                 environment: prod  
               receiver: itops-monitoring-email
               continue: true
