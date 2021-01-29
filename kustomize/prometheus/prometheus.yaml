@@ -525,15 +525,15 @@ spec:
                 basic_auth:
                   username: 'prometheus_user'
                   password_file: '/etc/alertmanager/secrets/servicenow-secret/servicenow_pw.txt'
-          - name: itom-prod-servicenow            
+          - name: itom-prod-servicenow
             webhook_configs:
-            - url: "https://tsbprod001.service-now.com/api/itsbb/alertmanager"  
-            send_resolved: true
-            http_config:
-              proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-              basic_auth:
-                username: 'prometheus_user'
-                password_file: '/etc/alertmanager/secrets/servicenow-secret/servicenow_pw.txt'
+            - url: "https://tsbprod001.service-now.com/api/itsbb/alertmanager"
+              send_resolved: true
+              http_config:
+                proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+                basic_auth:
+                  username: 'prometheus_user'
+                  password_file: '/etc/alertmanager/secrets/servicenow-secret/servicenow_pw.txt'
           - name: rax-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/{{ AWS_ENVIRONMENT }}-rax-alertmanager"
