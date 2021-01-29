@@ -24,3 +24,5 @@ roleRef:
 subjects:
 - kind: Group
   name: cop-view-kube-system
+- kind: Group
+  name: cop-read-only
