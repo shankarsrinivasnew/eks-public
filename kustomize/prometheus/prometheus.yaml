@@ -527,7 +527,7 @@ spec:
                   password_file: '/etc/alertmanager/secrets/servicenow-secret/servicenow_pw.txt'
           - name: itom-prod-servicenow            
             webhook_configs:
-            - url: "https:// tsbprod001.service-now.com/api/itsbb/alertmanager"  
+            - url: "https://tsbprod001.service-now.com/api/itsbb/alertmanager"  
             send_resolved: true
             http_config:
               proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
@@ -761,7 +761,6 @@ spec:
               receiver: itom-prod-servicenow
               continue: true
             - match_re:
-                itopsbridge: "true"
                 environment: prod  
               receiver: itops-monitoring-email
               continue: true
