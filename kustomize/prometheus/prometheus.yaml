@@ -328,6 +328,8 @@ spec:
               - targets:
                 - prometheus-kube-prometheus-alertmanager.prometheus:9093
           - job_name: ec2-discover-node-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s 
             ec2_sd_configs:
               - region: eu-west-2
                 port: 9100
@@ -354,7 +356,7 @@ spec:
                 target_label: subsystem
           - job_name: ec2-discover-hdf-jmx
             scrape_interval: 60s
-            scrape_timeout: 60s
+            scrape_timeout: 60s   
             ec2_sd_configs:
               - region: eu-west-2
                 port: 9110
@@ -380,7 +382,7 @@ spec:
               - source_labels: [__meta_ec2_instance_state]
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
-                target_label: instancetype
+                target_label: instancetype     
           - job_name: ec2-discover-scylla-default
             ec2_sd_configs:
               - region: eu-west-2
