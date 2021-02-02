@@ -328,6 +328,8 @@ spec:
               - targets:
                 - prometheus-kube-prometheus-alertmanager.prometheus:9093
           - job_name: ec2-discover-node-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
             ec2_sd_configs:
               - region: eu-west-2
                 port: 9100
