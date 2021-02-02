@@ -353,6 +353,8 @@ spec:
               - source_labels: [__meta_ec2_tag_subsystem]
                 target_label: subsystem
           - job_name: ec2-discover-hdf-jmx
+            scrape_interval: 60s
+            scrape_timeout: 60s
             ec2_sd_configs:
               - region: eu-west-2
                 port: 9110
