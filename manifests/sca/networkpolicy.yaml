@@ -1,0 +1,176 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent
+  namespace: sca
+spec:
+  serviceAccountSelector: role == 'jenkins-agent'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      source:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      destination:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9042
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: mgmt
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'mgmt' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 443
+          - 80
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sca-application
+  namespace: sca
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: sca-application
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-sca
+            - default
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9042
+          - 9142
+          - 9092
+          - 7790
+          - 2181
+          - 7788
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sca-sa-policy
+  namespace: sca
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: sca-sa
+          to: mgmt
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-sca
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.48.0/20
+        ports:
+          - 80
+          - 443
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sca-inter-namespace
+  namespace: sca
+spec:
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: sca-namespace
+          to: sca-namespace
+      action: Allow
+      source:
+        namespaceSelector: projectcalico.org/name == 'sca'
+  egress:
+    - metadata:
+        annotations:
+          from: sca-namespace
+          to: sca-namespace
+      action: Allow
+      protocol: TCP
+      destination:
+        namespaceSelector: projectcalico.org/name == 'sca'
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: sca-nginx-ingress
+  namespace: sca
+spec:
+  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  types:
+    - Ingress
+  ingress:
+    - metadata:
+      annotations:
+        from: vpc
+        to: nginx
+      action: Allow
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-ingress
+  namespace: sca
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app: prometheus
+      ports:
+        - port: 8080
+          protocol: TCP
+        - port: 3000
+          protocol: TCP
