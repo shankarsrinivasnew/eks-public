@@ -483,15 +483,16 @@ spec:
     ## Configuration for alertmanager
     ##
     alertmanager:
-        configSecret: alertmanager-config
-        secrets: ['servicenow-secret']
-        resources:
-          requests:
-            memory: 50Mi
-        nodeSelector:
-          taints.eks.aws.uk.tsb/role: mgmt
-        tolerations:
-          - key: role
-            operator: Equal
-            value: mgmt
-            effect: NoSchedule
+      useExistingSecret: true
+      configSecret: alertmanager-config
+      secrets: ['servicenow-secret']
+      resources:
+        requests:
+          memory: 50Mi
+      nodeSelector:
+        taints.eks.aws.uk.tsb/role: mgmt
+      tolerations:
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule

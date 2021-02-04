@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: alertmanager-config
+  name: alertmanager-prometheus-kube-prometheus-alertmanager
   namespace: prometheus
 stringData:
   alertmanager.yaml: |-
