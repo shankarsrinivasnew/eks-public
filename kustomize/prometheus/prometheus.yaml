@@ -545,7 +545,7 @@ spec:
           - name: itops-monitoring-email
             webhook_configs:
             - url: "http://alertmanager-sns-forwarder-svc:9087/alert/{{ AWS_ENVIRONMENT }}-itops-alertmanager"
-              send_resolved: true
+              send_resolved: false
           - name: cmos-event-management
             webhook_configs:
             - url: "https://webhook.cmos-eventmanagement.com:9443/probe/webhook"
