@@ -628,7 +628,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "100 - avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\", instance=~\".*.hdf.*\"}[1m]) * 100)",
+              "expr": "100 - avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\", instance=~\".*.hdf.*\"}[5m]) * 100)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
