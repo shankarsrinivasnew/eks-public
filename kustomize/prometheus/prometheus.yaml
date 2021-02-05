@@ -484,7 +484,6 @@ spec:
     ##
     alertmanager:
       useExistingSecret: true
-      configSecret: alertmanager-config
       secrets: ['servicenow-secret']
       resources:
         requests:
