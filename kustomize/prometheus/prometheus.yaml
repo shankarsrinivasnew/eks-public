@@ -484,6 +484,7 @@ spec:
     ##
     alertmanager:
       useExistingSecret: true
+      configSecret: alertmanager-prometheus-kube-prometheus-alertmanager
       secrets: ['servicenow-secret']
       resources:
         requests:
