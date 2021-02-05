@@ -12,6 +12,9 @@ resources:
   - prometheusrule-rax-middleware.yaml
   - prometheusrule-rax-node.yaml
   - prometheusrule-itops.yaml
+  - prometheusrule-cop-down.yaml
+  - prometheusrule-cop-up.yaml
+  - prometheusrule-cop-responsetime.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
