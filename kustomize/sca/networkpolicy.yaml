@@ -113,33 +113,6 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: sca-inter-namespace
-  namespace: sca
-spec:
-  types:
-    - Ingress
-    - Egress
-  ingress:
-    - metadata:
-        annotations:
-          from: sca-namespace
-          to: sca-namespace
-      action: Allow
-      source:
-        namespaceSelector: projectcalico.org/name == 'sca'
-  egress:
-    - metadata:
-        annotations:
-          from: sca-namespace
-          to: sca-namespace
-      action: Allow
-      protocol: TCP
-      destination:
-        namespaceSelector: projectcalico.org/name == 'sca'
----
-apiVersion: crd.projectcalico.org/v1
-kind: NetworkPolicy
-metadata:
   name: sca-nginx-ingress
   namespace: sca
 spec:
