@@ -85,33 +85,6 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: sco-inter-namespace
-  namespace: sco
-spec:
-  types:
-    - Ingress
-    - Egress
-  ingress:
-    - metadata:
-        annotations:
-          from: sco-namespace
-          to: sco-namespace
-      action: Allow
-      source:
-        namespaceSelector: projectcalico.org/name == 'sco'
-  egress:
-    - metadata:
-        annotations:
-          from: sco-namespace
-          to: sco-namespace
-      action: Allow
-      protocol: TCP
-      destination:
-        namespaceSelector: projectcalico.org/name == 'sco'
----
-apiVersion: crd.projectcalico.org/v1
-kind: NetworkPolicy
-metadata:
   name: sco-nginx-ingress
   namespace: sco
 spec:
