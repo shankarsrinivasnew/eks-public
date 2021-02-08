@@ -12,7 +12,7 @@ spec:
     rules:
   ##################COP_INBOUND_RESTPROXY - more than 5 requests failure of 500 status per minutes for last 30 minutes? ##########################################################
     - record: cop_inbound_v1_status500_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=500,uri=~".*inbound.*"}[30m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*inbound.*"}[30m]))*60)
     - alert: COP_inbound_v1_status500_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status500_{{ AWS_ENVIRONMENT }}) > 5
       for: 30m
@@ -30,7 +30,7 @@ spec:
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 500 status per minutes for last 5 minutes? ########################################################## 
     - record: cop_inbound_v1_status500_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=500,uri=~".*inbound.*"}[5m]))*60)          
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*inbound.*"}[5m]))*60)          
     - alert: COP_inbound_v1_status500_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status500_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -48,7 +48,7 @@ spec:
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
   ##################COP_INBOUND_RESTPROXY - more than 5 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status400_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=400,uri=~".*inbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status400_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status400_{{ AWS_ENVIRONMENT }}) > 5
       for: 30m
@@ -66,7 +66,7 @@ spec:
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status400_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=400,uri=~".*inbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status400_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status400_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -84,7 +84,7 @@ spec:
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
   ##################COP_OUTBOUND_RESTPROXY - more than 5 requests failure of 500 status per minutes for last 30 minutes? ##########################################################
     - record: cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=500,uri=~".*outbound.*"}[30m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*"}[30m]))*60)
     - alert: COP_outbound_v1_status500_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}) > 5
       for: 30m
@@ -102,7 +102,7 @@ spec:
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 500 status per minutes for last 5 minutes? ########################################################## 
     - record: cop_outbound_v1_status500_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=500,uri=~".*outbound.*"}[5m]))*60)          
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*"}[5m]))*60)          
     - alert: COP_outbound_v1_status500_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status500_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -120,7 +120,7 @@ spec:
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
   ##################COP_OUTBOUND_RESTPROXY - more than 5 requests failure of 503 status per minutes for last 30 minutes? ##########################################################
     - record: cop_outbound_v1_status503_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=503,uri=~".*outbound.*"}[30m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*outbound.*"}[30m]))*60)
     - alert: COP_outbound_v1_status503_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status503_{{ AWS_ENVIRONMENT }}) > 5
       for: 30m
@@ -138,7 +138,7 @@ spec:
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 503 status per minutes for last 5 minutes? ########################################################## 
     - record: cop_outbound_v1_status503_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=503,uri=~".*outbound.*"}[5m]))*60)          
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*outbound.*"}[5m]))*60)          
     - alert: COP_outbound_v1_status503_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status503_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -156,7 +156,7 @@ spec:
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
   ##################COP_OUTBOUND_RESTPROXY - more than 5 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status400_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=400,uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*outbound.*"}[5m]))*60)
     - alert: COP_outbound_v1_status400_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status400_{{ AWS_ENVIRONMENT }}) > 5
       for: 30m
@@ -174,7 +174,7 @@ spec:
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status400_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status=400,uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*outbound.*"}[5m]))*60)
     - alert: COP_outbound_v1_status400_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status400_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
