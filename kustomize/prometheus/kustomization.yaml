@@ -1,6 +1,7 @@
 resources:
   - alertmanager-sns-forwarder.yaml
   - prometheus.yaml
+  - alertmanager.yaml
   - storage.yaml
   - consul-exporter.yaml
   - prometheusrule-cb-down.yaml
@@ -11,6 +12,9 @@ resources:
   - prometheusrule-rax-middleware.yaml
   - prometheusrule-rax-node.yaml
   - prometheusrule-itops.yaml
+  - prometheusrule-cop-down.yaml
+  - prometheusrule-cop-up.yaml
+  - prometheusrule-cop-responsetime.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
