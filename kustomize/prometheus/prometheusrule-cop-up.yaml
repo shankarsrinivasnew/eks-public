@@ -1,0 +1,192 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cop-up-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: COP_APPS_UP_STATE
+    rules:
+  ##################COP_INBOUND_RESTPROXY - more than 5 requests failure of 500 status per minutes for last 30 minutes? ##########################################################
+    - record: cop_inbound_v1_status500_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*inbound.*"}[30m]))*60)
+    - alert: COP_inbound_v1_status500_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_inbound_v1_status500_{{ AWS_ENVIRONMENT }}) > 5
+      for: 30m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cop
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 5 times in 30 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
+  ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 500 status per minutes for last 5 minutes? ########################################################## 
+    - record: cop_inbound_v1_status500_count20{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*inbound.*"}[5m]))*60)          
+    - alert: COP_inbound_v1_status500_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_inbound_v1_status500_count20{{ AWS_ENVIRONMENT }}) > 20
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
+  ##################COP_INBOUND_RESTPROXY - more than 5 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
+    - record: cop_inbound_v1_status400_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*inbound.*"}[5m]))*60)
+    - alert: COP_inbound_v1_status400_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_inbound_v1_status400_{{ AWS_ENVIRONMENT }}) > 5
+      for: 30m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cop
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 5 times in 5 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
+  ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
+    - record: cop_inbound_v1_status400_count20{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*inbound.*"}[5m]))*60)
+    - alert: COP_inbound_v1_status400_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_inbound_v1_status400_count20{{ AWS_ENVIRONMENT }}) > 20
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak failure rate of 20 for last 5 mins. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
+  ##################COP_OUTBOUND_RESTPROXY - more than 5 requests failure of 500 status per minutes for last 30 minutes? ##########################################################
+    - record: cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*"}[30m]))*60)
+    - alert: COP_outbound_v1_status500_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}) > 5
+      for: 30m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cop
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 5 times in 30 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
+  ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 500 status per minutes for last 5 minutes? ########################################################## 
+    - record: cop_outbound_v1_status500_count20{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*"}[5m]))*60)          
+    - alert: COP_outbound_v1_status500_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_outbound_v1_status500_count20{{ AWS_ENVIRONMENT }}) > 20
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
+  ##################COP_OUTBOUND_RESTPROXY - more than 5 requests failure of 503 status per minutes for last 30 minutes? ##########################################################
+    - record: cop_outbound_v1_status503_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*outbound.*"}[30m]))*60)
+    - alert: COP_outbound_v1_status503_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_outbound_v1_status503_{{ AWS_ENVIRONMENT }}) > 5
+      for: 30m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cop
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 5 times in 30 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
+  ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 503 status per minutes for last 5 minutes? ########################################################## 
+    - record: cop_outbound_v1_status503_count20{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*outbound.*"}[5m]))*60)          
+    - alert: COP_outbound_v1_status503_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_outbound_v1_status503_count20{{ AWS_ENVIRONMENT }}) > 20
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 20 times in 5 min. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
+  ##################COP_OUTBOUND_RESTPROXY - more than 5 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
+    - record: cop_outbound_v1_status400_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*outbound.*"}[5m]))*60)
+    - alert: COP_outbound_v1_status400_yellow_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_outbound_v1_status400_{{ AWS_ENVIRONMENT }}) > 5
+      for: 30m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cop
+        severity: WARNING
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 5 times in 30 min. Value: {{ $value }}'
+        summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
+  ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
+    - record: cop_outbound_v1_status400_count20{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*outbound.*"}[5m]))*60)
+    - alert: COP_outbound_v1_status400_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_outbound_v1_status400_count20{{ AWS_ENVIRONMENT }}) > 20
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        type: 8x5
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 20 times in 5 min.. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
