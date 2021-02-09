@@ -483,14 +483,17 @@ spec:
     ## Configuration for alertmanager
     ##
     alertmanager:
-      secrets: ['servicenow-secret']
-      resources:
-        requests:
-          memory: 50Mi
-      nodeSelector:
-        taints.eks.aws.uk.tsb/role: mgmt
-      tolerations:
-        - key: role
-          operator: Equal
-          value: mgmt
-          effect: NoSchedule
+      alertmanagerSpec:
+        useExistingSecret: true
+        configSecret: alertmanager-prometheus-kube-prometheus-alertmanager
+        secrets: ['servicenow-secret']
+        resources:
+          requests:
+            memory: 50Mi
+        nodeSelector:
+          taints.eks.aws.uk.tsb/role: mgmt
+        tolerations:
+          - key: role
+            operator: Equal
+            value: mgmt
+            effect: NoSchedule
