@@ -1,7 +1,7 @@
 resources:
+  - alertmanager.yaml
   - alertmanager-sns-forwarder.yaml
   - prometheus.yaml
-  - alertmanager.yaml
   - storage.yaml
   - consul-exporter.yaml
   - prometheusrule-cb-down.yaml
