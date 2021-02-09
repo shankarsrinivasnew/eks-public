@@ -483,7 +483,6 @@ spec:
     ## Configuration for alertmanager
     ##
     alertmanager:
-      useExistingSecret: true
       secrets: ['servicenow-secret']
       resources:
         requests:
