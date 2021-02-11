@@ -5,7 +5,7 @@ metadata:
   name: cop-view-role
   namespace: kube-system
 rules:
-- apiGroups: [""]
+- apiGroups: ["*"]
   resources: ["*"]
   verbs:
     - get
