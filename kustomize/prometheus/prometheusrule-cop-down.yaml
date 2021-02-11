@@ -25,6 +25,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
+        tsbci: AWS_COP
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
         summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
@@ -43,6 +44,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
+        tsbci: AWS_COP
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
         summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
@@ -60,6 +62,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
+        tsbci: AWS_COP
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
@@ -78,6 +81,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
+        tsbci: AWS_COP
       annotations:
         description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
         summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
@@ -95,6 +99,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
+        tsbci: AWS_COP
       annotations:
         description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
@@ -112,6 +117,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
+        tsbci: AWS_COP
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running   
