@@ -25,7 +25,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 5 times in 30 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
@@ -44,7 +44,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
@@ -63,7 +63,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 5 times in 5 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
@@ -82,7 +82,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} is at peak failure rate of 20 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
@@ -101,7 +101,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 5 times in 30 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
@@ -120,7 +120,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
@@ -139,7 +139,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 5 times in 30 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
@@ -158,7 +158,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
@@ -177,7 +177,7 @@ spec:
         namespace: cop
         severity: WARNING
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 5 times in 30 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
@@ -196,7 +196,7 @@ spec:
         namespace: cop
         severity: CRITICAL
         type: 8x5
-        tsbci: AWS_COP
+        tsbci: COP
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 20 times in 5 min.. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}  
