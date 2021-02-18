@@ -287,7 +287,7 @@ spec:
             effect: NoSchedule
         image:
           repository: quay.io/prometheus/prometheus
-          tag: v2.23.0
+          tag: v2.25.0
         containers:
           - name: prometheus
             env:
@@ -474,8 +474,8 @@ spec:
         ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
         ##
         thanos:
-          image: quay.io/thanos/thanos:v0.17.2
-          version: v0.17.2
+          image: quay.io/thanos/thanos:v0.18.0
+          version: v0.18.0
           objectStorageConfig:
             name: thanos-s3-config
             key: object-store.yaml
