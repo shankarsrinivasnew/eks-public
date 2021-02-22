@@ -1,0 +1,150 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent
+  namespace: ods
+spec:
+  serviceAccountSelector: role == 'jenkins-agent'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      source:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      destination:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+        ports:
+          - 9042
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: mgmt
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.48.0/20
+        ports:
+          - 443
+          - 80
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: ods-application
+  namespace: ods
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: ods-application
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-ods
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+        ports:
+          - 9042
+          - 9142
+          - 9092
+          - 7790
+          - 2181
+          - 7788
+          - 1883
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: ods-sa-policy
+  namespace: ods
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: ods-sa
+          to: mgmt
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-ods
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.48.0/20
+        ports:
+          - 80
+          - 443
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: ods-nginx-ingress
+  namespace: ods
+spec:
+  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  types:
+    - Ingress
+  ingress:
+    - metadata:
+      annotations:
+        from: vpc
+        to: nginx
+      action: Allow
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-ingress
+  namespace: ods
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app: prometheus
+      ports:
+        - port: 8080
+          protocol: TCP
+        - port: 3000
+          protocol: TCP
