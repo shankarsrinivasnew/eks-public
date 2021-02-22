@@ -112,33 +112,6 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: ods-inter-namespace
-  namespace: ods
-spec:
-  types:
-    - Ingress
-    - Egress
-  ingress:
-    - metadata:
-        annotations:
-          from: ods-namespace
-          to: ods-namespace
-      action: Allow
-      source:
-        namespaceSelector: projectcalico.org/name == 'ods'
-  egress:
-    - metadata:
-        annotations:
-          from: ods-namespace
-          to: ods-namespace
-      action: Allow
-      protocol: TCP
-      destination:
-        namespaceSelector: projectcalico.org/name == 'ods'
----
-apiVersion: crd.projectcalico.org/v1
-kind: NetworkPolicy
-metadata:
   name: ods-nginx-ingress
   namespace: ods
 spec:
