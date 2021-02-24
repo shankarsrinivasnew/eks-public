@@ -183,7 +183,7 @@ spec:
         level: YELLOW
         platform: AWS
         namespace: cop
-        severity: WARNING
+        severity: MAJOR
         type: 8x5
         tsbci: COP
       annotations:
