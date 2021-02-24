@@ -3,7 +3,7 @@ apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
   name: jenkins-agent
-  namespace: ods
+  namespace: obs
 spec:
   serviceAccountSelector: role == 'jenkins-agent'
   types:
@@ -34,8 +34,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        selector: vpc == 'local' && layer == 'all'
-        namespaceSelector: global()
+        nets:
+          - "{{ VPC_CIDR }}"
         ports:
           - 9042
     - metadata:
@@ -45,8 +45,8 @@ spec:
       action: Allow
       protocol: TCP
       destination:
-        selector: vpc == 'mgmt' && layer == 'all'
-        namespaceSelector: global()
+        nets:
+          - 10.161.48.0/20
         ports:
           - 443
           - 80
@@ -54,26 +54,26 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: ods-application
-  namespace: ods
+  name: obs-application
+  namespace: obs
 spec:
   types:
     - Egress
   egress:
     - metadata:
         annotations:
-          from: ods-application
+          from: obs-application
           to: vpc
       action: Allow
       source:
         serviceAccounts:
           names:
-            - tsb-ods
+            - tsb-obs
             - default
       protocol: TCP
       destination:
-        selector: vpc == 'local' && layer == 'all'
-        namespaceSelector: global()
+        nets:
+          - "{{ VPC_CIDR }}"
         ports:
           - 9042
           - 9142
@@ -81,25 +81,26 @@ spec:
           - 7790
           - 2181
           - 7788
+          - 1883
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: ods-sa-policy
-  namespace: ods
+  name: obs-sa-policy
+  namespace: obs
 spec:
   types:
     - Egress
   egress:
     - metadata:
         annotations:
-          from: ods-sa
+          from: obs-sa
           to: mgmt
       action: Allow
       source:
         serviceAccounts:
           names:
-            - tsb-ods
+            - tsb-obs
             - default
       protocol: TCP
       destination:
@@ -112,8 +113,8 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: ods-nginx-ingress
-  namespace: ods
+  name: obs-nginx-ingress
+  namespace: obs
 spec:
   serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
   types:
@@ -132,18 +133,18 @@ apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
   name: prometheus-ingress
-  namespace: ods
+  namespace: obs
 spec:
   podSelector: {}
   policyTypes:
-  - Ingress
+    - Ingress
   ingress:
-  - from:
-    - namespaceSelector: 
-        matchLabels:
-          app: prometheus
-    ports:
-    - port: 8080
-      protocol: TCP
-    - port: 3000
-      protocol: TCP
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app: prometheus
+      ports:
+        - port: 8080
+          protocol: TCP
+        - port: 3000
+          protocol: TCP
