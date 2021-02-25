@@ -17,6 +17,8 @@ resources:
   - prometheusrule-cop-responsetime.yaml
   - prometheusrule-cop-inbound-proxy.yaml
   - prometheusrule-cop-outbound-proxy.yaml
+  - prometheusrule-cop-s3-sink.yaml
+  - prometheusrule-cop-vocalink.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
