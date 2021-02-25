@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cop-vocalink-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: COP_VOCALINK_APP_ALERTS
+    rules:
+  ##################COP_VOCALINK - more than 20 requests failure of any status other than 200 per minutes for last 5 minutes? ########################################################## 
+    - record: cop_vocalink_v1_status_not_200_count20{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status!~"2..",uri=~".*vocalink.*"}[5m]))*60)          
+    - alert: COP_inbound_v1_status_not_200_red_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cop_inbound_v1_status_not_200_count20{{ AWS_ENVIRONMENT }}) > 20
+      for: 5m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        type: 8x5
+        tsbci: COP
+      annotations:
+        description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status not equal to 200 more than 20 times in 5 min. Value: {{ $value }}'
+        summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}} 
