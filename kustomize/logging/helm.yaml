@@ -23,6 +23,10 @@ spec:
         operator: Equal
         value: sco
         effect: NoSchedule
+      - key: role
+        operator: Equal
+        value: cop
+        effect: NoSchedule
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
