@@ -22,6 +22,7 @@ spec:
         level: CRITICAL
         platform: AWS
         severity: CRITICAL
+        priority: P4
         application: cdc
         tsbci: INFOSPHERE_CDC
         itopsbridge: "true"
@@ -37,6 +38,7 @@ spec:
         level: CRITICAL
         platform: AWS
         severity: CRITICAL
+        priority: P4
         application: cdc
         tsbci: INFOSPHERE_CDC
         itopsbridge: "true"
