@@ -230,6 +230,7 @@ stringData:
             group: INFRA
             environment: preprod
             severity: WARNING|CRITICAL
+            priority: P4
           receiver: cb-slack-notifications-new
           continue: true
         - match:
@@ -237,6 +238,7 @@ stringData:
             group: INFRA
             environment: prod
             severity: CRITICAL
+            priority: P4
           receiver: cb-critical-slack-notifications
           continue: true
         - match:
@@ -244,27 +246,32 @@ stringData:
             group: INFRA
             environment: prod
             severity: WARNING
+            priority: P4
           receiver: cb-warning-slack-notifications
           continue: true
         - match_re:
             severity: CRITICAL
+            priority: P4
             rackspace: "true"
             environment: preprod|prod
           receiver: rax-monitoring-email
           continue: true
         - match_re:
             severity: CRITICAL
+            priority: P4
             rackspace: "true"
             environment: preprod|prod
           receiver: rax-monitoring-slack
           continue: true
         - match_re:
             severity: CRITICAL|WARNING
+            priority: P4
             environment: preprod|prod
           receiver: itom-dev-servicenow
           continue: true
         - match_re:
             severity: CRITICAL|WARNING
+            priority: P4
             environment: preprod|prod
           receiver: itom-test-servicenow
           continue: true
