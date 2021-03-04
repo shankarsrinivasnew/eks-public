@@ -518,7 +518,7 @@ spec:
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
                 mountPath: "/var/run/docker.sock"
-       jnlp-ods: |
+        jnlp-ods: |
           - name: jnlp-ods
             label: tsb-ods
             namespace: ods
