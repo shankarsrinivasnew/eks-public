@@ -15,6 +15,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: node_errors
         rackspace: "true"
@@ -30,6 +31,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: scylla_read
         rackspace: "true"
@@ -45,6 +47,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: active_controllers
         rackspace: "true"
@@ -60,6 +63,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: kafka-zookeeper
         rackspace: "true"
@@ -75,6 +79,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: logstash-service
         rackspace: "true"
@@ -90,6 +95,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: consul-service
         rackspace: "true"
@@ -106,6 +112,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: logstash-service
         rackspace: "true"
@@ -121,6 +128,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: consul-endpoint
         rackspace: "true"
@@ -136,6 +144,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: grafana-endpoint
         rackspace: "true"
@@ -151,6 +160,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: prometheus-endpoint
         rackspace: "true"
@@ -166,6 +176,7 @@ spec:
       for: 10m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: vault-endpoint
         rackspace: "true"
