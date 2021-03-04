@@ -259,12 +259,11 @@ stringData:
           receiver: rax-monitoring-slack
           continue: true
         - match_re:
-            severity: CRITICAL|WARNING
             environment: preprod|prod
           receiver: itom-dev-servicenow
           continue: true
         - match_re:
-            severity: CRITICAL|WARNING
+            severity: ^(CRITICAL|WARNING)
             environment: preprod|prod
           receiver: itom-test-servicenow
           continue: true
