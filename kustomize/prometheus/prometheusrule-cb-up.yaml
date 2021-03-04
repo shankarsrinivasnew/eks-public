@@ -24,6 +24,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -40,6 +41,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -59,6 +61,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -75,6 +78,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -94,6 +98,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -110,6 +115,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -129,6 +135,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -145,6 +152,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -164,6 +172,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -180,6 +189,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -199,6 +209,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -215,6 +226,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -234,6 +246,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -250,6 +263,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -269,6 +283,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -285,6 +300,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -304,6 +320,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -320,6 +337,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -339,6 +357,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -355,6 +374,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -374,6 +394,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:
@@ -390,6 +411,7 @@ spec:
         platform: AWS
         namespace: cb
         severity: WARNING
+        priority: P4
         type: 8x5
         tsbci: AWS_CONV_BANK
       annotations:

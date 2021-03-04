@@ -15,6 +15,7 @@ spec:
       for: 1m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: endpoints
         rackspace: "true"
@@ -26,6 +27,7 @@ spec:
       for: 1m
       labels:
         severity: CRITICAL
+        priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: endpoints
         rackspace: "true"
