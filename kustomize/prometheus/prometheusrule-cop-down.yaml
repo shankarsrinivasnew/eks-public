@@ -24,7 +24,6 @@ spec:
         platform: AWS
         namespace: cop
         severity: WARNING
-        priority: P4
         type: 8x5
         tsbci: COP
       annotations:
@@ -44,7 +43,6 @@ spec:
         platform: AWS
         namespace: cop
         severity: WARNING
-        priority: P4
         type: 8x5
         tsbci: COP
       annotations:
@@ -63,7 +61,6 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
         type: 8x5
         tsbci: COP
       annotations:
@@ -83,7 +80,6 @@ spec:
         platform: AWS
         namespace: cop
         severity: WARNING
-        priority: P4
         type: 8x5
         tsbci: COP
       annotations:
@@ -102,7 +98,6 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
         type: 8x5
         tsbci: COP
       annotations:
@@ -121,7 +116,6 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
         type: 8x5
         tsbci: COP
       annotations:
