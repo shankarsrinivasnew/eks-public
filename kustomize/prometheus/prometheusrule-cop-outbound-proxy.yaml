@@ -12,7 +12,7 @@ spec:
     rules:
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 408 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status408_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="408",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="408",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status408_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status408_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -32,7 +32,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status400_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status400_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status400_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -52,7 +52,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 401 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status401_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="401",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="401",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status401_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status401_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -72,7 +72,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 403 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status403_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="403",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="403",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status403_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status403_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -92,7 +92,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 404 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status404_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="404",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="404",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status404_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status404_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -112,7 +112,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 405 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status405_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="405",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="405",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status405_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status405_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -132,7 +132,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 406 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status406_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="406",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="406",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status406_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status406_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -152,7 +152,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 429 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status429_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="429",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="429",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status429_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status429_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
@@ -172,7 +172,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 500 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status500_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}) >20
       for: 5m
@@ -192,7 +192,7 @@ spec:
 
   ##################COP_OUTBOUND_RESTPROXY - more than 20 requests failure of 503 status per minutes for last 5 minutes? ##########################################################
     - record: cop_outbound_v1_status503_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*outbound.*"}[5m]))*60)
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status503_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_outbound_v1_status503_count20{{ AWS_ENVIRONMENT }}) > 20
       for: 5m
