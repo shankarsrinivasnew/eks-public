@@ -1022,30 +1022,6 @@ spec:
                 operator: Equal
                 value: mgmt
                 effect: NoSchedule
-      aipoc:
-        podName: aipoc
-        componentName: tsb-aipoc
-        envVars:
-          - name: http_proxy
-            value: http://eu-west-2.proxy.aws.uk.tsb:3128
-          - name: https_proxy
-            value: http://eu-west-2.proxy.aws.uk.tsb:3128
-          - name: no_proxy
-            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssm$        yamlTemplate: |-
-          apiVersion: v1
-          kind: Pod
-          metadata:
-            namespace: ods
-          spec:
-            serviceAccountName: tsb-ods
-            securityContext:
-              #runAsUser: 0
-              fsGroup: 1337
-            tolerations:
-              - key: role
-                operator: Equal
-                value: mgmt
-                effect: NoSchedule
       sca:
         podName: sca
         componentName: tsb-sca
