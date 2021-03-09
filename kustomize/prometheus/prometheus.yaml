@@ -188,6 +188,30 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-rax-endpoints
+            - name: 'sca-grafana-cdc-ingesters'
+              orgId: 1
+              folder: 'TSB-SCA'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sca-grafana-cdc-ingesters
+            - name: 'sca-grafana-microservice'
+              orgId: 1
+              folder: 'TSB-SCA'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sca-grafana-microservice
+            - name: 'sca-grafana-cdc-customerdata'
+              orgId: 1
+              folder: 'TSB-SCA'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sca-grafana-cdc-customerdata
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -202,7 +226,9 @@ spec:
         shared-grafana-kubeprometheus: shared-kubeprometheus-cm
         shared-grafana-kubestatefulsets: shared-kubestatefulsets-cm
         shared-grafana-rax-endpoints: shared-rax-endpoints-cm
-
+        sca-grafana-cdc-ingesters: sca-cdc-ingesters-cm
+        sca-grafana-microservice: sca-microservice-cm
+        sca-grafana-cdc-customerdata: sca-cdc-customerdata-cm
 
 
     prometheusOperator:
