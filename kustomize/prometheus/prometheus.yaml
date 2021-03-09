@@ -212,6 +212,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sca-grafana-cdc-customerdata
+            - name: 'cb-grafana-businessdashboard'
+              orgId: 1
+              folder: 'TSB-CB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cb-grafana-businessdashboard
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -229,6 +237,7 @@ spec:
         sca-grafana-cdc-ingesters: sca-cdc-ingesters-cm
         sca-grafana-microservice: sca-microservice-cm
         sca-grafana-cdc-customerdata: sca-cdc-customerdata-cm
+        cb-grafana-businessdashboard: cb-business-metrics-cm
 
 
     prometheusOperator:
