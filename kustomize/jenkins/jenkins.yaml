@@ -202,7 +202,7 @@ spec:
       componentName: jenkins-agent
       resources:
         limits:
-          memory: 1Gi
+          memory: 2Gi
       envVars:
         - name: http_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
