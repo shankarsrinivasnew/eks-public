@@ -23,7 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 43,
+      "id": 103,
       "links": [],
       "panels": [
         {
@@ -74,25 +74,25 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_device_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_device_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
               "interval": "",
               "legendFormat": "invalid_device",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_active_devices{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_active_devices{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "active_devices",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_registered_user_with_biometric{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_registered_user_with_biometric{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "registered_user_with_biometric",
               "refId": "C"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_registered_user_with_password{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_records_of_registered_user_with_password{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "registered_user_with_password",
               "refId": "D"
@@ -187,79 +187,79 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (total_records_of_retail_debit_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
+              "expr": "sum by (job, namespace) (total_records_of_retail_debit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
               "interval": "",
               "legendFormat": "Retail_DC",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_retail_credit_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_retail_credit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Retail_CC",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_business_debit_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_business_debit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Business_DC",
               "refId": "C"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_business_credit_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_business_credit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Business_CC",
               "refId": "D"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_cards_Without_Cust_Mapping_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_cards_Without_Cust_Mapping_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Without_Cust_Mapping_Cards",
               "refId": "E"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_visa_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_visa_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Visa_Cards",
               "refId": "F"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_master_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_master_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Master_Cards",
               "refId": "G"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Invalid_Cards",
               "refId": "H"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_duplicate_cards_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Duplicate_Cards",
               "refId": "I"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_active_retail_debit_cards{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_active_retail_debit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Retail_DC_Active",
               "refId": "J"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_active_retail_credit_cards{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_active_retail_credit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Retail_CC_Active",
               "refId": "K"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_active_business_debit_cards{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_active_business_debit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Business_DC_Active",
               "refId": "L"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_active_business_credit_cards{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_records_of_active_business_credit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "Business_CC_Active",
               "refId": "M"
@@ -354,31 +354,31 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (total_records_of_registered_users_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_registered_users_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "registered_users",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_duplicate_user_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_user_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "duplicate_users",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_multiple_customers_mapped_to_same_user_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_multiple_customers_mapped_to_same_user_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "multiple_customers_mapped_to_same_user",
               "refId": "C"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_multiple_users_mapped_to_same_customer_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
+              "expr": "sum by (job, namespace) (total_records_of_multiple_users_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
               "interval": "",
               "legendFormat": "multiple_users_mapped_to_same_customer",
               "refId": "D"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_users_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_users_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "Invalid_Users",
               "refId": "E"
@@ -473,31 +473,31 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (total_records_of_mobile_number_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_mobile_number_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Mobile_Number",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_phone_number_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_phone_number_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Phone_Number",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_cards_mapped_to_same_customer_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_cards_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Invalid_cards_mapped_to_same_customer",
               "refId": "C"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_duplicate_contact_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_contact_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Duplicate_Contact",
               "refId": "D"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_contact_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_contact_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Invalid_Contact",
               "refId": "E"
@@ -559,5 +559,5 @@ data:
       "timezone": "",
       "title": "SCA-CDC-Customer-Data",
       "uid": "SWdURhUMz",
-      "version": 6
+      "version": 1
     }

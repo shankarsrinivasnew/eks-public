@@ -23,7 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 42,
+      "id": 104,
       "links": [],
       "panels": [
         {
@@ -74,27 +74,27 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (auth_req_received_from_broadcom_total{application=\"tsb-sca-decision-topology\",namespace=\"sca\"})\r\n\r\n\r\n\r",
+              "expr": "sum by (job, namespace) (auth_req_received_from_broadcom_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})\r\n\r\n\r\n\r",
               "interval": "",
-              "legendFormat": "{{application}}-Auth_From_Broadcom",
+              "legendFormat": "auth_req_received_from_broadcom",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_authentication_decision_app_total{application=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_authentication_decision_app_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{application}}-Decision_APP",
+              "legendFormat": "authentication_decision_app",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_authentication_decision_OTP_total{application=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_authentication_decision_OTP_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{application}}-Decision_OTP",
+              "legendFormat": "authentication_decision_OTP",
               "refId": "C"
             },
             {
-              "expr": "sum by (application, namespace) (total_otp_requests_received_total{application=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_otp_requests_received_total{job=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{application}}-OTP_Requests",
+              "legendFormat": "otp_requests_received",
               "refId": "D"
             }
           ],
