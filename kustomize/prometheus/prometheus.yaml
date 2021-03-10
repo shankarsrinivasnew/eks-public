@@ -476,6 +476,22 @@ spec:
                 target_label: instance
               - target_label: __address__
                 replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
+          - job_name: 'blackbox_zookeeper'
+            metrics_path: /probe
+            params:
+              module: [tcp_zookeeper]
+            static_configs:
+              - targets:
+                  - zookeeper-0.hdf.{{ DNS_ZONE }}
+                  - zookeeper-1.hdf.{{ DNS_ZONE }}
+                  - zookeeper-2.hdf.{{ DNS_ZONE }}
+            relabel_configs:
+              - source_labels: [__address__]
+                target_label: __param_target
+              - source_labels: [__param_target]
+                target_label: instance
+              - target_label: __address__
+                replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
           - job_name: consul-exporter
             metrics_path: /metrics
             static_configs:

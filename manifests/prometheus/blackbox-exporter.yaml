@@ -42,11 +42,19 @@ spec:
             tls_config:
               ca_file: /etc/secrets/ca/bs-ca-chain.crt
             valid_status_codes: [403]  # Defaults to 4xx
+        tcp_zookeeper:
+          prober: tcp
+          timeout: 5s
+          tcp:
+            preferred_ip_protocol: ip4
+            query_response:
+              - send: ruok
+                expect: imok
 
 
     extraConfigmapMounts:
-       - name: bs-ca-chain
-         mountPath: /etc/secrets/ca/
-         configMap: bs-ca-chain-configmap
-         readOnly: true
-         defaultMode: 420
+      - name: bs-ca-chain
+        mountPath: /etc/secrets/ca/
+        configMap: bs-ca-chain-configmap
+        readOnly: true
+        defaultMode: 420

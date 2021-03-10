@@ -95,3 +95,23 @@ spec:
       action: Allow
       destination:
         selector: all()
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: blackbox-exporter
+  namespace: prometheus
+spec:
+  selector: app.kubernetes.io/instance == 'blackbox-exporter'
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: blackbox-exporter
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'data'
+        namespaceSelector: global()
