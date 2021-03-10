@@ -56,7 +56,7 @@ spec:
   - name: KAFKA-ZOOKEEEPER
     rules:
     - alert: KAFKA-ZOOKEEEPER
-      expr: (kafka_server_sessionexpirelistener_zookeeperdisconnects_total != 0)
+      expr: probe_success{job="blackbox_zookeeper"} == 0
       for: 10m
       labels:
         severity: CRITICAL
@@ -67,7 +67,7 @@ spec:
         tsbci: AWS_ELZ
         itopsbridge: "true"
       annotations:
-        summary: "Kafka server {{ $labels.instance }} unable to connect zookeeper. Zookeeper is down"
+        summary: "Zookeeper node {{ $labels.instance }} is failing an endpoint health check"
   - name: LOGSTASH-SERVICE
     rules:
     - alert: LOGSTASH-SERVICE
