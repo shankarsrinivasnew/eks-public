@@ -115,3 +115,5 @@ spec:
       destination:
         selector: vpc == 'local' && layer == 'data'
         namespaceSelector: global()
+        ports:
+          - 2181

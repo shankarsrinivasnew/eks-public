@@ -482,9 +482,9 @@ spec:
               module: [tcp_zookeeper]
             static_configs:
               - targets:
-                  - zookeeper-0.hdf.{{ DNS_ZONE }}
-                  - zookeeper-1.hdf.{{ DNS_ZONE }}
-                  - zookeeper-2.hdf.{{ DNS_ZONE }}
+                  - zookeeper-0.hdf.{{ DNS_ZONE }}:2181
+                  - zookeeper-1.hdf.{{ DNS_ZONE }}:2181
+                  - zookeeper-2.hdf.{{ DNS_ZONE }}:2181
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target

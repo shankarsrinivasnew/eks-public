@@ -49,9 +49,7 @@ spec:
             preferred_ip_protocol: ip4
             query_response:
               - send: ruok
-                expect: imok
-
-
+              - expect: imok
     extraConfigmapMounts:
       - name: bs-ca-chain
         mountPath: /etc/secrets/ca/
