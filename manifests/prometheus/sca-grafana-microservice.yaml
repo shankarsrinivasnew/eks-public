@@ -92,7 +92,7 @@ data:
               "refId": "C"
             },
             {
-              "expr": "sum by (application, namespace) (total_otp_requests_received_total{application=\"tsb-sca-authentication-api\",namespace=\"sca\"})",
+              "expr": "sum by (application, namespace) (total_otp_requests_received_total{application=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "{{application}}-OTP_Requests",
               "refId": "D"
