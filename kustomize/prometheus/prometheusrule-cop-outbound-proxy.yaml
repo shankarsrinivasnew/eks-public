@@ -182,7 +182,7 @@ spec:
     - record: cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*outbound.*|.*authorisation.*"}[5m]))*60)
     - alert: COP_outbound_v1_status500_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}) >20
+      expr: (cop_outbound_v1_status500_{{ AWS_ENVIRONMENT }}) > 10
       for: 5m
       labels:
         action: Closely monitor
