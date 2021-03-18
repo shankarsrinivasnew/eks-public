@@ -9,47 +9,7 @@ metadata:
 spec:
   groups:
   - name: COP_APPS_DOWN_STATE
-###########################################COP_APP_INBOUND_DOWN_WARNING##########################################################
     rules:
-    - record: cop_app_inbound_down_warning_{{ AWS_ENVIRONMENT }}
-      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cop-participants-loader|tsb-cop-inbound-cdc-customer|tsb-cop-inbound-cdc-customer-account-topology|tsb-cop-inbound-cdc-customer-contract-topology|tsb-cop-cdc-kw1800|tsb-cop-inbound-rest-proxy|tsb-cop-inbound-enrichment-topology|tsb-cop-inbound-account-name-verification-topology|tsb-cop-inbound-aggregator|tsb-cop-inbound-s3-sink",namespace="cop"})
-    - alert: COP_app_inbound_down_warning_alert_{{ AWS_ENVIRONMENT }}
-      expr: ((cop_app_inbound_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((cop_app_inbound_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: WARNING
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
-        summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
-###########################################COP_APP_OUTBOUND_DOWN_WARNING##########################################################
-    - record: cop_app_outbound_down_warning_{{ AWS_ENVIRONMENT }}
-      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cop-cdc-eiscd-ph0100|tsb-cop-api-gateway|tsb-cop-authorisation-topology|tsb-cop-openbanking-authorisation|tsb-cop-openbanking-registration|tsb-cop-outbound-aggregator-topology|tsb-cop-outbound-copout-integration|tsb-cop-outbound-copout-topology|tsb-cop-outbound-openbanking-topology|tsb-cop-outbound-rest-proxy|tsb-cop-outbound-s3-sink",namespace="cop"})
-    - alert: COP_app_outbound_down_warning_alert_{{ AWS_ENVIRONMENT }}
-      expr: ((cop_app_outbound_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((cop_app_outbound_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: WARNING
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
-        summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
 ###########################################COP_APP_ALL_DOWN_CRITICAL##########################################################
     - record: cop_app_all_down_critical_{{ AWS_ENVIRONMENT }}
       expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cop.*",namespace="cop"})
@@ -63,32 +23,13 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
+        priority: P3
         type: 8x5
         tsbci: COP
+        itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
-###########################################COP_APP_ALL_DOWN_WARNING##########################################################
-    - record: cop_app_all_down_warning_{{ AWS_ENVIRONMENT }}
-      expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-cop.*",namespace="cop"})
-    - alert: COP_app_all_down_warning_alert_{{ AWS_ENVIRONMENT }}
-      expr: ((cop_app_all_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((cop_app_all_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: WARNING
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
-        summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
 ###########################################COP_APP_ALL_DOWN_CRITICAL##########################################################
     - record: cop_app_all_down_critical_{{ AWS_ENVIRONMENT }}
       expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-cop.*",namespace="cop"})
@@ -102,9 +43,10 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
+        priority: P3
         type: 8x5
         tsbci: COP
+        itopsbridge: "true"
       annotations:
         description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
@@ -121,9 +63,10 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
+        priority: P3
         type: 8x5
         tsbci: COP
+        itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running   
