@@ -15,7 +15,7 @@ spec:
       expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status!~"2..",uri=~".*vocalink.*"}[1m])*60))
     - alert: COP_inbound_v1_status_not_200_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status_not_200_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 5m
+      for: 4m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -24,9 +24,10 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
+        priority: P2
         type: 8x5
         tsbci: COP
+        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status not equal to 200 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
