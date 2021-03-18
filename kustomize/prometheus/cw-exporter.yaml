@@ -190,3 +190,14 @@ spec:
       interval: 240s
       telemetryPath: /metrics
       timeout: 10s
+
+    nodeSelector:
+      taints.eks.aws.uk.tsb/role: mgmt
+
+    tolerations:
+      - key: role
+        operator: Equal
+        value: mgmt
+        effect: NoSchedule
+
+    affinity: {}
