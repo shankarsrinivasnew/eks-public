@@ -12,10 +12,10 @@ spec:
     rules:
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 408 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status408_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="408",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="408",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status408_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status408_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -24,20 +24,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P3
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 408 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 400 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status400_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="400",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status400_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status400_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -46,20 +45,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 401 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status401_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="401",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="401",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status401_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status401_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -68,20 +66,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 401 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 403 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status403_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="403",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="403",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status403_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status403_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -90,20 +87,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 403 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 404 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status404_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="404",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="404",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status404_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status404_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -112,20 +108,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 404 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 405 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status405_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="405",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="405",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status405_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status405_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -134,20 +129,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 405 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 406 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status406_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="406",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="406",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status406_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status406_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -156,20 +150,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 406 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 429 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status429_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="429",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="429",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status429_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status429_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -178,20 +171,19 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 429 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 500 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status500_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="500",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status500_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status500_{{ AWS_ENVIRONMENT }}) >20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -199,21 +191,20 @@ spec:
         level: YELLOW
         platform: AWS
         namespace: cop
-        severity: CRITICAL
-        priority: P2
+        severity: MAJOR
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_INBOUND_RESTPROXY - more than 20 requests failure of 503 status per minutes for last 5 minutes? ##########################################################
     - record: cop_inbound_v1_status503_count20{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*inbound.*"}[1m])*60))
+      expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop",status="503",uri=~".*inbound.*"}[5m]))*60)
     - alert: COP_inbound_v1_status503_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_inbound_v1_status503_count20{{ AWS_ENVIRONMENT }}) > 20
-      for: 4m
+      for: 5m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -222,10 +213,9 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P2
+        priority: P4
         type: 8x5
         tsbci: COP
-        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
