@@ -15,7 +15,7 @@ spec:
       expr: (sum by (job, namespace) (rate(tsb_cop_outbound_s3_sink_total {namespace="cop"}[1m])*60))
     - alert: COP_tsb_cop_outbound_s3_sink_totalcount20_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_tsb_cop_outbound_s3_sink_totalcount20{{ AWS_ENVIRONMENT }}) > 20
-      for: 5m
+      for: 4m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -24,9 +24,10 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
+        priority: P3
         type: 8x5
         tsbci: COP
+        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with failure count more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
@@ -35,7 +36,7 @@ spec:
       expr: (sum by (job, namespace) (rate(tsb_cop_inbound_s3_sink_total {namespace="cop"}[1m])*60))
     - alert: COP_tsb_cop_inbound_s3_sink_totalcount20_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (cop_tsb_cop_inbound_s3_sink_totalcount20{{ AWS_ENVIRONMENT }}) > 20
-      for: 5m
+      for: 4m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -44,9 +45,10 @@ spec:
         platform: AWS
         namespace: cop
         severity: CRITICAL
-        priority: P4
+        priority: P3
         type: 8x5
         tsbci: COP
+        itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with failure count more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
