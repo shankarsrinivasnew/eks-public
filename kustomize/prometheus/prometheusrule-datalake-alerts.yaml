@@ -19,7 +19,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -33,7 +33,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -47,7 +47,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -61,7 +61,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -75,7 +75,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -89,7 +89,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 1
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -103,7 +103,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -118,7 +118,7 @@ spec:
         usecase: cop
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 3
+        priority: P3
         platform: AWS
         itopsbridge: true
         severity: CRITICAL
@@ -133,7 +133,7 @@ spec:
         usecase: push
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 3
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -148,7 +148,7 @@ spec:
         usecase: gdpr
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 3
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -164,7 +164,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         itopsbridge: true
-        priority: 3
+        priority: P3
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -179,7 +179,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         itopsbridge: true
         group: APPLICATION
-        priority: 3
+        priority: P3
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -194,7 +194,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         itopsbridge: true
-        priority: 3
+        priority: P3
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -209,7 +209,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         itopsbridge: true
-        priority: 3
+        priority: P3
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -223,7 +223,7 @@ spec:
         usecase: archival
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 3
+        priority: P3
         platform: AWS
         severity: CRITICAL
         itopsbridge: true
@@ -237,7 +237,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -251,7 +251,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 3
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -266,7 +266,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         severity: CRITICAL
         group: INF
-        priority: 1
+        priority: P3
         platform: AWS
         tsbci: AWS_BIG_DATA_LAKE
         itopsbridge: true
@@ -279,7 +279,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -293,7 +293,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 1
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -307,7 +307,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -322,7 +322,7 @@ spec:
         action: Investigate
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         platform: AWS
         itopsbridge: true
         severity: CRITICAL
@@ -336,7 +336,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -350,7 +350,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
-        priority: 2
+        priority: P3
         platform: AWS
         itopsbridge: true
         severity: CRITICAL
@@ -364,7 +364,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -378,7 +378,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -392,7 +392,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -406,7 +406,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
@@ -420,7 +420,7 @@ spec:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        priority: 2
+        priority: P3
         itopsbridge: true
         platform: AWS
         severity: CRITICAL
