@@ -1,0 +1,5 @@
+resources:
+  - sa.yaml
+namespace: datalake
+transformers:
+  - awsTransformer.yaml
