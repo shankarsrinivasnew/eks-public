@@ -23,7 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 103,
+      "id": 43,
       "links": [],
       "panels": [
         {
@@ -102,7 +102,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Devices record persisted",
+          "title": "Total number of Devices records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -263,13 +263,19 @@ data:
               "interval": "",
               "legendFormat": "Business_CC_Active",
               "refId": "M"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_invalid_cards_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "invalid_cards_mapped_to_same_customer",
+              "refId": "N"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Customer Cards record persisted",
+          "title": "Total number of Customer Cards records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -388,7 +394,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Users record persisted",
+          "title": "Total number of Users records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -485,12 +491,6 @@ data:
               "refId": "B"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_cards_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "Invalid_cards_mapped_to_same_customer",
-              "refId": "C"
-            },
-            {
               "expr": "sum by (job, namespace) (total_records_of_duplicate_contact_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "Duplicate_Contact",
@@ -501,13 +501,19 @@ data:
               "interval": "",
               "legendFormat": "Invalid_Contact",
               "refId": "E"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_invalid_customer_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "invalid_customer_data",
+              "refId": "C"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Customer Contact record persisted",
+          "title": "Total number of Customer Contact records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -559,5 +565,5 @@ data:
       "timezone": "",
       "title": "SCA-CDC-Customer-Data",
       "uid": "SWdURhUMz",
-      "version": 1
+      "version": 8
     }
