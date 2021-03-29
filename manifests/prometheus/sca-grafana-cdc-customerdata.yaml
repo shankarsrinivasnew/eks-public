@@ -80,22 +80,10 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_active_devices{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_devices_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "active_devices",
+              "legendFormat": "data_devices",
               "refId": "B"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_registered_user_with_biometric{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "registered_user_with_biometric",
-              "refId": "C"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_registered_user_with_password{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "registered_user_with_password",
-              "refId": "D"
             }
           ],
           "thresholds": [],
@@ -241,34 +229,10 @@ data:
               "refId": "I"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_active_retail_debit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "Retail_DC_Active",
-              "refId": "J"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_active_retail_credit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "Retail_CC_Active",
-              "refId": "K"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_active_business_debit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "Business_DC_Active",
-              "refId": "L"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_active_business_credit_cards{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "Business_CC_Active",
-              "refId": "M"
-            },
-            {
               "expr": "sum by (job, namespace) (total_records_of_invalid_cards_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "invalid_cards_mapped_to_same_customer",
-              "refId": "N"
+              "refId": "J"
             }
           ],
           "thresholds": [],
