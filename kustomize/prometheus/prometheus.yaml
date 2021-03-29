@@ -188,6 +188,38 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-rax-endpoints
+            - name: 'sca-grafana-cdc-ingesters'
+              orgId: 1
+              folder: 'TSB-SCA'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sca-grafana-cdc-ingesters
+            - name: 'sca-grafana-microservice'
+              orgId: 1
+              folder: 'TSB-SCA'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sca-grafana-microservice
+            - name: 'sca-grafana-cdc-customerdata'
+              orgId: 1
+              folder: 'TSB-SCA'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sca-grafana-cdc-customerdata
+            - name: 'cb-grafana-businessdashboard'
+              orgId: 1
+              folder: 'TSB-CB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cb-grafana-businessdashboard
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -202,7 +234,10 @@ spec:
         shared-grafana-kubeprometheus: shared-kubeprometheus-cm
         shared-grafana-kubestatefulsets: shared-kubestatefulsets-cm
         shared-grafana-rax-endpoints: shared-rax-endpoints-cm
-
+        sca-grafana-cdc-ingesters: sca-cdc-ingesters-cm
+        sca-grafana-microservice: sca-microservice-cm
+        sca-grafana-cdc-customerdata: sca-cdc-customerdata-cm
+        cb-grafana-businessdashboard: cb-business-metrics-cm
 
 
     prometheusOperator:
@@ -287,7 +322,7 @@ spec:
             effect: NoSchedule
         image:
           repository: quay.io/prometheus/prometheus
-          tag: v2.23.0
+          tag: v2.25.0
         containers:
           - name: prometheus
             env:
@@ -441,6 +476,22 @@ spec:
                 target_label: instance
               - target_label: __address__
                 replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
+          - job_name: 'blackbox_zookeeper'
+            metrics_path: /probe
+            params:
+              module: [tcp_zookeeper]
+            static_configs:
+              - targets:
+                  - zookeeper-0.hdf.{{ DNS_ZONE }}:2181
+                  - zookeeper-1.hdf.{{ DNS_ZONE }}:2181
+                  - zookeeper-2.hdf.{{ DNS_ZONE }}:2181
+            relabel_configs:
+              - source_labels: [__address__]
+                target_label: __param_target
+              - source_labels: [__param_target]
+                target_label: instance
+              - target_label: __address__
+                replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
           - job_name: consul-exporter
             metrics_path: /metrics
             static_configs:
@@ -474,8 +525,8 @@ spec:
         ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
         ##
         thanos:
-          image: quay.io/thanos/thanos:v0.17.2
-          version: v0.17.2
+          image: quay.io/thanos/thanos:v0.18.0
+          version: v0.18.0
           objectStorageConfig:
             name: thanos-s3-config
             key: object-store.yaml

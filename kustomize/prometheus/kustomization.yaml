@@ -4,6 +4,7 @@ resources:
   - prometheus.yaml
   - storage.yaml
   - consul-exporter.yaml
+  - cloudwatch-exporter.yaml
   - prometheusrule-cb-down.yaml
   - prometheusrule-cb-up.yaml
   - prometheusrule-cb-responsetime.yaml
@@ -15,6 +16,11 @@ resources:
   - prometheusrule-cop-down.yaml
   - prometheusrule-cop-up.yaml
   - prometheusrule-cop-responsetime.yaml
+  - prometheusrule-cop-inbound-proxy.yaml
+  - prometheusrule-cop-outbound-proxy.yaml
+  - prometheusrule-cop-s3-sink.yaml
+  - prometheusrule-cop-vocalink.yaml
+  - prometheusrule-datalake-alerts.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
