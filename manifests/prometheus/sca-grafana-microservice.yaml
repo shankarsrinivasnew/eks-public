@@ -1,3 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sca-microservice-cm
+  namespace: prometheus
+data:
+  Microservice.json: |
 {
   "annotations": {
     "list": [
