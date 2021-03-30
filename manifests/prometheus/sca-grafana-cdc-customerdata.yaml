@@ -463,7 +463,7 @@ data:
             {
               "expr": "sum by (job, namespace) (total_records_of_invalid_contact_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "Invalid_Contact",
+              "legendFormat": "Other_Contacts",
               "refId": "E"
             },
             {
