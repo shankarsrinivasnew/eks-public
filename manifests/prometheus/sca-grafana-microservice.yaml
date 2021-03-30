@@ -929,7 +929,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_auth_req_failed_received_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_auth_req_failed_received_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
