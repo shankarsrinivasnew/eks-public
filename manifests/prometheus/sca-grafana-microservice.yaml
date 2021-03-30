@@ -47,7 +47,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 18,
+          "id": 20,
           "legend": {
             "avg": false,
             "current": false,
@@ -74,7 +74,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_sca_requests_timedout_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_auth_req_failed_received_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -84,7 +84,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of SCA requests timedout",
+          "title": "Total authentication requests failed received",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -237,7 +237,7 @@ data:
             "y": 8
           },
           "hiddenSeries": false,
-          "id": 16,
+          "id": 18,
           "legend": {
             "avg": false,
             "current": false,
@@ -264,7 +264,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_sca_customer_cancelled_requests_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_sca_requests_timedout_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -274,7 +274,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of SCA customer cancelled requests",
+          "title": "Total number of SCA requests timedout",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -427,7 +427,7 @@ data:
             "y": 16
           },
           "hiddenSeries": false,
-          "id": 14,
+          "id": 16,
           "legend": {
             "avg": false,
             "current": false,
@@ -454,9 +454,9 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_sca_frauds_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_sca_customer_cancelled_requests_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{job}}",
+              "legendFormat": "",
               "refId": "A"
             }
           ],
@@ -464,7 +464,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of SCA Frauds",
+          "title": "Total number of SCA customer cancelled requests",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -617,7 +617,7 @@ data:
             "y": 24
           },
           "hiddenSeries": false,
-          "id": 12,
+          "id": 14,
           "legend": {
             "avg": false,
             "current": false,
@@ -644,7 +644,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_sca_failures_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_sca_frauds_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "{{job}}",
               "refId": "A"
@@ -654,7 +654,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of SCA Failures",
+          "title": "Total number of SCA Frauds",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -807,6 +807,101 @@ data:
             "y": 32
           },
           "hiddenSeries": false,
+          "id": 12,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (job, namespace) (total_sca_failures_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total number of SCA Failures",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 40
+          },
+          "hiddenSeries": false,
           "id": 10,
           "legend": {
             "avg": false,
@@ -880,101 +975,6 @@ data:
             "align": false,
             "alignLevel": null
           }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 32
-          },
-          "hiddenSeries": false,
-          "id": 10,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (job, namespace) (total_auth_req_failed_received_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total authentication requests failed received",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
         }
       ],
       "schemaVersion": 26,
@@ -991,5 +991,5 @@ data:
       "timezone": "",
       "title": "SCA Microservice",
       "uid": "CSalepUGz",
-      "version": 6
+      "version": 9
     }
