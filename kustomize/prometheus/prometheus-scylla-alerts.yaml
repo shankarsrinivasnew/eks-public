@@ -1,0 +1,40 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: scylla-monitoring
+  namespace: prometheus
+spec:
+  groups:
+  - name: SCYLLA_MONITORING_RULES
+    rules:
+    - alert: scylla_db_node_count
+      expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"} == 1) < 5
+      for: 15m
+      labels:
+        severity: CRITICAL
+        priority: P4
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: middleware
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+      annotations:
+        summary: Scylla in {{ $labels.environment }} has less than 3 nodes.
+
+  - name: SCYLLA_ROOT_VOLUME_CHECK
+    rules:
+    - alert: scylla_root_volume_check
+      expr: ((node_filesystem_free_bytes{instance=~".*scylla.*",mountpoint="/"})/(node_filesystem_size_bytes{instance=~".*scylla.*",mountpoint="/"}) *100) > 10
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: middleware
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+      annotations:
+        summary: Root volume on Scylla server "{{ $labels.instance }}" in {{ $labels.environment }} is more than 90% full.
