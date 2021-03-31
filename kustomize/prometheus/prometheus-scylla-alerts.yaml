@@ -11,7 +11,7 @@ spec:
   - name: SCYLLA_MONITORING_RULES
     rules:
     - alert: scylla_db_node_count
-      expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"} == 1) < 5
+      expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"} == 1) < 3
       for: 15m
       labels:
         severity: CRITICAL
@@ -27,7 +27,7 @@ spec:
   - name: SCYLLA_ROOT_VOLUME_CHECK
     rules:
     - alert: scylla_root_volume_check
-      expr: ((node_filesystem_free_bytes{instance=~".*scylla.*",mountpoint="/"})/(node_filesystem_size_bytes{instance=~".*scylla.*",mountpoint="/"}) *100) > 10
+      expr: ((node_filesystem_free_bytes{instance=~".*scylla.*",mountpoint="/"})/(node_filesystem_size_bytes{instance=~".*scylla.*",mountpoint="/"}) *100) > 90
       for: 15m
       labels:
         severity: CRITICAL
