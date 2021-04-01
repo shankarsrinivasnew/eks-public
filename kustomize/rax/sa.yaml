@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tsb-rax
+  namespace: rax
+  labels:
+    role: jenkins-agent
+    component: rax
