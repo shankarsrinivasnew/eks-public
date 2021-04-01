@@ -24,8 +24,6 @@ spec:
       annotations:
         summary: Scylla in {{ $labels.environment }} has less than 3 nodes.
 
-  - name: SCYLLA_ROOT_VOLUME_CHECK
-    rules:
     - alert: scylla_root_volume_check
       expr: ((node_filesystem_free_bytes{instance=~".*scylla.*",mountpoint="/"})/(node_filesystem_size_bytes{instance=~".*scylla.*",mountpoint="/"}) *100) > 90
       for: 15m
@@ -38,3 +36,16 @@ spec:
         tsbci: AWS_ELZ
       annotations:
         summary: Root volume on Scylla server "{{ $labels.instance }}" in {{ $labels.environment }} is more than 90% full.
+
+    - alert: scylla_service_check
+      expr: ((node_systemd_unit_state{instance=~".*scylla.*",name="scylla-server.service",status!="running"}) or ((node_systemd_unit_state{instance=~".*scylla.*",name="scylla-server.service",state!="active"}) and (node_systemd_unit_state{instance=~".*scylla.*",name="scylla-server.service",status="running"})))
+      for: 15m
+      labels:
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: middleware
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+      annotations:
+        summary: The scylla service on "{{ $labels.instance }}" in {{ $labels.environment }} environment is not running, status="{{ $labels.status }}" and state="{{ $labels.state }}".
