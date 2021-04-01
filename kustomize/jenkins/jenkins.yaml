@@ -4,7 +4,6 @@ kind: HelmRelease
 metadata:
   name: jenkins
   annotations:
-    metrics.dynatrace.com/scrape: 'true'
 spec:
   releaseName: jenkins
   chart:
