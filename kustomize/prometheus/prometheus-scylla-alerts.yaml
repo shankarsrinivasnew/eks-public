@@ -48,4 +48,4 @@ spec:
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
       annotations:
-        summary: The scylla service on "{{ $labels.instance }}" in {{ $labels.environment }} environment is not running, status="{{ $labels.status }}" and state="{{ $labels.state }}".
+        summary: The scylla service on "{{ $labels.instance }}" in {{ $labels.environment }} environment is not healthy, status="{{ $labels.status }}" and state="{{ $labels.state }}".
