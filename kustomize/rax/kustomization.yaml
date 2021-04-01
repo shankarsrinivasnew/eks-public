@@ -1,5 +1,0 @@
-resources:
-  - sa.yaml
-namespace: rax
-transformers:
-  - awsTransformer.yaml
