@@ -25,6 +25,10 @@ spec:
         effect: NoSchedule
       - key: role
         operator: Equal
+        value: ods
+        effect: NoSchedule
+      - key: role
+        operator: Equal
         value: cop
         effect: NoSchedule
     filebeatConfig:
