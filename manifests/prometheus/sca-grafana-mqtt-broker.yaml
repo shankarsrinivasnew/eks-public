@@ -67,7 +67,7 @@ data:
                 "rgba(112, 237, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "format": "none",
               "gauge": {
                 "maxValue": 100,
@@ -143,7 +143,7 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "description": "This is the current total of living queues (started queue processes). These queues might be in an online or an offline state (ie. belong to an online or offline client).",
               "format": "none",
               "gauge": {
@@ -219,7 +219,7 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "decimals": null,
               "description": "Current rate per second of received MQTT PUBLISH frames by the broker.",
               "format": "none",
@@ -297,7 +297,7 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "description": "Current rate per second of sent MQTT PUBLISH frames by the broker.",
               "format": "none",
               "gauge": {
@@ -373,7 +373,7 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "decimals": null,
               "description": "VerneMQ Broker Uptime",
               "format": "ms",
@@ -452,7 +452,7 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "decimals": null,
               "description": "VerneMQ Broker average Erlang Scheduler utilization.",
               "format": "percent",
@@ -537,7 +537,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 3,
               "legend": {
@@ -628,7 +628,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 4,
               "legend": {
@@ -700,7 +700,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 5,
               "legend": {
@@ -780,7 +780,7 @@ data:
             {
               "aliasColors": {},
               "bars": true,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 16,
               "legend": {
@@ -890,7 +890,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 7,
               "legend": {
@@ -962,7 +962,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 8,
               "legend": {
@@ -1046,7 +1046,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 10,
               "legend": {
@@ -1118,7 +1118,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 23,
               "legend": {
@@ -1190,7 +1190,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 11,
               "legend": {
@@ -1286,7 +1286,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 24,
               "legend": {
@@ -1358,7 +1358,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 17,
               "legend": {
@@ -1438,7 +1438,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 26,
               "legend": {
@@ -1510,7 +1510,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 27,
               "legend": {
@@ -1582,7 +1582,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 28,
               "legend": {
@@ -1666,7 +1666,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 14,
               "legend": {
@@ -1741,7 +1741,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 15,
               "legend": {
@@ -1825,7 +1825,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 18,
               "legend": {
@@ -1897,7 +1897,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 19,
               "legend": {
@@ -1981,7 +1981,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 29,
               "legend": {
@@ -2083,7 +2083,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 31,
               "legend": {
@@ -2183,7 +2183,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 32,
               "legend": {
@@ -2290,7 +2290,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 36,
               "legend": {
@@ -2385,7 +2385,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 34,
               "legend": {
@@ -2482,7 +2482,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 35,
               "legend": {
@@ -2583,7 +2583,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 37,
               "legend": {
@@ -2680,7 +2680,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 41,
               "legend": {
@@ -2769,7 +2769,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 38,
               "legend": {
@@ -2858,7 +2858,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 39,
               "legend": {
@@ -2939,7 +2939,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 40,
               "legend": {
@@ -3040,7 +3040,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 42,
               "legend": {
@@ -3133,7 +3133,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 43,
               "legend": {
@@ -3205,7 +3205,7 @@ data:
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "fill": 1,
               "id": 44,
               "legend": {
