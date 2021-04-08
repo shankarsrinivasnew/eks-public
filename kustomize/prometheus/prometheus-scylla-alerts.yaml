@@ -24,8 +24,8 @@ spec:
       annotations:
         summary: Scylla in {{ $labels.environment }} has less than 3 nodes.
 
-    - alert: scylla_root_volume_check
-      expr: ((node_filesystem_free_bytes{instance=~".*scylla.*",mountpoint="/"})/(node_filesystem_size_bytes{instance=~".*scylla.*",mountpoint="/"}) *100) > 90
+    - alert: scylla_disk_space_check
+      expr: node_filesystem_free_bytes{instance=~".*scylla.*",fstype!="tmpfs"} < 3000000000
       for: 15m
       labels:
         severity: CRITICAL
