@@ -45,15 +45,19 @@ data:
         - ods-view-kube-system
         - ods-admin
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-obs-admin-role
-        username: obs-admin
-        groups:
-          - obs-view-kube-system
-          - obs-admin
+      username: obs-admin
+      groups:
+        - obs-view-kube-system
+        - obs-admin
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs
-        username: tsb-obs
-        groups:
-          - obs-view-kube-system
-          - obs-admin
+      username: tsb-obs
+      groups:
+        - obs-view-kube-system
+        - obs-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs-dev-eks 
+      username: tsb-obs-dev
+      groups:
+        - obs-admin
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_kubernetes
       username: tsb-cb
       groups:
