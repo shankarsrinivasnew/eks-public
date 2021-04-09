@@ -23,12 +23,19 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": null,
+      "id": 46,
       "links": [],
-      "rows": [
+      "panels": [
         {
-          "collapse": false,
-          "height": 155,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 45,
           "panels": [
             {
               "cacheTimeout": null,
@@ -39,7 +46,13 @@ data:
                 "rgba(112, 237, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "format": "none",
               "gauge": {
                 "maxValue": 100,
@@ -47,6 +60,12 @@ data:
                 "show": false,
                 "thresholdLabels": false,
                 "thresholdMarkers": true
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 0,
+                "y": 1
               },
               "id": 9,
               "interval": null,
@@ -76,13 +95,13 @@ data:
                   "to": "null"
                 }
               ],
-              "span": 2,
               "sparkline": {
                 "fillColor": "rgba(31, 118, 189, 0.18)",
                 "full": false,
                 "lineColor": "rgb(31, 120, 193)",
                 "show": true
               },
+              "tableColumn": "",
               "targets": [
                 {
                   "expr": "(socket_open - socket_close)",
@@ -115,8 +134,14 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "description": "This is the current total of living queues (started queue processes). These queues might be in an online or an offline state (ie. belong to an online or offline client).",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "format": "none",
               "gauge": {
                 "maxValue": 100,
@@ -124,6 +149,12 @@ data:
                 "show": false,
                 "thresholdLabels": false,
                 "thresholdMarkers": true
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 4,
+                "y": 1
               },
               "id": 13,
               "interval": null,
@@ -153,13 +184,13 @@ data:
                   "to": "null"
                 }
               ],
-              "span": 2,
               "sparkline": {
                 "fillColor": "rgba(31, 118, 189, 0.18)",
                 "full": false,
                 "lineColor": "rgb(31, 120, 193)",
                 "show": true
               },
+              "tableColumn": "",
               "targets": [
                 {
                   "expr": "queue_processes",
@@ -191,9 +222,15 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "decimals": null,
               "description": "Current rate per second of received MQTT PUBLISH frames by the broker.",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "format": "none",
               "gauge": {
                 "maxValue": 100,
@@ -201,6 +238,12 @@ data:
                 "show": false,
                 "thresholdLabels": false,
                 "thresholdMarkers": true
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 8,
+                "y": 1
               },
               "id": 20,
               "interval": null,
@@ -230,18 +273,20 @@ data:
                   "to": "null"
                 }
               ],
-              "span": 2,
               "sparkline": {
                 "fillColor": "rgba(31, 118, 189, 0.18)",
                 "full": false,
                 "lineColor": "rgb(31, 120, 193)",
                 "show": true
               },
+              "tableColumn": "",
               "targets": [
                 {
-                  "expr": "sum(rate(mqtt_publish_received[30s]))",
+                  "expr": "sum(rate(mqtt_publish_received[1m]))",
                   "hide": false,
+                  "interval": "",
                   "intervalFactor": 2,
+                  "legendFormat": "",
                   "metric": "mqtt_publish_sent",
                   "refId": "A",
                   "step": 4
@@ -269,8 +314,14 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "description": "Current rate per second of sent MQTT PUBLISH frames by the broker.",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "format": "none",
               "gauge": {
                 "maxValue": 100,
@@ -278,6 +329,12 @@ data:
                 "show": false,
                 "thresholdLabels": false,
                 "thresholdMarkers": true
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 12,
+                "y": 1
               },
               "id": 21,
               "interval": null,
@@ -307,17 +364,19 @@ data:
                   "to": "null"
                 }
               ],
-              "span": 2,
               "sparkline": {
                 "fillColor": "rgba(31, 118, 189, 0.18)",
                 "full": false,
                 "lineColor": "rgb(31, 120, 193)",
                 "show": false
               },
+              "tableColumn": "",
               "targets": [
                 {
-                  "expr": "sum(rate(mqtt_publish_sent[30s]))",
+                  "expr": "sum(rate(mqtt_publish_sent[1m]))",
+                  "interval": "",
                   "intervalFactor": 2,
+                  "legendFormat": "",
                   "metric": "mqtt_publish_sent",
                   "refId": "A",
                   "step": 4
@@ -345,9 +404,15 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "decimals": null,
               "description": "VerneMQ Broker Uptime",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "format": "ms",
               "gauge": {
                 "maxValue": 100,
@@ -355,6 +420,12 @@ data:
                 "show": false,
                 "thresholdLabels": false,
                 "thresholdMarkers": true
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 16,
+                "y": 1
               },
               "id": 22,
               "interval": null,
@@ -384,13 +455,13 @@ data:
                   "to": "null"
                 }
               ],
-              "span": 2,
               "sparkline": {
                 "fillColor": "rgba(31, 118, 189, 0.18)",
                 "full": false,
                 "lineColor": "rgb(31, 120, 193)",
                 "show": false
               },
+              "tableColumn": "",
               "targets": [
                 {
                   "expr": "system_wallclock",
@@ -424,9 +495,15 @@ data:
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
               ],
-              "datasource": "Prometheus",
+              "datasource": "Thanos",
               "decimals": null,
               "description": "VerneMQ Broker average Erlang Scheduler utilization.",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "format": "percent",
               "gauge": {
                 "maxValue": 100,
@@ -434,6 +511,12 @@ data:
                 "show": true,
                 "thresholdLabels": false,
                 "thresholdMarkers": true
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 20,
+                "y": 1
               },
               "id": 30,
               "interval": null,
@@ -463,13 +546,13 @@ data:
                   "to": "null"
                 }
               ],
-              "span": 2,
               "sparkline": {
                 "fillColor": "rgba(31, 118, 189, 0.18)",
                 "full": false,
                 "lineColor": "rgb(31, 120, 193)",
                 "show": false
               },
+              "tableColumn": "",
               "targets": [
                 {
                   "expr": "system_utilization",
@@ -496,21 +579,41 @@ data:
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "SUMMARY",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 46,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 2
+              },
+              "hiddenSeries": false,
               "id": 3,
               "legend": {
                 "avg": false,
@@ -525,17 +628,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(socket_open[30s])",
+                  "expr": "rate(socket_open[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Connect (Socket Open)",
                   "metric": "",
@@ -543,7 +651,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(socket_close[30s])",
+                  "expr": "rate(socket_close[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Disconnect (Socket Close)",
                   "refId": "B",
@@ -552,6 +661,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Connect/Disconnect Rate (per second)",
               "tooltip": {
@@ -561,6 +671,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -583,25 +694,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "CLIENTS",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 279,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "id": 47,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 3
+              },
+              "hiddenSeries": false,
               "id": 4,
               "legend": {
                 "avg": false,
@@ -616,12 +751,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -636,6 +775,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Current Queue Total",
               "tooltip": {
@@ -645,6 +785,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -667,13 +808,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 3
+              },
+              "hiddenSeries": false,
               "id": 5,
               "legend": {
                 "avg": false,
@@ -688,17 +849,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(queue_setup[60s])",
+                  "expr": "rate(queue_setup[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Queue Setup",
                   "metric": "queue_setup",
@@ -706,7 +872,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(queue_teardown[60s])",
+                  "expr": "rate(queue_teardown[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Queue Teardown",
                   "metric": "queue_teardown",
@@ -716,6 +883,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Queue Setup and Teardown Rate (per second)",
               "tooltip": {
@@ -725,6 +893,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -747,13 +916,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": true,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 11
+              },
+              "hiddenSeries": false,
               "id": 16,
               "legend": {
                 "alignAsTable": true,
@@ -770,12 +959,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -814,6 +1007,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Messages in Queues",
               "tooltip": {
@@ -823,6 +1017,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -845,25 +1040,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "QUEUES",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 3
+          },
+          "id": 48,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 4
+              },
+              "hiddenSeries": false,
               "id": 7,
               "legend": {
                 "avg": false,
@@ -878,12 +1097,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -898,6 +1121,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Router Subscriptions Total",
               "tooltip": {
@@ -907,6 +1131,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -929,13 +1154,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 4
+              },
+              "hiddenSeries": false,
               "id": 8,
               "legend": {
                 "avg": false,
@@ -950,12 +1195,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -970,6 +1219,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Router Memory",
               "tooltip": {
@@ -979,6 +1229,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1001,25 +1252,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "SUBSCRIPTIONS",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 265,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 4
+          },
+          "id": 49,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 5
+              },
+              "hiddenSeries": false,
               "id": 10,
               "legend": {
                 "avg": false,
@@ -1034,12 +1309,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -1054,6 +1333,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Average Erlang Scheduler Utilization",
               "tooltip": {
@@ -1063,6 +1343,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1085,13 +1366,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 5
+              },
+              "hiddenSeries": false,
               "id": 23,
               "legend": {
                 "avg": false,
@@ -1106,17 +1407,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(system_reductions[30s])",
+                  "expr": "rate(system_reductions[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "System Reductions",
                   "metric": "system_reductions",
@@ -1126,6 +1432,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "System Reductions",
               "tooltip": {
@@ -1135,6 +1442,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1157,13 +1465,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 12
+              },
+              "hiddenSeries": false,
               "id": 11,
               "legend": {
                 "avg": false,
@@ -1178,12 +1506,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -1222,6 +1554,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Erlang Scheduler Utilization",
               "tooltip": {
@@ -1231,6 +1564,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1253,13 +1587,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 19
+              },
+              "hiddenSeries": false,
               "id": 24,
               "legend": {
                 "avg": false,
@@ -1274,17 +1628,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(system_context_switches[30s])",
+                  "expr": "rate(system_context_switches[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Erlang Context Switches",
                   "metric": "system_context_switches",
@@ -1294,6 +1653,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Erlang System Context Switches",
               "tooltip": {
@@ -1303,6 +1663,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1325,13 +1686,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 19
+              },
+              "hiddenSeries": false,
               "id": 17,
               "legend": {
                 "avg": false,
@@ -1346,17 +1727,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(system_io_in[30s])",
+                  "expr": "rate(system_io_in[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "System IO IN",
                   "metric": "system_io_in",
@@ -1364,7 +1750,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(system_io_out[30s])",
+                  "expr": "rate(system_io_out[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "System IO OUT",
                   "metric": "system_io_out",
@@ -1374,6 +1761,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "System IO",
               "tooltip": {
@@ -1383,6 +1771,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1405,13 +1794,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 26
+              },
+              "hiddenSeries": false,
               "id": 26,
               "legend": {
                 "avg": false,
@@ -1426,12 +1835,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -1446,6 +1859,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Erlang System Run Queue",
               "tooltip": {
@@ -1455,6 +1869,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1477,13 +1892,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 26
+              },
+              "hiddenSeries": false,
               "id": 27,
               "legend": {
                 "avg": false,
@@ -1498,17 +1933,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(system_gc_count[30s])",
+                  "expr": "rate(system_gc_count[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Erlang GC Count",
                   "metric": "system_gc_count",
@@ -1518,6 +1958,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Erlang System Garbage Collection Count",
               "tooltip": {
@@ -1527,6 +1968,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1549,13 +1991,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 33
+              },
+              "hiddenSeries": false,
               "id": 28,
               "legend": {
                 "avg": false,
@@ -1570,17 +2032,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(system_words_reclaimed_by_gc[30s])",
+                  "expr": "rate(system_words_reclaimed_by_gc[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Erlang GC Words Reclaimed",
                   "metric": "system_words_reclaimed_by_gc",
@@ -1590,6 +2057,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Erlang System Number of Words Reclaimed by GC",
               "tooltip": {
@@ -1599,6 +2067,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1621,25 +2090,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "ERLANG VM",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 5
+          },
+          "id": 50,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 6
+              },
+              "hiddenSeries": false,
               "id": 14,
               "legend": {
                 "avg": false,
@@ -1654,17 +2147,21 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(bytes_received[30s])",
+                  "expr": "rate(bytes_received[1m])",
                   "hide": false,
                   "interval": "",
                   "intervalFactor": 2,
@@ -1676,6 +2173,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Bytes Received",
               "tooltip": {
@@ -1686,6 +2184,7 @@ data:
               "transparent": true,
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1708,13 +2207,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 6
+              },
+              "hiddenSeries": false,
               "id": 15,
               "legend": {
                 "avg": false,
@@ -1729,17 +2248,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(bytes_sent[30s])",
+                  "expr": "rate(bytes_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Bytes Sent",
                   "metric": "bytes_sent",
@@ -1749,6 +2273,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Bytes Sent",
               "tooltip": {
@@ -1758,6 +2283,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1780,25 +2306,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "BYTES IN & OUT",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 6
+          },
+          "id": 51,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 7
+              },
+              "hiddenSeries": false,
               "id": 18,
               "legend": {
                 "avg": false,
@@ -1813,12 +2363,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -1833,6 +2387,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Retain Memory use",
               "tooltip": {
@@ -1842,6 +2397,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1864,13 +2420,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 7
+              },
+              "hiddenSeries": false,
               "id": 19,
               "legend": {
                 "avg": false,
@@ -1885,12 +2461,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -1905,6 +2485,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Retained Messages Total",
               "tooltip": {
@@ -1914,6 +2495,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -1936,25 +2518,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "RETAIN",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 7
+          },
+          "id": 52,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 8
+              },
+              "hiddenSeries": false,
               "id": 29,
               "legend": {
                 "alignAsTable": true,
@@ -1971,17 +2577,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(socket_open[30s])",
+                  "expr": "rate(socket_open[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Socket Open",
                   "metric": "socket_open",
@@ -1989,7 +2600,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(socket_close[30s])",
+                  "expr": "rate(socket_close[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Socket Close",
                   "metric": "socket_close",
@@ -1997,7 +2609,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(socket_error[30s])",
+                  "expr": "rate(socket_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Socket Error",
                   "metric": "socket_error",
@@ -2007,6 +2620,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "TCP Sockets",
               "tooltip": {
@@ -2016,6 +2630,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2038,25 +2653,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "TCP SOCKETS",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 8
+          },
+          "id": 53,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 9
+              },
+              "hiddenSeries": false,
               "id": 31,
               "legend": {
                 "avg": false,
@@ -2071,17 +2710,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(cluster_bytes_sent[30s])",
+                  "expr": "rate(cluster_bytes_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Cluster Bytes Sent",
                   "metric": "cluster_bytes_sent",
@@ -2089,7 +2733,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(cluster_bytes_received[30s])",
+                  "expr": "rate(cluster_bytes_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Cluster Bytes Received",
                   "metric": "cluster_bytes_received",
@@ -2097,7 +2742,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(cluster_bytes_dropped[30s])",
+                  "expr": "rate(cluster_bytes_dropped[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Cluster Bytes Dropped",
                   "metric": "cluster_bytes_dropped",
@@ -2107,6 +2753,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Cluster Communication",
               "tooltip": {
@@ -2116,6 +2763,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2138,25 +2786,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "NODE TO CLUSTER COMMUNICATION",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 316,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 9
+          },
+          "id": 54,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 0,
+                "y": 10
+              },
+              "hiddenSeries": false,
               "id": 32,
               "legend": {
                 "alignAsTable": true,
@@ -2174,17 +2846,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_connack_bad_credentials_sent[30s])",
+                  "expr": "rate(mqtt_connack_bad_credentials_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Connack Bad Credentials",
                   "metric": "mqtt_connack_bad_credentials_sent",
@@ -2192,7 +2869,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_connack_identifier_rejected_sent[30s])",
+                  "expr": "rate(mqtt_connack_identifier_rejected_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Connack ID rejected",
                   "metric": "mqtt_connack_identifier_rejected_sent",
@@ -2200,7 +2878,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_connack_not_authorized_sent[30s])",
+                  "expr": "rate(mqtt_connack_not_authorized_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Connack Not Authorized",
                   "metric": "mqtt_connack_not_authorized_sent",
@@ -2208,7 +2887,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_connack_server_unavailable_sent[30s])",
+                  "expr": "rate(mqtt_connack_server_unavailable_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Connack Server Unavailable",
                   "metric": "mqtt_connack_server_unavailable_sent",
@@ -2216,7 +2896,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_connack_unacceptable_protocol_sent[30s])",
+                  "expr": "rate(mqtt_connack_unacceptable_protocol_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Connack Unacceptable Protocol",
                   "metric": "mqtt_connack_unacceptable_protocol_sent",
@@ -2226,6 +2907,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "MQTT CONNACK Errors",
               "tooltip": {
@@ -2235,6 +2917,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2257,13 +2940,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 12,
+                "y": 10
+              },
+              "hiddenSeries": false,
               "id": 36,
               "legend": {
                 "alignAsTable": true,
@@ -2281,17 +2984,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_connect_received[30s])",
+                  "expr": "rate(mqtt_connect_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "MQTT CONNECT Received",
                   "metric": "mqtt_connect_received",
@@ -2299,7 +3007,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_connack_accepted_sent[30s])",
+                  "expr": "rate(mqtt_connack_accepted_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "MQTT CONNACK sent",
                   "metric": "mqtt_connack_accepted_sent",
@@ -2309,6 +3018,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "MQTT CONNACK",
               "tooltip": {
@@ -2318,6 +3028,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2340,25 +3051,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "MQTT CONNECT",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": "400",
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
+          "id": 55,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 11,
+                "w": 12,
+                "x": 0,
+                "y": 11
+              },
+              "hiddenSeries": false,
               "id": 34,
               "legend": {
                 "alignAsTable": true,
@@ -2374,17 +3109,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_subscribe_received[30s])",
+                  "expr": "rate(mqtt_subscribe_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Subscribe Received",
                   "metric": "mqtt_subscribe_received",
@@ -2392,7 +3132,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_suback_sent[30s])",
+                  "expr": "rate(mqtt_suback_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "SUBACK sent",
                   "metric": "mqtt_suback_sent",
@@ -2400,7 +3141,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_subscribe_error[30s])",
+                  "expr": "rate(mqtt_subscribe_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Subscribe Error",
                   "metric": "mqtt_subscribe_error",
@@ -2408,7 +3150,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_subscribe_auth_error[30s])",
+                  "expr": "rate(mqtt_subscribe_auth_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Subscribe Auth Error",
                   "metric": "mqtt_subscribe_auth_error",
@@ -2418,6 +3161,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Subscribe & Subscribe Errors",
               "tooltip": {
@@ -2427,6 +3171,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2449,13 +3194,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 11,
+                "w": 12,
+                "x": 12,
+                "y": 11
+              },
+              "hiddenSeries": false,
               "id": 35,
               "legend": {
                 "alignAsTable": true,
@@ -2471,17 +3236,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_unsubscribe_received[30s])",
+                  "expr": "rate(mqtt_unsubscribe_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Unsubscribe Received",
                   "metric": "mqtt_unsubscribe_received",
@@ -2489,7 +3259,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_unsuback_sent[30s])",
+                  "expr": "rate(mqtt_unsuback_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "UNSUBACK sent",
                   "metric": "mqtt_unsuback_sent",
@@ -2507,6 +3278,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Unsubscribe & Unsubscribe Errors",
               "tooltip": {
@@ -2516,6 +3288,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2538,25 +3311,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "MQTT SUBSCRIBE",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": "320",
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 11
+          },
+          "id": 56,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 12
+              },
+              "hiddenSeries": false,
               "id": 37,
               "legend": {
                 "alignAsTable": true,
@@ -2572,17 +3369,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_publish_received[30s])",
+                  "expr": "rate(mqtt_publish_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBLISH Received",
                   "metric": "mqtt_publish_received",
@@ -2590,7 +3392,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_publish_sent[30s])",
+                  "expr": "rate(mqtt_publish_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBLISH Sent",
                   "metric": "mqtt_publish_sent",
@@ -2598,7 +3401,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_publish_error[30s])",
+                  "expr": "rate(mqtt_publish_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBLISH Error",
                   "metric": "mqtt_publish_error",
@@ -2616,6 +3420,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "QOS 0,1,2: PUBLISH Received, Sent & Errors",
               "tooltip": {
@@ -2625,6 +3430,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2647,13 +3453,33 @@ data:
                   "min": null,
                   "show": false
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 0,
+                "y": 21
+              },
+              "hiddenSeries": false,
               "id": 41,
               "legend": {
                 "alignAsTable": true,
@@ -2669,17 +3495,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_puback_received[30s])",
+                  "expr": "rate(mqtt_puback_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBACK Received",
                   "metric": "mqtt_puback_received",
@@ -2687,7 +3518,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_puback_sent[30s])",
+                  "expr": "rate(mqtt_puback_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBACK Sent",
                   "metric": "mqtt_puback_sent",
@@ -2695,7 +3527,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_puback_invalid_error[30s])",
+                  "expr": "rate(mqtt_puback_invalid_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBACK Invalid",
                   "metric": "mqtt_puback_invalid_error",
@@ -2705,6 +3538,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "QOS 1: PUBACK Received, Sent & Invalid",
               "tooltip": {
@@ -2714,6 +3548,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2736,13 +3571,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 12,
+                "y": 21
+              },
+              "hiddenSeries": false,
               "id": 38,
               "legend": {
                 "alignAsTable": true,
@@ -2758,17 +3613,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_pubrec_received[30s])",
+                  "expr": "rate(mqtt_pubrec_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBREC Received",
                   "metric": "mqtt_pubrec_received",
@@ -2776,7 +3636,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_pubrec_sent[30s])",
+                  "expr": "rate(mqtt_pubrec_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBREC Sent",
                   "metric": "mqtt_pubrec_sent",
@@ -2784,7 +3645,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_pubrec_invalid_error[30s])",
+                  "expr": "rate(mqtt_pubrec_invalid_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBREC Invalid",
                   "metric": "mqtt_pubrec_invalid_error",
@@ -2794,6 +3656,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "QOS 2: PUBREC Received, Sent & Errors",
               "tooltip": {
@@ -2803,6 +3666,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2825,13 +3689,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 0,
+                "y": 30
+              },
+              "hiddenSeries": false,
               "id": 39,
               "legend": {
                 "alignAsTable": true,
@@ -2847,17 +3731,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_pubrel_received[30s])",
+                  "expr": "rate(mqtt_pubrel_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBREL Received",
                   "metric": "mqtt_pubrel_received",
@@ -2865,7 +3754,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_pubrel_sent[30s])",
+                  "expr": "rate(mqtt_pubrel_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBREL Sent",
                   "metric": "mqtt_pubrel_sent",
@@ -2875,6 +3765,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "QOS 2: PUBREL Received & Sent",
               "tooltip": {
@@ -2884,6 +3775,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2906,13 +3798,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 12,
+                "y": 30
+              },
+              "hiddenSeries": false,
               "id": 40,
               "legend": {
                 "alignAsTable": true,
@@ -2928,17 +3840,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_pubcomp_received[30s])",
+                  "expr": "rate(mqtt_pubcomp_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBCOMP Received",
                   "metric": "mqtt_pubcomp_received",
@@ -2946,7 +3863,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_pubcomp_sent[30s])",
+                  "expr": "rate(mqtt_pubcomp_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBCOMP Sent",
                   "metric": "mqtt_pubcomp_sent",
@@ -2954,7 +3872,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_pubcomp_invalid_error[30s])",
+                  "expr": "rate(mqtt_pubcomp_invalid_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PUBCOMP Invalid",
                   "metric": "mqtt_pubcomp_invalid_error",
@@ -2964,6 +3883,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "QOS 2: PUBCOMP Received, Sent & Errors",
               "tooltip": {
@@ -2973,6 +3893,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -2995,25 +3916,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "MQTT PUBLISH",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 12
+          },
+          "id": 57,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 13
+              },
+              "hiddenSeries": false,
               "id": 42,
               "legend": {
                 "alignAsTable": true,
@@ -3029,17 +3974,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 12,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_pingreq_received[30s])",
+                  "expr": "rate(mqtt_pingreq_received[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PINGREQ Received",
                   "metric": "mqtt_pingreq_received",
@@ -3047,7 +3997,8 @@ data:
                   "step": 2
                 },
                 {
-                  "expr": "rate(mqtt_pingresp_sent[30s])",
+                  "expr": "rate(mqtt_pingresp_sent[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "PINGRESP Sent",
                   "metric": "mqtt_pingresp_sent",
@@ -3057,6 +4008,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "PINGREQ & PINGRESP",
               "tooltip": {
@@ -3066,6 +4018,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -3088,25 +4041,49 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "MQTT PING",
-          "titleSize": "h6"
+          "type": "row"
         },
         {
-          "collapse": false,
-          "height": 250,
+          "collapsed": true,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 13
+          },
+          "id": 58,
           "panels": [
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 14
+              },
+              "hiddenSeries": false,
               "id": 43,
               "legend": {
                 "avg": false,
@@ -3121,12 +4098,16 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
@@ -3141,6 +4122,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Expired Clients",
               "tooltip": {
@@ -3150,6 +4132,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -3172,13 +4155,33 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             },
             {
               "aliasColors": {},
               "bars": false,
-              "datasource": "Prometheus",
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
               "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 14
+              },
+              "hiddenSeries": false,
               "id": 44,
               "legend": {
                 "avg": false,
@@ -3193,17 +4196,22 @@ data:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "seriesOverrides": [],
-              "span": 6,
+              "spaceLength": 10,
               "stack": false,
               "steppedLine": false,
               "targets": [
                 {
-                  "expr": "rate(mqtt_invalid_msg_size_error[30s])",
+                  "expr": "rate(mqtt_invalid_msg_size_error[1m])",
+                  "interval": "",
                   "intervalFactor": 2,
                   "legendFormat": "Invalid Message Size Error",
                   "metric": "mqtt_invalid_msg_size_error",
@@ -3213,6 +4221,7 @@ data:
               ],
               "thresholds": [],
               "timeFrom": null,
+              "timeRegions": [],
               "timeShift": null,
               "title": "Invalid Message Size Error",
               "tooltip": {
@@ -3222,6 +4231,7 @@ data:
               },
               "type": "graph",
               "xaxis": {
+                "buckets": null,
                 "mode": "time",
                 "name": null,
                 "show": true,
@@ -3244,18 +4254,19 @@ data:
                   "min": null,
                   "show": true
                 }
-              ]
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "repeat": null,
-          "repeatIteration": null,
-          "repeatRowId": null,
-          "showTitle": true,
           "title": "MISC",
-          "titleSize": "h6"
+          "type": "row"
         }
       ],
-      "schemaVersion": 14,
+      "schemaVersion": 26,
       "style": "dark",
       "tags": [],
       "templating": {
@@ -3292,5 +4303,6 @@ data:
       },
       "timezone": "browser",
       "title": "VerneMQ Node Metrics",
-      "version": 23
+      "uid": "jj1RxulMk",
+      "version": 9
     }
