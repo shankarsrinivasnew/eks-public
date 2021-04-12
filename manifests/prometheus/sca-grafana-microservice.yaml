@@ -74,7 +74,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_auth_req_failed_received_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "expr": "ssum by (job, namespace) (total_auth_req_failed_total{job="tsb-sca-decision-topology",namespace="sca"})",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -84,7 +84,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total authentication requests failed received",
+          "title": "Total authentication requests failed",
           "tooltip": {
             "shared": true,
             "sort": 0,
