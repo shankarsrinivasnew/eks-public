@@ -22,6 +22,8 @@ resources:
   - prometheusrule-cop-vocalink.yaml
   - prometheusrule-datalake-alerts.yaml
   - prometheus-scylla-alerts.yaml
+  - prometheusrule-ods-down.yaml
+  - prometheusrule-ods-up.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
