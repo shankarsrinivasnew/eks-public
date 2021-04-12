@@ -80,7 +80,7 @@ spec:
         - pipeline-github:2.7
         - scm-filter-branch-pr:0.5.1
         - ws-cleanup:0.38
-        - role-strategy:3.0
+        - role-strategy:3.1.1
         - slack:2.42
         - artifactory:3.8.1
         - build-timeout:1.20
