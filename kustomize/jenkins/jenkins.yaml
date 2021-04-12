@@ -89,6 +89,7 @@ spec:
         - ghprb:1.42.1
         - jira:3.1.1
         - sonar:2.12
+        - token-macro:2.14
       JCasC:
         securityRealm: |-
           local:
