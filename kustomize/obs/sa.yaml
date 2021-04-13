@@ -9,3 +9,13 @@ metadata:
   labels:
     role: jenkins-agent
     component: obs
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-tsb-ob-signing-service
+  namespace: obs
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/sa-tsb-ob-signing-service
+  labels:
+    component: obs
