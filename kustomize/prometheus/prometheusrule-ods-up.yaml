@@ -13,7 +13,7 @@ spec:
 ###########################################ODS_BS01_INGESTOR##########################################################
     - record: ods_bs01_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-bs-01"})*60)
-    - alert: ODS_bs01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs01_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -25,11 +25,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_bs01_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs01_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs01_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -41,14 +41,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_BS46_INGESTOR##########################################################
     - record: ods_bs46_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-bs-46"})*60)
-    - alert: ODS_bs46_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs46_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs46_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -60,11 +60,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_bs46_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs46_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs46_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -76,14 +76,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_BS95_INGESTOR##########################################################
     - record: ods_bs95_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-bs-95"})*60)
-    - alert: ODS_bs95_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs95_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs95_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -95,11 +95,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_bs95_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs95_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs95_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -111,14 +111,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_DP01_INGESTOR##########################################################
     - record: ods_dp01_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-dp-01"})*60)
-    - alert: ODS_dp01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dp01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dp01_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -130,11 +130,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_dp01_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dp01_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dp01_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -146,14 +146,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_DV01_INGESTOR##########################################################
     - record: ods_dv01_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-dv-01"})*60)
-    - alert: ODS_dv01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dv01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dv01_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -165,11 +165,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_dv01_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dv01_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dv01_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -181,14 +181,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC03_INGESTOR##########################################################
     - record: ods_kc03_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-03"})*60)
-    - alert: ODS_kc03_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc03_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc03_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -200,11 +200,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc03_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc03_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc03_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -216,14 +216,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC13_INGESTOR##########################################################
     - record: ods_kc13_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-13"})*60)
-    - alert: ODS_kc13_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc13_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc13_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -235,11 +235,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc13_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc13_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc13_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -251,14 +251,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_INGESTOR##########################################################
     - record: ods_kc43_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43"})*60)
-    - alert: ODS_kc43_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -270,11 +270,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -286,14 +286,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R13_INGESTOR##########################################################
     - record: ods_kc43_r13_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-13"})*60)
-    - alert: ODS_kc43_r13_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r13_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r13_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -305,11 +305,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r13_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r13_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r13_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -321,14 +321,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R14_INGESTOR##########################################################
     - record: ods_kc43_r14_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-14"})*60)
-    - alert: ODS_kc43_r14_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r14_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r14_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -340,11 +340,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r14_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r14_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r14_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -356,14 +356,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R15_INGESTOR##########################################################
     - record: ods_kc43_r15_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-15"})*60)
-    - alert: ODS_kc43_r15_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r15_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r15_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -375,11 +375,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r15_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r15_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r15_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -391,14 +391,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R16_INGESTOR##########################################################
     - record: ods_kc43_r16_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-16"})*60)
-    - alert: ODS_kc43_r16_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r16_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r16_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -410,11 +410,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r16_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r16_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r16_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -426,14 +426,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R17_INGESTOR##########################################################
     - record: ods_kc43_r17_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-17"})*60)
-    - alert: ODS_kc43_r17_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r17_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r17_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -445,11 +445,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r17_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r17_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r17_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -461,14 +461,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R18_INGESTOR##########################################################
     - record: ods_kc43_r18_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-18"})*60)
-    - alert: ODS_kc43_r18_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r18_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r18_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -480,11 +480,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r18_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r18_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r18_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -496,14 +496,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R19_INGESTOR##########################################################
     - record: ods_kc43_r19_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-19"})*60)
-    - alert: ODS_kc43_r19_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r19_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r19_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -515,11 +515,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r19_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r19_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r19_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -531,14 +531,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R20_INGESTOR##########################################################
     - record: ods_kc43_r20_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-20"})*60)
-    - alert: ODS_kc43_r20_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r20_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r20_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -550,11 +550,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r20_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r20_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r20_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -566,14 +566,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_KC43_R21_INGESTOR##########################################################
     - record: ods_kc43_r21_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-kc-43-r-21"})*60)
-    - alert: ODS_kc43_r21_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r21_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r21_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -585,11 +585,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r21_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r21_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r21_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -601,14 +601,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_PE06_INGESTOR##########################################################
     - record: ods_pe06_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-06"})*60)
-    - alert: ODS_pe06_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe06_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe06_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -620,11 +620,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe06_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe06_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe06_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -636,14 +636,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE09_INGESTOR##########################################################
     - record: ods_pe09_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-09"})*60)
-    - alert: ODS_pe09_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe09_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe09_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -655,11 +655,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe09_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe09_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe09_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -671,14 +671,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE10_INGESTOR##########################################################
     - record: ods_pe10_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-10"})*60)
-    - alert: ODS_pe10_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe10_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe10_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -690,11 +690,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe10_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe10_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe10_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -706,14 +706,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE11_INGESTOR##########################################################
     - record: ods_pe11_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-11"})*60)
-    - alert: ODS_pe11_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe11_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe11_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -725,11 +725,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe11_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe11_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe11_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -741,14 +741,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE16_INGESTOR##########################################################
     - record: ods_pe16_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-16"})*60)
-    - alert: ODS_pe16_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe16_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe16_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -760,11 +760,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe16_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe16_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe16_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -776,14 +776,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE17_INGESTOR##########################################################
     - record: ods_pe17_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-17"})*60)
-    - alert: ODS_pe17_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe17_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe17_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -795,11 +795,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe17_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe17_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe17_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -811,14 +811,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE34_INGESTOR##########################################################
     - record: ods_pe34_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pe-34"})*60)
-    - alert: ODS_pe34_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe34_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe34_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -830,11 +830,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe34_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe34_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe34_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -846,14 +846,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PEA6_INGESTOR##########################################################
     - record: ods_pea6_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-pea-6"})*60)
-    - alert: ODS_pea6_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pea6_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pea6_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 1m
       labels:
@@ -865,11 +865,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 1840 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pea6_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pea6_ingestor_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pea6_ingestor_up_{{ AWS_ENVIRONMENT }}) > 1840
       for: 5m
       labels:
@@ -881,14 +881,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_BS01_SCYLLA##########################################################
     - record: ods_bs01_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-corporate-Information-BS01"}[1m])))
-    - alert: ODS_bs01_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs01_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs01_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -900,11 +900,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_bs01_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs01_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs01_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -916,14 +916,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_BS46_SCYLLA##########################################################
     - record: ods_bs46_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-bs46"}[1m])))
-    - alert: ODS_bs46_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs46_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs46_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -935,11 +935,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_bs46_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs46_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs46_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -951,14 +951,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_BS95_SCYLLA##########################################################
     - record: ods_bs95_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-product-BS95"}[1m])))
-    - alert: ODS_bs95_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs95_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs95_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -970,11 +970,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_bs95_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_bs95_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_bs95_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -986,14 +986,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_DP01_SCYLLA##########################################################
     - record: ods_dp01_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-product-DP01"}[1m])))
-    - alert: ODS_dp01_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dp01_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dp01_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1005,11 +1005,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_dp01_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dp01_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dp01_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1021,14 +1021,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_DV01_SCYLLA##########################################################
     - record: ods_dv01_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-account-DV01"}[1m])))
-    - alert: ODS_dv01_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dv01_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dv01_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1040,11 +1040,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_dv01_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_dv01_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_dv01_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1056,14 +1056,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC03_SCYLLA##########################################################
     - record: ods_kc03_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC03"}[1m])))
-    - alert: ODS_kc03_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc03_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc03_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1075,11 +1075,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc03_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc03_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc03_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1091,14 +1091,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC13_SCYLLA##########################################################
     - record: ods_kc13_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-pending-transaction-KC13"}[1m])))
-    - alert: ODS_kc13_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc13_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc13_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1110,11 +1110,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc13_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc13_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc13_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1126,14 +1126,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_SCYLLA##########################################################
     - record: ods_kc43_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43"}[1m])))
-    - alert: ODS_kc43_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1145,11 +1145,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1161,14 +1161,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R13_SCYLLA##########################################################
     - record: ods_kc43_r13_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R13"}[1m])))
-    - alert: ODS_kc43_r13_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r13_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r13_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1180,11 +1180,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r13_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r13_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r13_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1196,14 +1196,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R14_SCYLLA##########################################################
     - record: ods_kc43_r14_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R14"}[1m])))
-    - alert: ODS_kc43_r14_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r14_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r14_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1215,11 +1215,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r14_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r14_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r14_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1231,14 +1231,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R15_SCYLLA##########################################################
     - record: ods_kc43_r15_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R15"}[1m])))
-    - alert: ODS_kc43_r15_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r15_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r15_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1250,11 +1250,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r15_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r15_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r15_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1266,14 +1266,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R16_SCYLLA##########################################################
     - record: ods_kc43_r16_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R16"}[1m])))
-    - alert: ODS_kc43_r16_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r16_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r16_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1285,11 +1285,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r16_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r16_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r16_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1301,14 +1301,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R17_SCYLLA##########################################################
     - record: ods_kc43_r17_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R17"}[1m])))
-    - alert: ODS_kc43_r17_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r17_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r17_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1320,11 +1320,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1336,14 +1336,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R18_SCYLLA##########################################################
     - record: ods_kc43_r18_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R18"}[1m])))
-    - alert: ODS_kc43_r18_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r18_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r18_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1355,11 +1355,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r18_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r18_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r18_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1371,14 +1371,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R19_SCYLLA##########################################################
     - record: ods_kc43_r19_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R19"}[1m])))
-    - alert: ODS_kc43_r19_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r19_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r19_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1390,11 +1390,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r19_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r19_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r19_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1406,14 +1406,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R20_SCYLLA##########################################################
     - record: ods_kc43_r20_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R20"}[1m])))
-    - alert: ODS_kc43_r20_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r20_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r20_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1425,11 +1425,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r20_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r20_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r20_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1441,14 +1441,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_KC43_R21_SCYLLA##########################################################
     - record: ods_kc43_r21_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-transaction-KC43-R21"}[1m])))
-    - alert: ODS_kc43_r21_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r21_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r21_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1460,11 +1460,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_kc43_r21_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_kc43_r21_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_kc43_r21_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1476,14 +1476,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }}
 ###########################################ODS_PE06_SCYLLA##########################################################
     - record: ods_pe06_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-customer-PE06"}[1m])))
-    - alert: ODS_pe06_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe06_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe06_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1495,11 +1495,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe06_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe06_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe06_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1511,14 +1511,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE09_SCYLLA##########################################################
     - record: ods_pe09_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-addresses-PE09"}[1m])))
-    - alert: ODS_pe09_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe09_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe09_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1530,11 +1530,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe09_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe09_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe09_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1546,14 +1546,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE10_SCYLLA##########################################################
     - record: ods_pe10_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-business-customer-PE10"}[1m])))
-    - alert: ODS_pe10_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe10_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe10_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1565,11 +1565,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe10_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe10_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe10_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1581,14 +1581,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE11_SCYLLA##########################################################
     - record: ods_pe11_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-customer-PE11"}[1m])))
-    - alert: ODS_pe11_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe11_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe11_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1600,11 +1600,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe11_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe11_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe11_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1616,14 +1616,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE16_SCYLLA##########################################################
     - record: ods_pe16_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-customer-PE16"}[1m])))
-    - alert: ODS_pe16_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe16_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe16_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1635,11 +1635,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe16_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe16_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe16_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1651,14 +1651,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE17_SCYLLA##########################################################
     - record: ods_pe17_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-customer-address-PE17"}[1m])))
-    - alert: ODS_pe17_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe17_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe17_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1670,11 +1670,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe17_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe17_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe17_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1686,14 +1686,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PE34_SCYLLA##########################################################
     - record: ods_pe34_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-customer-PE34"}[1m])))
-    - alert: ODS_pe34_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe34_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe34_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1705,11 +1705,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pe34_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pe34_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pe34_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1721,14 +1721,14 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
 ###########################################ODS_PEA6_SCYLLA##########################################################
     - record: ods_pea6_scylla_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-cdc-address-history-PEA6"}[1m])))
-    - alert: ODS_pea6_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pea6_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pea6_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 1m
       labels:
@@ -1740,11 +1740,11 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
         summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_pea6_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
+    - alert: ods_pea6_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
       expr: (ods_pea6_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
       for: 5m
       labels:
@@ -1756,567 +1756,7 @@ spec:
         namespace: ods
         severity: WARNING
         type: 8x5
-        tsbci: AWS_ODS
+        tsbci: ODS
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
-#######################################ODS_SYS_API_BS01_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_bs01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-bs01-corporate-information-lookup"}[1m])))
-    - alert: ODS_SYS_API_bs01_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_bs01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_bs01_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_bs01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}         
-#######################################ODS_SYS_API_BS46_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_bs46_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-bs46-transaction-lookup"}[1m])))
-    - alert: ODS_SYS_API_bs46_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_bs46_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_bs46_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_bs46_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }} 
-#######################################ODS_SYS_API_BS95_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_bs95_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-bs95-product-lookup"}[1m])))
-    - alert: ODS_SYS_API_bs95_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_bs95_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_bs95_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_bs95_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}    
-#######################################ODS_SYS_API_DP01_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_dp01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-dp01-product-lookup"}[1m])))
-    - alert: ODS_SYS_API_dp01_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_dp01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_dp01_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_dp01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                         
-#######################################ODS_SYS_API_DV01_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_dv01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-dv01-account-lookup"}[1m])))
-    - alert: ODS_SYS_API_dv01_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_dv01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_dv01_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_dv01_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                         
-#######################################ODS_SYS_API_KC03_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_kc03_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-kc03-transaction-lookup"}[1m])))
-    - alert: ODS_SYS_API_kc03_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_kc03_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_kc03_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_kc03_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                         
-#######################################ODS_SYS_API_KC13_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api__lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-kc13-pending-transaction-lookup"}[1m])))
-    - alert: ODS_SYS_API_kc13_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_kc13_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_kc13_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_kc13_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                         
-#######################################ODS_SYS_API_KC43_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_kc43_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-kc43-transaction-lookup"}[1m])))
-    - alert: ODS_SYS_API_kc43_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_kc43_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_kc43_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_kc43_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                         
-#######################################ODS_SYS_API_PE06_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe06_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe06-contract-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe06_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe06_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe06_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe06_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                         
-#######################################ODS_SYS_API_PE09_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe09_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe09-addresses-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe09_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe09_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe09_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe09_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                              
-#######################################ODS_SYS_API_PE10_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe10_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe10-business-customer-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe10_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe10_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe10_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe10_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                                 
-#######################################ODS_SYS_API_PE11_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe11_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe11-customer-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe11_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe11_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe11_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe11_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                                 
-#######################################ODS_SYS_API_PE16_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe16_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe16-person-contract-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe16_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe16_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe16_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe16_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                                 
-#######################################ODS_SYS_API_PE17_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe17_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe17-customer-addresses-link-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe17_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe17_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe17_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe17_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                                 
-#######################################ODS_SYS_API_PE34_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pe34_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pe34-customer-contact-lookup"}[1m])))
-    - alert: ODS_SYS_API_pe34_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe34_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pe34_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pe34_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}                                 
-#######################################ODS_SYS_API_PEA6_LOOKUP_SCYLLA##########################################################
-    - record: ods_sys_api_pea6_lookup_scylla_up_{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(kafka_consumer_records_consumed_total_records_total {namespace="ods",job="tsb-ods-sys-api-pea6-addresses-history-lookup"}[1m])))
-    - alert: ODS_SYS_API_pea6_lookup_scylla_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pea6_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 1m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} has reached peak rate of 3300 in 1 min. Value: {{ $value }}'
-        summary: Yellow rate reached for Application {{ $labels.job }}            
-    - alert: ODS_SYS_API_pea6_lookup_scylla_up_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (ods_sys_api_pea6_lookup_scylla_up_{{ AWS_ENVIRONMENT }}) > 3300
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: ods
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_ODS
-      annotations:
-        description: 'Application {{ $labels.job }} is at peak rate of 3300 for last 5 mins. Value: {{ $value }}'
-        summary: Red rate reached for Application {{ $labels.job }}
