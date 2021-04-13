@@ -14,9 +14,6 @@ subjects:
   - kind: ServiceAccount
     name: tsb-obs
     namespace: obs
-  - kind: ServiceAccount
-    name: sa-tsb-ob-signing-service
-    namespace: obs
 ---
 apiVersion: v1
 kind: ServiceAccount
