@@ -33,6 +33,7 @@ spec:
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20"
+          alb.ingress.kubernetes.io/tags: Environment={{ AWS_ENVIRONMENT }},Project=shared,ManagedBy=rackspace
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
@@ -82,7 +83,7 @@ spec:
         - ws-cleanup:0.38
         - role-strategy:3.1.1
         - slack:2.42
-        - artifactory:3.8.1
+        - artifactory:3.10.6
         - build-timeout:1.20
         - build-timestamp:1.0.3
         - dashboard-view:2.13
