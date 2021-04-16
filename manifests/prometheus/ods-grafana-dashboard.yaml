@@ -1,0 +1,2679 @@
+annotations:
+  list:
+    - builtIn: 1
+      datasource: '-- Grafana --'
+      enable: true
+      hide: true
+      iconColor: 'rgba(0, 211, 255, 1)'
+      name: Annotations & Alerts
+      type: dashboard
+editable: true
+gnetId: null
+graphTooltip: 0
+id: 2
+links: []
+panels:
+  - collapsed: true
+    datasource: null
+    gridPos:
+      h: 1
+      w: 24
+      x: 0
+      'y': 0
+    id: 75
+    panels:
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 1
+        hiddenSeries: false
+        id: 70
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              jvm_memory_used_bytes{namespace="ods",
+              job="tsb-ods-cdc-transaction-kc03",area="heap"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: jvm_memory_used_bytes heap transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:681'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:682'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 1
+        hiddenSeries: false
+        id: 72
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              jvm_memory_used_bytes{namespace="ods",
+              job="tsb-ods-pr-ingest-kc-03-headless-service",area="heap"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: jvm_memory_used_bytes heap ingestors
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:710'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:711'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 9
+        hiddenSeries: false
+        id: 73
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              jvm_memory_used_bytes{namespace="ods", 
+              job="tsb-ods-pr-ingest-kc-03-headless-service",area="nonheap"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: jvm_memory_used_bytes nonheap ingestor
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:1045'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:1046'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 9
+        hiddenSeries: false
+        id: 71
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              jvm_memory_used_bytes{namespace="ods",
+              job="tsb-ods-cdc-transaction-kc03",area="nonheap"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: jvm_memory_used_bytes nonheap transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:820'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:821'
+            format: decbytes
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 17
+        hiddenSeries: false
+        id: 67
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: '{namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}'
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              jvm_gc_pause_seconds_sum{namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: jvm_gc_pause_seconds_sum ingestors
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:652'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:653'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 17
+        hiddenSeries: false
+        id: 68
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              jvm_gc_pause_seconds_count{namespace="ods",
+              job="tsb-ods-cdc-transaction-kc03"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              jvm_gc_pause_seconds_sum{namespace="ods",job="tsb-ods-cdc-transaction-kc03"}
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: jvm_gc_pause_seconds_sum transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 25
+        hiddenSeries: false
+        id: 64
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              process_cpu_usage{namespace="ods",
+              job="tsb-ods-pr-ingest-kc-03-headless-service"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: process_cpu_usage ingestor
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:956'
+            format: percentunit
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:957'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 25
+        hiddenSeries: false
+        id: 65
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              process_cpu_usage{job="tsb-ods-cdc-transaction-kc03",
+              namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: process_cpu_usage transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:1016'
+            format: percentunit
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:1017'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 33
+        hiddenSeries: false
+        id: 62
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              producer_metrics_request_rate{job="tsb-ods-pr-ingest-kc-03-headless-service",
+              namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: producer_metrics_request_rate
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:1074'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:1075'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 33
+        id: 52
+        options:
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          showThresholdLabels: false
+          showThresholdMarkers: true
+          text: {}
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              kafka_consumer_commit_rate_commits
+              {job="tsb-ods-cdc-transaction-kc03", namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        timeFrom: null
+        timeShift: null
+        title: Kafka consumer commit rate trasaction
+        type: gauge
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 41
+        hiddenSeries: false
+        id: 60
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              producer_metrics_record_send_total{job="tsb-ods-pr-ingest-kc-03-headless-service",
+              namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: producer_metrics_record_send_total
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 41
+        hiddenSeries: false
+        id: 51
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              kafka_consumer_commit_rate_commits
+              {job="tsb-ods-pr-ingest-kc-03-headless-service", namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Kafka consumer commit rate ingestor
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 49
+        hiddenSeries: false
+        id: 58
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              kafka_consumer_records_consumed_total_records_total{
+              namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: kafka_consumer_records_consumed_total_records_total
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 49
+        hiddenSeries: false
+        id: 56
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: 'consumer_metrics_response_total{namespace="ods"}'
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: consumer_metrics_response_total
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 57
+        hiddenSeries: false
+        id: 54
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              consumer_metrics_request_rate{
+              job="tsb-ods-pr-ingest-kc-03-headless-service", namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: consumer_metrics_request_rate
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+    title: Performsnce testing related metrics
+    type: row
+  - collapsed: true
+    datasource: null
+    gridPos:
+      h: 1
+      w: 24
+      x: 0
+      'y': 1
+    id: 49
+    panels:
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 0
+          'y': 66
+        id: 40
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_uptime_seconds
+              {namespace="ods",job="tsb-ods-cdc-transaction-bs46"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: BS46 TRANSACTION UPTIME
+        type: stat
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 12
+          'y': 66
+        id: 36
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_uptime_seconds
+              {namespace="ods",job="tsb-ods-pr-ingest-bs-46-headless-service"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: BS46 INGESTOR UPTIME
+        type: stat
+      - datasource: null
+        description: ''
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 0
+          'y': 70
+        id: 42
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_start_time_seconds{namespace="ods",job="tsb-ods-pr-ingest-bs-46-headless-service"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: BS46 INGESTOR START TIME
+        type: stat
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 12
+          'y': 70
+        id: 46
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_start_time_seconds{namespace="ods",job="tsb-ods-cdc-transaction-bs46"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: BS46 TRANSACTION START TIME
+        type: stat
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 74
+        hiddenSeries: false
+        id: 20
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              consumer_fetch_manager_metrics_records_consumed_rate
+              {namespace="ods",job="tsb-ods-pr-ingest-bs-46-headless-service"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Average number of records consumed (BS46)
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:253'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:254'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 74
+        hiddenSeries: false
+        id: 47
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (tsbods_processTransactionsStream_time_bs46_seconds_count{namespace="ods",job="tsb-ods-cdc-transaction-bs46"}/tsbods_processTransactionsStream_time_bs46_seconds_sum{namespace="ods",job="tsb-ods-cdc-transaction-bs46"})
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Average records per second BS46 Transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:197'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:198'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 82
+        hiddenSeries: false
+        id: 26
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (logback_events_total{level="error",namespace="ods",job="tsb-ods-cdc-transaction-bs46"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Error Log count for BS46 transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:363'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:364'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 82
+        hiddenSeries: false
+        id: 24
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (logback_events_total{level="error",namespace="ods",job="tsb-ods-pr-ingest-bs-46-headless-service"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Error Log Count for BS46 ingestors
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:535'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:536'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 90
+        hiddenSeries: false
+        id: 10
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (records_in_total_bs46_total{namespace="ods",job="tsb-ods-pr-ingest-bs-46-headless-service"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (records_out_total_bs46_total{namespace="ods",job="tsb-ods-pr-ingest-bs-46-headless-service"}))
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: BS46 Records
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:396'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:397'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 90
+        hiddenSeries: false
+        id: 16
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (tsb_ods_in_transactonTypes_in_total{namespace="ods",job="tsb-ods-cdc-transaction-bs46"})
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (tsb_ods_out_transactonTypes_in_total{namespace="ods",job="tsb-ods-cdc-transaction-bs46"})
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: BS46 transaction  Records
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:425'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:426'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+    title: BS46 Application
+    type: row
+  - collapsed: true
+    datasource: null
+    gridPos:
+      h: 1
+      w: 24
+      x: 0
+      'y': 2
+    id: 6
+    panels:
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 0
+          'y': 67
+        id: 44
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: ''
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: KC03 INGESTOR START TIME
+        type: stat
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 12
+          'y': 67
+        id: 45
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_start_time_seconds{namespace="ods",job="tsb-ods-cdc-transaction-bs46"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: KC03 TRANSACTION START TIME
+        type: stat
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 0
+          'y': 71
+        id: 38
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_uptime_seconds
+              {namespace="ods",job="tsb-ods-cdc-transaction-kc03"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        timeFrom: null
+        timeShift: null
+        title: KC03 TRANSACTION UPTIME
+        type: stat
+      - datasource: null
+        fieldConfig:
+          defaults:
+            color:
+              mode: thresholds
+            mappings: []
+            thresholds:
+              mode: absolute
+              steps:
+                - color: green
+                  value: null
+                - color: red
+                  value: 80
+          overrides: []
+        gridPos:
+          h: 4
+          w: 12
+          x: 12
+          'y': 71
+        id: 34
+        options:
+          colorMode: value
+          graphMode: area
+          justifyMode: auto
+          orientation: auto
+          reduceOptions:
+            calcs:
+              - lastNotNull
+            fields: ''
+            values: false
+          text: {}
+          textMode: auto
+        pluginVersion: 7.5.3
+        targets:
+          - exemplar: true
+            expr: >-
+              process_uptime_seconds
+              {namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        title: KC03 INGESTOR UPTIME
+        type: stat
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 75
+        hiddenSeries: false
+        id: 30
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (tsbods_processTransactionsStream_time_kc03_seconds_count{namespace="ods",job="tsb-ods-cdc-transaction-kc03"}/tsbods_processTransactionsStream_time_kc03_seconds_sum{namespace="ods",job="tsb-ods-cdc-transaction-kc03"})
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Average records per second KC03 Transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:707'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:708'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 75
+        hiddenSeries: false
+        id: 18
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              consumer_fetch_manager_metrics_records_consumed_rate
+              {namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Average number of records consumed (KC03)
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:736'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:737'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 83
+        hiddenSeries: false
+        id: 12
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (records_in_total_kc03_total{namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (records_out_total_kc03_total{namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}))
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: KC03 Ingestor Records
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:1406'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:1407'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 83
+        hiddenSeries: false
+        id: 14
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (tsb_ods_kc03_transactions_in_total{namespace="ods",job="tsb-ods-cdc-transaction-kc03"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (tsb_ods_kc03_transactions_out_total{namespace="ods",job="tsb-ods-cdc-transaction-kc03"}))
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: KC03 Transaction Records
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:1377'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:1378'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 91
+        hiddenSeries: false
+        id: 22
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (logback_events_total{level="error",namespace="ods",job="tsb-ods-pr-ingest-kc-03-headless-service"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Error log count for KC03 ingestor
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:595'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:596'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 12
+          'y': 91
+        hiddenSeries: false
+        id: 28
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              (sum by (job, namespace)
+              (logback_events_total{level="error",namespace="ods",job="tsb-ods-cdc-transaction-kc03"}))
+            interval: ''
+            legendFormat: ''
+            refId: A
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: Error log count for KC03 transaction
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:624'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:625'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+    title: KC03 Application
+    type: row
+  - collapsed: true
+    datasource: null
+    gridPos:
+      h: 1
+      w: 24
+      x: 0
+      'y': 3
+    id: 2
+    panels:
+      - aliasColors: {}
+        bars: false
+        dashLength: 10
+        dashes: false
+        datasource: null
+        fieldConfig:
+          defaults: {}
+          overrides: []
+        fill: 1
+        fillGradient: 0
+        gridPos:
+          h: 8
+          w: 12
+          x: 0
+          'y': 100
+        hiddenSeries: false
+        id: 4
+        legend:
+          avg: false
+          current: false
+          max: false
+          min: false
+          show: true
+          total: false
+          values: false
+        lines: true
+        linewidth: 1
+        nullPointMode: 'null'
+        options:
+          alertThreshold: true
+        percentage: false
+        pluginVersion: 7.5.3
+        pointradius: 2
+        points: false
+        renderer: flot
+        seriesOverrides: []
+        spaceLength: 10
+        stack: false
+        steppedLine: false
+        targets:
+          - exemplar: true
+            expr: >-
+              kube_deployment_status_replicas_available{deployment=~"tsb-ods.*",namespace="ods"}
+            interval: ''
+            legendFormat: ''
+            refId: A
+          - exemplar: true
+            expr: >-
+              kube_statefulset_status_replicas_ready{statefulset=~"tsb-ods.*",namespace="ods"}
+            hide: false
+            interval: ''
+            legendFormat: ''
+            refId: B
+        thresholds: []
+        timeFrom: null
+        timeRegions: []
+        timeShift: null
+        title: ODS Applications Pod Count
+        tooltip:
+          shared: true
+          sort: 0
+          value_type: individual
+        type: graph
+        xaxis:
+          buckets: null
+          mode: time
+          name: null
+          show: true
+          values: []
+        yaxes:
+          - $$hashKey: 'object:14'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+          - $$hashKey: 'object:15'
+            format: short
+            label: null
+            logBase: 1
+            max: null
+            min: null
+            show: true
+        yaxis:
+          align: false
+          alignLevel: null
+    title: ODS Pod Status
+    type: row
+refresh: false
+schemaVersion: 27
+style: dark
+tags: []
+templating:
+  list: []
+time:
+  from: now-6h
+  to: now
+timepicker: {}
+timezone: ''
+title: TSB-ODS-Metrics
+uid: Bn-f_7uMz
+version: 155
+

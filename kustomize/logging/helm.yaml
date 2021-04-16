@@ -31,6 +31,10 @@ spec:
         operator: Equal
         value: cop
         effect: NoSchedule
+      - key: role
+        operator: Equal
+        value: highcompute
+        effect: NoSchedule
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
