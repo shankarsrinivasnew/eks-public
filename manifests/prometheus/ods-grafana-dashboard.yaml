@@ -1,4 +1,3 @@
-
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -236,7 +235,7 @@ data:
               targets:
                 - exemplar: true
                   expr: >-
-                    jvm_memory_used_bytes{namespace="ods", 
+                    jvm_memory_used_bytes{namespace="ods",
                     job="tsb-ods-pr-ingest-kc-03-headless-service",area="nonheap"}
                   interval: ''
                   legendFormat: ''
