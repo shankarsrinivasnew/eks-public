@@ -247,6 +247,7 @@ spec:
         sca-grafana-cdc-customerdata: sca-cdc-customerdata-cm
         cb-grafana-businessdashboard: cb-business-metrics-cm
         sca-grafana-mqtt-broker: sca-grafana-mqtt-broker-cm
+        ods-grafana-dashboard: ods-podmetrics-cm
 
 
     prometheusOperator:
