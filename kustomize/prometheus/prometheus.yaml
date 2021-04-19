@@ -228,6 +228,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sca-grafana-mqtt-broker
+            - name: 'ods-grafana-dashboard'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-grafana-dashboard
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -247,6 +255,7 @@ spec:
         sca-grafana-cdc-customerdata: sca-cdc-customerdata-cm
         cb-grafana-businessdashboard: cb-business-metrics-cm
         sca-grafana-mqtt-broker: sca-grafana-mqtt-broker-cm
+        ods-grafana-dashboard: ods-podmetrics-cm
 
 
     prometheusOperator:
