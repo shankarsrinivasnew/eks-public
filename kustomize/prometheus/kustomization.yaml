@@ -24,7 +24,6 @@ resources:
   - prometheus-scylla-alerts.yaml
   - prometheusrule-ods-down.yaml
   - prometheusrule-ods-up.yaml
-  - prometheusrule-ods-sys-api-down.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
