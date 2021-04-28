@@ -29,6 +29,11 @@ data:
       groups:
         - sco-view-kube-system
         - sco-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-datalake
+      username: tsb-datalake
+      groups:
+        - datalake-view-kube-system
+        - datalake-admin
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-ods-admin-role
       username: ods-admin
       groups:
@@ -39,6 +44,20 @@ data:
       groups:
         - ods-view-kube-system
         - ods-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-obs-admin-role
+      username: obs-admin
+      groups:
+        - obs-view-kube-system
+        - obs-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs
+      username: tsb-obs
+      groups:
+        - obs-view-kube-system
+        - obs-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs-dev-eks 
+      username: tsb-obs-dev
+      groups:
+        - obs-admin
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_kubernetes
       username: tsb-cb
       groups:
@@ -59,6 +78,10 @@ data:
       groups:
         - sco-view-kube-system
         - sco-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-datalake-dev-eks
+      username: tsb-datalake-dev
+      groups:
+        - datalake-admin
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cb-dev-eks
       username: tsb-cb-dev
       groups:

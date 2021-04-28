@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -7,7 +6,16 @@ metadata:
   name: ebs-csi-controller-sa
   namespace: kube-system
   annotations:
-    # Substitute your account ID and IAM service role name below.
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/ebs
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/name: aws-ebs-csi-driver
+  name: ebs-csi-node-sa
+  namespace: kube-system
+  annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/ebs
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -26,6 +34,7 @@ rules:
   - list
   - watch
   - update
+  - patch
 - apiGroups:
   - ""
   resources:
@@ -51,6 +60,13 @@ rules:
   - list
   - watch
   - update
+  - patch
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - volumeattachments/status
+  verbs:
+  - patch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -137,6 +153,45 @@ rules:
   - delete
   - update
   - create
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - volumeattachments
+  verbs:
+  - get
+  - list
+  - watch
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app.kubernetes.io/name: aws-ebs-csi-driver
+  name: ebs-external-resizer-role
+rules:
+  # The following rule should be uncommented for plugins that require secrets
+  # for provisioning.
+  # - apiGroups: [""]
+  #   resources: ["secrets"]
+  #   verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get", "list", "watch", "update", "patch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims/status"]
+    verbs: ["update", "patch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["list", "watch", "create", "update", "patch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -168,6 +223,21 @@ subjects:
   name: ebs-csi-controller-sa
   namespace: kube-system
 ---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ebs-csi-resizer-binding
+  labels:
+    app.kubernetes.io/name: aws-ebs-csi-driver
+subjects:
+  - kind: ServiceAccount
+    name: ebs-csi-controller-sa
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: ebs-external-resizer-role
+  apiGroup: rbac.authorization.k8s.io
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -187,13 +257,6 @@ spec:
         app: ebs-csi-controller
         app.kubernetes.io/name: aws-ebs-csi-driver
     spec:
-      nodeSelector:
-        taints.eks.aws.uk.tsb/role: mgmt
-      tolerations:
-        - key: role
-          operator: Equal
-          value: mgmt
-          effect: NoSchedule
       containers:
       - args:
         - --endpoint=$(CSI_ENDPOINT)
@@ -217,7 +280,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/amazon/aws-ebs-csi-driver:v0.5.0
+        image: k8s.gcr.io/provider-aws/aws-ebs-csi-driver:v0.10.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 5
@@ -232,6 +295,14 @@ spec:
         - containerPort: 9808
           name: healthz
           protocol: TCP
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /healthz
+            port: healthz
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 3
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
           name: socket-dir
@@ -239,15 +310,16 @@ spec:
         - --csi-address=$(ADDRESS)
         - --v=5
         - --feature-gates=Topology=true
-        - --enable-leader-election
-        - --leader-election-type=leases
+        - --extra-create-metadata
+        - --leader-election=true
+        - --default-fstype=ext4
         env:
         - name: ADDRESS
           value: /var/lib/csi/sockets/pluginproxy/csi.sock
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/csi-provisioner:v1.3.0
+        image: k8s.gcr.io/sig-storage/csi-provisioner:v2.0.2
         name: csi-provisioner
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
@@ -256,28 +328,41 @@ spec:
         - --csi-address=$(ADDRESS)
         - --v=5
         - --leader-election=true
-        - --leader-election-type=leases
         env:
         - name: ADDRESS
           value: /var/lib/csi/sockets/pluginproxy/csi.sock
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/csi-attacher:v1.2.0
+        image: k8s.gcr.io/sig-storage/csi-attacher:v3.0.0
         name: csi-attacher
         volumeMounts:
         - mountPath: /var/lib/csi/sockets/pluginproxy/
           name: socket-dir
       - args:
+        - --csi-address=$(ADDRESS)
+        - --v=5
+        env:
+        - name: ADDRESS
+          value: /var/lib/csi/sockets/pluginproxy/csi.sock
+        envFrom:
+          - configMapRef:
+              name: proxy-environment-variables
+        image: k8s.gcr.io/sig-storage/csi-resizer:v1.0.0
+        name: csi-resizer
+        volumeMounts:
+          - mountPath: /var/lib/csi/sockets/pluginproxy/
+            name: socket-dir
+      - args:
         - --csi-address=/csi/csi.sock
-        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/livenessprobe:v1.1.0
+        image: k8s.gcr.io/sig-storage/livenessprobe:v2.2.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi
           name: socket-dir
       nodeSelector:
-        kubernetes.io/arch: amd64
         kubernetes.io/os: linux
+        taints.eks.aws.uk.tsb/role: mgmt
       priorityClassName: system-cluster-critical
       serviceAccountName: ebs-csi-controller-sa
       tolerations:
@@ -325,7 +410,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/amazon/aws-ebs-csi-driver:v0.5.0
+        image: k8s.gcr.io/provider-aws/aws-ebs-csi-driver:v0.10.1
         livenessProbe:
           failureThreshold: 5
           httpGet:
@@ -361,14 +446,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/csi-node-driver-registrar:v1.1.0
-        lifecycle:
-          preStop:
-            exec:
-              command:
-              - /bin/sh
-              - -c
-              - rm -rf /registration/ebs.csi.aws.com-reg.sock /csi/csi.sock
+        image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.0.1
         name: node-driver-registrar
         volumeMounts:
         - mountPath: /csi
@@ -377,16 +455,16 @@ spec:
           name: registration-dir
       - args:
         - --csi-address=/csi/csi.sock
-        image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/k8scsi/livenessprobe:v1.1.0
+        image: k8s.gcr.io/sig-storage/livenessprobe:v2.2.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi
           name: plugin-dir
       hostNetwork: true
       nodeSelector:
-        kubernetes.io/arch: amd64
         kubernetes.io/os: linux
       priorityClassName: system-node-critical
+      serviceAccountName: ebs-csi-node-sa
       tolerations:
       - operator: Exists
       volumes:
@@ -436,7 +514,7 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: ebs-sc
   annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+    storageclass.kubernetes.io/is-default-class: "false"
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
 parameters:
