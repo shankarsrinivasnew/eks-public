@@ -276,6 +276,12 @@ stringData:
           receiver: rax-pagerduty-info
           continue: true
         - match_re:
+            severity: CRITICAL
+            rackspace: "true"
+            environment: preprod|prod
+          receiver: rax-monitoring-email
+          continue: true
+        - match_re:
             environment: preprod|prod
           receiver: itom-dev-servicenow
           continue: true
