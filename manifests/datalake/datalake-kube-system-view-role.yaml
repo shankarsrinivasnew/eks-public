@@ -1,0 +1,29 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: datalake-view-role
+  namespace: kube-system
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs:
+    - get
+    - list
+    - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: datalake-view-binding
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: datalake-view-role
+subjects:
+- kind: Group
+  name: datalake-view-kube-system
+- kind: ServiceAccount
+  name: tsb-datalake
+  namespace: datalake
