@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: lts-alpine
+      tag: 2.277.1-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -33,6 +33,7 @@ spec:
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20"
+          alb.ingress.kubernetes.io/tags: Environment={{ AWS_ENVIRONMENT }},Project=shared,ManagedBy=rackspace
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
@@ -80,9 +81,9 @@ spec:
         - pipeline-github:2.7
         - scm-filter-branch-pr:0.5.1
         - ws-cleanup:0.38
-        - role-strategy:3.0
+        - role-strategy:3.1.1
         - slack:2.42
-        - artifactory:3.8.1
+        - artifactory:3.10.6
         - build-timeout:1.20
         - build-timestamp:1.0.3
         - dashboard-view:2.13
@@ -143,7 +144,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
+                                  curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
                                   python get-pip.py
                                 toolHome: "/home/jenkins/.local/bin"
                   - name: "ansible"
@@ -152,7 +153,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
+                                  curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
                                   python get-pip.py
                                   /home/jenkins/.local/bin/pip install --user ansible
                                   /home/jenkins/.local/bin/pip install --user pywinrm
@@ -163,7 +164,7 @@ spec:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
+                                  curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
                                   python get-pip.py
                                   curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscli.zip
                                   unzip awscli.zip
@@ -202,7 +203,7 @@ spec:
       componentName: jenkins-agent
       resources:
         limits:
-          memory: 1Gi
+          memory: 4Gi
       envVars:
         - name: http_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -518,11 +519,11 @@ spec:
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
                 mountPath: "/var/run/docker.sock"
-       jnlp-cb: |
-          - name: jnlp-cb
-            label: tsb-cb
-            namespace: cb
-            serviceAccount: tsb-cb
+        jnlp-ods: |
+          - name: jnlp-ods
+            label: tsb-ods
+            namespace: ods
+            serviceAccount: tsb-ods
             nodeSelector: taints.eks.aws.uk.tsb/role=mgmt
             imagePullSecrets:
               - name: "artifactory-credentials"
@@ -531,9 +532,9 @@ spec:
               apiVersion: v1
               kind: Pod
               metadata:
-                # namespace: cb
+                # namespace: ods
               spec:
-                # serviceAccountName: tsb-cb
+                # serviceAccountName: tsb-ods
                 securityContext:
                   runAsUser: 0
                   fsGroup: 1337
@@ -659,11 +660,11 @@ spec:
             - hostPathVolume:
                 hostPath: "/var/run/docker.sock"
                 mountPath: "/var/run/docker.sock"
-        jnlp-ods: |
-          - name: jnlp-ods
-            label: tsb-ods
-            namespace: ods
-            serviceAccount: tsb-ods
+        jnlp-datalake: |
+          - name: jnlp-datalake
+            label: tsb-datalake
+            namespace: datalake
+            serviceAccount: tsb-datalake
             nodeSelector: taints.eks.aws.uk.tsb/role=mgmt
             imagePullSecrets:
               - name: "artifactory-credentials"
@@ -672,9 +673,9 @@ spec:
               apiVersion: v1
               kind: Pod
               metadata:
-                # namespace: ods
+                # namespace: datalake
               spec:
-                # serviceAccountName: tsb-ods
+                # serviceAccountName: tsb-datalake
                 securityContext:
                   runAsUser: 0
                   fsGroup: 1337
@@ -1163,6 +1164,31 @@ spec:
                 operator: Equal
                 value: mgmt
                 effect: NoSchedule
+      datalake:
+        podName: datalake
+        componentName: tsb-datalake
+        envVars:
+          - name: http_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: https_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: no_proxy
+            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            namespace: datalake
+          spec:
+            serviceAccountName: tsb-datalake
+            securityContext:
+              #runAsUser: 0
+              fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equal
+                value: mgmt
+                effect: NoSchedule
       sca:
         podName: sca
         componentName: tsb-sca
@@ -1205,6 +1231,31 @@ spec:
             namespace: sco
           spec:
             serviceAccountName: tsb-sco
+            securityContext:
+              #runAsUser: 0
+              fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equal
+                value: mgmt
+                effect: NoSchedule
+      obs:
+        podName: obs
+        componentName: tsb-obs
+        envVars:
+          - name: http_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: https_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: no_proxy
+            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            namespace: obs
+          spec:
+            serviceAccountName: tsb-obs
             securityContext:
               #runAsUser: 0
               fsGroup: 1337
