@@ -48,7 +48,7 @@ spec:
         
     
     - alert: CDC_FILE_DISCRIPTOR_LIMIT
-      expr: process_open_fds{job="ec2-discover-node-exporter"} / process_max_fds{job="ec2-discover-node-exporter"} > 0.8
+      expr: process_open_fds{job="ec2-discover-node-exporter", instance=~"cdc-preprod-.*"} / process_max_fds{job="ec2-discover-node-exporter", instance=~"cdc-preprod-.*"} > 0.8
       for: 10m
       labels:
         severity: CRITICAL
