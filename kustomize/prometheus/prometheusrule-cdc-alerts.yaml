@@ -53,7 +53,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         level: CRITICAL
         platform: AWS
-        severity: WARNING
+        severity: CRITICAL
         priority: P3
         application: cdc
         tsbci: INFOSPHERE_CDC
