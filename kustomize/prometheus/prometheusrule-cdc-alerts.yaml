@@ -22,7 +22,7 @@ spec:
         level: CRITICAL
         platform: AWS
         severity: CRITICAL
-        priority: P4
+        priority: P3
         application: cdc
         tsbci: INFOSPHERE_CDC
         itopsbridge: "true"
@@ -38,7 +38,7 @@ spec:
         level: CRITICAL
         platform: AWS
         severity: CRITICAL
-        priority: P4
+        priority: P3
         application: cdc
         tsbci: INFOSPHERE_CDC
         itopsbridge: "true"
@@ -46,3 +46,18 @@ spec:
         Description: '***One or more subscriptions is/are not available. Value: {{ $value }} Value:1 means one subcription is missing, Value:0 means all 2 subscriptions are missing'
         Summary: Alert CDC- One or more subscriptions is/are not available
         
+    - alert: CDC_ProcessNearFDLimits
+      expr: process_open_fds > 1024
+      for: 10m
+      labels: 
+        environment: "{{ AWS_ENVIRONMENT }}"
+        level: CRITICAL
+        platform: AWS
+        severity: CRITICAL
+        priority: P3
+        application: cdc
+        tsbci: INFOSPHERE_CDC
+        itopsbridge: "true"
+      annotations:  
+        Description: 'File decriptors for CDC is server greater than 1024'
+        summary: 'File decriptors for Instance {{ $labels.instance }} is greater than 1024'
