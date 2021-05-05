@@ -304,3 +304,8 @@ stringData:
             application: cdc
           receiver: cmos-event-management
           continue: true
+        - match_re:
+            environment: preprod|prod    
+            application: cdc
+            severity: CRITICAL
+          receiver: rax-pagerduty-critical  
