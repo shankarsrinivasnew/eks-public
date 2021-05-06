@@ -59,4 +59,4 @@ spec:
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
       annotations:
-         summary: "Process Near File Discriptor Limits for Instance {{ $labels.instance }} is above 80% used for 10 minutes"
+         summary: "Process Near File Discriptor Limits for Instance {{ $labels.instance }} is above 70% used for 10 minutes"
