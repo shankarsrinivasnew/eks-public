@@ -35,6 +35,14 @@ spec:
         operator: Equal
         value: highcompute
         effect: NoSchedule
+      - key: role
+        operator: Equal
+        value: sca
+        effect: NoSchedule
+      - key: role
+        operator: Equal
+        value: obs
+        effect: NoSchedule
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
