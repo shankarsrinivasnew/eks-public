@@ -27,7 +27,7 @@ data:
         "links": [],
         "panels": [
             {
-            "collapsed": false,
+            "collapsed": true,
             "datasource": "Prometheus",
             "gridPos": {
                 "h": 1,
@@ -36,804 +36,6 @@ data:
                 "y": 0
             },
             "id": 183,
-            "panels": [],
-            "title": "PE06 Application",
-            "type": "row"
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 1
-            },
-            "hiddenSeries": false,
-            "id": 187,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Total Records  PE06 transactions",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:707",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:708",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 1
-            },
-            "hiddenSeries": false,
-            "id": 186,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Total Records PE06 ingestors",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:707",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:708",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 9
-            },
-            "hiddenSeries": false,
-            "id": 171,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "(tsbods_processCustomerContractStream_time_pe06_seconds_count{ job=\"tsb-ods-cdc-customer-pe06\", namespace=\"ods\"}/tsbods_processCustomerContractStream_time_pe06_seconds_sum{job=\"tsb-ods-cdc-customer-pe06\", namespace=\"ods\"})",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Average records per second PE06 Transaction",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:707",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:708",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 9
-            },
-            "hiddenSeries": false,
-            "id": 170,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Average number of records consumed (PE06)",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:736",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:737",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 17
-            },
-            "hiddenSeries": false,
-            "id": 189,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "(sum by (job, namespace) (records_in_total_pe06_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}))",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                },
-                {
-                "exemplar": true,
-                "expr": "(sum by (job, namespace) (records_out_total_pe06_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}))",
-                "hide": false,
-                "interval": "",
-                "legendFormat": "",
-                "refId": "B"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "PE06  Ingestor Records",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:1406",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:1407",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 17
-            },
-            "hiddenSeries": false,
-            "id": 188,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "(sum by (job, namespace) (tsb_ods_in_customercontract_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}))",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                },
-                {
-                "exemplar": true,
-                "expr": "(sum by (job, namespace) (tsb_ods_out_customercontract_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}))",
-                "hide": false,
-                "interval": "",
-                "legendFormat": "",
-                "refId": "B"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "PE06 Transaction Records",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:1377",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:1378",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 25
-            },
-            "hiddenSeries": false,
-            "id": 185,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}))",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Error log count for PE06 transaction",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:624",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:625",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 25
-            },
-            "hiddenSeries": false,
-            "id": 184,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "7.5.3",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                "exemplar": true,
-                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}))",
-                "interval": "",
-                "legendFormat": "",
-                "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Error log count for  PE06  ingestor",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                "$$hashKey": "object:595",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                },
-                {
-                "$$hashKey": "object:596",
-                "format": "short",
-                "label": null,
-                "logBase": 1,
-                "max": null,
-                "min": null,
-                "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-            },
-            {
-            "collapsed": true,
-            "datasource": "Prometheus",
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 33
-            },
-            "id": 205,
             "panels": [
                 {
                 "aliasColors": {},
@@ -851,10 +53,10 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 2
+                    "y": 1
                 },
                 "hiddenSeries": false,
-                "id": 214,
+                "id": 187,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -882,7 +84,7 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}",
+                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -892,7 +94,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records  PE09 transactions",
+                "title": "Total Records  PE06 scylla consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -947,10 +149,10 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 2
+                    "y": 1
                 },
                 "hiddenSeries": false,
-                "id": 215,
+                "id": 186,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -978,7 +180,7 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-09-headless-service\"}",
+                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -988,7 +190,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records PE09ingestors",
+                "title": "Total Records PE06 ingestors consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1043,10 +245,10 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 10
+                    "y": 9
                 },
                 "hiddenSeries": false,
-                "id": 219,
+                "id": 171,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -1074,7 +276,7 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(tsbods_processStream_time_pe09_seconds_count{ job=\"tsb-ods-cdc-addresses-pe09\", namespace=\"ods\"}/tsbods_processStream_time_pe09_seconds_sum{job=\"tsb-ods-cdc-addresses-pe09\", namespace=\"ods\"})",
+                    "expr": "(tsbods_processCustomerContractStream_time_pe06_seconds_count{ job=\"tsb-ods-cdc-customer-pe06\", namespace=\"ods\"}/tsbods_processCustomerContractStream_time_pe06_seconds_sum{job=\"tsb-ods-cdc-customer-pe06\", namespace=\"ods\"})",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -1084,7 +286,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Average records per second PE09 Transaction",
+                "title": "Average records per second PE06 scylla",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1139,10 +341,10 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 10
+                    "y": 9
                 },
                 "hiddenSeries": false,
-                "id": 216,
+                "id": 170,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -1180,7 +382,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Average number of records consumed (PE09)",
+                "title": "Average number of records consumed PE06 ingestors",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1235,10 +437,10 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 18
+                    "y": 17
                 },
                 "hiddenSeries": false,
-                "id": 218,
+                "id": 188,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -1266,14 +468,14 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_addresses_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe06_customercontract_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}))",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
                     },
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_addresses_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_out_pe06_customercontract_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}))",
                     "hide": false,
                     "interval": "",
                     "legendFormat": "",
@@ -1284,7 +486,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "PE09 Transaction Records",
+                "title": "PE06 scylla Records",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1339,6 +541,701 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
+                    "y": 17
+                },
+                "hiddenSeries": false,
+                "id": 189,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (records_in_total_pe06_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}))",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    },
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (records_out_total_pe06_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "B"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "PE06  Ingestor Records",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:1406",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:1407",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 25
+                },
+                "hiddenSeries": false,
+                "id": 185,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe06\"}))",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Error log count for PE06 scylla ",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:624",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:625",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 25
+                },
+                "hiddenSeries": false,
+                "id": 184,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}))",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Error log count for  PE06  ingestor",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:595",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:596",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                }
+            ],
+            "title": "PE06 Application",
+            "type": "row"
+            },
+            {
+            "collapsed": true,
+            "datasource": "Prometheus",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 1
+            },
+            "id": 205,
+            "panels": [
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 2
+                },
+                "hiddenSeries": false,
+                "id": 215,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-09-headless-service\"}",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Total Records PE09 ingestors consumed from kafka",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:707",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:708",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 2
+                },
+                "hiddenSeries": false,
+                "id": 214,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Total Records  PE09 scylla consumed from kafka",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:707",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:708",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 10
+                },
+                "hiddenSeries": false,
+                "id": 216,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-06-headless-service\"}",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Average number of records consumed PE09 ingestors",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:736",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:737",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 10
+                },
+                "hiddenSeries": false,
+                "id": 219,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "(tsbods_processStream_time_pe09_seconds_count{ job=\"tsb-ods-cdc-addresses-pe09\", namespace=\"ods\"}/tsbods_processStream_time_pe09_seconds_sum{job=\"tsb-ods-cdc-addresses-pe09\", namespace=\"ods\"})",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Average records per second PE09 scylla",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:707",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:708",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
                     "y": 18
                 },
                 "hiddenSeries": false,
@@ -1442,11 +1339,11 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 0,
-                    "y": 26
+                    "x": 12,
+                    "y": 18
                 },
                 "hiddenSeries": false,
-                "id": 212,
+                "id": 218,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -1474,17 +1371,25 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe09_addresses_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}))",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
+                    },
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (tsb_ods_out_pe09_addresses_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "B"
                     }
                 ],
                 "thresholds": [],
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Error log count for PE09 transaction",
+                "title": "PE09 scylla Records",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1500,7 +1405,7 @@ data:
                 },
                 "yaxes": [
                     {
-                    "$$hashKey": "object:624",
+                    "$$hashKey": "object:1377",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -1509,7 +1414,7 @@ data:
                     "show": true
                     },
                     {
-                    "$$hashKey": "object:625",
+                    "$$hashKey": "object:1378",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -1538,7 +1443,7 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 12,
+                    "x": 0,
                     "y": 26
                 },
                 "hiddenSeries": false,
@@ -1618,6 +1523,102 @@ data:
                     "align": false,
                     "alignLevel": null
                 }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 26
+                },
+                "hiddenSeries": false,
+                "id": 212,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-addresses-pe09\"}))",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Error log count for PE09 scylla",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:624",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:625",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
                 }
             ],
             "title": "PE09 Applications",
@@ -1630,7 +1631,7 @@ data:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 34
+                "y": 2
             },
             "id": 193,
             "panels": [
@@ -1691,7 +1692,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records PE10 ingestors",
+                "title": "Total Records PE10 ingestors consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1777,7 +1778,7 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-10-headless-service\"}",
+                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-cdc-business-customer-pe10\"}",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -1787,7 +1788,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records PE10 ingestors",
+                "title": "Total Records PE10 scylla consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1883,7 +1884,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Average number of records consumed (PE10)",
+                "title": "Average number of records consumed PE10 ingestors",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -1979,7 +1980,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Average records per second PE10 Transaction",
+                "title": "Average records per second PE10 scylla",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2169,14 +2170,14 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_businessCustomer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-business-customer-pe10\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe10_businessCustomer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-business-customer-pe10\"}))",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
                     },
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_out_businessCustomer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-business-customer-pe10\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_out_pe10_businessCustomer_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-business-customer-pe10\"}))",
                     "hide": false,
                     "interval": "",
                     "legendFormat": "",
@@ -2187,7 +2188,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "PE10 Transaction Records",
+                "title": "PE10 scylla Records",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2283,7 +2284,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Error log count for  PE10ingestor",
+                "title": "Error log count for  PE10 ingestor",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2379,7 +2380,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Error log count for PE10 transaction",
+                "title": "Error log count for PE10 scylla ",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2429,7 +2430,7 @@ data:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 35
+                "y": 3
             },
             "id": 207,
             "panels": [
@@ -2490,7 +2491,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records PE11 ingestors",
+                "title": "Total Records PE11 ingestors consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2586,7 +2587,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records  PE11 transactions",
+                "title": "Total Records  PE11 scylla consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2644,102 +2645,6 @@ data:
                     "y": 12
                 },
                 "hiddenSeries": false,
-                "id": 243,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(tsbods_processStream_time_pe11_seconds_count{ job=\"tsb-ods-cdc-customer-pe11\", namespace=\"ods\"}/tsbods_processStream_time_pe11_seconds_sum{job=\"tsb-ods-cdc-customer-pe11\", namespace=\"ods\"})",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Average records per second PE11 Transaction",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:707",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:708",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 12,
-                    "y": 12
-                },
-                "hiddenSeries": false,
                 "id": 240,
                 "legend": {
                     "avg": false,
@@ -2778,7 +2683,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Average number of records consumed (PE11)",
+                "title": "Average number of records consumed PE11 ingestors",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2832,11 +2737,11 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 0,
-                    "y": 20
+                    "x": 12,
+                    "y": 12
                 },
                 "hiddenSeries": false,
-                "id": 242,
+                "id": 243,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -2864,25 +2769,17 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_customer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe11\"}))",
+                    "expr": "(tsbods_processStream_time_pe11_seconds_count{ job=\"tsb-ods-cdc-customer-pe11\", namespace=\"ods\"}/tsbods_processStream_time_pe11_seconds_sum{job=\"tsb-ods-cdc-customer-pe11\", namespace=\"ods\"})",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
-                    },
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_out_customer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe11\"}))",
-                    "hide": false,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "B"
                     }
                 ],
                 "thresholds": [],
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "PE11 Transaction Records",
+                "title": "Average records per second PE11 scylla",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -2898,7 +2795,7 @@ data:
                 },
                 "yaxes": [
                     {
-                    "$$hashKey": "object:1377",
+                    "$$hashKey": "object:707",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -2907,7 +2804,7 @@ data:
                     "show": true
                     },
                     {
-                    "$$hashKey": "object:1378",
+                    "$$hashKey": "object:708",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -2936,7 +2833,7 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 12,
+                    "x": 0,
                     "y": 20
                 },
                 "hiddenSeries": false,
@@ -3012,6 +2909,110 @@ data:
                     },
                     {
                     "$$hashKey": "object:1407",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 20
+                },
+                "hiddenSeries": false,
+                "id": 242,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe11_customer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe11\"}))",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    },
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe11_customer_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe11\"}))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "B"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "PE11 scyllla Records",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:1377",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:1378",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -3178,7 +3179,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Error log count for PE11  transaction",
+                "title": "Error log count for PE11 syclla",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -3228,7 +3229,7 @@ data:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 36
+                "y": 4
             },
             "id": 211,
             "panels": [
@@ -3248,102 +3249,6 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 5
-                },
-                "hiddenSeries": false,
-                "id": 239,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Total Records  PE16 transactions",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:707",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:708",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 12,
                     "y": 5
                 },
                 "hiddenSeries": false,
@@ -3385,7 +3290,103 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records PE16 ingestors",
+                "title": "Total Records PE16 ingestors consumed from kafka",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                    "$$hashKey": "object:707",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    },
+                    {
+                    "$$hashKey": "object:708",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+                },
+                {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "Prometheus",
+                "fieldConfig": {
+                    "defaults": {},
+                    "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 5
+                },
+                "hiddenSeries": false,
+                "id": 239,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.5.3",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                    "exemplar": true,
+                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Total Records  PE16 scylla consumed from kafka",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -3443,102 +3444,6 @@ data:
                     "y": 13
                 },
                 "hiddenSeries": false,
-                "id": 251,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(tsbods_processStream_time_pe16_seconds_count{ job=\"tsb-ods-cdc-customer-pe16\", namespace=\"ods\"}/tsbods_processStream_time_pe16_seconds_sum{job=\"tsb-ods-cdc-customer-pe16\", namespace=\"ods\"})",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Average records per second PE16 Transaction",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:707",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:708",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 12,
-                    "y": 13
-                },
-                "hiddenSeries": false,
                 "id": 249,
                 "legend": {
                     "avg": false,
@@ -3577,7 +3482,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Average number of records consumed (PE16)",
+                "title": "Average number of records consumed PE16 ingestors",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -3631,11 +3536,11 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 0,
-                    "y": 21
+                    "x": 12,
+                    "y": 13
                 },
                 "hiddenSeries": false,
-                "id": 250,
+                "id": 251,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -3663,25 +3568,17 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_customercontract_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}))",
+                    "expr": "(tsbods_processStream_time_pe16_seconds_count{ job=\"tsb-ods-cdc-customer-pe16\", namespace=\"ods\"}/tsbods_processStream_time_pe16_seconds_sum{job=\"tsb-ods-cdc-customer-pe16\", namespace=\"ods\"})",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
-                    },
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_customercontract_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}))",
-                    "hide": false,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "B"
                     }
                 ],
                 "thresholds": [],
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "PE16 Transaction Records",
+                "title": "Average records per second PE16 scylla",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -3697,7 +3594,7 @@ data:
                 },
                 "yaxes": [
                     {
-                    "$$hashKey": "object:1377",
+                    "$$hashKey": "object:707",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -3706,7 +3603,7 @@ data:
                     "show": true
                     },
                     {
-                    "$$hashKey": "object:1378",
+                    "$$hashKey": "object:708",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -3735,7 +3632,7 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 12,
+                    "x": 0,
                     "y": 21
                 },
                 "hiddenSeries": false,
@@ -3839,11 +3736,11 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 0,
-                    "y": 29
+                    "x": 12,
+                    "y": 21
                 },
                 "hiddenSeries": false,
-                "id": 245,
+                "id": 250,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -3871,17 +3768,25 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe16_customercontract_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}))",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
+                    },
+                    {
+                    "exemplar": true,
+                    "expr": "(sum by (job, namespace) (tsb_ods_out_pe16_customercontract_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "B"
                     }
                 ],
                 "thresholds": [],
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Error log count for PE16  transaction",
+                "title": "PE16 scylla Records",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -3897,7 +3802,7 @@ data:
                 },
                 "yaxes": [
                     {
-                    "$$hashKey": "object:624",
+                    "$$hashKey": "object:1377",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -3906,7 +3811,7 @@ data:
                     "show": true
                     },
                     {
-                    "$$hashKey": "object:625",
+                    "$$hashKey": "object:1378",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -3935,7 +3840,7 @@ data:
                 "gridPos": {
                     "h": 8,
                     "w": 12,
-                    "x": 12,
+                    "x": 0,
                     "y": 29
                 },
                 "hiddenSeries": false,
@@ -4015,117 +3920,6 @@ data:
                     "align": false,
                     "alignLevel": null
                 }
-                }
-            ],
-            "title": "PE16 Application",
-            "type": "row"
-            },
-            {
-            "collapsed": true,
-            "datasource": "Prometheus",
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 37
-            },
-            "id": 203,
-            "panels": [
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 0,
-                    "y": 38
-                },
-                "hiddenSeries": false,
-                "id": 222,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Total Records PE17 ingestors consumed from kafka",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:707",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:708",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
                 },
                 {
                 "aliasColors": {},
@@ -4143,10 +3937,10 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 38
+                    "y": 29
                 },
                 "hiddenSeries": false,
-                "id": 196,
+                "id": 245,
                 "legend": {
                     "avg": false,
                     "current": false,
@@ -4174,7 +3968,7 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}",
+                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe16\"}))",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
@@ -4184,599 +3978,7 @@ data:
                 "timeFrom": null,
                 "timeRegions": [],
                 "timeShift": null,
-                "title": "Total Records  PE17 transactions consumed from kafka",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:707",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:708",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 0,
-                    "y": 46
-                },
-                "hiddenSeries": false,
-                "id": 225,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Average number of records consumed PE17 ingestors",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:736",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:737",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 12,
-                    "y": 46
-                },
-                "hiddenSeries": false,
-                "id": 227,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(tsbods_processStream_time_pe17_seconds_count{ job=\"tsb-ods-cdc-customer-address-pe17\", namespace=\"ods\"}/tsbods_processStream_time_pe17_seconds_sum{job=\"tsb-ods-cdc-customer-address-pe17\", namespace=\"ods\"})",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Average records per second PE17  scylla",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:707",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:708",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 0,
-                    "y": 54
-                },
-                "hiddenSeries": false,
-                "id": 224,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (records_in_total_pe17_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}))",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    },
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (records_out_total_pe17_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}))",
-                    "hide": false,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "B"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "PE17  Ingestor Records",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:1406",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:1407",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 12,
-                    "y": 54
-                },
-                "hiddenSeries": false,
-                "id": 226,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_in_customerAddress_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}))",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    },
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_out_customerAddress_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}))",
-                    "hide": false,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "B"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "PE17  scylla Records",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:1377",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:1378",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 0,
-                    "y": 62
-                },
-                "hiddenSeries": false,
-                "id": 220,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}))",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Error log count for  PE17 ingestor",
-                "tooltip": {
-                    "shared": true,
-                    "sort": 0,
-                    "value_type": "individual"
-                },
-                "type": "graph",
-                "xaxis": {
-                    "buckets": null,
-                    "mode": "time",
-                    "name": null,
-                    "show": true,
-                    "values": []
-                },
-                "yaxes": [
-                    {
-                    "$$hashKey": "object:595",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    },
-                    {
-                    "$$hashKey": "object:596",
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                    }
-                ],
-                "yaxis": {
-                    "align": false,
-                    "alignLevel": null
-                }
-                },
-                {
-                "aliasColors": {},
-                "bars": false,
-                "dashLength": 10,
-                "dashes": false,
-                "datasource": "Prometheus",
-                "fieldConfig": {
-                    "defaults": {},
-                    "overrides": []
-                },
-                "fill": 1,
-                "fillGradient": 0,
-                "gridPos": {
-                    "h": 8,
-                    "w": 12,
-                    "x": 12,
-                    "y": 62
-                },
-                "hiddenSeries": false,
-                "id": 221,
-                "legend": {
-                    "avg": false,
-                    "current": false,
-                    "max": false,
-                    "min": false,
-                    "show": true,
-                    "total": false,
-                    "values": false
-                },
-                "lines": true,
-                "linewidth": 1,
-                "nullPointMode": "null",
-                "options": {
-                    "alertThreshold": true
-                },
-                "percentage": false,
-                "pluginVersion": "7.5.3",
-                "pointradius": 2,
-                "points": false,
-                "renderer": "flot",
-                "seriesOverrides": [],
-                "spaceLength": 10,
-                "stack": false,
-                "steppedLine": false,
-                "targets": [
-                    {
-                    "exemplar": true,
-                    "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}))",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                    }
-                ],
-                "thresholds": [],
-                "timeFrom": null,
-                "timeRegions": [],
-                "timeShift": null,
-                "title": "Error log count for PE17  scylla",
+                "title": "Error log count for PE16  scylla",
                 "tooltip": {
                     "shared": true,
                     "sort": 0,
@@ -4816,8 +4018,806 @@ data:
                 }
                 }
             ],
+            "title": "PE16 Application",
+            "type": "row"
+            },
+            {
+            "collapsed": false,
+            "datasource": "Prometheus",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 5
+            },
+            "id": 203,
+            "panels": [],
             "title": "PE17 Application",
             "type": "row"
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 6
+            },
+            "hiddenSeries": false,
+            "id": 222,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Total Records PE17 ingestors consumed from kafka",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:707",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:708",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 6
+            },
+            "hiddenSeries": false,
+            "id": 196,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Total Records  PE17 scylla consumed from kafka",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:707",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:708",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 14
+            },
+            "hiddenSeries": false,
+            "id": 225,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Average number of records consumed PE17 ingestors",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:736",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:737",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 14
+            },
+            "hiddenSeries": false,
+            "id": 227,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "(tsbods_processStream_time_pe17_seconds_count{ job=\"tsb-ods-cdc-customer-address-pe17\", namespace=\"ods\"}/tsbods_processStream_time_pe17_seconds_sum{job=\"tsb-ods-cdc-customer-address-pe17\", namespace=\"ods\"})",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Average records per second PE17  scylla",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:707",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:708",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 22
+            },
+            "hiddenSeries": false,
+            "id": 224,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (records_in_total_pe17_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                },
+                {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (records_out_total_pe17_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}))",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "PE17  Ingestor Records",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:1406",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:1407",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 22
+            },
+            "hiddenSeries": false,
+            "id": 226,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (tsb_ods_in_pe17_customerAddress_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                },
+                {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (tsb_ods_out_pe17_customerAddress_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}))",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "PE17  scylla Records",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:1377",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:1378",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 30
+            },
+            "hiddenSeries": false,
+            "id": 220,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-pr-ingest-pe-17-headless-service\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Error log count for  PE17 ingestor",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:595",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:596",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+            },
+            {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 30
+            },
+            "hiddenSeries": false,
+            "id": 221,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-customer-address-pe17\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Error log count for PE17  scylla",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                "$$hashKey": "object:624",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                },
+                {
+                "$$hashKey": "object:625",
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
             },
             {
             "collapsed": true,
@@ -5365,14 +5365,14 @@ data:
                 "targets": [
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_out_customerContact_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe34\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_in_pe34_customerContact_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe34\"}))",
                     "interval": "",
                     "legendFormat": "",
                     "refId": "A"
                     },
                     {
                     "exemplar": true,
-                    "expr": "(sum by (job, namespace) (tsb_ods_out_customerContact_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe34\"}))",
+                    "expr": "(sum by (job, namespace) (tsb_ods_out_pe34_customerContact_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-customer-pe34\"}))",
                     "hide": false,
                     "interval": "",
                     "legendFormat": "",
@@ -5645,7 +5645,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 72
+                    "y": 40
                 },
                 "hiddenSeries": false,
                 "id": 4,
@@ -5764,7 +5764,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 6
+                    "y": 49
                 },
                 "hiddenSeries": false,
                 "id": 70,
@@ -5860,7 +5860,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 6
+                    "y": 49
                 },
                 "hiddenSeries": false,
                 "id": 72,
@@ -5956,7 +5956,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 14
+                    "y": 57
                 },
                 "hiddenSeries": false,
                 "id": 73,
@@ -6052,7 +6052,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 14
+                    "y": 57
                 },
                 "hiddenSeries": false,
                 "id": 71,
@@ -6148,7 +6148,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 22
+                    "y": 65
                 },
                 "hiddenSeries": false,
                 "id": 67,
@@ -6252,7 +6252,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 22
+                    "y": 65
                 },
                 "hiddenSeries": false,
                 "id": 68,
@@ -6356,7 +6356,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 30
+                    "y": 73
                 },
                 "hiddenSeries": false,
                 "id": 64,
@@ -6452,7 +6452,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 30
+                    "y": 73
                 },
                 "hiddenSeries": false,
                 "id": 65,
@@ -6548,7 +6548,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 38
+                    "y": 81
                 },
                 "hiddenSeries": false,
                 "id": 62,
@@ -6656,7 +6656,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 38
+                    "y": 81
                 },
                 "id": 52,
                 "options": {
@@ -6702,7 +6702,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 46
+                    "y": 89
                 },
                 "hiddenSeries": false,
                 "id": 60,
@@ -6798,7 +6798,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 46
+                    "y": 89
                 },
                 "hiddenSeries": false,
                 "id": 51,
@@ -6894,7 +6894,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 54
+                    "y": 97
                 },
                 "hiddenSeries": false,
                 "id": 58,
@@ -6990,7 +6990,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 12,
-                    "y": 54
+                    "y": 97
                 },
                 "hiddenSeries": false,
                 "id": 56,
@@ -7086,7 +7086,7 @@ data:
                     "h": 8,
                     "w": 12,
                     "x": 0,
-                    "y": 62
+                    "y": 105
                 },
                 "hiddenSeries": false,
                 "id": 54,
@@ -7167,7 +7167,7 @@ data:
                 }
                 }
             ],
-            "title": "Performsnce testing related metrics",
+            "title": "Performance testing related metrics",
             "type": "row"
             }
         ],
@@ -7186,5 +7186,5 @@ data:
         "timezone": "",
         "title": "TSB-ODS-Performance-Metrics",
         "uid": "Bn-f_7uMz1",
-        "version": 36
+        "version": 81
         }
