@@ -25,6 +25,21 @@ resources:
   - prometheusrule-ods-down.yaml
   - prometheusrule-ods-up.yaml
   - prometheusrule-ods-sys-api-down.yaml
+  - prometheusrules-cob-create-datacapture-aboutyou-responsetime.yaml
+  - prometheusrules-cob-create-state-management-responsetime.yaml
+  - prometheusrules-cob-create-user-responsetime.yaml
+  - prometheusrules-cob-idv-get-ocr-responsetime.yaml
+  - prometheusrules-cob-idv-get-report-responsetime.yaml
+  - prometheusrules-cob-idv-get-token-responsetime.yaml
+  - prometheusrules-cob-onboarding-check-user-name-responsetime.yaml
+  - prometheusrules-cob-onboarding-complete-responsetime.yaml
+  - prometheusrules-cob-onboarding-details-responsetime.yaml
+  - prometheusrules-cob-onboarding-report-responsetime.yaml
+  - prometheusrules-cob-onboarding-start-responsetime.yaml
+  - prometheusrules-cob-product-pricing-data-responsetime.yaml
+  - prometheusrules-cob-send-opt-responsetime.yaml
+  - prometheusrules-cob-verify-email-token-responsetime.yaml
+  - prometheusrules-cob-verify-otp-responsetime.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml

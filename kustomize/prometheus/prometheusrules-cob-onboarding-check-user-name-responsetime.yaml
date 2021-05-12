@@ -1,0 +1,110 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cob-customer-onboarding-check-user-name-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: COB_APPS_RESPONSETIME_STATE
+    rules:
+###########################################COB_APP_ALL_RESPONSETIME_ONBOARDING_CHECK_USER_NAME##########################################################
+    - record: cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}
+      expr: sum by (namespace, job)(avg_over_time(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-user-persistence1", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(avg_over_time(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-user-persistence1", httpStatusCode="200"}[5m]))
+    - alert: COB_app_customer_onboarding_check_user_name_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) > .6
+      for: 5m
+      labels:
+        action: Application will be impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cob
+        severity: CRITICAL
+        priority: P1
+        type: 8x5
+        tsbci: COB
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 600 ms :{{ $value }}'
+        summary: 'Red alert for response time reached for application'
+        #################################################################
+    - alert: COB_app_customer_onboarding_check_user_name_high_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) <=.6
+      for: 5m
+      labels:
+        action: Application will be impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: AMBER
+        platform: AWS
+        namespace: cob
+        severity: HIGH
+        priority: P2
+        type: 8x5
+        tsbci: COB
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 525 ms :{{ $value }}'
+        summary: 'Aber alert for response time reached for application'
+        ###################################################################
+    - alert: COB_app_customer_onboarding_check_user_name_medium_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) <=.525
+      for: 5m
+      labels:
+        action: Application will be impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cob
+        severity: MEDIUM
+        priority: P3
+        type: 8x5
+        tsbci: COB
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 450 ms :{{ $value }}'
+        summary: 'Yellow alert for response time reached for application'
+        #################################################################
+    - alert: COB_app_customer_onboarding_check_user_name_low_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+      for: 5m
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cob
+        severity: LOW
+        priority: P4
+        type: 8x5
+        tsbci: COB
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 375 ms :{{ $value }}'
+        summary: 'Yellow alert for response time reached for application'
+        ######################################################################
+    - alert: COB_app_customer_onboarding_check_user_name_warning_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) > .300 and (cob_app_customer_onboarding_check_user_name_response_time_{{ AWS_ENVIRONMENT }}) <=.375
+      for: 5m
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: GREEN
+        platform: AWS
+        namespace: cob
+        severity: WARNING
+        priority: P5
+        type: 8x5
+        tsbci: COB
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
+        summary: 'Green alert for response time reached for application'
+
