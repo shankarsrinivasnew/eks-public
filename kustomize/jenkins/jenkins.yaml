@@ -61,7 +61,7 @@ spec:
         - workflow-durable-task-step:2.36
         - credentials-binding:1.24
         - git:4.5.0
-        - configuration-as-code:1.47
+        - configuration-as-code:1.51
         - ansicolor:0.7.2
         - pipeline-aws:1.42
         - authorize-project:1.3.0
