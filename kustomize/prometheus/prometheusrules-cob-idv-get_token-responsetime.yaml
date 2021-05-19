@@ -4,17 +4,18 @@ metadata:
   labels:
     app: kube-prometheus-stack
     release: prometheus
-  name: cob-email-responsetime-alerts
+  name: cob-idv-token-responsetime-alerts
   namespace: prometheus
 spec:
   groups:
   - name: COB_APPS_RESPONSETIME_STATE
     rules:
-    - record: cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(avg_over_time(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(avg_over_time(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))
-    - alert: COB_app_verify_email_critical_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .6
-      for: 5s
+###########################################COB_APP_ALL_RESPONSETIME_IDV_GET_TOKEN##########################################################
+    - record: cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}
+      expr: sum by (namespace, job)(avg_over_time(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-identity-token", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(avg_over_time(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-identity-token", httpStatusCode="200"}[5m]))
+    - alert: COB_app_dv_get_token_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .6
+      for: 5m
       labels:
         action: Application will be impacted
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -31,9 +32,9 @@ spec:
         description: 'Application {{ $labels.job }} response time is more than 600 ms :{{ $value }}'
         summary: 'Red alert for response time reached for application'
         #################################################################
-    - alert: COB_app_verify_email_high_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.6
-      for: 5s
+    - alert: COB_app_dv_get_token_high_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) <=.6
+      for: 5m
       labels:
         action: Application will be impacted
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -44,15 +45,15 @@ spec:
         severity: MAJOR
         priority: P4
         type: 8x5
-        tsbci: SCO_AWS
+        tsbci: COBSCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 525 ms :{{ $value }}'
         summary: 'Yellow alert for response time reached for application'
         ###################################################################
-    - alert: COB_app_verify_email_medium_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.525
-      for: 5s
+    - alert: COB_app_dv_get_token_medium_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) <=.525
+      for: 5m
       labels:
         action: Application will be impacted
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -69,9 +70,9 @@ spec:
         description: 'Application {{ $labels.job }} response time is more than 450 ms :{{ $value }}'
         summary: 'Yellow alert for response time reached for application'
         #################################################################
-    - alert: COB_app_verify_email_low_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.450
-      for: 5s
+    - alert: COB_app_dv_get_token_low_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+      for: 5m
       labels:
         action: Application is likely impacted
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -88,9 +89,9 @@ spec:
         description: 'Application {{ $labels.job }} response time is more than 375 ms :{{ $value }}'
         summary: 'Yellow alert for response time reached for application'
         ######################################################################
-    - alert: COB_app_verify_email_warning_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .300 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.375
-      for: 5s
+    - alert: COB_app_dv_get_token_warning_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .300 and (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) <=.375
+      for: 5m
       labels:
         action: Application is likely impacted
         environment: "{{ AWS_ENVIRONMENT }}"
