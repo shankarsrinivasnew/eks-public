@@ -40,6 +40,10 @@ resources:
   - prometheusrules-cob-send-opt-responsetime.yaml
   - prometheusrules-cob-verify-email-token-responsetime.yaml
   - prometheusrules-cob-verify-otp-responsetime.yaml
+  - prometheusrules-cob-idv-get_token-responsetime.yaml
+  - prometheusrules-cob-send-opt-responsetime.yaml
+  - prometheusrules-cob-verify-email-token-responsetime.yaml
+  - prometheusrules-cob-verify-otp-responsetime.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
