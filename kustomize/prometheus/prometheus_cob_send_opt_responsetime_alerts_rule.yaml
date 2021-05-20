@@ -11,7 +11,7 @@ spec:
   - name: COB_APPS_RESPONSETIME_STATE
     rules:
     - record: cob_app_send_otp_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(avg_over_time(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-user-persistence2", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(avg_over_time(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-user-persistence2", httpStatusCode="200"}[5m]))
+      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-user-persistence-2", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-user-persistence-2", httpStatusCode="200"}[5m]))
     - alert: COB_app_send_otp_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_send_otp_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5m
@@ -23,9 +23,9 @@ spec:
         platform: AWS
         namespace: cob
         severity: CRITICAL
-        priority: P1
+        priority: P3
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 600 ms :{{ $value }}'
@@ -41,10 +41,10 @@ spec:
         level: AMBER
         platform: AWS
         namespace: cob
-        severity: HIGH
+        severity: MAJOR
         priority: P2
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 525 ms :{{ $value }}'
@@ -63,7 +63,7 @@ spec:
         severity: MEDIUM
         priority: P3
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 450 ms :{{ $value }}'
@@ -82,7 +82,7 @@ spec:
         severity: LOW
         priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than {{ $value }} ms'
@@ -101,7 +101,7 @@ spec:
         severity: WARNING
         priority: P5
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
