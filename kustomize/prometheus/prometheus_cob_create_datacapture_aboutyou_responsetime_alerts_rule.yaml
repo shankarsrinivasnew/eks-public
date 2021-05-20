@@ -13,7 +13,7 @@ spec:
 ###########################################COB_APP_ALL_RESPONSETIME_DATACAPTURE_ABOUTYOU##########################################################
     - record: cob_app_datacapture_aboutyou_response_time_{{ AWS_ENVIRONMENT }}
       expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-facts-aboutyou", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-facts-aboutyou", httpStatusCode="200"}[5m]))   
-   - alert: COB_app_datacapture_aboutyou_critical_alert_{{ AWS_ENVIRONMENT }}
+    - alert: COB_app_datacapture_aboutyou_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_datacapture_aboutyou_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5m
       labels:
