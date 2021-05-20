@@ -41,9 +41,6 @@ resources:
   - prometheusrules-cob-verify-email-token-responsetime.yaml
   - prometheusrules-cob-verify-otp-responsetime.yaml
   - prometheusrules-cob-idv-get_token-responsetime.yaml
-  - prometheusrules-cob-send-opt-responsetime.yaml
-  - prometheusrules-cob-verify-email-token-responsetime.yaml
-  - prometheusrules-cob-verify-otp-responsetime.yaml
   - prometheus_cob_create_datacapture_aboutyou_responsetime_alerts_rule.yaml
   - prometheus_cob_create_datacapture_affordability_responsetime_alerts_rule.yaml
   - prometheus_cob_create_state_management_responsetime_alerts_rule.yaml
