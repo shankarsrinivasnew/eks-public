@@ -1,0 +1,110 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cob-idv-report-responsetime-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: COB_APPS_RESPONSETIME_STATE
+    rules:
+###########################################COB_APP_ALL_RESPONSETIME_IDV_GET_REPORT##########################################################
+    - record: cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}
+      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-identity-report", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-identity-report", httpStatusCode="200"}[5m]))
+    - alert: COB_app_dv_get_report_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) > .6
+      for: 5m
+      labels:
+        action: Application will be impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cob
+        severity: CRITICAL
+        priority: P3
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 600 ms for last 5 mins :{{ $value }}'
+        summary: 'Red alert for response time reached for application'
+        #################################################################
+    - alert: COB_app_dv_get_report_high_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) <=.6
+      for: 5m
+      labels:
+        action: Application will be impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cob
+        severity: MAJOR
+        priority: P4
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 525 ms for last 5 mins :{{ $value }}'
+        summary: 'Yellow alert for response time reached for application'
+        ###################################################################
+    - alert: COB_app_dv_get_report_medium_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) <=.525
+      for: 5m
+      labels:
+        action: Application will be impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cob
+        severity: MINOR
+        priority: P4
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 450 ms for last 5 mins :{{ $value }}'
+        summary: 'Yellow alert for response time reached for application'
+        #################################################################
+    - alert: COB_app_dv_get_report_low_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+      for: 5m
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: YELLOW
+        platform: AWS
+        namespace: cob
+        severity: WARNING
+        priority: P4
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 375 ms for last 5 mins :{{ $value }}'
+        summary: 'Yellow alert for response time reached for application'
+        ######################################################################
+    - alert: COB_app_dv_get_report_warning_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) > .300 and (cob_app_idv_get_report_response_time_{{ AWS_ENVIRONMENT }}) <=.375
+      for: 5m
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: GREEN
+        platform: AWS
+        namespace: cob
+        severity: WARNING
+        priority: P4
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'Application {{ $labels.job }} response time is more than 300 ms for last 5 mins :{{ $value }}'
+        summary: 'Green alert for response time reached for application'
+
