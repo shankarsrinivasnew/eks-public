@@ -12,7 +12,7 @@ spec:
     rules:
 ###########################################COB_APP_ALL_RESPONSETIME_PRODUCT_PRICING_DATA##########################################################
     - record: cob_app_product_pricing_data_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(avg_over_time(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-products-pricingdata", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(avg_over_time(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-products-pricingdata", httpStatusCode="200"}[5m]))
+      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-productpricing", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-productpricing", httpStatusCode="200"}[5m]))
     - alert: COB_app_product_pricing_data_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_product_pricing_data_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5m
@@ -24,12 +24,12 @@ spec:
         platform: AWS
         namespace: cob
         severity: CRITICAL
-        priority: P1
+        priority: P3
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
-        description: 'Application {{ $labels.job }} response time is more than 600 ms :{{ $value }}'
+        description: 'Application {{ $labels.job }} response time is more than 600 ms for last 5 mins :{{ $value }}'
         summary: 'Red alert for response time reached for application'
         #################################################################
     - alert: COB_app_product_pricing_data_high_alert_{{ AWS_ENVIRONMENT }}
@@ -39,17 +39,17 @@ spec:
         action: Application will be impacted
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
-        level: AMBER
+        level: YELLOW
         platform: AWS
         namespace: cob
-        severity: HIGH
-        priority: P2
+        severity: MAJOR
+        priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
-        description: 'Application {{ $labels.job }} response time is more than 525 ms :{{ $value }}'
-        summary: 'Aber alert for response time reached for application'
+        description: 'Application {{ $labels.job }} response time is more than 525 ms for last 5 mins :{{ $value }}'
+        summary: 'Yellow alert for response time reached for application'
         ###################################################################
     - alert: COB_app_product_pricing_data_medium_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_product_pricing_data_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_product_pricing_data_response_time_{{ AWS_ENVIRONMENT }}) <=.525
@@ -61,13 +61,13 @@ spec:
         level: YELLOW
         platform: AWS
         namespace: cob
-        severity: MEDIUM
-        priority: P3
+        severity: MINOR
+        priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
-        description: 'Application {{ $labels.job }} response time is more than 450 ms :{{ $value }}'
+        description: 'Application {{ $labels.job }} response time is more than 450 ms for last 5 mins :{{ $value }}'
         summary: 'Yellow alert for response time reached for application'
         #################################################################
     - alert: COB_app_product_pricing_data_low_alert_{{ AWS_ENVIRONMENT }}
@@ -80,13 +80,13 @@ spec:
         level: YELLOW
         platform: AWS
         namespace: cob
-        severity: LOW
+        severity: WARNING
         priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
-        description: 'Application {{ $labels.job }} response time is more than 375 ms :{{ $value }}'
+        description: 'Application {{ $labels.job }} response time is more than 375 ms for last 5 mins :{{ $value }}'
         summary: 'Yellow alert for response time reached for application'
         ######################################################################
     - alert: COB_app_create_new_user_warning_alert_{{ AWS_ENVIRONMENT }}
@@ -100,11 +100,11 @@ spec:
         platform: AWS
         namespace: cob
         severity: WARNING
-        priority: P5
+        priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
-        description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
+        description: 'Application {{ $labels.job }} response time is more than 300 ms for last 5 mins :{{ $value }}'
         summary: 'Green alert for response time reached for application'
 

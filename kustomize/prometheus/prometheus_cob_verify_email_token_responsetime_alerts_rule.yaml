@@ -11,21 +11,21 @@ spec:
   - name: COB_APPS_RESPONSETIME_STATE
     rules:
     - record: cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(avg_over_time(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(avg_over_time(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))
+      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))
     - alert: COB_app_verify_email_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5s
       labels:
         action: Application will be impacted
-        environment: "develop"
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: RED
         platform: AWS
         namespace: cob
         severity: CRITICAL
-        priority: P1
+        priority: P3
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 600 ms :{{ $value }}'
@@ -36,34 +36,34 @@ spec:
       for: 5s
       labels:
         action: Application will be impacted
-        environment: "develop"
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
-        level: AMBER
+        level: YELLOW
         platform: AWS
         namespace: cob
-        severity: HIGH
-        priority: P2
+        severity: MAJOR
+        priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 525 ms :{{ $value }}'
-        summary: 'Amber alert for response time reached for application'
+        summary: 'Yellow alert for response time reached for application'
         ###################################################################
     - alert: COB_app_verify_email_medium_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.525
       for: 5s
       labels:
         action: Application will be impacted
-        environment: "develop"
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: YELLOW
         platform: AWS
         namespace: cob
-        severity: MEDIUM
-        priority: P3
+        severity: MINOR
+        priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 450 ms :{{ $value }}'
@@ -74,15 +74,15 @@ spec:
       for: 5s
       labels:
         action: Application is likely impacted
-        environment: "develop"
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: YELLOW
         platform: AWS
         namespace: cob
-        severity: LOW
+        severity: MINOR
         priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 375 ms :{{ $value }}'
@@ -93,15 +93,15 @@ spec:
       for: 5s
       labels:
         action: Application is likely impacted
-        environment: "develop"
+        environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
         level: GREEN
         platform: AWS
         namespace: cob
         severity: WARNING
-        priority: P5
+        priority: P4
         type: 8x5
-        tsbci: COB
+        tsbci: SCO_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
