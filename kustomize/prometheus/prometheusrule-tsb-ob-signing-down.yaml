@@ -1,0 +1,54 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: tsb-ob-signing-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: TSB_OB_SIGNING_DOWN_STATE
+    rules:
+    ###########################################COB_APP_ALL_RESPONSETIME_PRODUCT_PRICING_DATA##########################################################
+    - record: tsb_ob_signing_down_warning_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ob-signing-service",namespace="obs"})
+    - alert: tsb_ob_signing_down_warning_alert_{{ AWS_ENVIRONMENT }}
+      expr: ((tsb_ob_signing_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((tsb_ob_signing_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
+      for: 1m
+      labels:
+        action: Closely Monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: WARNING
+        platform: AWS
+        namespace: obs
+        severity: MAJOR
+        priority: P4
+        type: 8x5
+        tsbci: OBS_AWS
+        itopsbridge: "true"
+      annotations:
+        description: '{{ $labels.deployment }} of job {{ $labels.job }} (Environment: {{$labels.environment}}) has less than 3 pods for more than 1 min. Value:{{ $value }}'
+        summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job}} has less than 3 pods running
+        #################################################################
+    - record: tsb_ob_signing_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ob-signing-service",namespace="obs"})
+    - alert: tsb_ob_signing_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: tsb_ob_signing_down_critical_{{ AWS_ENVIRONMENT }} < 1
+      for: 1m
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: obs
+        severity: CRITICAL
+        priority: P1
+        type: 8x5
+        tsbci: OBS_AWS
+        itopsbridge: "true"
+      annotations:
+        description: '{{ $labels.deployment }} of job {{ $labels.job }} (Environment: {{$labels.environment}}) has no pods running for more than 1 min. Value:{{ $value }}'
+        summary: CRITICAL Alert deployment {{ $labels.deployment }} of job {{ $labels.job}} has no pods running
