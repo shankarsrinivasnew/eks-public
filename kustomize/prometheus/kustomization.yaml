@@ -41,6 +41,7 @@ resources:
   - prometheus_cob_send_opt_responsetime_alerts_rule.yaml
   - prometheus_cob_verify_email_token_responsetime_alerts_rule.yaml
   - prometheus_cob_verify_otp_responsetime_alerts_rule.yaml
+  - prometheusrule-tsb-ob-signing-down.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
