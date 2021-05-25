@@ -74,7 +74,7 @@ data:
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(kube_deployment_status_replicas_available{deployment=~\"tsb-ob-signing-service\",namespace=\"obs\"})",
+          "expr": "kube_deployment_status_replicas_available{deployment=~"tsb-ob-signing-service",namespace="obs"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
