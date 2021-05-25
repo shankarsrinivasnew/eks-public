@@ -22,7 +22,7 @@ data:
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 59,
+  "id": 60,
   "links": [],
   "panels": [
     {
@@ -30,8 +30,7 @@ data:
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "description": "",
+      "datasource": "Thanos",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -74,9 +73,9 @@ data:
       "steppedLine": false,
       "targets": [
         {
-          "expr": "kube_deployment_status_replicas_available{deployment=~"tsb-ob-signing-service",namespace="obs"}",
+          "expr": "(kube_deployment_status_replicas_available{deployment=~\"tsb-ob-signing-service\",namespace=\"obs\"})",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "status_replicas_available",
           "refId": "A"
         }
       ],
@@ -134,7 +133,7 @@ data:
   },
   "timepicker": {},
   "timezone": "",
-  "title": "OBS Microservice",
-  "uid": "_TlJtB3Gz",
-  "version": 1
+  "title": "OBS Microservice dashboard",
+  "uid": "lu0KJfqGk",
+  "version": 2
 }
