@@ -12,8 +12,8 @@ spec:
     rules:
 ###########################################COB_APP_ALL_RESPONSETIME_DATACAPTURE_ABOUTYOU##########################################################
     - record: cob_app_datacapture_aboutyou_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-facts-aboutyou", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-facts-aboutyou", httpStatusCode="200"}[5m]))   
-    - alert: COB_app_datacapture_aboutyou_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-facts-aboutyou", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-facts-aboutyou", namespace="cob"}[5m]))   
+   - alert: COB_app_datacapture_aboutyou_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_datacapture_aboutyou_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5m
       labels:
@@ -107,4 +107,3 @@ spec:
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 300 ms for last 5 mins. :{{ $value }}'
         summary: 'Green alert for response time reached for application'
-

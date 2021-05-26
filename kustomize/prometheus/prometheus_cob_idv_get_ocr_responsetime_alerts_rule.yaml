@@ -12,7 +12,7 @@ spec:
     rules:
 ###########################################COB_APP_ALL_RESPONSETIME_IDV_GET_OCR##########################################################
     - record: cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-identity-validation", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-identity-validation", httpStatusCode="200"}[5m]))
+      expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-identity-validation", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-identity-validation", namespace="cob"}[5m]))
     - alert: COB_app_dv_get_ocr_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5m
@@ -71,7 +71,7 @@ spec:
         summary: 'Yellow alert for response time reached for application'
         #################################################################
     - alert: COB_app_dv_get_ocr_low_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+      expr: (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) > .0375 and (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) <=.450
       for: 5m
       labels:
         action: Application is likely impacted
@@ -107,4 +107,3 @@ spec:
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 300 ms for last 5 mins :{{ $value }}'
         summary: 'Green alert for response time reached for application'
-
