@@ -26,6 +26,7 @@ resources:
   - prometheusrule-ods-up.yaml
   - prometheusrule-ods-sys-api-down.yaml
   - prometheusrule-tsb-ob-signing-down.yaml
+  - prometheusrule-cob_create_datacapture_aboutyou_responsetime_alerts_rule.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
