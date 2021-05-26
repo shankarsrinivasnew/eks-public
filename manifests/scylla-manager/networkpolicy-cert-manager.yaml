@@ -1,0 +1,20 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cert-network-policy
+  namespace: cert-manager
+spec:
+  types:
+    - Ingress
+    - Egress
+  egress:    
+    - action: Allow
+      destination:
+        nets:
+        - 10.161.64.0/18
+  ingress:    
+    - action: Allow
+      source:
+        nets:
+        - 10.161.64.0/18
