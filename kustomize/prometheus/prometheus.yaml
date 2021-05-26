@@ -252,14 +252,7 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-dashboard
-            - name: 'obs-grafana-microservice'
-              orgId: 1
-              folder: 'TSB-OBS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/obs-grafana-microservice
+
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -282,8 +275,7 @@ spec:
         ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-performance-grafana-dashboard: ods-performance-metrics-cm
         ods-sys-api-grafana-dashboard: ods-sys-api-podmetrics-cm
-        obs-grafana-microservice: obs-microservice-cm
-
+        
 
     prometheusOperator:
       enabled: true
