@@ -253,6 +253,7 @@ spec:
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-dashboard
 
+
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
@@ -274,7 +275,7 @@ spec:
         ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-performance-grafana-dashboard: ods-performance-metrics-cm
         ods-sys-api-grafana-dashboard: ods-sys-api-podmetrics-cm
-
+        
 
     prometheusOperator:
       enabled: true

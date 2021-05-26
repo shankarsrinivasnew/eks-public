@@ -10,7 +10,7 @@ spec:
   groups:
   - name: TSB_OB_SIGNING_DOWN_STATE
     rules:
-    ###########################################COB_APP_ALL_RESPONSETIME_PRODUCT_PRICING_DATA##########################################################
+      ###########################################OBS_AVAILABLE_REPLICAS##########################################################
     - record: tsb_ob_signing_down_warning_{{ AWS_ENVIRONMENT }}
       expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ob-signing-service",namespace="obs"})
     - alert: tsb_ob_signing_down_warning_alert_{{ AWS_ENVIRONMENT }}
