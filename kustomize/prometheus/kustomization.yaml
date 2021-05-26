@@ -25,22 +25,6 @@ resources:
   - prometheusrule-ods-down.yaml
   - prometheusrule-ods-up.yaml
   - prometheusrule-ods-sys-api-down.yaml
-  - 1_prometheus_cob_create_user_responsetime_alerts_rule.yaml
-  - 2-prometheus_cob_verify_email_token_responsetime_alerts_rule.yaml
-  - 3_prometheus_cob_send_opt_responsetime_alerts_rule.yaml
-  - 4_prometheus_cob_verify_otp_responsetime_alerts_rule.yaml
-  - 5_prometheus_cob_idv_get_token_responsetime_alerts_rule.yaml
-  - 6_prometheus_cob_idv_get_ocr_responsetime_alerts_rule.yaml
-  - 7_prometheus_cob_create_datacapture_affordability_responsetime_alerts_rule.yaml
-  - 8_prometheus_cob_create_datacapture_aboutyou_responsetime_alerts_rule.yaml
-  - 9_prometheus_cob_idv_get_report_responsetime_alerts_rule.yaml
-  - 10_prometheus_cob_onboarding_check_user_name_responsetime_alerts_rule.yaml
-  - 11_prometheus_cob_onboarding_start_responsetime_alerts_rule.yaml
-  - 12_prometheus_cob_onboarding_details_responsetime_alerts_rule.yaml
-  - 13_prometheus_cob_onboarding_report_responsetime_alerts_rule.yaml
-  - 14_prometheus_cob_onboarding_complete_responsetime_alerts_rule.yaml
-  - 15_prometheus_cob_create_state_management_responsetime_alerts_rule.yaml
-  - 16_prometheus_cob_product_pricing_data_responsetime_alerts_rule.yaml
   - prometheusrule-tsb-ob-signing-down.yaml
 namespace: prometheus
 transformers:
