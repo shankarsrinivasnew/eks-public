@@ -11,9 +11,9 @@ spec:
   - name: COB_APPS_RESPONSETIME_STATE
     rules:
     - record: cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-email-verification", httpStatusCode="200"}[5m]))
+      expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-email-verification", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-email-verification", namespace="cob"}[5m]))
     - alert: COB_app_verify_email_critical_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .6
+      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .06
       for: 5s
       labels:
         action: Application will be impacted
@@ -32,7 +32,7 @@ spec:
         summary: 'Red alert for response time reached for application'
         #################################################################
     - alert: COB_app_verify_email_high_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.6
+      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .0525 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.06
       for: 5s
       labels:
         action: Application will be impacted
@@ -51,7 +51,7 @@ spec:
         summary: 'Yellow alert for response time reached for application'
         ###################################################################
     - alert: COB_app_verify_email_medium_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.525
+      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .0450 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.0525
       for: 5s
       labels:
         action: Application will be impacted
@@ -70,7 +70,7 @@ spec:
         summary: 'Yellow alert for response time reached for application'
         #################################################################
     - alert: COB_app_verify_email_low_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .0375 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.0450
       for: 5s
       labels:
         action: Application is likely impacted
@@ -89,7 +89,7 @@ spec:
         summary: 'Yellow alert for response time reached for application'
         ######################################################################
     - alert: COB_app_verify_email_warning_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .300 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.375
+      expr: (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) > .0300 and (cob_app_verify_email_response_time_{{ AWS_ENVIRONMENT }}) <=.0375
       for: 5s
       labels:
         action: Application is likely impacted
@@ -106,4 +106,3 @@ spec:
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
         summary: 'Green alert for response time reached for application'
-

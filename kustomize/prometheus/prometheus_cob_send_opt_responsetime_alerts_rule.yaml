@@ -11,7 +11,7 @@ spec:
   - name: COB_APPS_RESPONSETIME_STATE
     rules:
     - record: cob_app_send_otp_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-user-persistence-2", httpStatusCode="200"}[5m]))/ sum by (namespace, job)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-user-persistence-2", httpStatusCode="200"}[5m]))
+      expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-user-persistence-2", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-user-persistence-2", namespace="cob"}[5m]))
     - alert: COB_app_send_otp_critical_alert_{{ AWS_ENVIRONMENT }}
       expr: (cob_app_send_otp_response_time_{{ AWS_ENVIRONMENT }}) > .6
       for: 5m
@@ -106,4 +106,3 @@ spec:
       annotations:
         description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
         summary: 'Green alert for response time reached for application'
-
