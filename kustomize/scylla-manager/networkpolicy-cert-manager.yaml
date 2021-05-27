@@ -2,8 +2,8 @@
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: operator-network-policy
-  namespace: scylla-operator
+  name: cert-network-policy
+  namespace: cert-manager
 spec:
   types:
     - Ingress
@@ -12,9 +12,9 @@ spec:
     - action: Allow
       destination:
         nets:
-        - 10.161.64.0/18
+        - "{{ VPC_CIDR }}"
   ingress:    
     - action: Allow
       source:
         nets:
-        - 10.161.64.0/18
+        - "{{ VPC_CIDR }}"

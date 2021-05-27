@@ -12,9 +12,9 @@ spec:
     - action: Allow
       destination:
         nets:
-        - 10.161.64.0/18
+        - "{{ VPC_CIDR }}"
   ingress:    
     - action: Allow
       source:
         nets:
-        - 10.161.64.0/18
+        - "{{ VPC_CIDR }}"
