@@ -1,0 +1,5 @@
+resources:
+  - networkpolicy-cert-manager.yaml
+namespace: cert-manager
+transformers:
+  - awsTransformer.yaml
