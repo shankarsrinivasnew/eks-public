@@ -1,5 +1,0 @@
-resources:
-  - networkpolicy-operator.yaml
-namespace: scylla-operator
-transformers:
-  - awsTransformer.yaml
