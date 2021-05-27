@@ -1,7 +1,0 @@
-resources:
-  - networkpolicy-cert-manager.yaml
-  - networkpolicy-manager.yaml
-  - networkpolicy-operator.yaml
-namespace: jenkins
-transformers:
-  - awsTransformer.yaml
