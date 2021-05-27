@@ -23,7 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 77,
+      "id": 41,
       "links": [],
       "panels": [
         {
@@ -478,7 +478,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_total_users_by_das_user_total{application=\"tsb-sca-pr-ingest-das-users\",input=\"USERS_BY_DAS_USER\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (records_total_users_by_das_user_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "tsb-sca-pr-ingest-das-users",
               "refId": "A"
@@ -1260,5 +1260,5 @@ data:
       "timezone": "",
       "title": "SCA CDC Ingestors",
       "uid": "OCnX_p8Gk",
-      "version": 2
+      "version": 17
     }

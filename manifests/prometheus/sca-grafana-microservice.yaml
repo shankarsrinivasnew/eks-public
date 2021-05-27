@@ -80,13 +80,13 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_otp_requests_failed_to_send_imi_total{job=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_otp_requests_failed_to_send_imi_total{job=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "Total number of OTP requests failed to send to IMI",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_fiserv_requests_failed_to_send_total{job=\"tsb-sca-fiserv-notify-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_fiserv_requests_failed_to_send_total{job=\"tsb-sca-fiserv-notify-topology\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "Total number of requests failed to send to Fiserv",
               "refId": "C"
