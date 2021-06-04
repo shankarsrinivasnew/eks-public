@@ -71,7 +71,7 @@ spec:
         summary: 'Yellow alert for response time reached for application'
         #################################################################
     - alert: COB_app_dv_get_ocr_low_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) > .0375 and (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+      expr: (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_idv_get_ocr_response_time_{{ AWS_ENVIRONMENT }}) <=.450
       for: 5m
       labels:
         action: Application is likely impacted
