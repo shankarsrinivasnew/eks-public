@@ -52,7 +52,7 @@ spec:
         summary: 'Yellow alert for response time reached for application'
         ###################################################################
     - alert: COB_app_dv_get_token_medium_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .0450 and (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) <=.525
+      expr: (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_idv_get_token_response_time_{{ AWS_ENVIRONMENT }}) <=.525
       for: 5m
       labels:
         action: Application will be impacted

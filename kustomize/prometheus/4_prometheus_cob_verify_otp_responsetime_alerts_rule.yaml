@@ -32,7 +32,7 @@ spec:
         summary: 'Red alert for response time reached for application'
         #################################################################
     - alert: COB_app_verify_otp_high_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cob_app_verify_otp_response_time_{{ AWS_ENVIRONMENT }}) > .0525 and (cob_app_verify_otp_response_time_{{ AWS_ENVIRONMENT }}) <=.6
+      expr: (cob_app_verify_otp_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_verify_otp_response_time_{{ AWS_ENVIRONMENT }}) <=.6
       for: 5m
       labels:
         action: Application will be impacted
