@@ -69,4 +69,4 @@ spec:
         itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
-        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running   
+        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
