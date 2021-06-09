@@ -26,7 +26,7 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 408 more than 20 times in 5 min. Value: {{ $value }}'
@@ -48,7 +48,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 20 times in 5 min. Value: {{ $value }}'
@@ -70,7 +70,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 401 more than 20 times in 5 min. Value: {{ $value }}'
@@ -92,7 +92,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 403 more than 20 times in 5 min. Value: {{ $value }}'
@@ -114,7 +114,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 404 more than 20 times in 5 min. Value: {{ $value }}'
@@ -136,7 +136,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 405 more than 20 times in 5 min. Value: {{ $value }}'
@@ -158,7 +158,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 406 more than 20 times in 5 min. Value: {{ $value }}'
@@ -180,7 +180,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 429 more than 20 times in 5 min. Value: {{ $value }}'
@@ -202,7 +202,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
@@ -224,7 +224,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 20 times in 5 min. Value: {{ $value }}'
