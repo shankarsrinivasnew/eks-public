@@ -26,7 +26,7 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with failure count more than 20 times in 5 min. Value: {{ $value }}'
@@ -47,7 +47,7 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with failure count more than 20 times in 5 min. Value: {{ $value }}'
