@@ -6,6 +6,7 @@ resources:
   - alb-rbac-role.yaml
   - ebs.yaml
   - external-dns.yaml
+  - autoscaler.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
