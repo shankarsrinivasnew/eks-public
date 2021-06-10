@@ -42,6 +42,7 @@ resources:
   - 14_prometheus_cob_onboarding_complete_responsetime_alerts_rule.yaml
   - 15_prometheus_cob_create_state_management_responsetime_alerts_rule.yaml
   - 16_prometheus_cob_product_pricing_data_responsetime_alerts_rule.yaml
+  - 17-prometheus_cob_all_pod_down_alerts_rule.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
