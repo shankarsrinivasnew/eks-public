@@ -1,0 +1,72 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cob-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: COB_APPS_DOWN_STATE
+    rules:
+###########################################COP_APP_ALL_DOWN_CRITICAL##########################################################
+    - record: cob_app_all_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-onboarding.*",namespace="cob"})
+    - alert: COB_app_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: cob
+        severity: CRITICAL
+        priority: P3
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+###########################################COP_APP_ALL_DOWN_CRITICAL##########################################################
+    - record: cob_app_all_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-onboarding.*",namespace="cob"})
+    - alert: COB_app_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_app_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: cob
+        severity: CRITICAL
+        priority: P3
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+        summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+###########################################COP_NGINX_CONTROLLER_DOWN_CRITICAL##########################################################
+    - record: cob_nginx_controller_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment="tsb-onboarding-api-gateway-ingress-nginx-controller",namespace="cob"})
+    - alert: COB_NGINX_controller_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (cob_nginx_controller_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: cob
+        severity: CRITICAL
+        priority: P3
+        type: 8x5
+        tsbci: SCO_AWS
+        itopsbridge: "true"
+      annotations:
+        description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
