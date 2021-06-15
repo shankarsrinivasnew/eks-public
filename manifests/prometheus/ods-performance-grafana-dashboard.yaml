@@ -28,7 +28,7 @@ data:
         "panels": [
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -42,7 +42,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -138,7 +138,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -234,7 +234,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -330,7 +330,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -426,7 +426,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -530,7 +530,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -634,7 +634,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -730,7 +730,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -827,7 +827,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -841,7 +841,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -937,7 +937,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1033,7 +1033,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1129,7 +1129,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1225,7 +1225,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1329,7 +1329,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1433,7 +1433,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1529,7 +1529,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1626,7 +1626,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1640,7 +1640,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1736,7 +1736,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1832,7 +1832,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -1928,7 +1928,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2024,7 +2024,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2128,7 +2128,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2232,7 +2232,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2328,7 +2328,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2425,7 +2425,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -2439,7 +2439,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2535,7 +2535,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2631,7 +2631,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2727,7 +2727,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2823,7 +2823,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -2927,7 +2927,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3031,7 +3031,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3127,7 +3127,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3224,7 +3224,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -3238,7 +3238,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3334,7 +3334,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3430,7 +3430,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3526,7 +3526,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3622,7 +3622,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3726,7 +3726,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3830,7 +3830,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -3926,7 +3926,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -4023,7 +4023,7 @@ data:
             },
             {
             "collapsed": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -4040,7 +4040,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4136,7 +4136,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4232,7 +4232,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4328,7 +4328,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4424,7 +4424,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4528,7 +4528,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4632,7 +4632,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4728,7 +4728,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4821,7 +4821,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -4835,7 +4835,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -4931,7 +4931,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5027,7 +5027,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5123,7 +5123,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5219,7 +5219,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5323,7 +5323,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5427,7 +5427,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5523,7 +5523,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5620,7 +5620,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -5634,7 +5634,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5739,7 +5739,7 @@ data:
             },
             {
             "collapsed": true,
-            "datasource": "Prometheus",
+            "datasource": "Thanos",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -5753,7 +5753,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5849,7 +5849,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -5945,7 +5945,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6041,7 +6041,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6137,7 +6137,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6241,7 +6241,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6345,7 +6345,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6441,7 +6441,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6537,7 +6537,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6629,7 +6629,7 @@ data:
                 }
                 },
                 {
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {
                     "color": {
@@ -6691,7 +6691,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6787,7 +6787,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6883,7 +6883,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -6979,7 +6979,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
@@ -7075,7 +7075,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "Prometheus",
+                "datasource": "Thanos",
                 "fieldConfig": {
                     "defaults": {},
                     "overrides": []
