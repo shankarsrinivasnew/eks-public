@@ -38,10 +38,10 @@ spec:
         action: Application is likely impacted
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
-        level: CRITICAL
+        level: WARNING
         platform: AWS
         namespace: ods
-        severity: CRITICAL
+        severity: WARNING
         type: 8x5
         tsbci: ODS_AWS
         itopsbridge: true
@@ -76,10 +76,10 @@ spec:
         action: Application is likely impacted
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INFRA
-        level: CRITICAL
+        level: WARNING
         platform: AWS
         namespace: ods
-        severity: CRITICAL
+        severity: WARNING
         type: 8x5
         tsbci: ODS_AWS
         itopsbridge: true
