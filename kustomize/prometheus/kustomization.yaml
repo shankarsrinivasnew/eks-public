@@ -43,6 +43,8 @@ resources:
   - 15_prometheus_cob_create_state_management_responsetime_alerts_rule.yaml
   - 16_prometheus_cob_product_pricing_data_responsetime_alerts_rule.yaml
   - 17-prometheus_cob_all_pod_down_alerts_rule.yaml
+  - 18_prometheus_cob_low_replca_count_alerts_rule.yaml
+  - 19_prometheus_cob_pod_restarts_alerts_rule.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
