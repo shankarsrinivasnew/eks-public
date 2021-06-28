@@ -288,19 +288,19 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transaction"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transaction"}[5m]))) * 100",
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transaction\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transaction\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Get Transaction API Failure Rate",
               "refId": "A"
             },
             {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*pending-transactions"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*pending-transactions"}[5m]))) * 100",
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*pending-transactions\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*pending-transactions\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Pending Transaction API Failure Rate",
               "refId": "B"
             },
             {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-accountid"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-accountid"}[5m]))) * 100",
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-accountid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-accountid\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Transaction By Account ID API Failure Rate",
               "refId": "C"
