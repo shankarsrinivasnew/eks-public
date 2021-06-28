@@ -252,6 +252,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-dashboard
+            - name: 'sco-phase2-loans-business-metrics'
+              orgId: 1
+              folder: 'TSB-SCO'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/sco-phase2-loans-business-metrics
 
 
       dashboardsConfigMaps:
@@ -275,6 +283,7 @@ spec:
         ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-performance-grafana-dashboard: ods-performance-metrics-cm
         ods-sys-api-grafana-dashboard: ods-sys-api-podmetrics-cm
+        sco-phase2-loans-business-metrics: sco-phase2-loans-business-metrics-cm
         
 
     prometheusOperator:
