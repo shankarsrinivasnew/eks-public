@@ -42,7 +42,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -186,6 +186,103 @@ data:
                 "align": false,
                 "alignLevel": null
               }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "Thanos",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 9
+              },
+              "hiddenSeries": false,
+              "id": 38,
+              "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+              },
+              "lines": true,
+              "linewidth": 1,
+              "nullPointMode": "null",
+              "options": {
+                "alertThreshold": true
+              },
+              "percentage": false,
+              "pluginVersion": "7.2.1",
+              "pointradius": 2,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "expr": "sum by (routeId) (rate(gateway_requests_seconds_sum{namespace=\"sco\", routeId=~\"tsb-sco-fl.*\"}[5m]))/ sum by (routeId) (rate(gateway_requests_seconds_count{namespace=\"sco\", routeId=~\"tsb-sco-fl.*\"}[5m]))",
+                  "interval": "",
+                  "legendFormat": "route:{{routeId}}",
+                  "refId": "A"
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "SpringGateway-API Response Time",
+              "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "$$hashKey": "object:168",
+                  "format": "ms",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": "0",
+                  "show": true
+                },
+                {
+                  "$$hashKey": "object:169",
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
             }
           ],
           "title": "API Response Time",
@@ -200,236 +297,6 @@ data:
             "x": 0,
             "y": 1
           },
-          "id": 4,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": null,
-              "decimals": 0,
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {
-                    "align": null,
-                    "filterable": false
-                  },
-                  "mappings": [],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 11,
-                "w": 23,
-                "x": 0,
-                "y": 2
-              },
-              "hiddenSeries": false,
-              "id": 8,
-              "legend": {
-                "alignAsTable": true,
-                "avg": false,
-                "current": true,
-                "max": false,
-                "min": false,
-                "rightSide": true,
-                "show": true,
-                "total": false,
-                "values": true
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "kube_deployment_status_replicas_available{deployment=~\"tsb-sco-fl.*\",namespace=\"sco\"}",
-                  "format": "time_series",
-                  "interval": "",
-                  "legendFormat": "{{deployment}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Current POD Count",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "decimals": 0,
-                  "format": "short",
-                  "label": "",
-                  "logBase": 1,
-                  "max": null,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": null,
-              "decimals": 0,
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 23,
-                "x": 0,
-                "y": 13
-              },
-              "hiddenSeries": false,
-              "id": 36,
-              "legend": {
-                "alignAsTable": true,
-                "avg": false,
-                "current": true,
-                "max": false,
-                "min": false,
-                "rightSide": true,
-                "show": true,
-                "total": false,
-                "values": true
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum by (pod) (kube_pod_container_status_restarts_total{namespace=\"sco\", pod=~\".*tsb-sco-fl.*\"})",
-                  "interval": "",
-                  "legendFormat": "{{pod}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "POD Restart",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
-          "title": "POD Status",
-          "type": "row"
-        },
-        {
-          "collapsed": true,
-          "datasource": null,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 2
-          },
           "id": 12,
           "panels": [
             {
@@ -437,7 +304,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -450,7 +317,7 @@ data:
                 "h": 5,
                 "w": 8,
                 "x": 0,
-                "y": 3
+                "y": 2
               },
               "hiddenSeries": false,
               "id": 16,
@@ -532,7 +399,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "description": "",
               "fieldConfig": {
                 "defaults": {
@@ -546,7 +413,7 @@ data:
                 "h": 5,
                 "w": 8,
                 "x": 8,
-                "y": 3
+                "y": 2
               },
               "hiddenSeries": false,
               "id": 14,
@@ -628,7 +495,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -641,7 +508,7 @@ data:
                 "h": 5,
                 "w": 8,
                 "x": 16,
-                "y": 3
+                "y": 2
               },
               "hiddenSeries": false,
               "id": 18,
@@ -723,7 +590,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -736,7 +603,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 8
+                "y": 7
               },
               "hiddenSeries": false,
               "id": 20,
@@ -818,7 +685,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -831,7 +698,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 8,
-                "y": 8
+                "y": 7
               },
               "hiddenSeries": false,
               "id": 22,
@@ -913,7 +780,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -926,7 +793,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 16,
-                "y": 8
+                "y": 7
               },
               "hiddenSeries": false,
               "id": 24,
@@ -1008,7 +875,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -1021,7 +888,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 14
+                "y": 13
               },
               "hiddenSeries": false,
               "id": 26,
@@ -1103,7 +970,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -1116,7 +983,7 @@ data:
                 "h": 6,
                 "w": 8,
                 "x": 8,
-                "y": 14
+                "y": 13
               },
               "hiddenSeries": false,
               "id": 28,
@@ -1198,7 +1065,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -1211,7 +1078,7 @@ data:
                 "h": 6,
                 "w": 7,
                 "x": 16,
-                "y": 14
+                "y": 13
               },
               "hiddenSeries": false,
               "id": 30,
@@ -1293,7 +1160,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -1306,7 +1173,7 @@ data:
                 "h": 5,
                 "w": 8,
                 "x": 0,
-                "y": 20
+                "y": 19
               },
               "hiddenSeries": false,
               "id": 32,
@@ -1388,7 +1255,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -1401,7 +1268,7 @@ data:
                 "h": 5,
                 "w": 8,
                 "x": 8,
-                "y": 20
+                "y": 19
               },
               "hiddenSeries": false,
               "id": 34,
@@ -1497,5 +1364,5 @@ data:
       "timezone": "",
       "title": "SCO Phase2 Loans Business Metrics",
       "uid": "rQplCbCGz",
-      "version": 29
+      "version": 30
     }
