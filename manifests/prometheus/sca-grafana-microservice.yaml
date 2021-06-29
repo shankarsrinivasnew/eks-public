@@ -76,7 +76,7 @@ data:
             {
               "expr": "(sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\",outcome!=\"SUCCESSFUL\"}[5m])) / sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\"}[5m]))) * 100",
               "interval": "",
-              "legendFormat": "SCA API Gateway Failure Rate",
+              "legendFormat": "SCA API Gateway Failure Rate {{routeId}}",
               "refId": "A"
             }
           ],
