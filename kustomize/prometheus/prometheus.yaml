@@ -260,6 +260,31 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-2
+            - name: 'ods-sys-api-grafana-3'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-3
+            - name: 'ods-sys-api-grafana-4'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-4
+            - name: 'ods-sys-api-grafana-Ingress'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-Ingress
+
 
 
       dashboardsConfigMaps:
@@ -285,6 +310,9 @@ spec:
         sco-phase2-loans-business-metrics: sco-phase2-loans-business-metrics-cm
         ods-sys-api-grafana-1: ods-sys-api-podmetrics1-cm
         ods-sys-api-grafana-2: ods-sys-api-podmetrics2-cm
+        ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
+        ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
+        ods-sys-api-grafana-Ingress: ods-sys-api-podmetrics5-cm
         
 
     prometheusOperator:
