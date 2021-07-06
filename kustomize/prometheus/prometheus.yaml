@@ -276,14 +276,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-4
-            - name: 'ods-sys-api-grafana-Ingress'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-Ingress
 
 
 
@@ -312,7 +304,6 @@ spec:
         ods-sys-api-grafana-2: ods-sys-api-podmetrics2-cm
         ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
         ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
-        ods-sys-api-grafana-Ingress: ods-sys-api-podmetrics5-cm
         
 
     prometheusOperator:
