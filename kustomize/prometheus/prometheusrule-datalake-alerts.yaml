@@ -20,7 +20,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -34,7 +34,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -48,7 +48,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -62,7 +62,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -76,7 +76,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -90,7 +90,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -104,7 +104,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -120,7 +120,7 @@ spec:
         group: APPLICATION
         priority: P3
         platform: AWS
-        itopsbridge: true
+        itopsbridge: "true"
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_lambda_push_errors_too_high
@@ -134,7 +134,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -149,7 +149,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -163,7 +163,7 @@ spec:
         usecase: navilog
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        itopsbridge: true
+        itopsbridge: "true"
         priority: P3
         platform: AWS
         severity: CRITICAL
@@ -177,7 +177,7 @@ spec:
         action: Closely monitor
         usecase: opslog
         environment: "{{ AWS_ENVIRONMENT }}"
-        itopsbridge: true
+        itopsbridge: "true"
         group: APPLICATION
         priority: P3
         platform: AWS
@@ -193,7 +193,7 @@ spec:
         usecase: push
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        itopsbridge: true
+        itopsbridge: "true"
         priority: P3
         platform: AWS
         severity: CRITICAL
@@ -208,7 +208,7 @@ spec:
         usecase: retrieval
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        itopsbridge: true
+        itopsbridge: "true"
         priority: P3
         platform: AWS
         severity: CRITICAL
@@ -226,7 +226,7 @@ spec:
         priority: P3
         platform: AWS
         severity: CRITICAL
-        itopsbridge: true
+        itopsbridge: "true"
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_sqs_flood_alarm
       annotations:
@@ -238,7 +238,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -252,7 +252,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -269,7 +269,7 @@ spec:
         priority: P3
         platform: AWS
         tsbci: AWS_BIG_DATA_LAKE
-        itopsbridge: true
+        itopsbridge: "true"
     - alert: datalake_aws_sqs_s3av_scan_queue_empty_alarm
       annotations:
         message: S3 Avscan queue {{ $labels.queue_name }}  is empty. Files may not be coming into S3 bucket tsb-datalake-env-avscan
@@ -280,7 +280,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -294,7 +294,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -308,7 +308,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -324,7 +324,7 @@ spec:
         group: INF
         priority: P3
         platform: AWS
-        itopsbridge: true
+        itopsbridge: "true"
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_emr_security_changes_alarm
@@ -337,7 +337,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -352,7 +352,7 @@ spec:
         group: INF
         priority: P3
         platform: AWS
-        itopsbridge: true
+        itopsbridge: "true"
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_glue_cb_error_alarm
@@ -365,7 +365,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -379,7 +379,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -393,7 +393,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -407,7 +407,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -421,7 +421,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
