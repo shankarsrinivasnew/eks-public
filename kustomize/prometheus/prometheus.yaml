@@ -244,46 +244,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-performance-grafana-dashboard
-            - name: 'ods-sys-api-grafana-1'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-1
-            - name: 'ods-sys-api-grafana-2'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-2
-            - name: 'ods-sys-api-grafana-3'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-3
-            - name: 'ods-sys-api-grafana-4'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-4
-            - name: 'ods-sys-api-grafana-Ingress'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-sys-api-grafana-Ingress
             - name: 'sco-phase2-loans-business-metrics'
               orgId: 1
               folder: 'TSB-SCO'
@@ -314,11 +274,6 @@ spec:
         sca-grafana-mqtt-broker: sca-grafana-mqtt-broker-cm
         ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-performance-grafana-dashboard: ods-performance-metrics-cm
-        ods-sys-api-grafana-1: ods-sys-api-podmetrics1-cm
-        ods-sys-api-grafana-2: ods-sys-api-podmetrics2-cm
-        ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
-        ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
-        ods-sys-api-grafana-Ingress: ods-sys-api-podmetrics5-cm
         sco-phase2-loans-business-metrics: sco-phase2-loans-business-metrics-cm
         
 
