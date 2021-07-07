@@ -12,6 +12,10 @@ spec:
     version: 0.2.0
   values:
     consulServer: https://consul.{{ DNS_ZONE }}
+    image:
+      repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/prom/consul-exporter
+      tag: v0.4.0
+      pullPolicy: IfNotPresent
     options:
       consul.timeout: 10s
       consul.ca-file: /etc/bscachain/bs-ca-chain.crt

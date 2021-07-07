@@ -13,7 +13,7 @@ spec:
   values:
     ## helm upgrade --install thanos banzaicloud-stable/thanos -f thanos-chart.yaml
     image:
-      repository: quay.io/thanos/thanos
+      repository: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/thanos/thanos
       tag: v0.18.0
 
     objstoreSecretOverride: thanos-s3-config

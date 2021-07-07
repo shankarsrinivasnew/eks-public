@@ -11,6 +11,10 @@ spec:
     name: prometheus-blackbox-exporter
     version: 4.10.0
   values:
+    image:
+      repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/prom/blackbox-exporter
+      tag: v0.18.0
+      pullPolicy: IfNotPresent
     config:
       modules:
         http_2xx:
