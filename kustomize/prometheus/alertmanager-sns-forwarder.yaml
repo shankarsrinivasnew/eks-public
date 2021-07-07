@@ -27,7 +27,7 @@ spec:
         fsGroup: 65534
       containers:
       - name: alertmanager-sns-forwarder
-        image: datareply/alertmanager-sns-forwarder:latest
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/datareply/alertmanager-sns-forwarder:latest
         imagePullPolicy: Always
         # You can also specify arguments
         args: ["--addr=:9087", "--debug", "--arn-prefix=arn:aws:sns:eu-west-2:{{ AWS_ACCOUNT }}:"]

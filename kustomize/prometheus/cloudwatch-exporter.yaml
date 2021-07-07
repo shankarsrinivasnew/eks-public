@@ -28,6 +28,10 @@ spec:
       - '/config/config.yml'
 
     containerPort: 9106
+    image:
+      repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/prom/cloudwatch-exporter
+      tag: cloudwatch_exporter-0.10.0
+      pullPolicy: IfNotPresent
 
     service:
       type: ClusterIP
