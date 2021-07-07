@@ -313,7 +313,7 @@ spec:
         ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
         ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
         ods-sys-api-grafana-ingress: ods-sys-api-podmetrics5-cm
-        
+
 
     prometheusOperator:
       enabled: true
@@ -396,7 +396,7 @@ spec:
             value: mgmt
             effect: NoSchedule
         image:
-          repository: quay.io/prometheus/prometheus
+          repository: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/prometheus/prometheus
           tag: v2.25.0
         containers:
           - name: prometheus
@@ -600,7 +600,7 @@ spec:
         ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#thanosspec
         ##
         thanos:
-          image: quay.io/thanos/thanos:v0.18.0
+          image: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/thanos/thanos:v0.18.0
           version: v0.18.0
           objectStorageConfig:
             name: thanos-s3-config
