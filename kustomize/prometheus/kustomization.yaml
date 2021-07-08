@@ -45,6 +45,9 @@ resources:
   - 17-prometheus_cob_all_pod_down_alerts_rule.yaml
   - 18-prometheus_cob_low_replca_count_alerts_rule.yaml
   - 19-prometheus_cob_pod_restarts_alerts_rule.yaml
+  - prometheusrule-sco-fl-all-pod-down.yaml
+  - prometheusrule-sco-fl-pod-restart.yaml
+  - prometheusrule-sco-fl-replica-count.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
