@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sco-fl-pod-restart-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: SCO_FL_PODS_RESTART_STATE
+    rules:
+###########################################SCO_FL_POD_RESTART_CRITICAL##########################################################
+    - record: sco_fl_pod_restart_critical_{{ AWS_ENVIRONMENT }}
+      expr: delta(kube_pod_container_status_restarts_total{namespace="sco", pod=~"tsb-sco-fl.*"} [5m])
+    - alert: SCO_FL_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: sco_fl_pod_restart_critical_{{ AWS_ENVIRONMENT }} >= 3
+      for: 5m
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: sco
+        severity: CRITICAL
+        priority: P3
+        type: 8x5
+        tsbci: SCO_FL_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'POD {{ $labels.pod }} for Microservice {{ $labels.container }} restarted 3 times or more in last 5m. Restart Count:{{ $value }}'
+        summary: Critical Alert POD {{ $labels.pod }} restart indicates that its not healthy.
