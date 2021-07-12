@@ -1,0 +1,32 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sco-fl-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+  - name: SCO_FL_APPS_DOWN_STATE
+    rules:
+###########################################SCO_FL_APP_ALL_DOWN_CRITICAL###########################################################################
+    - record: sco_fl_app_all_down_critical_{{ AWS_ENVIRONMENT }}
+      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-sco-fl.*",namespace="sco"})
+    - alert: SCO_FL_app_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+      expr: (sco_fl_app_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+      labels:
+        action: Application is likely impacted
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: CRITICAL
+        platform: AWS
+        namespace: sco
+        severity: CRITICAL
+        priority: P1
+        type: 8x5
+        tsbci: SCO_FL_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'Deployment {{ $labels.deployment }} has no pods running. Value:{{ $value }}'
+        summary: Critical Alert Deployment {{ $labels.deployment }} has no pods running
