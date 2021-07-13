@@ -48,6 +48,7 @@ resources:
   - prometheusrule-sco-fl-all-pod-down.yaml
   - prometheusrule-sco-fl-pod-restart.yaml
   - prometheusrule-sco-fl-replica-count.yaml
+  - cop-grafana-microservices.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
