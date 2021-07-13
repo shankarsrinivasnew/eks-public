@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://scylla-operator-charts.storage.googleapis.com/stable
     name: scylla-manager
-    version: 1.1.0
+    version: 1.3.0
   values:
     # Allows to override Scylla Manager name showing up in recommended k8s labels
     nameOverride: ""
@@ -20,7 +20,7 @@ spec:
     image:
       repository: scylladb
       pullPolicy: IfNotPresent
-      tag: 2.2.4
+      tag: 2.4.0
     
     # Allows to customize Scylla Manager Controller image
     controllerImage:
