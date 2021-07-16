@@ -231,11 +231,11 @@ spec:
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
 
   ##################COP_OUTBOUND_RESTPROXY - No successfull request processing since last one hour ##########################################################
-    - record: inbound_restproxy_succ_requests{{ AWS_ENVIRONMENT }}
-      expr: (sum by (job, namespace) (rate(inbound_restproxy_successful_requests {namespace="cop"}[1m])*60))
+    - record: inbound_restproxy_succ_requests_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (rate(inbound_restproxy_successful_requests_total {namespace="cop"}[1m])*60))
     - alert: COP_inbound_restproxy_amber_alert_{{ AWS_ENVIRONMENT }}
-      expr: (inbound_restproxy_succ_requests{{ AWS_ENVIRONMENT }}) <= 0
-      for: 59m
+      expr: (inbound_restproxy_succ_requests_{{ AWS_ENVIRONMENT }}) <= 0
+      for: 1h59m
       labels:
         action: Closely monitor
         environment: "{{ AWS_ENVIRONMENT }}"
