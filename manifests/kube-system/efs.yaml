@@ -24,7 +24,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: 602401143452.dkr.ecr.us-west-2.amazonaws.com/eks/aws-efs-csi-driver:v1.0.0
+        image: 602401143452.dkr.ecr.eu-west-2.amazonaws.com/eks/aws-efs-csi-driver:v1.0.0
         livenessProbe:
           failureThreshold: 5
           httpGet:
@@ -66,7 +66,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: 602401143452.dkr.ecr.us-west-2.amazonaws.com/eks/csi-node-driver-registrar:v1.3.0
+        image: 602401143452.dkr.ecr.eu-west-2.amazonaws.com/eks/csi-node-driver-registrar:v1.3.0
         name: csi-driver-registrar
         volumeMounts:
         - mountPath: /csi
@@ -79,7 +79,7 @@ spec:
         envFrom:
           - configMapRef:
               name: proxy-environment-variables
-        image: 602401143452.dkr.ecr.us-west-2.amazonaws.com/eks/livenessprobe:v2.0.0
+        image: 602401143452.dkr.ecr.eu-west-2.amazonaws.com/eks/livenessprobe:v2.0.0
         name: liveness-probe
         volumeMounts:
         - mountPath: /csi
