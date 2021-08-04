@@ -29,10 +29,10 @@ spec:
     resources:
       limits:
         cpu: 100m
-        memory: 128Mi
+        memory: 1Gi
       requests:
         cpu: 100m
-        memory: 32Mi
+        memory: 1Gi
     # Node selector for Scylla Operator pods
     nodeSelector: { }
     
