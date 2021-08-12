@@ -184,13 +184,17 @@ spec:
       expr: histogram_quantile(0.95, sum(rate(scylla_storage_proxy_coordinator_cas_write_latency_bucket{}[60s])) by (cluster, le, scheduling_group_name))
       labels:
         by: "cluster"
+#alerts
     - alert: cqlNonPrepared
       expr: cql:non_prepared > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: cqlNonPrepared
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some queries are non-prepared'
         summary: non prepared statments
@@ -198,10 +202,12 @@ spec:
       expr: cql:non_paged > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
-        status: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: non_paged_no_system
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some SELECT queries are non-paged'
         summary: non paged statments
@@ -209,9 +215,12 @@ spec:
       expr: cql:non_token_aware > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: cqlNoTokenAware
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some queries are not token-aware'
         summary: non token aware statments
@@ -219,9 +228,12 @@ spec:
       expr: cql:reverse_queries > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: cqlReverseOrder
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some queries use reverse order'
         summary: reverse order queries
@@ -229,9 +241,12 @@ spec:
       expr: cql:allow_filtering > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: cqlAllowFiltering
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some queries use ALLOW FILTERING'
         summary: Allow filtering queries
@@ -239,9 +254,12 @@ spec:
       expr: cql:any_queries > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: cqlCLAny
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some queries use Consistency Level: ANY'
         summary: non prepared statments
@@ -249,9 +267,12 @@ spec:
       expr: cql:all_queries > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "cqlOptimization"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: cqlCLAll
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some queries use Consistency Level: ALL'
         summary: non prepared statments
@@ -259,10 +280,12 @@ spec:
       expr: abs(rate(scylla_cql_updates{conditional="no"}[1m]) - scalar(avg(rate(scylla_cql_updates{conditional="no"}[1m]))))/scalar(stddev(rate(scylla_cql_updates{conditional="no"}[1m]))+100) > 2
       for: 10s
       labels:
-        severity: "1"
-        status: "1"
-        advisor: "balanced"
-        dashboard: "cql"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: nonBalancedcqlTraffic
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'CQL queries are not balanced among shards {{ $labels.instance }} shard {{ $labels.shard }}'
         summary: CQL queries are not balanced
@@ -270,9 +293,12 @@ spec:
       expr: sum(errors:local_failed) by (cluster, instance) > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "operationError"
-        dashboard: "scylla-detailed"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: nodeLocalErrors
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some operation failed at the replica side'
         summary: Replica side Level error
@@ -280,9 +306,12 @@ spec:
       expr: sum(rate(scylla_reactor_aio_errors[60s])) by (cluster, instance) > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "operationError"
-        dashboard: "OS-master"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: nodeIOErrors
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'IO Errors can indicate a node with a faulty disk {{ $labels.instance }}'
         summary: IO Disk Error
@@ -290,9 +319,12 @@ spec:
       expr: sum(errors:operation_unavailable) by (cluster) > 0
       for: 10s
       labels:
-        severity: "1"
-        advisor: "operationError"
-        dashboard: "scylla-detailed"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: nodeCLErrors
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Some operation failed due to consistency level'
         summary: Consistency Level error
@@ -300,9 +332,12 @@ spec:
       expr: sum(rate(scylla_cql_prepared_cache_evictions[2m])) by (cluster) + sum(rate(scylla_cql_authorized_prepared_statements_cache_evictions[2m])) by (cluster) > 100
       for: 5m
       labels:
-        severity: "1"
-        advisor: "preparedEviction"
-        dashboard: "scylla-detailed"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: preparedCacheEviction
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'The prepared-statement cache is being continuously evicted, which could indicate a problem in your prepared-statement usage logic.'
         summary: Prepared cache eviction
@@ -310,7 +345,12 @@ spec:
       expr: up{job="scylla"} == 0
       for: 30s
       labels:
-        severity: "2"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: InstanceDown
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has been down for more than 30 seconds.'
         summary: Instance {{ $labels.instance }} down
@@ -318,7 +358,12 @@ spec:
       expr: absent(scylla_transport_requests_served{job="scylla", shard="0"})
       for: 1m
       labels:
-        severity: "2"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: InstanceDown
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} instance is shutting down.'
         summary: Instance {{ $labels.instance }} down
@@ -326,7 +371,12 @@ spec:
       expr: scylla_node_operation_mode > 3
       for: 30s
       labels:
-        severity: "2"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: InstanceDown
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} instance is shutting down.'
         summary: Instance {{ $labels.instance }} down
@@ -335,7 +385,12 @@ spec:
         * 100 < 35
       for: 30s
       labels:
-        severity: "2"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: DiskFull
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has less than 35% free disk space.'
         summary: Instance {{ $labels.instance }} low disk space
@@ -344,7 +399,12 @@ spec:
         * 100 < 25
       for: 30s
       labels:
-        severity: "3"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: DiskFull
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has less than 25% free disk space.'
         summary: Instance {{ $labels.instance }} low disk space
@@ -353,7 +413,12 @@ spec:
         * 100 < 15
       for: 30s
       labels:
-        severity: "4"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: DiskFull
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has less than 15% free disk space.'
         summary: Instance {{ $labels.instance }} low disk space
@@ -362,7 +427,12 @@ spec:
         * 100 < 20
       for: 30s
       labels:
-        severity: "3"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: DiskFull
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has less than 20% free disk space on the root partition.'
         summary: Instance {{ $labels.instance }} low disk space
@@ -370,7 +440,12 @@ spec:
       expr: scylla_manager_healthcheck_cql_status == -1
       for: 30s
       labels:
-        severity: "2"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: NoCql
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.host }} has denied CQL connection for more than 30 seconds.'
         summary: Instance {{ $labels.host }} no CQL connection
@@ -378,7 +453,12 @@ spec:
       expr: wlatencyp95{by="instance"} > 100000
       for: 5m
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: HighLatencies
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has 95% high latency for more than 5 minutes.'
         summary: Instance {{ $labels.instance }} High Write Latency
@@ -386,7 +466,12 @@ spec:
       expr: wlatencypa{by="instance"} >10000
       for: 5m
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: HighLatencies
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has average high latency for more than 5 minutes.'
         summary: Instance {{ $labels.instance }} High Write Latency
@@ -394,7 +479,12 @@ spec:
       expr: rlatencyp95{by="instance"} > 100000
       for: 5m
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: HighLatencies
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has 95% high latency for more than 5 minutes.'
         summary: Instance {{ $labels.instance }} High Read Latency
@@ -402,7 +492,12 @@ spec:
       expr: rlatencypa{by="instance"} >10000
       for: 5m
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: HighLatencies
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: '{{ $labels.instance }} has average high latency for more than 5 minutes.'
         summary: Instance {{ $labels.instance }} High Read Latency
@@ -410,7 +505,12 @@ spec:
       expr: (sum(scylla_manager_task_run_total{type=~"backup", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"backup", status="ERROR"} offset 3m) or vector(0)) > 0
       for: 10s
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: BackupFailed
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Backup failed'
         summary: Backup task failed
@@ -418,7 +518,12 @@ spec:
       expr: (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"} offset 3m) or vector(0)) > 0
       for: 10s
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: RepairFailed
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Repair failed'
         summary: Repair task failed
@@ -426,7 +531,12 @@ spec:
       expr: resets(scylla_gossip_heart_beat[1h])>0
       for: 10s
       labels:
-        severity: "1"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: restart
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'Node restarted'
         summary: Instance {{ $labels.instance }} restarted
@@ -434,44 +544,12 @@ spec:
       expr: changes(node_vmstat_oom_kill[1h])>0
       for: 10s
       labels:
-        severity: "2"
+        severity: CRITICAL
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: oomKill
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
       annotations:
         description: 'OOM Kill on {{ $labels.instance }}'
         summary: A process was terminated on Instance {{ $labels.instance }}
-    - alert: scylla_db_node_count
-      expr: count(up{job="ec2-discover-node-exporter",instance=~".*scylla.*"} == 1) < 3
-      for: 15m
-      labels:
-        severity: CRITICAL
-        priority: P4
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: Scylla in {{ $labels.environment }} has less than 3 nodes.
-    - alert: scylla_disk_space_check
-      expr: node_filesystem_free_bytes{instance=~".*scylla.*",fstype!="tmpfs"} < 3000000000
-      for: 15m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: Root volume on Scylla server "{{ $labels.instance }}" in {{ $labels.environment }} is more than 90% full.
-    - alert: scylla_service_check
-      expr: ((node_systemd_unit_state{instance=~".*scylla.*",name="scylla-server.service",status!="running"}) or (node_systemd_unit_state{instance=~".*scylla.*",name="scylla-server.service",state!="active"}))==1
-      for: 15m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: middleware
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: The scylla service on "{{ $labels.instance }}" in {{ $labels.environment }} environment is not healthy, status="{{ $labels.status }}" and state="{{ $labels.state }}".
