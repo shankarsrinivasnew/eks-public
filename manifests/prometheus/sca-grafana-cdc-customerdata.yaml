@@ -47,517 +47,6 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 26,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (total_records_of_user_sessions_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "total_records_of_user_sessions",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (total_records_of_duplicate_user_sessions_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "total_records_of_duplicate_user_sessions",
-              "refId": "B"
-            },
-            {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_user_sessions_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "total_records_of_invalid_user_sessions_data",
-              "refId": "C"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of User Sessions record persisted",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 0
-          },
-          "hiddenSeries": false,
-          "id": 4,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_ta63_total{application=\"tsb-sca-pr-ingest-ta63\",input=\"TA63\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_ta63_total{application=\"tsb-sca-pr-ingest-ta63\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of TA63 records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 8
-          },
-          "hiddenSeries": false,
-          "id": 24,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_ta62_total{application=\"tsb-sca-pr-ingest-ta62\",input=\"TA62\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-ta62-IN ",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_ta62_total{application=\"tsb-sca-pr-ingest-ta62\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-ta62-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of TA62 records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 8
-          },
-          "hiddenSeries": false,
-          "id": 6,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_ta61_total{application=\"tsb-sca-pr-ingest-ta61\",input=\"TA61\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "\r\nsum by (application, namespace) (records_out_total_ta61_total{application=\"tsb-sca-pr-ingest-ta61\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of TA61 records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 16
-          },
-          "hiddenSeries": false,
-          "id": 22,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_device_by_das_user_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",input=\"DEVICE_BY_DAS_USER\",namespace=\"sca\"})\r\n\r",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (record_out_total_device_by_das_user_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of Enrollments records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 16
-          },
-          "hiddenSeries": false,
           "id": 8,
           "legend": {
             "avg": false,
@@ -585,223 +74,15 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_total_customer_card_details_total{application=\"tsb-sca-pr-join-cardcustomer\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_device_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
               "interval": "",
-              "legendFormat": "{{application}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of JoinCardCustomer records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 24
-          },
-          "hiddenSeries": false,
-          "id": 20,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_total_users_by_das_user_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users",
+              "legendFormat": "Devices_Without_Enrollment_Type",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (records_out_total_access_codes_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_records_of_devices_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users-access-codes",
-              "refId": "B"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_credentials_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users-total-credentials",
-              "refId": "C"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_total_contracts_by_das_contract_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users-total-contracts",
-              "refId": "D"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of Das User records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 24
-          },
-          "hiddenSeries": false,
-          "id": 14,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_contract_total{application=\"tsb-sca-pr-ingest-tbbv-bs-contratos\",input=\"CONTRACT\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_contract_total{application=\"tsb-sca-pr-ingest-tbbv-bs-contratos\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
+              "legendFormat": "Active_Devices",
               "refId": "B"
             }
           ],
@@ -809,411 +90,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Contratos records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 32
-          },
-          "hiddenSeries": false,
-          "id": 18,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_user_info_total{application=\"tsb-sca-pr-ingest-tbbv-bs-usuarios\",input=\"USER_INFO\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (record_out_total_user_info_total{application=\"tsb-sca-pr-ingest-tbbv-bs-usuarios\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of Usuarios records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 32
-          },
-          "hiddenSeries": false,
-          "id": 10,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_pe34_total{application=\"tsb-sca-pr-ingest-pe34\",input=\"PE34\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "\r\nsum by (application, namespace) (records_out_total_pe34_total{application=\"tsb-sca-pr-ingest-pe34\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of PE34 records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 40
-          },
-          "hiddenSeries": false,
-          "id": 16,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_credentials_total{application=\"tsb-sca-pr-ingest-tbbv-bs-auth-data\",input=\"CREDENTIALS\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_credentials_total{application=\"tsb-sca-pr-ingest-tbbv-bs-auth-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of Credentials records processed",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 48
-          },
-          "hiddenSeries": false,
-          "id": 12,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (application, namespace) (records_in_total_access_codes_total{application=\"tsb-sca-pr-ingest-tbbv-bs-codigos-acceso\",input=\"ACCESS_CODES\",namespace=\"sca\"})\r\r",
-              "interval": "",
-              "legendFormat": "{{application}}-IN",
-              "refId": "A"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_access_codes_total{application=\"tsb-sca-pr-ingest-tbbv-bs-codigos-acceso\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{application}}-OUT",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of Access Codes records processed",
+          "title": "Total number of Devices records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1267,8 +144,8 @@ data:
           "gridPos": {
             "h": 9,
             "w": 12,
-            "x": 0,
-            "y": 56
+            "x": 12,
+            "y": 0
           },
           "hiddenSeries": false,
           "id": 2,
@@ -1298,23 +175,279 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_in_total{application=~\"tsb-sca-pr-ingest-ta63|tsb-sca-pr-ingest-ta61|tsb-sca-pr-ingest-pe34|tsb-sca-pr-ingest-tbbv-bs-codigos-acceso|tsb-sca-pr-ingest-tbbv-bs-contratos|tsb-sca-pr-ingest-tbbv-bs-auth-data|tsb-sca-pr-ingest-tbbv-bs-usuarios|tsb-sca-pr-ingest-tbbv-bs-enrollments\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_records_of_retail_debit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
               "interval": "",
-              "legendFormat": "{{application}}",
+              "legendFormat": "Retail_Debit_Cards",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (records_out_total{application=~\"tsb-sca-pr-ingest-ta63|tsb-sca-pr-ingest-ta61|tsb-sca-pr-ingest-pe34|tsb-sca-pr-ingest-tbbv-bs-codigos-acceso|tsb-sca-pr-ingest-tbbv-bs-contratos|tsb-sca-pr-ingest-tbbv-bs-auth-data|tsb-sca-pr-ingest-tbbv-bs-usuarios|tsb-sca-pr-ingest-tbbv-bs-enrollments\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_retail_credit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "{{application}}",
+              "legendFormat": "Retail_Credit_Cards",
               "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_business_debit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Business_Debit_Cards",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_business_credit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Business_Credit_Cards",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_cards_Without_Cust_Mapping_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Cards_Without_Numpersona",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_visa_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Visa_Cards",
+              "refId": "F"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_master_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Master_Cards",
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_invalid_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Invalid_Cards",
+              "refId": "H"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Duplicate_Cards",
+              "refId": "I"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of records processed",
+          "title": "Total number of Customer Cards records processed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 6,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (job, namespace) (total_records_of_registered_users_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "registered_users",
+              "refId": "A"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_user_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "duplicate_users",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_invalid_users_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Invalid_Users",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total number of Users records processed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 9
+          },
+          "hiddenSeries": false,
+          "id": 4,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (job, namespace) (total_records_of_mobile_number_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Mobile_Number",
+              "refId": "A"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_phone_number_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Home_Phone_Number",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_contact_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "Duplicate_Contact",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total number of Customer Contact records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1352,7 +485,6 @@ data:
           }
         }
       ],
-      "refresh": false,
       "schemaVersion": 26,
       "style": "dark",
       "tags": [],
@@ -1365,7 +497,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "SCA CDC Ingestors",
-      "uid": "OCnX_p8Gk",
-      "version": 18
+      "title": "SCA-CDC-Customer-Data",
+      "uid": "SWdURhUMz",
+      "version": 3
     }
