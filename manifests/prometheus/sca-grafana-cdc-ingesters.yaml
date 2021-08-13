@@ -47,7 +47,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 24,
+          "id": 26,
           "legend": {
             "avg": false,
             "current": false,
@@ -74,15 +74,15 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_in_total_ta62_total{application=\"tsb-sca-pr-ingest-ta62\",input=\"TA62\",namespace=\"sca\"})",
+              "expr": "sum by (application, namespace) (records_in_total_session_banca_total{application=\"tsb-sca-pr-ingest-tbbv-bs-session-banca\",input=\"SESSION_BANCA\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-ta62-IN ",
+              "legendFormat": "records_in_total_session_banca",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (records_out_total_ta62_total{application=\"tsb-sca-pr-ingest-ta62\",namespace=\"sca\"})",
+              "expr": "sum by (application, namespace) (records_out_total_session_banca_total{application=\"tsb-sca-pr-ingest-tbbv-bs-session-banca\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-ta62-OUT",
+              "legendFormat": "records_out_total_session_banca",
               "refId": "B"
             }
           ],
@@ -90,7 +90,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of TA62 records processed",
+          "title": "Total number of Session Banca records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -249,7 +249,7 @@ data:
             "y": 8
           },
           "hiddenSeries": false,
-          "id": 22,
+          "id": 24,
           "legend": {
             "avg": false,
             "current": false,
@@ -276,15 +276,15 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_in_total_device_by_das_user_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",input=\"DEVICE_BY_DAS_USER\",namespace=\"sca\"})\r\n\r",
+              "expr": "sum by (application, namespace) (records_in_total_ta62_total{application=\"tsb-sca-pr-ingest-ta62\",input=\"TA62\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{application}}-IN",
+              "legendFormat": "tsb-sca-pr-ingest-ta62-IN ",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (record_out_total_device_by_das_user_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",namespace=\"sca\"})",
+              "expr": "sum by (application, namespace) (records_out_total_ta62_total{application=\"tsb-sca-pr-ingest-ta62\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{application}}-OUT",
+              "legendFormat": "tsb-sca-pr-ingest-ta62-OUT",
               "refId": "B"
             }
           ],
@@ -292,7 +292,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Enrollments records processed",
+          "title": "Total number of TA62 records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -451,7 +451,7 @@ data:
             "y": 16
           },
           "hiddenSeries": false,
-          "id": 20,
+          "id": 22,
           "legend": {
             "avg": false,
             "current": false,
@@ -478,35 +478,23 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_total_users_by_das_user_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (records_in_total_device_by_das_user_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",input=\"DEVICE_BY_DAS_USER\",namespace=\"sca\"})\r\n\r",
               "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users",
+              "legendFormat": "{{application}}-IN",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (records_out_total_access_codes_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
+              "expr": "sum by (application, namespace) (record_out_total_device_by_das_user_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users-access-codes",
+              "legendFormat": "{{application}}-OUT",
               "refId": "B"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_out_total_credentials_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users-total-credentials",
-              "refId": "C"
-            },
-            {
-              "expr": "sum by (application, namespace) (records_total_contracts_by_das_contract_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "tsb-sca-pr-ingest-das-users-total-contracts",
-              "refId": "D"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Das User records processed",
+          "title": "Total number of Enrollments records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -659,7 +647,7 @@ data:
             "y": 24
           },
           "hiddenSeries": false,
-          "id": 18,
+          "id": 20,
           "legend": {
             "avg": false,
             "current": false,
@@ -686,23 +674,35 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_in_total_user_info_total{application=\"tsb-sca-pr-ingest-tbbv-bs-usuarios\",input=\"USER_INFO\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (records_total_users_by_das_user_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "{{application}}-IN",
+              "legendFormat": "tsb-sca-pr-ingest-das-users",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (record_out_total_user_info_total{application=\"tsb-sca-pr-ingest-tbbv-bs-usuarios\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (records_out_total_access_codes_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{application}}-OUT",
+              "legendFormat": "tsb-sca-pr-ingest-das-users-access-codes",
               "refId": "B"
+            },
+            {
+              "expr": "sum by (application, namespace) (records_out_total_credentials_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "tsb-sca-pr-ingest-das-users-total-credentials",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (application, namespace) (records_total_contracts_by_das_contract_total{application=\"tsb-sca-pr-ingest-das-users\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "tsb-sca-pr-ingest-das-users-total-contracts",
+              "refId": "D"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Usuarios records processed",
+          "title": "Total number of Das User records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -861,7 +861,7 @@ data:
             "y": 32
           },
           "hiddenSeries": false,
-          "id": 16,
+          "id": 18,
           "legend": {
             "avg": false,
             "current": false,
@@ -888,13 +888,13 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (records_in_total_credentials_total{application=\"tsb-sca-pr-ingest-tbbv-bs-auth-data\",input=\"CREDENTIALS\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (records_in_total_user_info_total{application=\"tsb-sca-pr-ingest-tbbv-bs-usuarios\",input=\"USER_INFO\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "{{application}}-IN",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (records_out_total_credentials_total{application=\"tsb-sca-pr-ingest-tbbv-bs-auth-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (record_out_total_user_info_total{application=\"tsb-sca-pr-ingest-tbbv-bs-usuarios\",namespace=\"sca\"})\r",
               "interval": "",
               "legendFormat": "{{application}}-OUT",
               "refId": "B"
@@ -904,7 +904,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Credentials records processed",
+          "title": "Total number of Usuarios records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1063,6 +1063,107 @@ data:
             "y": 40
           },
           "hiddenSeries": false,
+          "id": 16,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (application, namespace) (records_in_total_credentials_total{application=\"tsb-sca-pr-ingest-tbbv-bs-auth-data\",input=\"CREDENTIALS\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "{{application}}-IN",
+              "refId": "A"
+            },
+            {
+              "expr": "sum by (application, namespace) (records_out_total_credentials_total{application=\"tsb-sca-pr-ingest-tbbv-bs-auth-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "{{application}}-OUT",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total number of Credentials records processed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 48
+          },
+          "hiddenSeries": false,
           "id": 12,
           "legend": {
             "avg": false,
@@ -1161,7 +1262,7 @@ data:
             "h": 9,
             "w": 12,
             "x": 0,
-            "y": 48
+            "y": 56
           },
           "hiddenSeries": false,
           "id": 2,
@@ -1260,5 +1361,5 @@ data:
       "timezone": "",
       "title": "SCA CDC Ingestors",
       "uid": "OCnX_p8Gk",
-      "version": 17
+      "version": 20
     }
