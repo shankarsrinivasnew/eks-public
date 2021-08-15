@@ -318,11 +318,11 @@ spec:
     prometheusOperator:
       enabled: true
       nodeSelector:
-        taints.eks.aws.uk.tsb/role: mgmt
+        taints.eks.aws.uk.tsb/role: none
       tolerations:
         - key: role
           operator: Equal
-          value: mgmt
+          value: none
           effect: NoSchedule
       resources:
         limits:
@@ -334,11 +334,11 @@ spec:
       admissionWebhooks:
         patch:
           nodeSelector:
-            taints.eks.aws.uk.tsb/role: mgmt
+            taints.eks.aws.uk.tsb/role: none
           tolerations:
             - key: role
               operator: Equal
-              value: mgmt
+              value: none
               effect: NoSchedule
 
       # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
@@ -389,11 +389,11 @@ spec:
       ##
       prometheusSpec:
         nodeSelector:
-          taints.eks.aws.uk.tsb/role: mgmt
+          taints.eks.aws.uk.tsb/role: none
         tolerations:
           - key: role
             operator: Equal
-            value: mgmt
+            value: none
             effect: NoSchedule
         image:
           repository: docker.artifactory.mgmt.aws.uk.tsb/quay-docker-remote/prometheus/prometheus
@@ -617,9 +617,9 @@ spec:
           requests:
             memory: 50Mi
         nodeSelector:
-          taints.eks.aws.uk.tsb/role: mgmt
+          taints.eks.aws.uk.tsb/role: none
         tolerations:
           - key: role
             operator: Equal
-            value: mgmt
+            value: none
             effect: NoSchedule
