@@ -170,6 +170,29 @@ spec:
         aws_metric_name: GdprGlueInError
       - aws_namespace: tsb-datalake-cop
         aws_metric_name: CopGlueInError
+      - aws_namespace: tsb-datalake-cma
+        aws_metric_name: CmaGlueInError
+      - aws_namespace: tsb-datalake-crm
+        aws_metric_name: crmGlueInError
+      - aws_namespace: tsb-datalake-crossmaster
+        aws_metric_name: crossmasterGlueInError
+      - aws_namespace: tsb-datalake-lat
+        aws_metric_name: latGlueInError
+      - aws_namespace: tsb-datalake-latinia
+        aws_metric_name: LatiniaGlueInError
+      - aws_namespace: tsb-datalake-office
+        aws_metric_name: officeGlueInError
+      - aws_namespace: tsb-datalake-opslog
+        aws_metric_name: OpsLogGlueInError
+      - aws_namespace: tsb-datalake-p4uk
+        aws_metric_name: p4ukGlueInError
+      - aws_namespace: tsb-datalake-psd2
+        aws_metric_name: psd2GlueInError
+      - aws_namespace: tsb-datalake-resolve
+        aws_metric_name: resolveGlueInError
+      - aws_namespace: tsb-datalake-sas
+        aws_metric_name: sasGlueInError   
+
 
     # Configurable health checks against the /healthy and /ready endpoints
     livenessProbe:

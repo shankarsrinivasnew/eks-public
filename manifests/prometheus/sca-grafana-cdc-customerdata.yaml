@@ -47,7 +47,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 8,
+          "id": 10,
           "legend": {
             "avg": false,
             "current": false,
@@ -74,23 +74,29 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_device_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
+              "expr": "sum by (application, namespace) (total_records_of_user_sessions_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "Devices_Without_Enrollment_Type",
+              "legendFormat": "total_records_of_user_sessions",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_devices_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (application, namespace) (total_records_of_duplicate_user_sessions_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "Active_Devices",
+              "legendFormat": "total_records_of_duplicate_user_sessions",
               "refId": "B"
+            },
+            {
+              "expr": "sum by (application, namespace) (total_records_of_invalid_user_sessions_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "total_records_of_invalid_user_sessions_data",
+              "refId": "C"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Devices records processed",
+          "title": "Total number of User Sessions record persisted",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -291,7 +297,7 @@ data:
             "y": 8
           },
           "hiddenSeries": false,
-          "id": 6,
+          "id": 8,
           "legend": {
             "avg": false,
             "current": false,
@@ -318,29 +324,23 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_records_of_registered_users_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_device_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
               "interval": "",
-              "legendFormat": "registered_users",
+              "legendFormat": "Devices_Without_Enrollment_Type",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_duplicate_user_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_devices_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "duplicate_users",
+              "legendFormat": "Active_Devices",
               "refId": "B"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_users_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "Invalid_Users",
-              "refId": "E"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Users records processed",
+          "title": "Total number of Devices records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -483,6 +483,113 @@ data:
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 6,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (job, namespace) (total_records_of_registered_users_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "registered_users",
+              "refId": "A"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_user_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "duplicate_users",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_invalid_users_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Invalid_Users",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total number of Users records processed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "schemaVersion": 26,
@@ -499,5 +606,5 @@ data:
       "timezone": "",
       "title": "SCA-CDC-Customer-Data",
       "uid": "SWdURhUMz",
-      "version": 3
+      "version": 16
     }
