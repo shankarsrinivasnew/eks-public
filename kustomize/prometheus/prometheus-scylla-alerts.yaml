@@ -356,7 +356,7 @@ spec:
         summary: Instance {{ $labels.instance }} down
     - alert: InstanceDown
       expr: absent(scylla_transport_requests_served{job="scylla", shard="0"})
-      for: 1m
+      for: 5m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -369,7 +369,7 @@ spec:
         summary: Instance {{ $labels.instance }} down
     - alert: InstanceDown
       expr: scylla_node_operation_mode > 3
-      for: 30s
+      for: 5m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -383,7 +383,7 @@ spec:
     - alert: DiskFull
       expr: node_filesystem_avail_bytes{mountpoint="/var/lib/scylla"} / node_filesystem_size_bytes{mountpoint="/var/lib/scylla"}
         * 100 < 35
-      for: 30s
+      for: 15m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -397,7 +397,7 @@ spec:
     - alert: DiskFull
       expr: node_filesystem_avail_bytes{mountpoint="/var/lib/scylla"} / node_filesystem_size_bytes{mountpoint="/var/lib/scylla"}
         * 100 < 25
-      for: 30s
+      for: 15m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -411,7 +411,7 @@ spec:
     - alert: DiskFull
       expr: node_filesystem_avail_bytes{mountpoint="/var/lib/scylla"} / node_filesystem_size_bytes{mountpoint="/var/lib/scylla"}
         * 100 < 15
-      for: 30s
+      for: 5m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
@@ -425,7 +425,7 @@ spec:
     - alert: DiskFull
       expr: node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}
         * 100 < 20
-      for: 30s
+      for: 5m
       labels:
         severity: CRITICAL
         environment: "{{ AWS_ENVIRONMENT }}"
