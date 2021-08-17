@@ -15,8 +15,8 @@ spec:
       expr: (datastore_state)
 
     - alert: CDC_Subscription_State
-      expr: datastore_state < 1
-      for: 1m
+      expr: datastore_state{job="ec2-discover-node-exporter", instance=~"cdc-.*", state="Mirror Continuous"} < 1
+      for: 5m
       labels:
         environment: "{{ AWS_ENVIRONMENT }}"
         level: CRITICAL
@@ -31,8 +31,8 @@ spec:
         Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
 
     - alert: CDC_Subscription_Availability
-      expr: count(datastore_state) < 2
-      for: 1m
+      expr: count(datastore_state{job="ec2-discover-node-exporter", instance=~"cdc-.*"}) by (state) < 2
+      for: 5m
       labels:
         environment: "{{ AWS_ENVIRONMENT }}"
         level: CRITICAL
@@ -76,7 +76,7 @@ spec:
          
          
     - alert: MDATP_OPENFILES
-      expr: mdatp_openfiles{job="ec2-discover-node-exporter", instance=~"cdc-.*", status="running"} > 2096
+      expr: mdatp_openfiles{job="ec2-discover-node-exporter", instance=~"cdc-.*", status="running"} > 2048
       for: 5m
       labels:
         severity: WARNING
@@ -87,4 +87,4 @@ spec:
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
       annotations:
-         summary: "Openfiles by mdatp user on  {{ $labels.instance }} is above 2096"
+         summary: "Openfiles by mdatp user on  {{ $labels.instance }} is above 2048"
