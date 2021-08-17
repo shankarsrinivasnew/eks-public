@@ -59,3 +59,32 @@ spec:
         tsbci: AWS_ELZ
       annotations:
          summary: "Process Near File Discriptor Limits for Instance {{ $labels.instance }} is above 70% used for 10 minutes"
+
+    - alert: CDC_OPENFILES
+      expr: cdc_openfiles{job="ec2-discover-node-exporter", instance=~"cdc-.*", status="running"} > 4096
+      for: 5m
+      labels:
+        severity: WARNING
+        priority: P4
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: node_process_near_FD_limits
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+      annotations:
+         summary: "Openfiles by CDC user on  {{ $labels.instance }} is above 4096"
+         
+         
+    - alert: MDATP_OPENFILES
+      expr: mdatp_openfiles{job="ec2-discover-node-exporter", instance=~"cdc-.*", status="running"} > 2096
+      for: 5m
+      labels:
+        severity: WARNING
+        priority: P4
+        environment: "{{ AWS_ENVIRONMENT }}"
+        monitoring: node_process_near_FD_limits
+        rackspace: "true"
+        hostname: "{{ $labels.instance }}"
+        tsbci: AWS_ELZ
+      annotations:
+         summary: "Openfiles by mdatp user on  {{ $labels.instance }} is above 2096"
