@@ -18,6 +18,10 @@ stringData:
         target_match:
           severity: 'WARNING'
         equal: ['statefulset']
+      - source_match:
+          alertname: instance_scheduler_on_grafana 
+        target_match:
+          alertname: prometheus_probe_http_2xx      
     receivers:
       - name: "null"
       - name: itom-dev-servicenow
