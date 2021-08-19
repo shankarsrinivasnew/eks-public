@@ -59,7 +59,7 @@ spec:
         - kubernetes:1.27.7
         - workflow-job:2.41
         - workflow-aggregator:2.6
-        - workflow-durable-task-step:2.36
+        - workflow-durable-task-step:2.39
         - credentials-binding:1.25
         - git:4.5.0
         - configuration-as-code:1.51
