@@ -157,7 +157,7 @@ spec:
   - name: PROMETHEUS-ENDPOINT
     rules:
     - alert: prometheus_probe_http_2xx
-      expr: (probe_http_status_code{instance="https://prometheus.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"})!=200 AND ON() absent(hour() >= 18 <= 2)
+      expr: (probe_http_status_code{instance="https://prometheus.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"})!=200
       for: 10m
       labels:
         severity: CRITICAL
@@ -186,20 +186,3 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "Vault Endpoint {{ $labels.instance }} unhealthy"
-
-   - name: PROMETHEUS-ENDPOINT
-     rules:
-     - alert: instance_scheduler_on_grafana
-       exper: hour() >= 18 <= 2
-       for: 10m
-       labels:
-         app: instance_scheduler 
-         priority: P4
-         environment: "{{ AWS_ENVIRONMENT }}"
-         monitoring: prometheus-endpoint
-         rackspace: "true"
-         hostname: "{{ $labels.instance }}"
-         tsbci: AWS_ELZ
-         itopsbridge: "true"
-       annotations:
-         summary: "Instance scheduler - test alert"
