@@ -21,3 +21,5 @@ jobs:
       #    path: .github/actions/yamllint
       - name: Run YamlLint
         uses: ./.github/actions/yaml_lint
+        with:
+          yamllint_config_filepath: ./.github/actions/yaml_lint/extra_config.yaml
