@@ -17,7 +17,7 @@ stringData:
           severity: 'CRITICAL'
         target_match:
           severity: 'WARNING'
-        equal: ['statefulset']
+        equal: ['statefulset'] 
     receivers:
       - name: "null"
       - name: itom-dev-servicenow
