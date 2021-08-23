@@ -20,9 +20,7 @@ rules:
     level: warning
   hyphens:
     level: warning
-  indentation:
-    level: warning
-    indent-sequences: consistent
+  indentation: {spaces: 1}
   line-length: disable
   new-lines: disable
   new-line-at-end-of-file: disable
