@@ -23,7 +23,7 @@ rules:
   indentation:
     level: warning
     indent-sequences: consistent
-  line-length:
-    level: warning
-    allow-non-breakable-inline-mappings: true
+  line-length: disable
+  new-lines: disable
+  new-line-at-end-of-file: disable
   truthy: disable
