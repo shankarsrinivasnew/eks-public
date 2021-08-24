@@ -74,19 +74,19 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (application, namespace) (total_records_of_user_sessions_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "expr": "sum by (container, namespace) (total_records_of_user_sessions_total{container=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "total_records_of_user_sessions",
               "refId": "A"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_duplicate_user_sessions_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "expr": "sum by (container, namespace) (total_records_of_duplicate_user_sessions_total{container=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "total_records_of_duplicate_user_sessions",
               "refId": "B"
             },
             {
-              "expr": "sum by (application, namespace) (total_records_of_invalid_user_sessions_data_total{application=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "expr": "sum by (container, namespace) (total_records_of_invalid_user_sessions_data_total{container=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
               "legendFormat": "total_records_of_invalid_user_sessions_data",
               "refId": "C"
