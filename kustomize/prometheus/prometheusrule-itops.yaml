@@ -140,7 +140,7 @@ spec:
   - name: GRAFANA-ENDPOINT
     rules:
     - alert: grafana_probe_http_2xx
-      expr: (probe_http_status_code{instance="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200
+      expr: (probe_http_status_code{instance="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200 unless ON() hour() >=18 <=2
       for: 10m
       labels:
         severity: CRITICAL
