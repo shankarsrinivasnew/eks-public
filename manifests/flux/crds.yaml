@@ -5,38 +5,38 @@ metadata:
   name: helmreleases.helm.fluxcd.io
 spec:
   additionalPrinterColumns:
-  - JSONPath: .status.releaseName
-    name: Release
-    type: string
-    description: ReleaseName is the name of the Helm release managed by the HelmRelease,
-      as given by Helm.
-  - JSONPath: .status.phase
-    name: Phase
-    type: string
-    description: Phase is the current release phase being performed for the HelmRelease.
-  - JSONPath: .status.releaseStatus
-    name: Status
-    type: string
-    description: ReleaseStatus is the status of the Helm release managed by the HelmRelease,
-      as given by Helm.
-  - JSONPath: .status.conditions[?(@.type=="Released")].message
-    name: Message
-    type: string
-  - JSONPath: .metadata.creationTimestamp
-    description: CreationTimestamp is a timestamp representing the server time when
-      this object was created. It is not guaranteed to be set in happens-before order
-      across separate operations. Clients may not set this value. It is represented
-      in RFC3339 form and is in UTC.
-    name: Age
-    type: date
+    - JSONPath: .status.releaseName
+      name: Release
+      type: string
+      description: ReleaseName is the name of the Helm release managed by the HelmRelease,
+        as given by Helm.
+    - JSONPath: .status.phase
+      name: Phase
+      type: string
+      description: Phase is the current release phase being performed for the HelmRelease.
+    - JSONPath: .status.releaseStatus
+      name: Status
+      type: string
+      description: ReleaseStatus is the status of the Helm release managed by the HelmRelease,
+        as given by Helm.
+    - JSONPath: .status.conditions[?(@.type=="Released")].message
+      name: Message
+      type: string
+    - JSONPath: .metadata.creationTimestamp
+      description: CreationTimestamp is a timestamp representing the server time when
+        this object was created. It is not guaranteed to be set in happens-before order
+        across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+      name: Age
+      type: date
   group: helm.fluxcd.io
   names:
     kind: HelmRelease
     listKind: HelmReleaseList
     plural: helmreleases
     shortNames:
-    - hr
-    - hrs
+      - hr
+      - hrs
     singular: helmrelease
   scope: Namespaced
   subresources:
@@ -46,8 +46,8 @@ spec:
       description: HelmRelease is a type to represent a Helm release.
       type: object
       required:
-      - metadata
-      - spec
+        - metadata
+        - spec
       properties:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation
@@ -64,7 +64,7 @@ spec:
         spec:
           type: object
           required:
-          - chart
+            - chart
           properties:
             chart:
               type: object
@@ -75,7 +75,7 @@ spec:
                     NOT IMPLEMENTED!
                   type: object
                   required:
-                  - name
+                    - name
                   properties:
                     name:
                       type: string
@@ -105,7 +105,7 @@ spec:
                     to an HTTPS GitURL before the mirror is started.
                   type: object
                   required:
-                  - name
+                    - name
                   properties:
                     name:
                       type: string
@@ -133,8 +133,8 @@ spec:
                 values are: "v2", "v3"'
               type: string
               enum:
-              - v2
-              - v3
+                - v2
+                - v3
             maxHistory:
               description: MaxHistory is the maximum amount of revisions to keep for
                 the Helm release. If not supplied, it defaults to 10.
@@ -231,7 +231,7 @@ spec:
               items:
                 type: object
                 required:
-                - name
+                  - name
                 properties:
                   name:
                     type: string
@@ -248,7 +248,7 @@ spec:
                       values.
                     type: object
                     required:
-                    - path
+                      - path
                     properties:
                       optional:
                         description: Optional will mark this ChartFileSelector as
@@ -263,7 +263,7 @@ spec:
                     description: The reference to a config map with release values.
                     type: object
                     required:
-                    - name
+                      - name
                     properties:
                       key:
                         type: string
@@ -278,7 +278,7 @@ spec:
                       values.
                     type: object
                     required:
-                    - url
+                      - url
                     properties:
                       optional:
                         description: Optional will mark this ExternalSourceSelector
@@ -293,7 +293,7 @@ spec:
                     description: The reference to a secret with release values.
                     type: object
                     required:
-                    - name
+                      - name
                     properties:
                       key:
                         type: string
@@ -319,8 +319,8 @@ spec:
               items:
                 type: object
                 required:
-                - status
-                - type
+                  - status
+                  - type
                 properties:
                   lastTransitionTime:
                     description: LastTransitionTime is the timestamp corresponding
@@ -345,19 +345,19 @@ spec:
                       'Unknown').
                     type: string
                     enum:
-                    - "True"
-                    - "False"
-                    - Unknown
+                      - "True"
+                      - "False"
+                      - Unknown
                   type:
                     description: Type of the condition, one of ('ChartFetched', 'Deployed',
                       'Released', 'RolledBack', 'Tested').
                     type: string
                     enum:
-                    - ChartFetched
-                    - Deployed
-                    - Released
-                    - RolledBack
-                    - Tested
+                      - ChartFetched
+                      - Deployed
+                      - Released
+                      - RolledBack
+                      - Tested
             lastAttemptedRevision:
               description: LastAttemptedRevision is the revision of the latest chart
                 sync, and may be of a failed release.
@@ -374,20 +374,20 @@ spec:
                 'RollbackFailed')
               type: string
               enum:
-              - ChartFetched
-              - ChartFetchFailed
-              - Installing
-              - Upgrading
-              - Deployed
-              - DeployFailed
-              - Testing
-              - TestFailed
-              - Tested
-              - Succeeded
-              - Failed
-              - RollingBack
-              - RolledBack
-              - RollbackFailed
+                - ChartFetched
+                - ChartFetchFailed
+                - Installing
+                - Upgrading
+                - Deployed
+                - DeployFailed
+                - Testing
+                - TestFailed
+                - Tested
+                - Succeeded
+                - Failed
+                - RollingBack
+                - RolledBack
+                - RollbackFailed
             releaseName:
               description: ReleaseName is the name as either supplied or generated.
               type: string
@@ -407,9 +407,9 @@ spec:
               format: int64
   version: v1
   versions:
-  - name: v1
-    served: true
-    storage: true
+    - name: v1
+      served: true
+      storage: true
 status:
   acceptedNames:
     kind: ""
