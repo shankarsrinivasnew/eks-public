@@ -191,7 +191,47 @@ spec:
       - aws_namespace: tsb-datalake-resolve
         aws_metric_name: resolveGlueInError
       - aws_namespace: tsb-datalake-sas
-        aws_metric_name: sasGlueInError   
+        aws_metric_name: sasGlueInError
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: 4XXError
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: 5XXError
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: CacheHitCount
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: CacheMissCount
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: Count
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
+        aws_statistics: [SampleCount]
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: IntegrationLatency
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
+      - aws_namespace: AWS/ApiGateway
+        aws_metric_name: Latency
+        aws_dimensions: [ApiName]
+        aws_dimension_select_regex:
+          ApiName: ["^tsb-ods.*$"]
 
 
     # Configurable health checks against the /healthy and /ready endpoints
