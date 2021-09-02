@@ -3,6 +3,7 @@ name: Yaml lint
 on:
   pull_request:
     types: ['opened', 'edited', 'reopened', 'synchronize']
+    branches: ['tcp-7760', 'tcp-7559']
 
 jobs:
   main:
