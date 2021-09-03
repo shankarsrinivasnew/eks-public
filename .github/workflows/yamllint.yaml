@@ -6,7 +6,6 @@ on:
   push:
     branches: 
       - 'tcp-7760'
-      - 'tcp-7559'
 
 jobs:
   main:
