@@ -197,25 +197,25 @@ spec:
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
           ApiName: ["^tsb-ods.*$"]
-        aws_statistics: [Sum]
+        aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: 5XXError
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
           ApiName: ["^tsb-ods.*$"]
-        aws_statistics: [Sum]
+        aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: CacheHitCount
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
           ApiName: ["^tsb-ods.*$"]
-        aws_statistics: [Sum]
+        aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: CacheMissCount
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
           ApiName: ["^tsb-ods.*$"]
-        aws_statistics: [Sum]
+        aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: Count
         aws_dimensions: [ApiName, Method, Resource, Stage]
