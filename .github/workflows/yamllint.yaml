@@ -3,6 +3,9 @@ name: Yaml lint
 on:
   #pull_request:
     #types: ['opened', 'edited', 'reopened', 'synchronize']
+  push:
+    branches:
+      - tcp-7760
 jobs:
   main:
     name: YamlLint
