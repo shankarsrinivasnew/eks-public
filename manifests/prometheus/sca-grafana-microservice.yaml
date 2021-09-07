@@ -294,64 +294,46 @@ data:
               "refId": "A"
             },
             {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*pending-transactions\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*pending-transactions\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Pending Transaction API Failure Rate",
-              "refId": "B"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-accountid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-accountid\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Transaction By Account ID API Failure Rate",
-              "refId": "C"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*expired-transcount-by-userid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*expired-transcount-by-userid\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Expired Transaction By User ID API Failure Rate",
-              "refId": "D"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-cardnumber\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-cardnumber\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Transaction By Card Number API Failure Rate",
-              "refId": "E"
-            },
-            {
               "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*enrol-type\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*enrol-type\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Enroll Type API Failure Rate",
-              "refId": "F"
+              "refId": "B"
             },
             {
               "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*stepup-auth-response\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*stepup-auth-response\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Stepup Auth Response API Failure Rate",
-              "refId": "G"
+              "refId": "C"
             },
             {
               "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*validate-pwd\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*validate-pwd\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Validate Pwd API Failure Rate",
-              "refId": "H"
+              "refId": "D"
             },
             {
               "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*auth-method\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*auth-method\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Auth Method API Failure Rate",
-              "refId": "I"
+              "refId": "E"
             },
             {
               "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*init-app-auth\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*init-app-auth\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Init App Auth API Failure Rate",
-              "refId": "J"
+              "refId": "F"
             },
             {
               "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*send-otp\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*send-otp\"}[5m]))) * 100",
               "interval": "",
               "legendFormat": "Sent OTP API Failure Rate",
-              "refId": "K"
+              "refId": "G"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-userid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-userid\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API Failure Rate",
+              "refId": "H"
             }
           ],
           "thresholds": [],
@@ -562,64 +544,46 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*pending-transactions\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Pending Transaction API throughput",
-              "refId": "B"
-            },
-            {
-              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*transactions-by-accountid\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Transaction By Account ID API throughput",
-              "refId": "C"
-            },
-            {
-              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*expired-transcount-by-userid\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Expired Transaction By User ID API throughput",
-              "refId": "D"
-            },
-            {
-              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*transactions-by-cardnumber\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Transaction By Card Number API throughput",
-              "refId": "E"
-            },
-            {
               "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*enrol-type\"}[5m]))",
               "interval": "",
               "legendFormat": "Enroll Type API throughput",
-              "refId": "F"
+              "refId": "B"
             },
             {
               "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*stepup-auth-response\"}[5m]))",
               "interval": "",
               "legendFormat": "\t Stepup Auth Response API throughput",
-              "refId": "G"
+              "refId": "C"
             },
             {
               "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*validate-pwd\"}[5m]))",
               "interval": "",
               "legendFormat": "Validate Pwd API throughput",
-              "refId": "H"
+              "refId": "D"
             },
             {
               "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*auth-method\"}[5m]))",
               "interval": "",
               "legendFormat": "Auth Method API throughput",
-              "refId": "I"
+              "refId": "E"
             },
             {
               "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*init-app-auth\"}[5m]))",
               "interval": "",
               "legendFormat": "Init App Auth API throughput",
-              "refId": "J"
+              "refId": "F"
             },
             {
               "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*send-otp\"}[5m]))",
               "interval": "",
               "legendFormat": "Sent OTP API throughput",
-              "refId": "K"
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*transactions-by-userid\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API throughput",
+              "refId": "H"
             }
           ],
           "thresholds": [],
@@ -717,71 +681,53 @@ data:
               "refId": "A"
             },
             {
-              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*pending-transactions\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*pending-transactions\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Pending Transaction API Response Time",
-              "refId": "B"
-            },
-            {
-              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*transactions-by-accountid\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*transactions-by-accountid\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Transaction By Account ID API Response Time",
-              "refId": "C"
-            },
-            {
-              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*expired-transcount-by-userid\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*expired-transcount-by-userid\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Expired Transaction By User ID API Response Time",
-              "refId": "D"
-            },
-            {
-              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*transactions-by-cardnumber\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*transactions-by-cardnumber\"}[5m]))",
-              "interval": "",
-              "legendFormat": "Transaction By Card Number API Response Time",
-              "refId": "E"
-            },
-            {
               "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*enrol-type\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*enrol-type\"}[5m]))",
               "interval": "",
               "legendFormat": "Enroll Type API Response Time",
-              "refId": "F"
+              "refId": "B"
             },
             {
               "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*stepup-auth-response\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*stepup-auth-response\"}[5m]))",
               "interval": "",
               "legendFormat": "Stepup Auth Response API Response Time",
-              "refId": "G"
+              "refId": "C"
             },
             {
               "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*validate-pwd\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*validate-pwd\"}[5m]))",
               "interval": "",
               "legendFormat": "Validate Pwd API Response Time",
-              "refId": "H"
+              "refId": "D"
             },
             {
               "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*auth-method\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*auth-method\"}[5m]))",
               "interval": "",
               "legendFormat": "Auth Method API Response Time",
-              "refId": "I"
+              "refId": "E"
             },
             {
               "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*init-app-auth\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*init-app-auth\"}[5m]))",
               "interval": "",
               "legendFormat": "Init App Auth API Response Time",
-              "refId": "J"
+              "refId": "F"
             },
             {
               "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*send-otp\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*send-otp\"}[5m]))",
               "interval": "",
               "legendFormat": "Sent OTP API Response Time",
-              "refId": "K"
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*transactions-by-userid\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*transactions-by-userid\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API Response Time",
+              "refId": "H"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "API Average Response time (seconds)",
+          "title": "API Average Response time (Milliseconds)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -940,5 +886,5 @@ data:
       "timezone": "",
       "title": "SCA Microservice",
       "uid": "CSalepUGz",
-      "version": 16
+      "version": 21
     }

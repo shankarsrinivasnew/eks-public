@@ -3,7 +3,6 @@ name: Yaml lint
 on:
   #pull_request:
     #types: ['opened', 'edited', 'reopened', 'synchronize']
-
 jobs:
   main:
     name: YamlLint

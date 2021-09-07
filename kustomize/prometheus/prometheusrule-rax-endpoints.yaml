@@ -11,7 +11,7 @@ spec:
   - name: BLACKBOX_ENDPOINT_MONITORING_RULES
     rules:
     - alert: probe_http_2xx_status_code
-      expr: (probe_http_status_code{job="blackbox"}) != 200
+      expr: (probe_http_status_code{job="blackbox", instance!="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb"}) != 200
       for: 1m
       labels:
         severity: CRITICAL

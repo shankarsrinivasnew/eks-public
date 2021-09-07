@@ -140,10 +140,11 @@ spec:
   - name: GRAFANA-ENDPOINT
     rules:
     - alert: grafana_probe_http_2xx
-      expr: (probe_http_status_code{instance="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200
+      expr: (probe_http_status_code{instance="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb", job="blackbox"}) !=200 and ON() hour() >=18 <=3
       for: 10m
       labels:
         severity: CRITICAL
+        app: instance_scheduler
         priority: P4
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: grafana-endpoint
@@ -185,4 +186,3 @@ spec:
         itopsbridge: "true"
       annotations:
         summary: "Vault Endpoint {{ $labels.instance }} unhealthy"
-
