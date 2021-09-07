@@ -99,17 +99,17 @@ spec:
         tag: 2.2.1
       datacenter: eu-west-2
       racks:
-      - name: eu-west-2b
-        members: 1
-        storage:
-          capacity: 10G
-        resources:
-          limits:
-            cpu: 1
-            memory: 2Gi
-          requests:
-            cpu: 1
-            memory: 2Gi
+        - name: eu-west-2b
+          members: 1
+          storage:
+            capacity: 10G
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 1
+              memory: 2Gi
     
     # Whether to create Prometheus ServiceMonitor
     serviceMonitor:

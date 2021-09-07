@@ -5,12 +5,12 @@ metadata:
   name: cob-view-role
   namespace: kube-system
 rules:
-- apiGroups: [""]
-  resources: ["*"]
-  verbs:
-    - get
-    - list
-    - watch
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs:
+      - get
+      - list
+      - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -22,10 +22,10 @@ roleRef:
   kind: Role
   name: cob-view-role
 subjects:
-- kind: Group
-  name: cob-view-kube-system
-- kind: Group
-  name: cob-read-only
-- kind: ServiceAccount
-  name: tsb-cob
-  namespace: cob
+  - kind: Group
+    name: cob-view-kube-system
+  - kind: Group
+    name: cob-read-only
+  - kind: ServiceAccount
+    name: tsb-cob
+    namespace: cob

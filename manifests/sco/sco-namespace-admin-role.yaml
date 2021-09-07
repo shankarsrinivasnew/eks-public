@@ -19,10 +19,10 @@ roleRef:
   kind: Role
   name: sco-admin-role
 subjects:
-- kind: ServiceAccount
-  name: tsb-sco
-- kind: Group
-  name: sco-admin
-- kind: ServiceAccount
-  name: jenkins-terraform
-  namespace: jenkins
+  - kind: ServiceAccount
+    name: tsb-sco
+  - kind: Group
+    name: sco-admin
+  - kind: ServiceAccount
+    name: jenkins-terraform
+    namespace: jenkins
