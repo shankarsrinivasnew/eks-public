@@ -78,7 +78,7 @@ spec:
             - --health-port=9809
           envFrom:
             - configMapRef:
-              name: proxy-environment-variables
+                name: proxy-environment-variables
           image: 602401143452.dkr.ecr.eu-west-2.amazonaws.com/eks/livenessprobe:v2.0.0
           name: liveness-probe
           volumeMounts:
