@@ -90,8 +90,8 @@ spec:
           livenessProbe:
             exec:
               command:
-              - /bin/calico-node
-              - -felix-live
+                - /bin/calico-node
+                - -felix-live
             periodSeconds: 10
             initialDelaySeconds: 10
             failureThreshold: 6
