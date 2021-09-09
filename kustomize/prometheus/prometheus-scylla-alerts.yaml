@@ -356,17 +356,17 @@ spec:
         summary: Instance {{ $labels.instance }} down
     - alert: InstanceDown
       expr: absent(scylla_transport_requests_served{job="scylla", shard="0"})
-      for: 5m
+      for: 30m
       labels:
-        severity: CRITICAL
+        severity: WARNING
         environment: "{{ AWS_ENVIRONMENT }}"
         monitoring: InstanceDown
         rackspace: "true"
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
       annotations:
-        description: '{{ $labels.instance }} instance is shutting down.'
-        summary: Instance {{ $labels.instance }} down
+        description: 'No Requests received for shard 0 on {{ $labels.instance }} in the last 30 min, check if scylla is receiving requests'
+        summary: Instance {{ $labels.instance }} is not receiving any connections.
     - alert: InstanceDown
       expr: scylla_node_operation_mode > 3
       for: 5m
@@ -378,7 +378,7 @@ spec:
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
       annotations:
-        description: '{{ $labels.instance }} instance is shutting down.'
+        description: '{{ $labels.instance }} instance is shutting down, check if the scylla service was restarted.'
         summary: Instance {{ $labels.instance }} down
     - alert: DiskFull
       expr: node_filesystem_avail_bytes{mountpoint="/var/lib/scylla"} / node_filesystem_size_bytes{mountpoint="/var/lib/scylla"}
@@ -447,7 +447,7 @@ spec:
         hostname: "{{ $labels.instance }}"
         tsbci: AWS_ELZ
       annotations:
-        description: '{{ $labels.host }} has denied CQL connection for more than 30 seconds.'
+        description: '{{ $labels.host }} has denied CQL connection for more than 15 min.'
         summary: Instance {{ $labels.host }} no CQL connection
     - alert: HighLatencies
       expr: wlatencyp95{by="instance"} > 100000
