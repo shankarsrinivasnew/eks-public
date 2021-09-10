@@ -163,14 +163,14 @@ metadata:
 spec:
   podSelector: {}
   policyTypes:
-  - Ingress
+    - Ingress
   ingress:
-  - from:
-    - namespaceSelector: 
-        matchLabels:
-          app: prometheus
-    ports:
-    - port: 8080
-      protocol: TCP
-    - port: 3000
-      protocol: TCP
+    - from:
+        - namespaceSelector: 
+          matchLabels:
+            app: prometheus
+      ports:
+        - port: 8080
+          protocol: TCP
+        - port: 3000
+          protocol: TCP
