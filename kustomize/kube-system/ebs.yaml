@@ -360,16 +360,16 @@ spec:
           volumeMounts:
             - mountPath: /csi
               name: socket-dir
-          nodeSelector:
-            kubernetes.io/os: linux
-            taints.eks.aws.uk.tsb/role: mgmt
-          priorityClassName: system-cluster-critical
-          serviceAccountName: ebs-csi-controller-sa
-          tolerations:
-            - operator: Exists
-          volumes:
-            - emptyDir: {}
-              name: socket-dir
+      nodeSelector:
+        kubernetes.io/os: linux
+        taints.eks.aws.uk.tsb/role: mgmt
+      priorityClassName: system-cluster-critical
+      serviceAccountName: ebs-csi-controller-sa
+      tolerations:
+        - operator: Exists
+      volumes:
+        - emptyDir: {}
+          name: socket-dir
 ---
 apiVersion: apps/v1
 kind: DaemonSet
