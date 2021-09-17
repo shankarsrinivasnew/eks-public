@@ -8,55 +8,55 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: CB_APP_RESPONSE_TIME
-    rules:
-    - record: cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cb",uri=~".*enrol.*|.*verify.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cb",uri=~".*enrol.*|.*verify.*"}[5m]))
-    - alert: CB_app_auth_response_time_green_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 1
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: GREEN
-        platform: AWS
-        namespace: cb
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_CONV_BANK
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 1s for last 5 mins. Value: {{ $value }}'
-        summary: Green alert for reponse time reached for Application {{ $labels.job }}
-    - alert: CB_app_auth_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 1.5
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: cb
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_CONV_BANK
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 1.5s for last 5 mins. Value: {{ $value }}'
-        summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
-    - alert: CB_app_auth_response_time_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 2
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: cb
-        severity: WARNING
-        type: 8x5
-        tsbci: AWS_CONV_BANK
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 2s for last 5 mins. Value: {{ $value }}'
-        summary: Red alert for reponse time reached for Application {{ $labels.job }}
+    - name: CB_APP_RESPONSE_TIME
+      rules:
+        - record: cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cb",uri=~".*enrol.*|.*verify.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cb",uri=~".*enrol.*|.*verify.*"}[5m]))
+        - alert: CB_app_auth_response_time_green_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 1
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: GREEN
+            platform: AWS
+            namespace: cb
+            severity: WARNING
+            type: 8x5
+            tsbci: AWS_CONV_BANK
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 1s for last 5 mins. Value: {{ $value }}'
+            summary: Green alert for reponse time reached for Application {{ $labels.job }}
+        - alert: CB_app_auth_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 1.5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cb
+            severity: WARNING
+            type: 8x5
+            tsbci: AWS_CONV_BANK
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 1.5s for last 5 mins. Value: {{ $value }}'
+            summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
+        - alert: CB_app_auth_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cb_app_auth_response_time_{{ AWS_ENVIRONMENT }}) > 2
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cb
+            severity: WARNING
+            type: 8x5
+            tsbci: AWS_CONV_BANK
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 2s for last 5 mins. Value: {{ $value }}'
+            summary: Red alert for reponse time reached for Application {{ $labels.job }}
