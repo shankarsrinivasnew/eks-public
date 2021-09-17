@@ -74,22 +74,40 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (rate( outbound_restproxy_cop_requests_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(integration_service_cop_requests_received_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Requests",
+              "legendFormat": "Integration Service request processing Rate",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (rate( outbound_restproxy_successful_requests_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(outbound_restproxy_cop_requests_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Success",
+              "legendFormat": "Outbound Rest Proxy request processing Rate",
               "refId": "B"
             },
             {
-              "expr": "sum by (job, namespace) (rate( outbound_restproxy_failed_requests_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(inbound_restproxy_cop_requests_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Failed",
+              "legendFormat": "Inbound Rest Proxy request processing Rate",
               "refId": "C"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(inbound_enrichment_cop_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Inbound Enrichment",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(inbound_name_verification_cop_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Inbound Name Verification",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(outbound_openbanking_cop_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Outbound Openbanking",
+              "refId": "F"
             }
           ],
           "thresholds": [],
@@ -183,22 +201,40 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (rate( cop_authorisation_cop_requests_received_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(integration_service_requests_successful_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Requests",
+              "legendFormat": "Integration Service request processing Rate",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (rate( cop_authorisation_requests_successful_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(outbound_restproxy_successful_requests_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Success",
+              "legendFormat": "Outbound Rest Proxy request processing Rate",
               "refId": "B"
             },
             {
-              "expr": "sum by (job, namespace) (rate( cop_authorisation_requests_failed_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(inbound_restproxy_successful_requests_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Failed",
+              "legendFormat": "Inbound Rest Proxy request processing Rate",
               "refId": "C"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(inbound_name_verification_successful_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Inbound Enrichment",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(inbound_enrichment_successful_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Inbound Name Verification",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(outbound_openbanking_successful_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Outbound Openbanking",
+              "refId": "F"
             }
           ],
           "thresholds": [],
@@ -292,22 +328,40 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (rate( outbound_openbanking_cop_requests_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(integration_service_requests_failed_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Requests",
+              "legendFormat": "Integration Service request processing Rate",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (rate( outbound_openbanking_successful_requests_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(outbound_restproxy_failed_requests_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Success",
+              "legendFormat": "Outbound Rest Proxy request processing Rate",
               "refId": "B"
             },
             {
-              "expr": "sum by (job, namespace) (rate( outbound_openbanking_failed_requests_total {namespace=\"cop\"}[1m])*60)",
+              "expr": "sum by (job, namespace) (rate(inbound_restproxy_failed_requests_total {namespace=\"cop\"}[1m])*60)",
               "interval": "",
-              "legendFormat": "Failed",
+              "legendFormat": "Inbound Rest Proxy request processing Rate",
               "refId": "C"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(inbound_enrichment_failed_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Inbound Enrichment",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(inbound_name_verification_failed_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Inbound Name Verification",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (job, namespace) (rate(outbound_openbanking_failed_requests_total {namespace=\"cop\"}[1m])*60)",
+              "interval": "",
+              "legendFormat": "Outbound Openbanking",
+              "refId": "F"
             }
           ],
           "thresholds": [],
