@@ -17,7 +17,7 @@ stringData:
           severity: 'CRITICAL'
         target_match:
           severity: 'WARNING'
-        equal: ['statefulset']
+        equal: ['statefulset'] 
     receivers:
       - name: "null"
       - name: itom-dev-servicenow
@@ -304,3 +304,8 @@ stringData:
             application: cdc
           receiver: cmos-event-management
           continue: true
+        - match_re:
+            environment: preprod|prod    
+            application: cdc
+            severity: WARNING
+          receiver: rax-pagerduty-critical  

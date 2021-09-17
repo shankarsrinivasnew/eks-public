@@ -42,7 +42,8 @@ spec:
         namespace: cb
         severity: CRITICAL
         type: 8x5
-        tsbopsbridge: true
+        tsbci: AWS_CONV_BANK
+        itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
@@ -78,7 +79,8 @@ spec:
         namespace: cb
         severity: CRITICAL
         type: 8x5
-        tsbopsbridge: true
+        tsbci: AWS_CONV_BANK
+        itopsbridge: "true"
       annotations:
         description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
@@ -96,7 +98,8 @@ spec:
         namespace: cb
         severity: CRITICAL
         type: 8x5
-        tsbopsbridge: true
+        tsbci: AWS_CONV_BANK
+        itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
         summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running

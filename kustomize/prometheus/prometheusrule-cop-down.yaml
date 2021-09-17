@@ -25,7 +25,7 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -45,7 +45,7 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -65,8 +65,8 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
-        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+        summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running   
