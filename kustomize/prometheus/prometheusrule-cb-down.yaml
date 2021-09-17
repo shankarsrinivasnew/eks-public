@@ -25,7 +25,6 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
-        tsbci: AWS_CONV_BANK
       annotations:
         description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
         summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
@@ -63,7 +62,6 @@ spec:
         namespace: cb
         severity: WARNING
         type: 8x5
-        tsbci: AWS_CONV_BANK
       annotations:
         description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
         summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
