@@ -8,7 +8,6 @@ jobs:
     name: YamlLint
     runs-on: ubuntu-latest
     steps:
-      # checkout this repo
       - name: Checkout Repo
         uses: actions/checkout@v2
       # checkout the private repo containing the action to run
