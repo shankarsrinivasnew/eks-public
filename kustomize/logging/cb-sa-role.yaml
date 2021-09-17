@@ -19,8 +19,8 @@ roleRef:
   kind: Role
   name: cb-logging-admin-role
 subjects:
-- kind: ServiceAccount
-  name: tsb-cb
-  namespace: cb
-- kind: Group
-  name: cb-admin
+  - kind: ServiceAccount
+    name: tsb-cb
+    namespace: cb
+  - kind: Group
+    name: cb-admin

@@ -12,9 +12,9 @@ spec:
     - action: Allow
       destination:
         nets:
-        - "{{ VPC_CIDR }}"
+          - "{{ VPC_CIDR }}"
   ingress:    
     - action: Allow
       source:
         nets:
-        - "{{ VPC_CIDR }}"
+          - "{{ VPC_CIDR }}"
