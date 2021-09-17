@@ -8,44 +8,44 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: SCO_FL_APP_RESPONSE_TIME
-    rules:
-###########################################API_RESPONSE_TIME###################################################################
-    - record: sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum{namespace="sco",uri=~".*/sco-fl/.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sco",uri=~".*/sco-fl/.*"}[5m]))
-    - alert: SCO_FL_app_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) > 0.020 and (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) <= 0.050
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: sco
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: SCO_FL_AWS
-        itopsbridge: "true"
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 20ms for last 5 mins. Value: {{ $value }}'
-        summary: Yellow alert for response time reached for Application {{ $labels.job }}
-    - alert: SCO_FL_app_response_time_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) > 0.050
-      for: 5m
-      labels:
-        action: Application is likely impacted
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: sco
-        severity: CRITICAL
-        priority: P3
-        type: 8x5
-        tsbci: SCO_FL_AWS
-        itopsbridge: "true"
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 50ms for last 5 mins. Value: {{ $value }}'
-        summary: Red alert for response time reached for Application {{ $labels.job }}
+    - name: SCO_FL_APP_RESPONSE_TIME
+      rules:
+  ###########################################API_RESPONSE_TIME###################################################################
+        - record: sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum{namespace="sco",uri=~".*/sco-fl/.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sco",uri=~".*/sco-fl/.*"}[5m]))
+        - alert: SCO_FL_app_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) > 0.020 and (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) <= 0.050
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: sco
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: SCO_FL_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 20ms for last 5 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+        - alert: SCO_FL_app_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) > 0.050
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: sco
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCO_FL_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 50ms for last 5 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}

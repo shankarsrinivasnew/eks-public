@@ -8,29 +8,29 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: BLACKBOX_ENDPOINT_MONITORING_RULES
-    rules:
-    - alert: probe_http_2xx_status_code
-      expr: (probe_http_status_code{job="blackbox", instance!="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb"}) != 200
-      for: 1m
-      labels:
-        severity: CRITICAL
-        priority: P4
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: endpoints
-        rackspace: "true"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "Endpoint {{ $labels.instance }} unhealthy"
-    - alert: probe_http_4xx_status_code
-      expr: (probe_http_status_code{job="blackbox_4xx"}) != 403
-      for: 1m
-      labels:
-        severity: CRITICAL
-        priority: P4
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: endpoints
-        rackspace: "true"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "Endpoint {{ $labels.instance }} unhealthy"
+    - name: BLACKBOX_ENDPOINT_MONITORING_RULES
+      rules:
+        - alert: probe_http_2xx_status_code
+          expr: (probe_http_status_code{job="blackbox", instance!="https://grafana.{{ AWS_ENVIRONMENT }}.aws.uk.tsb"}) != 200
+          for: 1m
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: endpoints
+            rackspace: "true"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "Endpoint {{ $labels.instance }} unhealthy"
+        - alert: probe_http_4xx_status_code
+          expr: (probe_http_status_code{job="blackbox_4xx"}) != 403
+          for: 1m
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: endpoints
+            rackspace: "true"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "Endpoint {{ $labels.instance }} unhealthy"

@@ -71,11 +71,11 @@ spec:
         datasources.yaml:
           apiVersion: 1
           datasources:
-          - name: Thanos
-            type: prometheus
-            url: http://thanos-query-http.prometheus:10902 #Thanos must be deployed first for this to work.
-            access: proxy
-            isDefault: true
+            - name: Thanos
+              type: prometheus
+              url: http://thanos-query-http.prometheus:10902 #Thanos must be deployed first for this to work.
+              access: proxy
+              isDefault: true
       # plugins:
       #   - "grafana-piechart-panel"
       #   - "camptocamp-prometheus-alertmanager-datasource"
@@ -432,11 +432,11 @@ spec:
           - job_name: prometheus
             static_configs:
               - targets:
-                - localhost:9090
+                  - localhost:9090
           - job_name: alertmanager
             static_configs:
               - targets:
-                - prometheus-kube-prometheus-alertmanager.prometheus:9093
+                  - prometheus-kube-prometheus-alertmanager.prometheus:9093
           - job_name: ec2-discover-node-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
@@ -526,10 +526,10 @@ spec:
               module: [http_2xx_cacert]
             static_configs:
               - targets:
-                - https://grafana.{{ DNS_ZONE }}
-                - https://prometheus.{{ DNS_ZONE }}
-                - https://consul.{{ DNS_ZONE }}
-                - https://vault.{{ DNS_ZONE }}
+                  - https://grafana.{{ DNS_ZONE }}
+                  - https://prometheus.{{ DNS_ZONE }}
+                  - https://consul.{{ DNS_ZONE }}
+                  - https://vault.{{ DNS_ZONE }}
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
@@ -543,7 +543,7 @@ spec:
               module: [http_4xx_cacert]
             static_configs:
               - targets:
-                - https://jenkins.{{ DNS_ZONE }}
+                  - https://jenkins.{{ DNS_ZONE }}
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
@@ -571,13 +571,13 @@ spec:
             metrics_path: /metrics
             static_configs:
               - targets:
-                - consul-exporter-prometheus-consul-exporter:9107
+                  - consul-exporter-prometheus-consul-exporter:9107
           - job_name: cloudwatch-exporter
             metrics_path: '/metrics'
             honor_labels: true
             static_configs:
-            - targets:
-              - dl-cwexporter-prometheus-cloudwatch-exporter:9106
+              - targets:
+                  - dl-cwexporter-prometheus-cloudwatch-exporter:9106
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
