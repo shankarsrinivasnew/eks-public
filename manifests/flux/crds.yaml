@@ -4,31 +4,6 @@ kind: CustomResourceDefinition
 metadata:
   name: helmreleases.helm.fluxcd.io
 spec:
-  additionalPrinterColumns:
-    - JSONPath: .status.releaseName
-      name: Release
-      type: string
-      description: ReleaseName is the name of the Helm release managed by the HelmRelease,
-        as given by Helm.
-    - JSONPath: .status.phase
-      name: Phase
-      type: string
-      description: Phase is the current release phase being performed for the HelmRelease.
-    - JSONPath: .status.releaseStatus
-      name: Status
-      type: string
-      description: ReleaseStatus is the status of the Helm release managed by the HelmRelease,
-        as given by Helm.
-    - JSONPath: .status.conditions[?(@.type=="Released")].message
-      name: Message
-      type: string
-    - JSONPath: .metadata.creationTimestamp
-      description: CreationTimestamp is a timestamp representing the server time when
-        this object was created. It is not guaranteed to be set in happens-before order
-        across separate operations. Clients may not set this value. It is represented
-        in RFC3339 form and is in UTC.
-      name: Age
-      type: date
   group: helm.fluxcd.io
   names:
     kind: HelmRelease
@@ -410,6 +385,31 @@ spec:
     - name: v1
       served: true
       storage: true
+      additionalPrinterColumns:
+        - JSONPath: .status.releaseName
+          name: Release
+          type: string
+          description: ReleaseName is the name of the Helm release managed by the HelmRelease,
+            as given by Helm.
+        - JSONPath: .status.phase
+          name: Phase
+          type: string
+          description: Phase is the current release phase being performed for the HelmRelease.
+        - JSONPath: .status.releaseStatus
+          name: Status
+          type: string
+          description: ReleaseStatus is the status of the Helm release managed by the HelmRelease,
+            as given by Helm.
+        - JSONPath: .status.conditions[?(@.type=="Released")].message
+          name: Message
+          type: string
+        - JSONPath: .metadata.creationTimestamp
+          description: CreationTimestamp is a timestamp representing the server time when
+            this object was created. It is not guaranteed to be set in happens-before order
+            across separate operations. Clients may not set this value. It is represented
+            in RFC3339 form and is in UTC.
+          name: Age
+          type: date
 status:
   acceptedNames:
     kind: ""
