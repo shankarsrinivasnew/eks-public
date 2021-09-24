@@ -14,8 +14,6 @@ spec:
       - hrs
     singular: helmrelease
   scope: Namespaced
-  subresources:
-    status: {}
   validation:
     openAPIV3Schema:
       description: HelmRelease is a type to represent a Helm release.
@@ -410,6 +408,8 @@ spec:
             in RFC3339 form and is in UTC.
           name: Age
           type: date
+      subresources:
+        status: {}
 status:
   acceptedNames:
     kind: ""
