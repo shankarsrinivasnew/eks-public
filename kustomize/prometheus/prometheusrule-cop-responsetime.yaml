@@ -8,113 +8,113 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: COP_APP_RESPONSE_TIME
-    rules:
-########################################### inbound response times ###########################################
-    - record: cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop",uri=~".*inbound.*|.*participantList.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop",uri=~".*inbound.*|.*participantList.*"}[5m]))
-    - alert: COP_app_inbound_response_time_green_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 2
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: GREEN
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 2s for last 5 mins. Value: {{ $value }}'
-        summary: Green alert for reponse time reached for Application {{ $labels.job }}
-    - alert: COP_app_inbound_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 2.5
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 2.5s for last 5 mins. Value: {{ $value }}'
-        summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
-    - alert: COP_app_inbound_response_time_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 3
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 3s for last 5 mins. Value: {{ $value }}'
-        summary: Red alert for reponse time reached for Application {{ $labels.job }}
-########################################### outbound response times ###########################################
-    - record: cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}
-      expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop",uri=~".*outbound.*|.*authorisation.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop",uri=~".*outbound.*|.*authorisation.*"}[5m]))
-    - alert: COP_app_outbound_response_time_green_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}) > 3
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: GREEN
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 3s for last 5 mins. Value: {{ $value }}'
-        summary: Green alert for reponse time reached for Application {{ $labels.job }}
-    - alert: COP_app_outbound_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}) > 3.5
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: YELLOW
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 3.5s for last 5 mins. Value: {{ $value }}'
-        summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
-    - alert: COP_app_outbound_response_time_red_alert_{{ AWS_ENVIRONMENT }}
-      expr: (cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}) > 4
-      for: 5m
-      labels:
-        action: Closely monitor
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: RED
-        platform: AWS
-        namespace: cop
-        severity: WARNING
-        priority: P4
-        type: 8x5
-        tsbci: COP
-      annotations:
-        description: 'Application {{ $labels.job }} response time is more than 4s for last 5 mins. Value: {{ $value }}'
-        summary: Red alert for reponse time reached for Application {{ $labels.job }}
+    - name: COP_APP_RESPONSE_TIME
+      rules:
+  ########################################### inbound response times ###########################################
+        - record: cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop",uri=~".*inbound.*|.*participantList.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop",uri=~".*inbound.*|.*participantList.*"}[5m]))
+        - alert: COP_app_inbound_response_time_green_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 2
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: GREEN
+            platform: AWS
+            namespace: cop
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 2s for last 5 mins. Value: {{ $value }}'
+            summary: Green alert for reponse time reached for Application {{ $labels.job }}
+        - alert: COP_app_inbound_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 2.5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 2.5s for last 5 mins. Value: {{ $value }}'
+            summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
+        - alert: COP_app_inbound_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_app_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 3
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 3s for last 5 mins. Value: {{ $value }}'
+            summary: Red alert for reponse time reached for Application {{ $labels.job }}
+    ########################################### outbound response times ###########################################
+        - record: cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop",uri=~".*outbound.*|.*authorisation.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop",uri=~".*outbound.*|.*authorisation.*"}[5m]))
+        - alert: COP_app_outbound_response_time_green_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}) > 3
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: GREEN
+            platform: AWS
+            namespace: cop
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 3s for last 5 mins. Value: {{ $value }}'
+            summary: Green alert for reponse time reached for Application {{ $labels.job }}
+        - alert: COP_app_outbound_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}) > 3.5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 3.5s for last 5 mins. Value: {{ $value }}'
+            summary: Yellow alert for reponse time reached for Application {{ $labels.job }}
+        - alert: COP_app_outbound_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_app_outbound_response_time_{{ AWS_ENVIRONMENT }}) > 4
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 4s for last 5 mins. Value: {{ $value }}'
+            summary: Red alert for reponse time reached for Application {{ $labels.job }}
