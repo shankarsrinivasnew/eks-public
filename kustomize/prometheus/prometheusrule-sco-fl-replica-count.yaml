@@ -8,25 +8,25 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: SCO_FL_LOW_REPLICA_COUNT_STATE
-    rules:
-###########################################SCO_FL_REPLICA_COUNT##########################################################
-    - record: sco_fl_low_replica_count_critical_{{ AWS_ENVIRONMENT }}
-      expr: (kube_deployment_status_replicas_available{deployment=~"tsb-sco-fl.*",namespace="sco"}) - on(deployment) label_replace(kube_hpa_spec_min_replicas{namespace="sco"}, "deployment", "$1", "hpa", "(.+)")
-    - alert: SCO_FL_app_low_replica_critical_alert_{{ AWS_ENVIRONMENT }}
-      expr: sco_fl_low_replica_count_critical_{{ AWS_ENVIRONMENT }} < 0
-      labels:
-        action: Application is likely impacted
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: INFRA
-        level: CRITICAL
-        platform: AWS
-        namespace: sco
-        severity: CRITICAL
-        priority: P3
-        type: 8x5
-        tsbci: SCO_FL_AWS
-        itopsbridge: "true"
-      annotations:
-        description: 'Deployment {{ $labels.deployment }} current replica count is less than minimum replica count. Value:{{ $value }}'
-        summary: Critical alert deployment {{ $labels.deployment }} running with replica less than minimum.
+    - name: SCO_FL_LOW_REPLICA_COUNT_STATE
+      rules:
+  ###########################################SCO_FL_REPLICA_COUNT##########################################################
+        - record: sco_fl_low_replica_count_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-sco-fl.*",namespace="sco"}) - on(deployment) label_replace(kube_hpa_spec_min_replicas{namespace="sco"}, "deployment", "$1", "hpa", "(.+)")
+        - alert: SCO_FL_app_low_replica_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: sco_fl_low_replica_count_critical_{{ AWS_ENVIRONMENT }} < 0
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sco
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCO_FL_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Deployment {{ $labels.deployment }} current replica count is less than minimum replica count. Value:{{ $value }}'
+            summary: Critical alert deployment {{ $labels.deployment }} running with replica less than minimum.

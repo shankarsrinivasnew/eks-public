@@ -8,73 +8,78 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-  - name: NODE_DOWN
-    rules:
-    - alert: NODE_DOWN
-      expr: (up{job="ec2-discover-node-exporter",status!="running"})
-      for: 10m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: node_down
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "Node {{ $labels.instance }} is DOWN(not in running state for longer than 10minutes)"
-  - name: NODE_HIGH_CPU_UTILIZATION
-    rules:
-    - alert: NODE_HIGH_CPU_UTILIZATION
-      expr: (irate(node_cpu_seconds_total{job="ec2-discover-node-exporter",mode=~"system|irq|softirq|iowait"}[15m]) * 100) > 90
-      for: 15m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: node_cpu_utilization
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "CPU Utilization for Instance {{ $labels.instance }} is above 90% used for 15minutes"
-  - name: NODE_HIGH_MEMORY_UTILIZATION
-    rules:
-    - alert: NODE_HIGH_MEMORY_UTILIZATION
-      expr: (((node_memory_MemTotal_bytes{job="ec2-discover-node-exporter"} - node_memory_MemFree_bytes{job="ec2-discover-node-exporter"} - node_memory_Cached_bytes{job="ec2-discover-node-exporter"}) / (node_memory_MemTotal_bytes{job="ec2-discover-node-exporter"})) * 100) > 95
-      for: 10m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: node_memory_utilization
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "RAM Utilization for Instance {{ $labels.instance }} is above 95% used for 15minutes"
-  - name: NODE_HIGH_DISK_UTILIZATION
-    rules:
-    - alert: NODE_HIGH_DISK_UTILIZATION
-      expr: (1 - (node_filesystem_avail_bytes{job="ec2-discover-node-exporter",fstype!="tmpfs"} / node_filesystem_size_bytes{job="ec2-discover-node-exporter",fstype!="tmpfs"})) * 100 > 90
-      for: 15m
-      labels:
-        severity: CRITICAL
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: node_disk_utilization
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "Disk Utilization for Instance {{ $labels.instance }} is above 90% used for 15minutes"
-  - name: NODE_FILE_DISCRIPTOR_LIMIT
-    rules:
-    - alert: NODE_FILE_DISCRIPTOR_LIMIT
-      expr: process_open_fds{job="ec2-discover-node-exporter"} / process_max_fds{job="ec2-discover-node-exporter"} > 0.8
-      for: 10m
-      labels:
-        severity: WARNING
-        environment: "{{ AWS_ENVIRONMENT }}"
-        monitoring: node_process_near_FD_limits
-        rackspace: "true"
-        hostname: "{{ $labels.instance }}"
-        tsbci: AWS_ELZ
-      annotations:
-        summary: "Process Near File Discriptor Limits for Instance {{ $labels.instance }} is above 80% used for 10minutes"
+    - name: NODE_DOWN
+      rules:
+        - alert: NODE_DOWN
+          expr: (up{job="ec2-discover-node-exporter",status!="running"})
+          for: 10m
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: node_down
+            rackspace: "true"
+            hostname: "{{ $labels.instance }}"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "Node {{ $labels.instance }} is DOWN(not in running state for longer than 10minutes)"
+    - name: NODE_HIGH_CPU_UTILIZATION
+      rules:
+        - alert: NODE_HIGH_CPU_UTILIZATION
+          expr: (irate(node_cpu_seconds_total{job="ec2-discover-node-exporter",mode=~"system|irq|softirq|iowait"}[15m]) * 100) > 90
+          for: 15m
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: node_cpu_utilization
+            rackspace: "true"
+            hostname: "{{ $labels.instance }}"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "CPU Utilization for Instance {{ $labels.instance }} is above 90% used for 15minutes"
+    - name: NODE_HIGH_MEMORY_UTILIZATION
+      rules:
+        - alert: NODE_HIGH_MEMORY_UTILIZATION
+          expr: (((node_memory_MemTotal_bytes{job="ec2-discover-node-exporter"} - node_memory_MemFree_bytes{job="ec2-discover-node-exporter"} - node_memory_Cached_bytes{job="ec2-discover-node-exporter"}) / (node_memory_MemTotal_bytes{job="ec2-discover-node-exporter"})) * 100) > 95
+          for: 10m
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: node_memory_utilization
+            rackspace: "true"
+            hostname: "{{ $labels.instance }}"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "RAM Utilization for Instance {{ $labels.instance }} is above 95% used for 15minutes"
+    - name: NODE_HIGH_DISK_UTILIZATION
+      rules:
+        - alert: NODE_HIGH_DISK_UTILIZATION
+          expr: (1 - (node_filesystem_avail_bytes{job="ec2-discover-node-exporter",fstype!="tmpfs"} / node_filesystem_size_bytes{job="ec2-discover-node-exporter",fstype!="tmpfs"})) * 100 > 90
+          for: 15m
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: node_disk_utilization
+            rackspace: "true"
+            hostname: "{{ $labels.instance }}"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "Disk Utilization for Instance {{ $labels.instance }} is above 90% used for 15minutes"
+    - name: NODE_FILE_DISCRIPTOR_LIMIT
+      rules:
+        - alert: NODE_FILE_DISCRIPTOR_LIMIT
+          expr: process_open_fds{job="ec2-discover-node-exporter"} / process_max_fds{job="ec2-discover-node-exporter"} > 0.8
+          for: 10m
+          labels:
+            severity: WARNING
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: node_process_near_FD_limits
+            rackspace: "true"
+            hostname: "{{ $labels.instance }}"
+            tsbci: AWS_ELZ
+          annotations:
+            summary: "Process Near File Discriptor Limits for Instance {{ $labels.instance }} is above 80% used for 10minutes"
