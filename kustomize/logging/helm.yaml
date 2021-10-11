@@ -44,6 +44,10 @@ spec:
         operator: Equal
         value: obs
         effect: NoSchedule
+      - key: role
+        operator: Equal
+        value: scofl
+        effect: NoSchedule
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
