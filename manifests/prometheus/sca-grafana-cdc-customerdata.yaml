@@ -23,7 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 43,
+      "id": 79,
       "links": [],
       "panels": [
         {
@@ -47,7 +47,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 8,
+          "id": 10,
           "legend": {
             "avg": false,
             "current": false,
@@ -74,23 +74,29 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_device_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
+              "expr": "sum by (container, namespace) (total_records_of_user_sessions_total{container=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "invalid_device",
+              "legendFormat": "total_records_of_user_sessions",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_devices_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (container, namespace) (total_records_of_duplicate_user_sessions_total{container=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "data_devices",
+              "legendFormat": "total_records_of_duplicate_user_sessions",
               "refId": "B"
+            },
+            {
+              "expr": "sum by (container, namespace) (total_records_of_invalid_user_sessions_data_total{container=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "total_records_of_invalid_user_sessions_data",
+              "refId": "C"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Devices records processed",
+          "title": "Total number of User Sessions record persisted",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -177,31 +183,31 @@ data:
             {
               "expr": "sum by (job, namespace) (total_records_of_retail_debit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
               "interval": "",
-              "legendFormat": "Retail_DC",
+              "legendFormat": "Retail_Debit_Cards",
               "refId": "A"
             },
             {
               "expr": "sum by (job, namespace) (total_records_of_retail_credit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "Retail_CC",
+              "legendFormat": "Retail_Credit_Cards",
               "refId": "B"
             },
             {
               "expr": "sum by (job, namespace) (total_records_of_business_debit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "Business_DC",
+              "legendFormat": "Business_Debit_Cards",
               "refId": "C"
             },
             {
               "expr": "sum by (job, namespace) (total_records_of_business_credit_cards_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "Business_CC",
+              "legendFormat": "Business_Credit_Cards",
               "refId": "D"
             },
             {
               "expr": "sum by (job, namespace) (total_records_of_cards_Without_Cust_Mapping_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "Without_Cust_Mapping_Cards",
+              "legendFormat": "Cards_Without_Numpersona",
               "refId": "E"
             },
             {
@@ -227,12 +233,6 @@ data:
               "interval": "",
               "legendFormat": "Duplicate_Cards",
               "refId": "I"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_cards_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "invalid_cards_mapped_to_same_customer",
-              "refId": "J"
             }
           ],
           "thresholds": [],
@@ -297,7 +297,7 @@ data:
             "y": 8
           },
           "hiddenSeries": false,
-          "id": 6,
+          "id": 8,
           "legend": {
             "avg": false,
             "current": false,
@@ -324,41 +324,23 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_records_of_registered_users_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_invalid_device_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r\n\r",
               "interval": "",
-              "legendFormat": "registered_users",
+              "legendFormat": "Devices_Without_Enrollment_Type",
               "refId": "A"
             },
             {
-              "expr": "sum by (job, namespace) (total_records_of_duplicate_user_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "expr": "sum by (job, namespace) (total_records_of_devices_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "duplicate_users",
+              "legendFormat": "Active_Devices",
               "refId": "B"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_multiple_customers_mapped_to_same_user_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "multiple_customers_mapped_to_same_user",
-              "refId": "C"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_multiple_users_mapped_to_same_customer_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r\n\r",
-              "interval": "",
-              "legendFormat": "multiple_users_mapped_to_same_customer",
-              "refId": "D"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_users_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "Invalid_Users",
-              "refId": "E"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of Users records processed",
+          "title": "Total number of Devices records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -451,7 +433,7 @@ data:
             {
               "expr": "sum by (job, namespace) (total_records_of_phone_number_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
               "interval": "",
-              "legendFormat": "Phone_Number",
+              "legendFormat": "Home_Phone_Number",
               "refId": "B"
             },
             {
@@ -459,18 +441,6 @@ data:
               "interval": "",
               "legendFormat": "Duplicate_Contact",
               "refId": "D"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_contact_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "Other_Contacts",
-              "refId": "E"
-            },
-            {
-              "expr": "sum by (job, namespace) (total_records_of_invalid_customer_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
-              "interval": "",
-              "legendFormat": "invalid_customer_data",
-              "refId": "C"
             }
           ],
           "thresholds": [],
@@ -478,6 +448,113 @@ data:
           "timeRegions": [],
           "timeShift": null,
           "title": "Total number of Customer Contact records processed",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 6,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (job, namespace) (total_records_of_registered_users_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "registered_users",
+              "refId": "A"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_duplicate_user_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})\r",
+              "interval": "",
+              "legendFormat": "duplicate_users",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_records_of_invalid_users_data_total{job=\"tsb-sca-cdc-customer-data\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Invalid_Users",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total number of Users records processed",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -529,5 +606,5 @@ data:
       "timezone": "",
       "title": "SCA-CDC-Customer-Data",
       "uid": "SWdURhUMz",
-      "version": 8
+      "version": 16
     }

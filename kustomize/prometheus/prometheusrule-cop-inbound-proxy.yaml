@@ -26,7 +26,7 @@ spec:
         severity: CRITICAL
         priority: P3
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 408 more than 20 times in 5 min. Value: {{ $value }}'
@@ -48,7 +48,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 400 more than 20 times in 5 min. Value: {{ $value }}'
@@ -70,7 +70,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 401 more than 20 times in 5 min. Value: {{ $value }}'
@@ -92,7 +92,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 403 more than 20 times in 5 min. Value: {{ $value }}'
@@ -114,7 +114,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 404 more than 20 times in 5 min. Value: {{ $value }}'
@@ -136,7 +136,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 405 more than 20 times in 5 min. Value: {{ $value }}'
@@ -158,7 +158,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 406 more than 20 times in 5 min. Value: {{ $value }}'
@@ -180,7 +180,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 429 more than 20 times in 5 min. Value: {{ $value }}'
@@ -202,7 +202,7 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 500 more than 20 times in 5 min. Value: {{ $value }}'
@@ -224,8 +224,31 @@ spec:
         severity: CRITICAL
         priority: P2
         type: 8x5
-        tsbci: COP
+        tsbci: COP_AWS
         itopsbridge: "true"
       annotations:
         description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has reached failure peak rate with http_status of 503 more than 20 times in 5 min. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} Endpoint {{$labels.uri}}
+
+  ##################COP_OUTBOUND_RESTPROXY - No successfull request processing since last one hour ##########################################################
+    - record: inbound_restproxy_succ_requests_{{ AWS_ENVIRONMENT }}
+      expr: (sum by (job, namespace) (rate(inbound_restproxy_successful_requests_total {namespace="cop"}[1m])*60))
+    - alert: COP_inbound_restproxy_amber_alert_{{ AWS_ENVIRONMENT }}
+      expr: (inbound_restproxy_succ_requests_{{ AWS_ENVIRONMENT }}) <= 0
+      for: 1h59m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: INFRA
+        level: RED
+        platform: AWS
+        namespace: cop
+        severity: CRITICAL
+        priority: P3
+        type: 8x5
+        tsbci: COP_AWS
+        itopsbridge: "true"
+      annotations:
+        description: 'No cop requests successfully processed by cop inbound rest-proxy service since an hour, need to closely monitor this service to see the service is up and running'
+        summary: Cop inbound restproxy service not processed any requests since one hour, need to monitor closely
+

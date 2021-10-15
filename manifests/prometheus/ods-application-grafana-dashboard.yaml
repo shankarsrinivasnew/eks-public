@@ -28,7 +28,7 @@ data:
       "panels": [
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -42,7 +42,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -94,7 +94,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records BS46 Transaction",
+              "title": "Total Records BS46 Transaction onsumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -110,6 +110,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:253",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -118,6 +119,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:254",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -136,7 +138,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -188,7 +190,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records BS46 Ingestors",
+              "title": "Total Records BS46 Ingestors onsumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -204,6 +206,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:253",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -212,6 +215,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:254",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -230,7 +234,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -282,7 +286,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (BS46)",
+              "title": "Average number of records consumed BS46 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -298,6 +302,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:253",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -306,6 +311,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:254",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -324,7 +330,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -392,6 +398,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:197",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -400,6 +407,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:198",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -418,7 +426,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -486,6 +494,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:363",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -494,6 +503,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:364",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -512,7 +522,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -580,6 +590,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:535",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -588,6 +599,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:536",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -606,7 +618,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -666,7 +678,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "BS46 Records",
+              "title": "BS46 Records ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -682,6 +694,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:396",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -690,6 +703,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:397",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -708,7 +722,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -750,14 +764,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-transaction-bs46\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-transaction-bs46\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-transaction-bs46\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-transaction-bs46\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -784,6 +798,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:425",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -792,6 +807,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:426",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -812,7 +828,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -826,7 +842,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -878,7 +894,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records KC03 ingestors",
+              "title": "Total Records KC03 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -894,6 +910,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -902,6 +919,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -920,7 +938,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -972,7 +990,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records KC03 transactions",
+              "title": "Total Records KC03 transactions consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -988,6 +1006,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -996,6 +1015,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1014,7 +1034,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1082,6 +1102,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1090,6 +1111,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1108,7 +1130,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1160,7 +1182,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (KC03)",
+              "title": "Average number of records consumed KC03 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1176,6 +1198,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1184,6 +1207,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1202,7 +1226,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1278,6 +1302,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1286,6 +1311,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1304,7 +1330,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1380,6 +1406,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1388,6 +1415,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1406,7 +1434,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1474,6 +1502,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1482,6 +1511,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1500,7 +1530,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1568,6 +1598,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1576,6 +1607,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1595,7 +1627,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -1609,7 +1641,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1661,7 +1693,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records KC43 ingestors",
+              "title": "Total Records KC43 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1677,6 +1709,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1685,6 +1718,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1703,7 +1737,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1755,7 +1789,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records KC43 transactions",
+              "title": "Total Records KC43 transactions consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1771,6 +1805,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1779,6 +1814,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1797,7 +1833,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1849,7 +1885,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (KC43)",
+              "title": "Average number of records consumed KC43 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1865,6 +1901,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1873,6 +1910,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1891,7 +1929,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1959,6 +1997,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1967,6 +2006,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -1985,7 +2025,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2053,6 +2093,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2061,6 +2102,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2079,7 +2121,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2147,6 +2189,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2155,6 +2198,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2173,7 +2217,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2249,6 +2293,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2257,6 +2302,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2275,7 +2321,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2351,6 +2397,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2359,6 +2406,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2378,7 +2426,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -2392,7 +2440,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2444,7 +2492,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records KC13 ingestors",
+              "title": "Total Records KC13 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2460,6 +2508,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2468,6 +2517,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2486,7 +2536,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2538,7 +2588,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records KC13 transactions",
+              "title": "Total Records KC13 transactions consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2554,6 +2604,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2562,6 +2613,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2580,7 +2632,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2632,7 +2684,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (KC13)",
+              "title": "Average number of records consumed KC13 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2648,6 +2700,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2656,6 +2709,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2674,7 +2728,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2742,6 +2796,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2750,6 +2805,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2768,7 +2824,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2844,6 +2900,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2852,6 +2909,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2870,7 +2928,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -2946,6 +3004,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2954,6 +3013,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -2972,7 +3032,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3040,6 +3100,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3048,6 +3109,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3066,7 +3128,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3134,6 +3196,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3142,6 +3205,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3161,7 +3225,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -3175,7 +3239,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3227,7 +3291,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records DV01 transactions",
+              "title": "Total Records DV01 scylla consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -3243,6 +3307,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3251,6 +3316,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3269,7 +3335,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3321,7 +3387,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records DV01 ingestors",
+              "title": "Total Records DV01 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -3337,6 +3403,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3345,6 +3412,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3363,7 +3431,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3405,7 +3473,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(tsbods_processStream_time_dv01_seconds_count{ job=\"tsb-ods-cdc-account-dv01\", namespace=\"ods\"}/tsbods_processStream_time_dv01_seconds_max{job=\"tsb-ods-cdc-account-dv01\", namespace=\"ods\"})",
+                  "expr": "(tsbods_processStream_time_dv01_seconds_count{ job=\"tsb-ods-cdc-account-dv01\", namespace=\"ods\"}/tsbods_processStream_time_dv01_seconds_sum{job=\"tsb-ods-cdc-account-dv01\", namespace=\"ods\"})",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -3415,7 +3483,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average records per second DV01 Transaction",
+              "title": "Average records per second DV01 scylla",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -3431,6 +3499,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3439,6 +3508,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3457,7 +3527,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3509,7 +3579,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (DV01)",
+              "title": "Average number of records consumed DV01 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -3525,6 +3595,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3533,6 +3604,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3551,7 +3623,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3593,14 +3665,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_accountTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-account-dv01\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_dv01_account_in_totall{namespace=\"ods\",job=\"tsb-ods-cdc-account-dv01\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_accountTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-account-dv01\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_dv01_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-account-dv01\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -3611,7 +3683,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "DV01 Transaction Records",
+              "title": "DV01 scylla Records",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -3627,6 +3699,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3635,6 +3708,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3653,7 +3727,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3729,6 +3803,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3737,6 +3812,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3755,7 +3831,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3807,7 +3883,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Error log count for DV01 transaction",
+              "title": "Error log count for DV01 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -3823,6 +3899,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3831,6 +3908,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3849,7 +3927,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -3917,6 +3995,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3925,6 +4004,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -3944,7 +4024,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -3958,7 +4038,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4010,7 +4090,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records DP01 ingestors",
+              "title": "Total Records DP01 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4026,6 +4106,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4034,6 +4115,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4052,7 +4134,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4104,7 +4186,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records  DP01 transactions",
+              "title": "Total Records  DP01 scylla consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4120,6 +4202,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4128,6 +4211,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4146,7 +4230,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4188,7 +4272,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(tsbods_processProductStream_time_dp01_seconds_count{ job=\"tsb-ods-cdc-product-dp01\", namespace=\"ods\"}/tsbods_processProductStream_time_dp01_seconds_max{job=\"tsb-ods-cdc-product-dp01\", namespace=\"ods\"})",
+                  "expr": "(tsbods_processStream_time_dp01_seconds_count{ job=\"tsb-ods-cdc-product-dp01\", namespace=\"ods\"}/tsbods_processStream_time_dp01_seconds_sum{job=\"tsb-ods-cdc-product-dp01\", namespace=\"ods\"})",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -4198,7 +4282,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average records per second DP01 Transaction",
+              "title": "Average records per second DP01 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4214,6 +4298,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4222,6 +4307,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4240,7 +4326,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4292,7 +4378,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (DP01)",
+              "title": "Average number of records consumed DP01 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4308,6 +4394,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4316,6 +4403,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4334,7 +4422,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4410,6 +4498,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4418,6 +4507,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4436,7 +4526,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4478,14 +4568,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-dp01\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_dp01_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-dp01\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-dp01\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_dp01_product_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-dp01\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -4496,7 +4586,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "DP01 Transaction Records",
+              "title": "DP01 scylla Records",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4512,6 +4602,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4520,6 +4611,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4538,7 +4630,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4606,6 +4698,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4614,6 +4707,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4632,7 +4726,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4684,7 +4778,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Error log count for DP01 transaction",
+              "title": "Error log count for DP01 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4700,6 +4794,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4708,6 +4803,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4727,7 +4823,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -4741,7 +4837,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4793,7 +4889,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records BS01 ingestors",
+              "title": "Total Records BS01 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4809,6 +4905,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4817,6 +4914,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4835,7 +4933,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4887,7 +4985,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records  BS01 transactions",
+              "title": "Total Records  BS01 scylla consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4903,6 +5001,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4911,6 +5010,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -4929,7 +5029,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -4971,7 +5071,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(tsbods_processStream_time_bs01_seconds_count{ job=\"tsb-ods-cdc-corporate-information-bs01\", namespace=\"ods\"}/tsbods_processStream_time_bs01_seconds_max{job=\"tsb-ods-cdc-corporate-information-bs01\", namespace=\"ods\"})",
+                  "expr": "(tsbods_processStream_time_bs01_seconds_count{ job=\"tsb-ods-cdc-corporate-information-bs01\", namespace=\"ods\"}/tsbods_processStream_time_bs01_seconds_sum{job=\"tsb-ods-cdc-corporate-information-bs01\", namespace=\"ods\"})",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -4981,7 +5081,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average records per second BS01 Transaction",
+              "title": "Average records per second BS01 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4997,6 +5097,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5005,6 +5106,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5023,7 +5125,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5075,7 +5177,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (BS01)",
+              "title": "Average number of records consumed BS01 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5091,6 +5193,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5099,6 +5202,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5117,7 +5221,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5193,6 +5297,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5201,6 +5306,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5219,7 +5325,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5261,14 +5367,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_corporateInformation_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-corporate-information-bs01\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs01_corporateInformation_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-corporate-information-bs01\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_corporateInformation_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-corporate-information-bs01\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs01_corporateInformation_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-corporate-information-bs01\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -5279,7 +5385,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "BS01 Transaction Records",
+              "title": "BS01 scylla Records",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5295,6 +5401,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5303,6 +5410,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5321,7 +5429,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5389,6 +5497,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5397,6 +5506,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5415,7 +5525,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5467,7 +5577,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Error log count for BS01 transaction",
+              "title": "Error log count for BS01 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5483,6 +5593,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5491,6 +5602,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5510,7 +5622,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -5524,7 +5636,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5535,7 +5647,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 9
+                "y": 8
               },
               "hiddenSeries": false,
               "id": 168,
@@ -5576,7 +5688,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records BS95 ingestors",
+              "title": "Total Records BS95 ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5592,6 +5704,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5600,6 +5713,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5618,7 +5732,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5629,7 +5743,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 9
+                "y": 8
               },
               "hiddenSeries": false,
               "id": 160,
@@ -5670,7 +5784,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records  BS95 transactions",
+              "title": "Total Records  BS95 scylla consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5686,6 +5800,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5694,6 +5809,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5712,7 +5828,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5723,7 +5839,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 17
+                "y": 16
               },
               "hiddenSeries": false,
               "id": 191,
@@ -5754,7 +5870,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(tsbods_processRequestStream_time_bs95_seconds_count{ job=\"tsb-ods-cdc-product-bs95\", namespace=\"ods\"}/tsbods_processRequestStream_time_bs95_seconds_count{job=\"tsb-ods-cdc-product-bs95\", namespace=\"ods\"})",
+                  "expr": "(tsbods_processRequestStream_time_bs95_seconds_count{ job=\"tsb-ods-cdc-product-bs95\", namespace=\"ods\"}/tsbods_processRequestStream_time_bs95_seconds_sum{job=\"tsb-ods-cdc-product-bs95\", namespace=\"ods\"})",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -5764,7 +5880,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average records per second BS95 Transaction",
+              "title": "Average records per second BS95 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5780,6 +5896,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5788,6 +5905,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5806,7 +5924,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5817,7 +5935,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 17
+                "y": 16
               },
               "hiddenSeries": false,
               "id": 190,
@@ -5858,7 +5976,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (BS95)",
+              "title": "Average number of records consumed BS95 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5874,6 +5992,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5882,6 +6001,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5900,7 +6020,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -5911,7 +6031,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 25
+                "y": 24
               },
               "hiddenSeries": false,
               "id": 166,
@@ -5976,6 +6096,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -5984,6 +6105,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6002,7 +6124,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6013,7 +6135,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 25
+                "y": 24
               },
               "hiddenSeries": false,
               "id": 167,
@@ -6044,14 +6166,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-bs95\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs95_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-bs95\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-bs95\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs95_product_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-product-bs95\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -6062,7 +6184,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "BS95 Transaction Records",
+              "title": "BS95 scylla Records",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6078,6 +6200,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6086,6 +6209,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6104,7 +6228,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6115,7 +6239,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 33
+                "y": 32
               },
               "hiddenSeries": false,
               "id": 164,
@@ -6172,6 +6296,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6180,6 +6305,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6198,7 +6324,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6209,7 +6335,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 33
+                "y": 32
               },
               "hiddenSeries": false,
               "id": 165,
@@ -6250,7 +6376,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Error log count for BS95 transaction",
+              "title": "Error log count for BS95 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6266,6 +6392,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6274,6 +6401,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6293,7 +6421,7 @@ data:
         },
         {
           "collapsed": true,
-          "datasource": null,
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -6307,7 +6435,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6318,7 +6446,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 41
+                "y": 9
               },
               "hiddenSeries": false,
               "id": 177,
@@ -6359,7 +6487,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records  PEA6 transactions",
+              "title": "Total Records  PEA6 scylla consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6375,6 +6503,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6383,6 +6512,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6401,7 +6531,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6412,7 +6542,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 41
+                "y": 9
               },
               "hiddenSeries": false,
               "id": 176,
@@ -6453,7 +6583,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Total Records PEA6  ingestors",
+              "title": "Total Records PEA6  ingestors consumed from kafka",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6469,6 +6599,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6477,6 +6608,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6495,7 +6627,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6506,7 +6638,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 49
+                "y": 17
               },
               "hiddenSeries": false,
               "id": 179,
@@ -6537,7 +6669,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(tsbods_processCustomerContractStream_time_pe06_seconds_count{ job=\"tsb-ods-cdc-address-history-pea6\", namespace=\"ods\"}/tsbods_processCustomerContractStream_time_pe06_seconds_max{job=\"tsb-ods-cdc-address-history-pea6\", namespace=\"ods\"})",
+                  "expr": "(tsbods_processStream_time_pea6_seconds_count{ job=\"tsb-ods-cdc-address-history-pea6\", namespace=\"ods\"}/tsbods_processStream_time_pea6_seconds_seconds_max{job=\"tsb-ods-cdc-address-history-pea6\", namespace=\"ods\"})",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -6547,7 +6679,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average records per second PEA6 Transaction",
+              "title": "Average records per second PEA6 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6563,6 +6695,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:707",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6571,6 +6704,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:708",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6589,7 +6723,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6600,7 +6734,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 49
+                "y": 17
               },
               "hiddenSeries": false,
               "id": 178,
@@ -6641,7 +6775,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Average number of records consumed (PEA6)",
+              "title": "Average number of records consumed PEA6 ingestors",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6657,6 +6791,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:736",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6665,6 +6800,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:737",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6683,7 +6819,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6694,7 +6830,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 57
+                "y": 25
               },
               "hiddenSeries": false,
               "id": 180,
@@ -6725,14 +6861,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_addressHistory_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-address-history-pea6\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_pea6_addressHistory_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-address-history-pea6\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_addressHistory_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-address-history-pea6\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_pea6_addressHistory_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-address-history-pea6\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -6743,7 +6879,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "PEA6 Transaction Records",
+              "title": "PEA6 scylla Records",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6759,6 +6895,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1377",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6767,6 +6904,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1378",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6785,7 +6923,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6796,7 +6934,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 57
+                "y": 25
               },
               "hiddenSeries": false,
               "id": 181,
@@ -6861,6 +6999,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:1406",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6869,6 +7008,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:1407",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6887,7 +7027,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6898,7 +7038,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 65
+                "y": 33
               },
               "hiddenSeries": false,
               "id": 175,
@@ -6939,7 +7079,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Error log count for PEA6 transaction",
+              "title": "Error log count for PEA6 scylla ",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -6955,6 +7095,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:624",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6963,6 +7104,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:625",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -6981,7 +7123,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": null,
+              "datasource": "Thanos",
               "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -6992,7 +7134,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 65
+                "y": 33
               },
               "hiddenSeries": false,
               "id": 174,
@@ -7049,6 +7191,7 @@ data:
               },
               "yaxes": [
                 {
+                  "$$hashKey": "object:595",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -7057,6 +7200,7 @@ data:
                   "show": true
                 },
                 {
+                  "$$hashKey": "object:596",
                   "format": "short",
                   "label": null,
                   "logBase": 1,
@@ -7089,6 +7233,6 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "TSB-ODS-Application-Metrics",
-      "uid": "Bn-f_7uMz",
-      "version": 2
-        }
+      "uid": "Bn-f_7uMz101",
+      "version": 78
+    }

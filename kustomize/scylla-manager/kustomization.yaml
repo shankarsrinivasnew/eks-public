@@ -1,0 +1,5 @@
+resources:
+  - networkpolicy-manager.yaml
+namespace: scylla-manager
+transformers:
+  - awsTransformer.yaml

@@ -20,7 +20,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -34,7 +34,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -48,7 +48,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -62,7 +62,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -76,7 +76,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -90,7 +90,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -104,7 +104,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -120,7 +120,7 @@ spec:
         group: APPLICATION
         priority: P3
         platform: AWS
-        itopsbridge: true
+        itopsbridge: "true"
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_lambda_push_errors_too_high
@@ -134,7 +134,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -149,7 +149,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -163,7 +163,7 @@ spec:
         usecase: navilog
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        itopsbridge: true
+        itopsbridge: "true"
         priority: P3
         platform: AWS
         severity: CRITICAL
@@ -177,23 +177,8 @@ spec:
         action: Closely monitor
         usecase: opslog
         environment: "{{ AWS_ENVIRONMENT }}"
-        itopsbridge: true
+        itopsbridge: "true"
         group: APPLICATION
-        priority: P3
-        platform: AWS
-        severity: CRITICAL
-        tsbci: AWS_BIG_DATA_LAKE
-    - alert: datalake_aws_lambda_push_errors_too_high
-      annotations:
-        message: Average failures of Lambda {{ $labels.function_name }} too high
-      expr: aws_lambda_errors_average{function_name=~".*push.*"} offset 10m > 0
-      for: 1m
-      labels:
-        action: Closely monitor
-        usecase: push
-        environment: "{{ AWS_ENVIRONMENT }}"
-        group: APPLICATION
-        itopsbridge: true
         priority: P3
         platform: AWS
         severity: CRITICAL
@@ -208,7 +193,7 @@ spec:
         usecase: retrieval
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
-        itopsbridge: true
+        itopsbridge: "true"
         priority: P3
         platform: AWS
         severity: CRITICAL
@@ -226,7 +211,172 @@ spec:
         priority: P3
         platform: AWS
         severity: CRITICAL
-        itopsbridge: true
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_cb_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*cb.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: cb
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_cma_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*cma.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: cma
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_crossmaster_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*crossmaster.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: crossmaster
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_interact_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*interact.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: interact
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_ivr_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*ivr.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: ivr
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_office_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*office.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: office
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_p4uk_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*p4uk.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: p4uk
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_pos_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*pos.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: pos
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_psd2_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*psd2.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: psd2
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_telephone_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*telephone.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: telephone
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_lambda_vlog_errors_too_high
+      annotations:
+        message: Average failures of Lambda {{ $labels.function_name }} too high
+      expr: aws_lambda_errors_average{function_name=~".*vlog.*"} offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        usecase: vlog
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        platform: AWS
+        severity: CRITICAL
+        itopsbridge: "true"
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_sqs_flood_alarm
       annotations:
@@ -238,7 +388,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -252,7 +402,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -269,7 +419,7 @@ spec:
         priority: P3
         platform: AWS
         tsbci: AWS_BIG_DATA_LAKE
-        itopsbridge: true
+        itopsbridge: "true"
     - alert: datalake_aws_sqs_s3av_scan_queue_empty_alarm
       annotations:
         message: S3 Avscan queue {{ $labels.queue_name }}  is empty. Files may not be coming into S3 bucket tsb-datalake-env-avscan
@@ -280,7 +430,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -294,7 +444,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -308,7 +458,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -324,7 +474,7 @@ spec:
         group: INF
         priority: P3
         platform: AWS
-        itopsbridge: true
+        itopsbridge: "true"
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_emr_security_changes_alarm
@@ -337,7 +487,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: INF
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -352,7 +502,7 @@ spec:
         group: INF
         priority: P3
         platform: AWS
-        itopsbridge: true
+        itopsbridge: "true"
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
     - alert: datalake_aws_glue_cb_error_alarm
@@ -365,7 +515,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -379,7 +529,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -393,7 +543,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -407,7 +557,7 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
@@ -421,7 +571,162 @@ spec:
         environment: "{{ AWS_ENVIRONMENT }}"
         group: APPLICATION
         priority: P3
-        itopsbridge: true
+        itopsbridge: "true"
         platform: AWS
         severity: CRITICAL
         tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_cma_error_alarm
+      annotations:
+        message: Datalake glue job for cma has errors
+      expr: tsb_datalake_cma_cma_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_crm_error_alarm
+      annotations:
+        message: Datalake glue job for crm has errors
+      expr: tsb_datalake_crm_crm_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_crossmaster_error_alarm
+      annotations:
+        message: Datalake glue job for crossmaster has errors
+      expr: tsb_datalake_crossmaster_crossmaster_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_lat_error_alarm
+      annotations:
+        message: Datalake glue job for lat has errors
+      expr: tsb_datalake_lat_lat_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_latinia_error_alarm
+      annotations:
+        message: Datalake glue job for latinia has errors
+      expr: tsb_datalake_latinia_latinia_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_office_error_alarm
+      annotations:
+        message: Datalake glue job for office has errors
+      expr: tsb_datalake_office_office_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_opslog_error_alarm
+      annotations:
+        message: Datalake glue job for opslog has errors
+      expr: tsb_datalake_opslog_opslog_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_p4uk_error_alarm
+      annotations:
+        message: Datalake glue job for p4uk has errors
+      expr: tsb_datalake_p4uk_p4uk_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_psd2_error_alarm
+      annotations:
+        message: Datalake glue job for psd2 has errors
+      expr: tsb_datalake_psd2_psd2_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_resolve_error_alarm
+      annotations:
+        message: Datalake glue job for resolve has errors
+      expr: tsb_datalake_resolve_resolve_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+    - alert: datalake_aws_glue_sas_error_alarm
+      annotations:
+        message: Datalake glue job for sas has errors
+      expr: tsb_datalake_sas_sas_glue_in_error_sum offset 10m > 0
+      for: 1m
+      labels:
+        action: Closely monitor
+        environment: "{{ AWS_ENVIRONMENT }}"
+        group: APPLICATION
+        priority: P3
+        itopsbridge: "true"
+        platform: AWS
+        severity: CRITICAL
+        tsbci: AWS_BIG_DATA_LAKE
+

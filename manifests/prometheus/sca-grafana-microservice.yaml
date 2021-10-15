@@ -23,6 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
+      "id": 42,
       "links": [],
       "panels": [
         {
@@ -46,7 +47,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 20,
+          "id": 34,
           "legend": {
             "avg": false,
             "current": false,
@@ -73,9 +74,9 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_auth_req_failed_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "expr": "(sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\",outcome!=\"SUCCESSFUL\"}[5m])) / sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\"}[5m]))) * 100",
               "interval": "",
-              "legendFormat": "",
+              "legendFormat": "{{routeId}} Failure Rate",
               "refId": "A"
             }
           ],
@@ -83,7 +84,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total authentication requests failed",
+          "title": "API Gateway Failure Rate (%)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -141,102 +142,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 4,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (job, namespace) (total_authentication_decision_app_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{job}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total authentication decision returned as APP",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 8
-          },
-          "hiddenSeries": false,
-          "id": 18,
+          "id": 24,
           "legend": {
             "avg": false,
             "current": false,
@@ -265,15 +171,39 @@ data:
             {
               "expr": "sum by (job, namespace) (total_sca_requests_timedout_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "",
+              "legendFormat": "Total number of SCA requests timedout",
               "refId": "A"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_sca_customer_cancelled_requests_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total number of SCA customer cancelled requests",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_sca_frauds_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total number of SCA Frauds",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_sca_failures_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total number of SCA Failures",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_sca_success_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total number of successful SCA requests",
+              "refId": "E"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of SCA requests timedout",
+          "title": "Total SCA Requests",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -325,13 +255,13 @@ data:
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 9,
+            "h": 8,
             "w": 12,
-            "x": 12,
+            "x": 0,
             "y": 8
           },
           "hiddenSeries": false,
-          "id": 2,
+          "id": 32,
           "legend": {
             "avg": false,
             "current": false,
@@ -358,17 +288,172 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (auth_req_received_from_broadcom_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})\r\n\r\n\r\n\r",
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transaction\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transaction\"}[5m]))) * 100",
               "interval": "",
-              "legendFormat": "{{job}}",
+              "legendFormat": "Get Transaction API Failure Rate",
               "refId": "A"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*enrol-type\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*enrol-type\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Enroll Type API Failure Rate",
+              "refId": "B"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*stepup-auth-response\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*stepup-auth-response\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Stepup Auth Response API Failure Rate",
+              "refId": "C"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*validate-pwd\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*validate-pwd\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Validate Pwd API Failure Rate",
+              "refId": "D"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*auth-method\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*auth-method\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Auth Method API Failure Rate",
+              "refId": "E"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*init-app-auth\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*init-app-auth\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Init App Auth API Failure Rate",
+              "refId": "F"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*send-otp\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*send-otp\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Sent OTP API Failure Rate",
+              "refId": "G"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-userid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-userid\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API Failure Rate",
+              "refId": "H"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total authentication requests received",
+          "title": "API Failure Rate (%)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 22,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (job, namespace) (auth_req_received_from_broadcom_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total authentication requests received",
+              "refId": "A"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_authentication_decision_app_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total authentication decision returned as APP",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_authentication_decision_OTP_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total authentication decision returned as OTP",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (job, namespace) (total_auth_req_failed_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Total SCA Not Returned Response",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total SCA Authentication Requests",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -426,7 +511,7 @@ data:
             "y": 16
           },
           "hiddenSeries": false,
-          "id": 16,
+          "id": 30,
           "legend": {
             "avg": false,
             "current": false,
@@ -453,17 +538,59 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_sca_customer_cancelled_requests_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*transaction\"}[5m]))",
               "interval": "",
-              "legendFormat": "",
+              "legendFormat": "Get Transaction API throughput",
               "refId": "A"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*enrol-type\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Enroll Type API throughput",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*stepup-auth-response\"}[5m]))",
+              "interval": "",
+              "legendFormat": "\t Stepup Auth Response API throughput",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*validate-pwd\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Validate Pwd API throughput",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*auth-method\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Auth Method API throughput",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*init-app-auth\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Init App Auth API throughput",
+              "refId": "F"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*send-otp\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Sent OTP API throughput",
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",uri=~\".*transactions-by-userid\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API throughput",
+              "refId": "H"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of SCA customer cancelled requests",
+          "title": "API Throughput (Requests per Second)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -518,10 +645,10 @@ data:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 17
+            "y": 16
           },
           "hiddenSeries": false,
-          "id": 6,
+          "id": 28,
           "legend": {
             "avg": false,
             "current": false,
@@ -548,17 +675,59 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (job, namespace) (total_authentication_decision_OTP_total{job=\"tsb-sca-decision-topology\",namespace=\"sca\"})",
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*transaction\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*transaction\"}[5m]))",
               "interval": "",
-              "legendFormat": "{{job}}",
+              "legendFormat": "Get Transaction API Response Time",
               "refId": "A"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*enrol-type\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*enrol-type\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Enroll Type API Response Time",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*stepup-auth-response\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*stepup-auth-response\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Stepup Auth Response API Response Time",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*validate-pwd\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*validate-pwd\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Validate Pwd API Response Time",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*auth-method\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*auth-method\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Auth Method API Response Time",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*init-app-auth\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*init-app-auth\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Init App Auth API Response Time",
+              "refId": "F"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*send-otp\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*send-otp\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Sent OTP API Response Time",
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sca\",uri=~\".*transactions-by-userid\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sca\",uri=~\".*transactions-by-userid\"}[5m]))",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API Response Time",
+              "refId": "H"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total authentication decision returned as OTP",
+          "title": "API Average Response time (Milliseconds)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -616,102 +785,7 @@ data:
             "y": 24
           },
           "hiddenSeries": false,
-          "id": 14,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (job, namespace) (total_sca_frauds_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
-              "interval": "",
-              "legendFormat": "{{job}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of SCA Frauds",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 25
-          },
-          "hiddenSeries": false,
-          "id": 8,
+          "id": 26,
           "legend": {
             "avg": false,
             "current": false,
@@ -740,205 +814,27 @@ data:
             {
               "expr": "sum by (job, namespace) (total_otp_requests_received_total{job=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{job}}",
+              "legendFormat": "Total number of OTP requests received",
               "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of OTP requests received",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 32
-          },
-          "hiddenSeries": false,
-          "id": 12,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (job, namespace) (total_sca_failures_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_otp_requests_failed_to_send_imi_total{job=\"tsb-sca-send-otp-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{job}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total number of SCA Failures",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+              "legendFormat": "Total number of OTP requests failed to send to IMI",
+              "refId": "B"
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 40
-          },
-          "hiddenSeries": false,
-          "id": 10,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum by (job, namespace) (total_sca_success_total{job=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "expr": "sum by (job, namespace) (total_fiserv_requests_failed_to_send_total{job=\"tsb-sca-fiserv-notify-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{job}}",
-              "refId": "A"
+              "legendFormat": "Total number of requests failed to send to Fiserv",
+              "refId": "C"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Total number of successful SCA requests",
+          "title": "Total OTP Requests",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -990,5 +886,5 @@ data:
       "timezone": "",
       "title": "SCA Microservice",
       "uid": "CSalepUGz",
-      "version": 10
+      "version": 21
     }

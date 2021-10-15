@@ -1,0 +1,28 @@
+name: Yaml lint
+
+on:
+  #pull_request:
+    #types: ['opened', 'edited', 'reopened', 'synchronize']
+  push:
+    branches:
+      - tcp-7760
+jobs:
+  main:
+    name: YamlLint
+    runs-on: ubuntu-latest
+    steps:
+      # checkout this repo
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      # checkout the private repo containing the action to run
+      #- name: Checkout GitHub Action Repo
+      #  uses: actions/checkout@v2
+      #  with:
+      #    repository: TSB-Bank/yaml-lint-github
+      #    #token: ${{ secrets.PAT }}} # stored in GitHub secrets
+      #    path: .github/actions/yamllint
+      - name: Run YamlLint
+        uses: ./.github/actions/yaml_lint
+        with:
+          yamllint_config_filepath: ./.github/actions/yaml_lint/extra_config.yaml
+          yamllint_comment: true
