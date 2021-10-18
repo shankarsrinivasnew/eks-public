@@ -41,7 +41,7 @@ spec:
     - name: NODE_HIGH_MEMORY_UTILIZATION
       rules:
         - alert: NODE_HIGH_MEMORY_UTILIZATION
-          expr: (((node_memory_MemTotal_bytes{job="ec2-discover-node-exporter"} - node_memory_MemFree_bytes{job="ec2-discover-node-exporter"} - node_memory_Cached_bytes{job="ec2-discover-node-exporter"}) / (node_memory_MemTotal_bytes{job="ec2-discover-node-exporter"})) * 100) > 95
+          expr: (((node_memory_MemTotal_bytes{job="ec2-discover-node-exporter",instance=~".*shared-{{ AWS_ENVIRONMENT }}-scylla.*"} - node_memory_MemFree_bytes{job="ec2-discover-node-exporter",instance!~".*shared-{{ AWS_ENVIRONMENT }}-scylla.*"} - node_memory_Cached_bytes{job="ec2-discover-node-exporter",instance!~".*shared-{{ AWS_ENVIRONMENT }}-scylla.*"}) / (node_memory_MemTotal_bytes{job="ec2-discover-node-exporter",instance!~".*shared-{{ AWS_ENVIRONMENT }}-scylla.*"})) * 100) > 95
           for: 10m
           labels:
             severity: CRITICAL
