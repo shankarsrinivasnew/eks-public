@@ -45,7 +45,7 @@ spec:
           type: date
       subresources:
         status: {}
-      validation:
+      schema:
         openAPIV3Schema:
           description: HelmRelease is a type to represent a Helm release.
           type: object
@@ -409,7 +409,6 @@ spec:
                     upgrade or revision change.
                   type: integer
                   format: int64
-      version: v1
 status:
   acceptedNames:
     kind: ""
