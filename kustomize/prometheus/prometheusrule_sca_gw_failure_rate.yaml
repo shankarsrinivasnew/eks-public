@@ -1,0 +1,69 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sca-api-gw-failure-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: sca_api_gw_failure_rate
+      rules:
+###########################################SCA_api_gateway_failure_rate##########################################################
+        - record: sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}
+          expr: (sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace="sca",outcome!="SUCCESSFUL"}[5m])) / sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace="sca"}[5m]))) * 100
+        - alert: SCA_api_gateway_failure_rate_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}) > 1) and ((sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}) < 10) # Value is in percentage (%) 
+          for: 1m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: sca
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: SCA
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached failure requst in 1 min. Value: {{ $value }}'
+            summary: YELLOW alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
+        - alert: SCA_api_gateway_failure_rate_amber_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}) > 10) and ((sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}) < 50)  # Value is in percentage (%)
+          for: 1m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: sca
+            severity: HIGH
+            priority: P4
+            type: 8x5
+            tsbci: SCA
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 10 % failure requst in 1 min. Value: {{ $value }}'
+            summary: AMBER alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
+        - alert: SCA_api_gateway_failure_rate_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}) > 50 # Value is in percentage (%)
+          for: 1m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCA
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 50 % failure requst in 1 min. Value: {{ $value }}'
+            summary: RED alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}

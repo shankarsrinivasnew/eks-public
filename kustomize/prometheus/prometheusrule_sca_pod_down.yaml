@@ -1,0 +1,73 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sca-pod-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: SCA_APPS_DOWN_STATE
+      rules:
+    ###########################################SCA_MS_DEPLOYMENT_DOWN##########################################################
+        - record: sca_deployment_down_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-sca.*|tsb-stepup.*",namespace="sca"})
+        - alert: SCA_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (sca_deployment_down_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P1
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+    ###########################################SCA_CDC_STATEFULLSET_DOWN##########################################################
+        - record: sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}
+          expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-sca-pr-.*",namespace="sca"})
+        - alert: SCA_statefulset_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P1
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+    ###########################################SCA_NGINX_CONTROLLER_DOWN_CRITICAL##########################################################
+        - record: sca_nginx_controller_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-sca-api-gateway-ingress-nginx-controller|tsb-sca-broadcom-api-gateway-ingress-nginx-controller",namespace="sca"})
+        - alert: SCA_NGINX_controller_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (sca_nginx_controller_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P1
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+    
