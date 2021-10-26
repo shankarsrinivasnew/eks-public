@@ -4,7 +4,7 @@ metadata:
   labels:
     app: kube-prometheus-stack
     release: prometheus
-  name: sca_stepup_auth_api_responsetime_alerts
+  name: sca-stepup-auth-api-responsetime-alerts
   namespace: prometheus
 spec:
   groups:
