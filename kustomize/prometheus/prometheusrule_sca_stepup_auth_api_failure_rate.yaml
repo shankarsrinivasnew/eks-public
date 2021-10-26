@@ -4,7 +4,7 @@ metadata:
   labels:
     app: kube-prometheus-stack
     release: prometheus
-  name: sca_stepup_auth_api_failure_rate_alertrule_alerts
+  name: sca-stepup-auth-api-failure-rate-alertrule-alerts
   namespace: prometheus
 spec:
   groups:

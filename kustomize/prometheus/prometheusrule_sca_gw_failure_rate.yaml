@@ -10,7 +10,7 @@ spec:
   groups:
     - name: sca_api_gw_failure_rate
       rules:
-###########################################SCA_api_gateway_failure_rate##########################################################
+  ###########################################SCA_api_gateway_failure_rate##########################################################
         - record: sca_api_gateway_failure_rate{{ AWS_ENVIRONMENT }}
           expr: (sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace="sca",outcome!="SUCCESSFUL"}[5m])) / sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace="sca"}[5m]))) * 100
         - alert: SCA_api_gateway_failure_rate_yellow_alert_{{ AWS_ENVIRONMENT }}
@@ -26,7 +26,7 @@ spec:
             severity: WARNING
             priority: P4
             type: 8x5
-            tsbci: SCA
+            tsbci: SCA_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached failure requst in 1 min. Value: {{ $value }}'
@@ -44,7 +44,7 @@ spec:
             severity: HIGH
             priority: P4
             type: 8x5
-            tsbci: SCA
+            tsbci: SCA_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 10 % failure requst in 1 min. Value: {{ $value }}'
@@ -62,7 +62,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA
+            tsbci: SCA_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 50 % failure requst in 1 min. Value: {{ $value }}'
