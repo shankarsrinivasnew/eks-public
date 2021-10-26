@@ -252,7 +252,7 @@ spec:
             summary: RED alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
   ###########################################Failure Rate for Fiserv##########################################################                 
         - record: sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}
-          expr:  expr: (sum by (job, namespace) (rate(total_fiserv_requests_failed_to_send_total{job="tsb-sca-fiserv-notify-topology",namespace="sca"}[5m])) / sum by (job, namespace) (rate(total_otp_requests_received_total{job="tsb-sca-send-otp-topology",namespace="sca"}[5m])))
+          expr: (sum by (job, namespace) (rate(total_fiserv_requests_failed_to_send_total{job="tsb-sca-fiserv-notify-topology",namespace="sca"}[5m])) / sum by (job, namespace) (rate(total_otp_requests_received_total{job="tsb-sca-send-otp-topology",namespace="sca"}[5m])))
         
         - alert: sca_fiserv_failure_rate_yellow_alert_{{ AWS_ENVIRONMENT }}
           expr: ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 1) and ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) < 10) # Value is in percentage (%) 
