@@ -4,7 +4,7 @@ metadata:
   labels:
     app: kube-prometheus-stack
     release: prometheus
-  name: sca_transaction_query_api_failure_rate_alerts
+  name: sca-transaction-query-api-failure-rate-alerts
   namespace: prometheus
 spec:
   groups:
