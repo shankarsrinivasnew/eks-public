@@ -1,0 +1,32 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sca-down-low-replica-count-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: SCA_LOW_REPLICA_COUNT_STATE
+      rules:
+  ###########################################SCA_REPLICA_COUNT##########################################################
+        - record: sca_low_replica_count_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-sca.*|tsb-stepup.*",namespace="sca"}) - on(deployment) label_replace(kube_hpa_spec_min_replicas{namespace="sca"}, "deployment", "$1", "hpa", "(.+)")
+        - alert: SCA_app_low_replica_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: sca_low_replica_count_critical_{{ AWS_ENVIRONMENT }} < 0
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Deployment {{ $labels.deployment }} current replica count is less than minimum replica count. Value:{{ $value }}'
+            summary: Critical alert deployment {{ $labels.deployment }} running with replica less than minimum.

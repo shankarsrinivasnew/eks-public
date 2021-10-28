@@ -103,3 +103,14 @@ spec:
         namespaceSelector: global()
         ports:
           - 22
+    - metadata:
+        annotations:
+          from: jenkins-agent-packer
+          to: vpc-mgmt-access
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'mgmt' && layer == 'access'
+        namespaceSelector: global()
+        ports:
+          - 443
