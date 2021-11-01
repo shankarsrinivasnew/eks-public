@@ -56,7 +56,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*init-app-auth"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*init-app-auth"}[5m]))
 
         - alert: init_app_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          expr: ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) > .001) and ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
@@ -97,7 +97,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*send-otp"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*send-otp"}[5m]))
 
         - alert: send_otp_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          expr: ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > .001) and ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
