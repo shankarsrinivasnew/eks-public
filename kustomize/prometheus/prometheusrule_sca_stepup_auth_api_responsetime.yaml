@@ -15,7 +15,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*enrol-type"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*enrol-type"}[5m]))
 
         - alert: enrol_type_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) > .001) and ((enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          expr: ((enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
@@ -56,7 +56,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*stepup-auth-response"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*stepup-auth-response"}[5m]))
 
         - alert: stepup_auth_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > .001) and ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          expr: ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
@@ -97,7 +97,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*validate-pwd"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*validate-pwd"}[5m]))
 
         - alert: validate_pwd_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) > .001) and ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          expr: ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
