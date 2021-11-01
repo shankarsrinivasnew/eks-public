@@ -492,7 +492,7 @@ data:
             {
               "expr": "sum by (application, namespace) (records_in_total_mobile_enrollment_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",input=\"DEVICE_BY_DAS_USER\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "",
+              "legendFormat": "Mobile-Enrollments-IN",
               "refId": "C"
             }
           ],
@@ -593,7 +593,7 @@ data:
             {
               "expr": "sum by (application, namespace) (records_total_card_mapped_to_account_details_total{application=\"tsb-sca-pr-join-cardcustomer\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "",
+              "legendFormat": "records_total_card_mapped_to_account",
               "refId": "B"
             }
           ],
