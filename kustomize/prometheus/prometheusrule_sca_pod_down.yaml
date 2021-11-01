@@ -33,6 +33,24 @@ spec:
     ###########################################SCA_CDC_STATEFULLSET_DOWN##########################################################
         - record: sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}
           expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-sca-pr-.*",namespace="sca"})
+        - alert: SCA_statefullset_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) > 0) and ((sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) < 3)
+          for: 1m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: sca
+            severity: WARNING
+            priority: P2
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
         - alert: SCA_statefulset_critical_alert_{{ AWS_ENVIRONMENT }}
           expr: (sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) < 1
           labels:
