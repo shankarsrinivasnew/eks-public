@@ -108,7 +108,7 @@ spec:
     - name: CONSUL-DATA-CHECK
       rules:
         - alert: CONSUL-DATA-CHECK
-          expr: (probe_http_status_code{instance="https://consul.{{ AWS_ENVIRONMENT }}.aws.uk.tsb/v1/kv/config-cb/application/consul/ssl/CACert", job="blackbox_4xx"} == 200)
+          expr: (probe_http_status_code{instance="https://consul.{{ AWS_ENVIRONMENT }}.aws.uk.tsb/v1/kv/config-cb/application/consul/ssl/CACert", job="blackbox_4xx"} != 200)
           for: 10s
           labels:
             severity: CRITICAL
@@ -120,7 +120,7 @@ spec:
             tsbci: AWS_ELZ
             itopsbridge: "true"
           annotations:
-            title: Consul agent is down
+            title: Consul agent is missing data
             description: Consul data is missing please restore on {{ $labels.node }}.
     - name: CONSUL-SERVICE-LEADER   
       rules:     
