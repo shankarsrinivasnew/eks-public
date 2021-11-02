@@ -25,6 +25,7 @@ resources:
   - prometheusrule-ods-down.yaml
   - prometheusrule-ods-up.yaml
   - prometheusrule-ods-sys-api-down.yaml
+  - prometheusrule-ods-sys-api-up.yaml
   - prometheusrule-tsb-ob-signing-down.yaml
   - 1_prometheus_cob_create_user_responsetime_alerts_rule.yaml
   - 2-prometheus_cob_verify_email_token_responsetime_alerts_rule.yaml
