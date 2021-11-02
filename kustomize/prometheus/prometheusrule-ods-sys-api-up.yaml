@@ -8,9 +8,9 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-      - name: ODS_SYS_API_APPS_UP_STATE
-        rules:
-    ###########################################ODS_SYS_API_BS01_500 STATUS ERROR##########################################################
+    - name: ODS_SYS_API_APPS_UP_STATE
+      rules:
+  ###########################################ODS_SYS_API_BS01_500 STATUS ERROR##########################################################
         - record: ods_sys_api_bs01_500_status_{{ AWS_ENVIRONMENT }}
           expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-sys-api-bs01-corporate-information",namespace="ods"}[5m])))
         - alert: ods_sys_api_bs01_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
