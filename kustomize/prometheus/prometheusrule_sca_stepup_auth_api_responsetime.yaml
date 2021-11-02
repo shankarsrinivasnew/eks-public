@@ -56,7 +56,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*stepup-auth-response"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*stepup-auth-response"}[5m]))
 
         - alert: stepup_auth_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          expr: ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > .001) and ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
