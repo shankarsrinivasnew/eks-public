@@ -562,6 +562,7 @@ spec:
             static_configs:
               - targets:
                   - https://jenkins.{{ DNS_ZONE }}
+                  - https://consul.{{ ENV }}.aws.uk.tsb/v1/kv/config-cb/application/consul/ssl/CACert
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
