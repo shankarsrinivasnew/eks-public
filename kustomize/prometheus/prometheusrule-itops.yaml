@@ -105,6 +105,23 @@ spec:
           annotations:
             title: Consul agent is down
             description: Consul agent is not healthy on {{ $labels.node }}.
+    - name: CONSUL-DATA-CHECK
+      rules:
+        - alert: CONSUL-DATA-CHECK
+          expr: (probe_http_status_code{instance="https://consul.{{ AWS_ENVIRONMENT }}.aws.uk.tsb/v1/kv/config-cb/application/consul/ssl/CACert", job="blackbox_4xx"} == 200)
+          for: 10s
+          labels:
+            severity: CRITICAL
+            priority: P4
+            environment: "{{ AWS_ENVIRONMENT }}"
+            monitoring: consul-data-check
+            rackspace: "true"
+            hostname: "{{ $labels.node }}"
+            tsbci: AWS_ELZ
+            itopsbridge: "true"
+          annotations:
+            title: Consul agent is down
+            description: Consul data is missing please restore on {{ $labels.node }}.
     - name: CONSUL-SERVICE-LEADER   
       rules:     
         - alert: consul_raft_leader
