@@ -548,6 +548,7 @@ spec:
                   - https://prometheus.{{ DNS_ZONE }}
                   - https://consul.{{ DNS_ZONE }}
                   - https://vault.{{ DNS_ZONE }}
+                  - https://consul.{{ DNS_ZONE }}/v1/kv/config-cb/application/consul/ssl/CACert
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
