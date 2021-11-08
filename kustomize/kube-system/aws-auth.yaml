@@ -94,3 +94,7 @@ data:
       username: tsb-cob-dev
       groups:
         - cob-admin
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-eks-readonly
+      username: tsb-admins-eks
+      groups:
+        - tsb-admins
