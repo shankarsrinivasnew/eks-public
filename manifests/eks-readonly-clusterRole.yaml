@@ -21,10 +21,10 @@ kind: ClusterRoleBinding
 metadata:
   name: eks-readonly
 roleRef:
-    kind: ClusterRole
-    name: eks-readonly
-    apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: eks-readonly
+  apiGroup: rbac.authorization.k8s.io
 subjects:
-    - kind: User
-      name: tsb-admins-eks
+- kind: User
+  name: tsb-admins-eks
   
