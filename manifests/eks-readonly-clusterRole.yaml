@@ -27,4 +27,3 @@ roleRef:
 subjects:
 - kind: User
   name: tsb-admins-eks
-  
