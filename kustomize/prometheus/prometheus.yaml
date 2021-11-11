@@ -284,6 +284,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cop-grafana-microservices
+            - name: 'ods-sub-api-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sub-api-grafana
+            - name: 'ods-cobol-api-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-cobol-api-grafana
 
 
 
@@ -313,6 +329,8 @@ spec:
         ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
         ods-sys-api-grafana-ingress: ods-sys-api-podmetrics5-cm
         cop-grafana-microservices: cop-microservices-cm
+        ods-sub-api-grafana: ods-sys-api-podmetrics-cm
+        ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
 
 
     prometheusOperator:
@@ -530,6 +548,7 @@ spec:
                   - https://prometheus.{{ DNS_ZONE }}
                   - https://consul.{{ DNS_ZONE }}
                   - https://vault.{{ DNS_ZONE }}
+                  - https://consul.{{ DNS_ZONE }}/v1/kv/config-cb/application/consul/ssl/CACert
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target

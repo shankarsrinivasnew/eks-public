@@ -1184,7 +1184,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "100 - avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", job=\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"}[1m]) * 100)",
+              "expr": "100 - avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", job=\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"}[5m]) * 100)",
               "hide": false,
               "interval": "",
               "legendFormat": "{{instance}} Total CPU Used",

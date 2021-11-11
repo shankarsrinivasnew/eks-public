@@ -25,6 +25,7 @@ resources:
   - prometheusrule-ods-down.yaml
   - prometheusrule-ods-up.yaml
   - prometheusrule-ods-sys-api-down.yaml
+  - prometheusrule-ods-sys-api-up.yaml
   - prometheusrule-tsb-ob-signing-down.yaml
   - 1_prometheus_cob_create_user_responsetime_alerts_rule.yaml
   - 2-prometheus_cob_verify_email_token_responsetime_alerts_rule.yaml
@@ -49,7 +50,18 @@ resources:
   - prometheusrule-sco-fl-pod-restart.yaml
   - prometheusrule-sco-fl-replica-count.yaml
   - prometheusrule-sco-fl-responsetime.yaml
-
+  - prometheusrule_sca_authentication_api_failure_rate.yaml
+  - prometheusrule_sca_authentication_api_responsetime.yaml
+  - prometheusrule_sca_gw_failure_rate.yaml
+  - prometheusrule_sca_pod_down.yaml
+  - prometheusrule_sca_pod_replica_count.yaml
+  - prometheusrule_sca_pod_restart.yaml
+  - prometheusrule_sca_ram_cpu_high.yaml
+  - prometheusrule_sca_stepup_auth_api_failure_rate.yaml
+  - prometheusrule_sca_stepup_auth_api_responsetime.yaml
+  - prometheusrule_sca_transaction_query_api_failure_rate.yaml
+  - prometheusrule_sca_transaction_query_api_responsetime.yaml
+  
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
