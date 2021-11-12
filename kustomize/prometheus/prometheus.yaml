@@ -482,6 +482,16 @@ spec:
                 target_label: instancetype
               - source_labels: [__meta_ec2_tag_subsystem]
                 target_label: subsystem
+          - job_name: msk-discover-node-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
+            scrape_configs:
+              - job_name: 'prometheus'
+                static_configs:
+                # 9090 is the prometheus server port
+                - targets: ['localhost:9090']
+              
+
           - job_name: ec2-discover-hdf-jmx
             scrape_interval: 60s
             scrape_timeout: 60s
