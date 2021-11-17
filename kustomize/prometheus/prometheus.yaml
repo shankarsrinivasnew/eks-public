@@ -504,9 +504,6 @@ spec:
                 regex: rackspace
                 action: keep
               - source_labels: [__meta_ec2_tag_Name]
-                regex: .*hdf.*
-                action: keep
-              - source_labels: [__meta_ec2_tag_Name]
                 action: replace
                 target_label: instancename
               - source_labels: [__meta_ec2_tag_Environment]
