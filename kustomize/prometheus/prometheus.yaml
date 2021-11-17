@@ -495,25 +495,10 @@ spec:
               - region: eu-west-2
                 port: 9110
             relabel_configs:
-              - source_labels: [__meta_ec2_private_ip]
-                target_label: privateip
-              - source_labels: [__meta_ec2_instance_id]
-                target_label: instanceid
               - source_labels: [__meta_ec2_tag_ManagedBy]
                 target_label: managedby
                 regex: rackspace
                 action: keep
-              - source_labels: [__meta_ec2_tag_Name]
-                action: replace
-                target_label: instancename
-              - source_labels: [__meta_ec2_tag_Environment]
-                target_label: environment
-              - source_labels: [__meta_ec2_availability_zone]
-                target_label: availabilityzone
-              - source_labels: [__meta_ec2_instance_state]
-                target_label: status
-              - source_labels: [__meta_ec2_instance_type]
-                target_label: instancetype
           - job_name: ec2-discover-scylla-default
             ec2_sd_configs:
               - region: eu-west-2
