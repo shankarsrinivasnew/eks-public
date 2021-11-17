@@ -1,0 +1,86 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sca-infra-alerts
+  namespace: prometheus
+spec:
+  groups:
+    ###########################################SCA_RAM_USAGE_STATE##########################################################  
+    - name: SCA_RAM_CPU_USAGE_STATE
+      rules:
+        - alert: SCA_ram_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 80
+          for: 5m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: sca
+            severity: WARNING
+            priority: P2
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit'
+            summary: Warning Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit
+        - alert: SCA_ram_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 90
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P1
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 9% of Memory Limit'
+            summary: CRITICAL Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 90% of Memory Limit
+    ###########################################SCA_CPU_USAGE_STATE##########################################################     
+        - alert: SCA_cpu_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 80
+          for: 5m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: sca
+            severity: WARNING
+            priority: P2
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit'
+            summary: Warning Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit
+        - alert: SCA_cpu_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 90
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P1
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 90% of CPU Limit'
+            summary: CRITICAL Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 90% of CPU Limit

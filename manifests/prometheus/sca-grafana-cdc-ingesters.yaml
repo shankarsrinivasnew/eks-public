@@ -488,6 +488,12 @@ data:
               "interval": "",
               "legendFormat": "{{application}}-OUT",
               "refId": "B"
+            },
+            {
+              "expr": "sum by (application, namespace) (records_in_total_mobile_enrollment_total{application=\"tsb-sca-pr-ingest-tbbv-bs-enrollments\",input=\"DEVICE_BY_DAS_USER\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "Mobile-Enrollments-IN",
+              "refId": "C"
             }
           ],
           "thresholds": [],
@@ -583,6 +589,12 @@ data:
               "interval": "",
               "legendFormat": "{{application}}",
               "refId": "A"
+            },
+            {
+              "expr": "sum by (application, namespace) (records_total_card_mapped_to_account_details_total{application=\"tsb-sca-pr-join-cardcustomer\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "records_total_card_mapped_to_account",
+              "refId": "B"
             }
           ],
           "thresholds": [],
@@ -1361,5 +1373,5 @@ data:
       "timezone": "",
       "title": "SCA CDC Ingestors",
       "uid": "OCnX_p8Gk",
-      "version": 20
+      "version": 21
     }

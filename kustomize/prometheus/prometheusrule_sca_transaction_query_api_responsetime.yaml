@@ -1,0 +1,94 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: sca-transaction-query-api-responsetime-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: sca_transaction_query_api_responsetime
+      rules:
+  ###########################################Response Time for Get Transaction##########################################################
+        - record: get_transaction_responsetime_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*transaction"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*transaction"}[5m]))
+        
+        - alert: get_transaction_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((get_transaction_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((get_transaction_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: sca
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 170ms for last 5 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+        
+        - alert: get_transaction_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (get_transaction_responsetime_{{ AWS_ENVIRONMENT }}) > .280 # Responsetime will be provided by NFT team
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 280 for last 5 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}
+    ###########################################transactions_by_userid_responsetime##########################################################
+        - record: transactions_by_userid_responsetime_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*transactions-by-userid"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*transactions-by-userid"}[5m]))
+        
+        - alert: transactions_by_userid_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((transactions_by_userid_responsetime_{{ AWS_ENVIRONMENT }}) > .170) and ((transactions_by_userid_responsetime_{{ AWS_ENVIRONMENT }}) < .280) # Responsetime will be provided by NFT team
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: sca
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 170ms for last 5 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+
+        - alert: transactions_by_userid_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (transactions_by_userid_responsetime_{{ AWS_ENVIRONMENT }}) > .280 # Responsetime will be provided by NFT team
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: sca
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCA_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 280 for last 5 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}

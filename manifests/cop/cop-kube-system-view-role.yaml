@@ -5,12 +5,12 @@ metadata:
   name: cop-view-role
   namespace: kube-system
 rules:
-- apiGroups: ["*"]
-  resources: ["*"]
-  verbs:
-    - get
-    - list
-    - watch
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs:
+      - get
+      - list
+      - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -22,7 +22,7 @@ roleRef:
   kind: Role
   name: cop-view-role
 subjects:
-- kind: Group
-  name: cop-read-only
-- kind: Group
-  name: cop-view-kube-system
+  - kind: Group
+    name: cop-read-only
+  - kind: Group
+    name: cop-view-kube-system
