@@ -94,6 +94,8 @@ spec:
         - jira:3.1.1
         - sonar:2.12
         - audit-trail:3.10
+        - pipeline-model-definition:1.9.2
+        - pipeline-model-extensions:1.9.2
       JCasC:
         securityRealm: |-
           local:
