@@ -93,5 +93,15 @@ spec:
           annotations:
             description: Thanos Compact {{$labels.job}} has not uploaded anything for 24 hours.
             summary: Thanos Compact has not uploaded anything for last 24 hours.
-          
+    - name: ThanosSidecarBucketOperationsFailed
+      rules:
+        - alert: ThanosSidecarBucketOperationsFailed
+          expr: |
+            sum by (job, instance) (rate(thanos_objstore_bucket_operation_failures_total{job=~".*thanos-sidecar.*"}[5m])) > 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            description: Thanos Sidecar {{$labels.instance}} bucket operations are failing
+            summary: Thanos Sidecar bucket operations are failing
           
