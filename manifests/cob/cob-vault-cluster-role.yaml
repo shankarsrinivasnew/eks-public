@@ -14,6 +14,7 @@ subjects:
   - kind: ServiceAccount
     name: tsb-cob
     namespace: cob
+    
 ---
 apiVersion: v1
 kind: ServiceAccount
