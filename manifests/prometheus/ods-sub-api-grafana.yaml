@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ods-sub-api-podmetrics-cm
+  name: ods-sys-api-podmetrics-cm
   namespace: prometheus
 data:
   odspodmetrics.json: |
