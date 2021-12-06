@@ -329,7 +329,7 @@ spec:
         ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
         ods-sys-api-grafana-ingress: ods-sys-api-podmetrics5-cm
         cop-grafana-microservices: cop-microservices-cm
-        ods-sub-api-grafana: ods-sys-api-podmetrics-cm
+        ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
 
 
