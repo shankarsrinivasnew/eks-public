@@ -583,19 +583,29 @@ spec:
           - job_name: msk-node-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
-            #ec2_sd_configs:
-             # - region: eu-west-2
-              #  port: 11002
-            #relabel_configs:
-             # - source_labels: [__meta_ec2_tag_ManagedBy]
-              #  target_label: managedby
-               # regex: rackspace
-               # action: keep
+            relabel_configs:
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
             static_configs:
               - targets:
                   - b-1.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
                   - b-2.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
                   - b-3.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
+          - job_name: msk-jmx-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
+            relabel_configs:
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+            static_configs:
+              - targets:
+                  - b-1.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
+                  - b-2.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
+                  - b-3.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
