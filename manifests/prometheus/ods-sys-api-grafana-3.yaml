@@ -310,7 +310,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-pe09-addresses-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-pe09-addresses-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2384,7 +2384,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-pe11-customer-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-pe11-customer-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4458,7 +4458,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-pe17-customer-addresses-link-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-pe17-customer-addresses-link-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -6533,7 +6533,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-pea6-addresses-history-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-pea6-addresses-history-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"

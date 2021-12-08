@@ -309,7 +309,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-kc03-transaction-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-kc03-transaction-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2383,7 +2383,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-kc13-pending-transaction-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-kc13-pending-transaction-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4456,7 +4456,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-kc43-transaction-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-kc43-transaction-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -6529,7 +6529,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-bs46-transaction-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-bs46-transaction-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"

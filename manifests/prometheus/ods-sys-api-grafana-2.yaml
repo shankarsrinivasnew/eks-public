@@ -310,7 +310,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-dv01-account-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-dv01-account-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2384,7 +2384,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-dp01-product-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-dp01-product-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4458,7 +4458,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-bs95-product-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-bs95-product-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -6532,7 +6532,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (kafka_consumer_records_consumed_total_records_total{job=\"tsb-ods-sys-api-bs01-corporate-information-lookup\"}))",
+                "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_total{job=\"tsb-ods-sys-api-bs01-corporate-information-lookup\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
