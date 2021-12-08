@@ -10,47 +10,6 @@ spec:
   groups:
     - name: sca_stepup_auth_api_responsetime
       rules:
-  ###########################################Response Time for Enrol Type##########################################################
-        - record: enrol_type_responsetime_{{ AWS_ENVIRONMENT }}
-          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*enrol-type"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*enrol-type"}[5m]))
-
-        - alert: enrol_type_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) > 3.000) and ((enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) < 4.000) # Responsetime will be provided by NFT team
-          for: 5m
-          labels:
-            action: Closely monitor
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: YELLOW
-            platform: AWS
-            namespace: sca
-            severity: WARNING
-            priority: P4
-            type: 8x5
-            tsbci: SCA_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 3s for last 5 mins. Value: {{ $value }}'
-            summary: Yellow alert for response time reached for Application {{ $labels.job }}
-
-        - alert: enrol_type_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (enrol_type_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
-          for: 5m
-          labels:
-            action: Application is likely impacted
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: RED
-            platform: AWS
-            namespace: sca
-            severity: CRITICAL
-            priority: P3
-            type: 8x5
-            tsbci: SCA_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 4s for last 5 mins. Value: {{ $value }}'
-            summary: Red alert for response time reached for Application {{ $labels.job }}
     ###########################################Response Time for Stepup auth##########################################################
         - record: stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*stepup-auth-response"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*stepup-auth-response"}[5m]))
