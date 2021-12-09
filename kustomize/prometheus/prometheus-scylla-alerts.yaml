@@ -447,8 +447,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: '{{ $labels.host }} has denied CQL connection for more than 30 seconds.'
-            summary: Instance {{ $labels.host }} no CQL connection
+            description: 'For {{ $labels.instance }} has denied CQL connection for more than 30 seconds.'
+            summary: Instance {{ $labels.instance }} no CQL connection
         - alert: HighLatencies
           expr: wlatencyp95{by="instance"} > 100000
           for: 5m
@@ -551,5 +551,5 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'For For {{ $labels.instance }} OOM Kill on {{ $labels.instance }}'
-            summary: For {{ $labels.instance }} a process was terminated on Instance {{ $labels.instance }}
+            description: 'OOM Kill on {{ $labels.instance }}'
+            summary:  A process was terminated on Instance {{ $labels.instance }}
