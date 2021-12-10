@@ -65,24 +65,28 @@ stringData:
         pagerduty_configs:
         - routing_key: "{{ SECRET_RAX_PAGERDUTY_KEY }}"
           severity: critical
+          text: '{{ .CommonAnnotations.description }}'
           http_config:
             proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       - name: rax-pagerduty-error
         pagerduty_configs:
         - routing_key: "{{ SECRET_RAX_PAGERDUTY_KEY }}"
           severity: error
+          text: '{{ .CommonAnnotations.description }}'
           http_config:
             proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       - name: rax-pagerduty-warning
         pagerduty_configs:
         - routing_key: "{{ SECRET_RAX_PAGERDUTY_KEY }}"
           severity: warning
+          text: '{{ .CommonAnnotations.description }}'
           http_config:
             proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       - name: rax-pagerduty-info
         pagerduty_configs:
         - routing_key: "{{ SECRET_RAX_PAGERDUTY_KEY }}"
           severity: info
+          text: '{{ .CommonAnnotations.description }}'
           http_config:
             proxy_url: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       - name: "sns-forwarder-cdcalerts"
@@ -112,8 +116,8 @@ stringData:
             {{- end }}
           text: >-
             {{ range .Alerts -}}
-            *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-            *Description:* {{ .Annotations.description }}
+            *Alert:* {{ .CommonAnnotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+            *Description:* {{ .CommonAnnotations.description }}
             {{ end }}
           send_resolved: true
           http_config:
