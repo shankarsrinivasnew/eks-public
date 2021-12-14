@@ -355,7 +355,7 @@ spec:
             description: '{{ $labels.instance }} has been down for more than 30 seconds.'
             summary: Instance {{ $labels.instance }} down
         - alert: InstanceDown
-          expr: absent(scylla_transport_requests_served{job="scylla", shard="0"})
+          expr: absent(scylla_transport_requests_served{job="ec2-discover-scylla-default", shard="0"})
           for: 5m
           labels:
             severity: CRITICAL
