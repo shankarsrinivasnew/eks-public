@@ -12,7 +12,7 @@ spec:
     - name: SCA_RAM_CPU_USAGE_STATE
       rules:
         - alert: SCA_ram_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 80
+          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 50
           for: 5m
           labels:
             action: Application will be impacted
@@ -30,7 +30,7 @@ spec:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit'
             summary: Warning Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit
         - alert: SCA_ram_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 90
+          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 60
           for: 5m
           labels:
             action: Application is likely impacted
@@ -45,11 +45,11 @@ spec:
             tsbci: SCA_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 9% of Memory Limit'
+            description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 90% of Memory Limit'
             summary: CRITICAL Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 90% of Memory Limit
     ###########################################SCA_CPU_USAGE_STATE##########################################################     
         - alert: SCA_cpu_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 80
+          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 5
           for: 5m
           labels:
             action: Application will be impacted
@@ -67,7 +67,7 @@ spec:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit'
             summary: Warning Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit
         - alert: SCA_cpu_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 90
+          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 7
           for: 5m
           labels:
             action: Application is likely impacted
