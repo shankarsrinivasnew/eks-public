@@ -15,7 +15,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*stepup-auth-response"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*stepup-auth-response"}[5m]))
 
         - alert: stepup_auth_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000) and ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) < 5.000) # Responsetime will be provided by NFT team
+          expr: ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > 0.005) and ((stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) < 0.100) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
@@ -34,7 +34,7 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: stepup_auth_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > 5.000 # Responsetime will be provided by NFT team
+          expr: (stepup_auth_responsetime_{{ AWS_ENVIRONMENT }}) > 0.100 # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Application is likely impacted
@@ -56,7 +56,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*validate-pwd"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*validate-pwd"}[5m]))
 
         - alert: validate_pwd_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) > 5.000) and ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) < 6.000) # Responsetime will be provided by NFT team
+          expr: ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) > 0.005) and ((validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) < 0.100) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
@@ -75,7 +75,7 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
             
         - alert: validate_pwd_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) > 6.000 # Responsetime will be provided by NFT team
+          expr: (validate_pwd_responsetime_{{ AWS_ENVIRONMENT }}) > 0.100 # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Application is likely impacted
