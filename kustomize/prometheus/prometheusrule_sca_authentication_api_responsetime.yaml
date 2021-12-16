@@ -15,8 +15,8 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*auth-method"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*auth-method"}[5m]))
 
         - alert: auth_method_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((auth_method_responsetime_{{ AWS_ENVIRONMENT }}) > 0.005) and ((auth_method_responsetime_{{ AWS_ENVIRONMENT }}) < 3.00) # Responsetime will be provided by NFT team
-          for: 1m
+          expr: ((auth_method_responsetime_{{ AWS_ENVIRONMENT }}) > 3.000) and ((auth_method_responsetime_{{ AWS_ENVIRONMENT }}) < 4.000) # Responsetime will be provided by NFT team
+          for: 5m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -34,7 +34,7 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: auth_method_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (auth_method_responsetime_{{ AWS_ENVIRONMENT }}) > 4.00 # Responsetime will be provided by NFT team
+          expr: (auth_method_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Application is likely impacted
@@ -56,7 +56,7 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*init-app-auth"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*init-app-auth"}[5m]))
 
         - alert: init_app_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) > 0.005) and ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) < 0.100) # Responsetime will be provided by NFT team
+          expr: ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) > 3.000) and ((init_app_responsetime_{{ AWS_ENVIRONMENT }}) < 4.000) # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Closely monitor
@@ -75,8 +75,8 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: init_app_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (init_app_responsetime_{{ AWS_ENVIRONMENT }}) > 0.010 # Responsetime will be provided by NFT team
-          for: 1m
+          expr: (init_app_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
+          for: 5m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -97,8 +97,8 @@ spec:
           expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="sca",uri=~".*send-otp"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sca",uri=~".*send-otp"}[5m]))
 
         - alert: send_otp_responsetime_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > 0.005) and ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) < 3.00) # Responsetime will be provided by NFT team
-          for: 1m
+          expr: ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > 3.000) and ((send_otp_responsetime_{{ AWS_ENVIRONMENT }}) < 4.000) # Responsetime will be provided by NFT team
+          for: 5m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -116,7 +116,7 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: send_otp_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > 0.100 # Responsetime will be provided by NFT team
+          expr: (send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
           for: 5m
           labels:
             action: Application is likely impacted
