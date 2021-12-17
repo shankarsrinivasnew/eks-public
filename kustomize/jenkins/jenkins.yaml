@@ -710,7 +710,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/inbound-agent:latest"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0

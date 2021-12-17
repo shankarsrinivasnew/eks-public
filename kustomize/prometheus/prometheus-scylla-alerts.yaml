@@ -196,8 +196,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some of the cql queries are non-prepared please ensure the number of non prepared queries are low'
-            summary: non prepared statments
+            description: 'For {{ $labels.instance }} Some of the cql queries are non-prepared please ensure the number of non prepared queries are low'
+            summary: Instance {{ $labels.instance }} non prepared statments
         - alert: cql:non_paged_no_system
           expr: cql:non_paged > 0
           for: 15m
@@ -209,8 +209,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some SELECT queries are non-paged'
-            summary: non paged statments
+            description: 'For {{ $labels.instance }} Some SELECT queries are non-paged'
+            summary: Instance {{ $labels.instance }} non paged statments
         - alert: cqlNoTokenAware
           expr: cql:non_token_aware > 0
           for: 15m
@@ -222,8 +222,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some queries are not token-aware'
-            summary: non token aware statments
+            description: 'For {{ $labels.instance }} Some queries are not token-aware'
+            summary: Instance {{ $labels.instance }} non token aware statments
         - alert: cqlReverseOrder
           expr: cql:reverse_queries > 0
           for: 15m
@@ -235,8 +235,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some queries use reverse order'
-            summary: reverse order queries
+            description: 'For {{ $labels.instance }} Some queries use reverse order'
+            summary: Instance {{ $labels.instance }} reverse order queries
         - alert: cqlAllowFiltering
           expr: cql:allow_filtering > 0
           for: 15m
@@ -248,8 +248,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some queries use ALLOW FILTERING'
-            summary: Allow filtering queries
+            description: 'For {{ $labels.instance }} Some queries use ALLOW FILTERING'
+            summary: Instance {{ $labels.instance }} Allow filtering queries
         - alert: cqlCLAny
           expr: cql:any_queries > 0
           for: 15m
@@ -261,8 +261,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some queries use Consistency Level: ANY'
-            summary: non prepared statments
+            description: 'For {{ $labels.instance }} Some queries use Consistency Level: ANY'
+            summary: Instance {{ $labels.instance }} non prepared statments
         - alert: cqlCLAll
           expr: cql:all_queries > 0
           for: 15m
@@ -274,8 +274,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some queries use Consistency Level: ALL'
-            summary: non prepared statments
+            description: 'For {{ $labels.instance }} Some queries use Consistency Level: ALL'
+            summary: Instance {{ $labels.instance }} non prepared statments
         - alert: nonBalancedcqlTraffic
           expr: abs(rate(scylla_cql_updates{conditional="no"}[1m]) - scalar(avg(rate(scylla_cql_updates{conditional="no"}[1m]))))/scalar(stddev(rate(scylla_cql_updates{conditional="no"}[1m]))+100) > 2
           for: 15m
@@ -287,8 +287,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'CQL queries are not balanced among shards {{ $labels.instance }} shard {{ $labels.shard }}'
-            summary: CQL queries are not balanced
+            description: 'For {{ $labels.instance }} CQL queries are not balanced among shards {{ $labels.instance }} shard {{ $labels.shard }}'
+            summary: Instance {{ $labels.instance }} CQL queries are not balanced
         - alert: nodeLocalErrors
           expr: sum(errors:local_failed) by (cluster, instance) > 0
           for: 10s
@@ -300,8 +300,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some operation failed at the replica side'
-            summary: Replica side Level error
+            description: '{{ $labels.instance }} Some operation failed at the replica side'
+            summary: Instance {{ $labels.instance }}  Replica side Level error
         - alert: nodeIOErrors
           expr: sum(rate(scylla_reactor_aio_errors[60s])) by (cluster, instance) > 0
           for: 10s
@@ -313,8 +313,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'IO Errors can indicate a node with a faulty disk {{ $labels.instance }}'
-            summary: IO Disk Error
+            description: '{{ $labels.instance }} IO Errors can indicate a node with a faulty disk {{ $labels.instance }}'
+            summary: Instance {{ $labels.instance }} IO Disk Error
         - alert: nodeCLErrors
           expr: sum(errors:operation_unavailable) by (cluster) > 0
           for: 10s
@@ -326,8 +326,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Some operation failed due to consistency level'
-            summary: Consistency Level error
+            description: '{{ $labels.instance }} Some operation failed due to consistency level'
+            summary: Instance {{ $labels.instance }} Consistency Level error
         - alert: preparedCacheEviction
           expr: sum(rate(scylla_cql_prepared_cache_evictions[2m])) by (cluster) + sum(rate(scylla_cql_authorized_prepared_statements_cache_evictions[2m])) by (cluster) > 100
           for: 5m
@@ -339,8 +339,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'The prepared-statement cache is being continuously evicted, which could indicate a problem in your prepared-statement usage logic.'
-            summary: Prepared cache eviction
+            description: '{{ $labels.instance }} The prepared-statement cache is being continuously evicted, which could indicate a problem in your prepared-statement usage logic.'
+            summary: Instance {{ $labels.instance }} Prepared cache eviction
         - alert: InstanceDown
           expr: up{job="scylla"} == 0
           for: 30s
@@ -355,7 +355,7 @@ spec:
             description: '{{ $labels.instance }} has been down for more than 30 seconds.'
             summary: Instance {{ $labels.instance }} down
         - alert: InstanceDown
-          expr: absent(scylla_transport_requests_served{job="scylla", shard="0"})
+          expr: absent(scylla_transport_requests_served{job="ec2-discover-scylla-default", shard="0"})
           for: 5m
           labels:
             severity: CRITICAL
@@ -447,8 +447,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: '{{ $labels.host }} has denied CQL connection for more than 30 seconds.'
-            summary: Instance {{ $labels.host }} no CQL connection
+            description: 'For {{ $labels.instance }} has denied CQL connection for more than 30 seconds.'
+            summary: Instance {{ $labels.instance }} no CQL connection
         - alert: HighLatencies
           expr: wlatencyp95{by="instance"} > 100000
           for: 5m
@@ -512,8 +512,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Backup failed'
-            summary: Backup task failed
+            description: 'For {{ $labels.instance }} Backup failed'
+            summary: Instance {{ $labels.instance }} Backup task failed
         - alert: RepairFailed
           expr: (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"} offset 3m) or vector(0)) > 0
           for: 15m
@@ -525,8 +525,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Repair failed'
-            summary: Repair task failed
+            description: 'For {{ $labels.instance }} Repair failed'
+            summary: Instance {{ $labels.instance }} Repair task failed
         - alert: restart
           expr: resets(scylla_gossip_heart_beat[1h])>0
           for: 5m
@@ -538,7 +538,7 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'Node restarted'
+            description: 'For {{ $labels.instance }} Node restarted'
             summary: Instance {{ $labels.instance }} restarted
         - alert: oomKill
           expr: changes(node_vmstat_oom_kill[1h])>0
@@ -552,4 +552,4 @@ spec:
             tsbci: AWS_ELZ
           annotations:
             description: 'OOM Kill on {{ $labels.instance }}'
-            summary: A process was terminated on Instance {{ $labels.instance }}
+            summary:  A process was terminated on Instance {{ $labels.instance }}
