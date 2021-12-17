@@ -583,6 +583,27 @@ spec:
               - targets:
                   - consul-exporter-prometheus-consul-exporter:9107
           - job_name: cloudwatch-exporter
+            relabel_configs:
+              - source_labels: [__meta_ec2_private_ip]
+                target_label: privateip
+              - source_labels: [__meta_ec2_instance_id]
+                target_label: instanceid
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                target_label: instance
+              - source_labels: [__meta_ec2_tag_Environment]
+                target_label: environment
+              - source_labels: [__meta_ec2_availability_zone]
+                target_label: availabilityzone
+              - source_labels: [__meta_ec2_instance_state]
+                target_label: status
+              - source_labels: [__meta_ec2_instance_type]
+                target_label: instancetype
+              - source_labels: [__meta_ec2_tag_subsystem]
+                target_label: subsystem
             metrics_path: '/metrics'
             honor_labels: true
             static_configs:

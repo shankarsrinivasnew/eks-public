@@ -104,4 +104,3 @@ spec:
           annotations:
             description: Thanos Sidecar {{$labels.instance}} bucket operations are failing
             summary: Thanos Sidecar bucket operations are failing
-          
