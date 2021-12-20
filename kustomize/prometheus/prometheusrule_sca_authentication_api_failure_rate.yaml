@@ -195,7 +195,7 @@ spec:
           expr: (sum by (job, namespace) (rate(total_otp_requests_failed_to_send_imi_total{job="tsb-sca-send-otp-topology",namespace="sca"}[5m])) / sum by (job, namespace) (rate(total_otp_requests_received_total{job="tsb-sca-send-otp-topology",namespace="sca"}[5m])) * 100)
         
         - alert: sca_imi_failure_rate_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) > 1) and ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) < 99) # Value is in percentage (%) 
+          expr: ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) > 1) and ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) < 10) # Value is in percentage (%) 
           for: 1m
           labels:
             action: Application is likely impacted
@@ -214,7 +214,7 @@ spec:
             summary: YELLOW alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
         
         - alert: sca_imi_failure_rate_amber_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) > 99) and ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) < 100) # Value is in percentage (%) 
+          expr: ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) > 10) and ((sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) < 50) # Value is in percentage (%) 
           for: 1m
           labels:
             action: Application is likely impacted
@@ -233,7 +233,7 @@ spec:
             summary: YELLOW alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         - alert: sca_imi_failure_rate_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) > 99
+          expr: (sca_imi_failure_rate{{ AWS_ENVIRONMENT }}) > 50
           for: 1m
           labels:
             action: Application will be impacted
@@ -255,7 +255,7 @@ spec:
           expr: (sum by (job, namespace) (rate(total_fiserv_requests_failed_to_send_total{job="tsb-sca-fiserv-notify-topology",namespace="sca"}[5m])) / sum by (job, namespace) (rate(total_fiserv_notify_requests_received_total{job="tsb-sca-fiserv-notify-topology",namespace="sca"}[5m])) * 100)
         
         - alert: sca_fiserv_failure_rate_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 1) and ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) < 70) # Value is in percentage (%) 
+          expr: ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 1) and ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) < 10) # Value is in percentage (%) 
           for: 1m
           labels:
             action: Application is likely impacted
@@ -274,7 +274,7 @@ spec:
             summary: YELLOW alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         - alert: sca_fiserv_failure_rate_amber_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 70) and ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) < 100) # Value is in percentage (%) 
+          expr: ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 10) and ((sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) < 50) # Value is in percentage (%) 
           for: 1m
           labels:
             action: Application is likely impacted
@@ -293,7 +293,7 @@ spec:
             summary: YELLOW alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
 
         - alert: sca_fiserv_failure_rate_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 99
+          expr: (sca_fiserv_failure_rate{{ AWS_ENVIRONMENT }}) > 50
           for: 1m
           labels:
             action: Application will be impacted
