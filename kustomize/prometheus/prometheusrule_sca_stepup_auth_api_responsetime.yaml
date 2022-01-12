@@ -27,7 +27,7 @@ spec:
             severity: WARNING
             priority: P4
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} response time is more than 4s for last 5 mins. Value: {{ $value }}'
@@ -46,7 +46,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} response time is more than 5s for last 5 mins. Value: {{ $value }}'
@@ -68,7 +68,7 @@ spec:
             severity: WARNING
             priority: P4
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} response time is more than 5s for last 5 mins. Value: {{ $value }}'
@@ -87,7 +87,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} response time is more than 6s for last 5 mins. Value: {{ $value }}'
