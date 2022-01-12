@@ -25,7 +25,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -46,7 +46,7 @@ spec:
             severity: WARNING
             priority: P2
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
@@ -63,7 +63,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -83,7 +83,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
