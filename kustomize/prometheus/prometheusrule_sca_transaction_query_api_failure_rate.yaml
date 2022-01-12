@@ -27,7 +27,7 @@ spec:
             severity: WARNING
             priority: P4
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached failure requst in 1 min. Value: {{ $value }}'
@@ -46,7 +46,7 @@ spec:
             severity: MAJOR
             priority: P4
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 10 % failure requst in 1 min. Value: {{ $value }}'
@@ -65,7 +65,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 50 % failure requst in 1 min. Value: {{ $value }}'
@@ -87,7 +87,7 @@ spec:
             severity: WARNING
             priority: P4
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached failure requst in 1 min. Value: {{ $value }}'
@@ -106,7 +106,7 @@ spec:
             severity: MAJOR
             priority: P4
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 10 % failure requst in 1 min. Value: {{ $value }}'
@@ -125,7 +125,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 50 % failure requst in 1 min. Value: {{ $value }}'

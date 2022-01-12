@@ -26,7 +26,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'POD {{ $labels.pod }} for Microservice {{ $labels.container }} restarted 3 times or more in last 5m. Restart Count:{{ $value }}'
