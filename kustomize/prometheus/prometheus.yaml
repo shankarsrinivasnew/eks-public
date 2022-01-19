@@ -308,6 +308,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-css-tables-grafana
+            - name: 'cob-microservices-dashboard'
+              orgId: 1
+              folder: 'TSB-COB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cob-microservices-dashboard
 
 
       dashboardsConfigMaps:
@@ -339,6 +347,7 @@ spec:
         ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
+        cob-microservices-dashboard: cob-microservices-dashboard-cm
 
 
     prometheusOperator:
