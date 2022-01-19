@@ -169,7 +169,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by(namespace, uri)(rate(http_server_requests_seconds_count{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!~\"/actuator/prometheus|/health\"}[5m]))",
+              "expr": "sum by(namespace, uri)(rate(http_server_requests_seconds_count{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!~\"/actuator/prometheus|/health|/\\\\*\\\\*\"}[5m]))",
               "interval": "",
               "legendFormat": "{{service}}",
               "refId": "A"
