@@ -1097,6 +1097,21 @@ spec:
           apiVersion: v1
           kind: Pod
           spec:
+            containers:
+              - name: "jnlp"
+                args: "^${computer.jnlpmac} ^${computer.name}"
+                envVars:
+                - envVar:
+                    key: "JENKINS_URL"
+                    value: "http://jenkins.jenkins.svc.cluster.local:8080"
+                image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/inbound-agent:latest"
+                workingDir: "/home/jenkins/agent"
+                livenessProbe:
+                  failureThreshold: 0
+                  initialDelaySeconds: 0
+                  periodSeconds: 0
+                  successThreshold: 0
+                  timeoutSeconds: 0
             serviceAccountName: jenkins-terraform
             securityContext:
               fsGroup: 1337
