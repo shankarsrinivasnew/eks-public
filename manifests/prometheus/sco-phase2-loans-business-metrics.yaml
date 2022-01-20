@@ -23,1333 +23,562 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 58,
       "links": [],
       "panels": [
         {
-          "collapsed": true,
-          "datasource": null,
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
-            "h": 1,
-            "w": 24,
+            "h": 8,
+            "w": 12,
             "x": 0,
             "y": 0
           },
-          "id": 2,
-          "panels": [
+          "hiddenSeries": false,
+          "id": 6,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 21,
-                "x": 0,
-                "y": 1
-              },
-              "hiddenSeries": false,
-              "id": 6,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/application/report\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/application/report\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/application/start\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/application/start\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "B"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/application/blockCustomer\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/application/blockCustomer\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "C"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/calculator/getquote\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/calculator/getquote\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "D"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/report\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/report\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "E"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/start\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/start\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "F"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/confirm\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/confirm\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "G"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/eligibility/report\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/eligibility/report\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "H"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/eligibility/start\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/eligibility/start\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "I"
-                },
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/getconfirmpcci\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/getconfirmpcci\"}[5m]))\r",
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "J"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Response Time",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "decimals": 0,
-                  "format": "ms",
-                  "label": "",
-                  "logBase": 1,
-                  "max": null,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/application/report\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/application/report\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 9
-              },
-              "hiddenSeries": false,
-              "id": 38,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum by (routeId) (rate(gateway_requests_seconds_sum{namespace=\"sco\", routeId=~\"tsb-sco-fl.*\"}[5m]))/ sum by (routeId) (rate(gateway_requests_seconds_count{namespace=\"sco\", routeId=~\"tsb-sco-fl.*\"}[5m]))",
-                  "interval": "",
-                  "legendFormat": "route:{{routeId}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "SpringGateway-API Response Time",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:168",
-                  "format": "ms",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:169",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/application/start\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/application/start\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/application/blockCustomer\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/application/blockCustomer\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "C"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/calculator/getquote\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/calculator/getquote\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "D"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/report\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/report\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "E"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/start\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/start\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "F"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/confirm\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/confirm\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "G"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/eligibility/report\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/eligibility/report\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "H"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/eligibility/start\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/eligibility/start\"}[5m]))",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "I"
+            },
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"sco\",uri=\"/sco-fl/completion/getconfirmpcci\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"sco\",uri=~\"/sco-fl/completion/getconfirmpcci\"}[5m]))\r",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "J"
             }
           ],
-          "title": "API Response Time",
-          "type": "row"
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "API Average Response Time",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:360",
+              "decimals": 0,
+              "format": "ms",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:361",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
-          "collapsed": true,
-          "datasource": null,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 1
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
           },
-          "id": 12,
-          "panels": [
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 0
+          },
+          "hiddenSeries": false,
+          "id": 8,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 5,
-                "w": 8,
-                "x": 0,
-                "y": 2
-              },
-              "hiddenSeries": false,
-              "id": 16,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/application/start\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-application-start",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/eligibility/start\"}[5m]))",
+              "interval": "",
+              "legendFormat": "eligibility-start",
+              "refId": "A"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 5,
-                "w": 8,
-                "x": 8,
-                "y": 2
-              },
-              "hiddenSeries": false,
-              "id": 14,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/application/report\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-application-report",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/eligibility/report\"}[5m]))",
+              "interval": "",
+              "legendFormat": "eligibility-report",
+              "refId": "B"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 5,
-                "w": 8,
-                "x": 16,
-                "y": 2
-              },
-              "hiddenSeries": false,
-              "id": 18,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/application/blockCustomer\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-block-customer",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/calculator/getquote\"}[5m]))",
+              "interval": "",
+              "legendFormat": "calculator-getquote",
+              "refId": "C"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 0,
-                "y": 7
-              },
-              "hiddenSeries": false,
-              "id": 20,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/calculator/getquote\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-calculator-getquote",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/application/blockCustomer\"}[5m]))",
+              "interval": "",
+              "legendFormat": "blockCustomer",
+              "refId": "D"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 8,
-                "y": 7
-              },
-              "hiddenSeries": false,
-              "id": 22,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/completion/report\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-completion-report",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/application/start\"}[5m]))",
+              "interval": "",
+              "legendFormat": "application-start",
+              "refId": "E"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 16,
-                "y": 7
-              },
-              "hiddenSeries": false,
-              "id": 24,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/completion/start\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-completion-start",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/application/report\"}[5m]))",
+              "interval": "",
+              "legendFormat": "application-report",
+              "refId": "F"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 0,
-                "y": 13
-              },
-              "hiddenSeries": false,
-              "id": 26,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/completion/confirm\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-confirm-pcci",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/completion/confirm\"}[5m]))",
+              "interval": "",
+              "legendFormat": "completion-confirm",
+              "refId": "G"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 8,
-                "y": 13
-              },
-              "hiddenSeries": false,
-              "id": 28,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/eligibility/report\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-eligibilityreport",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/completion/getconfirmpcci\"}[5m]))  ",
+              "interval": "",
+              "legendFormat": "getconfirmpcci",
+              "refId": "H"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 7,
-                "x": 16,
-                "y": 13
-              },
-              "hiddenSeries": false,
-              "id": 30,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/eligibility/start\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-eligibilitystart",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/completion/start\"}[5m]))",
+              "interval": "",
+              "legendFormat": "completion-start",
+              "refId": "I"
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 5,
-                "w": 8,
-                "x": 0,
-                "y": 19
-              },
-              "hiddenSeries": false,
-              "id": 32,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (status) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=\"/sco-fl/completion/getconfirmpcci\"}[1m])))",
-                  "interval": "",
-                  "legendFormat": "{{status}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "tsb-sco-fl-restproxy-get-confirm-pcci",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 5,
-                "w": 8,
-                "x": 8,
-                "y": 19
-              },
-              "hiddenSeries": false,
-              "id": 34,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum by (httpStatusCode) ((rate(gateway_requests_seconds_count{ namespace=\"sco\", routeId=~\".*tsb-sco-fl.*\"}[5m]))*60)",
-                  "interval": "",
-                  "legendFormat": "{{httpStatusCode}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Spring Gateway",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "expr": "sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",uri=~\"/sco-fl/completion/report\"}[5m]))",
+              "interval": "",
+              "legendFormat": "completion-report",
+              "refId": "J"
             }
           ],
-          "title": "API Performance( HTTP Status Code Rate)",
-          "type": "row"
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "API Throughput (Requests per Second)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:413",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:414",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 10,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(sum by (namespace, job, routeId) (rate(spring_cloud_gateway_requests_seconds_count{namespace=\"sco\", outcome!=\"SUCCESSFUL\"}[5m])) / sum by (namespace, job, routeId) (rate(spring_cloud_gateway_requests_seconds_count{namespace=\"sco\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{routeId}} Failure Rate",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "API Gateway Failure Rate (%)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:572",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:573",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 8
+          },
+          "hiddenSeries": false,
+          "id": 12,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/eligibility/start\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/eligibility/start\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/eligibility/report\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/eligibility/report\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "B"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/calculator/getquote\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/calculator/getquote\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "C"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/application/blockCustomer\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/application/blockCustomer\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "D"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/application/start\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/application/start\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "E"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/application/report\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/application/report\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "F"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/completion/confirm\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/completion/confirm\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "G"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/completion/getconfirmpcci\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/completion/getconfirmpcci\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "H"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/completion/start\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/completion/start\"}[5m]))) * 100  ",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "I"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\",outcome!=\"SUCCESS\", uri=~\"/sco-fl/completion/report\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sco\", uri=~\"/sco-fl/completion/report\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "J"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "API Failure Rate (%)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:839",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:840",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
+      "refresh": "",
       "schemaVersion": 26,
       "style": "dark",
       "tags": [],
@@ -1364,5 +593,5 @@ data:
       "timezone": "",
       "title": "SCO Phase2 Loans Business Metrics",
       "uid": "rQplCbCGz",
-      "version": 30
+      "version": 31
     }
