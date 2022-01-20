@@ -203,7 +203,7 @@ spec:
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
-      tag: 4.3-4
+      tag: latest
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       componentName: jenkins-agent
@@ -1097,8 +1097,6 @@ spec:
           apiVersion: v1
           kind: Pod
           spec:
-            container:
-             - image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/inbound-agent:latest"
             serviceAccountName: jenkins-terraform
             securityContext:
               fsGroup: 1337
