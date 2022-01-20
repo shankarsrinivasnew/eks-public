@@ -203,7 +203,7 @@ spec:
       slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
-      tag: latest
+      tag: 4.3-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       componentName: jenkins-agent
