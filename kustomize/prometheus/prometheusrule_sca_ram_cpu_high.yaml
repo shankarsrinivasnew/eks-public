@@ -30,8 +30,8 @@ spec:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit'
             summary: Warning Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit
         - alert: SCA_ram_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 10
-          for: 1m
+          expr: ((( sum(container_memory_usage_bytes{namespace="sca"}) by (namespace,container_name,pod_name)  / sum(container_spec_memory_limit_bytes{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100 ) < +Inf ) > 90
+          for: 5m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -67,8 +67,8 @@ spec:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit'
             summary: Warning Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit
         - alert: SCA_cpu_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 10
-          for: 1m
+          expr: ((sum(irate(container_cpu_usage_seconds_total{namespace="sca"}[3m])) by (namespace,container_name,pod_name) / sum(container_spec_cpu_quota{namespace="sca"} / container_spec_cpu_period{namespace="sca"}) by (namespace,container_name,pod_name) ) * 100)  > 90
+          for: 5m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
