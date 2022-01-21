@@ -11,7 +11,7 @@ spec:
     - name: NODE_DOWN
       rules:
         - alert: NODE_DOWN
-          expr: (up{job="ec2-discover-node-exporter",status!="running"})
+          expr: (up{job="ec2-discover-node-exporter",status!="running"} and up{instance!~".*aws-cloud9.*"})
           for: 10m
           labels:
             severity: CRITICAL
