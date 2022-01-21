@@ -34,8 +34,8 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: auth_method_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (auth_method_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
-          for: 5m
+          expr: (auth_method_responsetime_{{ AWS_ENVIRONMENT }}) > 0.001 # Responsetime will be provided by NFT team
+          for: 1m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -75,8 +75,8 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: init_app_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (init_app_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
-          for: 5m
+          expr: (init_app_responsetime_{{ AWS_ENVIRONMENT }}) > 0.001 # Responsetime will be provided by NFT team
+          for: 1m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -116,8 +116,8 @@ spec:
             summary: Yellow alert for response time reached for Application {{ $labels.job }}
 
         - alert: send_otp_responsetime_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > 4.000 # Responsetime will be provided by NFT team
-          for: 5m
+          expr: (send_otp_responsetime_{{ AWS_ENVIRONMENT }}) > 0.001 # Responsetime will be provided by NFT team
+          for: 1m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
