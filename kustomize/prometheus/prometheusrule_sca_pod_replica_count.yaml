@@ -25,7 +25,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Deployment {{ $labels.deployment }} current replica count is less than minimum replica count. Value:{{ $value }}'
