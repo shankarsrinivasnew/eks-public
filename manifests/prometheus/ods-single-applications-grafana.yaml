@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ods-single-applications-grafana-cm
+  name: ods-single-applications-grafana-cm 
   namespace: prometheus
 data:
   ods-single-applications-grafana.json: |
@@ -183,6 +183,38 @@ data:
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(tsbods_processTransactionsStream_time_bs46_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs46_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "B"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(tsbods_processStream_time_bs95_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs95_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "C"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(tsbods_processStream_time_bs01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "D"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(tsbods_processStream_time_dp01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_dp01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "E"
                 }
               ],
               "thresholds": [],
@@ -371,6 +403,78 @@ data:
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_dp01_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "B"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs01_corporateInformation_in_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "C"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "D"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs95_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "E"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_bs09_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "F"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs01_corporateInformation_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "G"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_dp01_product_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "H"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "I"
+                },
+                {
+                  "exemplar": true,
+                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs95_product_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+                  "hide": false,
+                  "interval": "",
+                  "legendFormat": "",
+                  "refId": "J"
                 }
               ],
               "thresholds": [],
@@ -810,7 +914,7 @@ data:
           "type": "row"
         },
         {
-          "collapsed": true,
+          "collapsed": false,
           "datasource": "Thanos",
           "gridPos": {
             "h": 1,
@@ -819,386 +923,417 @@ data:
             "y": 2
           },
           "id": 2,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 3
-              },
-              "hiddenSeries": false,
-              "id": 40,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-loan-pr\"}",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Total Records Loan PR Application consumed from Kafka",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 11
-              },
-              "hiddenSeries": false,
-              "id": 52,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processLoansStream_time_pr42_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}/tsbods_processLoansStream_time_pr42_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"})",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average records per second Loan PR Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 19
-              },
-              "hiddenSeries": false,
-              "id": 44,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Error Log Count Loan PR Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 27
-              },
-              "hiddenSeries": false,
-              "id": 48,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_pr01_loans_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Loan PR Records In and Out Of Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
+          "panels": [],
           "title": "Loan-PR",
           "type": "row"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 3
+          },
+          "hiddenSeries": false,
+          "id": 40,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-loan-pr\"}",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total Records Loan PR Application consumed from Kafka",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 11
+          },
+          "hiddenSeries": false,
+          "id": 52,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processLoansStream_time_pr42_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}/tsbods_processLoansStream_time_pr42_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"})",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processLoansStream_time_pr01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}/tsbods_processLoansStream_time_pr01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Average records per second Loan PR Application",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 19
+          },
+          "hiddenSeries": false,
+          "id": 44,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Error Log Count Loan PR Application",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 27
+          },
+          "hiddenSeries": false,
+          "id": 48,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_pr01_loans_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_pr01_loans_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_pr42_loans_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_pr42_loans_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-loan-pr\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Loan PR Records In and Out Of Application",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "schemaVersion": 27,
@@ -1213,7 +1348,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "SingleApplications-PR,IA,BS Tables",
+      "title": "TSB-ODS-SingleApplications-PR,IA,BS Tables",
       "uid": "AZUf_q17z",
-      "version": 97
+      "version": 107
     }
