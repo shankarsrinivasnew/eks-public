@@ -5,7 +5,7 @@ metadata:
   name: ods-single-applications-grafana-cm 
   namespace: prometheus
 data:
-  odspodmetrics.json: |
+  ods-single-applications-grafana.json: |
     {
       "annotations": {
         "list": [

@@ -5,7 +5,7 @@ metadata:
   name: ods-new-css-tables-grafana-cm 
   namespace: prometheus
 data:
-  odspodmetrics.json: |
+  ods-new-css-tables-grafana.json: |
     {
       "annotations": {
         "list": [
