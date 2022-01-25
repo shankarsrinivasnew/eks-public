@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ods-new-css-tables-grafana-cm
+  name: ods-new-css-tables-grafana-cm 
   namespace: prometheus
 data:
-  odspodmetricsods-new-css-tables-grafana.json: |
+  odspodmetrics.json: |
     {
       "annotations": {
         "list": [
@@ -771,7 +771,7 @@ data:
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) ( tsb_ods_mg30_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-mortgages-mg30\"}))",
+                  "expr": "(sum by (job, namespace) ( tsb_ods_ta63_card_details_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta63\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -1563,14 +1563,14 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) ( tsb_ods_mg30_transactions_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta61\"}))",
+                  "expr": "(sum by (job, namespace) ( tsb_ods_ta61_customer_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta61\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) ( tsb_ods_mg30_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-mortgages-mg30\"}))",
+                  "expr": "(sum by (job, namespace) ( tsb_ods_ta61_customer_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta61\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -1582,790 +1582,6 @@ data:
               "timeRegions": [],
               "timeShift": null,
               "title": "TA61 consumer  Records In and Out of Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:425",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:426",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 34
-              },
-              "hiddenSeries": false,
-              "id": 31,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-ingestor-bs09\"}",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Total Records BS09 Ingestors consumed from kafka",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:253",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:254",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 34
-              },
-              "hiddenSeries": false,
-              "id": 37,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-country-reference-bs09\"}",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Total Records BS09 Records consumed from kafka",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:253",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:254",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 42
-              },
-              "hiddenSeries": false,
-              "id": 54,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"ods\",job=\"tsb-ods-cdc-ingestor-bs09\"}",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average number of records consumed BS09 ingestors",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:253",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:254",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 42
-              },
-              "hiddenSeries": false,
-              "id": 56,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processTransactionsStream_time_ta62_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-country-reference-bs09\"}/tsbods_processTransactionsStream_time_ta62_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-country-reference-bs09\"})",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average records per second BS09 Records",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:197",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:198",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 50
-              },
-              "hiddenSeries": false,
-              "id": 58,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-ingestor-bs09\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Error Log Count for BS09  ingestors",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:535",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:536",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 50
-              },
-              "hiddenSeries": false,
-              "id": 60,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-country-reference-bs09\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Error Log count for BS09 Records",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:363",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:364",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 58
-              },
-              "hiddenSeries": false,
-              "id": 62,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (records_in_total_ta62_total{namespace=\"ods\",job=\"tsb-ods-cdc-ingestor-bs09\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (records_out_total_ta62_total{namespace=\"ods\",job=\"tsb-ods-cdc-ingestor-ta62\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "B"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "BS09 Records ingestors In and Out of Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:396",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:397",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 58
-              },
-              "hiddenSeries": false,
-              "id": 64,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_ta62_transactions_in_total {namespace=\"ods\",job=\"tsb-ods-cdc-country-reference-bs09\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_ta62_transactions_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta62\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "B"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "BS09 consumer  Records In and Out of Application",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2435,7 +1651,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 4
+                "y": 3
               },
               "hiddenSeries": false,
               "id": 32,
@@ -2531,7 +1747,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 4
+                "y": 3
               },
               "hiddenSeries": false,
               "id": 38,
@@ -2627,7 +1843,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 12
+                "y": 11
               },
               "hiddenSeries": false,
               "id": 66,
@@ -2723,7 +1939,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 12
+                "y": 11
               },
               "hiddenSeries": false,
               "id": 68,
@@ -2819,7 +2035,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 20
+                "y": 19
               },
               "hiddenSeries": false,
               "id": 70,
@@ -2915,7 +2131,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 20
+                "y": 19
               },
               "hiddenSeries": false,
               "id": 72,
@@ -3011,7 +2227,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 28
+                "y": 27
               },
               "hiddenSeries": false,
               "id": 74,
@@ -3115,7 +2331,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 28
+                "y": 27
               },
               "hiddenSeries": false,
               "id": 76,
@@ -3153,7 +2369,7 @@ data:
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_ta62_transactions_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta62\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_mg41_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-mortgages-mg41\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -3234,7 +2450,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 5
+                "y": 4
               },
               "hiddenSeries": false,
               "id": 33,
@@ -3330,7 +2546,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 5
+                "y": 4
               },
               "hiddenSeries": false,
               "id": 39,
@@ -3426,7 +2642,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 13
+                "y": 12
               },
               "hiddenSeries": false,
               "id": 78,
@@ -3522,7 +2738,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 13
+                "y": 12
               },
               "hiddenSeries": false,
               "id": 80,
@@ -3618,7 +2834,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 21
+                "y": 20
               },
               "hiddenSeries": false,
               "id": 82,
@@ -3714,7 +2930,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 21
+                "y": 20
               },
               "hiddenSeries": false,
               "id": 84,
@@ -3810,7 +3026,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 29
+                "y": 28
               },
               "hiddenSeries": false,
               "id": 86,
@@ -3914,7 +3130,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 29
+                "y": 28
               },
               "hiddenSeries": false,
               "id": 88,
@@ -3952,7 +3168,7 @@ data:
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_ta62_transactions_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta62\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_mg40obj_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-mortgages-mg40\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -4033,7 +3249,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 6
+                "y": 5
               },
               "hiddenSeries": false,
               "id": 34,
@@ -4129,7 +3345,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 6
+                "y": 5
               },
               "hiddenSeries": false,
               "id": 40,
@@ -4225,7 +3441,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 14
+                "y": 13
               },
               "hiddenSeries": false,
               "id": 90,
@@ -4321,7 +3537,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 14
+                "y": 13
               },
               "hiddenSeries": false,
               "id": 92,
@@ -4417,7 +3633,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 22
+                "y": 21
               },
               "hiddenSeries": false,
               "id": 94,
@@ -4513,7 +3729,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 22
+                "y": 21
               },
               "hiddenSeries": false,
               "id": 96,
@@ -4609,7 +3825,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 30
+                "y": 29
               },
               "hiddenSeries": false,
               "id": 98,
@@ -4713,7 +3929,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 30
+                "y": 29
               },
               "hiddenSeries": false,
               "id": 100,
@@ -4751,7 +3967,7 @@ data:
                 },
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_ta62_transactions_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta62\"}))",
+                  "expr": "(sum by (job, namespace) (tsb_ods_mg35_transactions_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-mortgages-mg35\"}))",
                   "hide": false,
                   "interval": "",
                   "legendFormat": "",
@@ -4819,7 +4035,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "TSB-ODS-NewCSS Tables",
+      "title": "TSB-ODS-New CSS Tables",
       "uid": "mHuuC2hnz",
-      "version": 146
+      "version": 157
     }
