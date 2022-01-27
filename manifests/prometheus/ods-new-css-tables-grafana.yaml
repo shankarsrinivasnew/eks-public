@@ -372,7 +372,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(tsbods_processTransactionsStream_time_ta63_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta63}/tsbods_processTransactionsStream_time_ta63_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta63\"})",
+                  "expr": "(tsbods_processTransactionsStream_time_ta63_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta63\"}/tsbods_processTransactionsStream_time_ta63_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-cards-ta63\"})",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
