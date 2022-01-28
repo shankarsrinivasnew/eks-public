@@ -308,6 +308,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-css-tables-grafana
+            - name: 'ods-new-css-tables-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-new-css-tables-grafana
+            - name: 'ods-single-applications-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-single-applications-grafana
 
 
       dashboardsConfigMaps:
@@ -339,6 +355,8 @@ spec:
         ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
+        ods-new-css-tables-grafana: ods-new-css-tables-grafana-cm
+        ods-single-applications-grafana: ods-single-applications-grafana-cm
 
     prometheusOperator:
       enabled: true
