@@ -25,7 +25,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -34,7 +34,7 @@ spec:
         - record: sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}
           expr: (kube_statefulset_status_replicas_ready{statefulset=~"tsb-sca-pr-.*",namespace="sca"})
         - alert: SCA_statefullset_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) > 0) and ((sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) < 1)
+          expr: ((sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) > 0) and ((sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) < 3)
           for: 1m
           labels:
             action: Application is likely impacted
@@ -46,12 +46,12 @@ spec:
             severity: WARNING
             priority: P2
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
             summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
-        - alert: SCA_statefulset_critical_alert_{{ AWS_ENVIRONMENT }}
+       - alert: SCA_statefulset_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
           expr: (sca_statefullset_app_down_{{ AWS_ENVIRONMENT }}) < 1
           labels:
             action: Application is likely impacted
@@ -63,7 +63,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -83,7 +83,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
