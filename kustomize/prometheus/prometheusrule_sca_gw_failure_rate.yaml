@@ -124,4 +124,6 @@ spec:
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.routeId}} has reached more than 50 % failure requst in 1 min. Value: {{ $value }}'
+
             summary: RED alert reached for Application {{ $labels.job }} Endpoint {{$labels.routeId}}
+

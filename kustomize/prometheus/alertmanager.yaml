@@ -112,8 +112,8 @@ stringData:
             {{- end }}
           text: >-
             {{ range .Alerts -}}
-            *Alert:* {{ .Annotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-            *Description:* {{ .Annotations.description }}
+            *Alert:* {{ .CommonAnnotations.summary }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+            *Description:* {{ .CommonAnnotations.description }}
             {{ end }}
           send_resolved: true
           http_config:

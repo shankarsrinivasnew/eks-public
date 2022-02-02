@@ -308,6 +308,16 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-css-tables-grafana
+
+            - name: 'cob-microservices-dashboard'
+              orgId: 1
+              folder: 'TSB-COB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cob-microservices-dashboard
+
             - name: 'ods-new-css-tables-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -324,6 +334,31 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-single-applications-grafana
+
+            - name: 'ods-cobol-api-gateway-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-cobol-api-gateway-grafana
+            - name: 'ods-sub-api-gateway-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sub-api-gateway-grafana
+            - name: 'ods-sys-api-gateway-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sys-api-gateway-grafana
 
 
       dashboardsConfigMaps:
@@ -355,8 +390,15 @@ spec:
         ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
-        ods-new-css-tables-grafana: ods-new-css-tables-grafana-cm
+
+        cob-microservices-dashboard: cob-microservices-dashboard-cm
         ods-single-applications-grafana: ods-single-applications-grafana-cm
+        ods-new-css-tables-grafana: ods-new-css-tables-grafana-cm
+        ods-cobol-api-gateway-grafana: ods-cobol-api-gateway-podmetrics-cm
+        ods-sub-api-gateway-grafana: ods-sub-api-gateway-podmetrics-cm
+        ods-sys-api-gateway-grafana: ods-sys-api-gateway-podmetrics-cm
+
+
 
     prometheusOperator:
       enabled: true
@@ -507,6 +549,7 @@ spec:
                 target_label: instancetype
               - source_labels: [__meta_ec2_tag_subsystem]
                 target_label: subsystem
+
           - job_name: ec2-discover-hdf-jmx
             scrape_interval: 60s
             scrape_timeout: 60s
@@ -514,28 +557,10 @@ spec:
               - region: eu-west-2
                 port: 9110
             relabel_configs:
-              - source_labels: [__meta_ec2_private_ip]
-                target_label: privateip
-              - source_labels: [__meta_ec2_instance_id]
-                target_label: instanceid
               - source_labels: [__meta_ec2_tag_ManagedBy]
                 target_label: managedby
                 regex: rackspace
                 action: keep
-              - source_labels: [__meta_ec2_tag_Name]
-                regex: .*hdf.*
-                action: keep
-              - source_labels: [__meta_ec2_tag_Name]
-                action: replace
-                target_label: instancename
-              - source_labels: [__meta_ec2_tag_Environment]
-                target_label: environment
-              - source_labels: [__meta_ec2_availability_zone]
-                target_label: availabilityzone
-              - source_labels: [__meta_ec2_instance_state]
-                target_label: status
-              - source_labels: [__meta_ec2_instance_type]
-                target_label: instancetype
           - job_name: ec2-discover-scylla-default
             ec2_sd_configs:
               - region: eu-west-2
@@ -643,6 +668,22 @@ spec:
             static_configs:
               - targets:
                   - dl-cwexporter-prometheus-cloudwatch-exporter:9106
+          - job_name: msk-node-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
+            static_configs:
+              - targets:
+                  - b-1.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
+                  - b-2.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
+                  - b-3.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
+          - job_name: msk-jmx-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
+            static_configs:
+              - targets:
+                  - b-1.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
+                  - b-2.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
+                  - b-3.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,

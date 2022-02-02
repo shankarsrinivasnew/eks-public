@@ -232,6 +232,10 @@ spec:
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
           ApiName: ["^tsb-ods.*$"]
+      - aws_namespace: AWS/ELB
+        aws_metric_name: HealthyHostCount
+        aws_dimensions: [AvailabilityZone, LoadBalancerName]
+        aws_statistics: [Average]
 
 
     # Configurable health checks against the /healthy and /ready endpoints
