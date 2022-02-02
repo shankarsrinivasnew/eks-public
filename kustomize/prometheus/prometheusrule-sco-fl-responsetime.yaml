@@ -128,4 +128,4 @@ spec:
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} response time is more than 2020ms for last 5 mins. Value: {{ $value }}'
-            summary: Red alert for response time reached for Application {{ $labels.job }}          
+            summary: Red alert for response time reached for Application {{ $labels.job }}
