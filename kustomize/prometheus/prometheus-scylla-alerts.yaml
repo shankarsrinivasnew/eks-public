@@ -186,7 +186,8 @@ spec:
             by: "cluster"
     #alerts
         - alert: cqlNonPrepared
-          expr: cql:non_prepared > 0
+          # expr: cql:non_prepared > 0
+          expr: cql:non_prepared > 5
           for: 15m
           labels:
             severity: CRITICAL
