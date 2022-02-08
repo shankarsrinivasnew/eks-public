@@ -14,7 +14,8 @@ spec:
         - record: sco_fl_pod_restart_critical_{{ AWS_ENVIRONMENT }}
           expr: delta(kube_pod_container_status_restarts_total{namespace="sco", pod=~"tsb-sco-fl.*"} [5m])
         - alert: SCO_FL_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: sco_fl_pod_restart_critical_{{ AWS_ENVIRONMENT }} > 0
+          expr: sco_fl_pod_restart_critical_{{ AWS_ENVIRONMENT }} >= 3
+          for: 5m
           labels:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
