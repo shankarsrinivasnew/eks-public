@@ -134,7 +134,10 @@ spec:
         aws_statistics: [Average]
       - aws_namespace: Glue
         aws_metric_name: "glue.driver.aggregate.numFailedTasks"
-        aws_dimensions: [JobName]
+        aws_dimensions: 
+        - JobName
+        - JobRunId
+        - Type
         aws_dimension_select_regex:
           JobName: ["^tsb-datalake.*$"]
         aws_statistics: [Sum]
