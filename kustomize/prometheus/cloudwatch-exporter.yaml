@@ -132,7 +132,7 @@ spec:
         aws_dimension_select_regex:
           FunctionName: ["^tsb-datalake.*$"]
         aws_statistics: [Average]
-      - aws_namespace: AWS/Glue
+      - aws_namespace: Glue
         aws_metric_name: "glue.driver.aggregate.numFailedTasks"
         aws_dimensions: [JobName]
         aws_dimension_select_regex:

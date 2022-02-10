@@ -438,7 +438,8 @@ spec:
             description: '{{ $labels.instance }} has less than 20% free disk space on the root partition.'
             summary: Instance {{ $labels.instance }} low disk space
         - alert: NoCql
-          expr: scylla_manager_healthcheck_cql_status == -1
+          # expr: scylla_manager_healthcheck_cql_status == -1
+          expr: scylla_manager_healthcheck_cql_status == 2
           for: 15m
           labels:
             severity: CRITICAL

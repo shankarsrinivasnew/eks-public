@@ -27,7 +27,12 @@ echo "  secret_key: <Secret key>" >> object-store.yaml
 kubectl -n prometheus create secret generic thanos-s3-config --from-file=object-store.yaml
 rm object-store.yaml
 ```
-5. Install Flux and the Helm Operator using Helm
+5. Add a secret containing the image pull secret for Artifactory:
+```
+kubectl apply -f manifests/jenkins/namespace.yaml
+kubectl -n jenkins create secret docker-registry artifactory-rackspace --docker-server='docker.artifactory.mgmt.aws.uk.tsb' --docker-username='rackspace' --docker-password='<PASSWORD>'
+```
+6. Install Flux and the Helm Operator using Helm
 ```
 AWS_ACCOUNT=<AWS account number>
 sed -i -e "s/{{ AWS_ACCOUNT }}/$AWS_ACCOUNT/g" helm/flux.yaml
