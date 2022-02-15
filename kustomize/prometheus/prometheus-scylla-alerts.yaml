@@ -504,7 +504,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: BackupFailed
           expr: (sum(scylla_manager_task_run_total{type=~"backup", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"backup", status="ERROR"} offset 3m) or vector(0)) > 0
-          for: 1m
+          for: 15m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
