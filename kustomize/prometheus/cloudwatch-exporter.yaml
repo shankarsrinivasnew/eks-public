@@ -140,7 +140,7 @@ spec:
         - Type
         aws_dimension_select_regex:
           JobName: ["^tsb-datalake.*$"]
-        aws_statistics: [Count]
+        aws_statistics: [SampleCount]
       - aws_namespace: AWS/States
         aws_metric_name: ExecutionsFailed
         aws_dimensions: [StateMachineArn]
