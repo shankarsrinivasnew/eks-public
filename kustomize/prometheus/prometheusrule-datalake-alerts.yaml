@@ -730,6 +730,20 @@ spec:
             platform: AWS
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
+        - alert: tsb-appointment-booking-gluein-error
+          annotations:
+            message: appoointment booking glue job has errors
+          expr: tsb_datalake_appointmentbooking_appointmentbooking_glue_in_error_sum offset 10m > 0
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            itopsbridge: "true"
+            platform: AWS
+            severity: CRITICAL
+            tsbci: AWS_BIG_DATA_LAKE
 #Appointment booking alerts
         - alert: appointment-booking alert for lambda functions
           annotations:
