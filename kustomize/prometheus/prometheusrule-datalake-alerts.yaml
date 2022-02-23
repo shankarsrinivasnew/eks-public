@@ -378,6 +378,7 @@ spec:
             severity: CRITICAL
             itopsbridge: "true"
             tsbci: AWS_BIG_DATA_LAKE
+#sqs alerts
         - alert: datalake_aws_sqs_flood_alarm
           annotations:
             message: main queue {{ $labels.queue_name }} has a large number of queued items
@@ -729,10 +730,43 @@ spec:
             platform: AWS
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
+#Appointment booking alerts
         - alert: appointment-booking alert for lambda functions
           annotations:
             message: Average failures of Lambda {{ $labels.function_name }} too high
           expr: aws_lambda_errors_average{function_name=~".*appointmentbooking.*"} offset 10m > 0
+          for: 1m
+          labels:
+            action: Closely monitor
+            usecase: psd2
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: AWS_APPOINTMENT_BOOKING
+#Speech analytics alerts
+        - alert: appointment-booking alert for lambda functions
+          annotations:
+            message: Average failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_average{function_name=~".*speechanalytics.*"} offset 10m > 0
+          for: 1m
+          labels:
+            action: Closely monitor
+            usecase: psd2
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: AWS_APPOINTMENT_BOOKING
+#Verint alerts
+        - alert: appointment-booking alert for lambda functions
+          annotations:
+            message: Average failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_average{function_name=~".*verint.*"} offset 10m > 0
           for: 1m
           labels:
             action: Closely monitor
