@@ -197,6 +197,10 @@ spec:
         aws_metric_name: sasGlueInError
       - aws_namespace: tsb-datalake-appointmentbooking
         aws_metric_name: appointmentbookingGlueInError
+      - aws_namespace: tsb-datalake-speechanalytics
+        aws_metric_name: speechanalyticsGlueInError
+      - aws_namespace: tsb-datalake-verint
+        aws_metric_name: verintGlueInError
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: 4XXError
         aws_dimensions: [ApiName, Method, Resource, Stage]
