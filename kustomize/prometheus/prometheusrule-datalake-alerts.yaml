@@ -745,7 +745,7 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_APPOINTMENT_BOOKING
+            tsbci: AWS_BIG_DATA_LAKE
 #Speech analytics alerts
         - alert: appointment-booking alert for lambda functions
           annotations:
@@ -761,7 +761,7 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_APPOINTMENT_BOOKING
+            tsbci: AWS_BIG_DATA_LAKE
 #Verint alerts
         - alert: appointment-booking alert for lambda functions
           annotations:
@@ -777,4 +777,4 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_APPOINTMENT_BOOKING
+            tsbci: AWS_BIG_DATA_LAKE
