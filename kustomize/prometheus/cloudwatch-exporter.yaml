@@ -159,6 +159,18 @@ spec:
         aws_dimension_select_regex:
           StateMachineArn: [".*tsb-datalake.*$"]
         aws_statistics: [Sum]
+      - aws_namespace: AWS/States
+        aws_metric_name: ExecutionsFailed
+        aws_dimensions: [StateMachineArn]
+        aws_dimension_select_regex:
+          StateMachineArn: [".*tsb-voiceanalytics.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/States
+        aws_metric_name: ExecutionsTimedOut
+        aws_dimensions: [StateMachineArn]
+        aws_dimension_select_regex:
+          StateMachineArn: [".*tsb-voiceanalytics.*$"]
+        aws_statistics: [Sum]
       - aws_namespace: CloudTrailMetrics
         aws_metric_name: EmrSecurityChangesEventCount
         period_seconds: 120
