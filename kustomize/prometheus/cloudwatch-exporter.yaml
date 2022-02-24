@@ -132,6 +132,12 @@ spec:
         aws_dimension_select_regex:
           FunctionName: ["^tsb-datalake.*$"]
         aws_statistics: [Average]
+      - aws_namespace: AWS/Lambda
+        aws_metric_name: Errors
+        aws_dimensions: [FunctionName]
+        aws_dimension_select_regex:
+          FunctionName: ["^tsb-voiceanalytics.*$"]
+        aws_statistics: [Average]
       - aws_namespace: Glue
         aws_metric_name: "glue.driver.aggregate.numFailedTasks"
         aws_dimensions: 
@@ -152,6 +158,18 @@ spec:
         aws_dimensions: [StateMachineArn]
         aws_dimension_select_regex:
           StateMachineArn: [".*tsb-datalake.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/States
+        aws_metric_name: ExecutionsFailed
+        aws_dimensions: [StateMachineArn]
+        aws_dimension_select_regex:
+          StateMachineArn: [".*tsb-voiceanalytics.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/States
+        aws_metric_name: ExecutionsTimedOut
+        aws_dimensions: [StateMachineArn]
+        aws_dimension_select_regex:
+          StateMachineArn: [".*tsb-voiceanalytics.*$"]
         aws_statistics: [Sum]
       - aws_namespace: CloudTrailMetrics
         aws_metric_name: EmrSecurityChangesEventCount
