@@ -731,7 +731,7 @@ spec:
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
 #Appointment booking alerts
-        - alert: appointment-booking alert for lambda functions
+        - alert: datalake_aws_lambda_appointmentbooking_errors_too_high
           annotations:
             message: Average failures of Lambda {{ $labels.function_name }} too high
           expr: aws_lambda_errors_average{function_name=~".*appointmentbooking.*"} offset 10m > 0
@@ -746,7 +746,7 @@ spec:
             severity: CRITICAL
             itopsbridge: "true"
             tsbci: AWS_BIG_DATA_LAKE
-        - alert: tsb-appointment-booking-gluein-error
+        - alert: datalake_aws_glue_appointmentbooking_error_alarm
           annotations:
             message: Datalake glue job for appointment booking has errors
           expr: tsb_datalake_appointmentbooking_appointmentbooking_glue_in_error_sum offset 10m > 0
@@ -761,7 +761,7 @@ spec:
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
 #Speech analytics alerts
-        - alert: speech analytics alert for lambda functions
+        - alert: datalake_aws_lambda_speechanalytics_errors_too_high
           annotations:
             message: Average failures of Lambda {{ $labels.function_name }} too high
           expr: aws_lambda_errors_average{function_name=~".*speechanalytics.*"} offset 10m > 0
@@ -776,7 +776,7 @@ spec:
             severity: CRITICAL
             itopsbridge: "true"
             tsbci: AWS_BIG_DATA_LAKE
-        - alert: tsb_datalake_speechanalytics_speechanalytics_glue_in_error
+        - alert: datalake_aws_glue_speechanalytics_error_alarm
           annotations:
             message:  Datalake glue job for speechanalytics has errors
           expr: tsb_datalake_speechanalytics_speechanalytics_glue_in_error_sum offset 10m > 0
@@ -791,7 +791,7 @@ spec:
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
 #Verint alerts
-        - alert: verint alert for lambda functions
+        - alert: datalake_aws_lambda_verint_errors_too_high
           annotations:
             message: Average failures of Lambda {{ $labels.function_name }} too high
           expr: aws_lambda_errors_average{function_name=~".*verint.*"} offset 10m > 0
@@ -806,7 +806,7 @@ spec:
             severity: CRITICAL
             itopsbridge: "true"
             tsbci: AWS_BIG_DATA_LAKE
-        - alert: tsb_datalake_verint_verint_glue_in_error
+        - alert: datalake_aws_glue_verint_error_alarm
           annotations:
             message:  Datalake glue job for verint has errors
           expr: tsb_datalake_verint_verint_glue_in_error_sum offset 10m > 0
@@ -821,7 +821,7 @@ spec:
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
 #Voice analytics alerts
-        - alert: voice analytics alert for lambda functions
+        - alert: datalake_aws_lambda_voiceanalytics_errors_too_high
           annotations:
             message: Average failures of Lambda {{ $labels.function_name }} too high
           expr: aws_lambda_errors_average{function_name=~".*voiceanalytics.*"} offset 10m > 0
