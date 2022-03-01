@@ -866,4 +866,4 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKÈ
+            tsbci: AWS_BIG_DATA_LAKE
