@@ -126,7 +126,7 @@ spec:
         aws_dimensions: [QueueName]
         aws_dimension_select_regex:
           QueueName: ["^tsb-datalake.*$"]
-       - aws_namespace: AWS/Lambda
+      - aws_namespace: AWS/Lambda
         aws_metric_name: Errors
         aws_dimensions: [FunctionName]
         aws_dimension_select_regex:
