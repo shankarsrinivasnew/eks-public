@@ -824,8 +824,39 @@ spec:
         - alert: datalake_aws_lambda_voiceanalytics_errors_too_high
           annotations:
             message: Average failures of Lambda {{ $labels.function_name }} too high
-          expr: aws_lambda_errors_average{function_name=~".*voiceanalytics.*"} offset 10m > 0
-          for: 1m
+          expr: aws_lambda_errors_average{function_name=~".*voiceanalytics.*"} offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: psd2
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: AWS_BIG_DATA_LAKÈ
+        - alert: datalake_aws_lambda_voiceanalytics_errors_too_high
+          annotations:
+            message: Sum of failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{function_name=~".*voiceanalytics.*"} offset 30m >= 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: psd2
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: AWS_BIG_DATA_LAKÈ
+#general alert for lambda
+        - alert: aws_lambda_errors_too_high
+          annotations:
+            message: Sum of failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{} offset 30m >= 0
+          for: 1s
           labels:
             action: Closely monitor
             usecase: psd2
