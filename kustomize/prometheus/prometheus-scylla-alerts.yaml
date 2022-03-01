@@ -200,7 +200,7 @@ spec:
             description: 'For {{ $labels.instance }} Some of the cql queries are non-prepared please ensure the number of non prepared queries are low'
             summary: Instance {{ $labels.instance }} non prepared statments
         - alert: cql:non_paged_no_system
-          expr: cql:non_paged > 0
+          expr: cql:non_paged > 1
           for: 15m
           labels:
             severity: CRITICAL
