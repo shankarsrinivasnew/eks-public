@@ -41,8 +41,9 @@ spec:
         prometheusOperator: true
         time: true
 
-    ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
-    ##
+    ## Using default values from https://github.com/grafana/helm-charts/blob/grafana-5.8.16/charts/grafana/values.yaml
+    ## Using chart from https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+    
     grafana:
       image:
         repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana
