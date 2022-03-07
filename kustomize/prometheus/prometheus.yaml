@@ -44,6 +44,10 @@ spec:
     ## Using default values from https://github.com/helm/charts/blob/master/stable/grafana/values.yaml
     ##
     grafana:
+      image:
+        repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana
+        tag: 7.2.1
+        pullPolicy: IfNotPresent
       enabled: true
       envFromSecret: grafana-mysql-credentials ## Configure RDS Backend. Ensure Secret named grafana-mysql-credentials is created prior to runninng this.
       # env:
@@ -65,6 +69,10 @@ spec:
           - grafana.{{ DNS_ZONE }}
         path: /*
       sidecar:
+        image:
+          repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/kiwigrid/k8s-sidecar
+          tag: 1.1.0
+        imagePullPolicy: IfNotPresent
         datasources:
           defaultDatasourceEnabled: false
       datasources:
