@@ -64,7 +64,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -159,7 +159,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -197,6 +197,14 @@ data:
               "interval": "",
               "legendFormat": "Total number of successful SCA requests",
               "refId": "E"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum by (container, namespace) (total_broadcom_callback_failures_total{container=\"tsb-sca-app-responses-topology\",namespace=\"sca\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "total_broadcom_callback_failures",
+              "refId": "F"
             }
           ],
           "thresholds": [],
@@ -278,7 +286,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -415,7 +423,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -528,7 +536,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -665,7 +673,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -802,7 +810,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -872,7 +880,7 @@ data:
           }
         }
       ],
-      "schemaVersion": 26,
+      "schemaVersion": 27,
       "style": "dark",
       "tags": [],
       "templating": {
@@ -886,5 +894,5 @@ data:
       "timezone": "",
       "title": "SCA Microservice",
       "uid": "CSalepUGz",
-      "version": 21
+      "version": 22
     }
