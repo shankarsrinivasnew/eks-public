@@ -745,7 +745,7 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
         - alert: datalake_aws_glue_appointmentbooking_error_alarm
           annotations:
             message: Datalake glue job for appointment booking has errors
@@ -759,7 +759,7 @@ spec:
             itopsbridge: "true"
             platform: AWS
             severity: CRITICAL
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
 #Speech analytics alerts
         - alert: datalake_aws_lambda_speechanalytics_errors_too_high
           annotations:
@@ -775,7 +775,7 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
         - alert: datalake_aws_glue_speechanalytics_error_alarm
           annotations:
             message:  Datalake glue job for speechanalytics has errors
@@ -789,7 +789,7 @@ spec:
             itopsbridge: "true"
             platform: AWS
             severity: CRITICAL
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
 #Verint alerts
         - alert: datalake_aws_lambda_verint_errors_too_high
           annotations:
@@ -805,7 +805,7 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
         - alert: datalake_aws_glue_verint_error_alarm
           annotations:
             message:  Datalake glue job for verint has errors
@@ -819,7 +819,7 @@ spec:
             itopsbridge: "true"
             platform: AWS
             severity: CRITICAL
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
 #Voice analytics alerts
         - alert: datalake_aws_lambda_voiceanalytics_errors_too_high
           annotations:
@@ -851,4 +851,4 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
