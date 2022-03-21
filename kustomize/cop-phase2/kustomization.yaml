@@ -1,0 +1,6 @@
+resources:
+  - sa.yaml
+  - networkpolicy.yaml
+namespace: cop-phase2
+transformers:
+  - awsTransformer.yaml
