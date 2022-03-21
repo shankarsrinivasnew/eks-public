@@ -41,104 +41,9 @@ data:
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 0
-          },
-          "hiddenSeries": false,
-          "id": 6,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "(sum by (namespace, service) (rate(http_server_requests_seconds_count {namespace=\"cob\",service=~\"tsb-onboarding-restproxy.*\",outcome!=\"SUCCESS\",uri!=\"/actuator/prometheus|/health\"}[5m])) / sum by (namespace, service) (rate(http_server_requests_seconds_count {namespace=\"cob\",service=~\"tsb-onboarding-restproxy.*\",uri!=\"/actuator/prometheus|/health\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "{{job}}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Failure Rate(%)",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
             "h": 9,
             "w": 12,
-            "x": 12,
+            "x": 0,
             "y": 0
           },
           "hiddenSeries": false,
@@ -159,7 +64,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -169,7 +74,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by(namespace, uri)(rate(http_server_requests_seconds_count{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!~\"/actuator/prometheus|/health|/\\\\*\\\\*\"}[5m]))",
+              "expr": "sum by(namespace, uri)(http_server_requests_seconds_count{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!~\"/actuator/prometheus|/health|/\\\\*\\\\*\"})",
               "interval": "",
               "legendFormat": "{{service}}",
               "refId": "A"
@@ -234,7 +139,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 9
           },
           "hiddenSeries": false,
           "id": 4,
@@ -254,7 +159,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.2.1",
+          "pluginVersion": "7.5.15",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -264,7 +169,7 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by(namespace, service)(rate(http_server_requests_seconds_sum{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!=\"/actuator/prometheus|/health\"}[5m]))",
+              "expr": "sum by(namespace, service)(http_server_requests_seconds_sum{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!=\"/actuator/prometheus|/health\"})",
               "interval": "",
               "legendFormat": "{{service}}",
               "refId": "A"
@@ -310,9 +215,104 @@ data:
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 6,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(sum by (namespace, service) (rate(http_server_requests_seconds_count {namespace=\"cob\",service=~\"tsb-onboarding-restproxy.*\",outcome!=\"SUCCESS\",uri!=\"/actuator/prometheus|/health\"}[5m])) / sum by (namespace, service) (rate(http_server_requests_seconds_count {namespace=\"cob\",service=~\"tsb-onboarding-restproxy.*\",uri!=\"/actuator/prometheus|/health\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Failure Rate(%)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
-      "schemaVersion": 26,
+      "schemaVersion": 27,
       "style": "dark",
       "tags": [],
       "templating": {
@@ -326,5 +326,5 @@ data:
       "timezone": "",
       "title": "COB  Microservices Dashboard",
       "uid": "wLzbAE17z",
-      "version": 4
+      "version": 7
     }
