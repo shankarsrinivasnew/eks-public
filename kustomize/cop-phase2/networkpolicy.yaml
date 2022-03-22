@@ -70,7 +70,6 @@ spec:
           names:
             - tsb-cop-phase2
             - default
-            - cop-phase2-sink-connector
       protocol: TCP
       destination:
         nets:
