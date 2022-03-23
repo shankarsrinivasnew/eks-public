@@ -58,10 +58,13 @@ spec:
       installPlugins:
         - kubernetes-client-api:4.13.3-1
         - kubernetes:1.27.7
+        - workflow-api:1138.v619fd5201b_2f
         - workflow-job:2.41
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
+        - workflow-multibranch:2.24
         - credentials-binding:1.25
+        - github:1.34.2
         - git:4.5.0
         - configuration-as-code:1.51
         - ansicolor:0.7.2
@@ -96,6 +99,7 @@ spec:
         - audit-trail:3.10
         - pipeline-model-definition:1.9.2
         - pipeline-model-extensions:1.9.2
+        - pipeline-milestone-step:1.3.2
       JCasC:
         securityRealm: |-
           local:
