@@ -58,6 +58,7 @@ spec:
       installPlugins:
         - kubernetes-client-api:4.13.3-1
         - kubernetes:1.27.7
+        - workflow-api:1138.v619fd5201b_2f
         - workflow-job:2.41
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
