@@ -411,6 +411,7 @@ spec:
         ods-sub-api-gateway-grafana: ods-sub-api-gateway-podmetrics-cm
         ods-sys-api-gateway-grafana: ods-sys-api-gateway-podmetrics-cm
         ods-cli-cop-applications: ods-cli-cop-applications-cm
+        ods-cobol-api-grafana-2: ods-cobol-api-grafana-2-cm
 
 
     prometheusOperator:
