@@ -1,5 +1,4 @@
 resources:
-  - sa.yaml
   - argon.yaml
 namespace: jenkins
 transformers:
