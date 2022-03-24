@@ -7,7 +7,7 @@ metadata:
 spec:
   releaseName: argon-broker
   chart:
-    repository: https://argonsecurity.github.io/broker-deployment/
+    repository: https://argonsecurity.github.io/broker-deployment
     name: argon/argon-broker
     version: 1.0.5
   values:
