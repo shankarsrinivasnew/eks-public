@@ -98,4 +98,8 @@ data:
       username: tsb-admins-eks
       groups:
         - tsb-admins
-   
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sco-nonprod-eks
+      username: tsb-sco-readyonly
+      groups:
+        - tsb-nonprod-eks-sco
+
