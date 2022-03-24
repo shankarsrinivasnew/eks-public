@@ -61,7 +61,7 @@ spec:
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
         - workflow-multibranch:2.24
-        - credentials-binding:1.25
+        - credentials-binding:1.27
         - git:4.8.3
         - configuration-as-code:1.51
         - ansicolor:0.7.2
