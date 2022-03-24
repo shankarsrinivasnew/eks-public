@@ -3,13 +3,13 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: argon-broker
+  namespace: jenkins
 spec:
   releaseName: argon-broker
   chart:
     repository: https://argonsec.github.io/broker-deployment
     name: argon
   values:
-    namespace: jenkins
     global:
       argonServer: https://app-broker.argon.io
       public_key: 3nc7ypt3d2ecu7ity
