@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.277.1-lts-alpine
+      tag: 2.277.4-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -58,13 +58,10 @@ spec:
       installPlugins:
         - kubernetes-client-api:4.13.3-1
         - kubernetes:1.27.7
-        - workflow-api:1138.v619fd5201b_2f
-        - workflow-job:2.41
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
         - workflow-multibranch:2.24
         - credentials-binding:1.25
-        - github:1.34.2
         - git:4.5.0
         - configuration-as-code:1.51
         - ansicolor:0.7.2
