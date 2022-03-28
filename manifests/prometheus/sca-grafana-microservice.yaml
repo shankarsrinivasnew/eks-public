@@ -608,7 +608,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}
+            },
             "overrides": []
           },
           "fill": 1,
@@ -743,7 +745,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}
+            },
             "overrides": []
           },
           "fill": 1,
@@ -852,7 +856,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}            
+            },
             "overrides": []
           },
           "fill": 1,
@@ -961,7 +967,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}            
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1183,7 +1191,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1288,7 +1298,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}            
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1381,7 +1393,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}            
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1653,7 +1667,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}            
+            },
             "overrides": []
           },
           "fill": 1,
