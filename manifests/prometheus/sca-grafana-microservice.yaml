@@ -47,7 +47,7 @@ data:
             "y": 0
           },
           "hiddenSeries": false,
-          "id": 36,
+          "id": 38,
           "legend": {
             "avg": false,
             "current": false,
@@ -74,27 +74,33 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by (container, namespace) (total_push_message_requests_received_total{container=\"tsb-sca-app-requests-topology\",namespace=\"sca\"})",
+              "expr": "sum by (namespace, job, uri) (http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*validate-pwd\"})",
               "interval": "",
-              "legendFormat": "total_push_message_requests_received",
+              "legendFormat": "Total request",
               "refId": "A"
             },
             {
-              "expr": "sum by (container, namespace) (total_push_message_requests_success_total{container=\"tsb-sca-app-requests-topology\",namespace=\"sca\"})",
+              "expr": "sum by (namespace, job, uri) (http_server_requests_seconds_count {namespace=\"sca\",status =~\"2..\", uri=~\".*validate-pwd\"})",
               "interval": "",
-              "legendFormat": "total_push_message_requests_success",
+              "legendFormat": "Total success(200) request",
               "refId": "B"
             },
             {
-              "expr": "sum by (container, namespace) (total_push_message_requests_failed_total{container=\"tsb-sca-app-requests-topology\",namespace=\"sca\"})",
+              "expr": "sum by (namespace, job, uri) (http_server_requests_seconds_count {namespace=\"sca\",status =~\"4..\", uri=~\".*validate-pwd\"})",
               "interval": "",
-              "legendFormat": "total_push_message_requests_failed",
+              "legendFormat": "Total Application failure(400 series) request",
               "refId": "C"
+            },
+            {
+              "expr": "sum by (namespace, job, uri) (http_server_requests_seconds_count {namespace=\"sca\",status =~\"5..\", uri=~\".*validate-pwd\"})",
+              "interval": "",
+              "legendFormat": "Total Server failure(500 series) request",
+              "refId": "D"
             }
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Total Push Notification Requests",
+          "title": "validate password API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -279,7 +285,7 @@ data:
             "y": 8
           },
           "hiddenSeries": false,
-          "id": 34,
+          "id": 36,
           "legend": {
             "avg": false,
             "current": false,
@@ -306,17 +312,29 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\",outcome!=\"SUCCESSFUL\"}[5m])) / sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\"}[5m]))) * 100",
+              "expr": "sum by (container, namespace) (total_push_message_requests_received_total{container=\"tsb-sca-app-requests-topology\",namespace=\"sca\"})",
               "interval": "",
-              "legendFormat": "{{routeId}} Failure Rate",
+              "legendFormat": "total_push_message_requests_received",
               "refId": "A"
+            },
+            {
+              "expr": "sum by (container, namespace) (total_push_message_requests_success_total{container=\"tsb-sca-app-requests-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "total_push_message_requests_success",
+              "refId": "B"
+            },
+            {
+              "expr": "sum by (container, namespace) (total_push_message_requests_failed_total{container=\"tsb-sca-app-requests-topology\",namespace=\"sca\"})",
+              "interval": "",
+              "legendFormat": "total_push_message_requests_failed",
+              "refId": "C"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "API Gateway Failure Rate (%)",
+          "title": "Total Push Notification Requests",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -487,7 +505,7 @@ data:
             "y": 16
           },
           "hiddenSeries": false,
-          "id": 32,
+          "id": 34,
           "legend": {
             "avg": false,
             "current": false,
@@ -514,59 +532,17 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transaction\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transaction\"}[5m]))) * 100",
+              "expr": "(sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\",outcome!=\"SUCCESSFUL\"}[5m])) / sum by (namespace, job, routeId) (rate(gateway_requests_seconds_count{namespace=\"sca\"}[5m]))) * 100",
               "interval": "",
-              "legendFormat": "Get Transaction API Failure Rate",
+              "legendFormat": "{{routeId}} Failure Rate",
               "refId": "A"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*enrol-type\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*enrol-type\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Enroll Type API Failure Rate",
-              "refId": "B"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*stepup-auth-response\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*stepup-auth-response\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Stepup Auth Response API Failure Rate",
-              "refId": "C"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*validate-pwd\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*validate-pwd\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Validate Pwd API Failure Rate",
-              "refId": "D"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*auth-method\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*auth-method\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Auth Method API Failure Rate",
-              "refId": "E"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*init-app-auth\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*init-app-auth\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Init App Auth API Failure Rate",
-              "refId": "F"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*send-otp\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*send-otp\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Sent OTP API Failure Rate",
-              "refId": "G"
-            },
-            {
-              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-userid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-userid\"}[5m]))) * 100",
-              "interval": "",
-              "legendFormat": "Transaction By User ID API Failure Rate",
-              "refId": "H"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "API Failure Rate (%)",
+          "title": "API Gateway Failure Rate (%)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -610,9 +586,7 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
+            "defaults": {},
             "overrides": []
           },
           "fill": 1,
@@ -761,6 +735,143 @@ data:
             "y": 24
           },
           "hiddenSeries": false,
+          "id": 32,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transaction\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transaction\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Get Transaction API Failure Rate",
+              "refId": "A"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*enrol-type\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*enrol-type\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Enroll Type API Failure Rate",
+              "refId": "B"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*stepup-auth-response\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*stepup-auth-response\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Stepup Auth Response API Failure Rate",
+              "refId": "C"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*validate-pwd\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*validate-pwd\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Validate Pwd API Failure Rate",
+              "refId": "D"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*auth-method\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*auth-method\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Auth Method API Failure Rate",
+              "refId": "E"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*init-app-auth\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*init-app-auth\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Init App Auth API Failure Rate",
+              "refId": "F"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*send-otp\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*send-otp\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Sent OTP API Failure Rate",
+              "refId": "G"
+            },
+            {
+              "expr": "(sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\",outcome!=\"SUCCESS\", uri=~\".*transactions-by-userid\"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace=\"sca\", uri=~\".*transactions-by-userid\"}[5m]))) * 100",
+              "interval": "",
+              "legendFormat": "Transaction By User ID API Failure Rate",
+              "refId": "H"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "API Failure Rate (%)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 32
+          },
+          "hiddenSeries": false,
           "id": 30,
           "legend": {
             "avg": false,
@@ -893,7 +1004,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 32
+            "y": 40
           },
           "hiddenSeries": false,
           "id": 26,
@@ -997,5 +1108,5 @@ data:
       "timezone": "",
       "title": "SCA Microservice",
       "uid": "CSalepUGz",
-      "version": 23
+      "version": 24
     }
