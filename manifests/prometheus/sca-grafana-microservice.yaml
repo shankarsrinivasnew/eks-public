@@ -100,7 +100,7 @@ data:
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Get Transaction By User Api",
+          "title": "Get Transactions By UserId API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -340,7 +340,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Get Transaction Api",
+          "title": "Get Transaction API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -564,7 +564,7 @@ data:
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Stepup auth Api",
+          "title": "Stepup Auth API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -812,7 +812,7 @@ data:
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Send otp Api",
+          "title": "Send OTP API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -923,7 +923,7 @@ data:
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Init App Api",
+          "title": "Init App API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1034,7 +1034,7 @@ data:
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Auth Method Api",
+          "title": "Auth Method API",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1147,7 +1147,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Validate password Api",
+          "title": "Validate Password API",
           "tooltip": {
             "shared": true,
             "sort": 0,
