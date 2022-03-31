@@ -1,5 +1,0 @@
-resources:
-  - argon.yaml
-namespace: jenkins
-transformers:
-  - awsTransformer.yaml
