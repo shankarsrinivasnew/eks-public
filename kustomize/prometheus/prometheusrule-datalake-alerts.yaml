@@ -378,6 +378,7 @@ spec:
             severity: CRITICAL
             itopsbridge: "true"
             tsbci: AWS_BIG_DATA_LAKE
+#sqs alerts
         - alert: datalake_aws_sqs_flood_alarm
           annotations:
             message: main queue {{ $labels.queue_name }} has a large number of queued items
@@ -465,6 +466,7 @@ spec:
         # - alert: datalake_aws_glue_job_failures_alarm Glue not looking like its being picked up by cwexporter
         - alert: datalake_aws_states_executions_failures_alarm
           annotations:
+            description: 'Step function {{ $labels.StateMachineArn }} has failed to execute'
             message: Step function {{ $labels.StateMachineArn }} has failed to execute.
           expr: aws_states_executions_failed_sum offset 10m > 0
           for: 1m
@@ -476,7 +478,7 @@ spec:
             platform: AWS
             itopsbridge: "true"
             severity: CRITICAL
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
         - alert: datalake_aws_emr_security_changes_alarm
           annotations:
             message: Persistent EMR (tsb-datalake-<env>-emr01) has had security changes made.
@@ -729,4 +731,133 @@ spec:
             platform: AWS
             severity: CRITICAL
             tsbci: AWS_BIG_DATA_LAKE
-
+#Appointment booking alerts
+        - alert: datalake_aws_lambda_appointmentbooking_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{function_name=~".*appointmentbooking.*"} offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: appointmentbooking
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: BIG_DATA_LAKE_AWS
+        - alert: datalake_aws_glue_appointmentbooking_error_alarm
+          annotations:
+            description: 'Datalake glue job for appointment booking has errors'
+            message: Datalake glue job for appointment booking has errors
+          expr: tsb_datalake_appointmentbooking_appointmentbooking_glue_in_error_sum offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            itopsbridge: "true"
+            platform: AWS
+            severity: CRITICAL
+            tsbci: BIG_DATA_LAKE_AWS
+#Speech analytics alerts
+        - alert: datalake_aws_lambda_speechanalytics_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{function_name=~".*speechanalytics.*"} offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: speechanalytics
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: BIG_DATA_LAKE_AWS
+        - alert: datalake_aws_glue_speechanalytics_error_alarm
+          annotations:
+            description: 'Datalake glue job for speechanalytics has errors'
+            message:  Datalake glue job for speechanalytics has errors
+          expr: tsb_datalake_speechanalytics_speechanalytics_glue_in_error_sum offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            itopsbridge: "true"
+            platform: AWS
+            severity: CRITICAL
+            tsbci: BIG_DATA_LAKE_AWS
+#Verint alerts
+        - alert: datalake_aws_lambda_verint_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{function_name=~".*verint.*"} offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: verint
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: BIG_DATA_LAKE_AWS
+        - alert: datalake_aws_glue_verint_error_alarm
+          annotations:
+            description: 'Datalake glue job for verint has errors'
+            message:  Datalake glue job for verint has errors
+          expr: tsb_datalake_verint_verint_glue_in_error_sum offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            itopsbridge: "true"
+            platform: AWS
+            severity: CRITICAL
+            tsbci: BIG_DATA_LAKE_AWS
+#Voice analytics alerts
+        - alert: datalake_aws_lambda_voiceanalytics_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{function_name=~".*voiceanalytics.*"} offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: voiceanalytics
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: AWS_BIG_DATA_LAKÈ
+#general alert for lambda
+        - alert: aws_lambda_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{} offset 30m >= 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: datalake
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: BIG_DATA_LAKE_AWS
