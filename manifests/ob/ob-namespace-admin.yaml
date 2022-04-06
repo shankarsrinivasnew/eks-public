@@ -1,0 +1,29 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ob-admin-role
+  namespace: api-gw-ob
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ob-admin-binding
+  namespace: api-gw-ob
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ob-admin-role
+subjects:
+  - kind: ServiceAccount
+    name: tsb-api-gw-ob
+  - kind: Group
+    name: ob-admin
+  - kind: ServiceAccount
+    name: jenkins-terraform
+    namespace: jenkins
