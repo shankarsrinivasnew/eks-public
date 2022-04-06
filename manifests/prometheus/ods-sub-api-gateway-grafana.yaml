@@ -4137,7 +4137,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/search/cli\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4231,7 +4231,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/search/cli\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/search\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4325,7 +4325,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/search/cli\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4419,7 +4419,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/search/cli\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4513,7 +4513,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/search/cli\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4607,7 +4607,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/search/cli\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4716,7 +4716,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/indicators/cli\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/indicators\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4810,7 +4810,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/indicators/cli\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/indicators\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4904,7 +4904,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/indicators/cli\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/indicators\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4998,7 +4998,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/indicators/cli\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/indicators\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -5092,7 +5092,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/indicators/cli\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/indicators\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -5186,7 +5186,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/customers/indicators/cli\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/ivr/customers/indicators\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
