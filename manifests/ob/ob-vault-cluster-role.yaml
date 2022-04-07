@@ -1,0 +1,22 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vault-ob-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+  - kind: ServiceAccount
+    name: vault-ob
+    namespace: api-gw-ob
+  - kind: ServiceAccount
+    name: tsb-api-gw-ob
+    namespace: api-gw-ob
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-ob
+  namespace: api-gw-ob
