@@ -1304,8 +1304,8 @@ spec:
                 value: mgmt
                 effect: NoSchedule
       ob:
-        podName: ob
-        componentName: tsb-ob
+        podName: jenkins-tsb-ob
+        componentName: jenkins-tsb-ob
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
