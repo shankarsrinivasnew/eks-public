@@ -575,7 +575,7 @@ spec:
 
           - job_name: ec2-discover-hdf-jmx
             scrape_interval: 60s
-            scrape_timeout: 60s
+            scrape_timeout: 120s
             ec2_sd_configs:
               - region: eu-west-2
                 port: 9110
