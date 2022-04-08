@@ -1305,7 +1305,7 @@ spec:
                 effect: NoSchedule
       ob:
         podName: api-gw-ob
-        componentName: tsb-ob
+        componentName: tsb-api-gw-ob
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
