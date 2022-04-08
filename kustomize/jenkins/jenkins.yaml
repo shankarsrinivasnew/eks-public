@@ -1304,7 +1304,7 @@ spec:
                 value: mgmt
                 effect: NoSchedule
       ob:
-        podName: ob
+        podName: api-gw-ob
         componentName: tsb-ob
         envVars:
           - name: http_proxy
