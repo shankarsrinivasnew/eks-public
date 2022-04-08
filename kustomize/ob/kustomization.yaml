@@ -1,5 +1,6 @@
 resources:
   - sa.yaml
+  - networkpolicy.yaml
 namespace: api-gw-ob
 transformers:
   - awsTransformer.yaml
