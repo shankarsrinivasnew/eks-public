@@ -102,4 +102,9 @@ data:
       username: tsb-sco-readyonly
       groups:
         - tsb-nonprod-eks-sco
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-cob-view-role
+      username: tsb-cob-readyonly
+      groups:
+        - eks-cob-view-role
+
 
