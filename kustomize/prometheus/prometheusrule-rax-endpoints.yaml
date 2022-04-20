@@ -24,7 +24,7 @@ spec:
             summary: "Endpoint {{ $labels.instance }} unhealthy"
         - alert: probe_http_4xx_status_code
           expr: (probe_http_status_code{job="blackbox_4xx"}) != 403
-          for: 1m
+          for: 10m
           labels:
             severity: CRITICAL
             priority: P4
