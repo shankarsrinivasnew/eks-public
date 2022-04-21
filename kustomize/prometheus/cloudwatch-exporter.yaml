@@ -223,42 +223,42 @@ spec:
         aws_metric_name: 4XXError
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: 5XXError
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: CacheHitCount
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: CacheMissCount
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: Count
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
         aws_statistics: [SampleCount]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: IntegrationLatency
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: Latency
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*|Cobol*|Customer.*$"]
       - aws_namespace: AWS/ELB
         aws_metric_name: HealthyHostCount
         aws_dimensions: [AvailabilityZone, LoadBalancerName]
