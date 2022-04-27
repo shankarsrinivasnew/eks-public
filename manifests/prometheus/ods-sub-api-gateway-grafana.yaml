@@ -84,7 +84,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/account/transactions\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/account/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -178,7 +178,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/account/transactions\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/account/transactions\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -272,7 +272,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/account/transactions\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/account/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -366,7 +366,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/account/transactions\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/account/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -460,7 +460,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/account/transactions\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/account/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -554,7 +554,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/account/transactions\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/account/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -663,7 +663,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/product/details\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/product/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -757,7 +757,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/product/details\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/product/details\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -851,7 +851,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/product/details\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/product/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -945,7 +945,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/product/details\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/product/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1039,7 +1039,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/product/details\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/product/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1133,7 +1133,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/product/details\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/product/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1242,7 +1242,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/details\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1336,7 +1336,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/details\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/details\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1430,7 +1430,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/details\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1524,7 +1524,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/details\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1618,7 +1618,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/details\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1712,7 +1712,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/details\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1821,7 +1821,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/search\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1915,7 +1915,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/search\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/search\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2009,7 +2009,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/search\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2103,7 +2103,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/search\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2197,7 +2197,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/search\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2291,7 +2291,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/customer/search\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/customer/search\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2400,7 +2400,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/mortgage/transactions\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/mortgage/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2494,7 +2494,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/mortgage/transactions\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/mortgage/transactions\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2588,7 +2588,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/mortgage/transactions\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/mortgage/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2682,7 +2682,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/mortgage/transactions\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/mortgage/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2776,7 +2776,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/mortgage/transactions\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/mortgage/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2870,7 +2870,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/mortgage/transactions\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/mortgage/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2979,7 +2979,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/loan/transactions\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/loan/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3073,7 +3073,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/loan/transactions\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/loan/transactions\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3167,7 +3167,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/loan/transactions\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/loan/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3261,7 +3261,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/loan/transactions\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/loan/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3355,7 +3355,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/loan/transactions\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/loan/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3449,7 +3449,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/loan/transactions\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/loan/transactions\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3558,7 +3558,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/plasticcard/details\"}",
+                "expr": "aws_apigateway_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/plasticcard/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3652,7 +3652,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/plasticcard/details\"}\r\n",
+                "expr": "aws_apigateway_count_sample_count{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/plasticcard/details\"}\r\n",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3746,7 +3746,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/plasticcard/details\"}",
+                "expr": "aws_apigateway_5_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/plasticcard/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3840,7 +3840,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/plasticcard/details\"}",
+                "expr": "aws_apigateway_integration_latency_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/plasticcard/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -3934,7 +3934,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/plasticcard/details\"}",
+                "expr": "aws_apigateway_5_xxerror_average{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/plasticcard/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -4028,7 +4028,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/aep/plasticcard/details\"}",
+                "expr": "aws_apigateway_4_xxerror_sum{exported_job=\"aws_apigateway\", method=\"POST\", namespace=\"prometheus\",  resource=\"/ods/v1/css/plasticcard/details\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
