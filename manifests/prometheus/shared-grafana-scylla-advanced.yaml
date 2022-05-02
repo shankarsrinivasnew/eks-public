@@ -19,7 +19,7 @@ data:
                     "panels": [
                         {
                             "class": "collapsible_row_panel",
-                            "title": ""
+                            "title": "CQL row"
                         }
                     ]
                 },
@@ -140,7 +140,7 @@ data:
                     "panels": [
                         {
                             "class": "collapsible_row_panel",
-                            "title": ""
+                            "title": "CQL row1"
                         }
                     ]
                 },
