@@ -5,7 +5,7 @@ metadata:
   name: shared-scylla-advanced-cm
   namespace: prometheus
 data:
-  scylla-advanced.template.json: |
+  scylla-advanced.json: |
     {
         "dashboard": {
             "class": "dashboard",

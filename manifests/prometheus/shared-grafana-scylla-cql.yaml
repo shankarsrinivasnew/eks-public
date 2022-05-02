@@ -5,7 +5,7 @@ metadata:
   name: shared-scylla-cql-cm
   namespace: prometheus
 data:
-  scylla-cql.template.json: |
+  scylla-cql.json: |
     {
         "dashboard": {
             "class": "dashboard",
