@@ -7,7 +7,6 @@ metadata:
 data:
   scylla-cql.json: |
     {
-        "dashboard": {
             "class": "dashboard",
             "uid": "cql-__SCYLLA_VERSION_DASHED__",
             "originalTitle": "CQL",
@@ -271,7 +270,7 @@ data:
                     "panels": [
                         {
                             "class": "single_value_table",
-                            "datasource": "scylla-datasource",
+                            "datasource": "Thanos",
                             "span":12,
                             "targets": [
                                 {
@@ -309,7 +308,7 @@ data:
                     "panels": [
                         {
                             "class": "single_value_table",
-                            "datasource": "scylla-datasource",
+                            "datasource": "Thanos",
                             "span":12,
                             "targets": [
                                 {
@@ -375,7 +374,7 @@ data:
                     "panels": [
                         {
                             "class": "single_value_table",
-                            "datasource": "scylla-datasource",
+                            "datasource": "Thanos",
                             "span":12,
                             "targets": [
                                 {
@@ -441,7 +440,7 @@ data:
                     "panels": [
                         {
                             "class": "single_value_table",
-                            "datasource": "scylla-datasource",
+                            "datasource": "Thanos",
                             "span":12,
                             "targets": [
                                 {
@@ -1232,5 +1231,4 @@ data:
             },
             "overwrite": true,
             "title": "Scylla CQL"
-        }
     }

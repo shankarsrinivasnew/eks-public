@@ -7,7 +7,6 @@ metadata:
 data:
   scylla-advanced.json: |
     {
-        "dashboard": {
             "class": "dashboard",
             "uid": "advanced-__SCYLLA_VERSION_DASHED__",
             "rows": [
@@ -569,5 +568,4 @@ data:
             "title": "Advanced",
             "overwrite": true,
             "version": 5
-        }
     }    
