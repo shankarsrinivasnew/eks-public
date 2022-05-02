@@ -565,7 +565,7 @@ data:
                   }
                 ]
             },
-            "title": "Advanced",
+            "title": "Scylla - Advanced",
             "overwrite": true,
             "version": 5
     }    
