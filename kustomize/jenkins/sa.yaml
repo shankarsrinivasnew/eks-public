@@ -31,5 +31,5 @@ metadata:
   labels:
     role: jenkins-agent
     component: packer
-    imagePullSecrets:
+imagePullSecrets:
   - name: artifactory-rackspace
