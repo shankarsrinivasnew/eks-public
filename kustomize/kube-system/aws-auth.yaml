@@ -106,5 +106,4 @@ data:
       username: tsb-cob-readyonly
       groups:
         - eks-cob-view-role
-
-
+ 
