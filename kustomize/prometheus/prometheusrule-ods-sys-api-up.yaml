@@ -745,3 +745,213 @@ spec:
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}
+    ###################################ODS_SUB_API_LOAN_TRANSACTION_500 STATUS ERROR##################################################
+        - record: ods_sub_api_loan_transaction_500_status_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-loan-transaction",namespace="ods"}[5m])))
+        - alert: ods_sub_api_loan_transaction_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_loan_transaction_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_sub_api_loan_transaction_500_status_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_loan_transaction_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}
+    ###################################ODS_SUB_API_CUSTOMER_DETAILS_500 STATUS ERROR##################################################
+        - record: ods_sub_api_customer_details_500_status_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-customer-details",namespace="ods"}[5m])))
+        - alert: ods_sub_api_customer_details_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_customer_details_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_sub_api_customer_details_500_status_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_customer_details_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}            
+    ###################################ODS_SUB_API_CUSTOMER_SEARCH_500 STATUS ERROR##################################################
+        - record: ods_sub_api_customer_search_500_status_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-customer-search",namespace="ods"}[5m])))
+        - alert: ods_sub_api_customer_search_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_customer_search_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_sub_api_customer_search_500_status_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_customer_search_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}                        
+    ###################################ODS_SUB_API_PLASTIC_CARD_DETAILS_500 STATUS ERROR##################################################
+        - record: ods_sub_api_plastic_card_details_500_status_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-plasticcard-details",namespace="ods"}[5m])))
+        - alert: ods_sub_api_plastic_card_details_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_plastic_card_details_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_sub_api_plastic_card_details_500_status_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_plastic_card_details_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}            
+    ###################################ODS_API_CLI_CUSTOMER_SEARCH_500 STATUS ERROR##################################################
+        - record: ods_sub_api_cli_customer_search_500_status_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-cli-customer-search",namespace="ods"}[5m])))
+        - alert: ods_sub_api_cli_customer_search_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_cli_customer_search_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_sub_api_cli_customer_search_500_status_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_cli_customer_search_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}                                    
+    ###################################ODS_API_COP_CUSTOMER_SEARCH_500 STATUS ERROR##################################################
+        - record: ods_sub_api_cop_customer_search_500_status_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-cop-customer-search",namespace="ods"}[5m])))
+        - alert: ods_sub_api_cop_customer_search_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_cop_customer_search_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_sub_api_cop_customer_search_500_status_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_cop_customer_search_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}                                                

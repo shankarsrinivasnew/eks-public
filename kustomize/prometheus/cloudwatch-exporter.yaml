@@ -131,10 +131,19 @@ spec:
         aws_dimensions: [FunctionName]
         aws_dimension_select_regex:
           FunctionName: ["^tsb-datalake.*$"]
-        aws_statistics: [Average]
-      - aws_namespace: AWS/Glue
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/Lambda
+        aws_metric_name: Errors
+        aws_dimensions: [FunctionName]
+        aws_dimension_select_regex:
+          FunctionName: ["^tsb-voiceanalytics.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: Glue
         aws_metric_name: "glue.driver.aggregate.numFailedTasks"
-        aws_dimensions: [JobName]
+        aws_dimensions: 
+        - JobName
+        - JobRunId
+        - Type
         aws_dimension_select_regex:
           JobName: ["^tsb-datalake.*$"]
         aws_statistics: [Sum]
@@ -149,6 +158,18 @@ spec:
         aws_dimensions: [StateMachineArn]
         aws_dimension_select_regex:
           StateMachineArn: [".*tsb-datalake.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/States
+        aws_metric_name: ExecutionsFailed
+        aws_dimensions: [StateMachineArn]
+        aws_dimension_select_regex:
+          StateMachineArn: [".*tsb-voiceanalytics.*$"]
+        aws_statistics: [Sum]
+      - aws_namespace: AWS/States
+        aws_metric_name: ExecutionsTimedOut
+        aws_dimensions: [StateMachineArn]
+        aws_dimension_select_regex:
+          StateMachineArn: [".*tsb-voiceanalytics.*$"]
         aws_statistics: [Sum]
       - aws_namespace: CloudTrailMetrics
         aws_metric_name: EmrSecurityChangesEventCount
@@ -192,46 +213,56 @@ spec:
         aws_metric_name: resolveGlueInError
       - aws_namespace: tsb-datalake-sas
         aws_metric_name: sasGlueInError
+      - aws_namespace: tsb-datalake-appointmentbooking
+        aws_metric_name: appointmentbookingGlueInError
+      - aws_namespace: tsb-datalake-speechanalytics
+        aws_metric_name: speechanalyticsGlueInError
+      - aws_namespace: tsb-datalake-verint
+        aws_metric_name: verintGlueInError
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: 4XXError
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: 5XXError
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: CacheHitCount
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: CacheMissCount
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
         aws_statistics: [Sum, Average]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: Count
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
         aws_statistics: [SampleCount]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: IntegrationLatency
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
       - aws_namespace: AWS/ApiGateway
         aws_metric_name: Latency
         aws_dimensions: [ApiName, Method, Resource, Stage]
         aws_dimension_select_regex:
-          ApiName: ["^tsb-ods.*$"]
+          ApiName: ["^tsb-ods.*$","Cobol API","^Customer.*$"]
+      - aws_namespace: AWS/ELB
+        aws_metric_name: HealthyHostCount
+        aws_dimensions: [AvailabilityZone, LoadBalancerName]
+        aws_statistics: [Average]
 
 
     # Configurable health checks against the /healthy and /ready endpoints

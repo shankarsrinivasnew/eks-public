@@ -46,10 +46,12 @@ resources:
   - 17-prometheus_cob_all_pod_down_alerts_rule.yaml
   - 18-prometheus_cob_low_replca_count_alerts_rule.yaml
   - 19-prometheus_cob_pod_restarts_alerts_rule.yaml
+  - 20_prometheus_cob_create_updatedownsell_responsetime_alerts_rule.yaml
   - prometheusrule-sco-fl-all-pod-down.yaml
   - prometheusrule-sco-fl-pod-restart.yaml
   - prometheusrule-sco-fl-replica-count.yaml
   - prometheusrule-sco-fl-responsetime.yaml
+  - prometheusrule-sco-fl-responsetime_newurls.yaml
   - prometheusrule_sca_authentication_api_failure_rate.yaml
   - prometheusrule_sca_authentication_api_responsetime.yaml
   - prometheusrule_sca_gw_failure_rate.yaml

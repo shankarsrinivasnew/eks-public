@@ -1,0 +1,83 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: jenkins-agent
+  namespace: cop-phase2
+spec:
+  serviceAccountSelector: role == 'jenkins-agent'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: jenkins-master
+          to: jenkins-agent
+      action: Allow
+      source:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+  egress:
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: jenkins-master
+      action: Allow
+      destination:
+        selector: app.kubernetes.io/component == 'jenkins-master'
+        namespaceSelector: projectcalico.org/name == 'jenkins'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+        ports:
+          - 9042
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: mgmt
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 10.161.48.0/20
+        ports:
+          - 443
+          - 80
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cop-phase2-application
+  namespace: cop-phase2
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: cop-phase2-application
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cop-phase2
+            - default
+      protocol: TCP
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+        ports:
+          - 9042
+          - 9142
+          - 9092
+          - 7790
+          - 2181
+          - 7788

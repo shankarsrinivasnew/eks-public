@@ -24,7 +24,7 @@ spec:
             severity: WARNING
             priority: P2
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of Memory Limit'
@@ -42,7 +42,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 9% of Memory Limit'
@@ -61,7 +61,7 @@ spec:
             severity: WARNING
             priority: P2
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 80% of CPU Limit'
@@ -79,7 +79,7 @@ spec:
             severity: CRITICAL
             priority: P1
             type: 8x5
-            tsbci: SCA_AWS
+            tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
             description: 'Container named {{$labels.container}} in {{$labels.pod}} in {{$labels.namespace}} is using more than 90% of CPU Limit'

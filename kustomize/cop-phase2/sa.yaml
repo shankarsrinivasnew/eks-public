@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tsb-cop-phase2
+  namespace: cop-phase2
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/tsb-cop-phase2
+  labels:
+    role: jenkins-agent
+    component: cop-phase2
