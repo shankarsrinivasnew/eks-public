@@ -15,6 +15,13 @@ spec:
     # such as filebeat.yml
     image: docker.artifactory.mgmt.aws.uk.tsb/elastic-docker-remote/beats/filebeat
     priorityClassName: daemonsets
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+      limits:
+        cpu: "1000m"
+        memory: "512Mi"
     tolerations:
       - key: role
         operator: Equal
