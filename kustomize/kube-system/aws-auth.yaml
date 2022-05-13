@@ -106,6 +106,3 @@ data:
       username: tsb-cob-readyonly
       groups:
         - eks-cob-view-role
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/test
-      username: test-readonly-user
-      groups: []
