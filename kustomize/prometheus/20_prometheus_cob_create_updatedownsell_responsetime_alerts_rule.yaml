@@ -12,7 +12,7 @@ spec:
       rules:
   ###########################################COB_APP_ALL_RESPONSETIME_CREATE_UPDATEDOWNSELL##########################################################
         - record: cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}
-          expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))
+          expr: sum by (namespace, routeId)(rate(spring_cloud_gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(spring_cloud_gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))
         - alert: COB_app_create_updatedownsell_critical_alert_{{ AWS_ENVIRONMENT }}
           expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .6
           for: 5m
