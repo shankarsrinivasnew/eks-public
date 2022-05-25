@@ -78,7 +78,7 @@ data:
     DNS_ZONE="$AWS_ENVIRONMENT.aws.uk.tsb"
 
     # Get VPC CIDR
-    VPC=$(aws ec2 describe-vpcs --query "Vpcs[?Tags[?Key == 'Project' && Value == 'shared']]" | jq '.[0]')
+    VPC=$(aws ec2 describe-vpcs --query "Vpcs[?Tags[?Key == 'project' && Value == 'SHARED-SERVICES']]" | jq '.[0]')
     VPC_ID=$(echo $VPC | jq -r '.VpcId')
     VPC_CIDR=$(echo $VPC | jq -r '.CidrBlock')
 
@@ -99,7 +99,7 @@ data:
     DNS_SERVER=$(increment_ipv4 $VPC_NET[1] 2)
 
     # Get EFS file system ID
-    EFS_ID=$(aws efs describe-file-systems --query "FileSystems[?Tags[?Key == 'Project' && Value == 'shared']] | @[?Tags[?Key == 'Purpose' && Value == 'EFSEKS']].FileSystemId" --output text)
+    EFS_ID=$(aws efs describe-file-systems --query "FileSystems[?Tags[?Key == 'project' && Value == 'KUBERNETES_AWS']] | @[?Tags[?Key == 'Purpose' && Value == 'EFSEKS']].FileSystemId" --output text)
 
     # Get access point IDs
     EFS_JENKINS_HOME_ID=$(aws efs describe-access-points --file-system-id $EFS_ID --query "AccessPoints[?Tags[?Key == 'Purpose' && Value == 'EFSEKSJenkinsHome']].AccessPointId" --output text)
