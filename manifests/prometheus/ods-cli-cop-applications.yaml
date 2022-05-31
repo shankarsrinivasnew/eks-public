@@ -7,9 +7,9 @@ metadata:
 data:
   odspodmetrics.json: |
     {
-      "annotations": {
+        "annotations": {
         "list": [
-          {
+            {
             "builtIn": 1,
             "datasource": "-- Grafana --",
             "enable": true,
@@ -17,50 +17,50 @@ data:
             "iconColor": "rgba(0, 211, 255, 1)",
             "name": "Annotations & Alerts",
             "type": "dashboard"
-          }
+            }
         ]
-      },
-      "editable": true,
-      "gnetId": null,
-      "graphTooltip": 0,
-      "id": 14,
-      "links": [],
-      "panels": [
+        },
+        "editable": true,
+        "gnetId": null,
+        "graphTooltip": 0,
+        "id": 14,
+        "links": [],
+        "panels": [
         {
-          "collapsed": false,
-          "datasource": "Thanos",
-          "gridPos": {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
             "y": 0
-          },
-          "id": 4,
-          "panels": [],
-          "title": "KW18 Application",
-          "type": "row"
+            },
+            "id": 4,
+            "panels": [],
+            "title": "KW18 Application",
+            "type": "row"
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
             "defaults": {},
             "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 1
-          },
-          "hiddenSeries": false,
-          "id": 20,
-          "legend": {
+            },
+            "hiddenSeries": false,
+            "id": 20,
+            "legend": {
             "avg": false,
             "current": false,
             "max": false,
@@ -68,93 +68,93 @@ data:
             "show": true,
             "total": false,
             "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
             "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "exemplar": true,
-              "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-kw18\"}",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+                "exemplar": true,
+                "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-KW18\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total Records KW18 Application Consumed From Kafka",
-          "tooltip": {
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Total Records KW18 Application Consumed From Kafka",
+            "tooltip": {
             "shared": true,
             "sort": 0,
             "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
+            },
+            "type": "graph",
+            "xaxis": {
             "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
             "values": []
-          },
-          "yaxes": [
+            },
+            "yaxes": [
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             }
-          ],
-          "yaxis": {
+            ],
+            "yaxis": {
             "align": false,
             "alignLevel": null
-          }
+            }
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
             "defaults": {},
             "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 9
-          },
-          "hiddenSeries": false,
-          "id": 18,
-          "legend": {
+            },
+            "hiddenSeries": false,
+            "id": 18,
+            "legend": {
             "avg": false,
             "current": false,
             "max": false,
@@ -162,93 +162,93 @@ data:
             "show": true,
             "total": false,
             "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
             "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "exemplar": true,
-              "expr": "(tsbods_processTransactionsStream_time_kw18_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}/tsbods_processTransactionsStream_time_kw18_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"})",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+                "exemplar": true,
+                "expr": "(tsbods_processTransactionsStream_time_kw18_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}/tsbods_processTransactionsStream_time_kw18_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"})",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Average Records Per Second KW18 Application",
-          "tooltip": {
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Average Records Per Second KW18 Application",
+            "tooltip": {
             "shared": true,
             "sort": 0,
             "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
+            },
+            "type": "graph",
+            "xaxis": {
             "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
             "values": []
-          },
-          "yaxes": [
+            },
+            "yaxes": [
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             }
-          ],
-          "yaxis": {
+            ],
+            "yaxis": {
             "align": false,
             "alignLevel": null
-          }
+            }
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
             "defaults": {},
             "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 17
-          },
-          "hiddenSeries": false,
-          "id": 16,
-          "legend": {
+            },
+            "hiddenSeries": false,
+            "id": 16,
+            "legend": {
             "avg": false,
             "current": false,
             "max": false,
@@ -256,93 +256,93 @@ data:
             "show": true,
             "total": false,
             "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
             "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "exemplar": true,
-              "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Error Log Count for KW18 Application",
-          "tooltip": {
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Error Log Count for KW18 Application",
+            "tooltip": {
             "shared": true,
             "sort": 0,
             "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
+            },
+            "type": "graph",
+            "xaxis": {
             "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
             "values": []
-          },
-          "yaxes": [
+            },
+            "yaxes": [
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             }
-          ],
-          "yaxis": {
+            ],
+            "yaxis": {
             "align": false,
             "alignLevel": null
-          }
+            }
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
             "defaults": {},
             "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 25
-          },
-          "hiddenSeries": false,
-          "id": 14,
-          "legend": {
+            },
+            "hiddenSeries": false,
+            "id": 14,
+            "legend": {
             "avg": false,
             "current": false,
             "max": false,
@@ -350,101 +350,101 @@ data:
             "show": true,
             "total": false,
             "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
             "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "exemplar": true,
-              "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             },
             {
-              "exemplar": true,
-              "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "B"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Total KW18 Records in and Out of Application",
-          "tooltip": {
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Total KW18 Records in and Out of Application",
+            "tooltip": {
             "shared": true,
             "sort": 0,
             "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
+            },
+            "type": "graph",
+            "xaxis": {
             "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
             "values": []
-          },
-          "yaxes": [
+            },
+            "yaxes": [
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             }
-          ],
-          "yaxis": {
+            ],
+            "yaxis": {
             "align": false,
             "alignLevel": null
-          }
+            }
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
             "defaults": {},
             "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 33
-          },
-          "hiddenSeries": false,
-          "id": 22,
-          "legend": {
+            },
+            "hiddenSeries": false,
+            "id": 22,
+            "legend": {
             "avg": false,
             "current": false,
             "max": false,
@@ -452,93 +452,93 @@ data:
             "show": true,
             "total": false,
             "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
             "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "exemplar": true,
-              "expr": "cache_gets_total{name=\"kw18Cache\",result=\"hit\", namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-kw18\"}",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+                "exemplar": true,
+                "expr": "cache_gets_total{name=\"kw18Cache\",result=\"hit\", namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-kw18\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Kw18 Cache Hit Count",
-          "tooltip": {
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Kw18 Cache Hit Count",
+            "tooltip": {
             "shared": true,
             "sort": 0,
             "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
+            },
+            "type": "graph",
+            "xaxis": {
             "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
             "values": []
-          },
-          "yaxes": [
+            },
+            "yaxes": [
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             }
-          ],
-          "yaxis": {
+            ],
+            "yaxis": {
             "align": false,
             "alignLevel": null
-          }
+            }
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Thanos",
-          "fieldConfig": {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
             "defaults": {},
             "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 41
-          },
-          "hiddenSeries": false,
-          "id": 24,
-          "legend": {
+            },
+            "hiddenSeries": false,
+            "id": 24,
+            "legend": {
             "avg": false,
             "current": false,
             "max": false,
@@ -546,486 +546,485 @@ data:
             "show": true,
             "total": false,
             "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
             "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.3",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "exemplar": true,
-              "expr": "cache_gets_total{name=\"kw18Cache\",result=\"miss\", namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-kw18\"}",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+                "exemplar": true,
+                "expr": "cache_gets_total{name=\"kw18Cache\",result=\"miss\", namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-kw18\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "KW18 Cache Miss Count",
-          "tooltip": {
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "KW18 Cache Miss Count",
+            "tooltip": {
             "shared": true,
             "sort": 0,
             "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
+            },
+            "type": "graph",
+            "xaxis": {
             "buckets": null,
             "mode": "time",
             "name": null,
             "show": true,
             "values": []
-          },
-          "yaxes": [
+            },
+            "yaxes": [
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
             }
-          ],
-          "yaxis": {
+            ],
+            "yaxis": {
             "align": false,
             "alignLevel": null
-          }
+            }
         },
         {
-          "collapsed": true,
-          "datasource": "Thanos",
-          "gridPos": {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
             "y": 49
-          },
-          "id": 2,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 2
-              },
-              "hiddenSeries": false,
-              "id": 6,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-person-notification-pe04\"}",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Total Records PE04 Application Consumed From Kafka",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
             },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 10
-              },
-              "hiddenSeries": false,
-              "id": 12,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processTransactionsStream_time_pe04_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}/tsbods_processTransactionsStream_time_pe04_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"})",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average Records Per second PE04 Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+            "id": 2,
+            "panels": [],
+            "title": "PE04 Application",
+            "type": "row"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
+            "defaults": {},
+            "overrides": []
             },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 18
-              },
-              "hiddenSeries": false,
-              "id": 10,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Error Log Count PE04 Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 50
             },
+            "hiddenSeries": false,
+            "id": 6,
+            "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+            "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 26
-              },
-              "hiddenSeries": false,
-              "id": 8,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_pe04_person_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_pe04_person_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "B"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "PE04 Records in and Out of Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+                "exemplar": true,
+                "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-person-notification-pe04\"}",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
             }
-          ],
-          "title": "PE04 Application",
-          "type": "row"
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Total Records PE04 Application Consumed From Kafka",
+            "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+            },
+            "yaxes": [
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            },
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            }
+            ],
+            "yaxis": {
+            "align": false,
+            "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 58
+            },
+            "hiddenSeries": false,
+            "id": 12,
+            "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+            "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+            {
+                "exemplar": true,
+                "expr": "(tsbods_processTransactionsStream_time_pe04_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}/tsbods_processTransactionsStream_time_pe04_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"})",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+            }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Average Records Per second PE04 Application",
+            "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+            },
+            "yaxes": [
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            },
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            }
+            ],
+            "yaxis": {
+            "align": false,
+            "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 66
+            },
+            "hiddenSeries": false,
+            "id": 10,
+            "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+            "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+            {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+            }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Error Log Count PE04 Application",
+            "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+            },
+            "yaxes": [
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            },
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            }
+            ],
+            "yaxis": {
+            "align": false,
+            "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 74
+            },
+            "hiddenSeries": false,
+            "id": 8,
+            "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+            "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.3",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+            {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (tsb_ods_pe04_person_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}))",
+                "interval": "",
+                "legendFormat": "",
+                "refId": "A"
+            },
+            {
+                "exemplar": true,
+                "expr": "(sum by (job, namespace) (tsb_ods_pe04_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-person-notification-pe04\"}))",
+                "hide": false,
+                "interval": "",
+                "legendFormat": "",
+                "refId": "B"
+            }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "PE04 Records in and Out of Application",
+            "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+            },
+            "yaxes": [
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            },
+            {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+            }
+            ],
+            "yaxis": {
+            "align": false,
+            "alignLevel": null
+            }
         }
-      ],
-      "refresh": false,
-      "schemaVersion": 27,
-      "style": "dark",
-      "tags": [],
-      "templating": {
+        ],
+        "refresh": "5s",
+        "schemaVersion": 27,
+        "style": "dark",
+        "tags": [],
+        "templating": {
         "list": []
-      },
-      "time": {
+        },
+        "time": {
         "from": "now-6h",
         "to": "now"
-      },
-      "timepicker": {},
-      "timezone": "",
-      "title": "TSB-ODS-CLI&COP- APPLICATIONS",
-      "uid": "xtegt4Enk",
-      "version": 39
+        },
+        "timepicker": {},
+        "timezone": "",
+        "title": "TSB-ODS-CLI&COP- APPLICATIONS",
+        "uid": "xtegt4Enk",
+        "version": 44
     }
