@@ -226,7 +226,7 @@ spec:
             description: 'For {{ $labels.instance }} Some queries are not token-aware'
             summary: Instance {{ $labels.instance }} non token aware statments
         - alert: cqlReverseOrder
-          expr: cql:reverse_queries > 0
+          expr: cql:reverse_queries > 2
           for: 30m
           labels:
             severity: CRITICAL
@@ -292,7 +292,7 @@ spec:
             summary: Instance {{ $labels.instance }} CQL queries are not balanced
         - alert: nodeLocalErrors
           expr: sum(errors:local_failed) by (cluster, instance) > 0
-          for: 30m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -318,7 +318,7 @@ spec:
             summary: Instance {{ $labels.instance }} IO Disk Error
         - alert: nodeCLErrors
           expr: sum(errors:operation_unavailable) by (cluster) > 0
-          for: 15m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
