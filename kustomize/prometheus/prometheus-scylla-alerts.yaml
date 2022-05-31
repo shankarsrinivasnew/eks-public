@@ -227,7 +227,7 @@ spec:
             summary: Instance {{ $labels.instance }} non token aware statments
         - alert: cqlReverseOrder
           expr: cql:reverse_queries > 0
-          for: 15m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -292,7 +292,7 @@ spec:
             summary: Instance {{ $labels.instance }} CQL queries are not balanced
         - alert: nodeLocalErrors
           expr: sum(errors:local_failed) by (cluster, instance) > 0
-          for: 10s
+          for: 15m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -318,7 +318,7 @@ spec:
             summary: Instance {{ $labels.instance }} IO Disk Error
         - alert: nodeCLErrors
           expr: sum(errors:operation_unavailable) by (cluster) > 0
-          for: 10s
+          for: 15m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -454,7 +454,7 @@ spec:
             summary: Instance {{ $labels.instance }} no CQL connection
         - alert: HighLatencies
           expr: wlatencyp95{by="instance"} > 100000
-          for: 5m
+          for: 30m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -467,7 +467,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
           expr: wlatencypa{by="instance"} >10000
-          for: 5m
+          for: 30m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -480,7 +480,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
           expr: rlatencyp95{by="instance"} > 100000
-          for: 5m
+          for: 30m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -493,7 +493,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: HighLatencies
           expr: rlatencypa{by="instance"} >10000
-          for: 5m
+          for: 30m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
