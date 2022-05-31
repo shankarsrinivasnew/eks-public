@@ -227,7 +227,7 @@ spec:
             summary: Instance {{ $labels.instance }} non token aware statments
         - alert: cqlReverseOrder
           expr: cql:reverse_queries > 0
-          for: 15m
+          for: 30m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -453,7 +453,7 @@ spec:
             summary: Instance {{ $labels.instance }} no CQL connection
         - alert: HighLatencies
           expr: wlatencyp95{by="instance"} > 100000
-          for: 30m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -466,7 +466,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
           expr: wlatencypa{by="instance"} >10000
-          for: 30m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -479,7 +479,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
           expr: rlatencyp95{by="instance"} > 100000
-          for: 30m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -492,7 +492,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: HighLatencies
           expr: rlatencypa{by="instance"} >10000
-          for: 30m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
