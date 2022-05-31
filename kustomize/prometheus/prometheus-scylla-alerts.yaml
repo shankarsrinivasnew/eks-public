@@ -199,7 +199,7 @@ spec:
             description: 'For {{ $labels.instance }} Some of the cql queries are non-prepared please ensure the number of non prepared queries are low'
             summary: Instance {{ $labels.instance }} non prepared statments
         - alert: cql:non_paged_no_system
-          expr: cql:non_paged > 0
+          expr: cql:non_paged > 1
           for: 15m
           labels:
             severity: CRITICAL
@@ -212,7 +212,7 @@ spec:
             description: 'For {{ $labels.instance }} Some SELECT queries are non-paged'
             summary: Instance {{ $labels.instance }} non paged statments
         - alert: cqlNoTokenAware
-          expr: cql:non_token_aware > 0
+          expr: cql:non_token_aware > 1
           for: 15m
           labels:
             severity: CRITICAL
@@ -226,7 +226,7 @@ spec:
             summary: Instance {{ $labels.instance }} non token aware statments
         - alert: cqlReverseOrder
           expr: cql:reverse_queries > 0
-          for: 15m
+          for: 30m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -291,7 +291,7 @@ spec:
             summary: Instance {{ $labels.instance }} CQL queries are not balanced
         - alert: nodeLocalErrors
           expr: sum(errors:local_failed) by (cluster, instance) > 0
-          for: 10s
+          for: 15m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -317,7 +317,7 @@ spec:
             summary: Instance {{ $labels.instance }} IO Disk Error
         - alert: nodeCLErrors
           expr: sum(errors:operation_unavailable) by (cluster) > 0
-          for: 10s
+          for: 15m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -437,7 +437,7 @@ spec:
             description: '{{ $labels.instance }} has less than 20% free disk space on the root partition.'
             summary: Instance {{ $labels.instance }} low disk space
         - alert: NoCql
-          expr: scylla_manager_healthcheck_cql_status == -1
+          expr: scylla_manager_healthcheck_cql_status == 0
           for: 15m
           labels:
             severity: CRITICAL
@@ -451,7 +451,7 @@ spec:
             summary: Instance {{ $labels.instance }} no CQL connection
         - alert: HighLatencies
           expr: wlatencyp95{by="instance"} > 100000
-          for: 5m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -464,7 +464,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
           expr: wlatencypa{by="instance"} >10000
-          for: 5m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -477,7 +477,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
           expr: rlatencyp95{by="instance"} > 100000
-          for: 5m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -490,7 +490,7 @@ spec:
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: HighLatencies
           expr: rlatencypa{by="instance"} >10000
-          for: 5m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
