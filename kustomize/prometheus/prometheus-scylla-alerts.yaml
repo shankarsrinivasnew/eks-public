@@ -240,7 +240,7 @@ spec:
             summary: Instance {{ $labels.instance }} reverse order queries
         - alert: cqlAllowFiltering
           expr: cql:allow_filtering > 0
-          for: 30m
+          for: 60m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
