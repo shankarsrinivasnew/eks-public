@@ -452,7 +452,7 @@ spec:
             description: 'For {{ $labels.instance }} has denied CQL connection for more than 30 seconds.'
             summary: Instance {{ $labels.instance }} no CQL connection
         - alert: HighLatencies
-          expr: wlatencyp95{by="instance"} > 100000
+          expr: wlatencyp95{by="instance"} > 10000000
           for: 60m
           labels:
             severity: CRITICAL
@@ -465,7 +465,7 @@ spec:
             description: '{{ $labels.instance }} has 95% high latency for more than 5 minutes.'
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
-          expr: wlatencypa{by="instance"} >10000
+          expr: wlatencypa{by="instance"} >1000000
           for: 60m
           labels:
             severity: CRITICAL
@@ -478,7 +478,7 @@ spec:
             description: '{{ $labels.instance }} has average high latency for more than 5 minutes.'
             summary: Instance {{ $labels.instance }} High Write Latency
         - alert: HighLatencies
-          expr: rlatencyp95{by="instance"} > 100000
+          expr: rlatencyp95{by="instance"} > 10000000
           for: 60m
           labels:
             severity: CRITICAL
@@ -491,7 +491,7 @@ spec:
             description: '{{ $labels.instance }} has 95% high latency for more than 5 minutes.'
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: HighLatencies
-          expr: rlatencypa{by="instance"} >10000
+          expr: rlatencypa{by="instance"} >1000000
           for: 60m
           labels:
             severity: CRITICAL
