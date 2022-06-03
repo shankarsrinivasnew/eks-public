@@ -8,7 +8,7 @@ data:
   scylla-detailed-dashboard.json: |
   {
     "dashboard": {
-      "class": "dashboard",
+        "class": "dashboard",
         "uid": "detailed-__SCYLLA_VERSION_DASHED__",
         "rows": [
             {
