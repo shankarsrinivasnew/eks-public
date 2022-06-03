@@ -1908,9 +1908,9 @@ data:
                 }
             ]
         },
-		"tags": [
-			"__SCYLLA_VERSION_DOT__"
-		],
+            "tags": [
+                "__SCYLLA_VERSION_DOT__"
+            ],
         "time": {
             "from": "now-30m",
             "to": "now"
