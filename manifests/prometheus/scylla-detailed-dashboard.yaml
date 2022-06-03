@@ -6,7 +6,8 @@ metadata:
   namespace: prometheus
 data:
   scylla-detailed-dashboard.json: |
-    {
+  {
+    "dashboard": {
       "class": "dashboard",
         "uid": "detailed-__SCYLLA_VERSION_DASHED__",
         "rows": [
@@ -1919,3 +1920,4 @@ data:
         "overwrite": true,
         "version": 5
     }
+   }
