@@ -396,7 +396,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/shared-detailed
+                path: /var/lib/grafana/dashboards/shared-detailed-dashboard
 
 
 
@@ -438,7 +438,7 @@ spec:
         ods-cli-cop-applications: ods-cli-cop-applications-cm
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
-        shared-detailed-dashboard: shared-detailed-cm
+        shared-detailed-dashboard: shared-detailed-dashboard-cm
 
 
     prometheusOperator:
