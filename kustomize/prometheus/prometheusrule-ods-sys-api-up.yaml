@@ -574,7 +574,7 @@ spec:
         - record: ods_sub_api_account_transaction_500_status_{{ AWS_ENVIRONMENT }}
           expr: (sum by (job, namespace) (increase(http_server_requests_seconds_count{status="500",job="tsb-ods-api-account-transaction",namespace="ods"}[5m])))
         - alert: ods_sub_api_account_transaction_500_status_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: (ods_sub_api_account_transaction_500_status_{{ AWS_ENVIRONMENT }}) > 5
+          expr: (ods_sub_api_account_transaction_500_status_{{ AWS_ENVIRONMENT }}) > 10
           for: 5m
           labels:
             action: Closely monitor
@@ -590,18 +590,19 @@ spec:
             description: 'Application {{ $labels.job }} has more than 5 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Yellow rate reached for Application {{ $labels.job }}            
         - alert: ods_sub_api_account_transaction_500_status_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (ods_sub_api_account_transaction_500_status_{{ AWS_ENVIRONMENT }}) > 15
+          expr: (ods_sub_api_account_transaction_500_status_{{ AWS_ENVIRONMENT }}) > 25
           for: 5m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
             group: INFRA
-            level: RED
+            level: CRITICAL
             platform: AWS
             namespace: ods
-            severity: WARNING
+            severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
+            itopsbridge: true
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}      
@@ -911,12 +912,13 @@ spec:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
             group: INFRA
-            level: RED
+            level: CRITICAL
             platform: AWS
             namespace: ods
-            severity: WARNING
+            severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
+            itopsbridge: true
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}                                    
@@ -946,12 +948,13 @@ spec:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
             group: INFRA
-            level: RED
+            level: CRITICAL
             platform: AWS
             namespace: ods
-            severity: WARNING
+            severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
+            itopsbridge: true
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}                                                
