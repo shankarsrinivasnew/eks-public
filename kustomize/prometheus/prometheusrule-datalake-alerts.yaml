@@ -843,7 +843,7 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKÈ
+            tsbci: AWS_BIG_DATA_LAKÈ
         - alert: datalake_aws_lambda_cop2filenameextractions_errors_too_high
           annotations:
             description: 'Failures of Lambda {{ $labels.function_name }} too high'

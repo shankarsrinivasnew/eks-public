@@ -106,3 +106,7 @@ data:
       username: tsb-cob-readyonly
       groups:
         - eks-cob-view-role
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop2-nonprod-eks
+      username: tsb-cop2-nonprod-eks
+      groups:
+        - cop-phase2-admin

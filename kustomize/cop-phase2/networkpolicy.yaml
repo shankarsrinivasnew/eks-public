@@ -81,3 +81,31 @@ spec:
           - 7790
           - 2181
           - 7788
+          - 9096
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cop2-inter-namespace
+  namespace: cop-phase2
+spec:
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: cop-phase2-namespace
+          to: cop-phase2-namespace
+      action: Allow
+      source:
+        namespaceSelector: projectcalico.org/name == 'cop-phase2'
+  egress:
+    - metadata:
+        annotations:
+          from: cop-phase2-namespace
+          to: cop-phase2-namespace
+      action: Allow
+      protocol: TCP
+      destination:
+        namespaceSelector: projectcalico.org/name == 'cop-phase2'
