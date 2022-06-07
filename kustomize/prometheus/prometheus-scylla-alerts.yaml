@@ -432,6 +432,7 @@ spec:
             environment: "{{ AWS_ENVIRONMENT }}"
             monitoring: DiskFull
             rackspace: "true"
+            priority: P4
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
