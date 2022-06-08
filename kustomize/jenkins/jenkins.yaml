@@ -102,6 +102,7 @@ spec:
         - javax-mail-api:1.6.2-6
         - jaxb:2.3.6-1
         - sshd:3.1.0
+        - git-server:1.11
       JCasC:
         securityRealm: |-
           local:
