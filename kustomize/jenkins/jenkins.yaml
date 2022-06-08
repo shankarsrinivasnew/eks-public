@@ -64,7 +64,7 @@ spec:
         - workflow-multibranch:2.24
         - credentials-binding:1.27
         - git:4.8.3
-        - configuration-as-code:1.51
+        - configuration-as-code:1.54
         - ansicolor:0.7.2
         - pipeline-aws:1.42
         - authorize-project:1.3.0
