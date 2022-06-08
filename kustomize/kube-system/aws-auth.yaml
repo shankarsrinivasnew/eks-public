@@ -106,3 +106,7 @@ data:
       username: tsb-cob-readyonly
       groups:
         - eks-cob-view-role
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-ob-{{ AWS_ENVIRONMENT }}-role
+      username: fr-admin
+      groups:
+        - fr-admin
