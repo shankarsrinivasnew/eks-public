@@ -1162,7 +1162,7 @@ spec:
       gradle:
         podName: gradle
         componentName: jenkins-gradle
-        image: docker.artifactory.mgmt.aws.uk.tsb/cop/camis/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13
         tag: 4.1-1
         yamlTemplate: |-
           apiVersion: v1
