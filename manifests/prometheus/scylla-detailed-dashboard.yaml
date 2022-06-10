@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: scylla-detailed-dashboard-cm
+  name: shared-detailed-dashboard-cm
   namespace: prometheus
 data:
   scylla-detailed-dashboard.json: |
