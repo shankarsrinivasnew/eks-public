@@ -1162,8 +1162,8 @@ spec:
       gradle:
         podName: gradle
         componentName: jenkins-gradle
-        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13
-        tag: 4.1-1
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 11-6c5cc13
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
