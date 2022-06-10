@@ -456,7 +456,7 @@ spec:
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         scylla-advanced-dashboard: scylla-advanced-dashboard-cm
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
-        scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-1-cm
+        scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
 
 
     prometheusOperator:
