@@ -20,7 +20,7 @@ data:
             },
             {
                 "class": "annotation_restart",
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "enable": true,
                 "expr": "resets(scylla_gossip_heart_beat[1m])>0",
                 "hide": false,
@@ -35,7 +35,7 @@ data:
             },
             {
                 "class": "annotation_stall",
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "enable": false,
                 "expr": "changes(scylla_stall_detector_reported[1m])>0",
                 "hide": false,
@@ -50,7 +50,7 @@ data:
             },
             {
                 "class": "annotation_schema_changed",
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "enable": false,
                 "expr": "changes(scylla_database_schema_changed[30s])>0",
                 "hide": false,
@@ -201,7 +201,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "The number of nodes configured in the cluster.",
             "fieldConfig": {
                 "defaults": {
@@ -257,7 +257,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "The number of unreachable nodes.\nUsually because a machine is down or unreachable.",
             "fieldConfig": {
                 "defaults": {
@@ -319,7 +319,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "The number of joining and leaving nodes.\nThe number of nodes that are up but not actively part of the cluster, either because they are still joining or because they are leaving.",
             "fieldConfig": {
                 "defaults": {
@@ -382,7 +382,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {
                     "mappings": [
@@ -472,7 +472,7 @@ data:
         },
         {
             "class": "vertical_lcd",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -527,7 +527,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Average Write Latency",
             "fieldConfig": {
                 "defaults": {
@@ -590,7 +590,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "99% write Latency",
             "fieldConfig": {
                 "defaults": {
@@ -653,7 +653,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Average Read Latency",
             "fieldConfig": {
                 "defaults": {
@@ -716,7 +716,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "99% read Latency",
             "fieldConfig": {
                 "defaults": {
@@ -779,7 +779,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -836,7 +836,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "The percentage of the time during which Scylla utilized the CPU. Note that because Scylla does busy polling for some time before going idle, CPU utilization as seen by the operating system may be much higher. Your system is not yet CPU-bottlenecked until this metric is high.",
             "fieldConfig": {
                 "defaults": {
@@ -899,7 +899,7 @@ data:
         },
         {
             "class": "small_stat",
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "fieldConfig": {
                 "defaults": {
                     "custom": {},
@@ -1022,7 +1022,7 @@ data:
             "class": "us_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "editable": true,
             "error": false,
             "fieldConfig": {
@@ -1127,7 +1127,7 @@ data:
             "class": "bps_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "editable": true,
             "error": false,
             "fieldConfig": {
@@ -1230,7 +1230,7 @@ data:
             "class": "iops_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "editable": true,
             "error": false,
             "fieldConfig": {
@@ -1393,7 +1393,7 @@ data:
             "class": "ms_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Scylla employs an event-loop like reactor that alternates between the execution of different groups of tasks periodically. This graph shows how much time was spent in $group group",
             "editable": true,
             "error": false,
@@ -1497,7 +1497,7 @@ data:
             "class": "ms_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Scylla employs an event-loop like reactor that alternates between the execution of different groups of tasks periodically. The maximum amount of time during which a task group can run is called the \"task quota\". Some task groups may disrespect that and run for longer. This may cause latency issues",
             "editable": true,
             "error": false,
@@ -1601,7 +1601,7 @@ data:
             "class": "graph_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Shares assigned to the $group. Shares determine how Scylla reactor distributes the task quotas between groups (Higher share gets more quotas)",
             "editable": true,
             "error": false,
@@ -1750,7 +1750,7 @@ data:
             "class": "rps_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of Read requests that failed due to an 'unavailable' error",
             "editable": true,
             "error": false,
@@ -1854,7 +1854,7 @@ data:
             "class": "wps_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of write requests that failed due to an 'unavailable' error",
             "editable": true,
             "error": false,
@@ -1987,7 +1987,7 @@ data:
             "class": "rps_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of Read requests that failed due to an 'unavailable' error",
             "editable": true,
             "error": false,
@@ -2091,7 +2091,7 @@ data:
             "class": "wps_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of write requests that failed on a local Node",
             "editable": true,
             "error": false,
@@ -2195,7 +2195,7 @@ data:
             "class": "ops_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of write requests that failed on a local Node",
             "editable": true,
             "error": false,
@@ -2301,7 +2301,7 @@ data:
             "class": "ops_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of AIO Errors",
             "editable": true,
             "error": false,
@@ -2407,7 +2407,7 @@ data:
             "class": "ops_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Total number of abandoned failed futures, futures destroyed while still containing an exception.",
             "editable": true,
             "error": false,
@@ -2513,7 +2513,7 @@ data:
             "class": "ops_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "Number of C++ exceptions thrown.\n\n An exception by itself does not indicate a problem",
             "editable": true,
             "error": false,
@@ -2666,7 +2666,7 @@ data:
             "class": "user_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "This graph panel was left empty on purpose for ad-hoc usage. Change it when needed. Pay attention that changes to the panel will not be saved.\n\nIf you do need a panel that can be saved, create a new dashboard, or edit the panel inside the json file",
             "editable": true,
             "error": false,
@@ -2762,7 +2762,7 @@ data:
             "class": "user_panel",
             "dashLength": 10,
             "dashes": false,
-            "datasource": "prometheus",
+            "datasource": "Thanos",
             "description": "This graph panel was left empty on purpose for ad-hoc usage. Change it when needed. Pay attention that changes to the panel will not be saved.\n\nIf you do need a panel that can be saved, create a new dashboard, or edit the panel inside the json file",
             "editable": true,
             "error": false,
@@ -2938,7 +2938,7 @@ data:
                     "text": "None",
                     "value": ""
                 },
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "definition": "",
                 "error": null,
                 "hide": 0,
@@ -2970,7 +2970,7 @@ data:
                         "$__all"
                     ]
                 },
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "definition": "",
                 "error": null,
                 "hide": 0,
@@ -3002,7 +3002,7 @@ data:
                         "$__all"
                     ]
                 },
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "definition": "",
                 "error": null,
                 "hide": 0,
@@ -3034,7 +3034,7 @@ data:
                         "$__all"
                     ]
                 },
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "definition": "",
                 "error": null,
                 "hide": 0,
@@ -3066,7 +3066,7 @@ data:
                         "$__all"
                     ]
                 },
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "definition": "",
                 "error": null,
                 "hide": 2,
@@ -3098,7 +3098,7 @@ data:
                         "$__all"
                     ]
                 },
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "definition": "",
                 "error": null,
                 "hide": 2,
@@ -3120,7 +3120,7 @@ data:
             },
             {
                 "class": "adhoc_filter",
-                "datasource": "prometheus",
+                "datasource": "Thanos",
                 "error": null,
                 "filters": [],
                 "hide": 0,
