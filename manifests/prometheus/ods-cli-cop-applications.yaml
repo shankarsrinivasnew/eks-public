@@ -8,7 +8,7 @@ data:
   odspodmetrics.json: |
     {
         "annotations": {
-            "list": [
+        "list": [
             {
             "builtIn": 1,
             "datasource": "-- Grafana --",
@@ -18,7 +18,7 @@ data:
             "name": "Annotations & Alerts",
             "type": "dashboard"
             }
-            ]
+        ]
         },
         "editable": true,
         "gnetId": null,
@@ -27,25 +27,25 @@ data:
         "links": [],
         "panels": [
         {
-        "collapsed": false,
-        "datasource": null,
-        "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-        },
-        "id": 4,
-        "panels": [],
-        "title": "KW18 Application",
-        "type": "row"
+            "collapsed": false,
+            "datasource": "Thanos",
+            "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+            },
+            "id": 4,
+            "panels": [],
+            "title": "KW18 Application",
+            "type": "row"
         },
         {
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -139,7 +139,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -233,7 +233,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -327,7 +327,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -376,7 +376,7 @@ data:
             },
             {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
                 "hide": false,
                 "interval": "",
                 "legendFormat": "",
@@ -429,7 +429,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -511,7 +511,7 @@ data:
                 "max": null,
                 "min": null,
                 "show": true
-                }
+            }
             ],
             "yaxis": {
             "align": false,
@@ -523,7 +523,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -613,8 +613,8 @@ data:
             }
         },
         {
-            "collapsed": false,
-            "datasource": null,
+            "collapsed": true,
+            "datasource": "Thanos",
             "gridPos": {
             "h": 1,
             "w": 24,
@@ -631,7 +631,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -725,7 +725,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -819,7 +819,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -907,13 +907,13 @@ data:
             "align": false,
             "alignLevel": null
             }
-            },
-            {
+        },
+        {
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -1003,7 +1003,7 @@ data:
                 "max": null,
                 "min": null,
                 "show": true
-                }
+            }
             ],
             "yaxis": {
             "align": false,
@@ -1011,7 +1011,7 @@ data:
             }
         }
         ],
-        "refresh": false,
+        "refresh": "5s",
         "schemaVersion": 27,
         "style": "dark",
         "tags": [],
@@ -1026,5 +1026,5 @@ data:
         "timezone": "",
         "title": "TSB-ODS-CLI&COP- APPLICATIONS",
         "uid": "xtegt4Enk",
-        "version": 50
+        "version": 44
     }
