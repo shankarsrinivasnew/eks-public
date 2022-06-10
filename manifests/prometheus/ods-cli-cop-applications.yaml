@@ -28,7 +28,7 @@ data:
         "panels": [
         {
             "collapsed": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "gridPos": {
             "h": 1,
             "w": 24,
@@ -45,7 +45,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -87,7 +87,7 @@ data:
             "targets": [
             {
                 "exemplar": true,
-                "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-KW18\"}",
+                "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-switched-account-kw18\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -139,7 +139,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -181,7 +181,7 @@ data:
             "targets": [
             {
                 "exemplar": true,
-                "expr": "(tsbods_processTransactionsStream_time_kw18_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}/tsbods_processTransactionsStream_time_kw18_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"})",
+                "expr": "(tsbods_processTransactionsStream_time_kw18_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}/tsbods_processTransactionsStream_time_kw18_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"})",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -233,7 +233,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -275,7 +275,7 @@ data:
             "targets": [
             {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -327,7 +327,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -369,14 +369,14 @@ data:
             "targets": [
             {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
             },
             {
                 "exemplar": true,
-                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-KW18\"}))",
+                "expr": "(sum by (job, namespace) (tsb_ods_kw18_account_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-switched-account-kw18\"}))",
                 "hide": false,
                 "interval": "",
                 "legendFormat": "",
@@ -429,7 +429,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -523,7 +523,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -613,8 +613,8 @@ data:
             }
         },
         {
-            "collapsed": false,
-            "datasource": null,
+            "collapsed": true,
+            "datasource": "Thanos",
             "gridPos": {
             "h": 1,
             "w": 24,
@@ -631,7 +631,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -725,7 +725,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -819,7 +819,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
@@ -913,7 +913,7 @@ data:
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": null,
+            "datasource": "Thanos",
             "fieldConfig": {
             "defaults": {},
             "overrides": []
