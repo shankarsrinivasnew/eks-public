@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: scylla-advanced-dashboard-cm
-  namespace:
+  namespace: prometheus
 data:
   scylla-advanced-dashboard.json: |
     {
