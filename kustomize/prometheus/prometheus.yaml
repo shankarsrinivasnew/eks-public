@@ -631,6 +631,8 @@ spec:
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
           - job_name: scylla-manager-ec2
+            scrape_timeout: 1m
+            scrape_interval: 1m
             metrics_path: /metrics
             ec2_sd_configs:
               - region: eu-west-2
