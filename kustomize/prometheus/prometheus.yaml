@@ -629,7 +629,7 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
-          - job_name: scylla-manager
+          - job_name: scylla-manager-ec2
             metrics_path: /metrics
             ec2_sd_configs:
               - region: eu-west-2
