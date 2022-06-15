@@ -630,6 +630,19 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
+          - job_name: scylla-manager-ec2
+            metrics_path: /metrics
+            ec2_sd_configs:
+              - region: eu-west-2
+                port: 5090
+            relabel_configs:
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                regex: .*scylla.*
+                action: keep 
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
