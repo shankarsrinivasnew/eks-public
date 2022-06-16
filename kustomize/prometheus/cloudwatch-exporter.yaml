@@ -191,6 +191,8 @@ spec:
         aws_metric_name: GdprGlueInError
       - aws_namespace: tsb-datalake-cop
         aws_metric_name: CopGlueInError
+      - aws_namespace: tsb-datalake-cop2
+        aws_metric_name: cop2GlueInError
       - aws_namespace: tsb-datalake-cma
         aws_metric_name: CmaGlueInError
       - aws_namespace: tsb-datalake-crm
