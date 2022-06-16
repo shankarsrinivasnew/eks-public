@@ -896,7 +896,7 @@ spec:
           annotations:
             message: Datalake glue job for cop2 has errors
           expr: tsb_datalake_cop2_cop2_glue_in_error_sum offset 15m > 0
-          for: 1m
+          for: 1s
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
