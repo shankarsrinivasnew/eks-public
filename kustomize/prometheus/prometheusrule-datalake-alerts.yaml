@@ -895,7 +895,7 @@ spec:
         - alert: datalake_aws_glue_cop2_error_alarm
           annotations:
             message: Datalake glue job for cop2 has errors
-          expr: tsb_datalake_cop2_cop2_glue_in_error_sum offset 10m > 0
+          expr: tsb_datalake_cop2_cop2_glue_in_error_sum offset 15m > 0
           for: 1m
           labels:
             action: Closely monitor
@@ -905,4 +905,4 @@ spec:
             itopsbridge: "true"
             platform: AWS
             severity: CRITICAL
-            tsbci: AWS_BIG_DATA_LAKE
+            tsbci: BIG_DATA_LAKE_AWS
