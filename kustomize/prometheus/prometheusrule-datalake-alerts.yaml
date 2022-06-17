@@ -843,21 +843,51 @@ spec:
             platform: AWS
             severity: CRITICAL
             itopsbridge: "true"
-            tsbci: AWS_BIG_DATA_LAKÈ
+            tsbci: AWS_BIG_DATA_LAKÈ
+        - alert: datalake_aws_lambda_cop2filenameextractions_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{function_name=~".*cop2filenameextractions.*"} offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: cop2
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: BIG_DATA_LAKE_AWS
+        - alert: datalake_aws_glue_cop2_error_alarm
+          annotations:
+            message: Datalake glue job for cop2 has errors
+          expr: tsb_datalake_cop2_cop2_glue_in_error_sum offset 30m > 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            itopsbridge: "true"
+            platform: AWS
+            severity: CRITICAL
+            tsbci: BIG_DATA_LAKE_AWS
 #general alert for lambda
-#        - alert: aws_lambda_errors_too_high
-#          annotations:
-#            description: 'Failures of Lambda {{ $labels.function_name }} too high'
-#            message: Failures of Lambda {{ $labels.function_name }} too high
-#          expr: aws_lambda_errors_sum{} offset 30m >= 0
-#          for: 1s
-#          labels:
-#            action: Closely monitor
-#            usecase: datalake
-#            environment: "{{ AWS_ENVIRONMENT }}"
-#            group: APPLICATION
-#            priority: P3
-#            platform: AWS
-#            severity: CRITICAL
-#            itopsbridge: "true"
-#            tsbci: BIG_DATA_LAKE_AWS
+        - alert: aws_lambda_errors_too_high
+          annotations:
+            description: 'Failures of Lambda {{ $labels.function_name }} too high'
+            message: Failures of Lambda {{ $labels.function_name }} too high
+          expr: aws_lambda_errors_sum{} offset 30m >= 0
+          for: 1s
+          labels:
+            action: Closely monitor
+            usecase: datalake
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: APPLICATION
+            priority: P3
+            platform: AWS
+            severity: CRITICAL
+            itopsbridge: "true"
+            tsbci: BIG_DATA_LAKE_AWS
