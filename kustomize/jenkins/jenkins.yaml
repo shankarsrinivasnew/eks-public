@@ -96,6 +96,7 @@ spec:
         - audit-trail:3.10
         - pipeline-model-definition:1.9.2
         - pipeline-model-extensions:1.9.2
+        - sshd:3.1.0
       JCasC:
         securityRealm: |-
           local:
