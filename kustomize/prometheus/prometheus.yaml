@@ -655,7 +655,8 @@ spec:
                 target_label: availabilityzone
               - source_labels: [__meta_ec2_instance_state]
                 target_label: status
-              - source_labels: [__meta_ec2_
+              - source_labels: [__meta_ec2_instance_type]
+                target_label: instancetype
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
