@@ -473,7 +473,6 @@ spec:
         scylla-cql: scylla-cql-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
-
     prometheusOperator:
       enabled: true
       nodeSelector:
