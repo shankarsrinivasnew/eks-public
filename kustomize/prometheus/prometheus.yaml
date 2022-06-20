@@ -392,7 +392,6 @@ spec:
             - name: 'scylla-advanced-dashboard'
               orgId: 1
               folder: 'Shared Services'
-              type: file
               disableDeletion: true
               editable: true
               options:
@@ -421,9 +420,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-cql
-
-
-
+            - name: 'cop-phase2-microservices-dashboard'
+              orgid: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -467,7 +471,7 @@ spec:
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         scylla-cql: scylla-cql-cm
-
+        cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
     prometheusOperator:
       enabled: true
