@@ -64,14 +64,6 @@ resources:
   - prometheusrule_sca_transaction_query_api_failure_rate.yaml
   - prometheusrule_sca_transaction_query_api_responsetime.yaml
   - prometheusrule-cop-phase2-all-pod-down.yml
-  - prometheusrule-cop-phase2-CAMIS-MS-Report_failure.yaml
-  - prometheusrule-cop-phase2-inbound-http-status.yaml
-  - prometheusrule-cop-phase2-low-replica-count-all-ms.yaml
-  - prometheusrule-cop-phase2-outbound-mobile-http-status.yml
-  - prometheusrule-cop-phase2-outbound-onprem-http-status.yml
-  - prometheusrule-cop-phase2-responsetime.yml
-  - prometheusrule-cop-phase2-restart-for-all-ms.yaml
-  
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
