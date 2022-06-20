@@ -70,6 +70,7 @@ resources:
   - prometheusrule-cop-phase2-outbound-onprem-http-status.yml
   - prometheusrule-cop-phase2-responsetime.yml
   - prometheusrule-cop-phase2-restart-for-all-ms.yaml
+  - prometheusrule-cop-phase2-CAMIS-MS-Report_failure.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
