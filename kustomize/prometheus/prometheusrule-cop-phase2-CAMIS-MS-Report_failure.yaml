@@ -1,0 +1,35 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: camis-ms-report-failure-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: camis_ms_report_failure
+      rules:
+  ###########################################camis-ms-report-failure-alerts##########################################################                 
+        - record: camis_ms_report_failure{{ AWS_ENVIRONMENT }}
+          expr: ((sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace="cop-phase2",outcome!="SUCCESS", uri=~".*camisreport"}[5m])) / sum by (namespace, job, uri) (rate(http_server_requests_seconds_count {namespace="cop-pase2", uri=~".*camisreport"}[5m]))) * 100)
+
+
+        - alert: camis_ms_report_failure_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (camis_ms_report_failure{{ AWS_ENVIRONMENT }}) >=1
+          for: 5m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} CAMIS Endpoint {{$labels.routeId}} has failed maximum number of times. Value: {{ $value }}'
+            summary: RED alert reached for Application {{ $labels.job }} CAMIS Endpoint {{$labels.routeId}}
