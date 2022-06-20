@@ -468,10 +468,6 @@ spec:
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         shared-detailed-dashboard: shared-detailed-dashboard-cm
-        scylla-advanced-dashboard: scylla-advanced-dashboard-cm
-        scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
-        scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
-        scylla-cql: scylla-cql-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
     prometheusOperator:
