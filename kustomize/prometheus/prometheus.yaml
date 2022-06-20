@@ -392,13 +392,42 @@ spec:
             - name: 'shared-detailed-dashboard'
               orgId: 1
               folder: 'Shared Services'
-              type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-detailed-dashboard
-
-
+            - name: 'scylla-detailed-dashboard-part-1'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-1
+            - name: 'scylla-detailed-dashboard-part-2'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-2
+            - name: 'scylla-cql'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-cql
+            - name: 'cop-phase2-microservices-dashboard'
+              orgid: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -439,7 +468,11 @@ spec:
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         shared-detailed-dashboard: shared-detailed-dashboard-cm
-
+        scylla-advanced-dashboard: scylla-advanced-dashboard-cm
+        scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
+        scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
+        scylla-cql: scylla-cql-cm
+        cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
     prometheusOperator:
       enabled: true
