@@ -1,0 +1,50 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cop-phase2-pod-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: COP_PHASE2_APPS_DOWN_STATE
+      rules:
+  ###########################################COP_PHASE2_APP_ALL_DOWN_CRITICAL###########################################################################
+        - record: cop_phase2_app_all_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cop2.*",namespace="cop-phase2"})
+        - alert: COP_PHASE2_app_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_phase2_app_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Deployment {{ $labels.deployment }} has no pods running. Value:{{ $value }}'
+            summary: Critical Alert Deployment {{ $labels.deployment }} has no pods running
+        
+        - alert: COP_PHASE2_app_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop_phase2_app_all_down_critical_{{ AWS_ENVIRONMENT }}) <= 3
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P2
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Deployment {{ $labels.deployment }} has no pods running. Value:{{ $value }}'
+            summary: Warning Alert Deployment {{ $labels.deployment }} has <= 3 pods running        
