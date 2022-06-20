@@ -64,6 +64,7 @@ resources:
   - prometheusrule_sca_transaction_query_api_failure_rate.yaml
   - prometheusrule_sca_transaction_query_api_responsetime.yaml
   - prometheusrule-cop-phase2-all-pod-down.yml
+  - prometheusrule-cop-phase2-CAMIS-MS-Report_failure.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
