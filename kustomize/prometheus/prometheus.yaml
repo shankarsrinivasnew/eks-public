@@ -43,7 +43,7 @@ spec:
 
     ## Using default values from https://github.com/grafana/helm-charts/blob/grafana-5.8.16/charts/grafana/values.yaml
     ## Using chart from https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
-    
+
     grafana:
       image:
         repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana
@@ -421,6 +421,37 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
+            - name: 'scylla-advanced-dashboard'
+              orgId: 1
+              folder: 'Shared Services'
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-advanced-dashboard
+            - name: 'scylla-detailed-dashboard-part-1'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-1
+            - name: 'scylla-detailed-dashboard-part-2'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-2
+            - name: 'scylla-cql'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/scylla-cql
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -464,7 +495,10 @@ spec:
         shared-grafana-scylla-cql: shared-scylla-cql-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
-
+        scylla-advanced-dashboard: scylla-advanced-dashboard-cm
+        scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
+        scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
+        scylla-cql: scylla-cql-cm
 
     prometheusOperator:
       enabled: true
