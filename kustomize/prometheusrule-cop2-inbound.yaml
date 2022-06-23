@@ -1,0 +1,77 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cop2-inbound-app-state-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: COP2_INBOUND_FLOW_APPS_STATE
+      rules:
+    ################## No Requests from ObConnect since 10 minutes ##########################################################
+        - record: cop2_inbound_no_request_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop-phase2",uri=~".*account-verification.*"}[1m])*60))
+        - alert: COP2_inbound_no_request_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_inbound_no_request_{{ AWS_ENVIRONMENT }}) == 0
+          for: 9m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} endpoint {{$labels.uri}} has not received any request from ObConnect since 10 minutes.'
+            summary: Application {{ $labels.job }} endpoint {{$labels.uri}} has not received any request from ObConnect since 10 minutes.
+
+      ################## More than 20 50X error in 20 minutes ##########################################################
+        - record: cop2_inbound_status_500_count20_{{ AWS_ENVIRONMENT }}
+          expr: (sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop-phase2",status=~"50.*",uri=~".*account-verification.*"}[1m])*60))
+        - alert: COP2_inbound_status_500_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_inbound_status_500_count20_{{ AWS_ENVIRONMENT }}) > 20
+          for: 19m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop
+            severity: CRITICAL
+            priority: P2
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
+            summary: Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes, Value: {{ $value }}
+
+      ################## Response time more than 600 milliseconds ##########################################################
+        - record: cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace="cop-phase2", container="tsb-cop2-fetch-name-details", method="POST"}[5m])) / sum by (namespace, container) (rate(http_server_requests_seconds_count{namespace="cop-phase2", container="tsb-cop2-fetch-name-details", method="POST"}[5m]))
+        - alert: COP2_inbound_v1_status401_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_inbound_response_time_0{{ AWS_ENVIRONMENT }}) > 0.6
+          for: 4m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} response time is greater than 600 milliseconds since 5 minutes'
+            summary: Application {{ $labels.job }} Endpoint {{$labels.uri}} response time is greater than 600 milliseconds since 5 minutes
