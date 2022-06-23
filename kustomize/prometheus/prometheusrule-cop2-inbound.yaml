@@ -52,7 +52,7 @@ spec:
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
-            summary: Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes, Value: {{ $value }}
+            summary: Application {{ $labels.job }} endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes
 
       ################## Response time more than 600 milliseconds ##########################################################
         - record: cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}
