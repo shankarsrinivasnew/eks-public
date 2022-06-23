@@ -399,7 +399,6 @@ spec:
             - name: 'scylla-detailed-dashboard-part-1'
               orgId: 1
               folder: 'Shared Services'
-              type: file
               disableDeletion: true
               editable: true
               options:
@@ -471,6 +470,7 @@ spec:
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         scylla-cql: scylla-cql-cm
+        shared-detailed-dashboard: shared-detailed-dashboard-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
     prometheusOperator:
@@ -661,6 +661,34 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
+          - job_name: scylla-manager-ec2
+            scrape_timeout: 1m
+            scrape_interval: 1m
+            metrics_path: /metrics
+            ec2_sd_configs:
+              - region: eu-west-2
+                port: 5090
+            relabel_configs:
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                regex: .*scylla.*
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                action: replace
+                target_label: instancename
+              - source_labels: [__meta_ec2_tag_Environment]
+                target_label: environment
+              - source_labels: [__meta_ec2_availability_zone]
+                target_label: availabilityzone
+              - source_labels: [__meta_ec2_instance_state]
+                target_label: status
+              - source_labels: [__meta_ec2_instance_type]
+                target_label: instancetype
+              - source_labels: [__meta_ec2_tag_Name]
+                target_label: instance  
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
