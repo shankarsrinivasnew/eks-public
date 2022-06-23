@@ -10,11 +10,11 @@ spec:
   groups:
     - name: COB_APPS_RESPONSETIME_STATE
       rules:
-  ###########################################COB_APP_ALL_RESPONSETIME_CREATE_UPDATEDOWNSELL##########################################################
+###########################################COB_APP_ALL_RESPONSETIME_CREATE_UPDATEDOWNSELL##########################################################
         - record: cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}
-          expr: sum by (namespace, routeId)(rate(spring_cloud_gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(spring_cloud_gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))
+          expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))
         - alert: COB_app_create_updatedownsell_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .6
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.55
           for: 5m
           labels:
             action: Application will be impacted
@@ -29,11 +29,11 @@ spec:
             tsbci: SCO_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Application {{ $labels.job }} response time is more than 600 ms :{{ $value }}'
+            description: 'Application {{ $labels.job }} response time is more than 1.55 s :{{ $value }}'
             summary: 'Red alert for response time reached for application'
-            #################################################################
+        #################################################################
         - alert: COB_app_create_updatedownsell_high_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .525 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=.6
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.40 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.55
           for: 5m
           labels:
             action: Application will be impacted
@@ -48,11 +48,11 @@ spec:
             tsbci: SCO_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Application {{ $labels.job }} response time is more than 525 ms :{{ $value }}'
+            description: 'Application {{ $labels.job }} response time is more than 1.4 s :{{ $value }}'
             summary: 'Yellow alert for response time reached for application'
-            ###################################################################
+        ###################################################################
         - alert: COB_app_create_updatedownsell_medium_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .450 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=.525
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.25 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.4
           for: 5m
           labels:
             action: Application will be impacted
@@ -67,11 +67,11 @@ spec:
             tsbci: SCO_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Application {{ $labels.job }} response time is more than 450 ms :{{ $value }}'
+            description: 'Application {{ $labels.job }} response time is more than 1.25 s :{{ $value }}'
             summary: 'Yellow alert for response time reached for application'
-            #################################################################
+        #################################################################
         - alert: COB_app_create_updatedownsell_low_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .375 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=.450
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.0 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.25
           for: 5m
           labels:
             action: Application is likely impacted
@@ -86,11 +86,11 @@ spec:
             tsbci: SCO_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Application {{ $labels.job }} response time is more than 375 ms :{{ $value }}'
+            description: 'Application {{ $labels.job }} response time is more than 1.0 s :{{ $value }}'
             summary: 'Yellow alert for response time reached for application'
-            ######################################################################
+        ######################################################################
         - alert: COB_app_create_updatedownsell_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .300 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=.375
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .700 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.0
           for: 5m
           labels:
             action: Application is likely impacted
@@ -105,5 +105,5 @@ spec:
             tsbci: SCO_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Application {{ $labels.job }} response time is more than 300 ms :{{ $value }}'
+            description: 'Application {{ $labels.job }} response time is more than 700 ms :{{ $value }}'
             summary: 'Green alert for response time reached for application'
