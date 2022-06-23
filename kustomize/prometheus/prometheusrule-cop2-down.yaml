@@ -1,0 +1,205 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cop2-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: COP2_APPS_DOWN_STATE
+      rules:
+  ###########################################COP_APP_ALL_REPICAS_DOWN_CRITICAL##########################################################
+        - record: tsb_cop2_api_gateway_all_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{namespace="cop-phase2", container="tsb-cop2-api-gateway"})
+        - alert: COP_tsb_cop2_api_gateway_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_api_gateway_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no replicas running
+        - record: tsb_cop2_fetch_name_details_all_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{namespace="cop-phase2", container="tsb-cop2-fetch-name-details"})
+        - alert: COP_tsb_cop2_fetch_name_details_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_fetch_name_details_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no replicas running
+        - record: tsb_cop2_hmac_validator_all_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{namespace="cop-phase2", container="tsb-cop2-hmac-validator"})
+        - alert: COP_tsb_cop2_hmac_validator_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_hmac_validator_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no replicas running
+        - record: tsb_cop2_mi_topology_all_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{namespace="cop-phase2", container="tsb-cop2-mi-topology"})
+        - alert: COP_tsb_cop2_mi_topology_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_mi_topology_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no replicas running
+        - record: tsb_cop2_outbound_obconnect_all_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{namespace="cop-phase2", container="tsb-cop2-outbound-obconnect"})
+        - alert: COP_tsb_cop2_outbound_obconnect_all_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_outbound_obconnect_all_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no replicas running
+    ###########################################COP_APP_ALL_POD_DOWN_CRITICAL##########################################################  
+        - record: tsb_cop2_api_gateway_pod_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_statefulset_status_replicas_ready{namespace="cop-phase2", container="tsb-cop2-api-gateway"})
+        - alert: COP_tsb_cop2_api_gateway_pod_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_api_gateway_pod_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+        - record: tsb_cop2_fetch_name_details_pod_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_statefulset_status_replicas_ready{namespace="cop-phase2", container="tsb-cop2-fetch-name-details"})
+        - alert: COP_tsb_cop2_fetch_name_details_pod_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_fetch_name_details_pod_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+        - record: tsb_cop2_hmac_validator_pod_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_statefulset_status_replicas_ready{namespace="cop-phase2", container="tsb-cop2-hmac-validator"})
+        - alert: COP_tsb_cop2_hmac_validator_pod_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_hmac_validator_pod_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+        - record: tsb_cop2_mi_topology_pod_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_statefulset_status_replicas_ready{namespace="cop-phase2", container="tsb-cop2-mi-topology"})
+        - alert: COP_tsb_cop2_mi_topology_pod_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_mi_topology_pod_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+        - record: tsb_cop2_outbound_obconnect_pod_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_statefulset_status_replicas_ready{namespace="cop-phase2", container="tsb-cop2-outbound-obconnect"})
+        - alert: COP_tsb_cop2_outbound_obconnect_pod_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_outbound_obconnect_pod_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP_AWS
+            itopsbridge: "true"
+          annotations:
+            description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
+   
