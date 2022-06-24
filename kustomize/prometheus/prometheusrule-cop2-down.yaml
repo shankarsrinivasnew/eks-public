@@ -202,4 +202,46 @@ spec:
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
             summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
-   
+
+        ###########################################COP2_POD_RESTART_WARNING##########################################################
+        - record: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_pod_container_status_restarts_total{namespace="cop-phase2", pod=~"tsb-cop2.*"} offset 5m)
+        - alert: cop2_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }} >=3
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'POD {{ $labels.pod }} for Microservice {{ $labels.container }} restarted 3 times or more in last 5m. Restart Count:{{ $value }}'
+            summary: Warning Alert POD {{ $labels.pod }} restart indicates that its not healthy.
+        ###########################################COP2_POD_RESTART_CRITICAL##########################################################
+        - record: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_pod_container_status_restarts_total{namespace="cop-phase2", pod=~"tsb-cop2.*"} offset 5m)
+        - alert: cop2_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }} >=6
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'POD {{ $labels.pod }} for Microservice {{ $labels.container }} restarted 6 times or more in last 5m. Restart Count:{{ $value }}'
+            summary: Critical Alert POD {{ $labels.pod }} restart indicates that its not healthy.
