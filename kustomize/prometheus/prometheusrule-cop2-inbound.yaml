@@ -26,7 +26,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} endpoint {{$labels.uri}} has not received any request from ObConnect since 10 minutes.'
@@ -48,7 +48,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: CO2P_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
@@ -70,7 +70,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
@@ -92,7 +92,7 @@ spec:
             severity: WARNING
             priority: P4
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} response time is greater than 600 milliseconds since 5 minutes'

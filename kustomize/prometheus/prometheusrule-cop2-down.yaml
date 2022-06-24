@@ -25,7 +25,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
@@ -44,7 +44,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
@@ -63,7 +63,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
@@ -82,7 +82,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
@@ -101,7 +101,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no replicas running. Value:{{ $value }}'
@@ -121,7 +121,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -140,7 +140,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -159,7 +159,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -178,7 +178,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
@@ -197,17 +197,17 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: COP_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
             summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
 
         ###########################################COP2_POD_RESTART_WARNING##########################################################
-        - record: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }}
+        - record: cop2_pod_restart_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_pod_container_status_restarts_total{namespace="cop-phase2", pod=~"tsb-cop2.*"} offset 5m)
-        - alert: cop2_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }} >=3
+        - alert: COP2_pod_restart_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: cop2_pod_restart_warning_{{ AWS_ENVIRONMENT }} >=3
           for: 5m
           labels:
             action: Application is likely impacted
@@ -227,7 +227,7 @@ spec:
         ###########################################COP2_POD_RESTART_CRITICAL##########################################################
         - record: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }}
           expr: (kube_pod_container_status_restarts_total{namespace="cop-phase2", pod=~"tsb-cop2.*"} offset 5m)
-        - alert: cop2_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
+        - alert: COP2_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
           expr: cop2_pod_restart_critical_{{ AWS_ENVIRONMENT }} >=6
           for: 5m
           labels:
