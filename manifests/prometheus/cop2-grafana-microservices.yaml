@@ -23,7 +23,6 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 611,
       "links": [],
       "panels": [
         {
@@ -315,7 +314,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[5m]))",
+              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\", method=\"POST\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\", method=\"POST\"}[5m]))",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -605,7 +604,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "(rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[2m]))",
+              "expr": "avg by (container) (rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[2m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
@@ -622,7 +621,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}",
+              "expr": "avg by (container) (kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -1413,7 +1412,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\"}[5m]))",
+              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\", method=\"POST\"}[5m])) / sum by (namespace, container) (rate( http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\", method=\"POST\"}[5m]))",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -1703,7 +1702,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "(rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\"}[2m]))",
+              "expr": "avg by (container) (rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\"}[2m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
@@ -1720,7 +1719,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\"}",
+              "expr": "avg by (container) (kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-fetch-name-details\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -2512,7 +2511,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-hmac-validator\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-hmac-validator\"}[5m]))",
+              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-hmac-validator\", method=\"POST\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-hmac-validator\", method=\"POST\"}[5m]))",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -2802,7 +2801,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "(rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[2m]))",
+              "expr": "avg by (container) (rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-hmac-validator\"}[2m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
@@ -2810,7 +2809,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "avg by (container) (kube_pod_container_resource_requests_cpu_cores{namespace=\"cop-phase2\",container=\"tsb-cop2-outbound-obconnect\"})",
+              "expr": "avg by (container) (kube_pod_container_resource_requests_cpu_cores{namespace=\"cop-phase2\",container=\"tsb-cop2-hmac-validator\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -2819,7 +2818,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}",
+              "expr": "avg by (container) (kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-hmac-validator\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -3609,7 +3608,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-api-gateway\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-api-gateway\"}[5m]))",
+              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-api-gateway\", method=\"POST\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-api-gateway\", method=\"POST\"}[5m]))",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -3899,7 +3898,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "(rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[2m]))",
+              "expr": "avg by (container) (rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-api-gateway\"}[2m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
@@ -3907,7 +3906,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "avg by (container) (kube_pod_container_resource_requests_cpu_cores{namespace=\"cop-phase2\",container=\"tsb-cop2-outbound-obconnect\"})",
+              "expr": "avg by (container) (kube_pod_container_resource_requests_cpu_cores{namespace=\"cop-phase2\",container=\"tsb-cop2-api-gateway\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -3916,7 +3915,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}",
+              "expr": "avg by (container) (kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-api-gateway\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -4707,7 +4706,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-mi-topology\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-mi-topology\"}[5m]))",
+              "expr": "sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace=\"cop-phase2\", container=\"tsb-cop2-mi-topology\", method=\"POST\"}[5m])) / sum by (namespace, container) (rate(    http_server_requests_seconds_count{namespace=\"cop-phase2\", container=\"tsb-cop2-mi-topology\", method=\"POST\"}[5m]))",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -4997,7 +4996,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "(rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}[2m]))",
+              "expr": "avg by (container) (rate(container_cpu_usage_seconds_total{namespace=\"cop-phase2\", container=\"tsb-cop2-mi-topology\"}[2m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
@@ -5005,7 +5004,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "avg by (container) (kube_pod_container_resource_requests_cpu_cores{namespace=\"cop-phase2\",container=\"tsb-cop2-outbound-obconnect\"})",
+              "expr": "avg by (container) (kube_pod_container_resource_requests_cpu_cores{namespace=\"cop-phase2\",container=\"tsb-cop2-mi-topology\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -5014,7 +5013,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-outbound-obconnect\"}",
+              "expr": "avg by (container) (kube_pod_container_resource_limits_cpu_cores{namespace=\"cop-phase2\", container=\"tsb-cop2-mi-topology\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -5532,5 +5531,5 @@ data:
       "timezone": "",
       "title": "COP-Phase2  Microservices Dashboard",
       "uid": "R_N_L8C7k",
-      "version": 42
+      "version": 43
     }
