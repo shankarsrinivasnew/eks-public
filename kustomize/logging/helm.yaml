@@ -55,6 +55,10 @@ spec:
         operator: Equal
         value: scofl
         effect: NoSchedule
+      - key: role
+        operator: Equal
+        value: cop-phase2
+        effect: NoSchedule
     filebeatConfig:
       filebeat.yml: |
         filebeat.autodiscover:
