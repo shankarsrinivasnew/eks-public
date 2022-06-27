@@ -27,7 +27,7 @@ spec:
         kubelet: true
         kubePrometheusGeneral: true
         kubePrometheusNodeAlerting: true
-        kubePrometheusNodeRecording: true
+        kubePrometheusNodeRecording: true74
         kubernetesAbsent: true
         kubernetesApps: true
         kubernetesResources: true
@@ -397,6 +397,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-2
+            - name: 'cop-phase2-microservices-dashboard'
+              orgid: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -438,6 +446,7 @@ spec:
         scylla-advanced-dashboard: scylla-advanced-dashboard-cm
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
+        cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
 
 
