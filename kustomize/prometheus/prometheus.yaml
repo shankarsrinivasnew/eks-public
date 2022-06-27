@@ -27,7 +27,7 @@ spec:
         kubelet: true
         kubePrometheusGeneral: true
         kubePrometheusNodeAlerting: true
-        kubePrometheusNodeRecording: true74
+        kubePrometheusNodeRecording: true
         kubernetesAbsent: true
         kubernetesApps: true
         kubernetesResources: true
