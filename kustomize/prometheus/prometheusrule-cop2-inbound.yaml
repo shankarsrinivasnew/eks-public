@@ -80,7 +80,7 @@ spec:
         - record: cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}
           expr: sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace="cop-phase2", container="tsb-cop2-fetch-name-details", method="POST"}[5m])) / sum by (namespace, container) (rate(http_server_requests_seconds_count{namespace="cop-phase2", container="tsb-cop2-fetch-name-details", method="POST"}[5m]))
         - alert: COP2_inbound_response_time_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 0.1
+          expr: (cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 0.6
           for: 4m
           labels:
             action: Closely monitor
