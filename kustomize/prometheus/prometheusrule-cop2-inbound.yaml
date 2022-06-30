@@ -48,7 +48,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: CO2P_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
