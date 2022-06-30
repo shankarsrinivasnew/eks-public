@@ -15,7 +15,7 @@ spec:
           expr: (sum by (namespace, uri) (rate(http_server_requests_seconds_count {namespace="cop-phase2", uri=~".*account-verification.*"}[1m])*60))
         - alert: COP2_inbound_no_request_red_alert_{{ AWS_ENVIRONMENT }}
           expr: (cop2_inbound_no_request_{{ AWS_ENVIRONMENT }}) == 0
-          for: 5m
+          for: 9m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -37,7 +37,7 @@ spec:
           expr: (sum by (namespace, job) (rate(http_server_requests_seconds_count {namespace="cop-phase2",status=~"50.*",uri=~".*account-verification.*"}[1m])*60))
         - alert: COP2_inbound_status_50x_red_alert_{{ AWS_ENVIRONMENT }}
           expr: (cop2_inbound_status_50x_count20_{{ AWS_ENVIRONMENT }}) > 20
-          for: 5m
+          for: 19m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -48,7 +48,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: CO2P_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
@@ -59,7 +59,7 @@ spec:
           expr: (sum by (namespace, job) (rate(http_server_requests_seconds_count {namespace="cop-phase2",status=~"40.*",uri=~".*account-verification.*"}[1m])*60))
         - alert: COP2_inbound_status_40x_red_alert_{{ AWS_ENVIRONMENT }}
           expr: (cop2_inbound_status_40x_count20_{{ AWS_ENVIRONMENT }}) > 20
-          for: 5m
+          for: 19m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -80,8 +80,8 @@ spec:
         - record: cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}
           expr: sum by (namespace, container) (rate(http_server_requests_seconds_sum {namespace="cop-phase2", container="tsb-cop2-fetch-name-details", method="POST"}[5m])) / sum by (namespace, container) (rate(http_server_requests_seconds_count{namespace="cop-phase2", container="tsb-cop2-fetch-name-details", method="POST"}[5m]))
         - alert: COP2_inbound_response_time_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 0.1
-          for: 5m
+          expr: (cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}) > 0.6
+          for: 4m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
