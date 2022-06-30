@@ -15,7 +15,7 @@ spec:
           expr: (sum by (namespace, job) (rate(http_server_requests_seconds_count {namespace="cop-phase2", method="POST", uri=~".*outbound.*|.*authorisation.*"}[1m])*60))
         - alert: COP2_no_request_yellow_alert_{{ AWS_ENVIRONMENT }}
           expr: (cop2_outbound_no_request_{{ AWS_ENVIRONMENT }}) == 0
-          for: 5m
+          for: 19m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -37,7 +37,7 @@ spec:
           expr: (sum by (namespace, job) (rate(http_server_requests_seconds_count {namespace="cop-phase2", status=~"50.*", uri=~".*outbound.*|.*authorisation.*"}[1m])*60))
         - alert: COP2_outbound_status_50x_red_alert_{{ AWS_ENVIRONMENT }}
           expr: (cop2_outbound_status_50x_count_{{ AWS_ENVIRONMENT }}) > 20
-          for: 5m
+          for: 10m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -79,8 +79,8 @@ spec:
         - record: cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}
           expr: sum by (namespace, job) (rate(http_server_requests_seconds_sum {namespace="cop-phase2", uri=~".*outbound.*|.*authorisation.*"}[5m])) / sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop-phase2", uri=~".*outbound.*|.*authorisation.*"}[5m]))
         - alert: COP2_outbound_obconnect_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: (cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}) > 0.5
-          for: 5m
+          expr: (cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}) > 3.5
+          for: 20m
           labels:
             action: Closely monitor
             environment: "{{ AWS_ENVIRONMENT }}"
