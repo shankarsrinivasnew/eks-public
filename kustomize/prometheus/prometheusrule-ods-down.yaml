@@ -19,10 +19,10 @@ spec:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
             group: INFRA
-            level: WARNING
+            level: CRITICAL
             platform: AWS
             namespace: ods
-            severity: WARNING
+            severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
             itopsbridge: true
@@ -38,10 +38,10 @@ spec:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
             group: INFRA
-            level: WARNING
+            level: CRITICAL
             platform: AWS
             namespace: ods
-            severity: WARNING
+            severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
             itopsbridge: true
@@ -57,10 +57,10 @@ spec:
             action: Application is likely impacted
             environment: "{{ AWS_ENVIRONMENT }}"
             group: INFRA
-            level: WARNING
+            level: CRITICAL
             platform: AWS
             namespace: ods
-            severity: WARNING
+            severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
             itopsbridge: true
@@ -125,10 +125,10 @@ spec:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
             summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
 ###########################################ODS_MAVEN_APP_KC43_DOWN_WARNING##########################################################
-        - record: ods_scylla_kc_43_all_app_down_warning_{{ AWS_ENVIRONMENT }}
+        - record: ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-transaction-kc43",namespace="ods"})
-        - alert: ods_scylla_kc_43_all_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((ods_scylla_kc_43_all_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_kc_43_all_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
+        - alert: ods_scylla_kc_43_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
           for: 1m
           labels:
             action: Closely monitor
@@ -352,11 +352,11 @@ spec:
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
             summary: Warning Alert deployment {{ $labels.statefulset }} of job {{ $labels.job }} has less than 3 pods running
-###########################################ODS_INGESTOR_APP_PR02_ALL_DOWN_WARNING##########################################################
-        - record: ods_ingestor_pr_app_down_warning_{{ AWS_ENVIRONMENT }}
+###########################################ODS_INGESTOR_APP_PR02_DOWN_WARNING##########################################################
+        - record: ods_ingestor_pr_02_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_statefulset_status_replicas_ready{statefulset="tsb-ods-pr-ingest-pr-02",namespace="ods"})
-        - alert: ods_ingestor_pr_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((ods_ingestor_pr_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_ingestor_pr_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
+        - alert: ods_ingestor_pr_02_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((ods_ingestor_pr_02_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_ingestor_pr_02_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
           for: 1m
           labels:
             action: Closely monitor
