@@ -48,25 +48,6 @@ spec:
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
             summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
-###########################################ODS_MAVEN_APP_RECON_DOWN_CRITICAL##########################################################
-        - record: ods_scylla_app_down_critical_{{ AWS_ENVIRONMENT }}
-          expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-scylla-recon",namespace="ods"})
-        - alert: ods_scylla_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
-          expr: (ods_scylla_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
-          labels:
-            action: Application is likely impacted
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: CRITICAL
-            platform: AWS
-            namespace: ods
-            severity: CRITICAL
-            type: 8x5
-            tsbci: ODS_AWS
-            itopsbridge: true
-          annotations:
-            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
-            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
 ###########################################ODS_MAVEN_APP_DV01_DOWN_WARNING##########################################################
         - record: ods_scylla_dv_01_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-account-dv01",namespace="ods"})
