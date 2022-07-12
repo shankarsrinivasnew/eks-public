@@ -470,7 +470,6 @@ spec:
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         scylla-cql: scylla-cql-cm
-        shared-detailed-dashboard: shared-detailed-dashboard-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
 
     prometheusOperator:
@@ -688,7 +687,7 @@ spec:
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
               - source_labels: [__meta_ec2_tag_Name]
-                target_label: instance  
+                target_label: instance
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
