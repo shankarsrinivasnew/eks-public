@@ -48,7 +48,7 @@ spec:
             severity: CRITICAL
             priority: P3
             type: 8x5
-            tsbci: CO2P_AWS
+            tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
@@ -73,8 +73,8 @@ spec:
             tsbci: COP2_AWS
             itopsbridge: "true"
           annotations:
-            description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes. Value: {{ $value }}'
-            summary: Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 50x errors for last 20 minutes
+            description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 40x errors for last 20 minutes. Value: {{ $value }}'
+            summary: Application {{ $labels.job }} Endpoint {{$labels.uri}} has more than 20 40x errors for last 20 minutes
 
         ################## Response time more than 600 milliseconds ##########################################################
         - record: cop2_inbound_response_time_{{ AWS_ENVIRONMENT }}
@@ -97,5 +97,3 @@ spec:
           annotations:
             description: 'Application {{ $labels.job }} Endpoint {{$labels.uri}} response time is greater than 600 milliseconds since 5 minutes'
             summary: Application {{ $labels.job }} Endpoint {{$labels.uri}} response time is greater than 600 milliseconds since 5 minutes
-
-    

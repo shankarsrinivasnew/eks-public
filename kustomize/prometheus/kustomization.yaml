@@ -57,6 +57,10 @@ resources:
   - prometheusrule-cop2-down.yaml
   - prometheusrule-cop2-inbound.yaml
   - prometheusrule-cop2-outbound.yaml
+  - prometheusrule-cop-phase2-all-pod-down.yml
+  - prometheusrule-cop-phase2-low-replica-count-all-ms.yaml
+  - prometheusrule-cop-phase2-responsetime.yml
+  - prometheusrule-cop-phase2-restart-for-all-ms.yaml
   
 namespace: prometheus
 transformers:
