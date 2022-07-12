@@ -1,0 +1,195 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cop-phase2-responsetime-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: COP_PHASE2_APP_RESPONSE_TIME
+      rules:
+  ##########################Response Time for cop2-api-gateway#########################################################
+        - record: cop2_api_gateway_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop-phase2",uri=~".authorisation/v1."}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop-phase2",uri=~".authorisation/v1."}[5m]))
+        - alert: cop2_api_gateway_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_api_gateway_response_time_{{ AWS_ENVIRONMENT }}) > 1.5 and (cop2_api_gateway_response_time_{{ AWS_ENVIRONMENT }}) < 3.5       ## Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 1.5s for last 20 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+            
+            
+        - alert: cop2_api_gateway_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_api_gateway_response_time_{{ AWS_ENVIRONMENT }}) > 3.5                  ### Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 3.5s for last 20 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}
+            
+    #################################Response Time for cop2-hmac-validator#########################
+    
+    
+    
+        - record: cop2_hmac_validator_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop-phase2",uri=~".validateHmac."}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop-phase2",uri=~".validateHmac."}[5m]))
+        - alert: cop2_hmac_validator_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_hmac_validator_response_time_{{ AWS_ENVIRONMENT }}) > 0.2 and (cop2_hmac_validator_response_time_{{ AWS_ENVIRONMENT }}) <= 0.4       ## Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 0.2s for last 20 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+            
+            
+        - alert: cop2_hmac_validator_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_api_gateway_response_time_{{ AWS_ENVIRONMENT }}) > 0.4                ### Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 0.4s for last 20 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}
+    
+    
+    ####################################Response Time for cop2-outbound-obconnect########################################################
+    
+    
+    
+        - record: cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop-phase2",uri=~".outbound/request/v1."}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop-phase2",uri=~".outbound/request/v1."}[5m]))
+        - alert: cop2_outbound_obconnect_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}) > 1.5 and (cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}) < 3.5       ## Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 1.5s for last 20 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+            
+            
+        - alert: cop2_outbound_obconnect_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cop2_outbound_obconnect_response_time_{{ AWS_ENVIRONMENT }}) > 3.5                  ### Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 3.5s for last 20 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}
+            
+            
+            
+            
+            
+            
+   ######################################## Response Time for tsb-cop2-fetch-name-details#####################################
+
+
+
+   
+        - record: tsb_cop2_fetch_name_details_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace="cop-phase2",uri=~".account-verification."}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="cop-phase2",uri=~".account-verification."}[5m]))
+        - alert: tsb_cop2_fetch_name_details_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_fetch_name_details_response_time_{{ AWS_ENVIRONMENT }}) > 0.5 and (tsb_cop2_fetch_name_details_response_time_{{ AWS_ENVIRONMENT }}) < 0.6       ## Responsetime will be provided by NFT team
+          for: 10m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cop-phase2
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 0.5s for last 20 mins. Value: {{ $value }}'
+            summary: Yellow alert for response time reached for Application {{ $labels.job }}
+            
+            
+        - alert: tsb_cop2_fetch_name_details_response_time_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (tsb_cop2_fetch_name_details_response_time_{{ AWS_ENVIRONMENT }}) > 0.6                  ### Responsetime will be provided by NFT team
+          for: 20m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cop-phase2
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: COP2_AWS
+            itopsbridge: "true"
+          annotations:
+            description: 'Application {{ $labels.job }} response time is more than 0.6 s for last 20 mins. Value: {{ $value }}'
+            summary: Red alert for response time reached for Application {{ $labels.job }}
