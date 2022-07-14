@@ -333,6 +333,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cob-microservices-dashboard
+            - name: 'cob-kafka-grafana'
+              orgId: 1
+              folder: 'TSB-COB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cob-kafka-grafana
             - name: 'ods-new-css-tables-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -468,6 +476,7 @@ spec:
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
         cob-microservices-dashboard: cob-microservices-dashboard-cm
+        cob-kafka-grafana: cob-kafka-grafana-cm
         ods-single-applications-grafana: ods-single-applications-grafana-cm
         ods-new-css-tables-grafana: ods-new-css-tables-grafana-cm
         ods-cobol-api-gateway-grafana: ods-cobol-api-gateway-podmetrics-cm
