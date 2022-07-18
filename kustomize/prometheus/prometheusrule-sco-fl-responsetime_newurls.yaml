@@ -4,11 +4,11 @@ metadata:
   labels:
     app: kube-prometheus-stack
     release: prometheus
-  name: sco-fl-responsetime-alert-apis-1
+  name: sco-fl-responsetime-alert-apis
   namespace: prometheus
 spec:
   groups:
-    - name: SCO_FL_RESPONSE_TIME_APIS-1
+    - name: SCO_FL_RESPONSE_TIME_APIS
       rules:
   ##########################Response Time for first set of APIs#########################################################
         - record: sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}
