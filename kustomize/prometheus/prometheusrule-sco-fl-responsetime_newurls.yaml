@@ -12,7 +12,7 @@ spec:
       rules:
   ##########################Response Time for first set of APIs#########################################################
         - record: sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}
-          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum{namespace="sco",uri=~".*/customer/loan/eligibility/status.*|.*/customer/loan.*|.*/customer/loan/status.*|.*/customer/loan/block.*|.*/completion/report.*|.*/completion/start.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sco",uri=~".*/customer/loan/eligibility/status.*|.*/customer/loan.*|.*/customer/loan/status.*|.*/customer/loan/block.*|.*/completion/report.*|.*/sco-fl/completion/start.*"}[5m]))
+          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum{namespace="sco",uri=~".*/customer/loan/eligibility/status.*|.*/customer/loan.*|.*/customer/loan/status.*|.*/customer/loan/block.*|.*/customer/loan/{applycode}/status.*|.*/customer/loan/{applycode}/cca.*"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sco",uri=~".*/customer/loan/eligibility/status.*|.*/customer/loan.*|.*/customer/loan/status.*|.*/customer/loan/block.*|.*/customer/loan/{applycode}/status.*|.*/customer/loan/{applycode}/cca.*"}[5m]))
         - alert: SCO_FL_app_response_time_yellow_alert_{{ AWS_ENVIRONMENT }}
           expr: (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) > 0.78 and (sco_fl_app_response_time_{{ AWS_ENVIRONMENT }}) <= 1.04
           for: 5m
@@ -128,97 +128,4 @@ spec:
             itopsbridge: "true"
           annotations:
             description: 'Application {{ $labels.job }} response time is more than 2020ms for last 5 mins. Value: {{ $value }}'
-            summary: Red alert for response time reached for Application {{ $labels.job }}
- ########################Response Time - Refinance API#############################################
-        - record: sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}
-          expr: sum by (namespace, job)(rate(http_server_requests_seconds_sum{namespace="sco",uri="/customer/loan/refinance"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace="sco",uri="/customer/loan/refinance"}[5m]))
-        - alert: SCO_FL_refinanceapi_response_time_green_alert_{{ AWS_ENVIRONMENT }}
-          expr: (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) > 7 and (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) <= 10
-          for: 5m
-          labels:
-            action: Application is likely impacted
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: GREEN
-            platform: AWS
-            namespace: sco
-            severity: WARNING
-            priority: P4
-            type: 8x5
-            tsbci: SCO_FL_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 7000ms for last 5 mins. Value: {{ $value }}'
-            summary: Green alert for response time reached for Application {{ $labels.job }}
-        - alert: SCO_FL_refinanceapi_response_time_yellow_alert_warning_{{ AWS_ENVIRONMENT }}
-          expr: (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) > 10 and (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) <= 12.5
-          for: 5m
-          labels:
-            action: Application is likely impacted
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: YELLOW
-            platform: AWS
-            namespace: sco
-            severity: WARNING
-            priority: P4
-            type: 8x5
-            tsbci: SCO_FL_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 10000ms for last 5 mins. Value: {{ $value }}'
-            summary: Yellow Warning Alert for response time reached for Application {{ $labels.job }}
-        - alert: SCO_FL_refinanceapi_response_time_yellow_alert_minor_{{ AWS_ENVIRONMENT }}
-          expr: (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) > 12.5 and (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) <= 15
-          for: 5m
-          labels:
-            action: Application is likely impacted
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: YELLOW
-            platform: AWS
-            namespace: sco
-            severity: MINOR
-            priority: P4
-            type: 8x5
-            tsbci: SCO_FL_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 12500ms for last 5 mins. Value: {{ $value }}'
-            summary: Yellow Minor Alert for response time reached for Application {{ $labels.job }}
-        - alert: SCO_FL_refinanceapi_response_time_yellow_alert_major_{{ AWS_ENVIRONMENT }}
-          expr: (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) > 15 and (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) <= 22
-          for: 5m
-          labels:
-            action: Closely Monitor
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: YELLOW
-            platform: AWS
-            namespace: sco
-            severity: MAJOR
-            priority: P4
-            type: 8x5
-            tsbci: SCO_FL_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 15000ms for last 5 mins. Value: {{ $value }}'
-            summary: Yellow Major Alert for response time reached for Application {{ $labels.job }}
-        - alert: SCO_FL_refinanceapi_response_time_red_alert_{{ AWS_ENVIRONMENT }}
-          expr: (sco_fl_refinanceapi_response_time_{{ AWS_ENVIRONMENT }}) > 22
-          for: 5m
-          labels:
-            action: Closely monitor
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: RED
-            platform: AWS
-            namespace: sco
-            severity: CRITICAL
-            priority: P3
-            type: 8x5
-            tsbci: SCO_FL_AWS
-            itopsbridge: "true"
-          annotations:
-            description: 'Application {{ $labels.job }} response time is more than 22000ms for last 5 mins. Value: {{ $value }}'
             summary: Red alert for response time reached for Application {{ $labels.job }}
