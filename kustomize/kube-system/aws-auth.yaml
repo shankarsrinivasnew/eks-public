@@ -113,4 +113,10 @@ data:
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-dev-role
       username: tsb-dev-eks-fullaccess
       groups:
-        - Dev-Nonprod-Eks-Access    
+        - Dev-Nonprod-Eks-Access
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/ods-user-dev-env-role
+      username: tsb-ods-dev
+      groups:
+        - ods-view-kube-system
+        - ods-admin
+        - ods-user-dev-env-group
