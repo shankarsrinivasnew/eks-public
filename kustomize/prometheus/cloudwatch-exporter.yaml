@@ -215,6 +215,8 @@ spec:
         aws_metric_name: resolveGlueInError
       - aws_namespace: tsb-datalake-sas
         aws_metric_name: sasGlueInError
+      - aws_namespace: tsb-datalake-wfm
+        aws_metric_name: wfmGlueInError
       - aws_namespace: tsb-datalake-appointmentbooking
         aws_metric_name: appointmentbookingGlueInError
       - aws_namespace: tsb-datalake-speechanalytics
