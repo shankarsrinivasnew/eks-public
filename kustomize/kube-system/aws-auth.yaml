@@ -120,3 +120,7 @@ data:
         - ods-view-kube-system
         - ods-admin
         - ods-user-dev-env-group
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/ods-jenkins-dev-env-role
+      username: ods-jenkins-dev-env-user
+      groups:
+        - ods-jenkins-dev-env-group 
