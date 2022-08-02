@@ -1,0 +1,109 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: cob-create-updatedownsell-responsetime-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: COB_APPS_RESPONSETIME_STATE
+      rules:
+        ###########################################COB_APP_ALL_RESPONSETIME_CREATE_UPDATEDOWNSELL##########################################################
+        - record: cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}
+          expr: sum by (namespace, routeId)(rate(gateway_requests_seconds_sum{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))/ sum by (namespace, routeId)(rate(gateway_requests_seconds_count{routeId="tsb-onboarding-restproxy-updatedownsell", namespace="cob"}[5m]))
+        - alert: COB_app_create_updatedownsell_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.55
+          for: 5m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: cob
+            severity: CRITICAL
+            priority: P3
+            type: 8x5
+            tsbci: SCO_AWS
+            itopsbridge: "true"
+          annotations:
+            description: "Application {{ $labels.job }} response time is more than 1.55 s :{{ $value }}"
+            summary: "Red alert for response time reached for application"
+            #################################################################
+        - alert: COB_app_create_updatedownsell_high_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.40 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.55
+          for: 5m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cob
+            severity: MAJOR
+            priority: P4
+            type: 8x5
+            tsbci: SCO_AWS
+            itopsbridge: "true"
+          annotations:
+            description: "Application {{ $labels.job }} response time is more than 1.4 s :{{ $value }}"
+            summary: "Yellow alert for response time reached for application"
+            ###################################################################
+        - alert: COB_app_create_updatedownsell_medium_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.25 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.4
+          for: 5m
+          labels:
+            action: Application will be impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cob
+            severity: MINOR
+            priority: P4
+            type: 8x5
+            tsbci: SCO_AWS
+            itopsbridge: "true"
+          annotations:
+            description: "Application {{ $labels.job }} response time is more than 1.25 s :{{ $value }}"
+            summary: "Yellow alert for response time reached for application"
+            #################################################################
+        - alert: COB_app_create_updatedownsell_low_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > 1.0 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.25
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: cob
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: SCO_AWS
+            itopsbridge: "true"
+          annotations:
+            description: "Application {{ $labels.job }} response time is more than 1.0 s :{{ $value }}"
+            summary: "Yellow alert for response time reached for application"
+            ######################################################################
+        - alert: COB_app_create_updatedownsell_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) > .700 and (cob_app_create_updatedownsell_response_time_{{ AWS_ENVIRONMENT }}) <=1.0
+          for: 5m
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: GREEN
+            platform: AWS
+            namespace: cob
+            severity: WARNING
+            priority: P4
+            type: 8x5
+            tsbci: SCO_AWS
+            itopsbridge: "true"
+          annotations:
+            description: "Application {{ $labels.job }} response time is more than 700 ms :{{ $value }}"
+            summary: "Green alert for response time reached for application"
