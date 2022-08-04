@@ -206,7 +206,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "sum by (job, namespace) (onfido_token_successful_requests_total{job=\"tsb-onboarding-identity-onfido-generate-token\",namespace=\"cob\"})",
+              "expr": "sum by (job, namespace) (onfido_token_successfull_requests_total{job=\"tsb-onboarding-identity-onfido-generate-token\",namespace=\"cob\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "Onfido_token_success",
