@@ -186,7 +186,7 @@ spec:
             by: "cluster"
     #alerts
         - alert: cqlNonPrepared
-          expr: cql:non_prepared > 0
+          expr: cql:non_prepared > 1
           for: 15m
           labels:
             severity: CRITICAL
@@ -225,7 +225,7 @@ spec:
             description: 'For {{ $labels.instance }} Some queries are not token-aware'
             summary: Instance {{ $labels.instance }} non token aware statments
         - alert: cqlReverseOrder
-          expr: cql:reverse_queries > 0
+          expr: cql:reverse_queries > 1
           for: 30m
           labels:
             severity: CRITICAL
