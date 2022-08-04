@@ -657,7 +657,7 @@ spec:
               - region: eu-west-2
                 port: 9110
             relabel_configs:
-              - source_labels: [__meta_ec2_tag_ManagedBy]
+              - source_labels: [__meta_ec2_tag_managed_by]
                 target_label: managedby
                 regex: rackspace
                 action: keep
