@@ -54,7 +54,7 @@ data:
       groups:
         - obs-view-kube-system
         - obs-admin
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs-dev-eks 
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs-dev-eks
       username: tsb-obs-dev
       groups:
         - obs-admin
@@ -98,6 +98,10 @@ data:
       username: tsb-admins-eks
       groups:
         - tsb-admins
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-{{ AWS_ENVIRONMENT }}-readonly-access
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly        
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sco-nonprod-eks
       username: tsb-sco-readyonly
       groups:
@@ -117,4 +121,4 @@ data:
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-nonprod-role
       username: tsb-nonprod-eks-fullaccess
       groups:
-        - Dev-Nonprod-Eks-Access    
+        - Dev-Nonprod-Eks-Access
