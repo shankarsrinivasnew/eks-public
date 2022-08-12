@@ -209,7 +209,7 @@ spec:
                                   curl https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
                                 toolHome: "."
-                  - name: "terraform-1.2.4"
+                  - name: "terraform-onetwofour"
                     properties:
                       - installSource:
                           installers:
