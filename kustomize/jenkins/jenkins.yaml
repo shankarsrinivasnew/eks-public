@@ -216,7 +216,7 @@ spec:
                             - command:
                                 command: |-
                                   curl https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip
-                                  unzip terraform.zip
+                                  unzip terraform_1.2.4_linux_amd64.zip
                                 toolHome: "."
 
           ansicolor: |-
