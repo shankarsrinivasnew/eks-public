@@ -122,3 +122,7 @@ data:
       username: tsb-nonprod-eks-fullaccess
       groups:
         - Dev-Nonprod-Eks-Access
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop-phase2
+      username: tsb-nonprod-eks-cop-phase2
+      groups:
+        - tsb-nonprod-cop-phase2
