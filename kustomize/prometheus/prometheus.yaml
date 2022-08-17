@@ -639,7 +639,7 @@ spec:
                 target_label: instancetype
               - source_labels: [__meta_ec2_tag_subsystem]
                 target_label: subsystem
-              - source_labels: [__meta_ec2_tag_terraform]
+              - source_labels: [__meta_ec2_tag_Terraform]
                 target_label: terraform
 
           - job_name: ec2-discover-hdf-jmx
