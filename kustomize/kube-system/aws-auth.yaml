@@ -128,3 +128,11 @@ data:
       username: ods-jenkins-dev-env-user
       groups:
         - ods-jenkins-dev-env-group
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_tsbsme-readonly_billing
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_readonly_billing
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly
