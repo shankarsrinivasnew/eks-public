@@ -126,3 +126,11 @@ data:
       username: tsb-nonprod-eks-cop-phase2
       groups:
         - tsb-nonprod-cop-phase2
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_tsbsme-readonly_billing
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_readonly_billing
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly
