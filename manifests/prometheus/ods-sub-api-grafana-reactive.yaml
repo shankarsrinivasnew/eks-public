@@ -657,7 +657,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "sum(http_server_requests_seconds_count{status=~\"4.*\",job=\"tsb-ods-api-cop-customer-search\"})",
+                "expr": "sum(http_server_requests_seconds_count{method=\"POST\",status=~\"4.*\",job=\"tsb-ods-api-cop-customer-search\"})",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -2010,7 +2010,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "sum(http_server_requests_seconds_count{status=~\"4.*\",job=\"tsb-ods-api-cli-customer-search\"})",
+                "expr": "sum(http_server_requests_seconds_count{method=\"POST\",status=~\"4.*\",job=\"tsb-ods-api-cli-customer-search\"})",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
