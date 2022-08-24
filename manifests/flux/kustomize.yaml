@@ -49,8 +49,8 @@ data:
     GIT_BRANCH=dev
     DYNATRACE_ENV_ID=rxl69895
     DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-DEV
-    SHARED_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-msk-devmigr-msk-cluster-2ad5e841-4460-cc40-8004-ff9bd30bce84/22c1e5bf-5129-4733-acf6-70c8d0dc8d66-3
-    BDS_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-ods-bds-msk-cluster/5a9ee9ee-3aa5-4eda-a348-b8aad828adc6-3
+    SHARED_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-msk-devmigr-msk-cluster-2ad5e841-4460-cc40-8004-ff9bd30bce84/22c1e5bf-5129-4733-acf6-70c8d0dc8d66-3"
+    BDS_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-ods-bds-msk-cluster/5a9ee9ee-3aa5-4eda-a348-b8aad828adc6-3"
 
     case $AWS_ACCOUNT in
       273312704578)
@@ -59,8 +59,8 @@ data:
         GIT_BRANCH=nonprod
         DYNATRACE_ENV_ID=rxl69895
         DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-NONP
-        SHARED_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:273312704578:cluster/tsb-msk-nonprod-msk-cluster-8284d8c3-2f9c-68c1-1580-bb9fe588745e/dfd7ea74-364e-4e1c-b82a-88cb93f0ab74-2
-        BDS_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:273312704578:cluster/tsb-msk-nonprod-msk-cluster-8284d8c3-2f9c-68c1-1580-bb9fe588745e/dfd7ea74-364e-4e1c-b82a-88cb93f0ab74-2        
+        SHARED_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:273312704578:cluster/tsb-msk-nonprod-msk-cluster-8284d8c3-2f9c-68c1-1580-bb9fe588745e/dfd7ea74-364e-4e1c-b82a-88cb93f0ab74-2"
+        BDS_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:273312704578:cluster/tsb-msk-nonprod-msk-cluster-8284d8c3-2f9c-68c1-1580-bb9fe588745e/dfd7ea74-364e-4e1c-b82a-88cb93f0ab74-2"   
         ;;
       045223552195)
         AWS_ENVIRONMENT=preprod
@@ -68,8 +68,8 @@ data:
         GIT_BRANCH=preprod
         DYNATRACE_ENV_ID=rxl69895
         DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-PRE
-        SHARED_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:045223552195:cluster/tsb-msk-preprod-msk-cluster-6d417a85-3446-0509-857c-95e8214421ef/e321a969-bac4-47b1-ab7f-0ce9394fd896-3
-        BDS_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:045223552195:cluster/tsb-bds-pre-msk-cluster/aaa391f6-c246-45d6-a40d-282023ee81c6-3      
+        SHARED_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:045223552195:cluster/tsb-msk-preprod-msk-cluster-6d417a85-3446-0509-857c-95e8214421ef/e321a969-bac4-47b1-ab7f-0ce9394fd896-3"
+        BDS_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:045223552195:cluster/tsb-bds-pre-msk-cluster/aaa391f6-c246-45d6-a40d-282023ee81c6-3"
         ;;
       407929326957)
         AWS_ENVIRONMENT=prod
@@ -77,8 +77,8 @@ data:
         GIT_BRANCH=master
         DYNATRACE_ENV_ID=bqm47049
         DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE
-        SHARED_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:407929326957:cluster/tsb-msk-prod-msk-cluster-ac36a9a9-7520-2008-aac9-86d7f4f1df2d/2687443b-495b-4f55-9315-e7e46a8306f4-4
-        BDS_MSK_CLUSTER_ARN=arn:aws:kafka:eu-west-2:407929326957:cluster/tsb-bds-prod-msk-cluster/b0942942-d612-4e38-9467-d66ddfc1943b-4        
+        SHARED_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:407929326957:cluster/tsb-msk-prod-msk-cluster-ac36a9a9-7520-2008-aac9-86d7f4f1df2d/2687443b-495b-4f55-9315-e7e46a8306f4-4"
+        BDS_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:407929326957:cluster/tsb-bds-prod-msk-cluster/b0942942-d612-4e38-9467-d66ddfc1943b-4"
         ;;
     esac
 
