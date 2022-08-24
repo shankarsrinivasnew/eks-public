@@ -452,7 +452,7 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-cql
-            - name: 'shared-msk-overview1'
+            - name: 'shared-grafana-msk-overview1'
               orgId: 1
               folder: 'Shared Services'
               type: file
@@ -460,7 +460,7 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-msk-overview1
-            - name: 'shared-msk-overview2'
+            - name: 'shared-grafana-msk-overview2'
               orgId: 1
               folder: 'Shared Services'
               type: file
