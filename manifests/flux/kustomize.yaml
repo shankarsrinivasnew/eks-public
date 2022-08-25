@@ -49,8 +49,8 @@ data:
     GIT_BRANCH=dev
     DYNATRACE_ENV_ID=rxl69895
     DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-DEV
-    SHARED_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-msk-devmigr-msk-cluster-2ad5e841-4460-cc40-8004-ff9bd30bce84/22c1e5bf-5129-4733-acf6-70c8d0dc8d66-3"
-    BDS_MSK_CLUSTER_ARN="arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-ods-bds-msk-cluster/5a9ee9ee-3aa5-4eda-a348-b8aad828adc6-3"
+    SHARED_MSK_CLUSTER_ARN='arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-msk-devmigr-msk-cluster-2ad5e841-4460-cc40-8004-ff9bd30bce84/22c1e5bf-5129-4733-acf6-70c8d0dc8d66-3'
+    BDS_MSK_CLUSTER_ARN='arn:aws:kafka:eu-west-2:450136740937:cluster/tsb-ods-bds-msk-cluster/5a9ee9ee-3aa5-4eda-a348-b8aad828adc6-3'
 
     case $AWS_ACCOUNT in
       273312704578)
