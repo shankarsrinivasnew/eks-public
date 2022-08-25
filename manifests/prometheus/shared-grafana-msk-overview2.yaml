@@ -5,7 +5,7 @@ metadata:
   name: shared-msk-overview2-cm
   namespace: prometheus
 data:
-  mskoverview2.json: |
+  msk-overview2.json: |
     {
       "annotations": {
         "list": [
