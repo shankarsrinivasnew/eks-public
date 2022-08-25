@@ -28,7 +28,7 @@ data:
       "panels": [
         {
           "collapsed": true,
-          "datasource": "Prometheus",
+          "datasource": "Thanos",
           "gridPos": {
             "h": 1,
             "w": 24,
