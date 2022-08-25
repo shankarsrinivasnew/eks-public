@@ -768,33 +768,33 @@ spec:
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ BDS_MSK_BROKER_0 }}:11002'
-                  - '{{ BDS_MSK_BROKER_1 }}:11002'
-                  - '{{ BDS_MSK_BROKER_2 }}:11002'
+                  - "{{ BDS_MSK_BROKER_0 }}:11002"
+                  - "{{ BDS_MSK_BROKER_1 }}:11002"
+                  - "{{ BDS_MSK_BROKER_2 }}:11002"
           - job_name: msk-jmx-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ BDS_MSK_BROKER_0 }}:11001'
-                  - '{{ BDS_MSK_BROKER_1 }}:11001'
-                  - '{{ BDS_MSK_BROKER_2 }}:11001'
+                  - "{{ BDS_MSK_BROKER_0 }}:11001"
+                  - "{{ BDS_MSK_BROKER_1 }}:11001"
+                  - "{{ BDS_MSK_BROKER_2 }}:11001"
           - job_name: shared-msk-node-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ SHARED_MSK_BROKER_0 }}:11002'
-                  - '{{ SHARED_MSK_BROKER_1 }}:11002'
-                  - '{{ SHARED_MSK_BROKER_2 }}:11002'
+                  - "{{ SHARED_MSK_BROKER_0 }}:11002"
+                  - "{{ SHARED_MSK_BROKER_1 }}:11002"
+                  - "{{ SHARED_MSK_BROKER_2 }}:11002"
           - job_name: shared-msk-jmx-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ SHARED_MSK_BROKER_0 }}:11001'
-                  - '{{ SHARED_MSK_BROKER_1 }}:11001'
-                  - '{{ SHARED_MSK_BROKER_2 }}:11001'
+                  - "{{ SHARED_MSK_BROKER_0 }}:11001"
+                  - "{{ SHARED_MSK_BROKER_1 }}:11001"
+                  - "{{ SHARED_MSK_BROKER_2 }}:11001"
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
