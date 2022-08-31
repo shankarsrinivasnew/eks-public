@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.289.3-lts-alpine
+      tag: 2.303.3-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -94,7 +94,7 @@ spec:
         - sonar:2.12
         - jira:3.1.1
         - audit-trail:3.10
-        - pipeline-model-definition:1.9.2
+        - pipeline-model-definition:1.9.3
         - pipeline-model-extensions:1.9.2
         - pipeline-milestone-step:1.3.2
         - javax-activation-api:1.2.0-3
