@@ -61,7 +61,7 @@ spec:
         - kubernetes:1.27.7
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
-        - workflow-multibranch:2.24
+        - workflow-multibranch:716.vc692a_e52371b_
         - credentials-binding:1.27
         - git:4.8.3
         - configuration-as-code:1.54
