@@ -9,3 +9,14 @@ metadata:
   labels:
     role: jenkins-agent
     component: ods
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tsb-ods-jenkins
+  namespace: ods
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/ods-jenkins-dev-env-role
+  labels:
+    role: jenkins-agent
+    component: ods
