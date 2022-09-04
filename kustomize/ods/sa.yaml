@@ -9,9 +9,7 @@ metadata:
   labels:
     role: jenkins-agent
     component: ods
-
-
-
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
