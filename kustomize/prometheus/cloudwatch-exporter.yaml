@@ -74,6 +74,42 @@ spec:
       region: eu-west-2
       period_seconds: 240
       metrics:
+      - aws_namespace: AWS/kafka
+        aws_metric_name: OfflinePartitionsCount
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: KafkaDataLogsDiskUsed
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: PartitionCount
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: RootDiskUsed
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: KafkaAppLogsDiskUsed
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: CpuIdle
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: CpuSystem
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: UnderReplicatedPartitions
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
+      - aws_namespace: AWS/kafka
+        aws_metric_name: UnderMinIsrPartitionCount
+        aws_dimensions: [Cluster Name]
+        aws_statistics: [Average]
       - aws_namespace: AWS/RDS
         aws_metric_name: BurstBalance
         aws_dimensions: [DBInstanceIdentifier]
