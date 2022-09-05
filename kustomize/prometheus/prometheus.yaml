@@ -642,13 +642,13 @@ spec:
                 target_label: privateip
               - source_labels: [__meta_ec2_instance_id]
                 target_label: instanceid
-              - source_labels: [__meta_ec2_tag_ManagedBy]
+              - source_labels: [__meta_ec2_tag_managed_by]
                 target_label: managedby
                 regex: rackspace
                 action: keep
               - source_labels: [__meta_ec2_tag_Name]
                 target_label: instance
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
@@ -668,7 +668,7 @@ spec:
               - region: eu-west-2
                 port: 9110
             relabel_configs:
-              - source_labels: [__meta_ec2_tag_ManagedBy]
+              - source_labels: [__meta_ec2_tag_managed_by]
                 target_label: managedby
                 regex: rackspace
                 action: keep
@@ -681,7 +681,7 @@ spec:
                 target_label: privateip
               - source_labels: [__meta_ec2_instance_id]
                 target_label: instanceid
-              - source_labels: [__meta_ec2_tag_ManagedBy]
+              - source_labels: [__meta_ec2_tag_managed_by]
                 target_label: managedby
                 regex: rackspace
                 action: keep
@@ -691,7 +691,7 @@ spec:
               - source_labels: [__meta_ec2_tag_Name]
                 action: replace
                 target_label: instancename
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
@@ -707,7 +707,7 @@ spec:
               - region: eu-west-2
                 port: 5090
             relabel_configs:
-              - source_labels: [__meta_ec2_tag_ManagedBy]
+              - source_labels: [__meta_ec2_tag_managed_by]
                 target_label: managedby
                 regex: rackspace
                 action: keep
@@ -717,7 +717,7 @@ spec:
               - source_labels: [__meta_ec2_tag_Name]
                 action: replace
                 target_label: instancename
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
@@ -786,13 +786,13 @@ spec:
                 target_label: privateip
               - source_labels: [__meta_ec2_instance_id]
                 target_label: instanceid
-              - source_labels: [__meta_ec2_tag_ManagedBy]
+              - source_labels: [__meta_ec2_tag_managed_by]
                 target_label: managedby
                 regex: rackspace
                 action: keep
               - source_labels: [__meta_ec2_tag_Name]
                 target_label: instance
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
