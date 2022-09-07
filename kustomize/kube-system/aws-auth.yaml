@@ -136,3 +136,7 @@ data:
       username: tsb-eks-readonly
       groups:
         - tsb-eks-readonly
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop2-dev-eks
+      username: tsb-dev-eks-cop2
+      groups:
+        - tsb-dev-eks-cop2
