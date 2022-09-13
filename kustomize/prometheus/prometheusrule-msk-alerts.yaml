@@ -202,3 +202,19 @@ spec:
           annotations:
             Description: 'kafka composite CPU  utilization is greater than 60%'
             Summary: kafka composite CPU utilization.
+
+        - alert: Test_alert
+          expr: (aws_kafka_offline_partitions_count_average{}) = 0
+          for: 30s
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: msk
+            tsbci: MSK_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'This is a test alert'
+            Summary: Test alert to check the integration
