@@ -468,6 +468,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-msk-overview2
+            - name: 'gen-availability'
+              orgId: 1
+              folder: 'AWS Infrastructure'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/gen-availability
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -517,6 +525,7 @@ spec:
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         scylla-cql: scylla-cql-cm
+        gen-availability: gen-availability-cm
 
     prometheusOperator:
       enabled: true
