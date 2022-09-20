@@ -441,7 +441,6 @@ spec:
         sca-grafana-microservice: sca-microservice-cm
         sca-grafana-cdc-customerdata: sca-cdc-customerdata-cm
         cb-grafana-businessdashboard: cb-business-metrics-cm
-        ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-performance-grafana-dashboard: ods-performance-metrics-cm
         sco-phase2-loans-business-metrics: sco-phase2-loans-business-metrics-cm
         ods-sys-api-grafana-1: ods-sys-api-podmetrics1-cm
