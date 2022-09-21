@@ -205,6 +205,7 @@ spec:
 
         - alert: Test_alert
           expr: (aws_kafka_offline_partitions_count_average{}) < 1
+          for: 30m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
             level: CRITICAL
