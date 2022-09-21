@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.361.1-lts-alpine
+      tag: 2.303.3-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
