@@ -102,7 +102,10 @@ spec:
         - javax-mail-api:1.6.2-6
         - jaxb:2.3.6-1
         - sshd:3.1.0
-        - git-server:1.11
+        - git-server:99.va_0826a_b_cdfa_d
+        - apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
+        - workflow-job:1236.vc3a_d1602f439
+        - jquery3-api:3.6.1-1
       JCasC:
         securityRealm: |-
           local:
