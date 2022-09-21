@@ -35,7 +35,7 @@ spec:
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20,10.184.136.84/32,10.184.136.115/32,10.184.136.116/30,10.184.136.120/30,10.184.136.124/32"
-          alb.ingress.kubernetes.io/tags: Environment={{ AWS_ENVIRONMENT }},Project=shared,ManagedBy=rackspace
+          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},project=SHARED-SERVICES,managedBy=rackspace
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
