@@ -204,7 +204,7 @@ spec:
             Summary: kafka composite CPU utilization.
 
         - alert: Test_alert
-          expr: (aws_kafka_offline_partitions_count_average{}) >= 0
+          expr: (aws_kafka_offline_partitions_count_average{}) < 1
           for: 30s
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
