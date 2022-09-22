@@ -71,7 +71,7 @@ spec:
         - aws-credentials:189.v3551d5642995
         - aws-global-configuration:1.6
         - command-launcher:1.4
-        - custom-tools-plugin:0.7
+        - custom-tools-plugin:0.8
         - docker-plugin:1.2.0
         - envinject:2.4.0
         - extra-tool-installers:1.0
