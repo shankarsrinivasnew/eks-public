@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.361.1-lts-alpine
+      tag: 2.303.3-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -35,7 +35,7 @@ spec:
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20,10.184.136.84/32,10.184.136.115/32,10.184.136.116/30,10.184.136.120/30,10.184.136.124/32"
-          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},project=SHARED-SERVICES,managedBy=rackspace
+          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},project=SHARED-SERVICES,managedby=rackspace
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
@@ -62,20 +62,20 @@ spec:
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
         - workflow-multibranch:716.vc692a_e52371b_
-        - credentials-binding:523.vd859a_4b_122e6
+        - credentials-binding:1.27
         - git:4.8.3
-        - configuration-as-code:1512.vb_79d418d5fc8
+        - configuration-as-code:1.54
         - ansicolor:0.7.2
         - pipeline-aws:1.42
         - authorize-project:1.3.0
-        - aws-credentials:189.v3551d5642995
+        - aws-credentials:1.30
         - aws-global-configuration:1.6
         - command-launcher:1.4
-        - custom-tools-plugin:0.8
+        - custom-tools-plugin:0.7
         - docker-plugin:1.2.0
         - envinject:2.4.0
         - extra-tool-installers:1.0
-        - git-parameter:0.9.18
+        - git-parameter:0.9.13
         - github-branch-source:2.9.0
         - http_request:1.8.26
         - job-dsl:1.77
@@ -90,10 +90,10 @@ spec:
         - artifactory:3.10.6
         - build-timeout:1.20
         - build-timestamp:1.0.3
-        - dashboard-view:2.447.vda_124dd35f11
+        - dashboard-view:2.16
         - ghprb:1.42.1
-        - jira:3.8
         - sonar:2.12
+        - jira:3.1.1
         - audit-trail:3.10
         - pipeline-model-definition:1.9.3
         - pipeline-model-extensions:1.9.3
@@ -102,10 +102,8 @@ spec:
         - javax-mail-api:1.6.2-6
         - jaxb:2.3.6-1
         - sshd:3.1.0
-        - git-server:99.va_0826a_b_cdfa_d
-        - apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
-        - workflow-job:1236.vc3a_d1602f439
-        - jquery3-api:3.6.1-1
+        - git-server:1.11
+        - matrix-project:772.v494f19991984
       JCasC:
         securityRealm: |-
           local:
@@ -213,14 +211,14 @@ spec:
                                   curl https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
                                 toolHome: "."
-                  - name: "terraform-0.13"
+                  - name: "terraformonetwofour"
                     properties:
                       - installSource:
                           installers:
                             - command:
                                 command: |-
-                                  curl https://releases.hashicorp.com/terraform/0.13.0/terraform_0.13.0_linux_amd64.zip -o terraform.zip
-                                  unzip terraform.zip
+                                  curl https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip -L -o terraform_1.2.4_linux_amd64.zip
+                                  unzip terraform_1.2.4_linux_amd64.zip
                                 toolHome: "."
 
 
@@ -695,7 +693,7 @@ spec:
                   successThreshold: 0
                   timeoutSeconds: 0
               ttyEnabled: true
-              workingDir: "/home/jenkins/agent"              
+              workingDir: "/home/jenkins/agent" 
             - name: "python"
               args: "cat"
               command: "/bin/sh -c"
