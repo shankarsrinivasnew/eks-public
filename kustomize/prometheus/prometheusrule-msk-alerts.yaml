@@ -11,7 +11,7 @@ spec:
     - name: MSK_Cloudwatch_Alerts  
       rules:
         - alert: MSK_Offline_Partition_Count
-          expr: (aws_kafka_offline_partitions_count_average{}) > 0
+          expr: (aws_kafka_offline_partitions_count_average{} offset 10m) > 0
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -27,7 +27,7 @@ spec:
             Summary: MSK offline partition count
 
         - alert: Kafka_Data_Logs_Disk_Used
-          expr: (aws_kafka_offline_partitions_count_average{}) > 95
+          expr: (aws_kafka_offline_partitions_count_average{} offset 10m) > 95
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -43,7 +43,7 @@ spec:
             Summary: kafka data logs disk utilization
 
         - alert: kafka_partition_count
-          expr: ((aws_kafka_partition_count_average{}) > (0.95 * 4000))
+          expr: ((aws_kafka_partition_count_average{} offset 10m) > (0.95 * 4000))
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -59,7 +59,7 @@ spec:
             Summary: kafka partition count
 
         - alert: kafka_Root_Disk_Used
-          expr: (aws_kafka_root_disk_used_average{}) > 95
+          expr: (aws_kafka_root_disk_used_average{} offset 10m) > 95
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -75,7 +75,7 @@ spec:
             Summary: kafka root disk utilization.
 
         - alert: Kafka_App_Logs_Disk_Used
-          expr: (aws_kafka_kafka_app_logs_disk_used_average{}) > 60
+          expr: (aws_kafka_kafka_app_logs_disk_used_average{} offset 10m) > 60
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -91,7 +91,7 @@ spec:
             Summary: kafka root disk utilization.
 
         - alert: Kafka_App_Logs_Disk_Used
-          expr: (aws_kafka_kafka_app_logs_disk_used_average{}) > 80
+          expr: (aws_kafka_kafka_app_logs_disk_used_average{} offset 10m) > 80
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -107,7 +107,7 @@ spec:
             Summary: kafka root disk utilization.
 
         - alert: Kafka_cpu_idle_average
-          expr: (aws_kafka_cpu_idle_average{}) < 5
+          expr: (aws_kafka_cpu_idle_average{} offset 10m) < 5
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -123,7 +123,7 @@ spec:
             Summary: kafka CPU idle utilization.
 
         - alert: Kafka_cpu_system_average
-          expr: (aws_kafka_cpu_system_average{}) > 50
+          expr: (aws_kafka_cpu_system_average{} offset 10m) > 50
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -139,7 +139,7 @@ spec:
             Summary: kafka CPU system utilization.
 
         - alert: Kafka_cpu_user_average
-          expr: (aws_kafka_cpu_user_average{}) > 90
+          expr: (aws_kafka_cpu_user_average{} offset 10m) > 90
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -155,7 +155,7 @@ spec:
             Summary: kafka CPU user utilization.
 
         - alert: Kafka_under_replicated_partitions
-          expr: (aws_kafka_under_replicated_partitions_average{}) > 0
+          expr: (aws_kafka_under_replicated_partitions_average{} offset 10m) > 0
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -171,7 +171,7 @@ spec:
             Summary: kafka under replicated partitions.
 
         - alert: Kafka_under_replicated_partitions
-          expr: (aws_kafka_under_min_isr_partition_count_average{}) > 0
+          expr: (aws_kafka_under_min_isr_partition_count_average{} offset 10m) > 0
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -187,7 +187,7 @@ spec:
             Summary: kafka under min isr partitions.
 
         - alert: Kafka_cpu_system_average
-          expr: (((aws_kafka_cpu_system_average{}) > 60) and ((aws_kafka_cpu_user_average{}) > 60))
+          expr: (((aws_kafka_cpu_system_average{} offset 10m) > 60) and ((aws_kafka_cpu_user_average{} offset 10m) > 60))
           for: 5m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
