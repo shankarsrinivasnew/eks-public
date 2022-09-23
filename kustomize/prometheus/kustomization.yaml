@@ -59,6 +59,7 @@ resources:
   - prometheusrule-cop2-down.yaml
   - prometheusrule-cop2-inbound.yaml
   - prometheusrule-cop2-outbound.yaml
+  - prometheusrule-msk-alerts.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml
