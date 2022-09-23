@@ -8,8 +8,7 @@ metadata:
   namespace: prometheus
 spec:
   groups:
-    - name: MSK_Alerts
-        
+    - name: MSK_Cloudwatch_Alerts  
       rules:
         - alert: MSK_Offline_Partition_Count
           expr: (aws_kafka_offline_partitions_count_average{}) > 0
@@ -204,8 +203,8 @@ spec:
             Summary: kafka composite CPU utilization.
 
         - alert: Test_alert
-          expr: (aws_kafka_offline_partitions_count_average{}) < 1
-          for: 30m
+          expr: (aws_kafka_cpu_idle_average{}) > 5
+          for: 15m
           labels:
             environment: "{{ AWS_ENVIRONMENT }}"
             level: CRITICAL
