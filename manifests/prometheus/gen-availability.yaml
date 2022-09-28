@@ -33,7 +33,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -73,7 +75,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"shared-preprod-scylla.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"shared-preprod-scylla.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"shared-preprod-scylla.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -99,14 +101,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:392",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:393",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -127,7 +131,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -167,7 +173,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"ods-preprod-scylla.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"ods-preprod-scylla.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"ods-preprod-scylla.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -193,14 +199,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:480",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:481",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -221,7 +229,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -261,7 +271,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-worker.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-worker.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-worker.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -287,14 +297,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:533",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:534",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -315,7 +327,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -355,7 +369,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-controller.*\"})\n      or\n    (0 * sum_over_time(    up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-controller.*\"}[7d]))\n  )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-controller.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -381,14 +395,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:586",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:587",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -409,7 +425,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -449,7 +467,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -475,14 +493,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:639",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:640",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -503,7 +523,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -543,7 +565,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-phase2-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-phase2-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-phase2-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -569,18 +591,20 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:692",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:693",
               "format": "short",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             }
@@ -597,7 +621,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -637,7 +663,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-obs-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-obs-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-obs-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -663,14 +689,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:796",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:797",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -691,7 +719,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -731,7 +761,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-sca-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-sca-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-sca-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -757,14 +787,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:850",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:851",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -785,7 +817,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -825,7 +859,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-scofl-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-scofl-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-scofl-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -851,14 +885,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:1109",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:1110",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -879,7 +915,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -919,7 +957,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-ods-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-ods-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-ods-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -945,14 +983,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:1266",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:1267",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -973,7 +1013,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1013,7 +1055,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -1039,14 +1081,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:1371",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:1372",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -1067,7 +1111,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1107,7 +1153,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-sco-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-sco-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-sco-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -1133,14 +1179,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:1425",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:1426",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -1161,7 +1209,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1201,7 +1251,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-mgmt-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-mgmt-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-mgmt-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -1227,14 +1277,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:1580",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:1581",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -1255,7 +1307,9 @@ data:
           "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "unit": "percent"
+            },
             "overrides": []
           },
           "fill": 1,
@@ -1295,7 +1349,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-node.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-node.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-node.*\"}*100",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
@@ -1321,14 +1375,16 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "$$hashKey": "object:1634",
+              "format": "percent",
               "label": null,
               "logBase": 1,
-              "max": null,
+              "max": "100",
               "min": null,
               "show": true
             },
             {
+              "$$hashKey": "object:1635",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -1351,12 +1407,12 @@ data:
         "list": []
       },
       "time": {
-        "from": "now-7d",
+        "from": "now-24h",
         "to": "now"
       },
       "timepicker": {},
       "timezone": "",
       "title": "Availability/Uptime",
       "uid": "-uAAIXM4k",
-      "version": 1
+      "version": 2
     }
