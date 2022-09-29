@@ -472,6 +472,8 @@ spec:
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
+        ods-sub-api-grafana-reactive: ods-sub-api-reactive-podmetrics-cm
+        ods-application-grafana-dashboard: ods-application-metrics-cm
 
 
 
