@@ -8,4 +8,4 @@ metadata:
     eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-ob-{{ AWS_ENVIRONMENT }}-role
   labels:
     role: jenkins-agent
-    component: forgerock
+    component: forgerock-sbat
