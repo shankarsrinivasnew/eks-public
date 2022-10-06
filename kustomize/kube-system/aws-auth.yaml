@@ -134,3 +134,7 @@ data:
       username: tsb-eks-readonly
       groups:
         - tsb-eks-readonly
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cb-nonprod-eks-rw
+      username: tsb-cb-nonprod-eks-rw
+      groups:
+        - tsb-cb-nonprod-eks-rw
