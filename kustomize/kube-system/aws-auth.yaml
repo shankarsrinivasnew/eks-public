@@ -98,3 +98,7 @@ data:
       username: tsb-admins-eks
       groups:
         - tsb-admins
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop2-prod-eks-readonly-role
+      username: tsb-cop2-view
+      groups:
+        - tsb-cop2-view
