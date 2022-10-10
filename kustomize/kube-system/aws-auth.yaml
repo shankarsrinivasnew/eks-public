@@ -140,3 +140,7 @@ data:
       username: tsb-dev-eks-cop2
       groups:
         - tsb-dev-eks-cop2
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-forgerock-sbat-dev-eks-rw-role
+      username: tsb-forgerock-sbat-rw-dev-eks
+      groups:
+        - tsb-forgerock-sbat-rw-dev-eks
