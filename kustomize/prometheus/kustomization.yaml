@@ -16,6 +16,7 @@ resources:
   - prometheusrule-datalake-alerts.yaml
   - prometheus-scylla-alerts.yaml
   - prometheusrule-ods-up.yaml
+  - prometheusrule-ods-down.yaml
   - prometheusrule-ods-sys-api-down.yaml
   - prometheusrule-ods-sys-api-up.yaml
   - prometheusrule-tsb-ob-signing-down.yaml
