@@ -602,7 +602,7 @@ spec:
             severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
-            itopsbridge: true
+#             itopsbridge: true
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}      
@@ -918,7 +918,7 @@ spec:
             severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
-            itopsbridge: true
+#             itopsbridge: true
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}                                    
@@ -954,7 +954,7 @@ spec:
             severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
-            itopsbridge: true
+#             itopsbridge: true
           annotations:
             description: 'Application {{ $labels.job }} has more than 15 failures in the last 5 mins (500 Internal Server Error). Value: {{ $value }}'
             summary: Red rate reached for Application {{ $labels.job }}                                                

@@ -25,7 +25,7 @@ spec:
             severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
-            itopsbridge: true
+#             itopsbridge: true
           annotations:
             description: '{{ $labels.statefulset }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
             summary: Critical deployment {{ $labels.statefulset }} of job {{ $labels.job }} has no pods running
@@ -44,7 +44,7 @@ spec:
             severity: CRITICAL
             type: 8x5
             tsbci: ODS_AWS
-            itopsbridge: true
+#             itopsbridge: true
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
             summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
@@ -466,41 +466,3 @@ spec:
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
             summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
-###########################################ODS_MAVEN_APP_PR01_DOWN_WARNING##########################################################
-        - record: ods_scylla_pr_01_app_down_warning_{{ AWS_ENVIRONMENT }}
-          expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-loan-pr",namespace="ods"})
-        - alert: ods_scylla_pr_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((ods_scylla_pr_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_pr_app_down_warning_{{ AWS_ENVIRONMENT }}) < 2)
-          for: 1m
-          labels:
-            action: Closely monitor
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: WARNING
-            platform: AWS
-            namespace: ods
-            severity: WARNING
-            type: 8x5
-            tsbci: ODS_AWS
-          annotations:
-            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods for more than 1 min. Value:{{ $value }}'
-            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods running
-###########################################ODS_MAVEN_APP_PR06_DOWN_WARNING##########################################################
-        - record: ods_scylla_pr_06_app_down_warning_{{ AWS_ENVIRONMENT }}
-          expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-loan-PR06",namespace="ods"})
-        - alert: ods_scylla_pr_06_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((ods_scylla_pr_06_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_pr_06_app_down_warning_{{ AWS_ENVIRONMENT }}) < 2)
-          for: 1m
-          labels:
-            action: Closely monitor
-            environment: "{{ AWS_ENVIRONMENT }}"
-            group: INFRA
-            level: WARNING
-            platform: AWS
-            namespace: ods
-            severity: WARNING
-            type: 8x5
-            tsbci: ODS_AWS
-          annotations:
-            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods for more than 1 min. Value:{{ $value }}'
-            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods running
