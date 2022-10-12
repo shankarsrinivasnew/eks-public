@@ -503,4 +503,4 @@ spec:
             tsbci: ODS_AWS
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods for more than 1 min. Value:{{ $value }}'
-            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods running		
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods running
