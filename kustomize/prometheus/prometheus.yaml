@@ -101,6 +101,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-jvm
+            - name: 'cop2-grafana-microservices'
+              orgId: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop2-grafana-microservices
             - name: 'shared-grafana-scylla1'
               orgId: 1
               folder: 'Shared Services'
