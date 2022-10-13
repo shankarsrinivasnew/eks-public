@@ -220,6 +220,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-application-grafana-dashboard
+            - name: 'cop-phase2-microservices-dashboard'
+              orgId: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
             - name: 'ods-sub-api-grafana-reactive'
               orgId: 1
               folder: 'TSB-ODS'
