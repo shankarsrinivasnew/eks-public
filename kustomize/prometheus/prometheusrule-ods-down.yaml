@@ -71,7 +71,7 @@ spec:
         - record: ods_scylla_kc_03_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-transaction-kc03",namespace="ods"})
         - alert: ods_scylla_kc_03_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((ods_scylla_kc_03_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_kc_03_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
+          expr: ((ods_scylla_kc_03_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_kc_03_app_down_warning_{{ AWS_ENVIRONMENT }}) < 5)
           for: 1m
           labels:
             action: Closely monitor
@@ -84,8 +84,8 @@ spec:
             type: 8x5
             tsbci: ODS_AWS
           annotations:
-            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
-            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 5 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 5 pods running
 ###########################################ODS_MAVEN_APP_KC13_DOWN_WARNING##########################################################
         - record: ods_scylla_kc_13_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-pending-transaction-kc13",namespace="ods"})
@@ -109,7 +109,7 @@ spec:
         - record: ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-transaction-kc43",namespace="ods"})
         - alert: ods_scylla_kc_43_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
-          expr: ((ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
+          expr: ((ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_kc_43_app_down_warning_{{ AWS_ENVIRONMENT }}) < 5)
           for: 1m
           labels:
             action: Closely monitor
@@ -122,8 +122,8 @@ spec:
             type: 8x5
             tsbci: ODS_AWS
           annotations:
-            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
-            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 5 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 5 pods running
 ###########################################ODS_MAVEN_APP_PE06_DOWN_WARNING##########################################################
         - record: ods_scylla_pe_06_app_down_warning_{{ AWS_ENVIRONMENT }}
           expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-customer-pe06",namespace="ods"})
@@ -466,3 +466,41 @@ spec:
           annotations:
             description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
             summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
+###########################################ODS_MAVEN_APP_PR01_DOWN_WARNING##########################################################
+        - record: ods_scylla_pr_01_app_down_warning_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-loan-pr",namespace="ods"})
+        - alert: ods_scylla_pr_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((ods_scylla_pr_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_pr_app_down_warning_{{ AWS_ENVIRONMENT }}) < 2)
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods running
+###########################################ODS_MAVEN_APP_PR06_DOWN_WARNING##########################################################
+        - record: ods_scylla_pr_06_app_down_warning_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment="tsb-ods-cdc-loan-PR06",namespace="ods"})
+        - alert: ods_scylla_pr_06_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((ods_scylla_pr_06_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_scylla_pr_06_app_down_warning_{{ AWS_ENVIRONMENT }}) < 2)
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 2 pods running
