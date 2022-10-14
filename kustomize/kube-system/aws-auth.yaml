@@ -142,3 +142,11 @@ data:
       username: tsb-cob-nonprod-eks-rw
       groups:
         - tsb-cob-nonprod-eks-rw
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sca-nonprod-eks-rw
+      username: tsb-sca-nonprod-eks-rw
+      groups:
+        - tsb-sca-nonprod-eks-rw
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sco-nonprod-eks-rw
+      username: tsb-sco-nonprod-eks-rw
+      groups:
+        - tsb-sco-nonprod-eks-rw
