@@ -23,384 +23,485 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 916,
+      "id": 918,
       "links": [],
       "panels": [
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 3
+                  }
+                ]
+              }
+            },
             "overrides": []
           },
-          "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 0
           },
-          "hiddenSeries": false,
           "id": 14,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
           "options": {
-            "alertThreshold": true
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
           },
-          "percentage": false,
           "pluginVersion": "7.5.15",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\".*scylla.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "count(node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
               "interval": "",
-              "legendFormat": "{{instance}}",
+              "legendFormat": "Shared Scylla Service",
               "refId": "A"
             }
           ],
-          "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
-          "title": "ScyllaDB Uptime Per Node",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "title": "Scylla Service Status",
+          "type": "stat"
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 3
+                  },
+                  {
+                    "color": "green",
+                    "value": 12
+                  }
+                ]
+              }
+            },
             "overrides": []
           },
-          "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 12,
             "y": 0
           },
-          "hiddenSeries": false,
-          "id": 16,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
+          "id": 15,
           "options": {
-            "alertThreshold": true
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
           },
-          "percentage": false,
           "pluginVersion": "7.5.15",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-controller.*\"})\n      or\n    (0 * sum_over_time(    up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-controller.*\"}[7d]))\n  )[7d:5m]\n)",
+              "expr": "count(node_systemd_unit_state{instance=~\"dev-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "interval": "",
-              "legendFormat": "{{instance}}",
+              "legendFormat": "EKS Pool Status",
               "refId": "A"
             }
           ],
-          "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
-          "title": "Controller Uptime",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "title": "EKS Pool Status",
+          "type": "stat"
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
-            "overrides": []
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 2
+                  },
+                  {
+                    "color": "green",
+                    "value": 3
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Controller"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
           },
-          "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
             "y": 8
           },
-          "hiddenSeries": false,
-          "id": 15,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
+          "id": 16,
           "options": {
-            "alertThreshold": true
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
           },
-          "percentage": false,
           "pluginVersion": "7.5.15",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-worker.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-worker.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-worker.*\"})",
               "interval": "",
-              "legendFormat": "{{instance}}",
+              "legendFormat": "Brokers",
               "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Broker Uptime per Node",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Zookeepers",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-controller.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Controller",
+              "refId": "C"
             }
           ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Cloudera Kafka Status",
+          "type": "stat"
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
           "datasource": null,
           "fieldConfig": {
-            "defaults": {},
-            "overrides": []
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Controller"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
           },
-          "fill": 1,
-          "fillGradient": 0,
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 12,
             "y": 8
           },
-          "hiddenSeries": false,
-          "id": 17,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
+          "id": 18,
           "options": {
-            "alertThreshold": true
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
           },
-          "percentage": false,
           "pluginVersion": "7.5.15",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
           "targets": [
             {
               "exemplar": true,
-              "expr": "avg_over_time(\n  (\n    sum without() (up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"})\n      or\n    (0 * sum_over_time(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"}[7d]))\n     )[7d:5m]\n)",
+              "expr": "probe_http_status_code{instance=\"b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
               "interval": "",
-              "legendFormat": "{{instance}}",
+              "legendFormat": "Broker 1",
               "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Zookeeper Uptime per Node",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
             },
             {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Broker 2",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Broker 3",
+              "refId": "C"
             }
           ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "AWS MSK Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "id": 17,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://consul.dev.aws.uk.tsb\", job=\"blackbox\"}",
+              "interval": "",
+              "legendFormat": "Consul Service",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://vault.dev.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Vault",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://grafana.dev.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Grafana",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://prometheus.dev.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Prometheus",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://jenkins.dev.aws.uk.tsb\", job=\"blackbox_4xx\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Jenkins",
+              "refId": "E"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Shared Infrastructure Endpoint Status",
+          "type": "stat"
         }
       ],
       "schemaVersion": 27,
@@ -415,7 +516,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "Availability/Uptime",
+      "title": "AWS Infrastructure Status - Dev",
       "uid": "-uAAIXM4k",
-      "version": 11
+      "version": 2
     }
