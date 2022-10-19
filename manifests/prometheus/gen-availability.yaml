@@ -335,14 +335,14 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"$SHARED_MSK_BROKER_0\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"{{$SHARED_MSK_BROKER_0}}:9096\", job=\"blackbox\"}",
               "interval": "",
               "legendFormat": "Broker 1",
               "refId": "A"
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"$SHARED_MSK_BROKER_1\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"{{$SHARED_MSK_BROKER_1}}:9096\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Broker 2",
@@ -350,7 +350,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"$SHARED_MSK_BROKER_2\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"{{$SHARED_MSK_BROKER_2}}:9096\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Broker 3",
