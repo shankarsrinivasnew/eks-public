@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.289.3-lts-alpine
+      tag: 2.319.3-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -34,7 +34,7 @@ spec:
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20,10.184.136.84/32,10.184.136.117/32"
-          alb.ingress.kubernetes.io/tags: Environment={{ AWS_ENVIRONMENT }},Project=shared,ManagedBy=rackspace
+          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},project=SHARED-SERVICES,managedby=rackspace
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
@@ -60,10 +60,10 @@ spec:
         - kubernetes:1.27.7
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
-        - workflow-multibranch:2.24
+        - workflow-multibranch:716.vc692a_e52371b_
         - credentials-binding:1.27
         - git:4.8.3
-        - configuration-as-code:1.54
+        - configuration-as-code:1512.vb_79d418d5fc8
         - ansicolor:0.7.2
         - pipeline-aws:1.42
         - authorize-project:1.3.0
@@ -91,17 +91,18 @@ spec:
         - build-timestamp:1.0.3
         - dashboard-view:2.16
         - ghprb:1.42.1
-        - jira:3.1.1
         - sonar:2.12
+        - jira:3.1.1
         - audit-trail:3.10
-        - pipeline-model-definition:1.9.2
-        - pipeline-model-extensions:1.9.2
+        - pipeline-model-definition:1.9.3
+        - pipeline-model-extensions:1.9.3
         - pipeline-milestone-step:1.3.2
         - javax-activation-api:1.2.0-3
         - javax-mail-api:1.6.2-6
         - jaxb:2.3.6-1
         - sshd:3.1.0
         - git-server:1.11
+        - matrix-project:772.v494f19991984
       JCasC:
         securityRealm: |-
           local:
@@ -209,7 +210,15 @@ spec:
                                   curl https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip -o terraform.zip
                                   unzip terraform.zip
                                 toolHome: "."
-                                
+                  - name: "terraformonetwofour"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip -L -o terraform_1.2.4_linux_amd64.zip
+                                  unzip terraform_1.2.4_linux_amd64.zip
+                                toolHome: "."
 
           ansicolor: |-
             unclassified:

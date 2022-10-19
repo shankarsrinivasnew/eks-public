@@ -13,13 +13,6 @@ resources:
   - prometheusrule-rax-middleware.yaml
   - prometheusrule-rax-node.yaml
   - prometheusrule-itops.yaml
-  - prometheusrule-cop-down.yaml
-  - prometheusrule-cop-up.yaml
-  - prometheusrule-cop-responsetime.yaml
-  - prometheusrule-cop-inbound-proxy.yaml
-  - prometheusrule-cop-outbound-proxy.yaml
-  - prometheusrule-cop-s3-sink.yaml
-  - prometheusrule-cop-vocalink.yaml
   - prometheusrule-datalake-alerts.yaml
   - prometheus-scylla-alerts.yaml
   - prometheusrule-ods-down.yaml
@@ -66,6 +59,7 @@ resources:
   - prometheusrule-cop2-down.yaml
   - prometheusrule-cop2-inbound.yaml
   - prometheusrule-cop2-outbound.yaml
+  - prometheusrule-msk-alerts.yaml
 namespace: prometheus
 transformers:
   - awsTransformer.yaml

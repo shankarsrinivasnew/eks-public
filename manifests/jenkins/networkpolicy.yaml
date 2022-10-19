@@ -68,6 +68,22 @@ spec:
       action: Allow
       destination:
         selector: app.kubernetes.io/component == 'jenkins-master'
+    - metadata:
+        annotations:
+          from: jenkins-agent
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - jenkins-terraform
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+        ports:
+          - 9096
+          - 2181
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy

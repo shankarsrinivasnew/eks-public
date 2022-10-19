@@ -101,6 +101,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-jvm
+            - name: 'cop-phase2-microservices-dashboard'
+              orgId: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
             - name: 'shared-grafana-scylla1'
               orgId: 1
               folder: 'Shared Services'
@@ -133,6 +141,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-consul-vault
+            - name: 'cop-phase2-microservices-dashboard'
+              orgId: 1
+              folder: 'TSB-COP-PHASE2'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
             - name: 'shared-grafana-consul'
               orgId: 1
               folder: 'Shared Services'
@@ -317,6 +333,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-css-tables-grafana
+            - name: 'ods-sub-api-grafana-reactive'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-sub-api-grafana-reactive
             - name: 'cob-microservices-dashboard'
               orgId: 1
               folder: 'TSB-COB'
@@ -325,6 +349,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cob-microservices-dashboard
+            - name: 'cob-kafka-grafana'
+              orgId: 1
+              folder: 'TSB-COB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cob-kafka-grafana
+            - name: 'cob-externelservices-grafana-dashboard'
+              orgId: 1
+              folder: 'TSB-COB'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cob-externelservices-grafana-dashboard
             - name: 'ods-new-css-tables-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -399,7 +439,6 @@ spec:
             - name: 'scylla-detailed-dashboard-part-1'
               orgId: 1
               folder: 'Shared Services'
-              type: file
               disableDeletion: true
               editable: true
               options:
@@ -420,20 +459,38 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-cql
-            - name: 'cop-phase2-microservices-dashboard'
-              orgid: 1
-              folder: 'TSB-COP-PHASE2'
+            - name: 'shared-grafana-msk-overview1'
+              orgId: 1
+              folder: 'Shared Services'
               type: file
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
+                path: /var/lib/grafana/dashboards/shared-grafana-msk-overview1
+            - name: 'shared-grafana-msk-overview2'
+              orgId: 1
+              folder: 'Shared Services'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/shared-grafana-msk-overview2
+            - name: 'gen-availability'
+              orgId: 1
+              folder: 'AWS Infrastructure'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/gen-availability
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
         shared-grafana-scylla2: shared-scylla2-cm
         shared-grafana-kafka: shared-kafka-cm
+        shared-grafana-msk-overview1: shared-msk-overview1-cm
+        shared-grafana-msk-overview2: shared-msk-overview2-cm
         shared-grafana-consul-vault: shared-consul-vault-cm
         shared-grafana-consul: shared-consul-cm
         shared-grafana-ec2nodes: shared-ec2nodes-cm
@@ -458,7 +515,10 @@ spec:
         ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
+        ods-sub-api-grafana-reactive: ods-sub-api-reactive-podmetrics-cm
         cob-microservices-dashboard: cob-microservices-dashboard-cm
+        cob-kafka-grafana: cob-kafka-grafana-cm
+        cob-externelservices-grafana-dashboard: cob-externelservices-grafana-dashboard-cm
         ods-single-applications-grafana: ods-single-applications-grafana-cm
         ods-new-css-tables-grafana: ods-new-css-tables-grafana-cm
         ods-cobol-api-gateway-grafana: ods-cobol-api-gateway-podmetrics-cm
@@ -472,6 +532,7 @@ spec:
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         scylla-cql: scylla-cql-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
+        gen-availability: gen-availability-cm
 
     prometheusOperator:
       enabled: true
@@ -612,7 +673,7 @@ spec:
                 action: keep
               - source_labels: [__meta_ec2_tag_Name]
                 target_label: instance
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
@@ -622,6 +683,8 @@ spec:
                 target_label: instancetype
               - source_labels: [__meta_ec2_tag_subsystem]
                 target_label: subsystem
+              - source_labels: [__meta_ec2_tag_Terraform]
+                target_label: terraform
 
           - job_name: ec2-discover-hdf-jmx
             scrape_interval: 120s
@@ -653,7 +716,7 @@ spec:
               - source_labels: [__meta_ec2_tag_Name]
                 action: replace
                 target_label: instancename
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
@@ -661,6 +724,34 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
+          - job_name: scylla-manager-ec2
+            scrape_timeout: 1m
+            scrape_interval: 1m
+            metrics_path: /metrics
+            ec2_sd_configs:
+              - region: eu-west-2
+                port: 5090
+            relabel_configs:
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                regex: .*scylla.*
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                action: replace
+                target_label: instancename
+              - source_labels: [__meta_ec2_tag_environment]
+                target_label: environment
+              - source_labels: [__meta_ec2_availability_zone]
+                target_label: availabilityzone
+              - source_labels: [__meta_ec2_instance_state]
+                target_label: status
+              - source_labels: [__meta_ec2_instance_type]
+                target_label: instancetype
+              - source_labels: [__meta_ec2_tag_Name]
+                target_label: instance
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
@@ -726,7 +817,7 @@ spec:
                 action: keep
               - source_labels: [__meta_ec2_tag_Name]
                 target_label: instance
-              - source_labels: [__meta_ec2_tag_Environment]
+              - source_labels: [__meta_ec2_tag_environment]
                 target_label: environment
               - source_labels: [__meta_ec2_availability_zone]
                 target_label: availabilityzone
@@ -746,17 +837,33 @@ spec:
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - b-1.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
-                  - b-2.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
-                  - b-3.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11002
+                  - "{{ BDS_MSK_BROKER_0 }}:11002"
+                  - "{{ BDS_MSK_BROKER_1 }}:11002"
+                  - "{{ BDS_MSK_BROKER_2 }}:11002"
           - job_name: msk-jmx-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - b-1.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
-                  - b-2.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
-                  - b-3.tsb-ods-bds-msk-cluste.jhtwy5.c3.kafka.eu-west-2.amazonaws.com:11001
+                  - "{{ BDS_MSK_BROKER_0 }}:11001"
+                  - "{{ BDS_MSK_BROKER_1 }}:11001"
+                  - "{{ BDS_MSK_BROKER_2 }}:11001"
+          - job_name: shared-msk-node-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
+            static_configs:
+              - targets:
+                  - "{{ SHARED_MSK_BROKER_0 }}:11002"
+                  - "{{ SHARED_MSK_BROKER_1 }}:11002"
+                  - "{{ SHARED_MSK_BROKER_2 }}:11002"
+          - job_name: shared-msk-jmx-exporter
+            scrape_interval: 60s
+            scrape_timeout: 60s
+            static_configs:
+              - targets:
+                  - "{{ SHARED_MSK_BROKER_0 }}:11001"
+                  - "{{ SHARED_MSK_BROKER_1 }}:11001"
+                  - "{{ SHARED_MSK_BROKER_2 }}:11001"
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,

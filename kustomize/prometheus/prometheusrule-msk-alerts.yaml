@@ -1,0 +1,219 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: msk-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: MSK_Cloudwatch_Alerts  
+      rules:
+        - alert: MSK_Offline_Partition_Count
+          expr: (aws_kafka_offline_partitions_count_average{} offset 10m) > 0
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'MSK offline partition count is greater than 0'
+            Summary: MSK offline partition count
+
+        - alert: Kafka_Data_Logs_Disk_Used
+          expr: (aws_kafka_offline_partitions_count_average{} offset 10m) > 95
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka data logs disk utilization is greater than 95'
+            Summary: kafka data logs disk utilization
+
+        - alert: kafka_partition_count
+          expr: ((aws_kafka_partition_count_average{} offset 10m) > (0.95 * 4000))
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka partition count is greater than 95% of the max partition count(4000)'
+            Summary: kafka partition count
+
+        - alert: kafka_Root_Disk_Used
+          expr: (aws_kafka_root_disk_used_average{} offset 10m) > 95
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka root disk used is greater than 95%'
+            Summary: kafka root disk utilization.
+
+        - alert: Kafka_App_Logs_Disk_Used
+          expr: (aws_kafka_kafka_app_logs_disk_used_average{} offset 10m) > 60
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P4
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka root disk used is greater than 60%'
+            Summary: kafka root disk utilization.
+
+        - alert: Kafka_App_Logs_Disk_Used
+          expr: (aws_kafka_kafka_app_logs_disk_used_average{} offset 10m) > 80
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka root disk used is greater than 80%'
+            Summary: kafka root disk utilization.
+
+        - alert: Kafka_cpu_idle_average
+          expr: (aws_kafka_cpu_idle_average{} offset 10m) < 5
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka CPU idle utilization is less than 5%'
+            Summary: kafka CPU idle utilization.
+
+        - alert: Kafka_cpu_system_average
+          expr: (aws_kafka_cpu_system_average{} offset 10m) > 50
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka CPU system utilization is greater than 50%'
+            Summary: kafka CPU system utilization.
+
+        - alert: Kafka_cpu_user_average
+          expr: (aws_kafka_cpu_user_average{} offset 10m) > 90
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka CPU user utilization is greater than 50%'
+            Summary: kafka CPU user utilization.
+
+        - alert: Kafka_under_replicated_partitions
+          expr: (aws_kafka_under_replicated_partitions_average{} offset 10m) > 0
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka under replicated partitions is greater than 0'
+            Summary: kafka under replicated partitions.
+
+        - alert: Kafka_under_replicated_partitions
+          expr: (aws_kafka_under_min_isr_partition_count_average{} offset 10m) > 0
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka under min isr partitions is greater than 0'
+            Summary: kafka under min isr partitions.
+
+        - alert: Kafka_cpu_system_average
+          expr: (((aws_kafka_cpu_system_average{} offset 10m) > 60) and ((aws_kafka_cpu_user_average{} offset 10m) > 60))
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P2
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'kafka composite CPU  utilization is greater than 60%'
+            Summary: kafka composite CPU utilization.
+
+        - alert: Test_alert
+          expr: (aws_kafka_cpu_idle_average{} offset 10m) > 5
+          for: 1s
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: msk
+            tsbci: KAFKA_AWS
+            itopsbridge: "true"
+          annotations:
+            Description: 'This is a test alert'
+            Summary: Test alert to check the integration

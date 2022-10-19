@@ -882,7 +882,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "kafka_consumer_records_consumed_total_records_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pr-02-headless-service\"}",
+                "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-pr-ingest-pr-02-headless-service\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"
@@ -1074,7 +1074,7 @@ data:
             "targets": [
               {
                 "exemplar": true,
-                "expr": "consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"ods\",job=\"tsb-ods-pr-ingest-pr-02-headless-service\"}",
+                "expr": "kafka_consumer_fetch_manager_records_consumed_rate {namespace=\"ods\",job=\"tsb-ods-pr-ingest-pr-02-headless-service\"}",
                 "interval": "",
                 "legendFormat": "",
                 "refId": "A"

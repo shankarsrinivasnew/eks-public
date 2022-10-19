@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ods-single-applications-grafana-cm 
+  name: ods-single-applications-grafana-cm
   namespace: prometheus
 data:
   ods-single-applications-grafana.json: |
@@ -36,515 +36,602 @@ data:
             "y": 0
           },
           "id": 6,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 1
-              },
-              "hiddenSeries": false,
-              "id": 8,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-static-tables-bs-dp\"}",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Total Records Static-BS-DP Application Consumed from Kafka",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 9
-              },
-              "hiddenSeries": false,
-              "id": 20,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processTransactionsStream_time_bs09_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs09_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processTransactionsStream_time_bs46_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs46_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "B"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processStream_time_bs95_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs95_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "C"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processStream_time_bs01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "D"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processStream_time_dp01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_dp01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "E"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(tsbods_processTransactionsStream_time_bs18_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs18_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "F"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average records per second Static-BS-DP Records",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 17
-              },
-              "hiddenSeries": false,
-              "id": 16,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Error Log Count for static-BS-DP Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 25
-              },
-              "hiddenSeries": false,
-              "id": 12,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.5.3",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_bs09_transactions_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_dp01_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "B"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs01_corporateInformation_in_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "C"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "D"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_in_bs95_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "E"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_bs18_transactions_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "F"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_dp01_product_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "H"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "I"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs95_product_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "J"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_bs18_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "K"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_out_bs01_corporateInformation_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "L"
-                },
-                {
-                  "exemplar": true,
-                  "expr": "(sum by (job, namespace) (tsb_ods_bs09_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
-                  "hide": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "G"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "static-BS-DP  Records  In and Out of Application",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
+          "panels": [],
           "title": "StaticTables-BS-DP",
           "type": "row"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 8,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "kafka_consumer_fetch_manager_records_consumed_total{ namespace=\"ods\", job=\"tsb-ods-cdc-static-tables-bs-dp\"}",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Total Records Static-BS-DP Application Consumed from Kafka",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 9
+          },
+          "hiddenSeries": false,
+          "id": 20,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processTransactionsStream_time_bs09_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs09_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processTransactionsStream_time_bs46_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs46_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_bs95_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs95_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_bs01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_dp01_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_dp01_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "E"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processTransactionsStream_time_bs18_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processTransactionsStream_time_bs18_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_bs62_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs62_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_bs61_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs61_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "H"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_bs63_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs63_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "I"
+            },
+            {
+              "exemplar": true,
+              "expr": "(tsbods_processStream_time_bs02_seconds_count{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}/tsbods_processStream_time_bs02_seconds_sum{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "J"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Average records per second Static-BS-DP Records",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 16,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (logback_events_total{level=\"error\",namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Error Log Count for static-BS-DP Application",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 25
+          },
+          "hiddenSeries": false,
+          "id": 12,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.3",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_bs09_transactions_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_dp01_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs01_corporateInformation_in_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs95_product_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "E"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_bs18_transactions_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_dp01_product_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "H"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs46_transactonTypes_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "I"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs95_product_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "J"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_bs18_transactions_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "K"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs01_corporateInformation_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "L"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs61_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs61_out_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "M"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs62_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "N"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs62_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "O"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs63_in_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "P"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs63_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "Q"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_in_bs02_in_total{namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "R"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (tsb_ods_out_bs02_out_total {namespace=\"ods\",job=\"tsb-ods-cdc-static-tables-bs-dp\"}))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "S"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "static-BS-DP  Records  In and Out of Application",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
           "collapsed": true,
@@ -553,7 +640,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 1
+            "y": 33
           },
           "id": 4,
           "panels": [
@@ -944,7 +1031,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 2
+            "y": 34
           },
           "id": 2,
           "panels": [
@@ -1376,5 +1463,5 @@ data:
       "timezone": "",
       "title": "TSB-ODS-SingleApplications-PR,IA,BS Tables",
       "uid": "AZUf_q17z",
-      "version": 112
+      "version": 120
     }
