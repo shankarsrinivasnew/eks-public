@@ -9,4 +9,3 @@ spec:
     repository: https://artifactory.mgmt.aws.uk.tsb/artifactory/tsb-helm
     name: twistlock-defender
     version: 22.06.213
-  values:
