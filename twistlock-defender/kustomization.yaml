@@ -1,6 +1,0 @@
-resources:
-  - namespace.yaml
-  - twistlock-defender.yaml
-namespace: twistlock
-transformers:
-  - awsTransformer.yaml
