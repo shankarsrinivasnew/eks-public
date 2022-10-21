@@ -680,7 +680,7 @@ spec:
                 target_label: terraform
 
           - job_name: ec2-discover-hdf-jmx
-            scrape_interval: 6m
+            scrape_interval: 10m
             scrape_timeout: 6m
             ec2_sd_configs:
               - region: eu-west-2
