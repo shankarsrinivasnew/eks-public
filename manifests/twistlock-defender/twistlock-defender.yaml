@@ -1,0 +1,12 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: twistlock-defender
+  namespace: twistlock
+spec:
+  releaseName: twistlock-defender
+  chart:
+    repository: https://artifactory.mgmt.aws.uk.tsb/artifactory/tsb-helm
+    name: twistlock-defender
+    version: 22.06.213
