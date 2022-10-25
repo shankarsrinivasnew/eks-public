@@ -657,6 +657,22 @@ spec:
                   timeoutSeconds: 0
               ttyEnabled: true
               workingDir: "/home/jenkins/agent"
+            - name: "alpine-zip"
+              args: "cat"
+              command: "/bin/sh -c"
+              envVars:
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/alpine-zip:latest"
+              livenessProbe:
+                  failureThreshold: 0
+                  initialDelaySeconds: 0
+                  periodSeconds: 0
+                  successThreshold: 0
+                  timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent" 
             - name: "python"
               args: "cat"
               command: "/bin/sh -c"
