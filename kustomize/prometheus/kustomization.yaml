@@ -45,8 +45,6 @@ resources:
   - prometheusrule-sco-fl-replica-count.yaml
   - prometheusrule-sco-fl-responsetime.yaml
   - prometheusrule-sco-fl-responsetime_newurls.yaml
-  - prometheusrule-sco-fl-restproxy-api-stage1-failure-rate.yaml
-  - prometheusrule-sco-fl-restproxy-api-stage2-failure-rate.yaml
   - prometheusrule_sca_authentication_api_failure_rate.yaml
   - prometheusrule_sca_authentication_api_responsetime.yaml
   - prometheusrule_sca_gw_failure_rate.yaml
