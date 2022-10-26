@@ -252,7 +252,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/sco-fl-api-metrics'
+                path: /var/lib/grafana/dashboards/sco-fl-api-metrics
             - name: 'ods-sys-api-grafana-1'
               orgId: 1
               folder: 'TSB-ODS'
