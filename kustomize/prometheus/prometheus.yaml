@@ -245,14 +245,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sco-phase2-loans-business-metrics
-            - name: 'sco-fl-api-metrics'
-              orgId: 1
-              folder: 'TSB-SCO'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/sco-fl-api-metrics
             - name: 'ods-sys-api-grafana-1'
               orgId: 1
               folder: 'TSB-ODS'
@@ -507,7 +499,6 @@ spec:
         ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-performance-grafana-dashboard: ods-performance-metrics-cm
         sco-phase2-loans-business-metrics: sco-phase2-loans-business-metrics-cm
-        sco-fl-api-metrics: sco-fl-api-metrics-cm
         ods-sys-api-grafana-1: ods-sys-api-podmetrics1-cm
         ods-sys-api-grafana-2: ods-sys-api-podmetrics2-cm
         ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
