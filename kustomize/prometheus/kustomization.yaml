@@ -64,6 +64,8 @@ resources:
   - prometheusrule-cop-phase2-responsetime.yml
   - prometheusrule-cop-phase2-restart-for-all-ms.yaml
   - prometheusrule-cop-phase2-CAMIS-MS-Report_failure.yaml
+  - prometheusrule-sco-fl-restproxy-api-stage1-failure-rate.yaml
+  - prometheusrule-sco-fl-restproxy-api-stage2-failure-rate.yaml
   # - prometheusrule-msk-alerts.yaml
 namespace: prometheus
 transformers:
