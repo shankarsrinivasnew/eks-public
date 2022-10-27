@@ -43,6 +43,7 @@ resources:
   - prometheusrule-sco-fl-all-pod-down.yaml
   - prometheusrule-sco-fl-pod-restart.yaml
   - prometheusrule-sco-fl-replica-count.yaml
+  - prometheusrule-sco-fl-responsetime.yaml
   - prometheusrule-sco-fl-responsetime_newurls.yaml
   - prometheusrule_sca_authentication_api_failure_rate.yaml
   - prometheusrule_sca_authentication_api_responsetime.yaml
