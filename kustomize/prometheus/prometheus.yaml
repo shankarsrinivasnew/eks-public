@@ -765,8 +765,8 @@ spec:
                   - https://vault.{{ DNS_ZONE }}
                   - https://consul.{{ DNS_ZONE }}/v1/kv/config-cb/application/consul/ssl/CACert
                   - https://b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096
-                  - https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096
                   - https://b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096
+                  - https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
