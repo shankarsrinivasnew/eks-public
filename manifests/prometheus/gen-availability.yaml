@@ -335,14 +335,14 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
               "interval": "",
               "legendFormat": "Broker 1",
               "refId": "A"
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Broker 2",
@@ -350,7 +350,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Broker 3",
