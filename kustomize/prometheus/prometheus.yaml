@@ -252,7 +252,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/ods-performance-grafana-dashboard    
+                path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard   
             - name: 'sco-phase2-loans-business-metrics'
               orgId: 1
               folder: 'TSB-SCO'
