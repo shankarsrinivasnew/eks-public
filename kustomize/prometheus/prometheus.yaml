@@ -543,7 +543,6 @@ spec:
         ods-sys-api-gateway-grafana: ods-sys-api-gateway-podmetrics-cm
         ods-cli-cop-applications: ods-cli-cop-applications-cm
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
-        ods-single-applications-grafana: ods-single-applications-grafana-cm
         ods-loans-grafana: ods-loans-grafana-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         scylla-advanced-dashboard: scylla-advanced-dashboard-cm
