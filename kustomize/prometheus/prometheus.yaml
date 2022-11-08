@@ -324,7 +324,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-css-tables-grafana
-
             - name: 'cob-microservices-dashboard'
               orgId: 1
               folder: 'TSB-COB'
@@ -332,8 +331,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/cob-microservices-dashboard
-                
+                path: /var/lib/grafana/dashboards/cob-microservices-dashboard                
             - name: 'cob-externelservices-grafana-dashboard'
               orgId: 1
               folder: 'TSB-COB'
