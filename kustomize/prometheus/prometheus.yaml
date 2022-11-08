@@ -339,8 +339,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/cob-externelservices-grafana-dashboard
-                
+                path: /var/lib/grafana/dashboards/cob-externelservices-grafana-dashboard           
             - name: 'ods-new-css-tables-grafana'
               orgId: 1
               folder: 'TSB-ODS'
