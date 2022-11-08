@@ -33,7 +33,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}
+            },
             "overrides": []
           },
           "fill": 1,
@@ -72,7 +74,6 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "exemplar": true,
               "expr": "sum by(namespace, uri)(http_server_requests_seconds_count{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!~\"/actuator/prometheus|/health|/\\\\*\\\\*\"})",
               "interval": "",
               "legendFormat": "{{service}}",
@@ -127,7 +128,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}
+            },
             "overrides": []
           },
           "fill": 1,
@@ -166,7 +169,6 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "exemplar": true,
               "expr": "sum by(namespace, service)(http_server_requests_seconds_sum{namespace=\"cob\", service=~\"tsb-onboarding-restproxy.*\",uri!=\"/actuator/prometheus|/health\"})",
               "interval": "",
               "legendFormat": "{{service}}",
@@ -221,7 +223,9 @@ data:
           "dashes": false,
           "datasource": "Thanos",
           "fieldConfig": {
-            "defaults": {},
+            "defaults": {
+              "custom": {}
+            },
             "overrides": []
           },
           "fill": 1,
