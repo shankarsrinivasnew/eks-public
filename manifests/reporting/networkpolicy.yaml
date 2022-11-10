@@ -1,0 +1,24 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: reporting-egress-policy
+  namespace: reporting
+spec:
+  types:
+    - Egress
+  egress:
+    - metadata:
+        annotations:
+          from: reporting-namespace
+          to: vpc
+      action: Allow
+      source:
+        serviceAccounts:
+          names:
+            - reporting-service-account
+            - default
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
