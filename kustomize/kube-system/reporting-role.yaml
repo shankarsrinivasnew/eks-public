@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: lambda-reporting
+  name: reporting-clusterrole
 rules:
   - apiGroups:
       - ""
@@ -20,12 +20,12 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: lambda-reporting
+  name: reporting-clusterbinding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: lambda-reporting
+  name: reporting-clusterrole
 subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User
-    name: tsb-lambda-user
+    name: reporting-user
