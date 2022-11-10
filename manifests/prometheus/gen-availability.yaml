@@ -496,6 +496,22 @@ data:
               "interval": "",
               "legendFormat": "Jenkins",
               "refId": "E"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://artifactory.mgmt.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Artifactory",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://kibana.mgmt.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Kibana(ElasticSearch)",
+              "refId": "G"
             }
           ],
           "timeFrom": null,
@@ -518,5 +534,5 @@ data:
       "timezone": "",
       "title": "AWS Infrastructure Status - Dev",
       "uid": "-uAAIXM4k",
-      "version": 2
+      "version": 4
     }
