@@ -5,7 +5,7 @@ metadata:
   name: reporting-clusterrole
 rules:
   - apiGroups:
-      - ""
+      - "*"
       - extensions
     resources:
       - namespaces
