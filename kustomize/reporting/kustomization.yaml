@@ -1,5 +1,5 @@
 resources:
-  - sa.yaml
+  - user.yaml
 namespace: reporting
 transformers:
   - awsTransformer.yaml
