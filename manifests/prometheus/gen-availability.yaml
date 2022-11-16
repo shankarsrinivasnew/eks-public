@@ -141,7 +141,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"dev-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=\"dev-eks-node\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "interval": "",
               "legendFormat": "EKS Pool Status",
               "refId": "A"
