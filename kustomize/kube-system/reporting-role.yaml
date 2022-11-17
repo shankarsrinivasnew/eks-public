@@ -26,6 +26,6 @@ roleRef:
   kind: ClusterRole
   name: reporting-clusterrole
 subjects:
-  - kind: User
-    name: reporting-user
-    apiGroup: rbac.authorization.k8s.io
+  - kind: ServiceAccount
+    name: reporting-service-account
+    namespace: reporting
