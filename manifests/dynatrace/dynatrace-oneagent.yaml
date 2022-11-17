@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dynatrace-oneagent
+spec:
+  selector:
+    matchLabels:
+      name: dynatrace-oneagent
+  template:
+    metadata:
+      labels:
+        name: dynatrace-oneagent
+    spec:
+      hostPID: true
+      hostIPC: true
+      hostNetwork: true
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+      volumes:
+        - name: host-root
+          hostPath:
+            path: /
+      containers:
+        - name: dynatrace-oneagent
+          image: dynatrace/oneagent
+          env:
+            - name: ONEAGENT_INSTALLER_SCRIPT_URL
+              value: https://rxl69895.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/version/1.249.201.20220919-155530?arch=x86&flavor=default
+            - name: ONEAGENT_INSTALLER_SKIP_CERT_CHECK
+              value: 'false'
+            - name: ONEAGENT_INSTALLER_DOWNLOAD_TOKEN
+              value: 'dt0c01.CHY67UHR35ELBE6BQZ4W5HPL.JC2ROWSX7MMPROQCNRWN7HX4Z2QL6JMXJ7LYNLGWF3AHKEHPMII6OQSZ6POZ327D'
+          args:
+            - '--set-network-zone=uk.fhnh.aws'
+          volumeMounts:
+            - name: host-root
+              mountPath: /mnt/root
+          securityContext:
+            privileged: true
