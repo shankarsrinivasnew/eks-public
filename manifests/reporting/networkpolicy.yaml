@@ -17,7 +17,6 @@ spec:
         serviceAccounts:
           names:
             - reporting-service-account
-            - default
       protocol: TCP
       destination:
         selector: vpc == 'local' && layer == 'all'
