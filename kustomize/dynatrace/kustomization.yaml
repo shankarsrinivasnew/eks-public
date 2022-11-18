@@ -1,5 +1,6 @@
 resources:
-  - dynatrace-dynakube.yaml
+  - cr.yaml
+  - network-policy.yaml
 namespace: dynatrace
 transformers:
   - awsTransformer.yaml

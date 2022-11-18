@@ -89,9 +89,6 @@ spec:
         - effect: NoSchedule
           key: node-role.kubernetes.io/control-plane
           operator: Exists
-        - effect: NoSchedule
-          key: role
-          operator: Exists
 
       # Optional: Adds resource settings for OneAgent container
       # Consumption of the OneAgent heavily depends on the workload to monitor
@@ -126,16 +123,13 @@ spec:
 
       # Optional: Adds additional environment variables to OneAgent pods
       #
-      env: 
-        - name: https_proxy
-          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+      # env: []
 
       # Optional: Adds arguments to add to the OneAgent installer
       # For a list of available options, see https://www.dynatrace.com/support/help/shortlink/linux-custom-installation
       # For a list of the limitations for OneAgents in Docker, see https://www.dynatrace.com/support/help/shortlink/oneagent-docker#limitations
       #
-      args: 
-        - --set-host-group={{ DYNATRACE_HOST_GROUP }}
+      # args: []
 
   # Configuration for ActiveGate instances.
   #
@@ -166,29 +160,27 @@ spec:
     # Optional: Specifies tolerations to include with the ActiveGate StatefulSet.
     # For more information on tolerations, see https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
     #
-    tolerations:
-      - effect: NoSchedule
-        key: role
-        operator: Equal
-        value: mgmt
+    # tolerations:
+    # - effect: NoSchedule
+    #   key: node-role.kubernetes.io/master
+    #   operator: Exists
 
     # Optional: Sets a node selector to control on which nodes the ActiveGate will be deployed.
     # For more information on node selectors, see https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/
     #
-    nodeSelector: 
-      role: mgmt
+    # nodeSelector: {}
 
     # Optional: Specifies resource settings for ActiveGate instances
     # Consumption of the ActiveGate heavily depends on the workload to monitor
     # The values should be adjusted according to the workload
     #
-    # resources:
-    #   requests:
-    #     cpu: 500m
-    #     memory: 512Mi
-    #   limits:
-    #     cpu: 1000m
-    #     memory: 1.5Gi
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1.5Gi
 
     # Optional: Defines labels added to ActiveGate pods
     # Can be used to structure workloads
@@ -198,13 +190,11 @@ spec:
 
     # Optional: Adds additional environment variables to ActiveGate pods
     #
-    env: 
-      - name: https_proxy
-        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+    # env: []
 
     # Optional: Sets the activation group for ActiveGate instances
     #
-    group: {{ CLUSTER_NAME }}
+    # group: ""
 
     # Optional: Defines a custom properties file providing either as a value or as a reference to a secret
     # If a reference to a secret is used, the key to the data must be 'customProperties'
