@@ -6,30 +6,21 @@ metadata:
   annotations:
     feature.dynatrace.com/oneagent-privileged: "true"
 spec:
-  apiUrl: https://{{ DYNATRACE_ENV_ID }}.live.dynatrace.com/api
+  apiUrl: https://rxl69895.live.dynatrace.com/api
+  networkZone: uk.fhnh.aws
   proxy:
     value: http://eu-west-2.proxy.aws.uk.tsb:3128
-  networkZone: uk.fhnh.aws
-  activeGate:
-    capabilities:
-      - routing
-      - kubernetes-monitoring
-      - dynatrace-api
-    image: ""
-    resources:
-      requests:
-        cpu: 500m
-        memory: 512Mi
-      limits:
-        cpu: 1000m
-        memory: 1.5Gi
   oneAgent:
     classicFullStack:
-      enabled: true
+      image:
+      args:
+        - --set-host-group=AWSS-EKSS-NOLAYER-NOLINE-DEV
+      
       env:
       - name: https_proxy
-      value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      image: ""
+        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+      - name: http_proxy
+        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/master
@@ -37,38 +28,21 @@ spec:
         - effect: NoSchedule
           key: node-role.kubernetes.io/control-plane
           operator: Exists
-        - key: role
-          operator: Equal
-          value: mgmt
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: sco
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: ods
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: cop
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: highcompute
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: sca
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: obs
-          effect: NoSchedule
-        - key: role
-          operator: Equal
-          value: scofl
-          effect: NoSchedule
-      args:
-        - --set-host-group={{ DYNATRACE_HOST_GROUP }}  
-
+  activeGate:
+    capabilities:
+      - routing
+      - kubernetes-monitoring
+      - dynatrace-api
+    image: ""
+    env:
+      - name: https_proxy
+        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+      - name: http_proxy
+        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1.5Gi
