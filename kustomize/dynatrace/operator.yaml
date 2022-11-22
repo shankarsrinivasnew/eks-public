@@ -1,0 +1,120 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: dynatrace
+  namespace: dynatrace
+spec:
+  releaseName: dynatrace-operator
+  chart:
+    repository: https://charts.fluxcd.io
+    name: dynatrace-operator
+    version: 0.3.0
+  values:
+    platform: "kubernetes"
+    name: "dynakube"
+    apiUrl: "https://rxl69895.live.dynatrace.com/api"
+    customPullSecret: ""
+    skipCertCheck: false
+    proxy: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+    trustedCAs: ""
+    networkZone: "uk.fhnh.aws"
+    enableIstio: false
+    namespaceSelector: {}
+    autoCreateSecret: true
+    apiToken: "dt0c01.3DAT44JOUDG2JETVMBRIVQLP.D76JDHJWZ3Y2ZEXWAE27CPHKL3DOSRUY6X5JNDTNQFTRAFYC3QHV4E4EMA5JANAY"
+    paasToken: "dt0c01.3DAT44JOUDG2JETVMBRIVQLP.D76JDHJWZ3Y2ZEXWAE27CPHKL3DOSRUY6X5JNDTNQFTRAFYC3QHV4E4EMA5JANAY" 
+
+    operator:
+      image: ""
+      customPullSecret: ""
+      nodeSelector: {}
+      tolerations: []
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+    webhook:
+      requests:
+        cpu: 300m
+        memory: 128Mi
+      limits:
+        cpu: 300m
+        memory: 128Mi
+    createSecurityContextConstraints: true # Only applicable for Openshift
+    installCRD: true
+
+    classicFullStack:
+      enabled: true
+      image: ""
+      version: ""
+      nodeSelector: {}
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: mgmt
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: sco
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: ods
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: cop
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: highcompute
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: sca
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: obs
+        - effect: NoSchedule
+          key: role
+          operator: Equal
+          value: scofl
+      oneAgentResources: {}
+      args: []
+      env:
+      - name: https_proxy
+        value: http://eu-west-2.proxy.aws.uk.tsb:3128
+      - name: http_proxy
+        value: http://eu-west-2.proxy.aws.uk.tsb:3128
+      autoUpdate: true
+      priorityClassName: ""
+      dnsPolicy: ""
+      labels: {}
+    
+    activeGate:
+      capabilities:
+      - routing
+      - kubernetes-monitoring
+      image: ""
+      replicas: 1
+      group: ""
+      customProperties:
+        value: ""
+        valueFrom: ""
+      resources: {}
+      nodeSelector: {}
+      tolerations: []
+      labels: {}
+      env:
+      - name: https_proxy
+        value: http://eu-west-2.proxy.aws.uk.tsb:3128
+      - name: http_proxy
+        value: http://eu-west-2.proxy.aws.uk.tsb:3128
+      tlsSecretName: ""    

@@ -1,6 +1,9 @@
 resources:
   - cr.yaml
   - network-policy.yaml
+  - operator.yaml
+  - namespace.yaml
+  - secret.yaml
 namespace: dynatrace
 transformers:
   - awsTransformer.yaml
