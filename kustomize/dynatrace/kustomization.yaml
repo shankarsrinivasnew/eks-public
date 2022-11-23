@@ -1,5 +1,0 @@
-resources:
-  - dynatrace-dynakube.yaml
-namespace: dynatrace
-transformers:
-  - awsTransformer.yaml
