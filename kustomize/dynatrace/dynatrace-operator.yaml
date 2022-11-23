@@ -6,7 +6,7 @@ metadata:
 spec:
   releaseName: dynatrace-operator
   chart:
-    repository: https://github.com/Dynatrace/helm-charts
+    repository: helm repo add dynatrace https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/master/config/helm/repos/stable
     name: dynatrace-operator
     version: 0.3.0
   values:
