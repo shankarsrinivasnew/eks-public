@@ -7,6 +7,7 @@ resources:
   - ebs.yaml
   - external-dns.yaml
   - auto-scaler.yaml
+  - reporting-role.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
