@@ -6,7 +6,7 @@ metadata:
 spec:
   releaseName: dynatrace-operator
   chart:
-    repository: https://charts.fluxcd.io
+    repository: https://github.com/Dynatrace/helm-charts
     name: dynatrace-operator
     version: 0.3.0
   values:
