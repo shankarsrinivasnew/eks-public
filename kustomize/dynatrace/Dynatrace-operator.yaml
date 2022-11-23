@@ -12,7 +12,7 @@ spec:
   values:
     platform: "kubernetes"
     name: "dynakube"
-    apiUrl: "https://rxl69895.live.dynatrace.com/api"
+    apiUrl: "https://{{ DYNATRACE_ENV_ID }}.live.dynatrace.com/api"
     customPullSecret: ""
     skipCertCheck: false
     proxy: "http://eu-west-2.proxy.aws.uk.tsb:3128"
@@ -21,8 +21,8 @@ spec:
     enableIstio: false
     namespaceSelector: {}
     autoCreateSecret: true
-    apiToken: "dt0c01.3DAT44JOUDG2JETVMBRIVQLP.D76JDHJWZ3Y2ZEXWAE27CPHKL3DOSRUY6X5JNDTNQFTRAFYC3QHV4E4EMA5JANAY"
-    paasToken: "dt0c01.3DAT44JOUDG2JETVMBRIVQLP.D76JDHJWZ3Y2ZEXWAE27CPHKL3DOSRUY6X5JNDTNQFTRAFYC3QHV4E4EMA5JANAY" 
+    apiToken: "{{ api_token }}"
+    paasToken: "{{ api_token }}" 
 
     operator:
       image: ""
