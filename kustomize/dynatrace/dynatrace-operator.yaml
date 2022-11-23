@@ -6,9 +6,9 @@ metadata:
 spec:
   releaseName: dynatrace-operator
   chart:
-    repository: helm repo add dynatrace https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/master/config/helm/repos/stable
+    repository: https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/master/config/helm/repos/stable
     name: dynatrace-operator
-    version: 0.3.0
+    version: 0.9.1
   values:
     platform: "kubernetes"
     name: "dynakube"
