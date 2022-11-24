@@ -23,6 +23,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
+      "id": 918,
       "links": [],
       "panels": [
         {
@@ -45,63 +46,9 @@ data:
                     "value": 3
                   }
                 ]
-              },
-              "unit": "none"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Running ODS Scylla Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 5
-                        },
-                        {
-                          "color": "green",
-                          "value": 6
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Running Scylla Manager"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "green",
-                          "value": 1
-                        }
-                      ]
-                    }
-                  }
-                ]
               }
-            ]
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -129,31 +76,15 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"shared-preprod-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instance=~\"shared-nonprod-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
               "interval": "",
-              "legendFormat": "Running Shared Scylla Nodes",
+              "legendFormat": "Shared Scylla Service",
               "refId": "A"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"ods-preprod-scylla-db.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Running ODS Scylla Nodes",
-              "refId": "B"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"ods-preprod-scylla-Manager.*\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Running Scylla Manager",
-              "refId": "C"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "ScyllaDB Status",
+          "title": "Scylla Service Status",
           "type": "stat"
         },
         {
@@ -168,239 +99,21 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
+                    "color": "red",
                     "value": null
                   },
                   {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "OBS"
-                },
-                "properties": [
+                    "color": "yellow",
+                    "value": 3
+                  },
                   {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "green",
-                          "value": 1
-                        },
-                        {
-                          "color": "orange",
-                          "value": 2
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "COP 2 EKS Pool Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 2
-                        },
-                        {
-                          "color": "green",
-                          "value": 3
-                        },
-                        {
-                          "color": "orange",
-                          "value": 4
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "CB EKS Pool Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 5
-                        },
-                        {
-                          "color": "green",
-                          "value": 6
-                        },
-                        {
-                          "color": "orange",
-                          "value": 7
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "SCA EKS Pool Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 2
-                        },
-                        {
-                          "color": "green",
-                          "value": 3
-                        },
-                        {
-                          "color": "orange",
-                          "value": 4
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "COB EKS Pool Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "yellow",
-                          "value": 8
-                        },
-                        {
-                          "color": "green",
-                          "value": 9
-                        },
-                        {
-                          "color": "yellow",
-                          "value": 10
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": " ODS EKS Pool Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "red",
-                          "value": 16
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 26
-                        },
-                        {
-                          "color": "green",
-                          "value": 27
-                        },
-                        {
-                          "color": "orange",
-                          "value": 28
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "SCO EKS Pool Nodes"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 2
-                        },
-                        {
-                          "color": "green",
-                          "value": 3
-                        }
-                      ]
-                    }
+                    "color": "green",
+                    "value": 12
                   }
                 ]
               }
-            ]
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -408,7 +121,7 @@ data:
             "x": 12,
             "y": 0
           },
-          "id": 20,
+          "id": 15,
           "options": {
             "colorMode": "value",
             "graphMode": "none",
@@ -428,63 +141,15 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-node.*\"})",
-              "hide": false,
+              "expr": "count(node_systemd_unit_state{instance=~\"nonprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "interval": "",
-              "legendFormat": "CB EKS Pool Nodes",
-              "refId": "C"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*eks-sco.*\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "COB EKS Pool Nodes",
-              "refId": "E"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*eks-cop-phase2.*\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "COP 2 EKS Pool Nodes",
-              "refId": "B"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*eks-obs.*\"})",
-              "interval": "",
-              "legendFormat": "OBS EKS Pool Nodes",
+              "legendFormat": "EKS Pool Status",
               "refId": "A"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*eks-ods.*\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": " ODS EKS Pool Nodes",
-              "refId": "F"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*eks-sca.*\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "SCA EKS Pool Nodes",
-              "refId": "D"
-            },
-            {
-              "exemplar": true,
-              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*eks-scofl.*\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "SCO EKS Pool Nodes",
-              "refId": "G"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Application EKS Pool Statuses",
+          "title": "EKS Pool Status",
           "type": "stat"
         },
         {
@@ -503,46 +168,18 @@ data:
                     "value": null
                   },
                   {
-                    "color": "#EAB839",
-                    "value": 5
+                    "color": "yellow",
+                    "value": 2
                   },
                   {
                     "color": "green",
-                    "value": 6
+                    "value": 3
                   }
                 ]
               },
               "unit": "none"
             },
             "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Zookeeper"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "#EAB839",
-                          "value": 2
-                        },
-                        {
-                          "color": "green",
-                          "value": 3
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
               {
                 "matcher": {
                   "id": "byName",
@@ -575,7 +212,7 @@ data:
             "x": 0,
             "y": 8
           },
-          "id": 15,
+          "id": 16,
           "options": {
             "colorMode": "value",
             "graphMode": "none",
@@ -605,7 +242,7 @@ data:
               "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\".*hdf-service.*\"})",
               "hide": false,
               "interval": "",
-              "legendFormat": "Zookeeper",
+              "legendFormat": "Zookeepers",
               "refId": "B"
             },
             {
@@ -620,6 +257,109 @@ data:
           "timeFrom": null,
           "timeShift": null,
           "title": "Cloudera Kafka Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Controller"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 8
+          },
+          "id": 18,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
+              "interval": "",
+              "legendFormat": "Broker 1",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Broker 2",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Broker 3",
+              "refId": "C"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "AWS MSK Status",
           "type": "stat"
         },
         {
@@ -651,21 +391,60 @@ data:
                     "value": 200
                   }
                 ]
-              }
+              },
+              "unit": "none"
             },
-            "overrides": []
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 12,
-            "y": 8
+            "x": 0,
+            "y": 16
           },
-          "id": 22,
+          "id": 17,
           "options": {
             "colorMode": "value",
             "graphMode": "none",
-            "justifyMode": "center",
+            "justifyMode": "auto",
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -681,47 +460,63 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://consul.preprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://consul.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
               "interval": "",
               "legendFormat": "Consul Service",
               "refId": "A"
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://vault.preprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://vault.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
-              "legendFormat": "Vault Service",
-              "refId": "E"
-            },
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://grafana.preprod.aws.uk.tsb\", job=\"blackbox\"}",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Grafana Service",
+              "legendFormat": "Vault",
               "refId": "B"
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://prometheus.preprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://grafana.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
-              "legendFormat": "Prometheus Service",
+              "legendFormat": "Grafana",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://prometheus.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Prometheus",
               "refId": "D"
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://jenkins.preprod.aws.uk.tsb\", job=\"blackbox_4xx\"}",
+              "expr": "probe_http_status_code{instance=\"https://jenkins.nonprod.aws.uk.tsb\", job=\"blackbox_4xx\"}",
               "hide": false,
               "interval": "",
-              "legendFormat": "Jenkins Service",
-              "refId": "C"
+              "legendFormat": "Jenkins",
+              "refId": "E"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://artifactory.mgmt.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Artifactory",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://kibana.mgmt.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Kibana(ElasticSearch)",
+              "refId": "G"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Endpoints",
+          "title": "Shared Infrastructure Endpoint Status",
           "type": "stat"
         }
       ],
@@ -738,7 +533,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "AWS Infrastructure Status - Preprod",
+      "title": "AWS Infrastructure Status - Nonprod",
       "uid": "-uAAIXM4k",
       "version": 4
     }
