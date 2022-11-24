@@ -1,6 +1,10 @@
 # eks-config
 Configuration for shared EKS clusters
-
+Dynatrace Deployment
+Create dynakube secret by fetching the api token from password safe
+```
+kubectl -n dynatrace create secret generic dynakube --from-literal="apiToken=dt0c01.3DAT44JOUDG2JETVMBRIVQLP.D76JDHJWZ3Y2ZEXWAE27CPHKL3DOSRUY6X5JNDTNQFTRAFYC3QHV4E4EMA5JANAY"
+```
 ## Deployment
 1. Apply proxy manifest (https://aws.amazon.com/premiumsupport/knowledge-center/eks-http-proxy-configuration-automation/)
 ```
