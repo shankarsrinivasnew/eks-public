@@ -11,20 +11,8 @@ spec:
     version: 0.9.1
   values:
     platform: "kubernetes"
-    name: "dynakube"
-    apiUrl: "https://{{ DYNATRACE_ENV_ID }}.live.dynatrace.com/api"
-    customPullSecret: ""
-    skipCertCheck: false
-    proxy: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-    trustedCAs: ""
-    networkZone: "uk.fhnh.aws"
-    enableIstio: false
-    namespaceSelector: {}
-    autoCreateSecret: false
 
     operator:
-      image: ""
-      customPullSecret: ""
       nodeSelector: {}
       tolerations: []
       requests:
@@ -33,6 +21,7 @@ spec:
       limits:
         cpu: 100m
         memory: 128Mi
+
     webhook:
       requests:
         cpu: 300m
@@ -40,79 +29,6 @@ spec:
       limits:
         cpu: 300m
         memory: 128Mi
+
     createSecurityContextConstraints: true # Only applicable for Openshift
     installCRD: true
-
-    classicFullStack:
-      enabled: true
-      image: ""
-      version: ""
-      nodeSelector: {}
-      tolerations:
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/master
-          operator: Exists
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: mgmt
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: sco
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: ods
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: cop
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: highcompute
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: sca
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: obs
-        - effect: NoSchedule
-          key: role
-          operator: Equal
-          value: scofl
-      oneAgentResources: {}
-      args: []
-      env:
-      - name: https_proxy
-        value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      - name: http_proxy
-        value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      autoUpdate: true
-      priorityClassName: ""
-      dnsPolicy: ""
-      labels: {}
-    
-    activeGate:
-      capabilities:
-      - routing
-      - kubernetes-monitoring
-      image: ""
-      replicas: 1
-      group: ""
-      customProperties:
-        value: ""
-        valueFrom: ""
-      resources: {}
-      nodeSelector: {}
-      tolerations: []
-      labels: {}
-      env:
-      - name: https_proxy
-        value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      - name: http_proxy
-        value: http://eu-west-2.proxy.aws.uk.tsb:3128
-      tlsSecretName: "" 
