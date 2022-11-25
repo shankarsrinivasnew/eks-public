@@ -20,9 +20,7 @@ spec:
     networkZone: "uk.fhnh.aws"
     enableIstio: false
     namespaceSelector: {}
-    autoCreateSecret: true
-    apiToken: "ZHQwYzAxLjNEQVQ0NEpPVURHMkpFVFZNQlJJVlFMUC5ENzZKREhKV1ozWTJaRVhXQUUyN0NQSEtMM0RPU1JVWTZYNUpORFROUUZUUkFGWUMzUUhWNEU0RU1BNUpBTkFZCg"
-    paasToken: "ZHQwYzAxLjNEQVQ0NEpPVURHMkpFVFZNQlJJVlFMUC5ENzZKREhKV1ozWTJaRVhXQUUyN0NQSEtMM0RPU1JVWTZYNUpORFROUUZUUkFGWUMzUUhWNEU0RU1BNUpBTkFZCg" 
+    autoCreateSecret: false
 
     operator:
       image: ""
