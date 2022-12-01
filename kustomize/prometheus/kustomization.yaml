@@ -62,6 +62,8 @@ resources:
   - prometheusrule-cop-phase2-low-replica-count-all-ms.yaml
   - prometheusrule-cop-phase2-responsetime.yml
   - prometheusrule-cop-phase2-restart-for-all-ms.yaml
+  - aws-infrastructure-dashboard-part1.yaml
+  - aws-infrastructure-dashboard-part2.yaml
   
 namespace: prometheus
 transformers:
