@@ -452,6 +452,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard
+            - name: 'aws-infrastructure-dashboard-part1'
+              orgId: 1
+              folder: 'AWS Infrastructure'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infrastructure-dashboard-part1
+            - name: 'aws-infrastructure-dashboard-part2'
+              orgId: 1
+              folder: 'AWS Infrastructure'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infrastructure-dashboard-part2
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -499,7 +515,8 @@ spec:
         ods-sub-api-grafana-reactive: ods-sub-api-reactive-podmetrics-cm
         ods-application-grafana-dashboard: ods-application-metrics-cm
         ods-loans-grafana-dashboard: ods-loans-grafana-cm
-
+        aws-infrastructure-dashboard-part1: aws-infrastructure-dashboard-part1-cm
+        aws-infrastructure-dashboard-part2: aws-infrastructure-dashboard-part2-cm
 
 
 
