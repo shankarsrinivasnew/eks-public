@@ -67,7 +67,11 @@ spec:
     controllerNodeSelector: { }
     
     # Tolerations for Scylla Manager Controller pod
-    controllerTolerations: [ ]
+    controllerTolerations:
+    - key: role
+      operator: Equal
+      value: mgmt
+      effect: NoSchedule
     
     # Affinity for Scylla Manager Controller pod
     controllerAffinity: { }
