@@ -80,7 +80,7 @@ spec:
         aws_statistics: [Average]
       - aws_namespace: AWS/Kafka
         aws_metric_name: EstimatedMaxTimeLag
-        aws_dimensions: [Cluster Name]
+        aws_dimensions: [Cluster Name, Consumer Group, Topic]
         aws_statistics: [Average]
       - aws_namespace: AWS/Kafka
         aws_metric_name: KafkaDataLogsDiskUsed
