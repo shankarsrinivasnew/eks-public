@@ -18,10 +18,10 @@ spec:
       args:
         - --set-host-group={{ DYNATRACE_HOST_GROUP }}
       env:
-      - name: https_proxy
-        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-      - name: http_proxy
-        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+        - name: https_proxy
+          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+        - name: http_proxy
+          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/master
