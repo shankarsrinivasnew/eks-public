@@ -851,6 +851,7 @@ spec:
               - targets:
                   - consul-exporter-prometheus-consul-exporter:9107
           - job_name: cloudwatch-exporter
+            scrape_timeout: 20s
             relabel_configs:
               - source_labels: [__meta_ec2_private_ip]
                 target_label: privateip
