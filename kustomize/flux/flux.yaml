@@ -30,7 +30,7 @@ spec:
       disableScanning: true
     manifestGeneration: true
     sync:
-      timeout: 10m
+      timeout: 5m
     syncGarbageCollection:
       enabled: true
     serviceAccount:
@@ -38,6 +38,10 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/flux
     env:
       secretName: flux-git-auth
+    resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
     extraEnvs:
       - name: http_proxy
         value: http://eu-west-2.proxy.aws.uk.tsb:3128
