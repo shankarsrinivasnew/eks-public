@@ -516,6 +516,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-kafka-sum-offset-lag-average-msk
+            - name: 'ods-consumer-group-and-topic-metrics'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -571,6 +579,7 @@ spec:
         ods-kafka-estimated-max-time-lag-average-msk: ods-kafka-estimated-max-time-lag-average-msk-cm
         ods-kafka-max-offset-lag-average-msk: ods-kafka-max-offset-lag-average-msk-cm
         ods-kafka-sum-offset-lag-average-msk: ods-kafka-sum-offset-lag-average-msk-cm
+        ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
 
     prometheusOperator:
       enabled: true
