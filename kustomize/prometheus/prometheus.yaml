@@ -492,30 +492,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/gen-availability
-            - name: 'ods-kafka-estimated-max-time-lag-average-msk'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-kafka-estimated-max-time-lag-average-msk
-            - name: 'ods-kafka-max-offset-lag-average-msk'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-kafka-max-offset-lag-average-msk
-            - name: 'ods-kafka-sum-offset-lag-average-msk'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-kafka-sum-offset-lag-average-msk
             - name: 'ods-consumer-group-and-topic-metrics'
               orgId: 1
               folder: 'TSB-ODS'
@@ -576,9 +552,6 @@ spec:
         scylla-detailed-dashboard-part-2: scylla-detailed-dashboard-part-2-cm
         scylla-cql: scylla-cql-cm
         gen-availability: gen-availability-cm
-        ods-kafka-estimated-max-time-lag-average-msk: ods-kafka-estimated-max-time-lag-average-msk-cm
-        ods-kafka-max-offset-lag-average-msk: ods-kafka-max-offset-lag-average-msk-cm
-        ods-kafka-sum-offset-lag-average-msk: ods-kafka-sum-offset-lag-average-msk-cm
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
 
     prometheusOperator:
