@@ -30,7 +30,7 @@ spec:
       disableScanning: true
     manifestGeneration: true
     sync:
-      timeout: 5m
+      timeout: 10m
     syncGarbageCollection:
       enabled: true
     serviceAccount:
