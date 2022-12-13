@@ -432,14 +432,14 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "interval": "",
               "legendFormat": "CB EKS Node Pool",
               "refId": "A"
             },
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-sco-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-sco-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "COB EKS Node Pool",
@@ -447,7 +447,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-cop-phase2-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-cop-phase2-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "COP EKS Node Pool",
@@ -455,7 +455,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-sca-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-sca-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "SCA EKS Node Pool",
@@ -463,7 +463,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-scofl-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-scofl-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "SCO FL EKS Node Pool",
@@ -471,7 +471,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-obs-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-obs-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "OBS EKS Node Pool",
@@ -479,7 +479,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-ods-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instancename=~\"preprod-eks-ods-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "ODS EKS Node Pool",
@@ -507,5 +507,5 @@ data:
       "timezone": "",
       "title": "AWS Infrastructure Status - Preprod",
       "uid": "-uAAIXM4k",
-      "version": 6
+      "version": 7
     }
