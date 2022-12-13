@@ -520,6 +520,7 @@ data:
           "type": "stat"
         }
       ],
+      "refresh": false,
       "schemaVersion": 27,
       "style": "dark",
       "tags": [],
@@ -527,7 +528,7 @@ data:
         "list": []
       },
       "time": {
-        "from": "now-7d",
+        "from": "now-24h",
         "to": "now"
       },
       "timepicker": {},
