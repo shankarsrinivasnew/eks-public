@@ -23,7 +23,6 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 918,
       "links": [],
       "panels": [
         {
@@ -43,7 +42,7 @@ data:
                   },
                   {
                     "color": "green",
-                    "value": 3
+                    "value": 1
                   }
                 ]
               }
@@ -76,7 +75,7 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"shared-nonprod-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instance=~\"shared-preprod-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
               "interval": "",
               "legendFormat": "Shared Scylla Service",
               "refId": "A"
@@ -84,7 +83,7 @@ data:
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Scylla Service Status",
+          "title": "Shared ScyllaDB Status",
           "type": "stat"
         },
         {
@@ -103,12 +102,8 @@ data:
                     "value": null
                   },
                   {
-                    "color": "yellow",
-                    "value": 3
-                  },
-                  {
                     "color": "green",
-                    "value": 12
+                    "value": 1
                   }
                 ]
               }
@@ -121,7 +116,7 @@ data:
             "x": 12,
             "y": 0
           },
-          "id": 15,
+          "id": 18,
           "options": {
             "colorMode": "value",
             "graphMode": "none",
@@ -141,15 +136,15 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"nonprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(node_systemd_unit_state{instance=~\"ods-preprod-scylla-db.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
               "interval": "",
-              "legendFormat": "EKS Pool Status",
+              "legendFormat": "Shared Scylla Service",
               "refId": "A"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "EKS Pool Status",
+          "title": "ODS ScyllaDB Status",
           "type": "stat"
         },
         {
@@ -168,43 +163,14 @@ data:
                     "value": null
                   },
                   {
-                    "color": "yellow",
-                    "value": 2
-                  },
-                  {
                     "color": "green",
-                    "value": 3
+                    "value": 1
                   }
                 ]
               },
               "unit": "none"
             },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Controller"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "green",
-                          "value": 1
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -257,109 +223,6 @@ data:
           "timeFrom": null,
           "timeShift": null,
           "title": "Cloudera Kafka Status",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  },
-                  {
-                    "color": "green",
-                    "value": 200
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Controller"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "green",
-                          "value": 1
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 8
-          },
-          "id": 18,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "none",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "text": {},
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
-              "interval": "",
-              "legendFormat": "Broker 1",
-              "refId": "A"
-            },
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Broker 2",
-              "refId": "B"
-            },
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Broker 3",
-              "refId": "C"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "AWS MSK Status",
           "type": "stat"
         },
         {
@@ -437,8 +300,8 @@ data:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 16
+            "x": 12,
+            "y": 8
           },
           "id": 17,
           "options": {
@@ -460,14 +323,14 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://consul.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://consul.preprod.aws.uk.tsb\", job=\"blackbox\"}",
               "interval": "",
               "legendFormat": "Consul Service",
               "refId": "A"
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://vault.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://vault.preprod.aws.uk.tsb\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Vault",
@@ -475,7 +338,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://grafana.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://grafana.preprod.aws.uk.tsb\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Grafana",
@@ -483,7 +346,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://prometheus.nonprod.aws.uk.tsb\", job=\"blackbox\"}",
+              "expr": "probe_http_status_code{instance=\"https://prometheus.preprod.aws.uk.tsb\", job=\"blackbox\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Prometheus",
@@ -491,7 +354,7 @@ data:
             },
             {
               "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://jenkins.nonprod.aws.uk.tsb\", job=\"blackbox_4xx\"}",
+              "expr": "probe_http_status_code{instance=\"https://jenkins.preprod.aws.uk.tsb\", job=\"blackbox_4xx\"}",
               "hide": false,
               "interval": "",
               "legendFormat": "Jenkins",
@@ -518,6 +381,115 @@ data:
           "timeShift": null,
           "title": "Shared Infrastructure Endpoint Status",
           "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 6,
+            "y": 16
+          },
+          "id": 15,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "interval": "",
+              "legendFormat": "CB EKS Node Pool",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-sco-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "COB EKS Node Pool",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-cop-phase2-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "COP EKS Node Pool",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-sca-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "SCA EKS Node Pool",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-scofl-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "SCO FL EKS Node Pool",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-obs-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "OBS EKS Node Pool",
+              "refId": "E"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"preprod-eks-ods-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "ODS EKS Node Pool",
+              "refId": "G"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "EKS Pool Status",
+          "type": "stat"
         }
       ],
       "refresh": false,
@@ -533,7 +505,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "AWS Infrastructure Status - Nonprod",
+      "title": "AWS Infrastructure Status - Preprod",
       "uid": "-uAAIXM4k",
-      "version": 4
+      "version": 6
     }
