@@ -62,7 +62,7 @@ spec:
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
         - workflow-multibranch:716.vc692a_e52371b_
-        - credentials-binding:1.27
+        - credentials-binding:523.vd859a_4b_122e6
         - git:4.12.1
         - configuration-as-code:1512.vb_79d418d5fc8
         - ansicolor:0.7.2
