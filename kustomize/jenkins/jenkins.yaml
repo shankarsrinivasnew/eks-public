@@ -63,7 +63,7 @@ spec:
         - workflow-durable-task-step:2.39
         - workflow-multibranch:716.vc692a_e52371b_
         - credentials-binding:1.27
-        - git:4.8.3
+        - git:4.12.1
         - configuration-as-code:1512.vb_79d418d5fc8
         - ansicolor:0.7.2
         - pipeline-aws:1.42
