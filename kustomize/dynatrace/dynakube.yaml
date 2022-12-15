@@ -5,8 +5,8 @@ metadata:
   namespace: dynatrace
   annotations:
     feature.dynatrace.com/oneagent-privileged: "true"
-    feature.dynatrace.com/automatic-kubernetes-api-monitoring: 'true'
-    feature.dynatrace.com/automatic-kubernetes-api-monitoring-cluster-name: '{{ CLUSTER_NAME }}'
+    feature.dynatrace.com/automatic-kubernetes-api-monitoring: "true"
+    feature.dynatrace.com/automatic-kubernetes-api-monitoring-cluster-name: "{{ CLUSTER_NAME }}"
 spec:
   apiUrl: https://{{ DYNATRACE_ENV_ID }}.live.dynatrace.com/api
   networkZone: uk.fhnh.aws
@@ -14,14 +14,14 @@ spec:
     value: http://eu-west-2.proxy.aws.uk.tsb:3128
   oneAgent:
     classicFullStack:
-      image: ''
+      image: ""
       args:
         - --set-host-group={{ DYNATRACE_HOST_GROUP }}
       env:
-      - name: https_proxy
-        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
-      - name: http_proxy
-        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+        - name: https_proxy
+          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+        - name: http_proxy
+          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/master
@@ -59,7 +59,7 @@ spec:
           value: scofl
           effect: NoSchedule
   activeGate:
-    group: '{{ CLUSTER_NAME }}'
+    group: "{{ CLUSTER_NAME }}"
     capabilities:
       - routing
       - kubernetes-monitoring
