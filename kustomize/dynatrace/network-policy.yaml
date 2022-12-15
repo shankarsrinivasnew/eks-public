@@ -1,0 +1,20 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: dt-operator-network-policy
+  namespace: dynatrace
+spec:
+  types:
+    - Ingress
+    - Egress
+  egress:    
+    - action: Allow
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+  ingress:    
+    - action: Allow
+      source:
+        nets:
+          - "{{ VPC_CIDR }}"
