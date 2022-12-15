@@ -45,6 +45,12 @@ spec:
     ## Using chart from https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
     grafana:
+      grafana.ini:
+        enterprise:
+          license_text: |
+            eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJ2ZXIiOiIyLjAuMCIsImlzcyI6Imh0dHBzOi8vZ3JhZmFuYS5jb20iLCJzdWIiOiJodHRwczovL2dyYWZhbmEuZGV2LmF3cy51ay50c2IvIiwic2FuIjpbXSwianRpIjoiMjQzMjc5MiIsIm5iZiI6MTY2OTk3OTcxNywiaWF0IjoxNjcxMTAyNTk4LCJleHAiOjE2ODMzMjQwMDAsImxleHAiOjE2ODMzMjQwMDAsImxpZCI6IjI1NzcyIiwicHJvZCI6WyJncmFmYW5hLWVudGVycHJpc2UiXSwibGltaXRfYnkiOiJ1c2VycyIsImluY2x1ZGVkX2FkbWlucyI6MzEwLCJpbmNsdWRlZF92aWV3ZXJzIjozMTAsImluY2x1ZGVkX3VzZXJzIjozMTAsImxpY19leHBfd2Fybl9kYXlzIjozMCwidG9rX2V4cF93YXJuX2RheXMiOjIsInVwZGF0ZV9kYXlzIjoxLCJjb21wYW55IjoiVFNCIiwic2x1ZyI6InRzYiIsInRyaWFsIjpmYWxzZSwidHJpYWxfZXhwIjowLCJ1c2FnZV9iaWxsaW5nIjpmYWxzZSwibWF4X2NvbmN1cnJlbnRfdXNlcl9zZXNzaW9ucyI6MywidHlwZSI6InN0YWdpbmcifQ.bVxJdQimbPVQi6jslY9Qq2klzLXz486DjiGbMbKmWVC0rZkL5_6cQd9zpPO5YrgtJ5vP3sEJK0YCJJVDSqO8JgFI_tLBc8dex0wby_MmMmLhAA22XvmCzkRRHWGjttA8t_h9YnnuFz3MUCrgybUMtwDMLyhQv61eFJd2M-2xqOCsSsMsPsp2haSLoO94RHxwMP9upFmbNoYrppbxRyuDSAJf2HZliOPxKY8BGL3pnyEgrHB5yLYT4Nft3FHpA-nYPpE0TDrNJZ9aGgs7uGvB0_GHhWFYeN4tHulfQvgaSb7fasVH0HGRsoVV1Xvn-GnwecG6g3ZHlop8y9--kmvvPg1071WrlfoOpQQOOe_AeCbmTxH9EzNfoqXAV59TbzIqjwPoSzJmDBfIGJkWxGg00RwqTKJVW14Ra6Pzz8GzFEHoLNJ608c50R3N0x5-IZbnJDKHsppPyx1QBur3WB7Lv8eFkJedPDwcNtmFK0D7dTITYDan4yB_-H7VUPVRCOt0IgbXeMoiKgNaPWF4Y7Tm7iOnuWuHipuDQttc0umebuDedxHrRfYEyiZc8IO7HOLdqQ6JVSWFYu4jcwM82jF9HY_Tvdh0fiErArAAAc3xr0DPlb_7oN-PVBY7EylmdRNGhHh6u2QD56CS1OAMsjpmWC09MVW-7N6Pb3Z5w4uHXuA
+        server:
+          root_url: https://grafana.dev.aws.uk.tsb/
       image:
         repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana-enterprise
         tag: 7.5.15
@@ -93,408 +99,408 @@ spec:
         dashboardproviders.yaml:
           apiVersion: 1
           providers:
-            - name: 'shared-grafana-jvm'
+            - name: "shared-grafana-jvm"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-jvm
-            - name: 'shared-grafana-scylla1'
+            - name: "shared-grafana-scylla1"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-scylla1
-            - name: 'shared-grafana-scylla2'
+            - name: "shared-grafana-scylla2"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-scylla2
-            - name: 'shared-grafana-kafka'
+            - name: "shared-grafana-kafka"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-kafka
-            - name: 'shared-grafana-consul-vault'
+            - name: "shared-grafana-consul-vault"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-consul-vault
-            - name: 'shared-grafana-consul'
+            - name: "shared-grafana-consul"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-consul
-            - name: 'shared-grafana-ec2nodes'
+            - name: "shared-grafana-ec2nodes"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-ec2nodes
-            - name: 'shared-grafana-kubepod-apps'
+            - name: "shared-grafana-kubepod-apps"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-kubepod-apps
-            - name: 'shared-grafana-kubepodoverview'
+            - name: "shared-grafana-kubepodoverview"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-kubepodoverview
-            - name: 'shared-grafana-kubeprometheus'
+            - name: "shared-grafana-kubeprometheus"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-kubeprometheus
-            - name: 'shared-grafana-kubestatefulsets'
+            - name: "shared-grafana-kubestatefulsets"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-kubestatefulsets
-            - name: 'shared-grafana-rax-endpoints'
+            - name: "shared-grafana-rax-endpoints"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-rax-endpoints
-            - name: 'sca-grafana-cdc-ingesters'
+            - name: "sca-grafana-cdc-ingesters"
               orgId: 1
-              folder: 'TSB-SCA'
+              folder: "TSB-SCA"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sca-grafana-cdc-ingesters
-            - name: 'sca-grafana-microservice'
+            - name: "sca-grafana-microservice"
               orgId: 1
-              folder: 'TSB-SCA'
+              folder: "TSB-SCA"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sca-grafana-microservice
-            - name: 'sca-grafana-cdc-customerdata'
+            - name: "sca-grafana-cdc-customerdata"
               orgId: 1
-              folder: 'TSB-SCA'
+              folder: "TSB-SCA"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sca-grafana-cdc-customerdata
-            - name: 'cb-grafana-businessdashboard'
+            - name: "cb-grafana-businessdashboard"
               orgId: 1
-              folder: 'TSB-CB'
+              folder: "TSB-CB"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cb-grafana-businessdashboard
-            - name: 'ods-application-grafana-dashboard'
+            - name: "ods-application-grafana-dashboard"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-application-grafana-dashboard
-            - name: 'ods-performance-grafana-dashboard'
+            - name: "ods-performance-grafana-dashboard"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-performance-grafana-dashboard
-            - name: 'sco-phase2-loans-business-metrics'
+            - name: "sco-phase2-loans-business-metrics"
               orgId: 1
-              folder: 'TSB-SCO'
+              folder: "TSB-SCO"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sco-phase2-loans-business-metrics
-            - name: 'sco-fl-api-metrics'
+            - name: "sco-fl-api-metrics"
               orgId: 1
-              folder: 'TSB-SCO'
+              folder: "TSB-SCO"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sco-fl-api-metrics
-            - name: 'ods-sys-api-grafana-1'
+            - name: "ods-sys-api-grafana-1"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-1
-            - name: 'ods-sys-api-grafana-2'
+            - name: "ods-sys-api-grafana-2"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-2
-            - name: 'ods-sys-api-grafana-3'
+            - name: "ods-sys-api-grafana-3"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-3
-            - name: 'ods-sys-api-grafana-4'
+            - name: "ods-sys-api-grafana-4"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-4
-            - name: 'ods-sys-api-grafana-ingress'
+            - name: "ods-sys-api-grafana-ingress"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-ingress
-            - name: 'cop-grafana-microservices'
+            - name: "cop-grafana-microservices"
               orgId: 1
-              folder: 'TSB-COP'
+              folder: "TSB-COP"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cop-grafana-microservices
-            - name: 'ods-sub-api-grafana'
+            - name: "ods-sub-api-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sub-api-grafana
-            - name: 'ods-cobol-api-grafana'
+            - name: "ods-cobol-api-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-cobol-api-grafana
-            - name: 'ods-css-tables-grafana'
+            - name: "ods-css-tables-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-css-tables-grafana
-            - name: 'cob-microservices-dashboard'
+            - name: "cob-microservices-dashboard"
               orgId: 1
-              folder: 'TSB-COB'
+              folder: "TSB-COB"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cob-microservices-dashboard
-            - name: 'cob-kafka-grafana'
+            - name: "cob-kafka-grafana"
               orgId: 1
-              folder: 'TSB-COB'
+              folder: "TSB-COB"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cob-kafka-grafana
-            - name: 'cob-externelservices-grafana-dashboard'
+            - name: "cob-externelservices-grafana-dashboard"
               orgId: 1
-              folder: 'TSB-COB'
+              folder: "TSB-COB"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cob-externelservices-grafana-dashboard
-            - name: 'ods-new-css-tables-grafana'
+            - name: "ods-new-css-tables-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-new-css-tables-grafana
-            - name: 'ods-loans-grafana'
+            - name: "ods-loans-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-loans-grafana
-            - name: 'ods-single-applications-grafana'
+            - name: "ods-single-applications-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-single-applications-grafana
-            - name: 'ods-cobol-api-gateway-grafana'
+            - name: "ods-cobol-api-gateway-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-cobol-api-gateway-grafana
-            - name: 'ods-sub-api-gateway-grafana'
+            - name: "ods-sub-api-gateway-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sub-api-gateway-grafana
-            - name: 'ods-sys-api-gateway-grafana'
+            - name: "ods-sys-api-gateway-grafana"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-gateway-grafana
-            - name: 'ods-cli-cop-applications'
+            - name: "ods-cli-cop-applications"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-cli-cop-applications
-            - name: 'ods-sub-api-grafana-2'
+            - name: "ods-sub-api-grafana-2"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sub-api-grafana-2
-            - name: 'ods-sub-api-grafana-reactive'
+            - name: "ods-sub-api-grafana-reactive"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sub-api-grafana-reactive
-            - name: 'sca-grafana-microservice-linear-matrics'
+            - name: "sca-grafana-microservice-linear-matrics"
               orgId: 1
-              folder: 'TSB-SCA'
+              folder: "TSB-SCA"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/sca-grafana-microservice-linear-matrics
-            - name: 'cop-phase2-microservices-dashboard'
+            - name: "cop-phase2-microservices-dashboard"
               orgid: 1
-              folder: 'TSB-COP-PHASE2'
+              folder: "TSB-COP-PHASE2"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cop-phase2-microservices-dashboard
-            - name: 'scylla-advanced-dashboard'
+            - name: "scylla-advanced-dashboard"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-advanced-dashboard
-            - name: 'scylla-detailed-dashboard-part-1'
+            - name: "scylla-detailed-dashboard-part-1"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-1
-            - name: 'scylla-detailed-dashboard-part-2'
+            - name: "scylla-detailed-dashboard-part-2"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-detailed-dashboard-part-2
-            - name: 'scylla-cql'
+            - name: "scylla-cql"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/scylla-cql
-            - name: 'shared-grafana-msk-overview1'
+            - name: "shared-grafana-msk-overview1"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-msk-overview1
-            - name: 'shared-grafana-msk-overview2'
+            - name: "shared-grafana-msk-overview2"
               orgId: 1
-              folder: 'Shared Services'
+              folder: "Shared Services"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-msk-overview2
-            - name: 'gen-availability'
+            - name: "gen-availability"
               orgId: 1
-              folder: 'AWS Infrastructure'
+              folder: "AWS Infrastructure"
               type: file
               disableDeletion: true
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/gen-availability
-            - name: 'ods-consumer-group-and-topic-metrics'
+            - name: "ods-consumer-group-and-topic-metrics"
               orgId: 1
-              folder: 'TSB-ODS'
+              folder: "TSB-ODS"
               type: file
               disableDeletion: true
               editable: true
@@ -771,7 +777,7 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
-          - job_name: 'blackbox'
+          - job_name: "blackbox"
             metrics_path: /probe
             params:
               module: [http_2xx_cacert]
@@ -794,7 +800,7 @@ spec:
                 target_label: instance
               - target_label: __address__
                 replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
-          - job_name: 'blackbox_4xx'
+          - job_name: "blackbox_4xx"
             metrics_path: /probe
             params:
               module: [http_4xx_cacert]
@@ -808,7 +814,7 @@ spec:
                 target_label: instance
               - target_label: __address__
                 replacement: blackbox-exporter-prometheus-blackbox-exporter.prometheus:9115
-          - job_name: 'blackbox_zookeeper'
+          - job_name: "blackbox_zookeeper"
             metrics_path: /probe
             params:
               module: [tcp_zookeeper]
@@ -851,7 +857,7 @@ spec:
                 target_label: instancetype
               - source_labels: [__meta_ec2_tag_subsystem]
                 target_label: subsystem
-            metrics_path: '/metrics'
+            metrics_path: "/metrics"
             honor_labels: true
             static_configs:
               - targets:
@@ -861,34 +867,33 @@ spec:
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ BDS_MSK_BROKER_0 }}:11002'
-                  - '{{ BDS_MSK_BROKER_1 }}:11002'
-                  - '{{ BDS_MSK_BROKER_2 }}:11002'
+                  - "{{ BDS_MSK_BROKER_0 }}:11002"
+                  - "{{ BDS_MSK_BROKER_1 }}:11002"
+                  - "{{ BDS_MSK_BROKER_2 }}:11002"
           - job_name: msk-jmx-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ BDS_MSK_BROKER_0 }}:11001'
-                  - '{{ BDS_MSK_BROKER_1 }}:11001'
-                  - '{{ BDS_MSK_BROKER_2 }}:11001'
+                  - "{{ BDS_MSK_BROKER_0 }}:11001"
+                  - "{{ BDS_MSK_BROKER_1 }}:11001"
+                  - "{{ BDS_MSK_BROKER_2 }}:11001"
           - job_name: shared-msk-node-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ SHARED_MSK_BROKER_0 }}:11002'
-                  - '{{ SHARED_MSK_BROKER_1 }}:11002'
-                  - '{{ SHARED_MSK_BROKER_2 }}:11002'
+                  - "{{ SHARED_MSK_BROKER_0 }}:11002"
+                  - "{{ SHARED_MSK_BROKER_1 }}:11002"
+                  - "{{ SHARED_MSK_BROKER_2 }}:11002"
           - job_name: shared-msk-jmx-exporter
             scrape_interval: 60s
             scrape_timeout: 60s
             static_configs:
               - targets:
-                  - '{{ SHARED_MSK_BROKER_0 }}:11001'
-                  - '{{ SHARED_MSK_BROKER_1 }}:11001'
-                  - '{{ SHARED_MSK_BROKER_2 }}:11001'
-
+                  - "{{ SHARED_MSK_BROKER_0 }}:11001"
+                  - "{{ SHARED_MSK_BROKER_1 }}:11001"
+                  - "{{ SHARED_MSK_BROKER_2 }}:11001"
 
         ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
         ## prometheus resource to be created with selectors based on values in the helm deployment,
@@ -923,7 +928,7 @@ spec:
       alertmanagerSpec:
         useExistingSecret: true
         configSecret: alertmanager-prometheus-kube-prometheus-alertmanager
-        secrets: ['servicenow-secret']
+        secrets: ["servicenow-secret"]
         resources:
           requests:
             memory: 50Mi
