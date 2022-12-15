@@ -46,7 +46,7 @@ spec:
 
     grafana:
       image:
-        repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana
+        repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana-enterprise
         tag: 7.5.15
         pullPolicy: IfNotPresent
       enabled: true
