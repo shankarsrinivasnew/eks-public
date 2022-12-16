@@ -48,7 +48,7 @@ spec:
       grafana.ini:
         enterprise:
           license_text: |
-            {{ GF_SECRET }}
+            "{{ GF_SECRET }}"
         server:
           root_url: https://grafana.dev.aws.uk.tsb/
       image:
