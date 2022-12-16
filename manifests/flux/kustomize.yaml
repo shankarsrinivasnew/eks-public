@@ -109,6 +109,8 @@ data:
     SECRET=$(aws secretsmanager get-secret-value --secret-id eks-flux-kustomize | jq -r ".SecretString" )
     SECRET_RAX_PAGERDUTY_KEY=$(echo $SECRET | jq -r ".raxPagerDutyKey")
 
+    GF_SECRET=$(aws secretsmanager get-secret-value --secret-id grafana_enterprise_license --query SecretString --output text | jq --raw-output '."license"')
+
     # Get Shared MSK Cluster
     SHARED_MSK_CLUSTER_ARN=$(aws kafka list-clusters --query "ClusterInfoList[?Tags.project == 'MSK_AWS']" | jq -r ".[].ClusterArn")
     SHARED_MSK_CLUSTER=$(aws kafka list-nodes --cluster-arn $SHARED_MSK_CLUSTER_ARN | jq )
