@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
     master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.332.2-lts-alpine
+      tag: 2.319.3-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -58,12 +58,12 @@ spec:
       installPlugins:
         - kubernetes-client-api:4.13.3-1
         - kubernetes:1.27.7
+        - workflow-job:1145.v7f2433caa07f
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
-        - workflow-multibranch:716.vc692a_e52371b_
         - credentials-binding:1.27
         - git:4.8.3
-        - configuration-as-code:1512.vb_79d418d5fc8
+        - configuration-as-code:1.55
         - ansicolor:0.7.2
         - pipeline-aws:1.42
         - authorize-project:1.3.0
@@ -91,18 +91,13 @@ spec:
         - build-timestamp:1.0.3
         - dashboard-view:2.16
         - ghprb:1.42.1
-        - sonar:2.12
         - jira:3.1.1
+        - sonar:2.12
         - audit-trail:3.10
         - pipeline-model-definition:1.9.3
         - pipeline-model-extensions:1.9.3
-        - pipeline-milestone-step:1.3.2
-        - javax-activation-api:1.2.0-3
-        - javax-mail-api:1.6.2-6
-        - jaxb:2.3.6-1
         - sshd:3.1.0
-        - git-server:1.11
-        - matrix-project:772.v494f19991984
+        - maven-plugin:3.20
       JCasC:
         securityRealm: |-
           local:
