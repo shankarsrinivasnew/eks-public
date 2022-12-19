@@ -104,6 +104,7 @@ spec:
         - sshd:3.1.0
         - git-server:1.11
         - matrix-project:772.v494f19991984
+        - workflow-support:820.vd1a_6cc65ef33
       JCasC:
         securityRealm: |-
           local:
