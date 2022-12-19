@@ -62,7 +62,7 @@ spec:
         - workflow-aggregator:2.6
         - workflow-durable-task-step:1121.va_65b_d2701486
         - workflow-multibranch:716.vc692a_e52371b_
-        - credentials-binding:1.27
+        - credentials-binding:1.27.1
         - git:4.11.5
         - configuration-as-code:1512.vb_79d418d5fc8
         - ansicolor:0.7.2
@@ -76,7 +76,7 @@ spec:
         - envinject:2.4.0
         - extra-tool-installers:1.0
         - git-parameter:0.9.18
-        - github-branch-source:1677.v731f745ea_0cf
+        - github-branch-source:2.9.0
         - http_request:1.8.26
         - job-dsl:1.77
         - matrix-auth:2.6.6
@@ -103,7 +103,7 @@ spec:
         - jaxb:2.3.6-1
         - sshd:3.1.0
         - git-server:1.11
-        - matrix-project:772.v494f19991984c
+        - matrix-project:1.7.1
       JCasC:
         securityRealm: |-
           local:
