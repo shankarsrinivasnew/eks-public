@@ -141,8 +141,8 @@ spec:
   types:
     - Egress
   egress:
-  - action: Allow
-    destination:
-      services:
-        name: scylla-manager
-        namespace: scylla-manager
+    - action: Allow
+      destination:
+        services:
+          name: scylla-manager
+          namespace: scylla-manager
