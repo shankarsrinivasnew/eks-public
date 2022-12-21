@@ -62,6 +62,7 @@ spec:
         - workflow-job:1145.v7f2433caa07f
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
+        - workflow-support:813.vb_d7c3d2984a_0
         - credentials-binding:1.27
         - git:4.8.3
         - configuration-as-code:1414.v878271fc496f
