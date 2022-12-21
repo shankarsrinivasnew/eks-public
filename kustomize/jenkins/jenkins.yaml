@@ -63,6 +63,7 @@ spec:
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
         - workflow-support:813.vb_d7c3d2984a_0
+        - workflow-basic-steps:2.24
         - credentials-binding:1.27
         - git:4.8.3
         - configuration-as-code:1414.v878271fc496f
@@ -100,6 +101,7 @@ spec:
         - pipeline-model-extensions:1.9.3
         - sshd:3.1.0
         - maven-plugin:3.20
+        - junit:1.54.3
       JCasC:
         securityRealm: |-
           local:
