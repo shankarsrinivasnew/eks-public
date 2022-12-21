@@ -99,7 +99,6 @@ spec:
         - pipeline-model-extensions:1.9.3
         - sshd:3.1.0
         - maven-plugin:3.20
-        - junit:1119.va_a_5e9068da_d7
       JCasC:
         securityRealm: |-
           local:
