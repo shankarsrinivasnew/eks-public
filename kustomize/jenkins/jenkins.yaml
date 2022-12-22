@@ -97,6 +97,8 @@ spec:
         - audit-trail:3.10
         - pipeline-model-definition:1.9.3
         - pipeline-model-extensions:1.9.3
+        - pipeline-model-api:1.9.3
+        - pipeline-stage-tags-metadata:1.9.3
         - sshd:3.1.0
         - maven-plugin:3.16
         - junit:1.54.3
