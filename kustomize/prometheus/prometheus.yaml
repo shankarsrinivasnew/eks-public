@@ -252,7 +252,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard   
+                path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard
             - name: 'sco-phase2-loans-business-metrics'
               orgId: 1
               folder: 'TSB-SCO'
@@ -437,14 +437,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-single-applications-grafana
-            - name: 'ods-consumer-group-max-grafana'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-consumer-group-max-grafana
             - name: 'sca-grafana-microservice-linear-matrics'
               orgId: 1
               folder: 'TSB-SCA'
@@ -507,6 +499,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/gen-availability
+            - name: "ods-consumer-group-and-topic-metrics"
+              orgId: 1
+              folder: "TSB-ODS"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -552,7 +552,6 @@ spec:
         ods-cli-cop-applications: ods-cli-cop-applications-cm
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
         ods-loans-grafana: ods-loans-grafana-cm
-        ods-consumer-group-max-grafana: ods-consumer-group-max-grafana-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         scylla-advanced-dashboard: scylla-advanced-dashboard-cm
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
@@ -561,7 +560,7 @@ spec:
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
         gen-availability: gen-availability-cm
         ods-loans-grafana-dashboard: ods-loans-grafana-cm
-
+        ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
     prometheusOperator:
       enabled: true
       nodeSelector:
