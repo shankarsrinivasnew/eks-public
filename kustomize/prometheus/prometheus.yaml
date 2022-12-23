@@ -552,7 +552,6 @@ spec:
         ods-cli-cop-applications: ods-cli-cop-applications-cm
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
         ods-loans-grafana: ods-loans-grafana-cm
-        ods-consumer-group-max-grafana: ods-consumer-group-max-grafana-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         scylla-advanced-dashboard: scylla-advanced-dashboard-cm
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
