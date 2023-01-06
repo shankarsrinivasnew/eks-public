@@ -63,6 +63,7 @@ spec:
         - workflow-multibranch:716.vc692a_e52371b_
         - workflow-support:813.vb_d7c3d2984a_0
         - workflow-job:1145.v7f2433caa07f
+        - workflow-basic-steps:2.24
         - credentials-binding:1.27
         - git:4.8.3
         - configuration-as-code:1512.vb_79d418d5fc8
