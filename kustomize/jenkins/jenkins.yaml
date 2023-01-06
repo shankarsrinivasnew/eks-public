@@ -107,6 +107,7 @@ spec:
         - git-server:1.11
         - matrix-project:772.v494f19991984
         - script-security:1138.v8e727069a_025
+        - junit:1.54.3
       JCasC:
         securityRealm: |-
           local:
