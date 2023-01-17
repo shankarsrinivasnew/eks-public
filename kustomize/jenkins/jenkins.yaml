@@ -61,8 +61,10 @@ spec:
         - workflow-job:1145.v7f2433caa07f
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
+        - workflow-support:813.vb_d7c3d2984a_0
         - credentials-binding:1.27
         - git:4.8.3
+        - workflow-support:813.vb_d7c3d2984a_0
         - configuration-as-code:1.55
         - ansicolor:0.7.2
         - pipeline-aws:1.42
@@ -80,6 +82,7 @@ spec:
         - job-dsl:1.77
         - matrix-auth:2.6.6
         - jdk-tool:1.4
+        - workflow-support:813.vb_d7c3d2984a_0
         - pipeline-utility-steps:2.6.1
         - pipeline-github:2.7
         - scm-filter-branch-pr:0.5.1
@@ -96,8 +99,11 @@ spec:
         - audit-trail:3.10
         - pipeline-model-definition:1.9.3
         - pipeline-model-extensions:1.9.3
+        - pipeline-model-api:1.9.3
+        - pipeline-stage-tags-metadata:1.9.3
         - sshd:3.1.0
-        - maven-plugin:3.20
+        - maven-plugin:3.16
+        - junit:1.54.3
       JCasC:
         securityRealm: |-
           local:
@@ -214,6 +220,15 @@ spec:
                                   curl https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip -L -o terraform_1.2.4_linux_amd64.zip
                                   unzip terraform_1.2.4_linux_amd64.zip
                                 toolHome: "."
+                  - name: "terrafor-0.13.0"
+                    properties:
+                      - installSource:
+                          installers:
+                            - command:
+                                command: |-
+                                  curl https://releases.hashicorp.com/terraform/0.13.0/terraform_0.13.0_linux_amd64.zip -L -o terraform_0.13.0_linux_amd64.zip
+                                  unzip terraform_0.13.0_linux_amd64.zip
+                                toolHome: "."                                
           ansicolor: |-
             unclassified:
               ansiColorBuildWrapper:
