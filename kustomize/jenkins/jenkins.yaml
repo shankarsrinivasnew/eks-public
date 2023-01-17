@@ -64,7 +64,6 @@ spec:
         - workflow-support:813.vb_d7c3d2984a_0
         - credentials-binding:1.27
         - git:4.8.3
-        - workflow-support:813.vb_d7c3d2984a_0
         - configuration-as-code:1.55
         - ansicolor:0.7.2
         - pipeline-aws:1.42
@@ -82,7 +81,6 @@ spec:
         - job-dsl:1.77
         - matrix-auth:2.6.6
         - jdk-tool:1.4
-        - workflow-support:813.vb_d7c3d2984a_0
         - pipeline-utility-steps:2.6.1
         - pipeline-github:2.7
         - scm-filter-branch-pr:0.5.1
