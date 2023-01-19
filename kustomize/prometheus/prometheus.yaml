@@ -60,6 +60,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/tags: cmdb=GRAFANA_AWS,owner=Balasubramanian Chandrasekaran,project=GRAFANA_AWS,description=Grafana component for the shared services platform which can be used for monitoring infrastructure,managed_by=rackspace
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32,10.184.128.0/19,10.185.128.0/19,10.186.80.0/22,10.186.84.0/22,172.27.240.0/20"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
@@ -619,6 +620,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/tags: cmdb=PROMETHEUS_AWS,owner=Himanshu Jha,project=PROMETHEUS_AWS,description=Prometheus component for the shared services platform which can be used for monitoring alerts,managed_by=rackspace
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
