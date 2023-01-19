@@ -619,6 +619,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/tags: project="PROMETHEUS_AWS",owner="Himanshu Jha",cmdb="PROMETHEUS_AWS",description="Prometheus component for the shared services platform which can be used for monitoring alerts",managed_by="rackspace"
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
