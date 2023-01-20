@@ -1,0 +1,34 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: dynatrace
+  namespace: dynatrace
+spec:
+  releaseName: dynatrace-operator
+  chart:
+    repository: https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/master/config/helm/repos/stable
+    name: dynatrace-operator
+    version: 0.9.1
+  values:
+    platform: "kubernetes"
+
+    operator:
+      nodeSelector: {}
+      tolerations: []
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+
+    webhook:
+      requests:
+        cpu: 300m
+        memory: 128Mi
+      limits:
+        cpu: 300m
+        memory: 128Mi
+
+    createSecurityContextConstraints: true # Only applicable for Openshift
+    installCRD: true
