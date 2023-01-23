@@ -115,7 +115,7 @@ spec:
       annotations:
         description: 'Application {{ $labels.job }} is at peak rate of 1840 for last 5 mins. Value: {{ $value }}'
         summary: Red rate reached for Application {{ $labels.job }} 
-###########################################ODS_DP01_INGESTOR##########################################################
+##########################################ODS_DP01_INGESTOR##########################################################
     - record: ods_dp01_ingestor_up_{{ AWS_ENVIRONMENT }}
       expr: (sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace="ods",job="tsb-ods-pr-ingest-dp-01"})*60)
     - alert: ods_dp01_ingestor_up_yellow_alert_{{ AWS_ENVIRONMENT }}
