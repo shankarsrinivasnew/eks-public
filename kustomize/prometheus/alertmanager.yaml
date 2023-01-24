@@ -307,5 +307,5 @@ stringData:
         - match_re:
             environment: preprod|prod    
             application: cdc
-            severity: WARNING
+            severity: ^(CRITICAL|WARNING)
           receiver: rax-pagerduty-critical  
