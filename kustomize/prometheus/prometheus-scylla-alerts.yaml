@@ -515,8 +515,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'For {{ $labels.instance }} Backup failed'
-            summary: Instance {{ $labels.instance }} Backup task failed
+            description: 'For {{ $labels.cluster }} Backup failed. TaskID: {{ $labels.task }}'
+            summary: Instance {{ $labels.cluster }} Backup task failed
         - alert: RepairFailed
           expr: (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"} offset 3m) or vector(0)) > 0
           for: 15m
@@ -528,8 +528,8 @@ spec:
             hostname: "{{ $labels.instance }}"
             tsbci: AWS_ELZ
           annotations:
-            description: 'For {{ $labels.instance }} Repair failed'
-            summary: Instance {{ $labels.instance }} Repair task failed
+            description: 'For {{ $labels.cluster }} Repair failed. TaskID: {{ $labels.task }}'
+            summary: Instance {{ $labels.cluster }} Repair task failed
         - alert: restart
           expr: resets(scylla_gossip_heart_beat[1h])>0
           for: 5m
