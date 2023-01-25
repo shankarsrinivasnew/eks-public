@@ -510,6 +510,7 @@ spec:
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
+            priority: P3
             monitoring: BackupFailed
             rackspace: "true"
             hostname: "{{ $labels.instance }}"
@@ -523,6 +524,7 @@ spec:
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
+            priority: P3
             monitoring: RepairFailed
             rackspace: "true"
             hostname: "{{ $labels.instance }}"
