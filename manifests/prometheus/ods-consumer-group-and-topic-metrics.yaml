@@ -184,7 +184,7 @@ data:
               "expr": "aws_kafka_sum_offset_lag_average{consumer_group=~\".*ods.*\"} or aws_kafka_sum_offset_lag_average{topic=~\".*ods.*\"}",
               "interval": "",
               "legendFormat": "",
-              "refId": "A"
+              "refId": "B"
             }
           ],
           "thresholds": [],
@@ -278,7 +278,7 @@ data:
               "expr": "aws_kafka_estimated_max_time_lag_average{consumer_group=~\".*ods.*\"} or aws_kafka_estimated_max_time_lag_average{topic=~\".*ods.*\"}",
               "interval": "",
               "legendFormat": "",
-              "refId": "A"
+              "refId": "C"
             }
           ],
           "thresholds": [],
