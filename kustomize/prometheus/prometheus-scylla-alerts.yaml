@@ -505,8 +505,8 @@ spec:
             description: '{{ $labels.instance }} has average high latency for more than 5 minutes.'
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: BackupFailed
-          expr: (sum(scylla_manager_task_run_total{type=~"backup", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"backup", status="ERROR"} offset 3m) or vector(0)) > 0
-          for: 15m
+          expr: ((scylla_manager_task_run_total{type=~"backup", status="ERROR"}) - (scylla_manager_task_run_total{type=~"backup", status="ERROR"} offset 3m)) > 0
+          for: 1m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
@@ -519,8 +519,8 @@ spec:
             description: 'For {{ $labels.cluster }} Backup failed. TaskID: {{ $labels.task }}'
             summary: Instance {{ $labels.cluster }} Backup task failed
         - alert: RepairFailed
-          expr: (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"}) or vector(0)) - (sum(scylla_manager_task_run_total{type=~"repair", status="ERROR"} offset 3m) or vector(0)) > 0
-          for: 15m
+          expr: ((scylla_manager_task_run_total{type=~"repair", status="ERROR"}) - (scylla_manager_task_run_total{type=~"repair", status="ERROR"} offset 3m)) > 0
+          for: 1m
           labels:
             severity: CRITICAL
             environment: "{{ AWS_ENVIRONMENT }}"
