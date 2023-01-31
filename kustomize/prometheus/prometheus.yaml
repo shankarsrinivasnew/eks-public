@@ -516,6 +516,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cdc-status-cloudera-kafka
+            - name: "cdc-status-msk-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-msk-kafka
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -571,6 +579,7 @@ spec:
         ods-loans-grafana-dashboard: ods-loans-grafana-cm
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
         cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
+        cdc-status-msk-kafka: cdc-status-msk-kafka-cm
 
     prometheusOperator:
       enabled: true
