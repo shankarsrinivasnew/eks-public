@@ -61,7 +61,7 @@ spec:
         - kubernetes:1.27.7
         - workflow-job:1145.v7f2433caa07f
         - workflow-aggregator:2.6
-        - workflow-durable-task-step:2.39
+        - workflow-durable-task-step:2.40
         - workflow-support:813.vb_d7c3d2984a_0
         - workflow-basic-steps:2.24
         - credentials-binding:1.27
