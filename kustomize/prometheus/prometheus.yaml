@@ -508,6 +508,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
+            - name: "cdc-status-cloudera-kafka"
+              orgId: 1
+              folder: "TSB-ODS"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-cloudera-kafka
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -562,6 +570,7 @@ spec:
         gen-availability: gen-availability-cm
         ods-loans-grafana-dashboard: ods-loans-grafana-cm
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
+        cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
 
     prometheusOperator:
       enabled: true
