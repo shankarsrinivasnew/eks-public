@@ -504,7 +504,7 @@ spec:
             description: '{{ $labels.instance }} has average high latency for more than 5 minutes.'
             summary: Instance {{ $labels.instance }} High Read Latency
         - alert: BackupFailed
-          expr: ((scylla_manager_task_run_total{type=~"backup", status="ERROR"}) - (scylla_manager_task_run_total{type=~"backup", status="ERROR"} offset 3m)) == 0
+          expr: ((scylla_manager_task_run_total{type=~"backup", status="ERROR"}) - (scylla_manager_task_run_total{type=~"backup", status="ERROR"} offset 3m)) > 0
           for: 1m
           labels:
             severity: CRITICAL
