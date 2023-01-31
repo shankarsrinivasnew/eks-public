@@ -508,7 +508,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
-
+            - name: "cdc-status-msk-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-msk-kafka
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
@@ -562,6 +569,7 @@ spec:
         gen-availability: gen-availability-cm
         ods-loans-grafana-dashboard: ods-loans-grafana-cm
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
+        cdc-status-msk-kafka: cdc-status-msk-kafka-cm
     prometheusOperator:
       enabled: true
       nodeSelector:
