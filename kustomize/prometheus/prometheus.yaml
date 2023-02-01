@@ -783,6 +783,7 @@ spec:
             scrape_interval: 5m
             scrape_timeout: 5m
             metrics_path: /probe
+            scheme: https
             params:
               module: [http_2xx_cacert]
             static_configs:
@@ -792,11 +793,13 @@ spec:
                   - https://consul.{{ DNS_ZONE }}
                   - https://vault.{{ DNS_ZONE }}
                   - https://consul.{{ DNS_ZONE }}/v1/kv/config-cb/application/consul/ssl/CACert
-                  - http://{{ SHARED_MSK_BROKER_0 }}:9096
-                  - http://{{ SHARED_MSK_BROKER_1 }}:9096
-                  - http://{{ SHARED_MSK_BROKER_2 }}:9096
+                  - https://{{ SHARED_MSK_BROKER_0 }}:9096
+                  - https://{{ SHARED_MSK_BROKER_1 }}:9096
+                  - https://{{ SHARED_MSK_BROKER_2 }}:9096
                   - https://kibana.mgmt.aws.uk.tsb
                   - https://artifactory.mgmt.aws.uk.tsb
+            tls_config:
+              insecure_skip_verify: true
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
