@@ -236,7 +236,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/ods-sub-api-grafana-reactive    
+                path: /var/lib/grafana/dashboards/ods-sub-api-grafana-reactive
             - name: 'ods-performance-grafana-dashboard'
               orgId: 1
               folder: 'TSB-ODS'
@@ -332,7 +332,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/cob-microservices-dashboard                
+                path: /var/lib/grafana/dashboards/cob-microservices-dashboard
             - name: 'cob-externelservices-grafana-dashboard'
               orgId: 1
               folder: 'TSB-COB'
@@ -340,7 +340,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/cob-externelservices-grafana-dashboard           
+                path: /var/lib/grafana/dashboards/cob-externelservices-grafana-dashboard
             - name: 'ods-new-css-tables-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -469,6 +469,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/aws-infrastructure-dashboard-part2
+            - name: "cdc-status-cloudera-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-cloudera-kafka
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -518,7 +526,7 @@ spec:
         ods-loans-grafana-dashboard: ods-loans-grafana-cm
         aws-infrastructure-dashboard-part1: aws-infrastructure-dashboard-part1-cm
         aws-infrastructure-dashboard-part2: aws-infrastructure-dashboard-part2-cm
-
+        cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
 
 
     prometheusOperator:
@@ -735,7 +743,7 @@ spec:
               - source_labels: [__meta_ec2_instance_state]
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
-                target_label: instancetype                
+                target_label: instancetype
           - job_name: 'blackbox'
             metrics_path: /probe
             params:
