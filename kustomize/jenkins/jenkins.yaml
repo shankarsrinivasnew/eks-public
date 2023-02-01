@@ -56,12 +56,13 @@ spec:
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       installPlugins:
-        - kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
-        - kubernetes:1.31.3
+        - kubernetes-client-api:4.13.3-1
+        - kubernetes:1.27.7
         - workflow-job:1145.v7f2433caa07f
         - workflow-aggregator:2.6
         - workflow-durable-task-step:2.39
         - workflow-support:813.vb_d7c3d2984a_0
+        - workflow-basic-steps:2.24
         - credentials-binding:1.27
         - git:4.8.3
         - configuration-as-code:1569.vb_72405b_80249
@@ -102,6 +103,11 @@ spec:
         - sshd:3.1.0
         - maven-plugin:3.16
         - junit:1.54.3
+        - bouncycastle-api:2.26
+        - durable-task:503.v57154d18d478     
+        - jackson2-api:2.14.1-313.v504cdd45c18b  ## K8s Dependency Plugin
+        - pipeline-graph-analysis:195.v5812d95a_a_2f9
+        - pipeline-milestone-step:101.vd572fef9d926
       JCasC:
         securityRealm: |-
           local:
