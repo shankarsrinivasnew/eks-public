@@ -23,7 +23,6 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 918,
       "links": [],
       "panels": [
         {
@@ -42,13 +41,43 @@ data:
                     "value": null
                   },
                   {
+                    "color": "red",
+                    "value": 2
+                  },
+                  {
                     "color": "green",
                     "value": 3
                   }
                 ]
-              }
+              },
+              "unit": "none"
             },
-            "overrides": []
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Controller"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
             "h": 8,
@@ -56,7 +85,7 @@ data:
             "x": 0,
             "y": 0
           },
-          "id": 14,
+          "id": 22,
           "options": {
             "colorMode": "value",
             "graphMode": "none",
@@ -76,15 +105,15 @@ data:
           "targets": [
             {
               "exemplar": true,
-              "expr": "count(node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
+              "expr": "count(kafka_server_ReplicaManager_Value{job=\"shared-msk-jmx-exporter\", name=\"LeaderCount\"})",
               "interval": "",
-              "legendFormat": "Shared Scylla Service",
+              "legendFormat": "Broker 1",
               "refId": "A"
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Scylla Service Status",
+          "title": "AWS MSK Status",
           "type": "stat"
         },
         {
@@ -153,6 +182,200 @@ data:
           "type": "stat"
         },
         {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "datasource": null,
+          "decimals": 0,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "displayName": "CPU %",
+              "mappings": [],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "dark-green",
+                    "value": null
+                  },
+                  {
+                    "color": "dark-yellow",
+                    "value": 65
+                  },
+                  {
+                    "color": "dark-red",
+                    "value": 95
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "format": "time_series",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 8
+          },
+          "height": 9,
+          "id": 20,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "minSpan": 12,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "text": {}
+          },
+          "pluginVersion": "7.5.15",
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 12,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(100 - avg by (instance) (rate(node_cpu_seconds_total{job=\"shared-msk-node-exporter\", mode=\"idle\"}[5m]) * 100))/3",
+              "format": "time_series",
+              "instant": null,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "",
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Average CPU % of 3 MSK Brokers",
+          "type": "gauge",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 3
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 0,
+            "y": 17
+          },
+          "id": 14,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "count(node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"})",
+              "interval": "",
+              "legendFormat": "Shared Scylla Service",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Scylla Service Status",
+          "type": "stat"
+        },
+        {
           "datasource": null,
           "fieldConfig": {
             "defaults": {
@@ -210,7 +433,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 24
           },
           "id": 16,
           "options": {
@@ -257,109 +480,6 @@ data:
           "timeFrom": null,
           "timeShift": null,
           "title": "Cloudera Kafka Status",
-          "type": "stat"
-        },
-        {
-          "datasource": null,
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  },
-                  {
-                    "color": "green",
-                    "value": 200
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "Controller"
-                },
-                "properties": [
-                  {
-                    "id": "thresholds",
-                    "value": {
-                      "mode": "absolute",
-                      "steps": [
-                        {
-                          "color": "red",
-                          "value": null
-                        },
-                        {
-                          "color": "green",
-                          "value": 1
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 8
-          },
-          "id": 18,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "none",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "text": {},
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-1.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
-              "interval": "",
-              "legendFormat": "Broker 1",
-              "refId": "A"
-            },
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-2.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Broker 2",
-              "refId": "B"
-            },
-            {
-              "exemplar": true,
-              "expr": "probe_http_status_code{instance=\"https://b-3.tsb-msk-devmigr-msk-cl.d60tx4.c3.kafka.eu-west-2.amazonaws.com:9096\", job=\"blackbox\"}",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "Broker 3",
-              "refId": "C"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "AWS MSK Status",
           "type": "stat"
         },
         {
@@ -438,7 +558,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 16
+            "y": 32
           },
           "id": 17,
           "options": {
@@ -534,5 +654,5 @@ data:
       "timezone": "",
       "title": "AWS Infrastructure Status - Dev",
       "uid": "-uAAIXM4k",
-      "version": 4
+      "version": 12
     }
