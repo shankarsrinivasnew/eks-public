@@ -1,4 +1,4 @@
----
+#---
 #apiVersion: rbac.authorization.k8s.io/v1
 #kind: ClusterRoleBinding
 #metadata:
@@ -17,7 +17,7 @@
 #  - kind: ServiceAccount
 #    name: cop-sink-connector
 #    namespace: cop
----
+#---
 #apiVersion: v1
 #kind: ServiceAccount
 #metadata:
