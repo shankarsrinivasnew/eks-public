@@ -24,4 +24,4 @@
 #    name: cop-admin
 #  - kind: ServiceAccount
 #    name: jenkins-terraform
-#    namespace: jenkins#
+#    namespace: jenkins
