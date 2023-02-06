@@ -114,3 +114,19 @@ spec:
         namespaceSelector: global()
         ports:
           - 443
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress
+  namespace: jenkins
+spec:
+  namespaceSelector: 'kubernetes.io/metadata.name == "jenkins"'
+  types:
+    - Egress
+  egress:
+    - action: Allow
+      destination:
+        services:
+          name: scylla-manager
+          namespace: scylla-manager
