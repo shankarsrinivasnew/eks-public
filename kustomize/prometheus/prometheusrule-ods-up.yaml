@@ -310,5 +310,4 @@ spec:
             tsbci: ODS_AWS
           annotations:
             description: 'Application {{ $labels.job }} is at peak rate of 1800 seconds for last 5 mins. Value: {{ $value }}'
-            summary: Red rate reached for Application {{ $labels.job }}        
-            
+            summary: Red rate reached for Application {{ $labels.job }}          
