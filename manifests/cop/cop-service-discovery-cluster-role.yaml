@@ -1,4 +1,4 @@
-apiVersion: rbac.authorization.k8s.io/v1
+/*apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: cop-cluster-binding-service-discovery
@@ -9,4 +9,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: tsb-cop
-    namespace: cop
+    namespace: cop*/
