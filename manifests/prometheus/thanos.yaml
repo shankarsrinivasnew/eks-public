@@ -19,6 +19,7 @@ spec:
     objstoreSecretOverride: thanos-s3-config
 
     store:
+      enabled: true
       serviceAccount: prometheus-sa
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
