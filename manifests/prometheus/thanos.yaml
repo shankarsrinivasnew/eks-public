@@ -20,21 +20,6 @@ spec:
 
     store:
       enabled: true
-      dataVolume:
-        backend:
-          persistentVolumeClaim:
-            claimName: thanos-compact-data-volume
-      persistentVolumeClaim:
-        name: thanos-compact-data-volume
-        spec:
-          storageClassName: efs-sc
-          accessModes:
-            - ReadWriteMany
-          resources:
-            requests:
-              storage: 200Gi
-          volumeName: data-volume
-          volumeMode: Filesystem
       serviceAccount: prometheus-sa
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
