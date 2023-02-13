@@ -2,13 +2,12 @@ resources:
   - aws-auth.yaml
   - calico-global-network-sets.yaml
   - coredns-networkpolicy.yaml
-  - alb-ingress-controller.yaml
-  - alb-rbac-role.yaml
   - ebs.yaml
   - external-dns.yaml
   - auto-scaler.yaml
   - reporting-role.yaml
   - aws-load-balancer-controller-service-account.yaml
+  - aws-load-balancer-controller.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml

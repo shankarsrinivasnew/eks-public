@@ -72,6 +72,7 @@ spec:
           resources:
             requests:
               storage: 200Gi
+          selector: {}
           volumeName: data-volume
           volumeMode: Filesystem
       # # Minimum age of fresh (non-compacted) blocks before they are being processed.
