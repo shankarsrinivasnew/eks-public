@@ -2,8 +2,6 @@ resources:
   - aws-auth.yaml
   - calico-global-network-sets.yaml
   - coredns-networkpolicy.yaml
-  - alb-ingress-controller.yaml
-  - alb-rbac-role.yaml
   - ebs.yaml
   - external-dns.yaml
   - auto-scaler.yaml
