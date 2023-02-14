@@ -12,7 +12,7 @@ spec:
       rules:
   ###########################################SCA_POD_RESTART_CRITICAL##########################################################
         - record: sca_pod_restart_critical_{{ AWS_ENVIRONMENT }}
-          expr: (kube_pod_container_status_restarts_total{namespace="sca", pod=~"tsb-sca.*|tsb-stepup.*|tsb-sca-pr-.*"} offset 5m)
+          expr: delta(kube_pod_container_status_restarts_total{namespace="sca", pod=~"tsb-sca.*|tsb-stepup.*|tsb-sca-pr-.*"} offset 5m)
         - alert: SCA_pod_restart_critical_alert_{{ AWS_ENVIRONMENT }}
           expr: sca_pod_restart_critical_{{ AWS_ENVIRONMENT }} >=3
           for: 5m
