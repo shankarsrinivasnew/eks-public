@@ -818,6 +818,8 @@ spec:
               - source_labels: [__meta_ec2_tag_Name]
                 target_label: instance
           - job_name: 'blackbox'
+            scrape_interval: 5m
+            scrape_timeout: 5m
             metrics_path: /probe
             params:
               module: [http_2xx_cacert]
