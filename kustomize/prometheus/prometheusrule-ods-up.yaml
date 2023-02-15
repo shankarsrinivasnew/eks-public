@@ -14,7 +14,7 @@ spec:
         - record: ods_aws_kafka_max_offset_lag_average_up{{ AWS_ENVIRONMENT }}
           expr: (aws_kafka_sum_offset_lag_average{consumer_group=~".*ods.*"})
         - alert: ods_aws_kafka_max_offset_lag_average_up_yellow_alert_{{ AWS_ENVIRONMENT }}
-          expr: (ods_aws_kafka_sum_offset_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500000
+          expr: (ods_aws_kafka_sum_offset_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500
           for: 1m
           labels:
             action: Closely monitor
