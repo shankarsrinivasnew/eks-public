@@ -4,9 +4,10 @@ metadata:
   name: aws-lb-controller
   namespace: kube-system
 spec:
-  selector: app.kubernetes.io/name == 'aws-lb-controller'
+  selector: app.kubernetes.io/name == 'aws-load-balancer-controller'
   types:
     - Egress
+    - Ingress
   egress:
     - metadata:
         annotations:
@@ -19,3 +20,15 @@ spec:
           - 169.254.169.254/32
         ports:
           - 80
+  ingress:
+    - metadata:
+        annotations:
+          from: vpc
+          to: aws-lb-controller 
+      action: Allow
+      destination:
+        ports:
+          - 443
+      protocol: TCP
+      source:
+        selector: vpc == 'local' && layer == 'all'
