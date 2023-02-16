@@ -28,5 +28,5 @@ spec:
             tsbci: SCA_BROADCOM_AWS
             itopsbridge: "true"
           annotations:
-            description: 'POD {{ $labels.pod }} for Microservice {{ $labels.container }} restarted more than 1 time in last 5m. Restart Count:{{ $value }}'
+            description: 'POD {{ $labels.pod }} for Microservice {{ $labels.container }} restarted more than 3 times in last 5m. Restart Count:{{ $value }}'
             summary: Critical Alert POD {{ $labels.pod }} restart indicates that its not healthy.
