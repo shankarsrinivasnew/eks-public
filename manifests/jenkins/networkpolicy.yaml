@@ -137,7 +137,6 @@ metadata:
   name: allow-egress
   namespace: jenkins
 spec:
-  namespaceSelector: 'kubernetes.io/metadata.name == "jenkins"'
   types:
     - Egress
   egress:
