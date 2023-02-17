@@ -6,7 +6,7 @@ metadata:
 spec:
   releaseName: tigera-operator
   chart:
-    repository: https://github.com/projectcalico/calico
+    repository: https://docs.projectcalico.org/charts
     name: tigera-operator
     version: v3.21.4
   values:
