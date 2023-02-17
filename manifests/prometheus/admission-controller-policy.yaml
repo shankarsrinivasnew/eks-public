@@ -11,4 +11,4 @@ spec:
         selector: app == 'prometheus-operator'
       destination:
         ports:
-          - 80443
+          - 8443
