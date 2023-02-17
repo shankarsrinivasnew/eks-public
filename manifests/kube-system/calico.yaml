@@ -2,11 +2,11 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: calico
+  name: tigera-operator
 spec:
-  releaseName: calico
+  releaseName: tigera-operator
   chart:
-    repository: https://docs.projectcalico.org/charts
+    repository: https://github.com/projectcalico/calico
     name: tigera-operator
     version: v3.21.4
   values:
