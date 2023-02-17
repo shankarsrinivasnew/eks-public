@@ -137,11 +137,11 @@ metadata:
 spec:
   selector: namespace == 'cb'
   ingress:
-  - action: Allow
-    protocol: TCP
-    source:
-      selector: app == 'prometheus'
-    destination:
-      ports:
-        - 8080
-        - 3000
+    - action: Allow
+      protocol: TCP
+      source:
+        selector: app == 'prometheus'
+      destination:
+        ports:
+          - 8080
+          - 3000
