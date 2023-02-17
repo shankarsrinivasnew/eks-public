@@ -3,6 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: tigera-operator
+  namespace: kube-system
 spec:
   releaseName: tigera-operator
   chart:
