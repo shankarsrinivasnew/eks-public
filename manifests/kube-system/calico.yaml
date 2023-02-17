@@ -2,13 +2,13 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: jenkins
+  name: calico
 spec:
-  releaseName: jenkins
+  releaseName: calico
   chart:
-    repository: https://charts.jenkins.io
-    name: jenkins
-    version: 2.6.4
+    repository: https://docs.projectcalico.org/charts
+    name: calico
+    version: v3.21.4
   values:
     apiServer:
       enabled: true
