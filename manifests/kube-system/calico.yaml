@@ -7,7 +7,7 @@ spec:
   releaseName: calico
   chart:
     repository: https://docs.projectcalico.org/charts
-    name: calico
+    name: tigera-operator
     version: v3.21.4
   values:
     apiServer:
