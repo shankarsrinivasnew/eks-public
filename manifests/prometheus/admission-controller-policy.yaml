@@ -8,7 +8,8 @@ spec:
     - action: Allow
       protocol: TCP
       source:
-        selector: app == 'prometheus-operator'
+        selector: app == 'kube-prometheus-stack-operator'
       destination:
         ports:
           - 8443
+          - 443
