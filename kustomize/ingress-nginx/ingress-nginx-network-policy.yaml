@@ -1,0 +1,20 @@
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: ingress-nginx-network-policy
+  namespace: ingress-nginx
+spec:
+  types:
+    - Ingress
+    - Egress
+  egress:
+    - action: Allow
+      destination:
+        nets:
+          - "{{ VPC_CIDR }}"
+  ingress:
+    - action: Allow
+      source:
+        nets:
+          - "{{ VPC_CIDR }}"

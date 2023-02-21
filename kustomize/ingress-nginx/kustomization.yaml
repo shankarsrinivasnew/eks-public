@@ -1,0 +1,5 @@
+resources:
+  - ingress-nginx-network-policy.yaml
+namespace: flux
+transformers:
+  - awsTransformer.yaml
