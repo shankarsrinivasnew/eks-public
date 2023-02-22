@@ -50,7 +50,7 @@ spec:
         create: true
         name: efs-csi-node-sa
       tolerations:
-      - operator: Exists
+        - operator: Exists
     replicaCount: 2
     sidecars:
       csiProvisioner:
