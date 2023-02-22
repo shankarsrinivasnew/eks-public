@@ -1,4 +1,79 @@
 ---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: aws-efs-csi-driver
+  namespace: kube-system
+spec:
+  releaseName: aws-efs-csi-driver
+  chart:
+    repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+    name: aws-efs-csi-driver
+    version: 2.3.8
+  values:
+    controller:
+      affinity: {}
+      create: true
+      deleteAccessPointRootDir: false
+      extraCreateMetadata: true
+      healthPort: 9909
+      logLevel: 2
+      nodeSelector: {}
+      podAnnotations: {}
+      regionalStsEndpoints: false
+      resources: {}
+      serviceAccount:
+        annotations: {}
+        create: false
+        name: efs-csi-controller-sa
+      tags: {}
+      tolerations: []
+      volMetricsOptIn: false
+    fullnameOverride: ""
+    image:
+      pullPolicy: IfNotPresent
+      repository: 602401143452.dkr.ecr.eu-west-2.amazonaws.com/eks/aws-efs-csi-driver
+      tag: v1.5.1
+    imagePullSecrets: []
+    nameOverride: ""
+    node:
+      dnsConfig: {}
+      dnsPolicy: ClusterFirst
+      healthPort: 9809
+      hostAliases: {}
+      logLevel: 2
+      nodeSelector: {}
+      podAnnotations: {}
+      resources: {}
+      serviceAccount:
+        annotations: {}
+        create: true
+        name: efs-csi-node-sa
+      tolerations:
+        - operator: Exists
+    replicaCount: 2
+    sidecars:
+      csiProvisioner:
+        image:
+          pullPolicy: IfNotPresent
+          repository: public.ecr.aws/eks-distro/kubernetes-csi/external-provisioner
+          tag: v3.3.0-eks-1-25-latest
+        resources: {}
+      livenessProbe:
+        image:
+          pullPolicy: IfNotPresent
+          repository: public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe
+          tag: v2.8.0-eks-1-25-latest
+        resources: {}
+      nodeDriverRegistrar:
+        image:
+          pullPolicy: IfNotPresent
+          repository: public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar
+          tag: v2.6.2-eks-1-25-latest
+        resources: {}
+    storageClasses: []
+    useFIPS: false
+---
 apiVersion: storage.k8s.io/v1
 kind: CSIDriver
 metadata:
