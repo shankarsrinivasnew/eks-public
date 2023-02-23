@@ -22,20 +22,6 @@ spec:
       destination:
         ports:
           - 9090
-    - metadata:
-        annotations:
-          from: vpc
-          to: prometheus-operator
-      action: Allow
-      protocol: TCP
-      destination:
-        ports:
-          - 443
-          - 8443
-        selector: app == 'kube-prometheus-stack-operator'
-      source:
-        selector: vpc == 'local' && layer == 'all'
-        namespaceSelector: global()
   egress:
     - metadata:
         annotations:
@@ -152,3 +138,27 @@ spec:
           - 443
   types:
     - Egress
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-operator-allow-vpc
+  namespace: prometheus
+spec:
+  egress:
+    - metadata:
+        annotations:
+          from: vpc
+          to: prometheus-operator
+      action: Allow
+      protocol: TCP
+      destination:
+        ports:
+          - 443
+          - 8443
+        selector: app == 'kube-prometheus-stack-operator'
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+  types:
+    - Ingress
