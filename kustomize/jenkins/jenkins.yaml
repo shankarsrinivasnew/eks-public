@@ -102,6 +102,7 @@ spec:
         - sshd:3.1.0
         - maven-plugin:3.16
         - junit:1.54.3
+        - jackson2-api:2.14.1-313.v504cdd45c18b
       JCasC:
         securityRealm: |-
           local:
