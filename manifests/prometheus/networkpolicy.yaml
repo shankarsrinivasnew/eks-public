@@ -145,7 +145,7 @@ metadata:
   name: prometheus-operator-allow-vpc
   namespace: prometheus
 spec:
-  egress:
+  ingress:
     - metadata:
         annotations:
           from: vpc
