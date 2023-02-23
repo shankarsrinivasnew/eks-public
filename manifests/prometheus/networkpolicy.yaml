@@ -32,6 +32,7 @@ spec:
         ports:
           - 443
           - 8443
+        selector: app == 'kube-prometheus-stack-operator'
       source:
         selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
