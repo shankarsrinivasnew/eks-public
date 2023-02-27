@@ -70,6 +70,7 @@ spec:
           names:
             - tsb-cob
             - default
+            - sa-tsb-onboarding-email-sender
       protocol: TCP
       destination:
         selector: vpc == 'local' && layer == 'all'
