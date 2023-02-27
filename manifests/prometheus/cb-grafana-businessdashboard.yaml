@@ -23,11 +23,11 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 62,
+      "id": 1694,
       "links": [],
       "panels": [
         {
-          "collapsed": true,
+          "collapsed": false,
           "datasource": null,
           "gridPos": {
             "h": 1,
@@ -36,1114 +36,1408 @@ data:
             "y": 0
           },
           "id": 2,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 1
-              },
-              "hiddenSeries": false,
-              "id": 4,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum by (namespace, job)(rate(tsbcb_message_process_time_seconds_sum {namespace=\"cb\"}[5m]))/ sum by (namespace, job)(rate(tsbcb_message_process_time_seconds_count{namespace=\"cb\"}[5m]))",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "CB Orchestrator Response Time",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
+          "panels": [],
           "title": "CB Orchestrator Response Time",
           "type": "row"
         },
         {
-          "collapsed": true,
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 4,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (namespace, job)(rate(tsbcb_message_process_time_seconds_sum {namespace=\"cb\"}[5m]))/ sum by (namespace, job)(rate(tsbcb_message_process_time_seconds_count{namespace=\"cb\"}[5m]))",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CB Orchestrator Response Time",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 41,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum by (namespace, job)(rate(tsbcb_message_full_process_time_seconds_sum {namespace=\"cb\"}[5m]))/ sum by (namespace, job)(rate(tsbcb_message_full_process_time_seconds_count{namespace=\"cb\"}[5m]))",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum by (namespace, job, module)(rate(tsbcb_message_process_time_seconds_sum {namespace=\"cb\"}[5m]))/sum by (namespace, job, module)(rate(tsbcb_message_process_time_seconds_count{namespace=\"cb\"}[5m]))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{module}}",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CB Orchestrator Response Time v2",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:576",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:577",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "collapsed": false,
           "datasource": null,
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 1
+            "y": 9
           },
           "id": 6,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 2
-              },
-              "hiddenSeries": false,
-              "id": 8,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"cb\",uri=~\".*enrol.*|.*verify.*\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"cb\",uri=~\".*enrol.*|.*verify.*\"}[5m]))",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "CB Auth API Response Time",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
+          "panels": [],
           "title": "CB Authentication API Response Time",
           "type": "row"
         },
         {
-          "collapsed": true,
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 10
+          },
+          "hiddenSeries": false,
+          "id": 8,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum by (namespace, job)(rate(http_server_requests_seconds_sum {namespace=\"cb\",uri=~\".*enrol.*|.*verify.*\"}[5m]))/ sum by (namespace, job)(rate(http_server_requests_seconds_count{namespace=\"cb\",uri=~\".*enrol.*|.*verify.*\"}[5m]))",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CB Auth API Response Time",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "collapsed": false,
           "datasource": null,
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 2
+            "y": 18
           },
           "id": 10,
-          "panels": [
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 3
-              },
-              "hiddenSeries": false,
-              "id": 14,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (processHmacsStream_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"cb\"})*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "CDC Customer Data",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 3
-              },
-              "hiddenSeries": false,
-              "id": 12,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace=\"cb\",uri=~\".*verify.*\"}[5m]))*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}} {{uri}}",
-                  "refId": "A"
-                },
-                {
-                  "expr": "(sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace=\"cb\",uri=~\".*enrol.*\"}[5m]))*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}} {{uri}}",
-                  "refId": "B"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Authentication API",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 11
-              },
-              "hiddenSeries": false,
-              "id": 16,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"cb\",job=\"tsb-cb-enrich\"})*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Enrich Sub Topology",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:626",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:627",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 11
-              },
-              "hiddenSeries": false,
-              "id": 18,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"cb\",job=\"tsb-cb-fulfill\"})*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Fulfill Sub Topology",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:542",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:543",
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 19
-              },
-              "hiddenSeries": false,
-              "id": 20,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (rate(lp_adapter_rdkafka_topic_partition_msgs {namespace=\"cb\"}[5m]))*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "LP Adaptor",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 19
-              },
-              "hiddenSeries": false,
-              "id": 22,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (processHmacGenerationRequest_applicationId_consumer_fetch_manager_metrics_records_consumed_rate {namespace=\"cb\"})*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "HMAC Generation Topology",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 27
-              },
-              "hiddenSeries": false,
-              "id": 24,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (rate(spring_kafka_listener_seconds_count {namespace=\"cb\"}[5m]))*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{job}}",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Natural Language Process Handler",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 27
-              },
-              "hiddenSeries": false,
-              "id": 26,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace=\"cb\", routeId=~\".*verify.*\"}[5m]))*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{routeId}}",
-                  "refId": "A"
-                },
-                {
-                  "expr": "(sum by (job, namespace, routeId)(rate(gateway_requests_seconds_count{ namespace=\"cb\", routeId=~\".*enrol.*\"}[5m]))*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "{{routeId}}",
-                  "refId": "B"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Spring API Gateway",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "Thanos",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 35
-              },
-              "hiddenSeries": false,
-              "id": 28,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "7.2.1",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "expr": "(sum by (job, namespace) (tsb_cb_ads_customer_lookup_topology_consumer_fetch_manager_metrics_records_consumed_rate or processCustomerLookupByUserId_applicationId_consumer_fetch_manager_metrics_records_consumed_rate)*60)",
-                  "instant": false,
-                  "interval": "",
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "ADS Customer Lookup Topology",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            }
-          ],
+          "panels": [],
           "title": "CB Apps Up State",
           "type": "row"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 19
+          },
+          "hiddenSeries": false,
+          "id": 14,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-cdc-customer-data\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CDC Customer Data",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:853",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:854",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 19
+          },
+          "hiddenSeries": false,
+          "id": 12,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace=\"cb\",uri=~\".*verify.*\"}[5m]))*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}} {{uri}}",
+              "refId": "A"
+            },
+            {
+              "expr": "(sum by (job, namespace, uri) (rate(http_server_requests_seconds_count {namespace=\"cb\",uri=~\".*enrol.*\"}[5m]))*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}} {{uri}}",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Authentication API",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:2005",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:2006",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 27
+          },
+          "hiddenSeries": false,
+          "id": 16,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-enrich\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Enrich Sub Topology",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:626",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:627",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 27
+          },
+          "hiddenSeries": false,
+          "id": 18,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-fulfill\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Fulfill Sub Topology",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:542",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:543",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 35
+          },
+          "hiddenSeries": false,
+          "id": 20,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(sum by (job, namespace) (rate(lp_adapter_rdkafka_topic_partition_msgs {namespace=\"cb\"}[5m]))*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "LP Adaptor",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 35
+          },
+          "hiddenSeries": false,
+          "id": 22,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-hmac-generation-topology\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "HMAC Generation Topology",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1345",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1346",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 43
+          },
+          "hiddenSeries": false,
+          "id": 24,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (rate(spring_kafka_listener_seconds_count {namespace=\"cb\", job=\"tsb-cb-nlp-handler\"}[5m]))*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Natural Language Process Handler",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1675",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1676",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 43
+          },
+          "hiddenSeries": false,
+          "id": 26,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace, routeId)(rate(spring_cloud_gateway_requests_seconds_count{ namespace=\"cb\", routeId=~\".*verify.*\"}[5m]))*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{routeId}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace, routeId)(rate(spring_cloud_gateway_requests_seconds_count{ namespace=\"cb\", routeId=~\".*enrol.*\"}[5m]))*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{routeId}}",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Spring API Gateway",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1758",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1759",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 51
+          },
+          "hiddenSeries": false,
+          "id": 28,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-ads-customer-lookup-topology\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "ADS Customer Lookup Topology",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1841",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1842",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 51
+          },
+          "hiddenSeries": false,
+          "id": 42,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-orchestrator\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CB Orchestrator",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1841",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1842",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Thanos",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 59
+          },
+          "hiddenSeries": false,
+          "id": 43,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.15",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum by (job, namespace) (kafka_consumer_fetch_manager_records_consumed_rate{namespace=\"cb\", job=\"tsb-cb-housekeeping\"})*60)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CB Housekeeping",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1841",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1842",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         },
         {
           "collapsed": true,
@@ -1152,7 +1446,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 3
+            "y": 67
           },
           "id": 30,
           "panels": [
@@ -1163,9 +1457,7 @@ data:
               "dashes": false,
               "datasource": "Thanos",
               "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
+                "defaults": {},
                 "overrides": []
               },
               "fill": 1,
@@ -1174,7 +1466,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 4
+                "y": 44
               },
               "hiddenSeries": false,
               "id": 32,
@@ -1194,7 +1486,7 @@ data:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.1",
+              "pluginVersion": "7.5.15",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -1276,7 +1568,7 @@ data:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 4
+            "y": 68
           },
           "id": 34,
           "panels": [
@@ -1287,9 +1579,7 @@ data:
               "dashes": false,
               "datasource": "Thanos",
               "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
+                "defaults": {},
                 "overrides": []
               },
               "fill": 1,
@@ -1298,7 +1588,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 5
+                "y": 53
               },
               "hiddenSeries": false,
               "id": 36,
@@ -1318,7 +1608,7 @@ data:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.1",
+              "pluginVersion": "7.5.15",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -1423,9 +1713,7 @@ data:
               "dashes": false,
               "datasource": "Thanos",
               "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
+                "defaults": {},
                 "overrides": []
               },
               "fill": 1,
@@ -1434,7 +1722,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 5
+                "y": 53
               },
               "hiddenSeries": false,
               "id": 38,
@@ -1454,7 +1742,7 @@ data:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.1",
+              "pluginVersion": "7.5.15",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -1537,9 +1825,7 @@ data:
               "dashes": false,
               "datasource": "Thanos",
               "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
+                "defaults": {},
                 "overrides": []
               },
               "fill": 1,
@@ -1548,7 +1834,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 13
+                "y": 61
               },
               "hiddenSeries": false,
               "id": 40,
@@ -1568,7 +1854,7 @@ data:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.1",
+              "pluginVersion": "7.5.15",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -1649,19 +1935,19 @@ data:
         }
       ],
       "refresh": "5s",
-      "schemaVersion": 26,
+      "schemaVersion": 27,
       "style": "dark",
       "tags": [],
       "templating": {
         "list": []
       },
       "time": {
-        "from": "now-6h",
+        "from": "now-2d",
         "to": "now"
       },
       "timepicker": {},
       "timezone": "",
       "title": "CB Business Metrics Dashboards",
       "uid": "I-l5QMAGk",
-      "version": 81
+      "version": 2
     }
