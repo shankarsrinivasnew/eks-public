@@ -71,6 +71,9 @@ spec:
             - tsb-cob
             - default
             - sa-tsb-onboarding-email-sender
+            - sa-tsb-onboarding-identity-onfido-download-asset
+            - sa-tsb-onboarding-product-data-upload
+            - sa-tsb-onboarding-otp-sender
       protocol: TCP
       destination:
         selector: vpc == 'local' && layer == 'all'
