@@ -117,7 +117,7 @@ metadata:
   name: sca-nginx-ingress
   namespace: sca
 spec:
-  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  serviceAccountSelector: projectcalico.org/name == 'tsb-sca-api-gateway-ingress-nginx'
   types:
     - Ingress
   ingress:
