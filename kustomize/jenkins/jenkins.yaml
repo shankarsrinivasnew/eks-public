@@ -108,6 +108,7 @@ spec:
         - jackson2-api:2.14.1-313.v504cdd45c18b  ## K8s Dependency Plugin
         - pipeline-graph-analysis:195.v5812d95a_a_2f9
         - pipeline-milestone-step:101.vd572fef9d926
+        - script-security:1138.v8e727069a_025
       JCasC:
         securityRealm: |-
           local:
