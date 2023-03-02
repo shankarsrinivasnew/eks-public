@@ -13,7 +13,7 @@ spec:
   values:
     image:
       repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/flux
-      tag: 1.23.0
+      tag: 1.25.3
     nodeSelector:
       taints.eks.aws.uk.tsb/role: mgmt
     tolerations:
