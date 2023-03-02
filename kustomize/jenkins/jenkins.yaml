@@ -103,6 +103,7 @@ spec:
         - maven-plugin:3.16
         - junit:1.54.3
         - jackson2-api:2.14.1-313.v504cdd45c18b
+        - workflow-basic-steps:2.24
       JCasC:
         securityRealm: |-
           local:
