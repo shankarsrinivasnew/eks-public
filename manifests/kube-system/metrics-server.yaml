@@ -219,3 +219,36 @@ spec:
     namespace: kube-system
   version: v1beta1
   versionPriority: 100
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: metrics-server
+  namespace: kube-system
+spec:
+  selector: k8s-app == 'metrics-server'
+  types:
+    - Ingress
+    - Egress
+  ingress:
+    - metadata:
+        annotations:
+          from: vpc
+          to: metrics-server
+      action: Allow
+      protocol: TCP
+      source:
+        selector: vpc == 'local' && layer == 'core'
+        namespaceSelector: global()
+  egress:
+    - metadata:
+        annotations:
+          from: metrics-server
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'core'
+        namespaceSelector: global()
+        ports:
+          - 10250
