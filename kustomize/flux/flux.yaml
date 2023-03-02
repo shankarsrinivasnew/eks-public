@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.fluxcd.io
     name: flux
-    version: 1.6.0
+    version: 1.9.0
   values:
     image:
       repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/flux
