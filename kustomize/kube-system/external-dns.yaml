@@ -68,7 +68,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: external-dns
-          image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/bitnami/external-dns:0.7.1
+          image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/bitnami/external-dns:0.13.1
           args:
             - --source=service
             - --source=ingress
@@ -78,6 +78,13 @@ spec:
             - --aws-zone-type=private # only look at private hosted zones (valid values are public, private or no value for both)
             - --registry=txt
             - --txt-owner-id={{ CLUSTER_NAME }}
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "20m"
+            limits:
+              memory: "200Mi"
+              cpu: "100m"
           envFrom:
             - configMapRef:
                 name: proxy-environment-variables
