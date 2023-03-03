@@ -60,6 +60,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/tags: cmdb=GRAFANA_AWS,owner=Balasubramanian Chandrasekaran,project=GRAFANA_AWS,description=Grafana component for the shared services platform which can be used for monitoring infrastructure,managed_by=rackspace,terraform=false
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32,10.184.128.0/19,10.185.128.0/19,10.186.80.0/22,10.186.84.0/22,172.27.240.0/20"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
@@ -245,6 +246,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-performance-grafana-dashboard
+            - name: 'ods-loans-grafana-dashboard'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard
             - name: 'sco-phase2-loans-business-metrics'
               orgId: 1
               folder: 'TSB-SCO'
@@ -301,14 +310,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-ingress
-            - name: 'cop-grafana-microservices'
-              orgId: 1
-              folder: 'TSB-COP'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/cop-grafana-microservices
             - name: 'ods-sub-api-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -373,14 +374,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-new-css-tables-grafana
-            - name: 'ods-single-applications-grafana'
-              orgId: 1
-              folder: 'TSB-ODS'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/ods-single-applications-grafana
             - name: 'ods-cobol-api-gateway-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -421,6 +414,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sub-api-grafana-2
+            - name: 'ods-loans-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-loans-grafana
+            - name: 'ods-single-applications-grafana'
+              orgId: 1
+              folder: 'TSB-ODS'
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-single-applications-grafana
             - name: 'sca-grafana-microservice-linear-matrics'
               orgId: 1
               folder: 'TSB-SCA'
@@ -483,6 +492,30 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/gen-availability
+            - name: "ods-consumer-group-and-topic-metrics"
+              orgId: 1
+              folder: "TSB-ODS"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
+            - name: "cdc-status-cloudera-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-cloudera-kafka
+            - name: "cdc-status-msk-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-msk-kafka
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -512,7 +545,6 @@ spec:
         ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
         ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
         ods-sys-api-grafana-ingress: ods-sys-api-podmetrics5-cm
-        cop-grafana-microservices: cop-microservices-cm
         ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
@@ -527,6 +559,7 @@ spec:
         ods-sys-api-gateway-grafana: ods-sys-api-gateway-podmetrics-cm
         ods-cli-cop-applications: ods-cli-cop-applications-cm
         ods-sub-api-grafana-2: ods-sub-api-grafana-2-cm
+        ods-loans-grafana: ods-loans-grafana-cm
         sca-grafana-microservice-linear-matrics: sca-grafana-microservice-linear-matrics-cm
         scylla-advanced-dashboard: scylla-advanced-dashboard-cm
         scylla-detailed-dashboard-part-1: scylla-detailed-dashboard-part-1-cm
@@ -534,6 +567,10 @@ spec:
         scylla-cql: scylla-cql-cm
         cop-phase2-microservices-dashboard: cop-phase2-microservices-dashboard-cm
         gen-availability: gen-availability-cm
+        ods-loans-grafana-dashboard: ods-loans-grafana-cm
+        ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
+        cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
+        cdc-status-msk-kafka: cdc-status-msk-kafka-cm
 
     prometheusOperator:
       enabled: true
@@ -546,10 +583,10 @@ spec:
           effect: NoSchedule
       resources:
         limits:
-          cpu: 200m
+          cpu: 400m
           memory: 1Gi
         requests:
-          cpu: 50m
+          cpu: 100m
           memory: 100Mi
       admissionWebhooks:
         patch:
@@ -593,6 +630,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: alb
           alb.ingress.kubernetes.io/scheme: internal
+          alb.ingress.kubernetes.io/tags: cmdb=PROMETHEUS_AWS,owner=Himanshu Jha,project=PROMETHEUS_AWS,description=Prometheus component for the shared services platform which can be used for monitoring alerts,managed_by=rackspace,terraform=false
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.48.0/20,10.198.165.58/32"
           alb.ingress.kubernetes.io/success-codes: 200,301,302
@@ -668,7 +706,7 @@ spec:
                 target_label: privateip
               - source_labels: [__meta_ec2_instance_id]
                 target_label: instanceid
-              - source_labels: [__meta_ec2_tag_managed_by]
+              - source_labels: [__meta_ec2_tag_ManagedBy]
                 target_label: managedby
                 regex: rackspace
                 action: keep
@@ -686,7 +724,6 @@ spec:
                 target_label: subsystem
               - source_labels: [__meta_ec2_tag_Terraform]
                 target_label: terraform
-
           - job_name: ec2-discover-hdf-jmx
             scrape_interval: 120s
             scrape_timeout: 120s
@@ -694,7 +731,7 @@ spec:
               - region: eu-west-2
                 port: 9110
             relabel_configs:
-              - source_labels: [__meta_ec2_tag_managed_by]
+              - source_labels: [__meta_ec2_tag_ManagedBy]
                 target_label: managedby
                 regex: rackspace
                 action: keep
@@ -725,6 +762,33 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
+          - job_name: ec2-discover-eks-default
+            ec2_sd_configs:
+              - region: eu-west-2
+                port: 7676
+            relabel_configs:
+              - source_labels: [__meta_ec2_private_ip]
+                target_label: privateip
+              - source_labels: [__meta_ec2_instance_id]
+                target_label: instanceid
+              - source_labels: [__meta_ec2_tag_managed_by]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                regex: .*eks.*
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                action: replace
+                target_label: instancename
+              - source_labels: [__meta_ec2_tag_environment]
+                target_label: environment
+              - source_labels: [__meta_ec2_availability_zone]
+                target_label: availabilityzone
+              - source_labels: [__meta_ec2_instance_state]
+                target_label: status
+              - source_labels: [__meta_ec2_instance_type]
+                target_label: instancetype
           - job_name: scylla-manager-ec2
             scrape_timeout: 1m
             scrape_interval: 1m
@@ -733,7 +797,7 @@ spec:
               - region: eu-west-2
                 port: 5090
             relabel_configs:
-              - source_labels: [__meta_ec2_tag_managed_by]
+              - source_labels: [__meta_ec2_tag_ManagedBy]
                 target_label: managedby
                 regex: rackspace
                 action: keep
@@ -754,6 +818,8 @@ spec:
               - source_labels: [__meta_ec2_tag_Name]
                 target_label: instance
           - job_name: 'blackbox'
+            scrape_interval: 5m
+            scrape_timeout: 5m
             metrics_path: /probe
             params:
               module: [http_2xx_cacert]
@@ -764,6 +830,8 @@ spec:
                   - https://consul.{{ DNS_ZONE }}
                   - https://vault.{{ DNS_ZONE }}
                   - https://consul.{{ DNS_ZONE }}/v1/kv/config-cb/application/consul/ssl/CACert
+                  - https://kibana.mgmt.aws.uk.tsb
+                  - https://artifactory.mgmt.aws.uk.tsb
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
@@ -807,12 +875,14 @@ spec:
               - targets:
                   - consul-exporter-prometheus-consul-exporter:9107
           - job_name: cloudwatch-exporter
+            scrape_timeout: 1m
+            scrape_interval: 1m
             relabel_configs:
               - source_labels: [__meta_ec2_private_ip]
                 target_label: privateip
               - source_labels: [__meta_ec2_instance_id]
                 target_label: instanceid
-              - source_labels: [__meta_ec2_tag_managed_by]
+              - source_labels: [__meta_ec2_tag_ManagedBy]
                 target_label: managedby
                 regex: rackspace
                 action: keep

@@ -32,6 +32,7 @@ spec:
       destination:
         selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
+
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -68,6 +69,7 @@ spec:
         namespaceSelector: global()
         ports:
           - 3306
+
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -95,6 +97,7 @@ spec:
       action: Allow
       destination:
         selector: all()
+
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -117,3 +120,24 @@ spec:
         namespaceSelector: global()
         ports:
           - 2181
+
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: prometheus-mgmt-vpc-allow
+  namespace: prometheus
+spec:
+  egress:
+    - action: Allow
+      protocol: TCP
+      source:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
+      destination:
+        selector: vpc == 'mgmt' && layer == 'access'
+        namespaceSelector: global()
+        ports:
+          - 443
+  types:
+    - Egress

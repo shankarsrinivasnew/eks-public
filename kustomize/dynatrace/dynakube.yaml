@@ -1,0 +1,78 @@
+apiVersion: dynatrace.com/v1beta1
+kind: DynaKube
+metadata:
+  name: dynakube
+  namespace: dynatrace
+  annotations:
+    feature.dynatrace.com/oneagent-privileged: "true"
+    feature.dynatrace.com/automatic-kubernetes-api-monitoring: 'true'
+    feature.dynatrace.com/automatic-kubernetes-api-monitoring-cluster-name: '{{ CLUSTER_NAME }}'
+spec:
+  apiUrl: https://{{ DYNATRACE_ENV_ID }}.live.dynatrace.com/api
+  networkZone: uk.fhnh.aws
+  proxy:
+    value: http://eu-west-2.proxy.aws.uk.tsb:3128
+  oneAgent:
+    classicFullStack:
+      image: 'rxl69895.live.dynatrace.com/linux/oneagent:1.249.201'
+      args:
+        - --set-host-group={{ DYNATRACE_HOST_GROUP }}
+      env:
+        - name: https_proxy
+          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+        - name: http_proxy
+          value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - key: role
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: sco
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: ods
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: cop
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: highcompute
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: sca
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: obs
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: scofl
+          effect: NoSchedule
+  activeGate:
+    group: '{{ CLUSTER_NAME }}'
+    capabilities:
+      - routing
+      - kubernetes-monitoring
+    image: ""
+    env:
+      - name: https_proxy
+        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+      - name: http_proxy
+        value: "http://eu-west-2.proxy.aws.uk.tsb:3128"
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1.5Gi
