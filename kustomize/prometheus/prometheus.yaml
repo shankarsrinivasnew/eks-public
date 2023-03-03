@@ -568,7 +568,7 @@ spec:
         gen-availability: gen-availability-cm
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
         aws-infra-status-dev-realtime-data: aws-infra-status-dev-realtime-data-cm
-        #aws-infra-status-dev-historical-uptime: aws-infra-status-dev-historical-uptime-cm
+        aws-infra-status-dev-historical-uptime: aws-infra-status-dev-historical-uptime-cm
 
     prometheusOperator:
       enabled: true
