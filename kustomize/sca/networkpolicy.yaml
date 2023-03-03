@@ -83,6 +83,7 @@ spec:
           - 7788
           - 1883
           - 8883
+          - 9096
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
