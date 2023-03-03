@@ -124,7 +124,7 @@ metadata:
   name: cob-nginx-ingress
   namespace: cob
 spec:
-  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  serviceAccountSelector: projectcalico.org/name == 'tsb-onboarding-api-gateway-ingress-nginx'
   types:
     - Ingress
   ingress:
