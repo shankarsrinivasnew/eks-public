@@ -27,7 +27,7 @@ data:
     "links": [],
     "panels": [
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -89,7 +89,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -150,7 +150,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -212,7 +212,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -277,7 +277,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -337,7 +337,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -407,7 +407,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -467,7 +467,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -527,7 +527,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -587,7 +587,7 @@ data:
         "type": "gauge"
       },
       {
-        "datasource": null,
+        "datasource": "Thanos",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -656,7 +656,7 @@ data:
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "Thanos",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -682,7 +682,7 @@ data:
             "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
             "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
           },
-          "datasource": null,
+          "datasource": "Thanos",
           "definition": "node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
           "description": "Get number of scylla nodes",
           "error": null,
