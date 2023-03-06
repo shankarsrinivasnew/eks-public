@@ -84,6 +84,7 @@ spec:
         ports:
           - 9096
           - 2181
+          - 5080
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
