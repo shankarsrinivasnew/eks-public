@@ -12,7 +12,7 @@ spec:
   ###########################################CB_APP_DOWN_WARNING##########################################################
       rules:
         - record: cb_app_down_warning_{{ AWS_ENVIRONMENT }}
-          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cb-ads-customer-lookup-topology|tsb-cb-authentication-api|tsb-cb-cdc-customer-data|tsb-cb-enrich|tsb-cb-fulfill|tsb-cb-hmac-generation-topology|tsb-cb-nlp-handler|tsb-cb-authentication-api-gw",namespace="cb"})
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-cb-ads-customer-lookup-topology|tsb-cb-authentication-api|tsb-cb-cdc-customer-data|tsb-cb-enrich|tsb-cb-fulfill|tsb-cb-hmac-generation-topology|tsb-cb-nlp-handler|tsb-cb-authentication-api-gw|tsb-cb-orchestrator",namespace="cb"})
         - alert: CB_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
           expr: ((cb_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((cb_app_down_warning_{{ AWS_ENVIRONMENT }}) < 3)
           for: 1m
