@@ -1178,7 +1178,7 @@ data:
     },
     "timepicker": {},
     "timezone": "",
-    "title": "AWS Infrastructure Status - Nonprod Realtime Data2",
-    "uid": "realdanonprod",
+    "title": "AWS Infrastructure Status - Nonprod Realtime Data",
+    "uid": "realnprod",
     "version": 6
       }
