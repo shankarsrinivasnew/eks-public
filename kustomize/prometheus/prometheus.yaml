@@ -586,8 +586,8 @@ spec:
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
         cdc-status-msk-kafka: cdc-status-msk-kafka-cm
         cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
-        aws-infra-status-nonprod-realtime-data: aws-infra-status-preprod-realtime-data-cm
-        aws-infra-status-nonprod-historical-uptime: aws-infra-status-preprod-historical-uptime-cm
+        aws-infra-status-preprod-realtime-data: aws-infra-status-preprod-realtime-data-cm
+        aws-infra-status-preprod-historical-uptime: aws-infra-status-preprod-historical-uptime-cm
     prometheusOperator:
       enabled: true
       nodeSelector:
