@@ -728,7 +728,7 @@ data:
     },
     "timepicker": {},
     "timezone": "",
-    "title": "AWS Infrastructure Status - Nonprod Historical Uptime2",
-    "uid": "hisuptimeprod",
+    "title": "AWS Infrastructure Status - Nonprod Historical Uptime",
+    "uid": "hisuptimenprod",
     "version": 11
     }
