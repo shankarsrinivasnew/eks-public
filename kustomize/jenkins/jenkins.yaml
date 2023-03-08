@@ -114,6 +114,9 @@ spec:
         - display-url-api:2.3.6
         - jakarta-mail-api:2.0.0-1
         - jaxb:2.3.6-1
+        - branch-api:2.1046.v0ca_37783ecc5
+        - envinject-api:1.192.va_13643e71792
+        - git-client:3.11.2 
       JCasC:
         securityRealm: |-
           local:
