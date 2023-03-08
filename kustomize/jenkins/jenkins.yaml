@@ -122,6 +122,7 @@ spec:
         - pipeline-groovy-lib:612.v84da_9c54906d
         - workflow-api:1153.vb_912c0e47fb_a_
         - mailer:1.32.1
+        - javax-activation-api:1.2.0-3
       JCasC:
         securityRealm: |-
           local:
