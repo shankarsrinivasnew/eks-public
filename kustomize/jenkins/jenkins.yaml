@@ -111,6 +111,7 @@ spec:
         - script-security:1138.v8e727069a_025
         - jakarta-activation-api:2.0.0-1
         - scm-api:608.vfa_f971c5a_a_e9
+        - display-url-api:2.3.6
       JCasC:
         securityRealm: |-
           local:
