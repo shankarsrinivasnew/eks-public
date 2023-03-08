@@ -121,6 +121,7 @@ spec:
         - kubernetes-credentials:0.9.0
         - pipeline-groovy-lib:612.v84da_9c54906d
         - workflow-api:1153.vb_912c0e47fb_a_
+        - mailer:1.32.1
       JCasC:
         securityRealm: |-
           local:
