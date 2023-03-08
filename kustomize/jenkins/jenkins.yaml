@@ -116,7 +116,10 @@ spec:
         - jaxb:2.3.6-1
         - branch-api:2.1046.v0ca_37783ecc5
         - envinject-api:1.192.va_13643e71792
-        - git-client:3.11.2 
+        - git-client:3.11.2
+        - extended-choice-parameter:346.vd87693c5a_86c
+        - kubernetes-credentials:0.9.0
+        - pipeline-groovy-lib:612.v84da_9c54906d
       JCasC:
         securityRealm: |-
           local:
