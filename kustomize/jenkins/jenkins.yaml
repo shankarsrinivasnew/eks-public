@@ -120,6 +120,7 @@ spec:
         - extended-choice-parameter:346.vd87693c5a_86c
         - kubernetes-credentials:0.9.0
         - pipeline-groovy-lib:612.v84da_9c54906d
+        - workflow-api:1153.vb_912c0e47fb_a_
       JCasC:
         securityRealm: |-
           local:
