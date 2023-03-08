@@ -111,7 +111,7 @@ spec:
         - script-security:1138.v8e727069a_025
         - jakarta-activation-api:2.0.0-1
         - scm-api:621.vda_a_b_055e58f7
-        - display-url-api:2.3.5f
+        - display-url-api:2.3.5
         - jakarta-mail-api:2.0.0-1
         - jaxb:2.3.6-1
         - snakeyaml-api:1.31-84.ve43da_fb_49d0b
