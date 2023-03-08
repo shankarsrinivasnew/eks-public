@@ -115,7 +115,6 @@ spec:
         - jakarta-mail-api:2.0.0-1
         - jaxb:2.3.6-1
         - snakeyaml-api:1.31-84.ve43da_fb_49d0b
-        - git-client:3.11.2
         - branch-api:2.1046.v0ca_37783ecc5
         - envinject-api:1.192.va_13643e71792
       JCasC:
