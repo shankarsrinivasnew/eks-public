@@ -124,6 +124,7 @@ spec:
         - mailer:414.vcc4c33714601
         - javax-activation-api:1.2.0-3
         - workflow-cps:2660.2664.v4c114e93f4c1
+        - javax-mail-api:1.6.2-6
       JCasC:
         securityRealm: |-
           local:
