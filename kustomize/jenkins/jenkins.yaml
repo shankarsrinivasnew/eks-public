@@ -12,9 +12,9 @@ spec:
   values:
     serviceAccount:
       create: true
-      name: jenkins-master
+      name: jenkins-controller
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-controller
     controller:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
       tag: 2.361.4-lts-alpine
@@ -25,7 +25,14 @@ spec:
           operator: Equal
           value: mgmt
           effect: NoSchedule
-      healthProbeLivenessFailureThreshold: 30
+      healthProbes: true
+      probes:
+        livenessProbe:
+          periodSeconds: 60
+          timeoutSeconds: 30
+        readinessProbe:
+          periodSeconds: 60
+          timeoutSeconds: 30
       ingress:
         enabled: true
         apiVersion: "networking.k8s.io/v1"
