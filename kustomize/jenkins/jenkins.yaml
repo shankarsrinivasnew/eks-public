@@ -12,9 +12,9 @@ spec:
   values:
     serviceAccount:
       create: true
-      name: jenkins-master
+      name: jenkins-controller
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-controller
     controller:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
       tag: 2.361.4-lts-alpine
