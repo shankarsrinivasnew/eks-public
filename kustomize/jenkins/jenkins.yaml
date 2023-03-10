@@ -63,79 +63,82 @@ spec:
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
-      installPlugins:
-        - kubernetes-client-api:4.13.3-1
-        - kubernetes:1.27.7
-        - workflow-job:1145.v7f2433caa07f
-        - workflow-aggregator:2.6
-        - workflow-durable-task-step:2.39
-        - workflow-support:813.vb_d7c3d2984a_0
-        - workflow-basic-steps:2.24
-        - credentials-binding:1.27
-        - git:4.8.3
-        - configuration-as-code:1569.vb_72405b_80249
-        - ansicolor:0.7.2
-        - pipeline-aws:1.42
-        - authorize-project:1.3.0
-        - aws-credentials:1.30
-        - aws-global-configuration:1.6
-        - command-launcher:1.4
-        - custom-tools-plugin:0.7
-        - docker-plugin:1.2.0
-        - envinject:2.4.0
-        - extra-tool-installers:1.0
-        - git-parameter:0.9.13
-        - github-branch-source:2.9.0
-        - http_request:1.8.26
-        - job-dsl:1.77
-        - matrix-auth:2.6.6
-        - jdk-tool:1.4
-        - pipeline-utility-steps:2.14.0
-        - pipeline-github:2.7
-        - scm-filter-branch-pr:0.5.1
-        - ws-cleanup:0.38
-        - role-strategy:3.1.1
-        - slack:2.42
-        - artifactory:3.10.6
-        - build-timeout:1.20
-        - build-timestamp:1.0.3
-        - dashboard-view:2.16
-        - ghprb:1.42.1
-        - jira:3.1.1
-        - sonar:2.12
-        - audit-trail:3.10
-        - pipeline-model-definition:1.9.3
-        - pipeline-model-extensions:1.9.3
-        - pipeline-model-api:1.9.3
-        - pipeline-stage-tags-metadata:1.9.3
-        - sshd:3.1.0
-        - maven-plugin:3.16
-        - junit:1.54.3
-        - bouncycastle-api:2.26
-        - durable-task:503.v57154d18d478
-        - jackson2-api:2.14.1-313.v504cdd45c18b
-        - pipeline-graph-analysis:195.v5812d95a_a_2f9
-        - pipeline-milestone-step:101.vd572fef9d926
-        - script-security:1138.v8e727069a_025
-        - jakarta-activation-api:2.0.0-1
-        - scm-api:608.vfa_f971c5a_a_e9
-        - display-url-api:2.3.5
-        - jakarta-mail-api:2.0.0-1
-        - jaxb:2.3.6-1
-        - branch-api:2.1046.v0ca_37783ecc5
-        - envinject-api:1.192.va_13643e71792
-        - git-client:3.11.2
-        - extended-choice-parameter:346.vd87693c5a_86c
-        - kubernetes-credentials:0.9.0
-        - pipeline-groovy-lib:612.v84da_9c54906d
-        - workflow-api:1153.vb_912c0e47fb_a_
-        - mailer:414.vcc4c33714601
-        - javax-activation-api:1.2.0-3
-        - workflow-cps:2660.2664.v4c114e93f4c1
-        - javax-mail-api:1.6.2-6
-        - echarts-api:5.3.3-1
-        - pipeline-rest-api:2.28
-        - pipeline-stage-view:2.28
+      installPlugins: []
+      initializeOnce: true
+      overwritePlugins: false
+      # additionalPlugins: 
+      #   - kubernetes-client-api:4.13.3-1
+      #   - kubernetes:1.27.7
+      #   - workflow-job:1145.v7f2433caa07f
+      #   - workflow-aggregator:2.6
+      #   - workflow-durable-task-step:2.39
+      #   - workflow-support:813.vb_d7c3d2984a_0
+      #   - workflow-basic-steps:2.24
+      #   - credentials-binding:1.27
+      #   - git:4.8.3
+      #   - configuration-as-code:1569.vb_72405b_80249
+      #   - ansicolor:0.7.2
+      #   - pipeline-aws:1.42
+      #   - authorize-project:1.3.0
+      #   - aws-credentials:1.30
+      #   - aws-global-configuration:1.6
+      #   - command-launcher:1.4
+      #   - custom-tools-plugin:0.7
+      #   - docker-plugin:1.2.0
+      #   - envinject:2.4.0
+      #   - extra-tool-installers:1.0
+      #   - git-parameter:0.9.13
+      #   - github-branch-source:2.9.0
+      #   - http_request:1.8.26
+      #   - job-dsl:1.77
+      #   - matrix-auth:2.6.6
+      #   - jdk-tool:1.4
+      #   - pipeline-utility-steps:2.14.0
+      #   - pipeline-github:2.7
+      #   - scm-filter-branch-pr:0.5.1
+      #   - ws-cleanup:0.38
+      #   - role-strategy:3.1.1
+      #   - slack:2.42
+      #   - artifactory:3.10.6
+      #   - build-timeout:1.20
+      #   - build-timestamp:1.0.3
+      #   - dashboard-view:2.16
+      #   - ghprb:1.42.1
+      #   - jira:3.1.1
+      #   - sonar:2.12
+      #   - audit-trail:3.10
+      #   - pipeline-model-definition:1.9.3
+      #   - pipeline-model-extensions:1.9.3
+      #   - pipeline-model-api:1.9.3
+      #   - pipeline-stage-tags-metadata:1.9.3
+      #   - sshd:3.1.0
+      #   - maven-plugin:3.16
+      #   - junit:1.54.3
+      #   - bouncycastle-api:2.26
+      #   - durable-task:503.v57154d18d478
+      #   - jackson2-api:2.14.1-313.v504cdd45c18b
+      #   - pipeline-graph-analysis:195.v5812d95a_a_2f9
+      #   - pipeline-milestone-step:101.vd572fef9d926
+      #   - script-security:1138.v8e727069a_025
+      #   - jakarta-activation-api:2.0.0-1
+      #   - scm-api:608.vfa_f971c5a_a_e9
+      #   - display-url-api:2.3.5
+      #   - jakarta-mail-api:2.0.0-1
+      #   - jaxb:2.3.6-1
+      #   - branch-api:2.1046.v0ca_37783ecc5
+      #   - envinject-api:1.192.va_13643e71792
+      #   - git-client:3.11.2
+      #   - extended-choice-parameter:346.vd87693c5a_86c
+      #   - kubernetes-credentials:0.9.0
+      #   - pipeline-groovy-lib:612.v84da_9c54906d
+      #   - workflow-api:1153.vb_912c0e47fb_a_
+      #   - mailer:414.vcc4c33714601
+      #   - javax-activation-api:1.2.0-3
+      #   - workflow-cps:2660.2664.v4c114e93f4c1
+      #   - javax-mail-api:1.6.2-6
+      #   - echarts-api:5.3.3-1
+      #   - pipeline-rest-api:2.28
+      #   - pipeline-stage-view:2.28
         
       JCasC:
         securityRealm: |-
