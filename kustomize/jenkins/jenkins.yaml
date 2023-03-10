@@ -25,7 +25,14 @@ spec:
           operator: Equal
           value: mgmt
           effect: NoSchedule
-      healthProbeLivenessFailureThreshold: 30
+      healthProbes: true
+      probes:
+        livenessProbe:
+          periodSeconds: 60
+          timeoutSeconds: 30
+        readinessProbe:
+          periodSeconds: 60
+          timeoutSeconds: 30
       ingress:
         enabled: true
         apiVersion: "networking.k8s.io/v1"
