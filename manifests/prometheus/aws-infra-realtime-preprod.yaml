@@ -1460,7 +1460,7 @@ data:
     },
     "timepicker": {},
     "timezone": "",
-    "title": "AWS Infrastructure Status - Preprod Realtime Data",
-    "uid": "realpreprod",
+    "title": "AWS Infrastructure Status - Preprod Realtime",
+    "uid": "realnonp",
     "version": 18
     }
