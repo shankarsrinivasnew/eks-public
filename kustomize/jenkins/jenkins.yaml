@@ -17,7 +17,7 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-controller
     controller:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.361.4-lts-alpine
+      tag: 2.361.1-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -71,8 +71,12 @@ spec:
         - workflow-aggregator:590.v6a_d052e5a_a_b_5
         - git:4.13.0
         - configuration-as-code:1569.vb_72405b_80249
+        - matrix-auth:3.1.6
+        - role-strategy:587.v2872c41fa_e51
       initializeOnce: true
       overwritePlugins: true
+      installLatestSpecifiedPlugins: true
+      installLatestPlugins: true
       # additionalPlugins: 
       #   - kubernetes-client-api:4.13.3-1
       #   - kubernetes:1.27.7
