@@ -8,14 +8,14 @@ spec:
   chart:
     repository: https://charts.jenkins.io
     name: jenkins
-    version: 4.2.15
+    version: 2.6.4
   values:
     serviceAccount:
       create: true
-      name: jenkins-controller
+      name: jenkins-master
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-controller
-    controller:
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
+    master:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
       tag: 2.361.1-lts-alpine
       nodeSelector:
@@ -26,16 +26,12 @@ spec:
           value: mgmt
           effect: NoSchedule
       healthProbes: true
-      probes:
-        startupProbe:
-          periodSeconds: 30
-          timeoutSeconds: 60
-        livenessProbe:
-          periodSeconds: 30
-          timeoutSeconds: 60
-        readinessProbe:
-          periodSeconds: 30
-          timeoutSeconds: 60
+      healthProbesLivenessTimeout: 60
+      healthProbesReadinessTimeout: 60
+      healthProbeLivenessPeriodSeconds: 30
+      healthProbeReadinessPeriodSeconds: 30
+      healthProbeLivenessInitialDelay: 90
+      healthProbeReadinessInitialDelay: 90
       ingress:
         enabled: true
         apiVersion: "networking.k8s.io/v1"
@@ -67,90 +63,78 @@ spec:
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       installPlugins:
-        - kubernetes:3734.v562b_b_a_627ea_c
-        - workflow-aggregator:590.v6a_d052e5a_a_b_5
-        - git:4.13.0
+        - kubernetes-client-api:6.4.1-215.v2ed17097a_8e9
+        - kubernetes:3893.v73d36f3b_9103
+        - workflow-job:1284.v2fe8ed4573d4
+        - workflow-aggregator:596.v8c21c963d92d
+        - workflow-durable-task-step:1234.v019404b_3832a
+        - workflow-support:839.v35e2736cfd5c
+        - workflow-basic-steps:1010.vf7a_b_98e847c1
+        - credentials-binding:523.vd859a_4b_122e6
+        - git:5.0.0
         - configuration-as-code:1569.vb_72405b_80249
+        - aws-credentials:191.vcb_f183ce58b_9
+        - aws-global-configuration:108.v47b_fd43dfec6
+        - job-dsl:1.81.1
         - matrix-auth:3.1.6
+        - ws-cleanup:0.43
         - role-strategy:587.v2872c41fa_e51
-      initializeOnce: true
-      overwritePlugins: true
-      installLatestSpecifiedPlugins: true
-      installLatestPlugins: true
-      # additionalPlugins: 
-      #   - kubernetes-client-api:4.13.3-1
-      #   - kubernetes:1.27.7
-      #   - workflow-job:1145.v7f2433caa07f
-      #   - workflow-aggregator:2.6
-      #   - workflow-durable-task-step:2.39
-      #   - workflow-support:813.vb_d7c3d2984a_0
-      #   - workflow-basic-steps:2.24
-      #   - credentials-binding:1.27
-      #   - git:4.8.3
-      #   - configuration-as-code:1569.vb_72405b_80249
-      #   - ansicolor:0.7.2
-      #   - pipeline-aws:1.42
-      #   - authorize-project:1.3.0
-      #   - aws-credentials:1.30
-      #   - aws-global-configuration:1.6
-      #   - command-launcher:1.4
-      #   - custom-tools-plugin:0.7
-      #   - docker-plugin:1.2.0
-      #   - envinject:2.4.0
-      #   - extra-tool-installers:1.0
-      #   - git-parameter:0.9.13
-      #   - github-branch-source:2.9.0
-      #   - http_request:1.8.26
-      #   - job-dsl:1.77
-      #   - matrix-auth:2.6.6
-      #   - jdk-tool:1.4
-      #   - pipeline-utility-steps:2.14.0
-      #   - pipeline-github:2.7
-      #   - scm-filter-branch-pr:0.5.1
-      #   - ws-cleanup:0.38
-      #   - role-strategy:3.1.1
-      #   - slack:2.42
-      #   - artifactory:3.10.6
-      #   - build-timeout:1.20
-      #   - build-timestamp:1.0.3
-      #   - dashboard-view:2.16
-      #   - ghprb:1.42.1
-      #   - jira:3.1.1
-      #   - sonar:2.12
-      #   - audit-trail:3.10
-      #   - pipeline-model-definition:1.9.3
-      #   - pipeline-model-extensions:1.9.3
-      #   - pipeline-model-api:1.9.3
-      #   - pipeline-stage-tags-metadata:1.9.3
-      #   - sshd:3.1.0
-      #   - maven-plugin:3.16
-      #   - junit:1.54.3
-      #   - bouncycastle-api:2.26
-      #   - durable-task:503.v57154d18d478
-      #   - jackson2-api:2.14.1-313.v504cdd45c18b
-      #   - pipeline-graph-analysis:195.v5812d95a_a_2f9
-      #   - pipeline-milestone-step:101.vd572fef9d926
-      #   - script-security:1138.v8e727069a_025
-      #   - jakarta-activation-api:2.0.0-1
-      #   - scm-api:608.vfa_f971c5a_a_e9
-      #   - display-url-api:2.3.5
-      #   - jakarta-mail-api:2.0.0-1
-      #   - jaxb:2.3.6-1
-      #   - branch-api:2.1046.v0ca_37783ecc5
-      #   - envinject-api:1.192.va_13643e71792
-      #   - git-client:3.11.2
-      #   - extended-choice-parameter:346.vd87693c5a_86c
-      #   - kubernetes-credentials:0.9.0
-      #   - pipeline-groovy-lib:612.v84da_9c54906d
-      #   - workflow-api:1153.vb_912c0e47fb_a_
-      #   - mailer:414.vcc4c33714601
-      #   - javax-activation-api:1.2.0-3
-      #   - workflow-cps:2660.2664.v4c114e93f4c1
-      #   - javax-mail-api:1.6.2-6
-      #   - echarts-api:5.3.3-1
-      #   - pipeline-rest-api:2.28
-      #   - pipeline-stage-view:2.28
-        
+        # - ansicolor:0.7.2
+        # - pipeline-aws:1.42
+        # - authorize-project:1.3.0
+        # - command-launcher:1.4
+        # - custom-tools-plugin:0.7
+        # - docker-plugin:1.2.0
+        # - envinject:2.4.0
+        # - extra-tool-installers:1.0
+        # - git-parameter:0.9.13
+        # - github-branch-source:2.9.0
+        # - http_request:1.8.26
+        # - jdk-tool:1.4
+        # - pipeline-utility-steps:2.14.0
+        # - pipeline-github:2.7
+        # - scm-filter-branch-pr:0.5.1
+        # - slack:2.42
+        # - artifactory:3.10.6
+        # - build-timeout:1.20
+        # - build-timestamp:1.0.3
+        # - dashboard-view:2.16
+        # - ghprb:1.42.1
+        # - jira:3.1.1
+        # - sonar:2.12
+        # - audit-trail:3.10
+        # - pipeline-model-definition:1.9.3
+        # - pipeline-model-extensions:1.9.3
+        # - pipeline-model-api:1.9.3
+        # - pipeline-stage-tags-metadata:1.9.3
+        # - sshd:3.1.0
+        # - maven-plugin:3.16
+        # - junit:1.54.3
+        # - bouncycastle-api:2.26
+        # - durable-task:503.v57154d18d478
+        # - jackson2-api:2.14.1-313.v504cdd45c18b
+        # - pipeline-graph-analysis:195.v5812d95a_a_2f9
+        # - pipeline-milestone-step:101.vd572fef9d926
+        # - script-security:1138.v8e727069a_025
+        # - jakarta-activation-api:2.0.0-1
+        # - scm-api:608.vfa_f971c5a_a_e9
+        # - display-url-api:2.3.5
+        # - jakarta-mail-api:2.0.0-1
+        # - jaxb:2.3.6-1
+        # - branch-api:2.1046.v0ca_37783ecc5
+        # - envinject-api:1.192.va_13643e71792
+        # - git-client:3.11.2
+        # - extended-choice-parameter:346.vd87693c5a_86c
+        # - kubernetes-credentials:0.9.0
+        # - pipeline-groovy-lib:612.v84da_9c54906d
+        # - workflow-api:1153.vb_912c0e47fb_a_
+        # - mailer:414.vcc4c33714601
+        # - javax-activation-api:1.2.0-3
+        # - workflow-cps:2660.2664.v4c114e93f4c1
+        # - javax-mail-api:1.6.2-6
+        # - echarts-api:5.3.3-1
+        # - pipeline-rest-api:2.28
+        # - pipeline-stage-view:2.28
       JCasC:
         securityRealm: |-
           local:
@@ -281,6 +265,8 @@ spec:
               ansiColorBuildWrapper:
                 globalColorMapName: "xterm"
       jenkinsUrl: https://jenkins.{{ DNS_ZONE }}
+      slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
+      slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
