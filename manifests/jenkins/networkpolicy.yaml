@@ -2,10 +2,10 @@
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: jenkins-master
+  name: jenkins-controller
   namespace: jenkins
 spec:
-  selector: app.kubernetes.io/component == 'jenkins-master'
+  selector: app.kubernetes.io/component == 'jenkins-controller'
   types:
     - Ingress
     - Egress
@@ -13,7 +13,7 @@ spec:
     - metadata:
         annotations:
           from: lb
-          to: jenkins-master
+          to: jenkins-controller
       action: Allow
       protocol: TCP
       source:
@@ -25,7 +25,7 @@ spec:
     - metadata:
         annotations:
           from: jenkins-agent
-          to: jenkins-master
+          to: jenkins-controller
       action: Allow
       source:
         namespaceSelector: all()
@@ -34,7 +34,7 @@ spec:
   egress:
     - metadata:
         annotations:
-          from: jenkins-master
+          from: jenkins-controller
           to: jenkins-agent
       action: Allow
       destination:
@@ -55,19 +55,19 @@ spec:
   ingress:
     - metadata:
         annotations:
-          from: jenkins-master
+          from: jenkins-controller
           to: jenkins-agent
       action: Allow
       source:
-        selector: app.kubernetes.io/component == 'jenkins-master'
+        selector: app.kubernetes.io/component == 'jenkins-controller'
   egress:
     - metadata:
         annotations:
           from: jenkins-agent
-          to: jenkins-master
+          to: jenkins-controller
       action: Allow
       destination:
-        selector: app.kubernetes.io/component == 'jenkins-master'
+        selector: app.kubernetes.io/component == 'jenkins-controller'
     - metadata:
         annotations:
           from: jenkins-agent
