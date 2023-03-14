@@ -115,7 +115,6 @@ spec:
         - workflow-api:1153.vb_912c0e47fb_a_
         - javax-activation-api:1.2.0-3
         - mailer:414.vcc4c33714601
-        - javax-activation-api:1.2.0-3
         - workflow-cps:2660.2664.v4c114e93f4c1
         - javax-mail-api:1.6.2-6
         - echarts-api:5.3.3-1
