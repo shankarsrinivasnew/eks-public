@@ -111,6 +111,7 @@ spec:
         - script-security:1138.v8e727069a_025
         - workflow-cps:2660.2664.v4c114e93f4c1
         - snakeyaml-api:1.31-84.ve43da_fb_49d0b
+        - scm-api:608.vfa_f971c5a_a_e9
       JCasC:
         securityRealm: |-
           local:
