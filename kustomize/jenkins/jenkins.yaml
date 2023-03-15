@@ -8,7 +8,7 @@ spec:
   chart:
     repository: https://charts.jenkins.io
     name: jenkins
-    version: 4.2.15
+    version: 4.1.18
   values:
     serviceAccount:
       create: true
@@ -73,7 +73,7 @@ spec:
         - configuration-as-code:1569.vb_72405b_80249
         - matrix-auth:3.1.6
         - role-strategy:587.v2872c41fa_e51
-      initializeOnce: true
+      initializeOnce: false
       overwritePlugins: true
       installLatestSpecifiedPlugins: true
       installLatestPlugins: true
@@ -281,11 +281,12 @@ spec:
               ansiColorBuildWrapper:
                 globalColorMapName: "xterm"
       jenkinsUrl: https://jenkins.{{ DNS_ZONE }}
+      jenkinsHome: /var/jenkins_home
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
-      tag: 4.3-4
+      tag: 4.11.2-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       componentName: jenkins-agent
