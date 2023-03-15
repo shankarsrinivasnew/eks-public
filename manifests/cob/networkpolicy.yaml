@@ -75,6 +75,7 @@ spec:
             - sa-tsb-onboarding-product-data-upload
             - sa-tsb-onboarding-otp-sender
             - tsb-onboarding-api-gateway-ingress-nginx
+            - cob-sink-connector
       protocol: TCP
       destination:
         selector: vpc == 'local' && layer == 'all'
