@@ -59,6 +59,13 @@ spec:
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        - name: JAVA_TOOL_OPTIONS
+          value: >-
+            -Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb
+            -Dhttp.proxyPort=3128
+            -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb
+            -Dhttps.proxyPort=3128
+            -Dhttp.nonProxyHosts="localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb"
       containerEnv:
         - name: http_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -71,10 +78,20 @@ spec:
         - workflow-aggregator:590.v6a_d052e5a_a_b_5
         - git:4.13.0
         - configuration-as-code:1569.vb_72405b_80249
-        - matrix-auth:3.1.6
+        - matrix-auth:3.1.5
         - role-strategy:587.v2872c41fa_e51
+        - workflow-job:1268.v6eb_e2ee1a_85a
+        - pipeline-model-api:2.2118.v31fd5b_9944b_5
+        - pipeline-model-definition:2.2118.v31fd5b_9944b_5
+        - pipeline-model-extensions:2.2118.v31fd5b_9944b_5
+        - scm-api:621.vda_a_b_055e58f7
+        - ansicolor:1.0.2
+        - github:1.35.0
+        - scm-filter-branch-pr:0.5.1
+        - job-dsl:1.81
+
       initializeOnce: false
-      overwritePlugins: true
+      overwritePlugins: false
       installLatestSpecifiedPlugins: true
       installLatestPlugins: true
       # additionalPlugins: 
