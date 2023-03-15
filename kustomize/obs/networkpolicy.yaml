@@ -12,20 +12,20 @@ spec:
   ingress:
     - metadata:
         annotations:
-          from: jenkins-master
+          from: jenkins-controller
           to: jenkins-agent
       action: Allow
       source:
-        selector: app.kubernetes.io/component == 'jenkins-master'
+        selector: app.kubernetes.io/component == 'jenkins-controller'
         namespaceSelector: projectcalico.org/name == 'jenkins'
   egress:
     - metadata:
         annotations:
           from: jenkins-agent
-          to: jenkins-master
+          to: jenkins-controller
       action: Allow
       destination:
-        selector: app.kubernetes.io/component == 'jenkins-master'
+        selector: app.kubernetes.io/component == 'jenkins-controller'
         namespaceSelector: projectcalico.org/name == 'jenkins'
     - metadata:
         annotations:
