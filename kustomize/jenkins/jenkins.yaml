@@ -89,6 +89,9 @@ spec:
         - github:1.35.0
         - scm-filter-branch-pr:0.5.1
         - job-dsl:1.81
+        - git-client:3.13.0
+        - pipeline-groovy-lib:629.vb_5627b_ee2104
+        - ws-cleanup:0.43
 
       initializeOnce: false
       overwritePlugins: false
@@ -303,7 +306,7 @@ spec:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
-      tag: 4.11.2-4
+      tag: 4.3-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       componentName: jenkins-agent
@@ -389,7 +392,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.3-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
