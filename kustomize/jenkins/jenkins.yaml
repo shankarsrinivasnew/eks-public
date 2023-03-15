@@ -305,7 +305,7 @@ spec:
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
-      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.3-4
+      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
       tag: 4.3-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
