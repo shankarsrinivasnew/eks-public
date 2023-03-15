@@ -305,8 +305,7 @@ spec:
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
-      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
-      tag: 4.3-4
+      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins-slave:latest
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       componentName: jenkins-agent
@@ -392,7 +391,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.3-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins-slave:latest"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1130,7 +1129,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins-slave:latest"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
