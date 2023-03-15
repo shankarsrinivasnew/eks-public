@@ -89,6 +89,9 @@ spec:
         - github:1.35.0
         - scm-filter-branch-pr:0.5.1
         - job-dsl:1.81
+        - git-client:3.13.0
+        - pipeline-groovy-lib:629.vb_5627b_ee2104
+        - ws-cleanup:0.43
 
       initializeOnce: false
       overwritePlugins: false
