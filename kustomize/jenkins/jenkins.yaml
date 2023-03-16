@@ -352,7 +352,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
