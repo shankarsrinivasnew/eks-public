@@ -258,6 +258,8 @@ spec:
                 globalColorMapName: "xterm"
       jenkinsUrl: https://jenkins.{{ DNS_ZONE }}
       jenkinsHome: /var/jenkins_home
+
+      ###### Ref https://www.jenkins.io/doc/book/managing/system-properties/#hudson-slaves-slavecomputer-allowunsupportedremotingversions ######
       javaOpts: >
         -Dhudson.slaves.SlaveComputer.allowUnsupportedRemotingVersions=true
     agent:
