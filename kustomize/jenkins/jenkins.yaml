@@ -265,7 +265,7 @@ spec:
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
-      image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
       tag: 4.11.2-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
@@ -514,7 +514,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -659,7 +659,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -839,7 +839,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -984,7 +984,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1290,7 +1290,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
