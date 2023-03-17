@@ -406,6 +406,10 @@ spec:
               metadata:
                 namespace: cb
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 serviceAccountName: tsb-cb
                 securityContext:
                   fsGroup: 1337
@@ -477,6 +481,10 @@ spec:
               metadata:
                 # namespace: sco
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-sco
                 securityContext:
                   runAsUser: 0
@@ -506,7 +514,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -618,6 +626,10 @@ spec:
               metadata:
                 # namespace: ods
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-ods
                 securityContext:
                   runAsUser: 0
@@ -647,7 +659,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -794,6 +806,10 @@ spec:
               metadata:
                 # namespace: datalake
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-datalake
                 securityContext:
                   runAsUser: 0
@@ -823,7 +839,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/inbound-agent:latest"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -935,6 +951,10 @@ spec:
               metadata:
                 # namespace: sca
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-sca
                 securityContext:
                   runAsUser: 0
@@ -964,7 +984,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1240,6 +1260,10 @@ spec:
               metadata:
                 # namespace: cop-phase2
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-cop-phase2
                 securityContext:
                   runAsUser: 0
@@ -1266,7 +1290,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1407,6 +1431,10 @@ spec:
           apiVersion: v1
           kind: Pod
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: jenkins-packer
             securityContext:
               fsGroup: 1337
@@ -1449,6 +1477,8 @@ spec:
       ods:
         podName: ods
         componentName: tsb-ods
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1462,6 +1492,10 @@ spec:
           metadata:
             namespace: ods
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-ods
             securityContext:
               #runAsUser: 0
@@ -1474,6 +1508,8 @@ spec:
       datalake:
         podName: datalake
         componentName: tsb-datalake
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1487,6 +1523,10 @@ spec:
           metadata:
             namespace: datalake
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-datalake
             securityContext:
               #runAsUser: 0
@@ -1499,6 +1539,8 @@ spec:
       sca:
         podName: sca
         componentName: tsb-sca
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1512,6 +1554,10 @@ spec:
           metadata:
             namespace: sca
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-sca
             securityContext:
               #runAsUser: 0
@@ -1524,6 +1570,8 @@ spec:
       sco:
         podName: sco
         componentName: tsb-sco
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1537,6 +1585,10 @@ spec:
           metadata:
             namespace: sco
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-sco
             securityContext:
               #runAsUser: 0
@@ -1549,6 +1601,8 @@ spec:
       obs:
         podName: obs
         componentName: tsb-obs
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1562,6 +1616,10 @@ spec:
           metadata:
             namespace: obs
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-obs
             securityContext:
               #runAsUser: 0
@@ -1574,6 +1632,8 @@ spec:
       ob:
         podName: api-gw-ob
         componentName: tsb-api-gw-ob
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1587,6 +1647,10 @@ spec:
           metadata:
             namespace: api-gw-ob
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-api-gw-ob
             securityContext:
               #runAsUser: 0
@@ -1599,6 +1663,8 @@ spec:
       cop:
         podName: cop
         componentName: tsb-cop
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1612,6 +1678,10 @@ spec:
           metadata:
             namespace: cop
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cop
             securityContext:
               #runAsUser: 0
@@ -1624,6 +1694,8 @@ spec:
       cop-phase2:
         podName: cop-phase2
         componentName: tsb-cop-phase2
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1637,6 +1709,10 @@ spec:
           metadata:
             namespace: cop-phase2
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cop-phase2
             securityContext:
               #runAsUser: 0
@@ -1680,6 +1756,8 @@ spec:
       jnlp-root:
         podName: jnlp-root
         componentName: jnlp-root
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1693,6 +1771,10 @@ spec:
           metadata:
             namespace: cb
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cb
             securityContext:
               runAsUser: 0
