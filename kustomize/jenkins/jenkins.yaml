@@ -291,6 +291,10 @@ spec:
         apiVersion: v1
         kind: Pod
         spec:
+          command:
+          - sleep
+          args:
+          - 99s
           serviceAccountName: jenkins-agent
           securityContext:
             fsGroup: 1337
@@ -325,6 +329,10 @@ spec:
               metadata:
                 namespace: cb
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 serviceAccountName: tsb-cb
                 securityContext:
                   runAsUser: 0
@@ -359,7 +367,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1068,6 +1076,10 @@ spec:
               metadata:
                 # namespace: cb
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-cb
                 securityContext:
                   runAsUser: 0
@@ -1097,7 +1109,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1406,6 +1418,8 @@ spec:
       cb:
         podName: cb
         componentName: tsb-cb
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1419,6 +1433,10 @@ spec:
           metadata:
             namespace: cb
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cb
             securityContext:
               #runAsUser: 0
@@ -1631,6 +1649,8 @@ spec:
       cob:
         podName: cob
         componentName: tsb-cob
+        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1644,6 +1664,10 @@ spec:
           metadata:
             namespace: cob
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cob
             securityContext:
               #runAsUser: 0
