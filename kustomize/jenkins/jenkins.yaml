@@ -265,7 +265,7 @@ spec:
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
-      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+      image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
       tag: 4.11.2-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
@@ -1479,7 +1479,7 @@ spec:
       ods:
         podName: ods
         componentName: tsb-ods
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1510,7 +1510,7 @@ spec:
       datalake:
         podName: datalake
         componentName: tsb-datalake
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1541,7 +1541,7 @@ spec:
       sca:
         podName: sca
         componentName: tsb-sca
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1572,7 +1572,7 @@ spec:
       sco:
         podName: sco
         componentName: tsb-sco
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1603,7 +1603,7 @@ spec:
       obs:
         podName: obs
         componentName: tsb-obs
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1634,7 +1634,7 @@ spec:
       ob:
         podName: api-gw-ob
         componentName: tsb-api-gw-ob
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1665,7 +1665,7 @@ spec:
       cop:
         podName: cop
         componentName: tsb-cop
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1696,7 +1696,7 @@ spec:
       cop-phase2:
         podName: cop-phase2
         componentName: tsb-cop-phase2
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1727,7 +1727,7 @@ spec:
       cob:
         podName: cob
         componentName: tsb-cob
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
