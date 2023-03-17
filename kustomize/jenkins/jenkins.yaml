@@ -367,7 +367,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1129,7 +1129,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent:4.11.2-4"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1448,7 +1448,7 @@ spec:
       cb:
         podName: cb
         componentName: tsb-cb
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
@@ -1758,7 +1758,7 @@ spec:
       jnlp-root:
         podName: jnlp-root
         componentName: jnlp-root
-        image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
         envVars:
           - name: http_proxy
