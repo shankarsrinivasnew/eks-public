@@ -128,6 +128,7 @@ spec:
         - pipeline-rest-api:2.28
         - pipeline-stage-view:2.28
         - envinject-api:1.192.va_13643e71792
+        - snakeyaml-api:1.31-84.ve43da_fb_49d0b
       JCasC:
         securityRealm: |-
           local:
