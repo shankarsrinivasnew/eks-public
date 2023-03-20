@@ -1459,6 +1459,7 @@ spec:
         componentName: tsb-cb
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1490,6 +1491,7 @@ spec:
         componentName: tsb-ods
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1521,6 +1523,7 @@ spec:
         componentName: tsb-datalake
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1552,6 +1555,7 @@ spec:
         componentName: tsb-sca
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1583,6 +1587,7 @@ spec:
         componentName: tsb-sco
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1614,6 +1619,7 @@ spec:
         componentName: tsb-obs
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1645,6 +1651,7 @@ spec:
         componentName: tsb-api-gw-ob
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1707,6 +1714,7 @@ spec:
         componentName: tsb-cop-phase2
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1738,6 +1746,7 @@ spec:
         componentName: tsb-cob
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1769,6 +1778,7 @@ spec:
         componentName: jnlp-root
         image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
         tag: 4.11.2-4
+        command: "sleep 99s"
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
