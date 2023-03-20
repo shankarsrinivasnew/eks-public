@@ -1432,6 +1432,7 @@ spec:
         tag: 4.11.2-4
         imagePullSecrets:
           - name: "artifactory-credentials"
+        serviceAccount: jenkins-packer
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
@@ -1440,7 +1441,6 @@ spec:
               component: packer
               role: jenkins-agent
           spec:
-            serviceAccountName: jenkins-packer
             securityContext:
               fsGroup: 1337
             tolerations:
