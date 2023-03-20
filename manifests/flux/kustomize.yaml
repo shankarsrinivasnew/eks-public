@@ -104,6 +104,7 @@ data:
     # Get access point IDs
     EFS_JENKINS_HOME_ID=$(aws efs describe-access-points --file-system-id $EFS_ID --query "AccessPoints[?Tags[?Key == 'Purpose' && Value == 'EFSEKSJenkinsHome']].AccessPointId" --output text)
     EFS_PROMETHEUS_ID=$(aws efs describe-access-points --file-system-id $EFS_ID --query "AccessPoints[?Tags[?Key == 'Purpose' && Value == 'EFSEKSPrometheus']].AccessPointId" --output text)
+    EFS_THANOS_ID=$(aws efs describe-access-points --file-system-id $EFS_ID --query "AccessPoints[?Tags[?Key == 'Purpose' && Value == 'EFSEKSThanoscompact']].AccessPointId" --output text)
 
     # Get secrets
     SECRET=$(aws secretsmanager get-secret-value --secret-id eks-flux-kustomize | jq -r ".SecretString" )

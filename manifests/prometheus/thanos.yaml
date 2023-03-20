@@ -66,13 +66,15 @@ spec:
       persistentVolumeClaim:
         name: thanos-compact-data-volume
         spec:
-          storageClassName: ebs-gp3-sc
+          storageClassName: efs-sc
           accessModes:
             - ReadWriteMany
           resources:
             requests:
               storage: 200Gi
           selector:
+            matchLabels:
+              thanos: "data"
           volumeName: data-volume
           volumeMode: Filesystem
       # # Minimum age of fresh (non-compacted) blocks before they are being processed.
