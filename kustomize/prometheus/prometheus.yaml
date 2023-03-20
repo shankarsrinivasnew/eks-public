@@ -493,7 +493,7 @@ spec:
                 path: /var/lib/grafana/dashboards/gen-availability
             - name: "aws-infra-status-dev-historical-uptime"
               orgId: 1
-              folder: "AWS Infrastructure"
+              folder: "AWS-Infrastructure"
               type: file
               disableDeletion: true
               editable: true
@@ -501,7 +501,7 @@ spec:
                 path: /var/lib/grafana/dashboards/aws-infra-status-dev-historical-uptime
             - name: "aws-infra-status-dev-realtime-data"
               orgId: 1
-              folder: "AWS Infrastructure"
+              folder: "AWS-Infrastructure"
               type: file
               disableDeletion: true
               editable: true
