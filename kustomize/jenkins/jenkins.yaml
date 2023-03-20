@@ -1425,7 +1425,7 @@ spec:
       packer:
         podName: packer
         componentName: jenkins-packer
-        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-packer-slave
+        image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
         tag: 4.11.2-4
         imagePullSecrets:
           - name: "artifactory-credentials"
