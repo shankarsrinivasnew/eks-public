@@ -132,9 +132,12 @@ spec:
           local:
             allowsSignup: false
             users:
-              - id: "${ADMIN_USER}"
-                password: "${ADMIN_PASSWORD}"
-        authorizationStrategy: {}
+              - id: "${chart-admin-username}"
+                name: "Jenkins Admin"
+                password: "${chart-admin-password}"
+        authorizationStrategy: |-
+          loggedInUsersCanDoAnything:
+            allowAnonymousRead: false
         configScripts:
           github: |-
             unclassified:
