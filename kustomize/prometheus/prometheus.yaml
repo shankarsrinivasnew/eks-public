@@ -531,7 +531,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-perprod-realtime-data                
+                path: /var/lib/grafana/dashboards/aws-infra-status-preprod-realtime-data      
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
