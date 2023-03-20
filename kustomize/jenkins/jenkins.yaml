@@ -355,6 +355,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -431,6 +432,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -507,6 +509,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -652,6 +655,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -832,6 +836,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -977,6 +982,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -1122,6 +1128,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -1286,6 +1293,7 @@ spec:
             containers:
             - name: "jnlp"
               args: "^${computer.jnlpmac} ^${computer.name}"
+              command: "sleep 99s"
               envVars:
               - envVar:
                   key: "JENKINS_URL"
@@ -1429,6 +1437,7 @@ spec:
         tag: 4.11.2-4
         imagePullSecrets:
           - name: "artifactory-credentials"
+        command: "sleep 99s"
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
