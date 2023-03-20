@@ -1440,7 +1440,7 @@ spec:
               component: packer
               role: jenkins-agent
           spec:
-            serviceAccountName: jenkins-packer
+            serviceAccount: jenkins-packer
             securityContext:
               fsGroup: 1337
             tolerations:
