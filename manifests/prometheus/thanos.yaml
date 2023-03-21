@@ -77,6 +77,7 @@ spec:
               thanos: "data"
           volumeName: data-volume
           volumeMode: Filesystem
+          
       # # Minimum age of fresh (non-compacted) blocks before they are being processed.
       # # Malformed blocks older than the maximum of consistency-delay and 30m0s will be removed.
       # consistencyDelay: 30m
