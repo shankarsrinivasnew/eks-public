@@ -63,8 +63,8 @@ spec:
         backend:
           persistentVolumeClaim:
             claimName: thanos-compact-datavolume
-      persistentVolumeClaim:               # ensure pv is created
-        name: thanos-compact-datavolume  
+      persistentVolumeClaim:               
+        name: thanos-compact-datavolume     # ensure pv is created
         spec:
           storageClassName: efs-sc
           accessModes:
