@@ -4,15 +4,15 @@ metadata:
   name: nginx-upgrade-clusterrole
 rules:
   - apiGroups:
-    - networking.k8s.io
+      - networking.k8s.io
     resources:
-    - ingressclasses
+      - ingressclasses
     verbs:
-    - get
-    - list
-    - watch
-    - update
-    - create
+      - get
+      - list
+      - watch
+      - update
+      - create
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
