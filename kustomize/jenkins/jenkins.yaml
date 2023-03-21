@@ -1429,7 +1429,7 @@ spec:
         podName: packer
         componentName: jenkins-packer
         image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
-        tag: 4.11.2-4
+        tag: 4.11-1
         serviceAccount: jenkins-packer
         yamlTemplate: |-
           apiVersion: v1
