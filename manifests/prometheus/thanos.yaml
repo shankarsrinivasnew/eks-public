@@ -63,6 +63,7 @@ spec:
         backend:
           persistentVolumeClaim:
             claimName: thanos-compact-datavolume
+      # ensure pv is created
       persistentVolumeClaim:
         name: thanos-compact-datavolume
         spec:
