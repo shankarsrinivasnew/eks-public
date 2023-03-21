@@ -1429,10 +1429,7 @@ spec:
         podName: packer
         componentName: jenkins-packer
         image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
-        tag: 4.11.2-4
-        labels:
-          component: packer
-          role: jenkins-agent
+        tag: 4.11-1
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
