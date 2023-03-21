@@ -1438,6 +1438,11 @@ spec:
               component: packer
               role: jenkins-agent
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
+            serviceAccountName: jenkins-packer
             securityContext:
               fsGroup: 1337
             tolerations:
