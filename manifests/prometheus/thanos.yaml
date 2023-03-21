@@ -71,7 +71,7 @@ spec:
             - ReadWriteMany
           resources:
             requests:
-              storage: 200Gi
+              storage: 250Gi
           selector:
             matchLabels:
               thanos: "data"

@@ -27,7 +27,7 @@ metadata:
     thanos: "data"
 spec:
   capacity:
-    storage: 200Gi
+    storage: 250Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
