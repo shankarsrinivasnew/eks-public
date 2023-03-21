@@ -17,7 +17,6 @@ spec:
   csi:
     driver: efs.csi.aws.com
     volumeHandle: "{{ EFS_ID }}::{{ EFS_PROMETHEUS_ID }}"
-
 ---
 apiVersion: v1
 kind: PersistentVolume
