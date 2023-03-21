@@ -1429,7 +1429,7 @@ spec:
         podName: packer
         componentName: jenkins-packer
         image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
-        tag: 4.11-1
+        tag: 4.11.2-4
         serviceAccount: jenkins-packer
         yamlTemplate: |-
           apiVersion: v1
@@ -1443,6 +1443,7 @@ spec:
             - sleep
             args:
             - 99s
+            serviceAccountName: jenkins-packer
             securityContext:
               fsGroup: 1337
             tolerations:
