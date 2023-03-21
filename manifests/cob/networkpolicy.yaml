@@ -134,7 +134,7 @@ spec:
       source:
         selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
-
+---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
