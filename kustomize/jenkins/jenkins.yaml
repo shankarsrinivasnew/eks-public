@@ -103,24 +103,20 @@ spec:
         - envinject:2.901.v0038b_6471582
         - extra-tool-installers:1.2
         - git-parameter:0.9.18
-        - github-branch-source:1695.v88de84e9f6b_9
+        - github-branch-source:1701.v00cc8184df93
         - http_request:1.16
         - maven-plugin:3.21
         - audit-trail:333.vb_e1b_b_0f1238c
-        - dashboard-view:2.466.vdfefd95a_b_f8d
+        - dashboard-view:2.472.v9ff2a_e6a_c529
         - jira:3.9
         - sonar:2.15
-        - maven-plugin:3.21
-        - audit-trail:333.vb_e1b_b_0f1238c
-        - jira:3.9
-        - sonar:2.15
-        - pipeline-utility-steps:2.14.0
+        - pipeline-utility-steps:2.15.1
         - pipeline-github:2.8-138.d766e30bb08b
         - slack:631.v40deea_40323b
         - artifactory:3.18.0
-        - build-timeout:1.24
+        - build-timeout:1.26
         - build-timestamp:1.0.3
-        - pipeline-graph-analysis:202.va_d268e64deb_3
+        - pipeline-graph-analysis:202.va_d268e64deb_3g
 
       initializeOnce: false
       overwritePlugins: false
