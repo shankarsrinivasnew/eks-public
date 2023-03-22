@@ -1427,6 +1427,7 @@ spec:
         image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
         tag: 4.11-1
         serviceAccount: "jenkins-packer"
+        yamlMergeStrategy: merge
         yamlTemplate: |-
           apiVersion: v1
           kind: Pod
