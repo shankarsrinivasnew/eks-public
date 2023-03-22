@@ -147,7 +147,7 @@ data:
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "EKS Node Pool Status",
+          "title": "EKS Node Status",
           "type": "gauge"
         },
         {
