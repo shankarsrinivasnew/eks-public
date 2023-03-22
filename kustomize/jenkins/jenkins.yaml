@@ -116,7 +116,7 @@ spec:
         - artifactory:3.18.0
         - build-timeout:1.26
         - build-timestamp:1.0.3
-        - pipeline-graph-analysis:202.va_d268e64deb_3g
+        - pipeline-graph-analysis:202.va_d268e64deb_3
 
       initializeOnce: false
       overwritePlugins: false
