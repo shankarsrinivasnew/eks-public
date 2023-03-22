@@ -1434,6 +1434,7 @@ spec:
           apiVersion: v1
           kind: Pod
           spec:
+            serviceAccount: jenkins-packer
             serviceAccountName: jenkins-packer
             command:
             - sleep
