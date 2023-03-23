@@ -1421,27 +1421,6 @@ spec:
                 operator: Equal
                 value: mgmt
                 effect: NoSchedule
-      packer:
-        podName: packer
-        componentName: jenkins-packer
-        image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
-        tag: 4.11-1
-        yamlTemplate: |-
-          apiVersion: v1
-          kind: Pod
-          spec:
-            serviceAccountName: "jenkins-packer"
-            command:
-            - sleep
-            args:
-            - 99s
-            securityContext:
-              fsGroup: 1337
-            tolerations:
-              - key: role
-                operator: Equal
-                value: mgmt
-                effect: NoSchedule
       cb:
         podName: cb
         componentName: tsb-cb
@@ -1777,6 +1756,28 @@ spec:
             serviceAccountName: tsb-cb
             securityContext:
               runAsUser: 0
+              fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equal
+                value: mgmt
+                effect: NoSchedule
+      packer-test:
+        podName: packer
+        componentName: jenkins-packer
+        image: docker.artifactory.mgmt.aws.uk.tsb/rackspace/jenkins-inbound-agent-packer
+        tag: 4.11-1
+        serviceAccount: "jenkins-packer"
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          spec:
+            serviceAccountName: "jenkins-packer"
+            command:
+            - sleep
+            args:
+            - 99s
+            securityContext:
               fsGroup: 1337
             tolerations:
               - key: role
