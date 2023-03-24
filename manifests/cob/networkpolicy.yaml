@@ -148,11 +148,13 @@ spec:
       destination:
         nets:
           - 10.184.90.13/32
+          - 10.184.91.16/32
         ports:
           - 8080
           - 8143
           - 3128
           - 80
+          - 8443
       metadata:
         annotations:
           from: cob-application
