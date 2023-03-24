@@ -49,6 +49,9 @@ subjects:
   - kind: ServiceAccount
     name: tsb-ods
     namespace: ods
+  - kind: ServiceAccount
+    name: tsb-sca
+    namespace: sca
 roleRef:
   kind: ClusterRole
   name: nginx-upgrade-clusterrole
