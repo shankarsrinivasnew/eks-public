@@ -85,6 +85,7 @@ spec:
           - 8080
           - 8443
           - 9093
+          - 10254
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
