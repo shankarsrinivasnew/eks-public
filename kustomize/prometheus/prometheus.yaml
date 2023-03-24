@@ -293,14 +293,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-sys-api-grafana-ingress
-            - name: 'cop-grafana-microservices'
-              orgId: 1
-              folder: 'TSB-COP'
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/cop-grafana-microservices
             - name: 'ods-sub-api-grafana'
               orgId: 1
               folder: 'TSB-ODS'
@@ -511,7 +503,6 @@ spec:
         ods-sys-api-grafana-3: ods-sys-api-podmetrics3-cm
         ods-sys-api-grafana-4: ods-sys-api-podmetrics4-cm
         ods-sys-api-grafana-ingress: ods-sys-api-podmetrics5-cm
-        cop-grafana-microservices: cop-microservices-cm
         ods-sub-api-grafana: ods-sub-api-podmetrics-cm
         ods-cobol-api-grafana: ods-cobol-api-podmetrics-cm
         ods-css-tables-grafana: ods-css-tables-cm
