@@ -116,7 +116,7 @@ metadata:
   name: ods-nginx-ingress
   namespace: ods
 spec:
-  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  serviceAccountSelector: projectcalico.org/name == 'tsb-ods'
   types:
     - Ingress
   ingress:
