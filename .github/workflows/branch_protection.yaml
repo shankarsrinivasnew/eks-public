@@ -1,1 +1,29 @@
-#
+name: validate-branch
+
+on:
+  pull_request:
+    branches:  
+      - nonprod
+      - preprod
+      - master
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch "master"
+        if: github.base_ref == 'master' && github.head_ref != 'preprod'
+        run: |
+          echo "Error: Mergin to master is only allowed from preprod branch."
+          exit 1
+      - name: Check branch "preprod"
+        if: github.base_ref == 'master' && github.head_ref != 'nonprod'
+        run: |
+          echo "Error: Mergin to master is only allowed from nonprod branch."
+          exit 1
+      - name: Check branch "nonprod"
+        if: github.base_ref == 'master' && github.head_ref != 'dev'
+        run: |
+          echo "Error: Mergin to master is only allowed from dev branch."
+          exit 1
+      
+
