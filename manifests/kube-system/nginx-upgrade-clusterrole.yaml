@@ -47,10 +47,16 @@ subjects:
     name: tsb-cob
     namespace: cob
   - kind: ServiceAccount
+    name: tsb-onboarding-api-gateway-ingress-nginx
+    namespace: cob
+  - kind: ServiceAccount
     name: tsb-ods
     namespace: ods
   - kind: ServiceAccount
     name: tsb-sca
+    namespace: sca
+  - kind: ServiceAccount
+    name: tsb-sca-broadcom-api-gateway-ingress-nginx
     namespace: sca
 roleRef:
   kind: ClusterRole
