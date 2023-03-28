@@ -61,6 +61,12 @@ subjects:
   - kind: ServiceAccount
     name: tsb-sca-api-gateway-ingress-nginx
     namespace: sca
+  - kind: ServiceAccount
+    name: tsb-cb
+    namespace: cb
+  - kind: ServiceAccount
+    name: nginx-ingress-ingress-nginx
+    namespace: cb
 roleRef:
   kind: ClusterRole
   name: nginx-upgrade-clusterrole
