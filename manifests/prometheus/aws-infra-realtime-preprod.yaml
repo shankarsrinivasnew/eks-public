@@ -23,8 +23,8 @@ data:
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 848,
-    "iteration": 1678110769073,
+    "id": 854,
+    "iteration": 1680259473419,
     "links": [],
     "panels": [
       {
@@ -313,14 +313,6 @@ data:
             "interval": "",
             "legendFormat": "EKS MGMT",
             "refId": "G"
-          },
-          {
-            "exemplar": true,
-            "expr": "(count(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-node.*\"} == 1))",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "COP",
-            "refId": "H"
           },
           {
             "exemplar": true,
@@ -1460,7 +1452,7 @@ data:
     },
     "timepicker": {},
     "timezone": "",
-    "title": "AWS Infrastructure Status-Preprod Realtime",
-    "uid": "prerealt",
-    "version": 1
+    "title": "AWS Infrastructure Status - Preprod Realtime Data",
+    "uid": "realnonpdata",
+    "version": 3
     }
