@@ -74,6 +74,7 @@ spec:
             - sa-tsb-onboarding-identity-onfido-download-asset
             - sa-tsb-onboarding-product-data-upload
             - sa-tsb-onboarding-otp-sender
+            - tsb-onboarding-api-gateway-ingress-nginx
       protocol: TCP
       destination:
         selector: vpc == 'local' && layer == 'all'
@@ -87,6 +88,8 @@ spec:
           - 7788
           - 8080
           - 9096
+          - 8443
+          - 3128
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -133,3 +136,39 @@ spec:
       source:
         selector: vpc == 'local' && layer == 'all'
         namespaceSelector: global()
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: cob-application-onprem
+  namespace: cob
+spec:
+  egress:
+    - action: Allow
+      destination:
+        nets:
+          - 10.184.90.13/32
+          - 10.184.91.16/32
+        ports:
+          - 8080
+          - 8143
+          - 3128
+          - 80
+          - 8443
+      metadata:
+        annotations:
+          from: cob-application
+          to: On-Prem
+      protocol: TCP
+      source:
+        serviceAccounts:
+          names:
+            - tsb-cob
+            - default
+            - sa-tsb-onboarding-email-sender
+            - sa-tsb-onboarding-identity-onfido-download-asset
+            - sa-tsb-onboarding-product-data-upload
+            - sa-tsb-onboarding-otp-sender
+            - tsb-onboarding-api-gateway-ingress-nginx
+  types:
+    - Egress
