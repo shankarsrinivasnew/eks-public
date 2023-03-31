@@ -16,7 +16,7 @@ spec:
           to: jenkins-agent
       action: Allow
       source:
-        selector: app.kubernetes.io/component == 'jenkins-controllerr'
+        selector: app.kubernetes.io/component == 'jenkins-controller'
         namespaceSelector: projectcalico.org/name == 'jenkins'
   egress:
     - metadata:
