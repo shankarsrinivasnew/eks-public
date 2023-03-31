@@ -316,14 +316,6 @@ data:
           },
           {
             "exemplar": true,
-            "expr": "(count(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-cop-node.*\"} == 1))",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "COP",
-            "refId": "H"
-          },
-          {
-            "exemplar": true,
             "expr": "(count(up{job=\"ec2-discover-node-exporter\",instance=~\"preprod-eks-ods-node.*\"} == 1))",
             "hide": false,
             "interval": "",
