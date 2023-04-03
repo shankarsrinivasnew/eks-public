@@ -524,6 +524,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/aws-infra-status-nonprod-historical-uptime
+            - name: " aws-infra-status-nonprod-historical-uptime-cloudwatch"
+              orgId: 1
+              folder: "AWS Infrastructure"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infra-status-nonprod-historical-uptime-cloudwatch               
             - name: "aws-infra-status-nonprod-realtime-data"
               orgId: 1
               folder: "AWS Infrastructure"
@@ -589,7 +597,7 @@ spec:
         cdc-status-msk-kafka: cdc-status-msk-kafka-cm
         aws-infra-status-nonprod-realtime-data: aws-infra-status-nonprod-realtime-data-cm
         aws-infra-status-nonprod-historical-uptime: aws-infra-status-nonprod-historical-uptime-cm
-
+        aws-infra-status-nonprod-historical-uptime-cloudwatch: aws-infra-status-nonprod-historical-uptime-cloudwatch-cm
     prometheusOperator:
       enabled: true
       nodeSelector:
