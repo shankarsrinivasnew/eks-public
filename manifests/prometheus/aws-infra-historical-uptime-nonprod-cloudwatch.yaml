@@ -730,5 +730,5 @@ data:
     "timezone": "",
     "title": "AWS Infrastructure Status - Nonprod Historical Uptime-Cloudwatch",
     "uid": "hisuptimecloud",
-    "version": 1
+    "version": 2
     }
