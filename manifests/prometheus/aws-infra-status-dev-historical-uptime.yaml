@@ -7,731 +7,730 @@ metadata:
 data:
   aws-infra-historical-uptime.json: |
     {
-      "annotations": {
-        "list": [
-          {
-            "builtIn": 1,
-            "datasource": "-- Grafana --",
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "type": "dashboard"
-          }
-        ]
-      },
-      "editable": true,
-      "gnetId": null,
-      "graphTooltip": 0,
-      "id": 1693,
-      "iteration": 1677837982232,
-      "links": [],
-      "panels": [
+    "annotations": {
+      "list": [
         {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 0,
-            "y": 0
-          },
-          "id": 71,
-          "options": {
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "count(avg_over_time(kafka_server_ReplicaManager_Value{job=\"shared-msk-jmx-exporter\", name=\"LeaderCount\"}[30d])) *100/3",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MSK",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 6,
-            "y": 0
-          },
-          "id": 77,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(count(node_systemd_unit_state{instancename=~"dev-eks-node.*",name="kubelet.service",state="active",status="running"})[30d:]) * 100 / avg_over_time(sum(aws_autoscaling_group_desired_capacity_minimum{auto_scaling_group_name="dev-eks-asg"})[30d:])",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "EKS Node Status",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 12,
-            "y": 0
-          },
-          "id": 72,
-          "options": {
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "count(avg_over_time(scylla_node_operation_mode{instancename=~\"shared-dev-scylla.*\",job=\"ec2-discover-scylla-default\",status=\"running\"}[30d])) * 100 /3",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Scylla",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  },
-                  {
-                    "color": "green",
-                    "value": 96.9
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 18,
-            "y": 0
-          },
-          "id": 50,
-          "options": {
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://consul.dev.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Consul Service",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 0,
-            "y": 7
-          },
-          "id": 51,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://vault.dev.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Vault",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [
-                {
-                  "from": "",
-                  "id": 1,
-                  "text": "",
-                  "to": "",
-                  "type": 2,
-                  "value": ""
-                }
-              ],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 6,
-            "y": 7
-          },
-          "id": 55,
-          "options": {
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://grafana.dev.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Grafana",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 12,
-            "y": 7
-          },
-          "id": 52,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://prometheus.dev.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Prometheus",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 18,
-            "y": 7
-          },
-          "id": 49,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox_4xx\",instance=~\"https://jenkins.dev.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Jenkins",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 0,
-            "y": 14
-          },
-          "id": 53,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://artifactory.mgmt.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Artifactory",
-          "type": "gauge"
-        },
-        {
-          "datasource": "Thanos",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "continuous-RdYlGr"
-              },
-              "displayName": "30 Days AVG uptime %",
-              "mappings": [
-                {
-                  "from": "",
-                  "id": 1,
-                  "text": "",
-                  "to": "",
-                  "type": 1
-                }
-              ],
-              "max": 100,
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": null
-                  }
-                ]
-              },
-              "unit": "percent"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 6,
-            "x": 6,
-            "y": 14
-          },
-          "id": 54,
-          "options": {
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "text": {}
-          },
-          "pluginVersion": "7.5.15",
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://kibana.mgmt.aws.uk.tsb\"}[30d]) * 100",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Kibana (ElasticSeach)",
-          "type": "gauge"
-        },
-        {
-          "collapsed": false,
-          "datasource": "Thanos",
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 21
-          },
-          "id": 27,
-          "panels": [],
-          "title": "Row title",
-          "type": "row"
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
         }
-      ],
-      "refresh": false,
-      "schemaVersion": 27,
-      "style": "dark",
-      "tags": [],
-      "templating": {
-        "list": [
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "iteration": 1680513146244,
+    "links": [],
+    "panels": [
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        },
+        "id": 71,
+        "options": {
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
           {
-            "allValue": null,
-            "current": {
+            "exemplar": true,
+            "expr": "count(avg_over_time(kafka_server_ReplicaManager_Value{job=\"shared-msk-jmx-exporter\", name=\"LeaderCount\"}[30d])) *100/3",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MSK",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        },
+        "id": 77,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(count(node_systemd_unit_state{instancename=~\"dev-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})[30d:]) * 100 / avg_over_time(sum(aws_autoscaling_group_desired_capacity_minimum{auto_scaling_group_name=\"dev-eks-asg\"})[30d:])",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "EKS Node Status",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 0
+        },
+        "id": 72,
+        "options": {
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "count(avg_over_time(scylla_node_operation_mode{instancename=~\"shared-dev-scylla.*\",job=\"ec2-discover-scylla-default\",status=\"running\"}[30d])) * 100 /3",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Scylla",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 96.9
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 0
+        },
+        "id": 50,
+        "options": {
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://consul.dev.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Consul Service",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 7
+        },
+        "id": 51,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://vault.dev.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Vault",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [
+              {
+                "from": "",
+                "id": 1,
+                "text": "",
+                "to": "",
+                "type": 2,
+                "value": ""
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 7
+        },
+        "id": 55,
+        "options": {
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://grafana.dev.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Grafana",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 7
+        },
+        "id": 52,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://prometheus.dev.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Prometheus",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 7
+        },
+        "id": 49,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox_4xx\",instance=~\"https://jenkins.dev.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Jenkins",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "percentage",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 14
+        },
+        "id": 53,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://artifactory.mgmt.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Artifactory",
+        "type": "gauge"
+      },
+      {
+        "datasource": "Thanos",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-RdYlGr"
+            },
+            "displayName": "30 Days AVG uptime %",
+            "mappings": [
+              {
+                "from": "",
+                "id": 1,
+                "text": "",
+                "to": "",
+                "type": 1
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 14
+        },
+        "id": 54,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "text": {}
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(probe_success{job=\"blackbox\",instance=~\"https://kibana.mgmt.aws.uk.tsb\"}[30d]) * 100",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "B"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Kibana (ElasticSeach)",
+        "type": "gauge"
+      },
+      {
+        "collapsed": false,
+        "datasource": "Thanos",
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 27,
+        "panels": [],
+        "title": "Row title",
+        "type": "row"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+            "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
+          },
+          "datasource": "Thanos",
+          "definition": "node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
+          "description": "Get number of scylla nodes",
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": null,
+          "multi": false,
+          "name": "scylla_count",
+          "options": [
+            {
               "selected": false,
               "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
               "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
             },
-            "datasource": "Thanos",
-            "definition": "node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
-            "description": "Get number of scylla nodes",
-            "error": null,
-            "hide": 0,
-            "includeAll": false,
-            "label": null,
-            "multi": false,
-            "name": "scylla_count",
-            "options": [
-              {
-                "selected": false,
-                "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
-                "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"dev\",instance=\"shared-dev-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
-              },
-              {
-                "selected": true,
-                "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2b\",environment=\"dev\",instance=\"shared-dev-scylla-db-1\",instanceid=\"i-0cb53d0785a679c3a\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.72.127\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
-                "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2b\",environment=\"dev\",instance=\"shared-dev-scylla-db-1\",instanceid=\"i-0cb53d0785a679c3a\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.72.127\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
-              },
-              {
-                "selected": false,
-                "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2c\",environment=\"dev\",instance=\"shared-dev-scylla-db-2\",instanceid=\"i-0931b30202adaebf5\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.74.240\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
-                "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2c\",environment=\"dev\",instance=\"shared-dev-scylla-db-2\",instanceid=\"i-0931b30202adaebf5\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.74.240\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
-              }
-            ],
-            "query": {
-              "query": "node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
-              "refId": "StandardVariableQuery"
+            {
+              "selected": true,
+              "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2b\",environment=\"dev\",instance=\"shared-dev-scylla-db-1\",instanceid=\"i-0cb53d0785a679c3a\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.72.127\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+              "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2b\",environment=\"dev\",instance=\"shared-dev-scylla-db-1\",instanceid=\"i-0cb53d0785a679c3a\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.72.127\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
             },
-            "refresh": 0,
-            "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": false
-          }
-        ]
-      },
-      "time": {
-        "from": "now-30d",
-        "to": "now"
-      },
-      "timepicker": {},
-      "timezone": "",
-      "title": "AWS Infrastructure Status - Dev Historical Uptime",
-      "uid": "testuidev1",
-      "version": 11
+            {
+              "selected": false,
+              "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2c\",environment=\"dev\",instance=\"shared-dev-scylla-db-2\",instanceid=\"i-0931b30202adaebf5\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.74.240\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+              "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2c\",environment=\"dev\",instance=\"shared-dev-scylla-db-2\",instanceid=\"i-0931b30202adaebf5\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.74.240\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
+            }
+          ],
+          "query": {
+            "query": "node_systemd_unit_state{instance=~\"shared-dev-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 0,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "AWS Infrastructure Status - Dev Historical Uptime",
+    "uid": "testuidev1",
+    "version": 2
     }
