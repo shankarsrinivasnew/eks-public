@@ -499,6 +499,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/aws-infra-status-dev-historical-uptime
+            - name: "aws-infra-status-dev-historical-uptime-cloudwatch"
+              orgId: 1
+              folder: "AWS-Infrastructure"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infra-status-dev-historical-uptime-cloudwatch                
             - name: "aws-infra-status-dev-realtime-data"
               orgId: 1
               folder: "AWS-Infrastructure"
@@ -506,7 +514,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-dev-realtime-data
+                path: /var/lib/grafana/dashboards/aws-infra-status-dev-realtime-data            
             - name: "ods-consumer-group-and-topic-metrics"
               orgId: 1
               folder: "TSB-ODS"
@@ -569,6 +577,8 @@ spec:
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
         aws-infra-status-dev-realtime-data: aws-infra-status-dev-realtime-data-cm
         aws-infra-status-dev-historical-uptime: aws-infra-status-dev-historical-uptime-cm
+        aws-infra-status-dev-historical-uptime-cloudwatch: aws-infra-status-dev-historical-uptime-cloudwatch-cm
+
 
     prometheusOperator:
       enabled: true
