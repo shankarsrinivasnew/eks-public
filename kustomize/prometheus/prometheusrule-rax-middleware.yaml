@@ -24,19 +24,19 @@ spec:
           annotations:
             summary: Scylla in {{ $labels.environment }} has less than 3 nodes.
 
-        - alert: kafka_broker_count
-          expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
-          for: 15m
-          labels:
-            severity: CRITICAL
-            priority: P4
-            environment: "{{ AWS_ENVIRONMENT }}"
-            monitoring: middleware
-            rackspace: "true"
-            hostname: "{{ $labels.instance }}"
-            tsbci: AWS_ELZ
-          annotations:
-            summary: Critical Alert{{ $labels.job }}, Kafka has been running on less than 3 brokers for the last 15mins.
+        # - alert: kafka_broker_count
+        #   expr: count(kafka_server_replicamanager_leadercount{job="ec2-discover-hdf-jmx"}) < 3
+        #   for: 15m
+        #   labels:
+        #     severity: CRITICAL
+        #     priority: P4
+        #     environment: "{{ AWS_ENVIRONMENT }}"
+        #     monitoring: middleware
+        #     rackspace: "true"
+        #     hostname: "{{ $labels.instance }}"
+        #     tsbci: AWS_ELZ
+        #   annotations:
+        #     summary: Critical Alert{{ $labels.job }}, Kafka has been running on less than 3 brokers for the last 15mins.
 
         # - alert: kafka_failed_fetch_request_rate
         #   expr: sum(kafka_server_brokertopicmetrics_meanrate{job="ec2-discover-hdf-jmx",name="FailedFetchRequestsPerSec",topic!=""})by (topic) * 100 > 5
