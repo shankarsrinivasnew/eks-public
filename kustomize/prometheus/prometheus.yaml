@@ -520,7 +520,7 @@ spec:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
         shared-grafana-scylla2: shared-scylla2-cm
-        shared-grafana-kafka: shared-kafka-cm
+        shared-grafana-kafka: shared--cm
         shared-grafana-msk-overview1: shared-msk-overview1-cm
         shared-grafana-msk-overview2: shared-msk-overview2-cm
         shared-grafana-consul-vault: shared-consul-vault-cm
