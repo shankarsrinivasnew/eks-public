@@ -5,7 +5,7 @@ metadata:
   name: aws-infra-status-nonprod-historical-uptime-cloudwatch-cm
   namespace: prometheus
 data:
-  aws-infra-historical-uptime.json: |
+  aws-infra-historical-uptime-cloudwatch.json: |
     {
     "annotations": {
       "list": [
@@ -23,7 +23,8 @@ data:
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "iteration": 1680518525214,
+    "id": 952,
+    "iteration": 1680528102418,
     "links": [],
     "panels": [
       {
@@ -132,7 +133,7 @@ data:
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg_over_time(count(node_systemd_unit_state{instancename=~\"nonprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})[30d:]) * 100 / avg_over_time(sum(aws_autoscaling_group_desired_capacity_minimum{auto_scaling_group_name=\"nonprod-eks-asg\"})[30d:])",
+            "expr": "avg_over_time(count(node_systemd_unit_state{instancename=~\"nonprod-eks-node.*\",name=\"kubelet.service\",state=\"active\",status=\"running\"})[30d:]) * 100 / avg_over_time(sum(aws_autoscaling_group_desired_capacity_minimum{auto_scaling_group_name=\"nonprod-eks-asg\"})[30d:])\n",
             "hide": false,
             "interval": "",
             "legendFormat": "",
@@ -727,7 +728,7 @@ data:
     },
     "timepicker": {},
     "timezone": "",
-    "title": "AWS Infrastructure Status - Nonprod Historical Uptime Cloudwatch",
-    "uid": "cloudwatch-upt",
+    "title": "AWS Infrastructure Status - Nonprod Historical Uptime-Cloudwatch",
+    "uid": "hisuptimecloud",
     "version": 1
     }
