@@ -124,14 +124,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/shared-grafana-scylla2
-            - name: "shared-grafana-kafka"
-              orgId: 1
-              folder: "Shared Services"
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/shared-grafana-kafka
             - name: "shared-grafana-consul-vault"
               orgId: 1
               folder: "Shared Services"
@@ -528,7 +520,6 @@ spec:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
         shared-grafana-scylla2: shared-scylla2-cm
-        shared-grafana-kafka: shared-kafka-cm
         shared-grafana-msk-overview1: shared-msk-overview1-cm
         shared-grafana-msk-overview2: shared-msk-overview2-cm
         shared-grafana-consul-vault: shared-consul-vault-cm
