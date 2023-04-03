@@ -514,7 +514,7 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-dev-realtime-data            
+                path: /var/lib/grafana/dashboards/aws-infra-status-dev-realtime-data
             - name: "ods-consumer-group-and-topic-metrics"
               orgId: 1
               folder: "TSB-ODS"
