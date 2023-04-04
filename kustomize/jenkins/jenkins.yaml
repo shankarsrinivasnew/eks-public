@@ -526,7 +526,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/maven:11-6c5cc13"
+              image: "maven:3.6.3-openjdk-17"
               livenessProbe:
                   failureThreshold: 0
                   initialDelaySeconds: 0
