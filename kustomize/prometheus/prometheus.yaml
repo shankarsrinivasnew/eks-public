@@ -483,22 +483,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/gen-availability
-            - name: "aws-dev-hist-uptime-cm"
+            - name: "aws-dev-hist-uptime"
               orgId: 1
               folder: "AWS-Infrastructure"
               type: file
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-dev-hist-uptime-cm            
-            - name: "aws-dev-real-data-cm"
+                path: /var/lib/grafana/dashboards/aws-dev-hist-uptime           
+            - name: "aws-dev-real-data"
               orgId: 1
               folder: "AWS-Infrastructure"
               type: file
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-dev-real-data-cm
+                path: /var/lib/grafana/dashboards/aws-dev-real-data
             - name: "ods-consumer-group-and-topic-metrics"
               orgId: 1
               folder: "TSB-ODS"
