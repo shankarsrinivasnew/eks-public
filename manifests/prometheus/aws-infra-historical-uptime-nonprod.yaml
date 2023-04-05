@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: aws-infra-status-nonprod-historical-uptime-cm
+  name: aws-nonprod-hist-uptime-cm
   namespace: prometheus
 data:
   aws-infra-historical-uptime.json: |
