@@ -532,14 +532,6 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/aws-infra-status-nonprod-realtime-data
-            - name: "aws-infra-test"
-              orgId: 1
-              folder: "AWS Infrastructure"
-              type: file
-              disableDeletion: true
-              editable: true
-              options:
-                path: /var/lib/grafana/dashboards/aws-infra-test
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -596,7 +588,6 @@ spec:
         cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
         cdc-status-msk-kafka: cdc-status-msk-kafka-cm
         aws-infra-status-nonprod-realtime-data: aws-infra-status-nonprod-realtime-data-cm
-        aws-infra-test: aws-infra-test-cm
         aws-nonprod-hist-uptime: aws-nonprod-hist-uptime-cm
     prometheusOperator:
       enabled: true
