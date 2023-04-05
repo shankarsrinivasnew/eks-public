@@ -731,7 +731,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "AWS Infrastructure Status - Dev Historical Uptime",
+      "title": "AWS Infra Dev Historical Uptime",
       "uid": "testuidev1",
-      "version": 12
+      "version": 14
     }
