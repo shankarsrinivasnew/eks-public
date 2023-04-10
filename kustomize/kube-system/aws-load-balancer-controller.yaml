@@ -6,8 +6,9 @@ metadata:
   name: aws-load-balancer-controller
 spec:
   releaseName: aws-load-balancer-controller
+  namespace: kube-system
   chart:
-    repository: https://github.com/aws/eks-charts
+    repository: https://aws.github.io/eks-charts
     name: aws-load-balancer-controller
     version: 1.4.7
   values:
