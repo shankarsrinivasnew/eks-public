@@ -63,7 +63,7 @@ spec:
         - workflow-durable-task-step:2.39
         - workflow-support:813.vb_d7c3d2984a_0
         - workflow-basic-steps:2.24
-        - credentials-binding:1.27
+        - credentials-binding:523.vd859a_4b_122e6
         - git:4.11.5
         - configuration-as-code:1569.vb_72405b_80249
         - ansicolor:0.7.2
