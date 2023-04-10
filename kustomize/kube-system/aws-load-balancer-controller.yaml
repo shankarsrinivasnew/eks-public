@@ -32,5 +32,5 @@ spec:
       create: false
       imagePullSecrets: null
       name: aws-load-balancer-controller
-    vpcId: vpc-07e5e72df8e1523d5
+    vpcId: "{{ VPC_ID }}"
     
