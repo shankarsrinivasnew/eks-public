@@ -5,7 +5,6 @@ resources:
   - alb-ingress-controller.yaml
   - alb-rbac-role.yaml
   - ebs.yaml
-  - external-dns.yaml
   - auto-scaler.yaml
   - reporting-role.yaml
   - aws-load-balancer-controller-service-account.yaml
