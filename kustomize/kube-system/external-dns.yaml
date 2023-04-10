@@ -89,4 +89,4 @@ spec:
             - configMapRef:
                 name: proxy-environment-variables
       securityContext:
-        fsGroup: 65534 # For ExternalDNS to be able to read Kubernetes and AWS token files
+        fsGroup: 65534 # For ExternalDNS to be able to read Kubernetes and AWS token files  
