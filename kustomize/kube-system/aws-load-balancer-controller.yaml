@@ -6,14 +6,15 @@ metadata:
   name: aws-load-balancer-controller
 spec:
   releaseName: aws-load-balancer-controller
+  namespace: kube-system
   chart:
-    repository: https://github.com/aws/eks-charts
+    repository: https://aws.github.io/eks-charts
     name: aws-load-balancer-controller
     version: 1.4.7
   values:
     cluster:
       dnsDomain: cluster.local
-    clusterName: dev-eks
+    clusterName: {{ CLUSTER_NAME }}
     env:
       HTTPS_PROXY: http://eu-west-2.proxy.aws.uk.tsb:3128
       HTTP_PROXY: http://eu-west-2.proxy.aws.uk.tsb:3128
