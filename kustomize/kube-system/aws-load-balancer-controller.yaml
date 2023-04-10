@@ -1,0 +1,36 @@
+##https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: aws-load-balancer-controller
+spec:
+  releaseName: aws-load-balancer-controller
+  chart:
+    repository: https://github.com/aws/eks-charts
+    name: aws-load-balancer-controller
+    version: 1.4.7
+  values:
+    cluster:
+      dnsDomain: cluster.local
+    clusterName: dev-eks
+    env:
+      HTTPS_PROXY: http://eu-west-2.proxy.aws.uk.tsb:3128
+      HTTP_PROXY: http://eu-west-2.proxy.aws.uk.tsb:3128
+      NO_PROXY: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+    image:
+      pullPolicy: IfNotPresent
+      repository: public.ecr.aws/eks/aws-load-balancer-controller
+      tag: v2.4.6
+    imagePullSecrets: []
+    region: eu-west-2
+    replicaCount: 2
+    resources: {}
+    serviceAccount:
+      annotations: {}
+      automountServiceAccountToken: true
+      create: false
+      imagePullSecrets: null
+      name: aws-load-balancer-controller
+    vpcId: "{{ VPC_ID }}"
+    
