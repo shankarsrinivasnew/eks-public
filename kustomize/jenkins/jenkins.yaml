@@ -657,7 +657,7 @@ spec:
                 timeoutSeconds: 0
               ttyEnabled: true
               workingDir: "/home/jenkins/agent"
-            - name: "gradle6-9-2"
+            - name: "gradle8-0"
               args: "cat"
               command: "/bin/sh -c"
               envVars:
@@ -667,7 +667,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "gradle:6.9.2-jdk17"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:8.0-jdk17"
               livenessProbe:
                 failureThreshold: 0
                 initialDelaySeconds: 0
