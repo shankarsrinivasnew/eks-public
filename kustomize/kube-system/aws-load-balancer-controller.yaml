@@ -34,4 +34,3 @@ spec:
       imagePullSecrets: null
       name: aws-load-balancer-controller
     vpcId: "{{ VPC_ID }}"
-    
