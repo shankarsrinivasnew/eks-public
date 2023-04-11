@@ -14,7 +14,7 @@ spec:
   values:
     cluster:
       dnsDomain: cluster.local
-    clusterName: {{ CLUSTER_NAME }}
+    clusterName: "{{ CLUSTER_NAME }}"
     env:
       HTTPS_PROXY: http://eu-west-2.proxy.aws.uk.tsb:3128
       HTTP_PROXY: http://eu-west-2.proxy.aws.uk.tsb:3128
