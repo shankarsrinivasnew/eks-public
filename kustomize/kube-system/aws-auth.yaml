@@ -146,3 +146,11 @@ data:
         - tsb-forgerock-sbat-rw-dev-eks
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/role-reporting-kube-info
       username: reporting-user
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/aws-reserved/sso.amazonaws.com/eu-west-2/AWSReservedSSO_AdministratorAccess_73b4990a5d43698d
+      username: admin
+      groups:
+        - system:masters
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/aws-reserved/sso.amazonaws.com/eu-west-2/AWSReservedSSO_ReadOnlyAccess_296da645e96ea4f0
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly
