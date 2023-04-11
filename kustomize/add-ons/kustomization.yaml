@@ -1,5 +1,4 @@
 resources:
-  - aws-auth.yaml
   - calico-global-network-sets.yaml
   - coredns-networkpolicy.yaml
   - external-dns.yaml
