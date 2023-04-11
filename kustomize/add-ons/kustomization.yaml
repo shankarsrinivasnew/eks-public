@@ -1,6 +1,12 @@
 resources:
+  - aws-auth.yaml
+  - calico-global-network-sets.yaml
+  - coredns-networkpolicy.yaml
   - external-dns.yaml
   - auto-scaler.yaml
+  - aws-load-balancer-controller.yaml
+  - ebs.yaml
+  - efs-csi-driver-sa.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
