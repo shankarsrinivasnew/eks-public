@@ -762,6 +762,8 @@ spec:
                   - https://consul.{{ DNS_ZONE }}
                   - https://vault.{{ DNS_ZONE }}
                   - https://consul.{{ DNS_ZONE }}/v1/kv/config-cb/application/consul/ssl/CACert
+                  - https://kibana.mgmt.aws.uk.tsb
+                  - https://artifactory.mgmt.aws.uk.tsb                  
             relabel_configs:
               - source_labels: [__address__]
                 target_label: __param_target
