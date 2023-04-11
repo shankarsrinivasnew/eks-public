@@ -1,5 +1,6 @@
 resources:
   - external-dns.yaml
+  - auto-scaler.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
