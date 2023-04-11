@@ -69,7 +69,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: external-dns
-          image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/bitnami/external-dns:0.7.1
+          image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/bitnami/external-dns:0.13.1
           args:
             - --source=service
             - --source=ingress
