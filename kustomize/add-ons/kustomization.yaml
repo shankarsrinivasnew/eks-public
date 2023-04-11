@@ -1,5 +1,5 @@
 resources:
   - external-dns.yaml
-namespace: jenkins
+namespace: kube-system
 transformers:
   - awsTransformer.yaml
