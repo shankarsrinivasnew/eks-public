@@ -648,7 +648,26 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "gradle:8.0-jdk17"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:11-6c5cc13"
+              livenessProbe:
+                failureThreshold: 0
+                initialDelaySeconds: 0
+                periodSeconds: 0
+                successThreshold: 0
+                timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent"
+            - name: "gradle8"
+              args: "cat"
+              command: "/bin/sh -c"
+              envVars:
+              - envVar:
+                  key: "GRADLE_OPTS"
+                  value: -Djavax.net.ssl.trustStore=/home/jenkins/publiccacerts/jenkins.truststore.jks -Djavax.net.ssl.trustStorePassword=changeit -Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb -Dhttp.proxyPort=3128 -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb -Dhttps.proxyPort=3128 -Dhttp.nonProxyHosts="localhost|127.0.0.1|172.20.0.1|169.254.169.254|10.0.0.0/8|172.20.0.0/16|.internal|.eu-west-2.elb.amazonaws.com|vault.service.consul|ssm.eu-west-2.amazonaws.com|ssmmessages.eu-west-2.amazonaws.com|ec2.eu-west-2.amazonaws.com|ec2messages.eu-west-2.amazonaws.com|s3.eu-west-2.amazonaws.com|autoscaling.eu-west-2.amazonaws.com|secretsmanager.eu-west-2.amazonaws.com|kms.eu-west-2.amazonaws.com|ecr.eu-west-2.amazonaws.com|.eks.amazonaws.com|.ecr.eu-west-2.amazonaws.com|.s3.eu-west-2.amazonaws.com|.cluster.local|*.aws.uk.tsb" -Dhttps.nonProxyHosts="localhost|127.0.0.1|172.20.0.1|169.254.169.254|10.0.0.0/8|172.20.0.0/16|.internal|.eu-west-2.elb.amazonaws.com|vault.service.consul|ssm.eu-west-2.amazonaws.com|ssmmessages.eu-west-2.amazonaws.com|ec2.eu-west-2.amazonaws.com|ec2messages.eu-west-2.amazonaws.com|s3.eu-west-2.amazonaws.com|autoscaling.eu-west-2.amazonaws.com|secretsmanager.eu-west-2.amazonaws.com|kms.eu-west-2.amazonaws.com|ecr.eu-west-2.amazonaws.com|.eks.amazonaws.com|.ecr.eu-west-2.amazonaws.com|.s3.eu-west-2.amazonaws.com|.cluster.local|*.aws.uk.tsb"
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:8.0-jdk17"
               livenessProbe:
                 failureThreshold: 0
                 initialDelaySeconds: 0
