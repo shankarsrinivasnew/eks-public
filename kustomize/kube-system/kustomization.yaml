@@ -5,12 +5,13 @@ resources:
   - alb-ingress-controller.yaml
   - alb-rbac-role.yaml
   - ebs.yaml
-  - auto-scaler.yaml
+  - autoscaler.yaml
   - reporting-role.yaml
   - aws-load-balancer-controller-service-account.yaml
   - aws-load-balancer-controller.yaml
   - aws-lb-controller-network-policy.yaml
-  - efs-csi-driver-service-account.yaml
+  - efs-csi-driver-sa.yaml
+  - externaldns.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
