@@ -7,6 +7,7 @@ resources:
   - aws-load-balancer-controller.yaml
   - ebs.yaml
   - efs-csi-driver-sa.yaml
+  - reporting-role.yaml
 namespace: kube-system
 transformers:
   - awsTransformer.yaml
