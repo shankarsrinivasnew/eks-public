@@ -657,7 +657,7 @@ spec:
                 timeoutSeconds: 0
               ttyEnabled: true
               workingDir: "/home/jenkins/agent"
-            - name: "gradle8"
+            - name: "gradle8-0"
               args: "cat"
               command: "/bin/sh -c"
               envVars:
