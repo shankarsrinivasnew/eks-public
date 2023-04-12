@@ -116,25 +116,6 @@ metadata:
   name: ods-nginx-ingress
   namespace: ods
 spec:
-  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
-  types:
-    - Ingress
-  ingress:
-    - metadata:
-        annotations:
-          from: vpc
-          to: nginx
-      action: Allow
-      source:
-        selector: vpc == 'local' && layer == 'all'
-        namespaceSelector: global()
----
-apiVersion: crd.projectcalico.org/v1
-kind: NetworkPolicy
-metadata:
-  name: ods-nginx-ingress
-  namespace: ods
-spec:
   serviceAccountSelector: projectcalico.org/name == 'tsb-ods'
   types:
     - Ingress
