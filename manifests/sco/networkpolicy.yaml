@@ -95,9 +95,9 @@ spec:
     - Ingress
   ingress:
     - metadata:
-      annotations:
-        from: vpc
-        to: nginx
+        annotations:
+          from: vpc
+          to: nginx
       action: Allow
       source:
         selector: vpc == 'local' && layer == 'all'
