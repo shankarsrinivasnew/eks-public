@@ -29,7 +29,7 @@ spec:
     imagePullSecrets: {}
     installation:
       enabled: true
-      kubernetesProvider: ""
+      kubernetesProvider: EKS
     tigeraOperator:
       image: tigera/operator
       registry: quay.io
