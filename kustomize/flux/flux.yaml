@@ -9,11 +9,11 @@ spec:
   chart:
     repository: https://charts.fluxcd.io
     name: flux
-    version: 1.6.0
+    version: 1.9.0
   values:
     image:
       repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/fluxcd/flux
-      tag: 1.21.1
+      tag: 1.25.3
     nodeSelector:
       taints.eks.aws.uk.tsb/role: mgmt
     tolerations:
@@ -30,7 +30,7 @@ spec:
       disableScanning: true
     manifestGeneration: true
     sync:
-      timeout: 5m
+      timeout: 7m
     syncGarbageCollection:
       enabled: true
     serviceAccount:
@@ -38,6 +38,10 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/flux
     env:
       secretName: flux-git-auth
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
     extraEnvs:
       - name: http_proxy
         value: http://eu-west-2.proxy.aws.uk.tsb:3128
