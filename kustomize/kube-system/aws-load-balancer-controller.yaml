@@ -1,4 +1,42 @@
-##https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller
+---
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: aws-lb-controller
+  namespace: kube-system
+spec:
+  selector: app.kubernetes.io/name == 'aws-load-balancer-controller'
+  types:
+    - Egress
+    - Ingress
+  egress:
+    - metadata:
+        annotations:
+          from: aws-lb-controller
+          to: metadata
+      action: Allow
+      protocol: TCP
+      destination:
+        nets:
+          - 169.254.169.254/32
+        ports:
+          - 80
+  ingress:    
+    - action: Allow
+      source:
+        nets:
+          - "{{ VPC_CIDR }}"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: aws-load-balancer-controller
+  name: aws-load-balancer-controller
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/AmazonEKSLoadBalancerControllerRole
 ---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
@@ -34,4 +72,3 @@ spec:
       imagePullSecrets: null
       name: aws-load-balancer-controller
     vpcId: "{{ VPC_ID }}"
-    
