@@ -6,9 +6,7 @@ resources:
   - external-dns.yaml
   - auto-scaler.yaml
   - reporting-role.yaml
-  - aws-load-balancer-controller-service-account.yaml
   - aws-load-balancer-controller.yaml
-  - aws-lb-controller-network-policy.yaml
   - efs-csi-driver-service-account.yaml
 namespace: kube-system
 transformers:
