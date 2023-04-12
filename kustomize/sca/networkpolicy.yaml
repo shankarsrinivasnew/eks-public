@@ -123,9 +123,9 @@ spec:
     - Ingress
   ingress:
     - metadata:
-      annotations:
-        from: vpc
-        to: nginx
+        annotations:
+          from: vpc
+          to: nginx
       action: Allow
       source:
         selector: vpc == 'local' && layer == 'all'
@@ -137,18 +137,14 @@ metadata:
   name: prometheus-ingress
   namespace: sca
 spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
+  selector: namespace == 'cb'
   ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              app: prometheus
-      ports:
-        - port: 8080
-          protocol: TCP
-        - port: 3000
-          protocol: TCP
-        - port: 8888
-          protocol: TCP
+    - action: Allow
+      protocol: TCP
+      source:
+        selector: app == 'prometheus'
+      destination:
+        ports:
+          - 8080
+          - 3000
+          - 8888
