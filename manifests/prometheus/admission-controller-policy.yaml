@@ -4,10 +4,11 @@ metadata:
   name: allow-admission-webhook-access
   namespace: prometheus
 spec:
-  podSelector:
-    matchLabels:
-      "app": "prometheus-operator"
   ingress:
-    - from: []
-      ports:
-        - port: 8443
+    - action: Allow
+      protocol: TCP
+      source:
+        selector: app == 'prometheus-operator'
+      destination:
+        ports:
+          - 8443
