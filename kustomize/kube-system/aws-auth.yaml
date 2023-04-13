@@ -144,17 +144,17 @@ data:
       username: tsb-forgerock-sbat-rw-dev-eks
       groups:
         - tsb-forgerock-sbat-rw-dev-eks
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/role-reporting-kube-info
-      username: reporting-user
-    - rolearn: {{ SSO_ADMIN }}
+    - rolearn: arn:aws:iam::$AWS_ACCOUNT:role/{{ SSO_ADMIN }}
       username: admin
       groups:
         - system:masters
-    - rolearn: {{ SSO_READONLY }}
+    - rolearn: arn:aws:iam::$AWS_ACCOUNT:role/{{ SSO_READONLY }}
       username: tsb-eks-readonly
       groups:
         - tsb-eks-readonly
-    - rolearn: {{ SSO_POWER }}
+    - rolearn: arn:aws:iam::$AWS_ACCOUNT:role/{{ SSO_POWER }}
       username: admin
       groups:
         - system:masters
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/role-reporting-kube-info
+      username: reporting-user
