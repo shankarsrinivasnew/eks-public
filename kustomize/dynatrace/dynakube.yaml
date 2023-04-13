@@ -14,7 +14,7 @@ spec:
     value: http://eu-west-2.proxy.aws.uk.tsb:3128
   oneAgent:
     classicFullStack:
-      image: 'rxl69895.live.dynatrace.com/linux/oneagent:1.249.201'
+      image: 'rxl69895.live.dynatrace.com/linux/oneagent:1.249.253'
       args:
         - --set-host-group={{ DYNATRACE_HOST_GROUP }}
       env:
