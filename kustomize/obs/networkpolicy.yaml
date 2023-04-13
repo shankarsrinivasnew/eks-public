@@ -116,7 +116,7 @@ metadata:
   name: obs-nginx-ingress
   namespace: obs
 spec:
-  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  serviceAccountSelector: projectcalico.org/name == 'sa-tsb-ob-signing-service'
   types:
     - Ingress
   ingress:
