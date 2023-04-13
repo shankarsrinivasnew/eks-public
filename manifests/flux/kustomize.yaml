@@ -49,6 +49,9 @@ data:
     GIT_BRANCH=dev
     DYNATRACE_ENV_ID=rxl69895
     DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-DEV
+    SSO_ADMIN=AWSReservedSSO_AdministratorAccess_73b4990a5d43698d
+    SSO_READONLY=AWSReservedSSO_ReadOnlyAccess_296da645e96ea4f0
+    SSO_POWER=AWSReservedSSO_PowerUserAccess_ff5eb4293b1c2ace
 
     case $AWS_ACCOUNT in
       273312704578)
