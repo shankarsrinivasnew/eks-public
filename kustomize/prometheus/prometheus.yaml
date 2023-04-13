@@ -485,6 +485,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/cdc-status-msk-kafka
+            - name: " aws-infra-status-prod-historical-uptime"
+              orgId: 1
+              folder: "AWS Infrastructure"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infra-status-prod-historical-uptime
+            - name: "aws-infra-status-prod-realtime-data"
+              orgId: 1
+              folder: "AWS Infrastructure"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infra-status-prod-realtime-data
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
@@ -534,6 +550,8 @@ spec:
         aws-infrastructure-dashboard-part2: aws-infrastructure-dashboard-part2-cm
         cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
         cdc-status-msk-kafka: cdc-status-msk-kafka-cm
+        aws-infra-status-prod-realtime-data: aws-infra-status-prod-realtime-data-cm
+        aws-infra-status-prod-historical-uptime: aws-infra-status-prod-historical-uptime-cm        
 
 
     prometheusOperator:
