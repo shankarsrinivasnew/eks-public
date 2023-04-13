@@ -1,0 +1,73 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: nginx-upgrade-clusterrole
+rules:
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingressclasses
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - create
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: nginx-upgrade-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: tsb-sco
+    namespace: sco
+  - kind: ServiceAccount
+    name: tsb-sco-fl-spring-api-gateway-ingress-nginx
+    namespace: sco
+  - kind: ServiceAccount
+    name: tsb-cob
+    namespace: cob
+  - kind: ServiceAccount
+    name: tsb-onboarding-api-gateway-ingress-nginx
+    namespace: cob
+  - kind: ServiceAccount
+    name: tsb-ods
+    namespace: ods
+  - kind: ServiceAccount
+    name: tsb-sca
+    namespace: sca
+  - kind: ServiceAccount
+    name: tsb-sca-broadcom-api-gateway-ingress-nginx
+    namespace: sca
+  - kind: ServiceAccount
+    name: tsb-sca-api-gateway-ingress-nginx
+    namespace: sca
+  - kind: ServiceAccount
+    name: tsb-cb
+    namespace: cb
+  - kind: ServiceAccount
+    name: nginx-ingress-ingress-nginx
+    namespace: cb
+roleRef:
+  kind: ClusterRole
+  name: nginx-upgrade-clusterrole
+  apiGroup: rbac.authorization.k8s.io
