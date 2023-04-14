@@ -60,6 +60,9 @@ data:
         GIT_BRANCH=nonprod
         DYNATRACE_ENV_ID=rxl69895
         DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-NONP
+        SSO_ADMIN=AWSReservedSSO_AdministratorAccess_1686202bc0347dc8
+        SSO_READONLY=AWSReservedSSO_ReadOnlyAccess_d16bd08e879e45f4
+        SSO_POWER=AWSReservedSSO_PowerUserAccess_1b250276658d7a8d
         ;;
       045223552195)
         AWS_ENVIRONMENT=preprod
@@ -67,6 +70,8 @@ data:
         GIT_BRANCH=preprod
         DYNATRACE_ENV_ID=rxl69895
         DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE-PRE
+        SSO_ADMIN=AWSReservedSSO_AdministratorAccess_34d0c19f73eb1515
+        SSO_READONLY=AWSReservedSSO_ReadOnlyAccess_40601b4187734055
         ;;
       407929326957)
         AWS_ENVIRONMENT=prod
@@ -74,6 +79,8 @@ data:
         GIT_BRANCH=master
         DYNATRACE_ENV_ID=bqm47049
         DYNATRACE_HOST_GROUP=AWSS-EKSS-NOLAYER-NOLINE
+        SSO_ADMIN=AWSReservedSSO_AdministratorAccess_bd75c2f8840569ec
+        SSO_READONLY=AWSReservedSSO_ReadOnlyAccess_e65fa4df4297cc1d
         ;;
     esac
 
