@@ -54,7 +54,7 @@ data:
       groups:
         - obs-view-kube-system
         - obs-admin
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs-dev-eks
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-obs-dev-eks 
       username: tsb-obs-dev
       groups:
         - obs-admin
@@ -98,77 +98,10 @@ data:
       username: tsb-admins-eks
       groups:
         - tsb-admins
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-{{ AWS_ENVIRONMENT }}-readonly-access
-      username: tsb-eks-readonly
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop2-prod-eks-readonly-role
+      username: tsb-cop2-view
       groups:
-        - tsb-eks-readonly        
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sco-nonprod-eks
-      username: tsb-sco-readyonly
-      groups:
-        - tsb-nonprod-eks-sco
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-cob-view-role
-      username: tsb-cob-readyonly
-      groups:
-        - eks-cob-view-role
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop2-nonprod-eks
-      username: tsb-cop2-nonprod-eks
-      groups:
-        - cop-phase2-admin
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cb-nonprod-eks
-      username: tsb-cb-nonprod-eks
-      groups:
-        - cb-admin
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks-nonprod-role
-      username: tsb-nonprod-eks-fullaccess
-      groups:
-        - Dev-Nonprod-Eks-Access
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop-phase2
-      username: tsb-nonprod-eks-cop-phase2
-      groups:
-        - tsb-nonprod-cop-phase2
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_tsbsme-readonly_billing
-      username: tsb-eks-readonly
-      groups:
-        - tsb-eks-readonly
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/rl_readonly_billing
-      username: tsb-eks-readonly
-      groups:
-        - tsb-eks-readonly
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cb-nonprod-eks-rw
-      username: tsb-cb-nonprod-eks-rw
-      groups:
-        - tsb-cb-nonprod-eks-rw
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cob-nonprod-eks-rw
-      username: tsb-cob-nonprod-eks-rw
-      groups:
-        - tsb-cob-nonprod-eks-rw
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sca-nonprod-eks-rw
-      username: tsb-sca-nonprod-eks-rw
-      groups:
-        - tsb-sca-nonprod-eks-rw
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-sco-nonprod-eks-rw
-      username: tsb-sco-nonprod-eks-rw
-      groups:
-        - tsb-sco-nonprod-eks-rw
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/tsb-cop2-preprod-eks
-      username: tsb-cop2-eks-readonly
-      groups:
-        - tsb-cop2-eks-readonly
-        - tsb-forgerock-sbat-rw-dev-eks
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_ADMIN }}
-      username: admin
-      groups:
-        - system:masters
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_READONLY }}
-      username: tsb-eks-readonly
-      groups:
-        - tsb-eks-readonly
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_POWER }}
-      username: admin
-      groups:
-        - system:masters
-    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/role-reporting-kube-info
-      username: reporting-user
+        - tsb-cop2-view
     - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_ADMIN }}
       username: admin
       groups:
