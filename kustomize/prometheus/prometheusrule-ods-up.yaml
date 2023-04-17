@@ -1,0 +1,117 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: ods-up-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: ODS_APPS_UP_STATE
+      rules:
+   #############################################ODS_CONSUMER_LAG_#########################################################
+        - record: ods_aws_kafka_max_offset_lag_average_up{{ AWS_ENVIRONMENT }}
+          expr: (aws_kafka_sum_offset_lag_average{consumer_group=~".*ods.*"})
+        - alert: ods_aws_kafka_max_offset_lag_average_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_aws_kafka_sum_offset_lag_average_up_{{ AWS_ENVIRONMENT }}) > 5000000
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Consumer group Application {{ $labels.job }} has reached peak rate of 500000 in 1 min. Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_aws_kafka_max_offset_lag_average_up_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_aws_kafka_sum_offset_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500000
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Consumer group Application {{ $labels.job }} is at peak rate of 500000 for last 5 mins. Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}
+    ##########################################ODS_CONSUMER_LAG###########################################
+        - record: ods_aws_kafka_sum_offset_lag_average_up{{ AWS_ENVIRONMENT }}
+          expr: (aws_kafka_sum_offset_lag_average{consumer_group=~".*ods.*"})
+        - alert: ods_aws_kafka_sum_offset_lag_average_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_aws_kafka_sum_offset_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500000
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Consumer group Application {{ $labels.job }} has reached peak rate of 500000 in 1 min. Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_aws_kafka_sum_offset_lag_average_up_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_aws_kafka_sum_offset_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500000
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Consumer group Application {{ $labels.job }} is at peak rate of 500000 for last 5 mins. Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }}
+    ###########################################ODS_CONSUMER_LAG_#########################################################
+        - record: ods_aws_kafka_estimated_max_time_lag_average_up{{ AWS_ENVIRONMENT }}
+          expr: (aws_kafka_estimated_max_time_lag_average{consumer_group=~".*ods.*"})
+        - alert: ods_aws_kafka_estimated_max_time_lag_average_up_yellow_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_aws_kafka_estimated_max_time_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500000
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: YELLOW
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Consumer group Application {{ $labels.job }} has reached peak rate of 500000 in 1 min. Value: {{ $value }}'
+            summary: Yellow rate reached for Application {{ $labels.job }}            
+        - alert: ods_aws_kafka_estimated_max_time_lag_average_up_red_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_aws_kafka_estimated_max_time_lag_average_up_{{ AWS_ENVIRONMENT }}) > 500000
+          for: 5m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: RED
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: 'Consumer group Application {{ $labels.job }} is at peak rate of 50 seconds for last 5 mins. Value: {{ $value }}'
+            summary: Red rate reached for Application {{ $labels.job }} 
