@@ -20,3 +20,12 @@ spec:
           - 169.254.169.254/32
         ports:
           - 80
+    - metadata:
+        annotations:
+          from: flux
+          to: vpc
+      action: Allow
+      protocol: TCP
+      destination:
+        selector: vpc == 'local' && layer == 'all'
+        namespaceSelector: global()
