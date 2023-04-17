@@ -4,7 +4,7 @@ kind: ClusterRole
 metadata:
   name: jenkins-schedule-agents
   labels:
-    role: jenkins-master
+    role: jenkins-controller
 rules:
   - apiGroups:
       - ""
@@ -37,12 +37,12 @@ kind: ClusterRoleBinding
 metadata:
   name: jenkins-schedule-agents
   labels:
-    role: jenkins-master
+    role: jenkins-controller
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: jenkins-schedule-agents
 subjects:
   - kind: ServiceAccount
-    name: jenkins-master
+    name: jenkins-controller
     namespace: jenkins
