@@ -102,3 +102,15 @@ data:
       username: tsb-cop2-view
       groups:
         - tsb-cop2-view
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_ADMIN }}
+      username: admin
+      groups:
+        - system:masters
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_READONLY }}
+      username: tsb-eks-readonly
+      groups:
+        - tsb-eks-readonly
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_POWER }}
+      username: admin
+      groups:
+        - system:masters
