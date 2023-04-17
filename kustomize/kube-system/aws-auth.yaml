@@ -155,15 +155,15 @@ data:
       groups:
         - tsb-cop2-eks-readonly
         - tsb-forgerock-sbat-rw-dev-eks
-    - rolearn: arn:aws:iam::$AWS_ACCOUNT:role/{{ SSO_ADMIN }}
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_ADMIN }}
       username: admin
       groups:
         - system:masters
-    - rolearn: arn:aws:iam::$AWS_ACCOUNT:role/{{ SSO_READONLY }}
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_READONLY }}
       username: tsb-eks-readonly
       groups:
         - tsb-eks-readonly
-    - rolearn: arn:aws:iam::$AWS_ACCOUNT:role/{{ SSO_POWER }}
+    - rolearn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/{{ SSO_POWER }}
       username: admin
       groups:
         - system:masters
