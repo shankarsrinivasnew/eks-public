@@ -1,0 +1,88 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: prometheus
+  name: ods-sys-api-down-alerts
+  namespace: prometheus
+spec:
+  groups:
+    - name: ODS_SYS_API_APPS_DOWN_STATE
+      rules:
+  ###########################################ODS_SYS_API_MAVEN_APP_DOWN_WARNING##########################################################
+        - record: ods_sys_api_app_down_warning_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ods-sys-api.*",namespace="ods"})
+        - alert: ods_sys_api_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((ods_sys_api_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_sys_api_app_down_warning_{{ AWS_ENVIRONMENT }}) < 2)
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
+    ###########################################ODS_SYS_API_MAVEN_APP_DOWN_CRITICAL##########################################################
+        - record: ods_sys_api_app_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ods-sys-api.*",namespace="ods"})
+        - alert: ods_sys_api_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sys_api_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: ods
+            severity: CRITICAL
+            type: 8x5
+            tsbci: ODS_AWS
+#             itopsbridge: true
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running
+    ###########################################ODS_SUB_API_MAVEN_APP_DOWN_WARNING##########################################################
+        - record: ods_sub_api_app_down_warning_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ods-api.*",namespace="ods"})
+        - alert: ods_sub_api_app_down_warning_alert_{{ AWS_ENVIRONMENT }}
+          expr: ((ods_sub_api_app_down_warning_{{ AWS_ENVIRONMENT }}) > 0) and ((ods_sub_api_app_down_warning_{{ AWS_ENVIRONMENT }}) < 2)
+          for: 1m
+          labels:
+            action: Closely monitor
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: WARNING
+            platform: AWS
+            namespace: ods
+            severity: WARNING
+            type: 8x5
+            tsbci: ODS_AWS
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods for more than 1 min. Value:{{ $value }}'
+            summary: Warning Alert deployment {{ $labels.deployment }} of job {{ $labels.job }} has less than 3 pods running
+    ###########################################ODS_SUB_API_MAVEN_APP_DOWN_CRITICAL##########################################################
+        - record: ods_sub_api_app_down_critical_{{ AWS_ENVIRONMENT }}
+          expr: (kube_deployment_status_replicas_available{deployment=~"tsb-ods-api.*",namespace="ods"})
+        - alert: ods_sub_api_app_down_critical_alert_{{ AWS_ENVIRONMENT }}
+          expr: (ods_sub_api_app_down_critical_{{ AWS_ENVIRONMENT }}) < 1
+          labels:
+            action: Application is likely impacted
+            environment: "{{ AWS_ENVIRONMENT }}"
+            group: INFRA
+            level: CRITICAL
+            platform: AWS
+            namespace: ods
+            severity: CRITICAL
+            type: 8x5
+            tsbci: ODS_AWS
+#             itopsbridge: true
+          annotations:
+            description: '{{ $labels.deployment }} of job {{ $labels.job }} has no pods running. Value:{{ $value }}'
+            summary: Critical deployment {{ $labels.deployment }} of job {{ $labels.job }} has no pods running        
