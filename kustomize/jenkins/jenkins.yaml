@@ -8,16 +8,16 @@ spec:
   chart:
     repository: https://charts.jenkins.io
     name: jenkins
-    version: 2.6.4
+    version: 4.2.15
   values:
     serviceAccount:
       create: true
-      name: jenkins-master
+      name: jenkins-controller
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-master
-    master:
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ AWS_ACCOUNT }}:role/eks/jenkins-controller
+    controller:
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/jenkins
-      tag: 2.319.3-lts-alpine
+      tag: 2.361.4-lts-alpine
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       tolerations:
@@ -25,6 +25,17 @@ spec:
           operator: Equal
           value: mgmt
           effect: NoSchedule
+      healthProbes: true
+      probes:
+        startupProbe:
+          periodSeconds: 30
+          timeoutSeconds: 60
+        livenessProbe:
+          periodSeconds: 30
+          timeoutSeconds: 60
+        readinessProbe:
+          periodSeconds: 30
+          timeoutSeconds: 60
       ingress:
         enabled: true
         apiVersion: "networking.k8s.io/v1"
@@ -33,8 +44,8 @@ spec:
           alb.ingress.kubernetes.io/scheme: internal
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
-          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20,10.184.136.84/32,10.184.136.117/32"
-          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},cmdb=JENKINS_AWS,owner=Himanshu Jha,project=JENKINS_AWS,description=Jenkins component for shared services platform which can be used for building images and deploying application code,managed_by=rackspace,terraform=false
+          alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20,10.184.136.84/32,10.184.136.115/32,10.184.136.116/30,10.184.136.120/30,10.184.136.124/32"
+          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},cmdb=JENKINS_AWS,owner=Himanshu Jha,project=JENKINS_AWS,description=Jenkins component for shared services platform which can be used for building images and deploying application code,managed_by=rackspace,terraform=false 
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
@@ -48,6 +59,13 @@ spec:
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        - name: JAVA_TOOL_OPTIONS
+          value: >-
+            -Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb
+            -Dhttp.proxyPort=3128
+            -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb
+            -Dhttps.proxyPort=3128
+            -Dhttp.nonProxyHosts="localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb"
       containerEnv:
         - name: http_proxy
           value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -56,87 +74,64 @@ spec:
         - name: no_proxy
           value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
       installPlugins:
-        - kubernetes-client-api:4.13.3-1
-        - kubernetes:1.27.7
-        - workflow-job:1145.v7f2433caa07f
-        - workflow-aggregator:2.6
-        - workflow-durable-task-step:2.39
-        - workflow-support:813.vb_d7c3d2984a_0
-        - workflow-basic-steps:2.24
-        - credentials-binding:523.vd859a_4b_122e6
-        - git:4.11.5
+        - kubernetes:3896.v19b_160fd9589
+        - workflow-aggregator:596.v8c21c963d92d
+        - git:5.0.0
         - configuration-as-code:1569.vb_72405b_80249
-        - ansicolor:0.7.2
-        - pipeline-aws:1.42
-        - authorize-project:1.3.0
-        - aws-credentials:1.30
-        - aws-global-configuration:1.6
-        - command-launcher:1.4
-        - custom-tools-plugin:0.7
-        - docker-plugin:1.2.0
-        - envinject:2.4.0
-        - extra-tool-installers:1.0
-        - git-parameter:0.9.13
-        - github-branch-source:2.9.0
-        - http_request:1.8.26
-        - job-dsl:1.77
-        - matrix-auth:2.6.6
-        - jdk-tool:1.4
-        - pipeline-utility-steps:2.14.0
-        - pipeline-github:2.7
+        - matrix-auth:3.1.6
+        - role-strategy:587.v2872c41fa_e51
+        - workflow-job:1284.v2fe8ed4573d4
+        - pipeline-model-api:2.2121.vd87fb_6536d1e
+        - pipeline-model-definition:2.2121.vd87fb_6536d1e
+        - pipeline-model-extensions:2.2121.vd87fb_6536d1e
+        - scm-api:631.v9143df5b_e4a_a
+        - ansicolor:1.0.2
+        - github:1.37.0
         - scm-filter-branch-pr:0.5.1
-        - ws-cleanup:0.38
-        - role-strategy:3.1.1
-        - slack:2.42
-        - artifactory:3.10.6
-        - build-timeout:1.20
+        - job-dsl:1.82
+        - git-client:4.2.0
+        - pipeline-groovy-lib:629.vb_5627b_ee2104
+        - ws-cleanup:0.44
+        - ghprb:1.42.2
+        - pipeline-aws:1.43
+        - authorize-project:1.5.1
+        - aws-credentials:191.vcb_f183ce58b_9
+        - aws-global-configuration:108.v47b_fd43dfec6
+        - command-launcher:90.v669d7ccb_7c31
+        - custom-tools-plugin:0.8
+        - docker-plugin:1.3.0
+        - envinject:2.901.v0038b_6471582
+        - extra-tool-installers:1.2
+        - git-parameter:0.9.18
+        - github-branch-source:1701.v00cc8184df93
+        - http_request:1.16
+        - maven-plugin:3.21
+        - audit-trail:333.vb_e1b_b_0f1238c
+        - dashboard-view:2.472.v9ff2a_e6a_c529
+        - jira:3.9
+        - sonar:2.15
+        - pipeline-utility-steps:2.15.1
+        - pipeline-github:2.8-138.d766e30bb08b
+        - slack:631.v40deea_40323b
+        - artifactory:3.18.0
+        - build-timeout:1.26
         - build-timestamp:1.0.3
-        - dashboard-view:2.16
-        - ghprb:1.42.1
-        - jira:3.1.1
-        - sonar:2.12
-        - audit-trail:3.10
-        - pipeline-model-definition:1.9.3
-        - pipeline-model-extensions:1.9.3
-        - pipeline-model-api:1.9.3
-        - pipeline-stage-tags-metadata:1.9.3
-        - sshd:3.1.0
-        - maven-plugin:3.16
-        - junit:1.54.3
-        - bouncycastle-api:2.26
-        - durable-task:503.v57154d18d478     
-        - jackson2-api:2.14.1-313.v504cdd45c18b  ## K8s Dependency-Plugin
-        - pipeline-graph-analysis:195.v5812d95a_a_2f9
-        - pipeline-milestone-step:101.vd572fef9d926
-        - script-security:1138.v8e727069a_025
-        - jakarta-activation-api:2.0.0-1
-        - scm-api:608.vfa_f971c5a_a_e9
-        - display-url-api:2.3.5
-        - jakarta-mail-api:2.0.0-1
-        - jaxb:2.3.6-1
-        - branch-api:2.1046.v0ca_37783ecc5
-        - envinject-api:1.192.va_13643e71792
-        - git-client:3.11.2
-        - extended-choice-parameter:346.vd87693c5a_86c
-        - kubernetes-credentials:0.9.0
-        - pipeline-groovy-lib:612.v84da_9c54906d
-        - workflow-api:1153.vb_912c0e47fb_a_
-        - mailer:414.vcc4c33714601
-        - javax-activation-api:1.2.0-3
-        - workflow-cps:2660.2664.v4c114e93f4c1
-        - javax-mail-api:1.6.2-6
-        - echarts-api:5.3.3-1
-        - pipeline-rest-api:2.28
-        - pipeline-stage-view:2.28
-        - snakeyaml-api:1.31-84.ve43da_fb_49d0b
+        - pipeline-graph-analysis:202.va_d268e64deb_3
+      initializeOnce: false
+      overwritePlugins: false
+      installLatestSpecifiedPlugins: true
+      installLatestPlugins: true
       JCasC:
         securityRealm: |-
           local:
             allowsSignup: false
             users:
-              - id: "${ADMIN_USER}"
-                password: "${ADMIN_PASSWORD}"
-        authorizationStrategy: {}
+              - id: "${chart-admin-username}"
+                name: "Jenkins Admin"
+                password: "${chart-admin-password}"
+        authorizationStrategy: |-
+          loggedInUsersCanDoAnything:
+            allowAnonymousRead: false
         configScripts:
           github: |-
             unclassified:
@@ -254,17 +249,21 @@ spec:
                                   curl https://releases.hashicorp.com/terraform/0.13.0/terraform_0.13.0_linux_amd64.zip -L -o terraform_0.13.0_linux_amd64.zip
                                   unzip terraform_0.13.0_linux_amd64.zip
                                 toolHome: "."
-
           ansicolor: |-
             unclassified:
               ansiColorBuildWrapper:
                 globalColorMapName: "xterm"
       jenkinsUrl: https://jenkins.{{ DNS_ZONE }}
-      slaveJenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
-      slaveJenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
+      jenkinsHome: /var/jenkins_home
+
+      ###### Ref https://www.jenkins.io/doc/book/managing/system-properties/#hudson-slaves-slavecomputer-allowunsupportedremotingversions ######
+      javaOpts: >
+        -Dhudson.slaves.SlaveComputer.allowUnsupportedRemotingVersions=true
     agent:
+      jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
+      jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
       image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
-      tag: 4.3-4
+      tag: 4.11.2-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
       componentName: jenkins-agent
@@ -282,6 +281,10 @@ spec:
         apiVersion: v1
         kind: Pod
         spec:
+          command:
+          - sleep
+          args:
+          - 99s
           serviceAccountName: jenkins-agent
           securityContext:
             fsGroup: 1337
@@ -316,6 +319,10 @@ spec:
               metadata:
                 namespace: cb
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 serviceAccountName: tsb-cb
                 securityContext:
                   runAsUser: 0
@@ -350,7 +357,7 @@ spec:
                   value: >
                     -Djavax.net.ssl.trustStore=/var/jenkins_truststore/truststore.jks
                     -Djavax.net.ssl.trustStorePassword=changeit
-              image: "docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -389,6 +396,10 @@ spec:
               metadata:
                 namespace: cb
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 serviceAccountName: tsb-cb
                 securityContext:
                   fsGroup: 1337
@@ -460,6 +471,10 @@ spec:
               metadata:
                 # namespace: sco
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-sco
                 securityContext:
                   runAsUser: 0
@@ -489,7 +504,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -601,6 +616,10 @@ spec:
               metadata:
                 # namespace: ods
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-ods
                 securityContext:
                   runAsUser: 0
@@ -630,7 +649,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -648,26 +667,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:11-6c5cc13"
-              livenessProbe:
-                failureThreshold: 0
-                initialDelaySeconds: 0
-                periodSeconds: 0
-                successThreshold: 0
-                timeoutSeconds: 0
-              ttyEnabled: true
-              workingDir: "/home/jenkins/agent"
-            - name: "gradle8-0"
-              args: "cat"
-              command: "/bin/sh -c"
-              envVars:
-              - envVar:
-                  key: "GRADLE_OPTS"
-                  value: -Djavax.net.ssl.trustStore=/home/jenkins/publiccacerts/jenkins.truststore.jks -Djavax.net.ssl.trustStorePassword=changeit -Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb -Dhttp.proxyPort=3128 -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb -Dhttps.proxyPort=3128 -Dhttp.nonProxyHosts="localhost|127.0.0.1|172.20.0.1|169.254.169.254|10.0.0.0/8|172.20.0.0/16|.internal|.eu-west-2.elb.amazonaws.com|vault.service.consul|ssm.eu-west-2.amazonaws.com|ssmmessages.eu-west-2.amazonaws.com|ec2.eu-west-2.amazonaws.com|ec2messages.eu-west-2.amazonaws.com|s3.eu-west-2.amazonaws.com|autoscaling.eu-west-2.amazonaws.com|secretsmanager.eu-west-2.amazonaws.com|kms.eu-west-2.amazonaws.com|ecr.eu-west-2.amazonaws.com|.eks.amazonaws.com|.ecr.eu-west-2.amazonaws.com|.s3.eu-west-2.amazonaws.com|.cluster.local|*.aws.uk.tsb" -Dhttps.nonProxyHosts="localhost|127.0.0.1|172.20.0.1|169.254.169.254|10.0.0.0/8|172.20.0.0/16|.internal|.eu-west-2.elb.amazonaws.com|vault.service.consul|ssm.eu-west-2.amazonaws.com|ssmmessages.eu-west-2.amazonaws.com|ec2.eu-west-2.amazonaws.com|ec2messages.eu-west-2.amazonaws.com|s3.eu-west-2.amazonaws.com|autoscaling.eu-west-2.amazonaws.com|secretsmanager.eu-west-2.amazonaws.com|kms.eu-west-2.amazonaws.com|ecr.eu-west-2.amazonaws.com|.eks.amazonaws.com|.ecr.eu-west-2.amazonaws.com|.s3.eu-west-2.amazonaws.com|.cluster.local|*.aws.uk.tsb"
-              - envVar:
-                  key: "JENKINS_URL"
-                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:8.0-jdk17"
+              image: "gradle:8.0-jdk17"
               livenessProbe:
                 failureThreshold: 0
                 initialDelaySeconds: 0
@@ -777,6 +777,10 @@ spec:
               metadata:
                 # namespace: datalake
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-datalake
                 securityContext:
                   runAsUser: 0
@@ -806,7 +810,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/inbound-agent:latest"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -918,6 +922,10 @@ spec:
               metadata:
                 # namespace: sca
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-sca
                 securityContext:
                   runAsUser: 0
@@ -947,7 +955,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1059,6 +1067,10 @@ spec:
               metadata:
                 # namespace: cb
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-cb
                 securityContext:
                   runAsUser: 0
@@ -1088,7 +1100,7 @@ spec:
               # - envVar:
               #     key: "AWS_PROFILE"
               #     value: "pre"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1107,6 +1119,25 @@ spec:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
               image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/gradle:11-6c5cc13"
+              livenessProbe:
+                failureThreshold: 0
+                initialDelaySeconds: 0
+                periodSeconds: 0
+                successThreshold: 0
+                timeoutSeconds: 0
+              ttyEnabled: true
+              workingDir: "/home/jenkins/agent"
+            - name: "gradle682"
+              args: "cat"
+              command: "/bin/sh -c"
+              envVars:
+              - envVar:
+                  key: "GRADLE_OPTS"
+                  value: -Djavax.net.ssl.trustStore=/home/jenkins/publiccacerts/jenkins.truststore.jks -Djavax.net.ssl.trustStorePassword=changeit -Dhttp.proxyHost=eu-west-2.proxy.aws.uk.tsb -Dhttp.proxyPort=3128 -Dhttps.proxyHost=eu-west-2.proxy.aws.uk.tsb -Dhttps.proxyPort=3128 -Dhttp.nonProxyHosts="localhost|127.0.0.1|172.20.0.1|169.254.169.254|10.0.0.0/8|172.20.0.0/16|.internal|.eu-west-2.elb.amazonaws.com|vault.service.consul|ssm.eu-west-2.amazonaws.com|ssmmessages.eu-west-2.amazonaws.com|ec2.eu-west-2.amazonaws.com|ec2messages.eu-west-2.amazonaws.com|s3.eu-west-2.amazonaws.com|autoscaling.eu-west-2.amazonaws.com|secretsmanager.eu-west-2.amazonaws.com|kms.eu-west-2.amazonaws.com|ecr.eu-west-2.amazonaws.com|.eks.amazonaws.com|.ecr.eu-west-2.amazonaws.com|.s3.eu-west-2.amazonaws.com|.cluster.local|*.aws.uk.tsb" -Dhttps.nonProxyHosts="localhost|127.0.0.1|172.20.0.1|169.254.169.254|10.0.0.0/8|172.20.0.0/16|.internal|.eu-west-2.elb.amazonaws.com|vault.service.consul|ssm.eu-west-2.amazonaws.com|ssmmessages.eu-west-2.amazonaws.com|ec2.eu-west-2.amazonaws.com|ec2messages.eu-west-2.amazonaws.com|s3.eu-west-2.amazonaws.com|autoscaling.eu-west-2.amazonaws.com|secretsmanager.eu-west-2.amazonaws.com|kms.eu-west-2.amazonaws.com|ecr.eu-west-2.amazonaws.com|.eks.amazonaws.com|.ecr.eu-west-2.amazonaws.com|.s3.eu-west-2.amazonaws.com|.cluster.local|*.aws.uk.tsb"
+              - envVar:
+                  key: "JENKINS_URL"
+                  value: "http://jenkins.jenkins.svc.cluster.local:8080"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cop-phase2/jenkinscicd/gradle:6.8-2"
               livenessProbe:
                 failureThreshold: 0
                 initialDelaySeconds: 0
@@ -1200,6 +1231,10 @@ spec:
               metadata:
                 # namespace: cop-phase2
               spec:
+                command:
+                - sleep
+                args:
+                - 99s
                 # serviceAccountName: tsb-cop-phase2
                 securityContext:
                   runAsUser: 0
@@ -1226,7 +1261,7 @@ spec:
               - envVar:
                   key: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080"
-              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:11-6c5cc13"
+              image: "docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave:4.11.2-4"
               workingDir: "/home/jenkins/agent"
               livenessProbe:
                 failureThreshold: 0
@@ -1367,7 +1402,11 @@ spec:
           apiVersion: v1
           kind: Pod
           spec:
-            serviceAccountName: jenkins-packer
+            serviceAccountName: "jenkins-packer"
+            command:
+            - sleep
+            args:
+            - 99s
             securityContext:
               fsGroup: 1337
             tolerations:
@@ -1378,6 +1417,8 @@ spec:
       cb:
         podName: cb
         componentName: tsb-cb
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1391,6 +1432,10 @@ spec:
           metadata:
             namespace: cb
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cb
             securityContext:
               #runAsUser: 0
@@ -1403,6 +1448,8 @@ spec:
       ods:
         podName: ods
         componentName: tsb-ods
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1416,6 +1463,10 @@ spec:
           metadata:
             namespace: ods
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-ods
             securityContext:
               #runAsUser: 0
@@ -1428,6 +1479,8 @@ spec:
       datalake:
         podName: datalake
         componentName: tsb-datalake
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1441,6 +1494,10 @@ spec:
           metadata:
             namespace: datalake
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-datalake
             securityContext:
               #runAsUser: 0
@@ -1453,6 +1510,8 @@ spec:
       sca:
         podName: sca
         componentName: tsb-sca
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1466,6 +1525,10 @@ spec:
           metadata:
             namespace: sca
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-sca
             securityContext:
               #runAsUser: 0
@@ -1478,6 +1541,8 @@ spec:
       sco:
         podName: sco
         componentName: tsb-sco
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1491,6 +1556,10 @@ spec:
           metadata:
             namespace: sco
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-sco
             securityContext:
               #runAsUser: 0
@@ -1503,6 +1572,8 @@ spec:
       obs:
         podName: obs
         componentName: tsb-obs
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1516,7 +1587,42 @@ spec:
           metadata:
             namespace: obs
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-obs
+            securityContext:
+              #runAsUser: 0
+              fsGroup: 1337
+            tolerations:
+              - key: role
+                operator: Equal
+                value: mgmt
+                effect: NoSchedule
+      ob:
+        podName: api-gw-ob
+        componentName: tsb-api-gw-ob
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
+        envVars:
+          - name: http_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: https_proxy
+            value: http://eu-west-2.proxy.aws.uk.tsb:3128
+          - name: no_proxy
+            value: localhost,127.0.0.1,169.254.169.254,10.0.0.0/8,172.20.0.0/16,.internal,.eu-west-2.elb.amazonaws.com,vault.service.consul,ssm.eu-west-2.amazonaws.com,ssmmessages.eu-west-2.amazonaws.com,ec2.eu-west-2.amazonaws.com,ec2messages.eu-west-2.amazonaws.com,s3.eu-west-2.amazonaws.com,autoscaling.eu-west-2.amazonaws.com,secretsmanager.eu-west-2.amazonaws.com,kms.eu-west-2.amazonaws.com,ecr.eu-west-2.amazonaws.com,.eks.amazonaws.com,.ecr.eu-west-2.amazonaws.com,.s3.eu-west-2.amazonaws.com,.cluster.local,.aws.uk.tsb
+        yamlTemplate: |-
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            namespace: api-gw-ob
+          spec:
+            command:
+            - sleep
+            args:
+            - 99s
+            serviceAccountName: tsb-api-gw-ob
             securityContext:
               #runAsUser: 0
               fsGroup: 1337
@@ -1528,6 +1634,8 @@ spec:
       cop:
         podName: cop
         componentName: tsb-cop
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1541,6 +1649,10 @@ spec:
           metadata:
             namespace: cop
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cop
             securityContext:
               #runAsUser: 0
@@ -1553,6 +1665,8 @@ spec:
       cop-phase2:
         podName: cop-phase2
         componentName: tsb-cop-phase2
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1566,6 +1680,10 @@ spec:
           metadata:
             namespace: cop-phase2
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cop-phase2
             securityContext:
               #runAsUser: 0
@@ -1578,6 +1696,8 @@ spec:
       cob:
         podName: cob
         componentName: tsb-cob
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1591,6 +1711,10 @@ spec:
           metadata:
             namespace: cob
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cob
             securityContext:
               #runAsUser: 0
@@ -1603,6 +1727,8 @@ spec:
       jnlp-root:
         podName: jnlp-root
         componentName: jnlp-root
+        image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+        tag: 4.11.2-4
         envVars:
           - name: http_proxy
             value: http://eu-west-2.proxy.aws.uk.tsb:3128
@@ -1616,6 +1742,10 @@ spec:
           metadata:
             namespace: cb
           spec:
+            command:
+            - sleep
+            args:
+            - 99s
             serviceAccountName: tsb-cb
             securityContext:
               runAsUser: 0
