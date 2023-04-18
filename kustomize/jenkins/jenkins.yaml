@@ -45,7 +45,7 @@ spec:
           alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
           alb.ingress.kubernetes.io/target-type: ip
           alb.ingress.kubernetes.io/inbound-cidrs: "{{ VPC_CIDR }},10.161.52.0/22,10.161.56.0/22,10.161.60.0/22,10.198.165.58/32,172.27.240.0/20,10.184.136.84/32,10.184.136.115/32,10.184.136.116/30,10.184.136.120/30,10.184.136.124/32"
-          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},cmdb=JENKINS_AWS,owner=Himanshu Jha,project=JENKINS_AWS,description=Jenkins component for shared services platform which can be used for building images and deploying application code,managed_by=rackspace,terraform=false 
+          alb.ingress.kubernetes.io/tags: environment={{ AWS_ENVIRONMENT }},cmdb=JENKINS_AWS,owner=Himanshu Jha,project=JENKINS_AWS,description=Jenkins component for shared services platform which can be used for building images and deploying application code,managed_by=rackspace,terraform=false
           external-dns.alpha.kubernetes.io/hostname: jenkins.{{ DNS_ZONE }}
         hostName: jenkins.{{ DNS_ZONE }}
       resources:
@@ -122,7 +122,7 @@ spec:
       overwritePlugins: false
       installLatestSpecifiedPlugins: true
       installLatestPlugins: true
-        
+
       JCasC:
         securityRealm: |-
           local:
@@ -264,7 +264,7 @@ spec:
     agent:
       jenkinsUrl: http://jenkins.jenkins.svc.cluster.local:8080
       jenkinsTunnel: jenkins-agent.jenkins.svc.cluster.local:50000
-      image: docker.artifactory.mgmt.aws.uk.tsb/cob/jenkins-cicd/jenkins-jnlp-slave
+      image: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/jenkins/inbound-agent
       tag: 4.11.2-4
       nodeSelector:
         taints.eks.aws.uk.tsb/role: mgmt
@@ -735,7 +735,7 @@ spec:
                   successThreshold: 0
                   timeoutSeconds: 0
               ttyEnabled: true
-              workingDir: "/home/jenkins/agent" 
+              workingDir: "/home/jenkins/agent"
             - name: "python"
               args: "cat"
               command: "/bin/sh -c"
@@ -1767,4 +1767,3 @@ spec:
     persistence:
       enabled: true
       existingClaim: jenkins-home
-      
