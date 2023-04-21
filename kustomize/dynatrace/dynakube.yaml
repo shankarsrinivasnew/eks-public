@@ -58,6 +58,10 @@ spec:
           operator: Equal
           value: scofl
           effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: cop-phase2
+          effect: NoSchedule
   activeGate:
     group: '{{ CLUSTER_NAME }}'
     capabilities:
