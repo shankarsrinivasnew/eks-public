@@ -56,22 +56,6 @@ spec:
             itopsbridge: "true"
           annotations:
             summary: "The number of active controllers in {{ $labels.instance }} is not 1. If value is 0 then Kafka is down"
-    # - name: KAFKA-ZOOKEEEPER
-    #   rules:
-    #     - alert: KAFKA-ZOOKEEEPER
-    #       expr: probe_success{job="blackbox_zookeeper"} == 0
-    #       for: 10m
-    #       labels:
-    #         severity: CRITICAL
-    #         priority: P4
-    #         environment: "{{ AWS_ENVIRONMENT }}"
-    #         monitoring: kafka-zookeeper
-    #         rackspace: "true"
-    #         hostname: "{{ $labels.instance }}"
-    #         tsbci: AWS_ELZ
-    #         itopsbridge: "true"
-    #       annotations:
-    #         summary: "Zookeeper node {{ $labels.instance }} is failing an endpoint health check"
     - name: LOGSTASH-SERVICE
       rules:
         - alert: LOGSTASH-SERVICE
