@@ -64,7 +64,7 @@ spec:
         - workflow-support:813.vb_d7c3d2984a_0
         - workflow-basic-steps:2.24
         - credentials-binding:1.27
-        - git:4.8.3
+        - git:4.11.5
         - configuration-as-code:1569.vb_72405b_80249
         - ansicolor:0.7.2
         - pipeline-aws:1.42
@@ -128,6 +128,8 @@ spec:
         - echarts-api:5.3.3-1
         - pipeline-rest-api:2.28
         - pipeline-stage-view:2.28
+        - snakeyaml-api:1.31-84.ve43da_fb_49d0b
+
         
       JCasC:
         securityRealm: |-
