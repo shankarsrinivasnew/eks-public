@@ -27,7 +27,40 @@ spec:
           key: node-role.kubernetes.io/master
           operator: Exists
         - key: role
-          operator: Exists
+          operator: Equal
+          value: mgmt
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: sco
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: ods
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: cop
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: highcompute
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: sca
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: obs
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: scofl
+          effect: NoSchedule
+        - key: role
+          operator: Equal
+          value: cop-phase2
           effect: NoSchedule
   activeGate:
     group: '{{ CLUSTER_NAME }}'
