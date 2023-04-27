@@ -129,9 +129,19 @@ spec:
               - id: "${chart-admin-username}"
                 name: "Jenkins Admin"
                 password: "${chart-admin-password}"
-        authorizationStrategy: |-
-          loggedInUsersCanDoAnything:
-            allowAnonymousRead: false
+        authorizationStrategy:
+          roleBased:
+            roles:
+              global:
+                - name: "admin"
+                  description: "Jenkins administrators"
+                  permissions:
+                    - "Overall/Administer"
+                  assignments:
+                    - "admin"
+#         authorizationStrategy: |-
+#           loggedInUsersCanDoAnything:
+#             allowAnonymousRead: false
         configScripts:
           github: |-
             unclassified:
