@@ -81,6 +81,11 @@ spec:
           - 7790
           - 2181
           - 7788
+          - 9096
+          - 8080
+          - 8443
+          - 9093
+          - 10254
 ---
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
@@ -115,14 +120,14 @@ metadata:
   name: ods-nginx-ingress
   namespace: ods
 spec:
-  serviceAccountSelector: projectcalico.org/name == 'nginx-ingress-ingress-nginx'
+  serviceAccountSelector: projectcalico.org/name == 'tsb-ods'
   types:
     - Ingress
   ingress:
     - metadata:
-      annotations:
-        from: vpc
-        to: nginx
+        annotations:
+          from: vpc
+          to: nginx
       action: Allow
       source:
         selector: vpc == 'local' && layer == 'all'
@@ -134,16 +139,12 @@ metadata:
   name: prometheus-ingress
   namespace: ods
 spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
   ingress:
-    - from:
-        - namespaceSelector: 
-            matchLabels:
-              app: prometheus
-          ports:
-            - port: 8080
-              protocol: TCP
-            - port: 3000
-              protocol: TCP
+    - action: Allow
+      protocol: TCP
+      source:
+        selector: app == 'prometheus'
+      destination:
+        ports:
+          - 8080
+          - 3000
