@@ -5,7 +5,7 @@ metadata:
   name: ods-loans-grafana-cm
   namespace: prometheus
 data:
-  ods-loans-grafana.json: |     
+  ods-loans-grafana.json: | 
     {
       "annotations": {
         "list": [
@@ -84,7 +84,7 @@ data:
               "targets": [
                 {
                   "exemplar": true,
-                  "expr": "(sum by (job, namespace) ({namespace=\"ods\",job=\"tsb-ods-pr-ingest-pr-02-headless-service\"}))",
+                  "expr": "(sum by (job, namespace) (records_in_total_pr02_total{namespace=\"ods\",job=\"tsb-ods-pr-ingest-pr-02-headless-service\"}))",
                   "interval": "",
                   "legendFormat": "",
                   "refId": "A"
@@ -94,7 +94,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "PR02 In total Records",
+              "title": "PR02 Total Records",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -282,7 +282,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "AAE- Curation Records In Total",
+              "title": "Total Records with Loan Status IN",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -376,7 +376,7 @@ data:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "AAE - Curation Records Out Total",
+              "title": "Total Records Sent to AAE Topic",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
