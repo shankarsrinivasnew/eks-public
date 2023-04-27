@@ -130,15 +130,15 @@ spec:
                 name: "Jenkins Admin"
                 password: "${chart-admin-password}"
         authorizationStrategy:
-            roleBased:
-              roles:
-                global:
-                  - name: "admin"
-                    description: "Jenkins administrators"
-                    permissions:
-                      - "Overall/Administer"
-                    assignments:
-                      - "admin"
+          roleBased:
+            roles:
+              global:
+                - name: "admin"
+                  description: "Jenkins administrators"
+                  permissions:
+                    - "Overall/Administer"
+                  assignments:
+                    - "admin"
 #         authorizationStrategy: |-
 #           loggedInUsersCanDoAnything:
 #             allowAnonymousRead: false
