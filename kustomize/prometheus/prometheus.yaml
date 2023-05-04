@@ -445,22 +445,22 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard
-            - name: " aws-infra-status-prod-historical-uptime"
+            - name: 'aws-infra-realtime-prod'
               orgId: 1
-              folder: "AWS Infrastructure"
+              folder: 'AWS Infrastructure'
               type: file
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-prod-historical-uptime
-            - name: "aws-infra-status-prod-realtime-data"
+                path: /var/lib/grafana/dashboards/aws-infra-realtime-prod
+            - name: 'aws-infra-historical-prod'
               orgId: 1
-              folder: "AWS Infrastructure"
+              folder: 'AWS Infrastructure'
               type: file
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-prod-realtime-data
+                path: /var/lib/grafana/dashboards/aws-infra-historical-prod
             - name: 'aws-infrastructure-dashboard-part1'
               orgId: 1
               folder: 'AWS Infrastructure'
@@ -541,8 +541,8 @@ spec:
         aws-infrastructure-dashboard-part2: aws-infrastructure-dashboard-part2-cm
         cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
         cdc-status-msk-kafka: cdc-status-msk-kafka-cm
-        aws-infra-status-prod-realtime-data: aws-infra-status-prod-realtime-data-cm
-        aws-infra-status-prod-historical-uptime: aws-infra-status-prod-historical-uptime-cm 
+        aws-infra-realtime-prod: aws-infra-prod-realtime-data-cm
+        aws-infra-historical-prod: aws-infra-prod-historical-data-cm
 
 
     prometheusOperator:
