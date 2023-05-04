@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: aws-infra-status-prod-realtime-data-cm
+  name: aws-infra-prod-realtime-data-cm
   namespace: prometheus
 data:
   aws-infra-realtime.json: |     
