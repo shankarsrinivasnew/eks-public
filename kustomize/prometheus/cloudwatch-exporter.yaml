@@ -263,12 +263,6 @@ spec:
         aws_metric_name: HealthyHostCount
         aws_dimensions: [AvailabilityZone, LoadBalancerName]
         aws_statistics: [Average]
-      - aws_namespace: AWS/AutoScaling
-        aws_metric_name: GroupMinSize
-        aws_dimensions: [AutoScalingGroupName]
-      - aws_namespace: AWS/AutoScaling
-        aws_metric_name: GroupDesiredCapacity
-        aws_dimensions: [AutoScalingGroupName]
 
 
     # Configurable health checks against the /healthy and /ready endpoints
