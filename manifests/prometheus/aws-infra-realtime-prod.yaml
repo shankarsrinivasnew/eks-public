@@ -1,0 +1,1569 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-infra-prod-realtime-data-cm
+  namespace: prometheus
+data:
+  aws-infra-realtime.json: |     
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 0,
+      "id": 214,
+      "iteration": 1683221584665,
+      "links": [],
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "",
+                  "to": "",
+                  "type": 1,
+                  "value": ""
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SCO"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "3",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "12",
+                        "type": 2,
+                        "value": ""
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "2",
+                        "type": 2,
+                        "value": ""
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "N/A",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SCA"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "3",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "6",
+                        "type": 2,
+                        "value": ""
+                      },
+                      {
+                        "from": "",
+                        "id": 2,
+                        "text": "N/A",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      },
+                      {
+                        "from": "1",
+                        "id": 3,
+                        "text": "Under Capacity",
+                        "to": "2",
+                        "type": 2,
+                        "value": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "OBS"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "2",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "4",
+                        "type": 2
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "2",
+                        "type": 2
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "NA",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "EKS"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "6",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "18",
+                        "type": 2
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "5",
+                        "type": 2,
+                        "value": "1"
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "NA",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "EKS MGMT"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "3",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "6",
+                        "type": 2
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "2",
+                        "type": 2,
+                        "value": "1"
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "NA",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "COP"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "6",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "12",
+                        "type": 2
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "5",
+                        "type": 2
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "NA",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "HighCompute"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "20",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "40",
+                        "type": 2,
+                        "value": "20"
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "19",
+                        "type": 2
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "NA",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "COP-Phase2"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "3",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "6",
+                        "type": 2,
+                        "value": ""
+                      },
+                      {
+                        "from": "1",
+                        "id": 2,
+                        "text": "Under Capacity",
+                        "to": "2",
+                        "type": 2,
+                        "value": ""
+                      },
+                      {
+                        "from": "",
+                        "id": 3,
+                        "text": "NA",
+                        "to": "",
+                        "type": 1,
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 14,
+            "w": 6,
+            "x": 0,
+            "y": 0
+          },
+          "id": 82,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-sco-node.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "SCO",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-sca-node.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "SCA",
+              "refId": "B"
+            },
+            {
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-obs-node.*\"})",
+              "interval": "",
+              "legendFormat": "OBS",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-node.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "EKS",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-mgmt-node.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "EKS MGMT",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-cop-node.*\"})",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "COP",
+              "refId": "H"
+            },
+            {
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-highcompute-node.*\"})",
+              "interval": "",
+              "legendFormat": "HighCompute",
+              "refId": "D"
+            },
+            {
+              "expr": "count(up{job=\"ec2-discover-node-exporter\",instance=~\"prod-eks-cop-phase2-node.*\"})",
+              "interval": "",
+              "legendFormat": "COP-Phase2",
+              "refId": "E"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "EKS Pool Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 6,
+            "y": 0
+          },
+          "id": 60,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://prometheus.prod.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Prometheus",
+              "refId": "D"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Prometheus Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "6"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 6
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 12,
+            "y": 0
+          },
+          "id": 81,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(count(up{job=\"ec2-discover-node-exporter\",instance=~\"ods-prod-scylla-db.*\"} == 1))",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Artifactory",
+              "refId": "F"
+            },
+            {
+              "exemplar": true,
+              "expr": "",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime ODS Scylla Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 6,
+            "y": 7
+          },
+          "id": 59,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://jenkins.prod.aws.uk.tsb\", job=\"blackbox_4xx\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Jenkins",
+              "refId": "E"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Jenkins Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 12,
+            "y": 7
+          },
+          "id": 61,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://grafana.prod.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Grafana",
+              "refId": "C"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Grafana Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "1",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "3",
+                  "type": 1,
+                  "value": "3"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 3
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 0,
+            "y": 14
+          },
+          "id": 75,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "count(kafka_server_ReplicaManager_Value{job=\"shared-msk-jmx-exporter\", name=\"LeaderCount\"})",
+              "interval": "",
+              "legendFormat": "EKS Pool Status",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MSK Cluster status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 6,
+            "y": 14
+          },
+          "id": 63,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://consul.prod.aws.uk.tsb\", job=\"blackbox\"}",
+              "interval": "",
+              "legendFormat": "Consul Service",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Consul Service Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 12,
+            "y": 14
+          },
+          "id": 58,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://artifactory.mgmt.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Artifactory",
+              "refId": "F"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Artifactory Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "6",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "100",
+                  "type": 2,
+                  "value": "3"
+                },
+                {
+                  "from": "5",
+                  "id": 2,
+                  "text": "Under Capacity",
+                  "to": "1",
+                  "type": 2,
+                  "value": ""
+                },
+                {
+                  "from": "",
+                  "id": 3,
+                  "text": "N/A",
+                  "to": "",
+                  "type": 1,
+                  "value": "0"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": ""
+                  },
+                  {
+                    "color": "green",
+                    "value": ""
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 0,
+            "y": 21
+          },
+          "id": 74,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "count(scylla_node_operation_mode{job=\"ec2-discover-scylla-default\",status=\"running\"})",
+              "interval": "",
+              "legendFormat": "Consul Service",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Scylla Service Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 6,
+            "y": 21
+          },
+          "id": 62,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://vault.prod.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Vault",
+              "refId": "B"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Vault Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "from": "",
+                  "id": 1,
+                  "text": "OK",
+                  "to": "",
+                  "type": 1,
+                  "value": "200"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "green",
+                    "value": 200
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Jenkins"
+                },
+                "properties": [
+                  {
+                    "id": "mappings",
+                    "value": [
+                      {
+                        "from": "",
+                        "id": 1,
+                        "text": "OK",
+                        "to": "",
+                        "type": 1,
+                        "value": "403"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red",
+                          "value": null
+                        },
+                        {
+                          "color": "green",
+                          "value": 403
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 12,
+            "y": 21
+          },
+          "id": 57,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.15",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "probe_http_status_code{instance=\"https://kibana.mgmt.aws.uk.tsb\", job=\"blackbox\"}",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "Kibana(ElasticSearch)",
+              "refId": "G"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Realtime Kibana(ElasticSearch) Endpoint Status",
+          "type": "stat"
+        },
+        {
+          "collapsed": false,
+          "datasource": null,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 28
+          },
+          "id": 27,
+          "panels": [],
+          "title": "Row title",
+          "type": "row"
+        }
+      ],
+      "refresh": "1m",
+      "schemaVersion": 27,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": [
+          {
+            "allValue": null,
+            "current": {
+              "selected": false,
+              "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"prod\",instance=\"shared-prod-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+              "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"prod\",instance=\"shared-prod-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
+            },
+            "datasource": null,
+            "definition": "node_systemd_unit_state{instance=~\"shared-prod-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
+            "description": "Get number of scylla nodes",
+            "error": null,
+            "hide": 0,
+            "includeAll": false,
+            "label": null,
+            "multi": false,
+            "name": "scylla_count",
+            "options": [
+              {
+                "selected": false,
+                "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"prod\",instance=\"shared-prod-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+                "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2a\",environment=\"prod\",instance=\"shared-prod-scylla-db-3\",instanceid=\"i-0bf2a03325023dad6\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.70.193\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
+              },
+              {
+                "selected": true,
+                "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2b\",environment=\"prod\",instance=\"shared-prod-scylla-db-1\",instanceid=\"i-0cb53d0785a679c3a\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.72.127\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+                "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2b\",environment=\"prod\",instance=\"shared-prod-scylla-db-1\",instanceid=\"i-0cb53d0785a679c3a\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.72.127\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
+              },
+              {
+                "selected": false,
+                "text": "node_systemd_unit_state{availabilityzone=\"eu-west-2c\",environment=\"prod\",instance=\"shared-prod-scylla-db-2\",instanceid=\"i-0931b30202adaebf5\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.74.240\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}",
+                "value": "node_systemd_unit_state{availabilityzone=\"eu-west-2c\",environment=\"prod\",instance=\"shared-prod-scylla-db-2\",instanceid=\"i-0931b30202adaebf5\",instancetype=\"t3a.2xlarge\",job=\"ec2-discover-node-exporter\",name=\"scylla-server.service\",privateip=\"10.161.74.240\",prometheus=\"prometheus/prometheus-kube-prometheus-prometheus\",prometheus_replica=\"prometheus-prometheus-kube-prometheus-prometheus-0\",state=\"active\",status=\"running\",terraform=\"true\"}"
+              }
+            ],
+            "query": {
+              "query": "node_systemd_unit_state{instance=~\"shared-prod-scylla.*\",name=\"scylla-server.service\",state=\"active\",status=\"running\"}",
+              "refId": "StandardVariableQuery"
+            },
+            "refresh": 0,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 0,
+            "tagValuesQuery": "",
+            "tags": [],
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
+          }
+        ]
+      },
+      "time": {
+        "from": "now-5m",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "AWS Infrastructure Status - Prod Realtime Data",
+      "uid": "prodreal",
+      "version": 14
+    }
