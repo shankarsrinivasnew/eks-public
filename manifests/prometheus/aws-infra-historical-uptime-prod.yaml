@@ -798,6 +798,6 @@ data:
     "timepicker": {},
     "timezone": "",
     "title": "AWS Infrastructure Status - Prod Historical Uptime",
-    "uid": "infhisu",
-    "version": 1
+    "uid": "histprod",
+    "version": 2
     }
