@@ -445,7 +445,7 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-loans-grafana-dashboard
-            - name: " aws-infra-status-prod-historical-uptime"
+            - name: "aws-infra-status-prod-historical-uptime"
               orgId: 1
               folder: "AWS Infrastructure"
               type: file
