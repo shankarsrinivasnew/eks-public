@@ -139,6 +139,16 @@ spec:
                     - "Overall/Administer"
                   assignments:
                     - "admin"
+                - name: "Read_Only"
+                  description: "Read only Users"
+                  permissions: 
+                    - "Overall/Read"
+                    - "Job/Read"
+                - name: "Write_Only"
+                  description: "Write Access Users"
+                  permissions:
+                    - "Overall/Write"
+                    - "Job/Write"
 #         authorizationStrategy: |-
 #           loggedInUsersCanDoAnything:
 #             allowAnonymousRead: false
