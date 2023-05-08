@@ -118,8 +118,6 @@ data:
     # Get secrets
     SECRET=$(aws secretsmanager get-secret-value --secret-id eks-flux-kustomize | jq -r ".SecretString" )
     SECRET_RAX_PAGERDUTY_KEY=$(echo $SECRET | jq -r ".raxPagerDutyKey")
-
-    GF_SECRET=$(aws secretsmanager get-secret-value --secret-id eks_grafana_enterprise --query SecretString --output text | jq --raw-output '."license"')
     
 
     # Get Shared MSK Cluster
