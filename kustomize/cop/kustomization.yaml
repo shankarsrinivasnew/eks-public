@@ -1,6 +1,0 @@
-#resources:
-#  - sa.yaml
-#  - networkpolicy.yaml
-#namespace: cop
-#transformers:
-#  - awsTransformer.yaml

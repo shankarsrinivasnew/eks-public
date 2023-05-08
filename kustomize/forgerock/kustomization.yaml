@@ -1,7 +1,0 @@
-resources:
-  - namespace.yaml
-  - forgerock-namespace-admin.yaml
-  - sa.yaml
-namespace: forgerock
-transformers:
-  - awsTransformer.yaml
