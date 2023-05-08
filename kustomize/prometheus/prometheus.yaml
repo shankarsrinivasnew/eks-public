@@ -45,14 +45,8 @@ spec:
     ## Using chart from https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
     grafana:
-      grafana.ini:
-        enterprise:
-          license_text: |
-            {{ GF_SECRET }}
-        server:
-          root_url: https://grafana.dev.aws.uk.tsb/
       image:
-        repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana-enterprise
+        repository: docker.artifactory.mgmt.aws.uk.tsb/docker-remote/grafana/grafana
         tag: 7.5.15
         pullPolicy: IfNotPresent
       enabled: true
