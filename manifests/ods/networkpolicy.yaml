@@ -139,19 +139,17 @@ metadata:
   name: prometheus-ingress
   namespace: ods
 spec:
-  podSelector: {}
   policyTypes:
     - Ingress
   ingress:
-    - from:
-        - namespaceSelector: 
-            matchLabels:
-              app: prometheus
-          ports:
-            - port: 8080
-              protocol: TCP
-            - port: 3000
-              protocol: TCP
+    - action: Allow
+      protocol: TCP
+      source:
+        selector: app == 'prometheus'
+      destination:
+        ports:
+          - 8080
+          - 3000
           
           
           
