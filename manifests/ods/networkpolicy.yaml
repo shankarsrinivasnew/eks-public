@@ -154,7 +154,7 @@ spec:
 apiVersion: crd.projectcalico.org/v1
 kind: NetworkPolicy
 metadata:
-  name: prometheus-ingress
+  name: prometheus-ingress-1
   namespace: ods
 spec:
   podSelector: {}
