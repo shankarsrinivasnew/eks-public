@@ -29,7 +29,8 @@ spec:
           annotations:
             Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. State:{{ $labels.state }} and Status:{{ $labels.status }}'
             Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
-       - alert: CDC_Subscription_State_failed
+
+        - alert: CDC_Subscription_State_failed
           expr: datastore_state{job="ec2-discover-node-exporter", instance=~"cdc-.*", state!="Mirror Continuous"}
           for: 5m
           labels:
