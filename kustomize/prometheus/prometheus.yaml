@@ -555,7 +555,6 @@ spec:
         aws-infra-status-dev-realtime-data: aws-infra-status-dev-realtime-data-cm
         aws-infra-status-dev-historical-uptime: aws-infra-status-dev-historical-uptime-cm
 
-
     prometheusOperator:
       enabled: true
       nodeSelector:
