@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: aws-infra-status-dev-historical-uptime-cm
+  name: aws-infra-status-historical-uptime-cm
   namespace: prometheus
 data:
   aws-infra-historical-uptime.json: |
@@ -731,7 +731,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "AWS Infrastructure Status - Dev Historical Uptime",
+      "title": "AWS Infrastructure Status - Historical Uptime",
       "uid": "testuidev1",
       "version": 14
     }

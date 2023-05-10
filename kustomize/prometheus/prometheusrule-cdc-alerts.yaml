@@ -29,7 +29,22 @@ spec:
           annotations:
             Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. State:{{ $labels.state }} and Status:{{ $labels.status }}'
             Summary: Alert CDC- State of {{ $labels.subscription }} is not Mirror Continuous
-
+       - alert: CDC_Subscription_State_failed
+          expr: datastore_state{job="ec2-discover-node-exporter", instance=~"cdc-.*", state!="Mirror Continuous"}
+          for: 5m
+          labels:
+            environment: "{{ AWS_ENVIRONMENT }}"
+            level: CRITICAL
+            platform: AWS
+            severity: CRITICAL
+            priority: P3
+            application: cdc
+            tsbci: INFOSPHERE_CDC
+            itopsbridge: "true"
+          annotations:
+            Description: '***State of {{ $labels.subscription }} is not Mirror Continuous. State:{{ $labels.state }} and Status:{{ $labels.status }}'
+            Summary: Alert CDC- State of {{ $labels.subscription }} is failed
+        
         - alert: CDC_Subscription_Availability
           expr: count(datastore_state{job="ec2-discover-node-exporter", instance=~"cdc-.*"}) by (state) < 2
           for: 5m
