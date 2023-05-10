@@ -501,6 +501,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
+            - name: "cdc-status-msk-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-msk-kafka
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -554,6 +562,7 @@ spec:
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
         aws-infra-status-dev-realtime-data: aws-infra-status-dev-realtime-data-cm
         aws-infra-status-dev-historical-uptime: aws-infra-status-dev-historical-uptime-cm
+        cdc-status-msk-kafka: cdc-status-msk-kafka-cm
 
     prometheusOperator:
       enabled: true
