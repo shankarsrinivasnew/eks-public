@@ -477,14 +477,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/gen-availability
-            - name: "aws-infra-status-dev-historical-uptime"
+            - name: "aws-infra-status-historical-uptime"
               orgId: 1
               folder: "AWS-Infrastructure"
               type: file
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-dev-historical-uptime           
+                path: /var/lib/grafana/dashboards/aws-infra-status-historical-uptime           
             - name: "aws-infra-status-dev-realtime-data"
               orgId: 1
               folder: "AWS-Infrastructure"
@@ -501,6 +501,14 @@ spec:
               editable: true
               options:
                 path: /var/lib/grafana/dashboards/ods-consumer-group-and-topic-metrics
+            - name: "cdc-status-msk-kafka"
+              orgId: 1
+              folder: "TSB-CDC"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/cdc-status-msk-kafka
 
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
@@ -553,8 +561,8 @@ spec:
         gen-availability: gen-availability-cm
         ods-consumer-group-and-topic-metrics: ods-consumer-group-and-topic-metrics-cm
         aws-infra-status-dev-realtime-data: aws-infra-status-dev-realtime-data-cm
-        aws-infra-status-dev-historical-uptime: aws-infra-status-dev-historical-uptime-cm
-
+        aws-infra-status-historical-uptime: aws-infra-status-historical-uptime-cm
+        cdc-status-msk-kafka: cdc-status-msk-kafka-cm
 
     prometheusOperator:
       enabled: true
@@ -774,6 +782,34 @@ spec:
                 target_label: status
               - source_labels: [__meta_ec2_instance_type]
                 target_label: instancetype
+          - job_name: scylla-manager-ec2
+            scrape_timeout: 1m
+            scrape_interval: 1m
+            metrics_path: /metrics
+            ec2_sd_configs:
+              - region: eu-west-2
+                port: 5090
+            relabel_configs:
+              - source_labels: [__meta_ec2_tag_ManagedBy]
+                target_label: managedby
+                regex: rackspace
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                regex: .*scylla.*
+                action: keep
+              - source_labels: [__meta_ec2_tag_Name]
+                action: replace
+                target_label: instancename
+              - source_labels: [__meta_ec2_tag_environment]
+                target_label: environment
+              - source_labels: [__meta_ec2_availability_zone]
+                target_label: availabilityzone
+              - source_labels: [__meta_ec2_instance_state]
+                target_label: status
+              - source_labels: [__meta_ec2_instance_type]
+                target_label: instancetype
+              - source_labels: [__meta_ec2_tag_Name]
+                target_label: instance
           - job_name: "blackbox"
             scrape_interval: 5m
             scrape_timeout: 5m
