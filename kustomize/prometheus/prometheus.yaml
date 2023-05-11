@@ -523,7 +523,15 @@ spec:
               disableDeletion: true
               editable: true
               options:
-                path: /var/lib/grafana/dashboards/aws-infra-status-preprod-realtime-data      
+                path: /var/lib/grafana/dashboards/aws-infra-status-preprod-realtime-data
+            - name: "aws-infra-status-historical-uptime-testing1"
+              orgId: 1
+              folder: "AWS Infrastructure"
+              type: file
+              disableDeletion: true
+              editable: true
+              options:
+                path: /var/lib/grafana/dashboards/aws-infra-status-historical-uptime-testing1      
       dashboardsConfigMaps:
         shared-grafana-jvm: shared-jvm-cm
         shared-grafana-scylla1: shared-scylla1-cm
@@ -579,6 +587,7 @@ spec:
         cdc-status-cloudera-kafka: cdc-status-cloudera-kafka-cm
         aws-infra-status-preprod-realtime-data: aws-infra-status-preprod-realtime-data-cm
         aws-infra-status-preprod-historical-uptime: aws-infra-status-preprod-historical-uptime-cm
+        aws-infra-status-historical-uptime-testing1: aws-infra-status-historical-uptime-testing1-cm
     prometheusOperator:
       enabled: true
       nodeSelector:
