@@ -2,4 +2,4 @@ resources:
   - aws-infra-status-historical-uptime-testing1.yaml
 namespace: prometheus
 transformers:
-  - kustomize/prometheus/awsTransformer.yaml
+  - awsTransformer.yaml
